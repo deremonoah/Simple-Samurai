@@ -7,7 +7,7 @@ public class StrikeArea : MonoBehaviour
 {
 
     
-    [SerializeField] EnemysSystem enmys;
+    private EnemysSystem enmys;
     public Camera mc;
     [SerializeField] bool indere;
     [SerializeField] float maxDamg = 70;

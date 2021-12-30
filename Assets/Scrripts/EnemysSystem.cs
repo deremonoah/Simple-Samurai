@@ -7,12 +7,12 @@ public class EnemysSystem : MonoBehaviour
 {
     public GameObject[] enmSpawns;
     public GameObject[] enmPrefabs;
-    public GameObject[] enms;
-    
-    public bool[] hasenmy;
+    public List<GameObject> enms;
 
-    public bool[] diedList;
-    private int spawnedEnms = 0;
+    //public bool[] hasenmy;
+
+    //public bool[] diedList;
+    //private int spawnedEnms = 0;
     private bool spawned = false;
 
 
@@ -31,12 +31,12 @@ public class EnemysSystem : MonoBehaviour
 
     void Start()
     {
-        timer = Max;
+
         GM = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnWave());
     }
 
-    
+
     void Update()
     {
 
@@ -48,73 +48,57 @@ public class EnemysSystem : MonoBehaviour
             SpawnEnemy(Random.Range(0, 4),Random.Range(0,enmPrefabs.Length));
             timer = Max;
         }*/
-        
-        if (spawned && spawnedEnms < 1)
+
+        if (spawned && enms.Count < 1)
         {
             GM.OpenPickPan();
             spawned = false;
         }
-        
+
 
 
     }
-    
-    public void SpawnEnemy(int point,int enmType)
+
+    public void SpawnEnemy(int point, GameObject enmPrefab)
     {
-        if (!hasenmy[point])
-        {
-            enms[point] = Instantiate(enmPrefabs[enmType], enmSpawns[point].transform.position, enmSpawns[point].transform.rotation);
-            enms[point].GetComponent<enmy>().SetThings(atkPrefab,atkStart,atkEnd);
-            spawnedEnms++;
-            spawned = true;
-            recPos = point;
-            hasenmy[point] = true;
-            
-        }
-        
+        GameObject enm = Instantiate(enmPrefab, enmSpawns[point].transform.position, enmSpawns[point].transform.rotation);
+        enms.Add(enm);
+        enm.GetComponent<enmy>().SetThings(atkPrefab, atkStart, atkEnd);
+        spawned = true;
+        recPos = point;
     }
     public void DamageEnemy(float damg, int target)
     {
-        if (!diedList[target])
-        {
-            enms[target].GetComponent<enmy>().damgEnemy(damg);
-        }
+
+
+        enms[target].GetComponent<enmy>().damgEnemy(damg);
+
     }
     public int GetPos()
     {
         return recPos;
     }
 
-    public void Died(int pos)
+    public void Died(GameObject me)
     {
-        diedList[pos] = true;
-        hasenmy[pos] = false;
-        spawnedEnms--;
-    }
+        if (enms.Contains(me))
+        {
+            enms.Remove(me);
+        }
 
-    
-
-    public int hasAllDied()
-    {
-        return spawnedEnms;
     }
 
     IEnumerator SpawnWave()
     {
         yield return new WaitForSeconds(2);
-        for (int lcv = 0; lcv < waves[wcv].getLength(); lcv++)
+        for (int lcv = 0; lcv < waves[wcv].enmsInWave.Length; lcv++)
         {
-            for (int lcv2 = 0; lcv2 < enmPrefabs.Length; lcv2++)
-            {
-                if (waves[wcv].getEnm(lcv).getType() == enmPrefabs[lcv2].GetComponent<enmy>().getType())
-                {
-                    SpawnEnemy(lcv, lcv2);
-                    yield return new WaitForSeconds(1);
-                }
-            }
+            SpawnEnemy(lcv, waves[wcv].enmsInWave[lcv]);
+            yield return new WaitForSeconds(0.5f);
+
         }
         wcv++;
-        
+
     }
 
     public void StartNextWave()

@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Wave",menuName ="Wave")]
 public class EnmWave : ScriptableObject
 {
-    public enmy[] enmsInWave;
-
-    public enmy getEnm(int lcv)
+    public GameObject[] enmsInWave;
+/*
+    public GameObject getEnm(int lcv)
     {
         return enmsInWave[lcv];
     }
@@ -24,5 +24,5 @@ public class EnmWave : ScriptableObject
             return false;
         }
         else return true;
-    }
+    }*/
 }

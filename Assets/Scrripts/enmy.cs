@@ -10,7 +10,7 @@ public class enmy : MonoBehaviour
     
 
     //mostly timers n stuff
-    [SerializeField] float waitTimer, waitTimerMax,randWaitmin, randWaitmax, readyingTimer, readyingTimerMax, strikeTimer;
+    [SerializeField] float randWaitmin, randWaitmax, readyingTimer, readyingTimerMax, strikeTimer;
 
     public Camera mainCam;
     private HealthBar playerHP;
@@ -30,8 +30,7 @@ public class enmy : MonoBehaviour
     [SerializeField] GameObject atkEnd;
     attackState curState;
 
-    //in refrance to position in enemySystem's prefab list
-    [SerializeField] int myType;
+    private List<GameObject> curAtks = new List<GameObject>();
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -45,14 +44,10 @@ public class enmy : MonoBehaviour
         enmyhpsystem = mainCam.GetComponent<EnmyHPsSystem>();
         enmsSys = mainCam.GetComponent<EnemysSystem>();
         myPos = enmsSys.GetPos();
-        myHPBar = enmyhpsystem.GetMyHPBar(myPos);
+        
 
         anim = GetComponent<Animator>();
         HP = maxHP;
-        waitTimer = waitTimerMax + Random.Range(randWaitmin, randWaitmax);
-        
-        
-        
         anim = GetComponent<Animator>();
 
         StartCoroutine(attack());
@@ -64,8 +59,9 @@ public class enmy : MonoBehaviour
         //Hp ifs
         if (HP<=0)
         {
-            enmsSys.Died(myPos);
-            Destroy(myHPBar);
+            foreach (var atk in curAtks)
+                Destroy(atk);
+            enmsSys.Died(this.gameObject);
             Destroy(this.gameObject);
         }
         if (HP > maxHP)
@@ -120,11 +116,10 @@ public class enmy : MonoBehaviour
     IEnumerator attack()
     {
         curState = attackState.waiting;
-        yield return new WaitForSeconds(waitTimer);
+        yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
 
-        
-        GameObject atk = Instantiate(atkPrefab, atkStart.transform.position, atkStart.transform.rotation);
-        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform);
+
+        Strike();
         curState = attackState.readying;
         yield return new WaitForSeconds(readyingTimer);
 
@@ -135,8 +130,24 @@ public class enmy : MonoBehaviour
         StartCoroutine(attack());
     }
 
-    public int getType()
+    private void OnValidate()
     {
-        return myType;
+        if (randWaitmax < randWaitmin)
+            randWaitmax = randWaitmin;
+    }
+
+    public void Strike()
+    {
+        GameObject atk = Instantiate(atkPrefab, atkStart.transform.position, atkStart.transform.rotation);
+        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform);
+        var newList = new List<GameObject>();
+        if (curAtks.Count > 0)
+            foreach (var swing in curAtks)
+                if (swing != null)
+                    newList.Add(swing);
+
+        newList.Add(atk);
+        curAtks = newList;
+
     }
 }

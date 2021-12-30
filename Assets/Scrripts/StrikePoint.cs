@@ -17,7 +17,6 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] bool timering = false;
     [SerializeField] float speedMod;
 
-    bool buttonDown = false;
     bool faceingRight = true;
 
     [SerializeField]Vector3 pos, localScale;
@@ -43,7 +42,7 @@ public class StrikePoint : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        if (buttonDown)
+        if (Input.GetKey(KeyCode.Space))
         {
             Doormamamoo += Time.deltaTime;
             if (faceingRight)
@@ -53,13 +52,11 @@ public class StrikePoint : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            buttonDown = true;
             Doormamamoo = 0;
         }
         //reset to start pos here
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            buttonDown = false;
             pos = startpoint.transform.position;
             rb.transform.position = startpoint.transform.position;
         }
