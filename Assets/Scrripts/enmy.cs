@@ -44,8 +44,6 @@ public class enmy : MonoBehaviour
         enmyhpsystem = mainCam.GetComponent<EnmyHPsSystem>();
         enmsSys = mainCam.GetComponent<EnemysSystem>();
         myPos = enmsSys.GetPos();
-        
-
         anim = GetComponent<Animator>();
         HP = maxHP;
         anim = GetComponent<Animator>();
