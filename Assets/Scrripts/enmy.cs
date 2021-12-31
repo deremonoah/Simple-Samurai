@@ -8,9 +8,8 @@ public class enmy : MonoBehaviour
     //stats
     [SerializeField] float HP, maxHP, armor,damgThreash,damgMin, damgMax;
     
-
     //mostly timers n stuff
-    [SerializeField] float randWaitmin, randWaitmax, readyingTimer, readyingTimerMax, strikeTimer;
+    [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
 
     public Camera mainCam;
     private HealthBar playerHP;
@@ -20,9 +19,7 @@ public class enmy : MonoBehaviour
     private Animator anim;
     
     public Image myHPBar;
-    [SerializeField] EnmyHPsSystem enmyhpsystem;
     [SerializeField] EnemysSystem enmsSys;
-    [SerializeField] int myPos;
 
     //attack projectile stuff
     [SerializeField] GameObject atkPrefab;
@@ -41,9 +38,7 @@ public class enmy : MonoBehaviour
     {
         mainCam = Camera.main;
         playerHP = mainCam.GetComponent<HealthBar>();
-        enmyhpsystem = mainCam.GetComponent<EnmyHPsSystem>();
         enmsSys = mainCam.GetComponent<EnemysSystem>();
-        myPos = enmsSys.GetPos();
         anim = GetComponent<Animator>();
         HP = maxHP;
         anim = GetComponent<Animator>();
@@ -93,10 +88,7 @@ public class enmy : MonoBehaviour
         curState = attackState.damaged;
         
     }
-    public void SetPos(int temppos)
-    {
-        myPos = temppos;
-    }
+
     public void Blocked()
     {
         

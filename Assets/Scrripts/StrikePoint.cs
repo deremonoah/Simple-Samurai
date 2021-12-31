@@ -13,7 +13,6 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] float frequency = 20f;
     [SerializeField] float magnitude = 0.5f;
     
-    [SerializeField] float timer = 0;
     [SerializeField] bool timering = false;
     [SerializeField] float speedMod;
 
@@ -37,10 +36,7 @@ public class StrikePoint : MonoBehaviour
         
         checkWhereToFace();
 
-        if (timering)
-        {
-            timer += Time.deltaTime;
-        }
+        
 
         if (Input.GetKey(KeyCode.Space))
         {
