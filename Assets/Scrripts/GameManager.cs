@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviour
     }
     public void OpenPickPan()
     {
-        pickPan.SetActive(true);
+        pickPan.GetComponent<Animator>().SetBool("Open", true);
         Time.timeScale = 0f;
     }
     public void ClosePickPan()
     {
-        pickPan.SetActive(false);
+        pickPan.GetComponent<Animator>().SetBool("Open", false);
         Time.timeScale = 1f;
         enmsSys.StartNextWave();
     }

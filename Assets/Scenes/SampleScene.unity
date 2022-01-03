@@ -342,13 +342,14 @@ GameObject:
   - component: {fileID: 337474712}
   - component: {fileID: 337474714}
   - component: {fileID: 337474713}
+  - component: {fileID: 337474715}
   m_Layer: 5
   m_Name: item pick panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &337474712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5235849, g: 0.8324928, b: 1, a: 0.23529412}
+  m_Color: {r: 0.5235849, g: 0.8324928, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -412,6 +413,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337474711}
   m_CullTransparentMesh: 1
+--- !u!95 &337474715
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337474711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a65188642820b84fad5be2e85f99042, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &339164129
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +849,6 @@ MonoBehaviour:
   moveSpeed: 1
   frequency: 4
   magnitude: 2
-  timer: 0
   timering: 0
   speedMod: 0
   pos: {x: 0, y: 0, z: 0}
@@ -1307,7 +1326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629ef25495c664946addfcf0c8792258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enmys: {fileID: 0}
   mc: {fileID: 519420031}
   indere: 0
   maxDamg: 70
