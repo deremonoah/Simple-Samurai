@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class StrikeArea : MonoBehaviour
 {
-
-    
     private EnemysSystem enmys;
     public Camera mc;
     [SerializeField] bool indere;
@@ -22,10 +20,12 @@ public class StrikeArea : MonoBehaviour
     public GameObject[] hpspots;
     public Image pointer;
 
+    public GameObject strikePointObj;
+
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
     public Weapon equipedWeapon;
-
+    public Weapon kanaboTest;
     void Start()
     {
         enmys = mc.GetComponent<EnemysSystem>();
@@ -69,7 +69,7 @@ public class StrikeArea : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SetWeapon(equipedWeapon);
+            SetWeapon(kanaboTest);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -96,6 +96,7 @@ public class StrikeArea : MonoBehaviour
         baseDamg = wee.baseDamg;
         maxDamg = wee.maxDamg;
         myStrikeAreaSprite.sprite = wee.myStrikeArea;
+        strikePointObj.GetComponent<SpriteRenderer>().sprite = wee.strikePointer;
         //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 
         
     }
