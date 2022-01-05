@@ -6,23 +6,5 @@ using UnityEngine;
 public class EnmWave : ScriptableObject
 {
     public GameObject[] enmsInWave;
-/*
-    public GameObject getEnm(int lcv)
-    {
-        return enmsInWave[lcv];
-    }
-    
-    public int getLength()
-    {
-        return enmsInWave.Length;
-    }
 
-    public bool hasThere(int lcv)
-    {
-        if (enmsInWave[lcv] == null)
-        {
-            return false;
-        }
-        else return true;
-    }*/
 }

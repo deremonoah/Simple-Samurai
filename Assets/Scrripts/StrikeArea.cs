@@ -61,27 +61,8 @@ public class StrikeArea : MonoBehaviour
             timering = false;
         }
         
-        //targeting ifs for keys
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            target = 0;
-            pointer.transform.position = hpspots[0].transform.position;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            target = 1;
-            pointer.transform.position = hpspots[1].transform.position;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            target = 2;
-            pointer.transform.position = hpspots[2].transform.position;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            target = 3;
-            pointer.transform.position = hpspots[3].transform.position;
-        }
+        
+        
     }
 
     private void OnTriggerStay2D(Collider2D other)
