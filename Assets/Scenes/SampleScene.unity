@@ -849,7 +849,6 @@ MonoBehaviour:
   moveSpeed: 1
   frequency: 4
   magnitude: 2
-  timering: 0
   speedMod: 0
   pos: {x: 0, y: 0, z: 0}
   localScale: {x: 0, y: 0, z: 0}
@@ -961,8 +960,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420035}
-  - component: {fileID: 519420036}
   - component: {fileID: 519420037}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
@@ -1090,35 +1087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb616527b4e30444f88489d7aba59f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plr: {fileID: 0}
   lossPan: {fileID: 2118183553}
   pickPan: {fileID: 337474711}
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba55611dd2158104b9462b7e4e3a427a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &519420036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9a59aa88fbc7dd41a78431b02bebd91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itempickpanel: {fileID: 337474711}
-  panUp: 0
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,6 +1311,7 @@ MonoBehaviour:
   - {fileID: 1237401578}
   - {fileID: 447577403}
   pointer: {fileID: 900664853}
+  equipedWeapon: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
 --- !u!1 &871056548
 GameObject:
   m_ObjectHideFlags: 0

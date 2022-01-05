@@ -22,9 +22,15 @@ public class StrikeArea : MonoBehaviour
     public GameObject[] hpspots;
     public Image pointer;
 
+    //myStrikeAreaSprite.sprite = the sprite you want from weapon
+    private SpriteRenderer myStrikeAreaSprite;
+    public Weapon equipedWeapon;
+
     void Start()
     {
         enmys = mc.GetComponent<EnemysSystem>();
+        myStrikeAreaSprite = GetComponent<SpriteRenderer>();
+        
     }
 
     
@@ -54,15 +60,22 @@ public class StrikeArea : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && indere)
         {
             float Damger = Mathf.Clamp(baseDamg + (timer * damgMult),0,maxDamg);
-            Debug.Log(Damger);
+            
             enmys.DamageEnemy(Damger,target);
             
             timer = 0;
             timering = false;
         }
         
-        
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetWeapon(equipedWeapon);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GetComponent<PolygonCollider2D>().isTrigger = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -78,5 +91,12 @@ public class StrikeArea : MonoBehaviour
         indere = false;
     }
 
-    
+    public void SetWeapon(Weapon wee)
+    {
+        baseDamg = wee.baseDamg;
+        maxDamg = wee.maxDamg;
+        myStrikeAreaSprite.sprite = wee.myStrikeArea;
+        //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 
+        
+    }
 }

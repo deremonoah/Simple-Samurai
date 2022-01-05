@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Player plr;
+    
     public GameObject lossPan;
     public GameObject pickPan;
     private EnemysSystem enmsSys;
 
     void Start()
     {
-        plr = GetComponent<Player>();
+        
         enmsSys = GetComponent<EnemysSystem>();
     }
 
@@ -30,8 +30,12 @@ public class GameManager : MonoBehaviour
     }
     public void ClosePickPan()
     {
-        pickPan.GetComponent<Animator>().SetBool("Open", false);
-        enmsSys.StartNextWave();
+        if(pickPan.GetComponent<Animator>().GetBool("Open"))
+        {
+            pickPan.GetComponent<Animator>().SetBool("Open", false);
+            enmsSys.StartNextWave();
+            Debug.Log("stated wave");
+        }
     }
 
 

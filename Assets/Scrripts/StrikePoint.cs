@@ -13,7 +13,6 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] float frequency = 20f;
     [SerializeField] float magnitude = 0.5f;
     
-    [SerializeField] bool timering = false;
     [SerializeField] float speedMod;
 
     bool faceingRight = true;
