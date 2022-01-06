@@ -28,6 +28,10 @@ public class enmy : MonoBehaviour
     attackState curState;
 
     private List<GameObject> curAtks = new List<GameObject>();
+
+    public Material matWhite;
+    private Material matDefault;
+
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -42,6 +46,9 @@ public class enmy : MonoBehaviour
         anim = GetComponent<Animator>();
         HP = maxHP;
         anim = GetComponent<Animator>();
+        //matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        
+        matDefault = GetComponent<SpriteRenderer>().material;
 
         StartCoroutine(attack());
     }
@@ -84,8 +91,9 @@ public class enmy : MonoBehaviour
 
     public void damgEnemy(float deal)
     {
-        HP -= deal - armor;
+        HP -= (deal - armor);
         curState = attackState.damaged;
+        StartCoroutine(Flash());
         
     }
 
@@ -138,6 +146,13 @@ public class enmy : MonoBehaviour
 
         newList.Add(atk);
         curAtks = newList;
-
     }
+
+    IEnumerator Flash()
+    {
+        GetComponent<SpriteRenderer>().material = matWhite;
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().material = matDefault;
+    }
+
 }

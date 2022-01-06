@@ -376,13 +376,11 @@ MonoBehaviour:
   randWaitmin: 1.5
   randWaitmax: 3
   readyingTimer: 2.5
-  readyingTimerMax: 2.5
   strikeTimer: 0.4
   mainCam: {fileID: 0}
   myHPBar: {fileID: 2460627139670560194}
-  enmyhpsystem: {fileID: 0}
   enmsSys: {fileID: 0}
-  myPos: 0
   atkPrefab: {fileID: 0}
   atkStart: {fileID: 0}
   atkEnd: {fileID: 0}
+  matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
