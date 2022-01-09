@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
     public GameObject lossPan;
     public GameObject pickPan;
     private EnemysSystem enmsSys;
+    public Text TextCoins;
+    private int playerCoins;
 
     void Start()
     {
-        
         enmsSys = GetComponent<EnemysSystem>();
+        playerCoins = 0;
     }
 
 
@@ -48,5 +50,11 @@ public class GameManager : MonoBehaviour
     {
         lossPan.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void PayOut(int coin)
+    {
+        playerCoins += coin;
+        TextCoins.text = playerCoins.ToString();
     }
 }

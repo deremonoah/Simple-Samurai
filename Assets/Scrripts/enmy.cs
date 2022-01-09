@@ -32,6 +32,8 @@ public class enmy : MonoBehaviour
     public Material matWhite;
     private Material matDefault;
 
+    [SerializeField] int minCoin, maxCoin;
+
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -62,6 +64,7 @@ public class enmy : MonoBehaviour
             foreach (var atk in curAtks)
                 Destroy(atk);
             enmsSys.Died(this.gameObject);
+            mainCam.GetComponent<GameManager>().PayOut(Random.Range(minCoin, maxCoin));
             Destroy(this.gameObject);
         }
         if (HP > maxHP)
