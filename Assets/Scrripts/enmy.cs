@@ -34,6 +34,8 @@ public class enmy : MonoBehaviour
 
     [SerializeField] int minCoin, maxCoin;
 
+    
+
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -52,7 +54,10 @@ public class enmy : MonoBehaviour
         
         matDefault = GetComponent<SpriteRenderer>().material;
 
-        StartCoroutine(attack());
+        
+         StartCoroutine(attack());
+        
+        
     }
 
     
@@ -92,8 +97,21 @@ public class enmy : MonoBehaviour
         HP += heal;
     }
 
-    public void damgEnemy(float deal)
+    public void damgEnemy(float deal, Effect effect)
     {
+        switch (effect)
+        {
+            case Effect.none:
+                break;
+            case Effect.flame:
+                StartCoroutine(OnFire());
+                break;
+            case Effect.greed:
+                break;
+            case Effect.antiarmor:
+                break;
+        }
+
         HP -= (deal - armor);
         curState = attackState.damaged;
         StartCoroutine(Flash());
@@ -103,7 +121,8 @@ public class enmy : MonoBehaviour
     public void Blocked()
     {
         
-        StopAllCoroutines();
+        StopCoroutine(attack());
+
         StartCoroutine(attack());
     }
 
@@ -158,4 +177,8 @@ public class enmy : MonoBehaviour
         GetComponent<SpriteRenderer>().material = matDefault;
     }
 
+    IEnumerator OnFire()
+    {
+        yield return null;
+    }
 }

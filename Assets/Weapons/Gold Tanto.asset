@@ -15,5 +15,6 @@ MonoBehaviour:
   myStrikeArea: {fileID: 0}
   strikePointer: {fileID: 0}
   strikeHPPointer: {fileID: 0}
-  baseDamg: 0
-  maxDamg: 0
+  baseDamg: 10
+  maxDamg: 50
+  eff: 2

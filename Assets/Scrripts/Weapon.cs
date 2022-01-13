@@ -7,4 +7,7 @@ public class Weapon : ScriptableObject
 {
     public Sprite myStrikeArea,strikePointer,strikeHPPointer;
     public float baseDamg, maxDamg;
+    
+    public Effect eff;
 }
+public enum Effect { none, flame, greed, antiarmor }

@@ -67,11 +67,11 @@ public class EnemysSystem : MonoBehaviour
         spawned = true;
         recPos = point;
     }
-    public void DamageEnemy(float damg, int target)
+    public void DamageEnemy(float damg, int target, Effect effect)
     {
 
 
-        enms[target].GetComponent<enmy>().damgEnemy(damg);
+        enms[target].GetComponent<enmy>().damgEnemy(damg, effect);
 
     }
     public int GetPos()

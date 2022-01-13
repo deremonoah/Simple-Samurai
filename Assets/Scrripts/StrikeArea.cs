@@ -61,7 +61,7 @@ public class StrikeArea : MonoBehaviour
         {
             float Damger = Mathf.Clamp(baseDamg + (timer * damgMult),0,maxDamg);
             
-            enmys.DamageEnemy(Damger,target);
+            enmys.DamageEnemy(Damger,target,equipedWeapon.eff);
             
             timer = 0;
             timering = false;
@@ -98,6 +98,11 @@ public class StrikeArea : MonoBehaviour
         myStrikeAreaSprite.sprite = wee.myStrikeArea;
         strikePointObj.GetComponent<SpriteRenderer>().sprite = wee.strikePointer;
         //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 
-        
+        var colld = GetComponent<PolygonCollider2D>();
+        DestroyImmediate(colld);
+        colld = gameObject.AddComponent<PolygonCollider2D>();
+        colld.isTrigger = true;
     }
+
+    
 }
