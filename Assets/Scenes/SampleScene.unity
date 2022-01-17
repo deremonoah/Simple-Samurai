@@ -846,13 +846,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startpoint: {fileID: 1439485291}
-  moveSpeed: 1
   frequency: 4
   magnitude: 2
-  speedMod: 0
-  pos: {x: 0, y: 0, z: 0}
-  localScale: {x: 0, y: 0, z: 0}
-  Doormamamoo: 0
+  Timer: 0
 --- !u!61 &428360343
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1116,7 +1112,7 @@ MonoBehaviour:
   atkStart: {fileID: 66932288}
   atkEnd: {fileID: 1895677734}
   waves:
-  - {fileID: 11400000, guid: e47e2a48ff7669a428e7de968cc26774, type: 2}
+  - {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
   - {fileID: 11400000, guid: 15f30f38d9d6c6d41a36787480ec93e1, type: 2}
   - {fileID: 11400000, guid: e47e2a48ff7669a428e7de968cc26774, type: 2}
   - {fileID: 11400000, guid: 8877d478fa54a584cbbc7da656c33696, type: 2}

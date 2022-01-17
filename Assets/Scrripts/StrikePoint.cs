@@ -9,17 +9,17 @@ public class StrikePoint : MonoBehaviour
     
     public GameObject startpoint;
 
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float frequency = 20f;
-    [SerializeField] float magnitude = 0.5f;
     
-    [SerializeField] float speedMod;
+    [SerializeField] float frequency;
+    [SerializeField] float magnitude;
+    
+    
 
     bool faceingRight = true;
 
-    [SerializeField]Vector3 pos, localScale;
-    [SerializeField] float Doormamamoo;
-    //that is the time variable you did this to yourself noah
+    private Vector3 pos, localScale;
+    [SerializeField] float Timer;
+    
 
 
     void Start()
@@ -39,7 +39,7 @@ public class StrikePoint : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            Doormamamoo += Time.deltaTime;
+            Timer += Time.deltaTime;
             if (faceingRight)
             {
                 moveRight();
@@ -47,7 +47,7 @@ public class StrikePoint : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Doormamamoo = 0;
+            Timer = 0;
         }
         //reset to start pos here
         if (Input.GetKeyUp(KeyCode.Space))
@@ -79,14 +79,14 @@ public class StrikePoint : MonoBehaviour
 
     void moveRight()
     {
-        pos += transform.right * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.up * Mathf.Sin(Doormamamoo * (frequency)) * magnitude;
+        pos += transform.right * Time.deltaTime ;
+        transform.position = pos + transform.up * Mathf.Sin(Timer * (frequency )) * magnitude;
     }
 
     void moveLeft()
     {
         //pos -= transform.right * Time.deltaTime * moveSpeed;
-        transform.position = pos + transform.up * Mathf.Sin(Doormamamoo * (frequency)) * magnitude;
+        
     }
 
 
