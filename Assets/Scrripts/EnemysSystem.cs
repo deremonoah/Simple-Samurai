@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemysSystem : MonoBehaviour
 {
     public GameObject[] enmSpawns;
-    public GameObject[] enmPrefabs;
-    public List<GameObject> enms;
+    
+    public List<enmy> enms;
 
     //public bool[] hasenmy;
 
@@ -28,6 +28,9 @@ public class EnemysSystem : MonoBehaviour
     private int wcv;
 
     private GameManager GM;
+
+    public GameObject EnmHPPointer;
+    
 
     void Start()
     {
@@ -61,7 +64,7 @@ public class EnemysSystem : MonoBehaviour
 
     public void SpawnEnemy(int point, GameObject enmPrefab)
     {
-        GameObject enm = Instantiate(enmPrefab, enmSpawns[point].transform.position, enmSpawns[point].transform.rotation);
+        enmy enm = Instantiate(enmPrefab, enmSpawns[point].transform.position, enmSpawns[point].transform.rotation).GetComponent<enmy>();
         enms.Add(enm);
         enm.GetComponent<enmy>().SetThings(atkPrefab, atkStart, atkEnd);
         spawned = true;
@@ -70,22 +73,28 @@ public class EnemysSystem : MonoBehaviour
     public void DamageEnemy(float damg, int target, Effect effect)
     {
 
-
-        enms[target].GetComponent<enmy>().damgEnemy(damg, effect);
-
+        if(enms.Count !=0)
+        {
+            enms[target].damgEnemy(damg, effect);
+        }
     }
     public int GetPos()
     {
         return recPos;
     }
 
-    public void Died(GameObject me)
+    public void Died(enmy me)
     {
         if (enms.Contains(me))
         {
             enms.Remove(me);
         }
 
+        if (enms.Count != 0)
+        {
+            enms[0].SetAsTarget();
+        }
+        
     }
 
     IEnumerator SpawnWave()
@@ -94,9 +103,14 @@ public class EnemysSystem : MonoBehaviour
         for (int lcv = 0; lcv < waves[wcv].enmsInWave.Length; lcv++)
         {
             SpawnEnemy(lcv, waves[wcv].enmsInWave[lcv]);
+
+            if (lcv == 0)
+                enms[0].SetAsTarget();
+
             yield return new WaitForSeconds(0.5f);
 
         }
+
         wcv++;
 
     }
@@ -106,4 +120,5 @@ public class EnemysSystem : MonoBehaviour
         StartCoroutine(SpawnWave());
     }
 
+    
 }

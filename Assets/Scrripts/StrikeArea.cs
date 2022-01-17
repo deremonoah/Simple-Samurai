@@ -18,7 +18,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField]bool timering=false;
 
     public GameObject[] hpspots;
-    public Image pointer;
+    
 
     public GameObject strikePointObj;
 

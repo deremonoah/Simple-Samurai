@@ -34,7 +34,10 @@ public class enmy : MonoBehaviour
 
     [SerializeField] int minCoin, maxCoin;
 
-    
+    public GameObject HPPointer;
+    public Canvas myCanvas;
+
+    private Coroutine attackRoutine;
 
     enum attackState 
     { 
@@ -55,12 +58,17 @@ public class enmy : MonoBehaviour
         matDefault = GetComponent<SpriteRenderer>().material;
 
         
-         StartCoroutine(attack());
-        
+         attackRoutine = StartCoroutine(attack());
+
         
     }
 
-    
+    void Awake()
+    {
+        HPPointer.SetActive(false);
+        Debug.Log("it off");
+    }
+
     void Update()
     {
         //Hp ifs
@@ -68,7 +76,7 @@ public class enmy : MonoBehaviour
         {
             foreach (var atk in curAtks)
                 Destroy(atk);
-            enmsSys.Died(this.gameObject);
+            enmsSys.Died(this);
             mainCam.GetComponent<GameManager>().PayOut(Random.Range(minCoin, maxCoin));
             Destroy(this.gameObject);
         }
@@ -120,10 +128,12 @@ public class enmy : MonoBehaviour
 
     public void Blocked()
     {
-        
-        StopCoroutine(attack());
+        if(attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+        }
 
-        StartCoroutine(attack());
+        attackRoutine = StartCoroutine(attack());
     }
 
     public void SetThings(GameObject prefb, GameObject str, GameObject end)
@@ -147,7 +157,7 @@ public class enmy : MonoBehaviour
         yield return new WaitForSeconds(strikeTimer);
         playerHP.DamagePlayer(Random.Range(damgMin, damgMax));
 
-        StartCoroutine(attack());
+        attackRoutine = StartCoroutine(attack());
     }
 
     private void OnValidate()
@@ -181,4 +191,12 @@ public class enmy : MonoBehaviour
     {
         yield return null;
     }
+
+    public void SetAsTarget()
+    {
+        HPPointer.SetActive(true);
+        Debug.Log("here");
+    }
+
+
 }
