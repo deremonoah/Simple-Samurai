@@ -18,7 +18,7 @@ public class EnemysSystem : MonoBehaviour
 
     [SerializeField] float timer, Max;
     [SerializeField] int recPos;
-    [SerializeField] EnmyHPsSystem enmshpsSys;
+    
 
     [SerializeField] GameObject atkPrefab;
     [SerializeField] GameObject atkStart;
