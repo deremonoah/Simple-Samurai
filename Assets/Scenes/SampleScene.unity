@@ -1107,6 +1107,7 @@ MonoBehaviour:
   timer: 0
   Max: 5
   recPos: 0
+  enmshpsSys: {fileID: 0}
   atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
   atkStart: {fileID: 66932288}
   atkEnd: {fileID: 1895677734}
@@ -1758,7 +1759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896337598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
