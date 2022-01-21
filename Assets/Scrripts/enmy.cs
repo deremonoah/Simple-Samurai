@@ -26,6 +26,7 @@ public class enmy : MonoBehaviour
     [SerializeField] GameObject atkStart;
     [SerializeField] GameObject atkEnd;
     attackState curState;
+    [SerializeField] Ability myAbility;
 
     private List<GameObject> curAtks = new List<GameObject>();
 
@@ -43,6 +44,11 @@ public class enmy : MonoBehaviour
     { 
         waiting,readying,swinging,damaging,damaged
 
+    }
+
+    public enum Ability
+    {
+        none,steal
     }
 
     void Start()
@@ -156,6 +162,8 @@ public class enmy : MonoBehaviour
         curState = attackState.swinging;
         yield return new WaitForSeconds(strikeTimer);
         playerHP.DamagePlayer(Random.Range(damgMin, damgMax));
+        if (myAbility == Ability.steal)
+            Debug.Log("yoinked");
 
         attackRoutine = StartCoroutine(attack());
     }

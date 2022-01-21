@@ -39,8 +39,9 @@ public class HealthBar : MonoBehaviour
         healthBar.fillAmount = health / maxHealth;
     }
 
-    public void DamagePlayer(float damagePoints)
+    public void DamagePlayer(float damagePoints )
     {
+        //add enum stuff for effects damage could have
         if (health > 0)
         {
             health -= (damagePoints-armor);

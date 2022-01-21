@@ -957,7 +957,6 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420037}
-  - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
@@ -1046,31 +1045,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 960f2ef3647ea9e4c91c7d94dfde0de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enmysHPSpots:
-  - {fileID: 1225392033}
-  - {fileID: 1231209906}
-  - {fileID: 361335134}
-  - {fileID: 386513019}
-  enmyHPs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  HPbarPrefab: {fileID: 1068008909883917446, guid: 631b09b1b2925314e8a71c7a523c6373, type: 3}
-  HPBackPrefab: {fileID: 683044066166119021, guid: 281aff14b93e4e648a0d0114d9625979, type: 3}
-  cnvs: {fileID: 1410867509}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1081,6 @@ MonoBehaviour:
   timer: 0
   Max: 5
   recPos: 0
-  enmshpsSys: {fileID: 0}
   atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
   atkStart: {fileID: 66932288}
   atkEnd: {fileID: 1895677734}
