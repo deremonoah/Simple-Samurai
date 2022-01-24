@@ -25,7 +25,7 @@ public class StrikeArea : MonoBehaviour
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
     public Weapon equipedWeapon;
-    public Weapon kanaboTest;
+    public Weapon Test;
     void Start()
     {
         enmys = mc.GetComponent<EnemysSystem>();
@@ -69,7 +69,7 @@ public class StrikeArea : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SetWeapon(kanaboTest);
+            SetWeapon(Test);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
