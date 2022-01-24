@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
-  m_Name: Gold Tanto
+  m_Name: Tanto of Greed
   m_EditorClassIdentifier: 
   myStrikeArea: {fileID: 0}
   strikePointer: {fileID: 0}
-  strikeHPPointer: {fileID: 0}
+  itemPanelIcon: {fileID: 21300000, guid: ed8b186cac3d3b746bbbde30ab5ef562, type: 3}
   baseDamg: 10
   maxDamg: 50
   eff: 2

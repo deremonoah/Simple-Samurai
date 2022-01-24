@@ -11,7 +11,7 @@ public class enmy : MonoBehaviour
     //mostly timers n stuff
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
 
-    public Camera mainCam;
+    private Camera mainCam;
     private HealthBar playerHP;
     
     
@@ -43,12 +43,11 @@ public class enmy : MonoBehaviour
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
-
     }
 
     public enum Ability
     {
-        none,steal
+        none,steal, antiarmor
     }
 
     void Start()

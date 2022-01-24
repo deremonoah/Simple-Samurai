@@ -56,6 +56,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5454511550207670757}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: myAbility
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: damgThreash
       value: 0
       objectReference: {fileID: 0}
