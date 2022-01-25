@@ -17,7 +17,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] float timer = 0;
     [SerializeField]bool timering=false;
 
-    public GameObject[] hpspots;
+    
     
 
     public GameObject strikePointObj;
