@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 339164132}
   - component: {fileID: 339164131}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -514,7 +514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 339164132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420034}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Button2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &339164132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,6 +1076,7 @@ MonoBehaviour:
   - {fileID: 872711923}
   - {fileID: 1513229711}
   - {fileID: 1499270764}
+  weaponList: []
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1484,7 @@ GameObject:
   - component: {fileID: 872711924}
   - component: {fileID: 872711923}
   m_Layer: 5
-  m_Name: Image
+  m_Name: itemImage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1547,7 +1560,7 @@ GameObject:
   - component: {fileID: 892381029}
   - component: {fileID: 892381028}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1616,7 +1629,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 892381029}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420034}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Button3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &892381029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2625,7 +2650,7 @@ GameObject:
   - component: {fileID: 1499270765}
   - component: {fileID: 1499270764}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: itemImage3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2700,7 +2725,7 @@ GameObject:
   - component: {fileID: 1513229712}
   - component: {fileID: 1513229711}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: itemImage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2776,7 +2801,7 @@ GameObject:
   - component: {fileID: 1524731708}
   - component: {fileID: 1524731707}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2848,7 +2873,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ClosePickPan
+        m_MethodName: Button1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
