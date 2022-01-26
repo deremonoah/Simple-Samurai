@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
-public class Weapon : ScriptableObject
+public class Weapon : Item
 {
-    public Sprite myStrikeArea,strikePointer, itemPanelIcon;
+    public Sprite myStrikeArea,strikePointer;
     public float baseDamg, maxDamg;
     
     public Effect eff;

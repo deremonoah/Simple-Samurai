@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     public GameObject lossPan;
     public GameObject pickPan;
     private EnemysSystem enmsSys;
@@ -13,13 +13,14 @@ public class GameManager : MonoBehaviour
     private int playerCoins;
 
     [SerializeField] Image[] buttonImages;
-    public List<ScriptableObject> lootList;
-    private List<ScriptableObject> randWeapons;
-    
+    public List<Item> lootList;
+    private List<Item> randLootPicks = new List<Item>();
+
     void Start()
     {
         enmsSys = GetComponent<EnemysSystem>();
         playerCoins = 0;
+
     }
 
 
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
     }
     public void ClosePickPan()
     {
-        if(pickPan.GetComponent<Animator>().GetBool("Open"))
+        if (pickPan.GetComponent<Animator>().GetBool("Open"))
         {
             pickPan.GetComponent<Animator>().SetBool("Open", false);
             enmsSys.StartNextWave();
@@ -63,21 +64,24 @@ public class GameManager : MonoBehaviour
         TextCoins.text = playerCoins.ToString();
     }
 
-    public void Button1()
+    public void Button(int buttonID)
     {
-        
-        ClosePickPan();
-    }
-    public void Button2()
-    {
+        if (pickPan.GetComponent<Animator>().GetBool("Open") == true)
+        {
+            if (randLootPicks[buttonID].GetType() == typeof(Weapon))
+            {
+                FindObjectOfType<StrikeArea>().SetWeapon(randLootPicks[buttonID] as Weapon);
+            }
+            if (randLootPicks[buttonID].GetType() == typeof(Armor))
+            {
+                FindObjectOfType<HealthBar>().SetArmor(randLootPicks[buttonID] as Armor);
+            }
+            randLootPicks.RemoveAt(buttonID);
+            ClosePickPan();
+        }
 
-        ClosePickPan();
     }
-    public void Button3()
-    {
 
-        ClosePickPan();
-    }
 
     private void RandomItemPull()
     {
@@ -85,22 +89,22 @@ public class GameManager : MonoBehaviour
         //then we also should make sure the weapon doesn't match the one the player has and it could be an item so armor
         //or curio but the player can only have 1 of each weapon armor and curio that this should check if the random 
         //yeah pretty complicated we gonna start with just random numbers
-        var temp1 = Random.Range(0, lootList.Count);
-        randWeapons.Add(lootList[temp1]);
-        lootList.RemoveAt(temp1);
-        
+        var tempList = new List<Item>(lootList);
+        var temp1 = Random.Range(0, tempList.Count);
+        randLootPicks.Add(tempList[temp1]);
+        tempList.RemoveAt(temp1);
 
-        var temp2 = Random.Range(0, lootList.Count);
-        randWeapons.Add(lootList[temp2]);
-        lootList.RemoveAt(temp2);
+        var temp2 = Random.Range(0, tempList.Count);
+        randLootPicks.Add(tempList[temp2]);
+        tempList.RemoveAt(temp2);
 
-        var temp3 = Random.Range(0, lootList.Count);
-        randWeapons.Add(lootList[temp3]);
-        lootList.RemoveAt(temp3);
+        var temp3 = Random.Range(0, tempList.Count);
+        randLootPicks.Add(tempList[temp3]);
+        tempList.RemoveAt(temp3);
 
         for (int lcv = 0; lcv < 3; lcv++)
         {
-            //buttonImages[lcv].sprite = randWeapons[lcv].GetComponent<Weapon>().ItemPanelIcon;
+            buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
         }
 
         Debug.Log(lootList.Count);

@@ -517,12 +517,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Button2
-        m_Mode: 1
+        m_MethodName: Button
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1000,6 +1000,7 @@ MonoBehaviour:
   healthBar: {fileID: 939239422}
   health: 0
   maxHealth: 100
+  armor: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1076,7 +1077,11 @@ MonoBehaviour:
   - {fileID: 872711923}
   - {fileID: 1513229711}
   - {fileID: 1499270764}
-  weaponList: []
+  lootList:
+  - {fileID: 11400000, guid: 8182fcc23c639af458b506c751b69bcb, type: 2}
+  - {fileID: 11400000, guid: 05c1cf5f54c6e8d4488fe2009407334a, type: 2}
+  - {fileID: 11400000, guid: d947b29b7e2a8ff479024a3aa8bc31dd, type: 2}
+  - {fileID: 11400000, guid: ecb8155a09592374e97d5da5a3186bfd, type: 2}
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,12 +1637,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Button3
-        m_Mode: 1
+        m_MethodName: Button
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2873,8 +2878,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Button1
-        m_Mode: 1
+        m_MethodName: Button
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

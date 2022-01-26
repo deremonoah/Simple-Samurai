@@ -10,7 +10,7 @@ public class HealthBar : MonoBehaviour
 
     public float health, maxHealth = 100;
     float lerpSpeed;
-    float armor;
+    [SerializeField] float armor;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,7 @@ public class HealthBar : MonoBehaviour
         //add enum stuff for effects damage could have
         if (health > 0)
         {
-            health -= (damagePoints-armor);
+            health -= (Mathf.Max(1,damagePoints-armor));
         }
     }
 
@@ -56,4 +56,10 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    public void SetArmor(Armor am)
+    {
+        Debug.Log($"armor is: {armor:0}");
+        armor = am.armor;
+        Debug.Log($"armor is: {armor}");
+    }
 }
