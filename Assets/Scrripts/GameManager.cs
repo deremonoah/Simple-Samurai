@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     private int playerCoins;
 
     [SerializeField] Image[] buttonImages;
-    [SerializeField] List<Weapon> weaponList;
-    private List<Weapon> randWeapons;
+    public List<ScriptableObject> lootList;
+    private List<ScriptableObject> randWeapons;
     
     void Start()
     {
@@ -85,6 +85,24 @@ public class GameManager : MonoBehaviour
         //then we also should make sure the weapon doesn't match the one the player has and it could be an item so armor
         //or curio but the player can only have 1 of each weapon armor and curio that this should check if the random 
         //yeah pretty complicated we gonna start with just random numbers
+        var temp1 = Random.Range(0, lootList.Count);
+        randWeapons.Add(lootList[temp1]);
+        lootList.RemoveAt(temp1);
         
+
+        var temp2 = Random.Range(0, lootList.Count);
+        randWeapons.Add(lootList[temp2]);
+        lootList.RemoveAt(temp2);
+
+        var temp3 = Random.Range(0, lootList.Count);
+        randWeapons.Add(lootList[temp3]);
+        lootList.RemoveAt(temp3);
+
+        for (int lcv = 0; lcv < 3; lcv++)
+        {
+            //buttonImages[lcv].sprite = randWeapons[lcv].GetComponent<Weapon>().ItemPanelIcon;
+        }
+
+        Debug.Log(lootList.Count);
     }
 }
