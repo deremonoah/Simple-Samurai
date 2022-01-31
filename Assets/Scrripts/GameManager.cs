@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
+    [SerializeField] StrikeArea mainStrkArea;
 
     void Start()
     {
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             if (randLootPicks[buttonID].GetType() == typeof(Weapon))
             {
-                FindObjectOfType<StrikeArea>().SetWeapon(randLootPicks[buttonID] as Weapon);
+                mainStrkArea.SetWeapon(randLootPicks[buttonID] as Weapon);
             }
             if (randLootPicks[buttonID].GetType() == typeof(Armor))
             {

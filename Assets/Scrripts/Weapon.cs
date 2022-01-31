@@ -10,4 +10,4 @@ public class Weapon : Item
     
     public Effect eff;
 }
-public enum Effect { none, flame, greed, antiarmor }
+public enum Effect { none, flame, greed, antiarmor, odachi }

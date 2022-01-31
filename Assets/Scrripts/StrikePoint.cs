@@ -89,6 +89,13 @@ public class StrikePoint : MonoBehaviour
         
     }
 
-
+    public void ChangeStrikeSprite(Sprite spt)
+    {
+        GetComponent<SpriteRenderer>().sprite = spt;
+        var colld = GetComponent<PolygonCollider2D>();
+        DestroyImmediate(colld);
+        colld = gameObject.AddComponent<PolygonCollider2D>();
+        colld.isTrigger = true;
+    }
    
 }

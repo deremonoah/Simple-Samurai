@@ -72,8 +72,8 @@ public class EnemysSystem : MonoBehaviour
     }
     public void DamageEnemy(float damg, int target, Effect effect)
     {
-
-        if(enms.Count !=0)
+        Debug.Log(enms.Count);
+        if(enms.Count > target)
         {
             enms[target].damgEnemy(damg, effect);
         }

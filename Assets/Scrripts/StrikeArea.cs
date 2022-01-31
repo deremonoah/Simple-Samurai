@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StrikeArea : MonoBehaviour
 {
-    private EnemysSystem enmys;
+    private EnemysSystem enmySys;
     public Camera mc;
     [SerializeField] bool indere;
     [SerializeField] float maxDamg = 70;
@@ -16,6 +16,7 @@ public class StrikeArea : MonoBehaviour
 
     [SerializeField] float timer = 0;
     [SerializeField]bool timering=false;
+    [SerializeField] GameObject bottomOdachi;
 
     
     
@@ -28,9 +29,9 @@ public class StrikeArea : MonoBehaviour
     public Weapon Test;
     void Start()
     {
-        enmys = mc.GetComponent<EnemysSystem>();
+        enmySys = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
-        
+        bottomOdachi.SetActive(false);
     }
 
     
@@ -61,7 +62,7 @@ public class StrikeArea : MonoBehaviour
         {
             float Damger = Mathf.Clamp(baseDamg + (timer * damgMult),0,maxDamg);
             
-            enmys.DamageEnemy(Damger,target,equipedWeapon.eff);
+            enmySys.DamageEnemy(Damger,target,equipedWeapon.eff);
             
             timer = 0;
             timering = false;
@@ -96,12 +97,21 @@ public class StrikeArea : MonoBehaviour
         baseDamg = wee.baseDamg;
         maxDamg = wee.maxDamg;
         myStrikeAreaSprite.sprite = wee.myStrikeArea;
-        strikePointObj.GetComponent<SpriteRenderer>().sprite = wee.strikePointer;
+        strikePointObj.GetComponent<StrikePoint>().ChangeStrikeSprite(wee.strikePointer);
         //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 
         var colld = GetComponent<PolygonCollider2D>();
         DestroyImmediate(colld);
         colld = gameObject.AddComponent<PolygonCollider2D>();
         colld.isTrigger = true;
+
+        if (wee.eff == Effect.odachi)
+        {
+            bottomOdachi.SetActive(true);
+        }
+        else
+        {
+            bottomOdachi.SetActive(false);
+        }
     }
 
     
