@@ -110,19 +110,22 @@ public class enmy : MonoBehaviour
         HP += heal;
     }
 
-    public void damgEnemy(float deal, Effect effect)
+    public void damgEnemy(float deal, List<Effect> effects)
     {
-        switch (effect)
+        for (int lcv =0;lcv<effects.Count;lcv++)
         {
-            case Effect.none:
-                break;
-            case Effect.flame:
-                StartCoroutine(OnFire());
-                break;
-            case Effect.greed:
-                break;
-            case Effect.antiarmor:
-                break;
+            switch (effects[lcv])
+            {
+                case Effect.none:
+                    break;
+                case Effect.flame:
+                    StartCoroutine(OnFire());
+                    break;
+                case Effect.greed:
+                    break;
+                case Effect.antiarmor:
+                    break;
+            }
         }
 
         HP -= (deal - armor);

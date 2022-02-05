@@ -17,9 +17,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] float timer = 0;
     [SerializeField]bool timering=false;
     [SerializeField] GameObject bottomOdachi;
-
-    
-    
+    [SerializeField] List<GameObject> BowAreas;
 
     public GameObject strikePointObj;
 
@@ -62,7 +60,7 @@ public class StrikeArea : MonoBehaviour
         {
             float Damger = Mathf.Clamp(baseDamg + (timer * damgMult),0,maxDamg);
             
-            enmySys.DamageEnemy(Damger,target,equipedWeapon.eff);
+            enmySys.DamageEnemy(Damger,target,equipedWeapon.effs);
             
             timer = 0;
             timering = false;
@@ -92,6 +90,14 @@ public class StrikeArea : MonoBehaviour
         indere = false;
     }
 
+    private void TurnBow(bool iss)
+    {
+        for (int lcv = 0; lcv < BowAreas.Count; lcv++)
+        {
+            BowAreas[lcv].SetActive(iss);
+        }
+    }
+
     public void SetWeapon(Weapon wee)
     {
         baseDamg = wee.baseDamg;
@@ -104,13 +110,24 @@ public class StrikeArea : MonoBehaviour
         colld = gameObject.AddComponent<PolygonCollider2D>();
         colld.isTrigger = true;
 
-        if (wee.eff == Effect.odachi)
+        for (int lcv = 0; lcv<wee.effs.Count; lcv++)
         {
-            bottomOdachi.SetActive(true);
-        }
-        else
-        {
-            bottomOdachi.SetActive(false);
+            if (wee.effs[lcv] == Effect.odachi)
+            {
+                bottomOdachi.SetActive(true);
+            }
+            else
+            {
+                bottomOdachi.SetActive(false);
+            }
+            if (wee.effs[lcv] == Effect.bow)
+            {
+                TurnBow(true);
+            }
+            else
+            {
+                TurnBow(false);
+            }
         }
     }
 
