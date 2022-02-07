@@ -144,9 +144,8 @@ public class enmy : MonoBehaviour
         attackRoutine = StartCoroutine(attack());
     }
 
-    public void SetThings(GameObject prefb, GameObject str, GameObject end)
+    public void SetThings( GameObject str, GameObject end)
     {
-        atkPrefab = prefb;
         atkStart = str;
         atkEnd = end;
     }

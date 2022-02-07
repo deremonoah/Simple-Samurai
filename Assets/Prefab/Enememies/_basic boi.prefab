@@ -409,12 +409,12 @@ MonoBehaviour:
   randWaitmax: 3
   readyingTimer: 2.5
   strikeTimer: 0.4
-  mainCam: {fileID: 0}
   myHPBar: {fileID: 2460627139670560194}
   enmsSys: {fileID: 0}
-  atkPrefab: {fileID: 0}
+  atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
   atkStart: {fileID: 0}
   atkEnd: {fileID: 0}
+  myAbility: 0
   matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 2
   maxCoin: 5

@@ -66,7 +66,7 @@ public class EnemysSystem : MonoBehaviour
     {
         enmy enm = Instantiate(enmPrefab, enmSpawns[point].transform.position, enmSpawns[point].transform.rotation).GetComponent<enmy>();
         enms.Add(enm);
-        enm.GetComponent<enmy>().SetThings(atkPrefab, atkStart, atkEnd);
+        enm.GetComponent<enmy>().SetThings(atkStart, atkEnd);
         spawned = true;
         recPos = point;
     }
