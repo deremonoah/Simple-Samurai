@@ -110,11 +110,13 @@ public class StrikeArea : MonoBehaviour
         colld = gameObject.AddComponent<PolygonCollider2D>();
         colld.isTrigger = true;
 
+        Debug.Log("in equip");
         for (int lcv = 0; lcv<wee.effs.Count; lcv++)
         {
             if (wee.effs[lcv] == Effect.odachi)
             {
                 bottomOdachi.SetActive(true);
+                Debug.Log("hit if");
             }
             else
             {

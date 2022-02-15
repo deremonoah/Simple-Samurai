@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<HealthBar>().SetArmor(randLootPicks[buttonID] as Armor);
             }
             randLootPicks.RemoveAt(buttonID);
+            Debug.Log("button proc");
             ClosePickPan();
         }
 

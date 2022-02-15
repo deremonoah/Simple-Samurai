@@ -17,4 +17,4 @@ MonoBehaviour:
   strikePointer: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
   baseDamg: 5
   maxDamg: 60
-  eff: 4
+  effs: 04000000

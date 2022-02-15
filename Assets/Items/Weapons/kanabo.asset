@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
   m_Name: kanabo
   m_EditorClassIdentifier: 
+  itemPanelIcon: {fileID: 21300000, guid: 31cdbf4a99193d54587d3a1c43433840, type: 3}
   myStrikeArea: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
   strikePointer: {fileID: 21300000, guid: 4e2aff0e874491b42a96d30faeafc6f6, type: 3}
-  itemPanelIcon: {fileID: 21300000, guid: 31cdbf4a99193d54587d3a1c43433840, type: 3}
   baseDamg: 10
   maxDamg: 50
-  eff: 3
+  effs: 03000000
