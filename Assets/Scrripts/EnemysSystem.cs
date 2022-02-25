@@ -9,10 +9,7 @@ public class EnemysSystem : MonoBehaviour
     
     public List<enmy> enms;
 
-    //public bool[] hasenmy;
-
-    //public bool[] diedList;
-    //private int spawnedEnms = 0;
+    
     private bool spawned = false;
 
 
@@ -42,15 +39,6 @@ public class EnemysSystem : MonoBehaviour
 
     void Update()
     {
-
-        /*if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }else
-        {
-            SpawnEnemy(Random.Range(0, 4),Random.Range(0,enmPrefabs.Length));
-            timer = Max;
-        }*/
 
         if (spawned && enms.Count < 1)
         {

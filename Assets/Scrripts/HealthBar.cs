@@ -12,7 +12,6 @@ public class HealthBar : MonoBehaviour
     float lerpSpeed;
     [SerializeField] float armor;
 
-    // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
@@ -30,6 +29,10 @@ public class HealthBar : MonoBehaviour
         
         HealthBarFiller();
 
+        if (health <= 0f)
+        {
+            Camera.main.GetComponent<GameManager>().OpenLossPan();
+        }
     }
 
 
