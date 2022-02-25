@@ -71,7 +71,7 @@ public class enmy : MonoBehaviour
     void Awake()
     {
         HPPointer.SetActive(false);
-        Debug.Log("it off");
+        
     }
 
     void Update()
@@ -204,7 +204,6 @@ public class enmy : MonoBehaviour
     public void SetAsTarget()
     {
         HPPointer.SetActive(true);
-        Debug.Log("here");
     }
 
 

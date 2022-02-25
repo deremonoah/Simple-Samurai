@@ -29,7 +29,8 @@ public class StrikeArea : MonoBehaviour
     {
         enmySys = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
-        bottomOdachi.SetActive(false);
+        
+        Debug.Log("started");
     }
 
     
@@ -113,6 +114,9 @@ public class StrikeArea : MonoBehaviour
         Debug.Log("in equip");
         for (int lcv = 0; lcv<wee.effs.Count; lcv++)
         {
+            Debug.Log("lcv: "+lcv);
+            Debug.Log("count: " + wee.effs.Count);
+
             if (wee.effs[lcv] == Effect.odachi)
             {
                 bottomOdachi.SetActive(true);
@@ -121,7 +125,9 @@ public class StrikeArea : MonoBehaviour
             else
             {
                 bottomOdachi.SetActive(false);
+                Debug.Log("hit else");
             }
+
             if (wee.effs[lcv] == Effect.bow)
             {
                 TurnBow(true);

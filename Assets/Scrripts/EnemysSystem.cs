@@ -39,14 +39,11 @@ public class EnemysSystem : MonoBehaviour
 
     void Update()
     {
-
         if (spawned && enms.Count < 1)
         {
             GM.OpenPickPan();
             spawned = false;
         }
-
-
 
     }
 
@@ -60,7 +57,6 @@ public class EnemysSystem : MonoBehaviour
     }
     public void DamageEnemy(float damg, int target, List<Effect> effects)
     {
-        Debug.Log(enms.Count);
         if(enms.Count > target)
         {
             enms[target].damgEnemy(damg, effects);
