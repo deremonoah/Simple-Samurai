@@ -12,16 +12,13 @@ public class EnemysSystem : MonoBehaviour
     
     private bool spawned = false;
 
-
-    [SerializeField] float timer, Max;
     [SerializeField] int recPos;
     
 
-    [SerializeField] GameObject atkPrefab;
     [SerializeField] GameObject atkStart;
     [SerializeField] GameObject atkEnd;
 
-    public EnmWave[] waves;
+    public List<EnmWave> waves;
     private int wcv;
 
     private GameManager GM;
@@ -83,19 +80,28 @@ public class EnemysSystem : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        yield return new WaitForSeconds(2);
-        for (int lcv = 0; lcv < waves[wcv].enmsInWave.Length; lcv++)
+        yield return new WaitForSeconds(1);
+        if (wcv >= waves.Count)
         {
-            SpawnEnemy(lcv, waves[wcv].enmsInWave[lcv]);
-
-            if (lcv == 0)
-                enms[0].SetAsTarget();
-
-            yield return new WaitForSeconds(0.5f);
-
+            GM.PlayerWins();
+            yield return null;
         }
+        else
+        {
+            for (int lcv = 0; lcv < waves[wcv].enmsInWave.Length; lcv++)
+            {
+                SpawnEnemy(lcv, waves[wcv].enmsInWave[lcv]);
 
-        wcv++;
+                if (lcv == 0)
+                    enms[0].SetAsTarget();
+
+                yield return new WaitForSeconds(0.5f);
+
+            }
+
+            wcv++;
+        }
+        
 
     }
 

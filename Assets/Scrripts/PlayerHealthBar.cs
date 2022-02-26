@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class PlayerHealthBar : MonoBehaviour
 {
 
     public Image healthBar;
@@ -51,7 +51,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    public void Heal(float healingPoints)
+    public void HealPlayer(float healingPoints)
     {
         if (health < maxHealth)
         {

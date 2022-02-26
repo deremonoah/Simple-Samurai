@@ -36,30 +36,28 @@ public class StrikePoint : MonoBehaviour
         checkWhereToFace();
 
         
-
-        if (Input.GetKey(KeyCode.Space))
+        if (!FindObjectOfType<GameManager>().Paused)
         {
-            Timer += Time.deltaTime;
-            if (faceingRight)
+            if (Input.GetKey(KeyCode.Space))
             {
-                moveRight();
+                Timer += Time.deltaTime;
+                if (faceingRight)
+                {
+                    moveRight();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Timer = 0;
+            }
+            //reset to start pos here
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                pos = startpoint.transform.position;
+                rb.transform.position = startpoint.transform.position;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Timer = 0;
-        }
-        //reset to start pos here
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            pos = startpoint.transform.position;
-            rb.transform.position = startpoint.transform.position;
-        }
-
         
-
-
-
     }
 
     void checkWhereToFace()

@@ -22,42 +22,46 @@ public class PlayerAnimation : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!FindObjectOfType<GameManager>().Paused)
         {
-            readyingTimer = readyingTimerMax;
-            ready = true;
-            playerstate = 0;
-        } 
-        if (readyingTimer > 0)
-        {
-            readyingTimer -= Time.deltaTime;
-            playerstate = 1f;
-        }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                readyingTimer = readyingTimerMax;
+                ready = true;
+                playerstate = 0;
+            }
+            if (readyingTimer > 0)
+            {
+                readyingTimer -= Time.deltaTime;
+                playerstate = 1f;
+            }
 
-        if (ready && readyingTimer<0)
-        {
-            playerstate = 2f;
-            ready = false;
-        } 
+            if (ready && readyingTimer < 0)
+            {
+                playerstate = 2f;
+                ready = false;
+            }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            atkTimer = atkTimerMax;
-            postatk=true;
-        }
-        
-        if(atkTimer>0)
-        {
-            atkTimer -= Time.deltaTime;
-            playerstate = 3f;
-        }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                atkTimer = atkTimerMax;
+                postatk = true;
+            }
 
-        if (postatk && atkTimer<0)
-        {
-            playerstate = 0;
-            postatk = false;
-        }
+            if (atkTimer > 0)
+            {
+                atkTimer -= Time.deltaTime;
+                playerstate = 3f;
+            }
 
-        anim.SetFloat("playerState", playerstate);
+            if (postatk && atkTimer < 0)
+            {
+                playerstate = 0;
+                postatk = false;
+            }
+
+            anim.SetFloat("playerState", playerstate);
+        }
+            
     }
 }

@@ -9,54 +9,80 @@ public class GameManager : MonoBehaviour
 
     public GameObject lossPan;
     public GameObject pickPan;
+    public GameObject shopPan;
+    public GameObject winPan;
+    public bool Paused = false;
     private EnemysSystem enmsSys;
     public Text TextCoins;
     private int playerCoins;
+    [SerializeField] PlayerHealthBar playerHP;
 
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
     [SerializeField] StrikeArea mainStrkArea;
 
+    #region Farm Varibles
+    private float FarmHeal = 20;
+    private float FarmIncHP = 10;
+    private int FarmLvl = 1;
+    #endregion
+
     void Start()
     {
         enmsSys = GetComponent<EnemysSystem>();
         playerCoins = 0;
-
+        playerHP = GetComponent<PlayerHealthBar>();
     }
 
 
     void Update()
     {
-        /*if (enmsSys.hasAllDied()<1)
-        {
-            OpenPickPan();
-        }*/
+        TextCoins.text = ("" + playerCoins);
     }
     public void OpenPickPan()
     {
         pickPan.GetComponent<Animator>().SetBool("Open", true);
         RandomItemPull();
+        Paused = true;
     }
     public void ClosePickPan()
     {
         if (pickPan.GetComponent<Animator>().GetBool("Open"))
         {
             pickPan.GetComponent<Animator>().SetBool("Open", false);
-            enmsSys.StartNextWave();
-            Debug.Log("stated wave");
+            //enmsSys.StartNextWave();
+            OpenShopPan();
+            Paused = false;
         }
     }
 
+    public void OpenShopPan()
+    {
+        shopPan.GetComponent<Animator>().SetBool("Open", true);
+        Paused = true;
+    }
+
+    public void CloseShopPan()
+    {
+        if (shopPan.GetComponent<Animator>().GetBool("Open"))
+        {
+            shopPan.GetComponent<Animator>().SetBool("Open", false);
+            enmsSys.StartNextWave();
+            Paused = false;
+        }
+    }
 
     public void OpenLossPan()
     {
         lossPan.SetActive(true);
+        Time.timeScale = 0f;
         
     }
     public void CloseLossPan()
     {
         lossPan.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -76,7 +102,7 @@ public class GameManager : MonoBehaviour
             }
             if (randLootPicks[buttonID].GetType() == typeof(Armor))
             {
-                FindObjectOfType<HealthBar>().SetArmor(randLootPicks[buttonID] as Armor);
+                FindObjectOfType<PlayerHealthBar>().SetArmor(randLootPicks[buttonID] as Armor);
             }
             randLootPicks.RemoveAt(buttonID);
             Debug.Log("button proc");
@@ -85,6 +111,58 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void PlayerWins()
+    {
+        winPan.SetActive(true);
+    }
+
+    #region Shop Buttons
+
+    public void FarmHealButton()
+    {
+        if (playerCoins >= 5)
+        {
+            playerCoins -= 5;
+            playerHP.HealPlayer(FarmHeal);
+        }
+        
+    }
+
+    public void IncreaseMaxHPButton()
+    {
+        if (playerCoins >= 20)
+        {
+            playerCoins -= 20;
+            playerHP.maxHealth +=FarmIncHP;
+        }
+    }
+
+    public void ImproveFarmButton()
+    {
+        if (playerCoins >=15)
+        {
+            playerCoins -= 15;
+            FarmLvl++;
+            switch (FarmLvl)
+            {
+                case 2:
+                    FarmHeal = 30;
+                    FarmIncHP = 15;
+                    break;
+                case 3:
+                    FarmHeal = 40;
+                    FarmIncHP = 20;
+                    break;
+            }
+        }
+    }
+
+    public void ImproveFarm()
+    {
+
+    }
+
+    #endregion
 
     private void RandomItemPull()
     {

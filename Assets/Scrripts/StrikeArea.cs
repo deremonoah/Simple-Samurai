@@ -7,12 +7,13 @@ public class StrikeArea : MonoBehaviour
 {
     private EnemysSystem enmySys;
     public Camera mc;
+    private GameManager GM;
     [SerializeField] bool indere;
     [SerializeField] float maxDamg = 70;
     [SerializeField] float baseDamg;
     [SerializeField] float damgMult;
     [SerializeField] float defaultDamgMult;
-    [SerializeField] int target;
+    [SerializeField] List<int> target;
 
     [SerializeField] float timer = 0;
     [SerializeField]bool timering=false;
@@ -27,9 +28,9 @@ public class StrikeArea : MonoBehaviour
     public Weapon Test;
     void Start()
     {
+        GM = mc.GetComponent<GameManager>();
         enmySys = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
-        
         Debug.Log("started");
     }
 
@@ -46,7 +47,8 @@ public class StrikeArea : MonoBehaviour
         else if (timer > 4.5)
         { damgMult = 20; }
 
-
+        if (!GM.Paused)
+        {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 timering = true;
@@ -55,19 +57,24 @@ public class StrikeArea : MonoBehaviour
                 timer = 0;
 
             }
-        
 
-        if (Input.GetKeyUp(KeyCode.Space) && indere)
-        {
-            float Damger = Mathf.Clamp(baseDamg + (timer * damgMult),0,maxDamg);
-            
-            enmySys.DamageEnemy(Damger,target,equipedWeapon.effs);
-            
-            timer = 0;
-            timering = false;
+
+            if (Input.GetKeyUp(KeyCode.Space) && indere)
+            {
+                float Damger = Mathf.Clamp(baseDamg + (timer * damgMult), 0, maxDamg);
+                for (int lcv = 0; lcv < target.Count; lcv++)
+                {
+                    enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
+                }
+
+                timer = 0;
+                timering = false;
+            }
         }
+
         
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        /*testing stuff
+         * if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetWeapon(Test);
         }
@@ -75,7 +82,7 @@ public class StrikeArea : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             GetComponent<PolygonCollider2D>().isTrigger = true;
-        }
+        }*/
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -120,12 +127,15 @@ public class StrikeArea : MonoBehaviour
             if (wee.effs[lcv] == Effect.odachi)
             {
                 bottomOdachi.SetActive(true);
-                Debug.Log("hit if");
+                target.Add(1);
             }
             else
             {
                 bottomOdachi.SetActive(false);
-                Debug.Log("hit else");
+                if (target.Count > 1)
+                {
+                    target.RemoveAt(1);
+                }
             }
 
             if (wee.effs[lcv] == Effect.bow)

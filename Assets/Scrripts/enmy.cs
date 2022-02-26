@@ -12,7 +12,7 @@ public class enmy : MonoBehaviour
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
 
     private Camera mainCam;
-    private HealthBar playerHP;
+    private PlayerHealthBar playerHP;
     
     
     //animation stuff
@@ -53,7 +53,7 @@ public class enmy : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
-        playerHP = mainCam.GetComponent<HealthBar>();
+        playerHP = mainCam.GetComponent<PlayerHealthBar>();
         enmsSys = mainCam.GetComponent<EnemysSystem>();
         anim = GetComponent<Animator>();
         HP = maxHP;
