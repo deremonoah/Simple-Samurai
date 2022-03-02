@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enmsInWave:
   - {fileID: 2390960747628968264, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
-  - {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
