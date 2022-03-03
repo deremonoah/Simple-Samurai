@@ -19,8 +19,11 @@ public class StrikePoint : MonoBehaviour
 
     private Vector3 pos, localScale;
     [SerializeField] float Timer;
-    
 
+    [SerializeField] GameObject TopBound;
+    [SerializeField] GameObject BottomBound;
+    private bool uping = true;
+    [SerializeField] float upSpeed;
 
     void Start()
     {
@@ -45,6 +48,10 @@ public class StrikePoint : MonoBehaviour
                 {
                     moveRight();
                 }
+                else if(!faceingRight)
+                {
+                    moveLeft();
+                }
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -65,14 +72,15 @@ public class StrikePoint : MonoBehaviour
         //changing the value in the if below changes the distance it will travel over all
         if (pos.x < -2f)
         { faceingRight = true; }
-        else if (pos.x > 0f)
+        else if (pos.x > -0.2f)
         { faceingRight = false; }
 
-        if (((faceingRight)&&(localScale.x < 0)) || ((!faceingRight)&&(localScale.x >0)))
+        /*if (((faceingRight)&&(localScale.x < 0)) || ((!faceingRight)&&(localScale.x >0)))
         {
             localScale.x *= -1;
-        }
-        transform.localScale = localScale;
+        }*/
+        
+        //transform.localScale = localScale;
     }
 
     void moveRight()
@@ -83,8 +91,22 @@ public class StrikePoint : MonoBehaviour
 
     void moveLeft()
     {
-        //pos -= transform.right * Time.deltaTime * moveSpeed;
-        
+        if (uping)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, TopBound.transform.position.y), upSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, BottomBound.transform.position.y), upSpeed * Time.deltaTime);
+        }
+        if (transform.position.y == BottomBound.transform.position.y)
+        {
+            uping = true;
+        }
+        else if (transform.position.y == TopBound.transform.position.y)
+        {
+            uping = false;
+        }
     }
 
     public void ChangeStrikeSprite(Sprite spt)
