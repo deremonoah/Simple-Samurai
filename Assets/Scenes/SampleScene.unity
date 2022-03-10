@@ -1514,6 +1514,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8877d478fa54a584cbbc7da656c33696, type: 2}
   - {fileID: 11400000, guid: b3721b69000f53d48a8981c5ecaa96d2, type: 2}
   - {fileID: 11400000, guid: 2120487f544b9d14183076ff0675cb9e, type: 2}
+  - {fileID: 11400000, guid: 8b4bb5ef5ae54f44a80fe1b3cc1aa772, type: 2}
   EnmHPPointer: {fileID: 900664852}
 --- !u!1 &608219614
 GameObject:
