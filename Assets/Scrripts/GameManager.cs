@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Text TextCoins;
     private int playerCoins;
     [SerializeField] PlayerHealthBar playerHP;
+    [SerializeField] float TimeSca;
 
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     private float FarmHeal = 20;
     private float FarmIncHP = 10;
     private int FarmLvl = 1;
+    
     #endregion
 
     void Start()
@@ -77,12 +79,13 @@ public class GameManager : MonoBehaviour
     {
         lossPan.SetActive(true);
         Time.timeScale = 0f;
-        
+        TimeSca = 0;
     }
     public void CloseLossPan()
     {
         lossPan.SetActive(false);
         Time.timeScale = 1f;
+        TimeSca = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
