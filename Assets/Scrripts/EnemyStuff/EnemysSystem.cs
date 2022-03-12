@@ -52,7 +52,7 @@ public class EnemysSystem : MonoBehaviour
         spawned = true;
         recPos = point;
     }
-    public void DamageEnemy(float damg, int target, List<Effect> effects)
+    public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
     {
         if(enms.Count > target)
         {

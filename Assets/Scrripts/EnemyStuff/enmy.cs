@@ -12,6 +12,7 @@ public class enmy : MonoBehaviour
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
 
     private Camera mainCam;
+    private GameManager GM;
     private PlayerHealthBar playerHP;
     
     
@@ -27,6 +28,7 @@ public class enmy : MonoBehaviour
     [SerializeField] GameObject atkEnd;
     attackState curState;
     [SerializeField] Ability myAbility;
+    private int amountRobbed = 0;
 
     private List<GameObject> curAtks = new List<GameObject>();
 
@@ -39,6 +41,7 @@ public class enmy : MonoBehaviour
     public Canvas myCanvas;
 
     private Coroutine attackRoutine;
+
 
     enum attackState 
     { 
@@ -53,6 +56,7 @@ public class enmy : MonoBehaviour
     void Start()
     {
         mainCam = Camera.main;
+        GM = mainCam.GetComponent<GameManager>();
         playerHP = mainCam.GetComponent<PlayerHealthBar>();
         enmsSys = mainCam.GetComponent<EnemysSystem>();
         anim = GetComponent<Animator>();
@@ -82,7 +86,7 @@ public class enmy : MonoBehaviour
             foreach (var atk in curAtks)
                 Destroy(atk);
             enmsSys.Died(this);
-            mainCam.GetComponent<GameManager>().PayOut(Random.Range(minCoin, maxCoin));
+            GM.PayOut(Random.Range(minCoin, maxCoin)+amountRobbed);
             Destroy(this.gameObject);
         }
         if (HP > maxHP)
@@ -110,25 +114,33 @@ public class enmy : MonoBehaviour
         HP += heal;
     }
 
-    public void damgEnemy(float deal, List<Effect> effects)
+    public void damgEnemy(float deal, List<WeaponEffect> effects)
     {
+
+        bool antArm = false;
         for (int lcv =0;lcv<effects.Count;lcv++)
         {
             switch (effects[lcv])
             {
-                case Effect.none:
+                case WeaponEffect.none:
                     break;
-                case Effect.flame:
+                case WeaponEffect.flame:
                     StartCoroutine(OnFire());
                     break;
-                case Effect.greed:
-                    break;
-                case Effect.antiarmor:
+                case WeaponEffect.antiarmor:
+                    antArm = true;
                     break;
             }
         }
-
-        HP -= (deal - armor);
+        if (antArm)
+        {
+            HP -= (deal - armor);
+        }
+        else
+        {
+            HP -= deal;
+        }
+        
         curState = attackState.damaged;
         StartCoroutine(Flash());
         
@@ -164,7 +176,12 @@ public class enmy : MonoBehaviour
         yield return new WaitForSeconds(strikeTimer);
         playerHP.DamagePlayer(Random.Range(damgMin, damgMax));
         if (myAbility == Ability.steal)
-            Debug.Log("yoinked");
+        {
+            int randRob = Random.Range(2, 4);
+            GM.robPlayer(randRob);
+            amountRobbed += randRob;
+        }
+            
 
         attackRoutine = StartCoroutine(attack());
     }

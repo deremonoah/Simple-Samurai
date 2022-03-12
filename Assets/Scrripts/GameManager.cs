@@ -95,6 +95,13 @@ public class GameManager : MonoBehaviour
         TextCoins.text = playerCoins.ToString();
     }
 
+    public void robPlayer(int coin)
+    {
+        playerCoins -= coin;
+        if(playerCoins <= 0) { playerCoins = 0; }
+        TextCoins.text = playerCoins.ToString();
+    }
+
     public void PickButton(int buttonID)
     {
         if (pickPan.GetComponent<Animator>().GetBool("Open") == true)
@@ -107,10 +114,19 @@ public class GameManager : MonoBehaviour
             {
                 FindObjectOfType<PlayerHealthBar>().SetArmor(randLootPicks[buttonID] as Armor);
             }
+            if (randLootPicks[buttonID].GetType() == typeof(Curio))
+            {
+                ResolveCurioEffect();
+            }
             randLootPicks.RemoveAt(buttonID);
             Debug.Log("button proc");
             ClosePickPan();
         }
+
+    }
+
+    private void ResolveCurioEffect()
+    {
 
     }
 

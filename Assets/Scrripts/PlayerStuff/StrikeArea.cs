@@ -124,7 +124,7 @@ public class StrikeArea : MonoBehaviour
             Debug.Log("lcv: "+lcv);
             Debug.Log("count: " + wee.effs.Count);
 
-            if (wee.effs[lcv] == Effect.odachi)
+            if (wee.effs[lcv] == WeaponEffect.odachi)
             {
                 bottomOdachi.SetActive(true);
                 target.Add(1);
@@ -138,7 +138,7 @@ public class StrikeArea : MonoBehaviour
                 }
             }
 
-            if (wee.effs[lcv] == Effect.bow)
+            if (wee.effs[lcv] == WeaponEffect.bow)
             {
                 TurnBow(true);
             }

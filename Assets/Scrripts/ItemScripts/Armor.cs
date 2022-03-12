@@ -6,4 +6,6 @@ using UnityEngine;
 public class Armor : Item
 {
     public float armor;
+    public ArmorEffect armrEef;
 }
+public enum ArmorEffect { turtle,greed,revive }

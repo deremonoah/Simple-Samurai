@@ -8,6 +8,6 @@ public class Weapon : Item
     public Sprite myStrikeArea,strikePointer;
     public float baseDamg, maxDamg;
     
-    public List<Effect> effs;
+    public List<WeaponEffect> effs;
 }
-public enum Effect { none, flame, greed, antiarmor, odachi, bow }
+public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow }

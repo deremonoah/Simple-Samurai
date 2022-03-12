@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Curio : MonoBehaviour
+[CreateAssetMenu(fileName = "New Curio", menuName = "Curio")]
+public class Curio : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public CurioEffect curiEef;
+    public float CurioNum;
 }
+public enum CurioEffect { Koban,healing,heal,incrArea,revive,greed }
