@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Text TextCoins;
     private int playerCoins;
     [SerializeField] PlayerHealthBar playerHP;
-    [SerializeField] float TimeSca;
+    
 
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
@@ -79,13 +79,11 @@ public class GameManager : MonoBehaviour
     {
         lossPan.SetActive(true);
         Time.timeScale = 0f;
-        TimeSca = 0;
     }
     public void CloseLossPan()
     {
         lossPan.SetActive(false);
         Time.timeScale = 1f;
-        TimeSca = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -116,7 +114,7 @@ public class GameManager : MonoBehaviour
             }
             if (randLootPicks[buttonID].GetType() == typeof(Curio))
             {
-                ResolveCurioEffect();
+                ResolveCurioEffect((Curio)randLootPicks[buttonID]);
             }
             randLootPicks.RemoveAt(buttonID);
             Debug.Log("button proc");
@@ -125,9 +123,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void ResolveCurioEffect()
+    private void ResolveCurioEffect(Curio cur)
     {
-
+        switch (cur.curiEef)
+        {
+            case CurioEffect.Koban:
+                playerCoins += 50;
+                break;
+        }
     }
 
     public void PlayerWins()
@@ -139,9 +142,9 @@ public class GameManager : MonoBehaviour
 
     public void FarmHealButton()
     {
-        if (playerCoins >= 5)
+        if (playerCoins >= 10)
         {
-            playerCoins -= 5;
+            playerCoins -= 10;
             playerHP.HealPlayer(FarmHeal);
         }
         
@@ -158,9 +161,9 @@ public class GameManager : MonoBehaviour
 
     public void ImproveFarmButton()
     {
-        if (playerCoins >=15)
+        if (playerCoins >=20)
         {
-            playerCoins -= 15;
+            playerCoins -= 20;
             FarmLvl++;
             switch (FarmLvl)
             {
@@ -170,7 +173,15 @@ public class GameManager : MonoBehaviour
                     break;
                 case 3:
                     FarmHeal = 40;
-                    FarmIncHP = 20;
+                    FarmIncHP = 25;
+                    break;
+                case 4:
+                    FarmHeal = 50;
+                    FarmIncHP = 35;
+                    break;
+                case 5:
+                    FarmHeal = 60;
+                    FarmIncHP = 50;
                     break;
             }
         }

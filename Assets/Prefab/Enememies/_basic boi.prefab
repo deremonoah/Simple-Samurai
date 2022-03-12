@@ -416,8 +416,8 @@ MonoBehaviour:
   atkEnd: {fileID: 0}
   myAbility: 0
   matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
-  minCoin: 2
-  maxCoin: 5
+  minCoin: 4
+  maxCoin: 8
   HPPointer: {fileID: 6091754414344736096}
   myCanvas: {fileID: 5956742078480892688}
 --- !u!1001 &5695447149005572566
