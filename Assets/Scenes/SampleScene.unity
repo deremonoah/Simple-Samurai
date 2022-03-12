@@ -1474,7 +1474,6 @@ MonoBehaviour:
   Paused: 0
   TextCoins: {fileID: 1994019901}
   playerHP: {fileID: 0}
-  TimeSca: 0
   buttonImages:
   - {fileID: 872711923}
   - {fileID: 1513229711}
@@ -1486,6 +1485,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ecb8155a09592374e97d5da5a3186bfd, type: 2}
   - {fileID: 11400000, guid: 9e92af5917f19b847abebe98ed0412de, type: 2}
   - {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
+  - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
   mainStrkArea: {fileID: 715464449}
 --- !u!114 &519420037
 MonoBehaviour:
@@ -2441,7 +2441,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 375d4705f217db046837edf1108de38a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eeedc529583b35f4486a3d2744c08633, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2546,7 +2546,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Heal 5g
+  m_Text: Heal 10g
 --- !u!222 &910566255
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5112,7 +5112,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Improve Farm 15g
+  m_Text: Improve Farm 20g
 --- !u!222 &1875027159
 CanvasRenderer:
   m_ObjectHideFlags: 0
