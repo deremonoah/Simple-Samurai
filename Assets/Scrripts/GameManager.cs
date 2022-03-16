@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject pickPan;
     public GameObject shopPan;
     public GameObject winPan;
+    public GameObject pausePan;
     public bool Paused = false;
     private EnemysSystem enmsSys;
     public Text TextCoins;
@@ -37,6 +38,16 @@ public class GameManager : MonoBehaviour
         playerHP = GetComponent<PlayerHealthBar>();
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.P) )
+        {
+            if (!pausePan.activeSelf)
+            { OpenPausePan(); }
+            else
+            { ClosePausePan(); }
+        }
+    }
 
     void Update()
     {
@@ -85,6 +96,18 @@ public class GameManager : MonoBehaviour
         lossPan.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OpenPausePan()
+    {
+        pausePan.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ClosePausePan()
+    {
+        pausePan.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void PayOut(int coin)
