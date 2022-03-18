@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     public Text TextCoins;
     private int playerCoins;
     [SerializeField] PlayerHealthBar playerHP;
-    
+
+    public SoundManager SoundMng;
 
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void PayOut(int coin)
     {
+        SoundMng.PlaySound("coin");
         playerCoins += coin;
         TextCoins.text = playerCoins.ToString();
     }

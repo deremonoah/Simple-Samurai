@@ -20,6 +20,8 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] GameObject bottomOdachi;
     [SerializeField] List<GameObject> BowAreas;
 
+    public SoundManager SoundMng;
+
     public GameObject strikePointObj;
 
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
@@ -64,6 +66,7 @@ public class StrikeArea : MonoBehaviour
                 float Damger = Mathf.Clamp(baseDamg + (timer * damgMult), 0, maxDamg);
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
+                    SoundMng.PlaySound("hit");
                     enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
                 }
 
