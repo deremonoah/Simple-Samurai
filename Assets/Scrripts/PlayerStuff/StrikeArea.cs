@@ -8,6 +8,7 @@ public class StrikeArea : MonoBehaviour
     private EnemysSystem enmySys;
     public Camera mc;
     private GameManager GM;
+    public static bool PlayerOn = true;
     [SerializeField] bool indere;
     [SerializeField] float maxDamg = 70;
     [SerializeField] float baseDamg;
@@ -49,7 +50,7 @@ public class StrikeArea : MonoBehaviour
         else if (timer > 4.5)
         { damgMult = 20; }
 
-        if (!GM.Paused)
+        if (PlayerOn)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -68,6 +69,10 @@ public class StrikeArea : MonoBehaviour
                 {
                     SoundMng.PlaySound("hit");
                     enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
+                    if (Damger >= 25f && equipedWeapon.effs[0] == WeaponEffect.greed)
+                    {
+                        GM.PayOut(1);
+                    }
                 }
 
                 timer = 0;
@@ -76,8 +81,8 @@ public class StrikeArea : MonoBehaviour
         }
 
         
-        /*testing stuff
-         * if (Input.GetKeyDown(KeyCode.Alpha1))
+        
+          if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetWeapon(Test);
         }
@@ -85,7 +90,7 @@ public class StrikeArea : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             GetComponent<PolygonCollider2D>().isTrigger = true;
-        }*/
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -121,7 +126,7 @@ public class StrikeArea : MonoBehaviour
         colld = gameObject.AddComponent<PolygonCollider2D>();
         colld.isTrigger = true;
 
-        Debug.Log("in equip");
+        equipedWeapon = wee;
         for (int lcv = 0; lcv<wee.effs.Count; lcv++)
         {
             Debug.Log("lcv: "+lcv);
@@ -152,5 +157,8 @@ public class StrikeArea : MonoBehaviour
         }
     }
 
-    
+    public static void SwitchPlayerOn(bool tf)
+    {
+        PlayerOn = tf;
+    }
 }

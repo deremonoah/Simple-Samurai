@@ -22,7 +22,7 @@ public class PlayerAnimation : MonoBehaviour
     
     void Update()
     {
-        if (!FindObjectOfType<GameManager>().Paused)
+        //if (StrikeArea.PlayerOn)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -60,8 +60,8 @@ public class PlayerAnimation : MonoBehaviour
                 postatk = false;
             }
 
-            anim.SetFloat("playerState", playerstate);
-        }
             
+        }
+        anim.SetFloat("playerState", playerstate);
     }
 }

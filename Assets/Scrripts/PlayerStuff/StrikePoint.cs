@@ -39,7 +39,7 @@ public class StrikePoint : MonoBehaviour
         checkWhereToFace();
 
         
-        if (!FindObjectOfType<GameManager>().Paused)
+        if (StrikeArea.PlayerOn)
         {
             if (Input.GetKey(KeyCode.Space))
             {

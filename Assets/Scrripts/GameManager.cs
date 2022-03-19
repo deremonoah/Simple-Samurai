@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         pickPan.GetComponent<Animator>().SetBool("Open", true);
         RandomItemPull();
         Paused = true;
+        StrikeArea.SwitchPlayerOn(false);
     }
     public void ClosePickPan()
     {
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
             shopPan.GetComponent<Animator>().SetBool("Open", false);
             enmsSys.StartNextWave();
             Paused = false;
+            StrikeArea.SwitchPlayerOn(true);
         }
     }
 

@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         hit1 = Resources.Load<AudioClip>("hit 1 wav");
+        Debug.Log(hit1);
         hit2 = Resources.Load<AudioClip>("hit 2 wav");
         coin1 = Resources.Load<AudioClip>("coin wav 1");
         coin2 = Resources.Load<AudioClip>("coin wav 2");
