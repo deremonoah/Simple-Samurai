@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip hit1, hit2, coin1, coin2, coin3;
+    public AudioClip hit1, hit2, coin1, coin2, coin3;
     public AudioSource audioSrc;
 
     void Start()
     {
-        hit1 = Resources.Load<AudioClip>("hit 1 wav");
-        Debug.Log(hit1);
-        hit2 = Resources.Load<AudioClip>("hit 2 wav");
-        coin1 = Resources.Load<AudioClip>("coin wav 1");
-        coin2 = Resources.Load<AudioClip>("coin wav 2");
-        coin3 = Resources.Load<AudioClip>("coin wav 3");
+        hit1 = Resources.Load<AudioClip>("new Hit");
+        /*hit2 = Resources.Load<AudioClip>("Sound/Effects/hit 2 wav");
+        coin1 = Resources.Load<AudioClip>("Sound/Effects/coin wav 1");
+        coin2 = Resources.Load<AudioClip>("Sound/Effects/coin wav 2");
+        coin3 = Resources.Load<AudioClip>("Sound/Effects/coin wav 3");*/
 
     }
 
