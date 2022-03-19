@@ -34,9 +34,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         enmsSys = GetComponent<EnemysSystem>();
         playerCoins = 0;
         playerHP = GetComponent<PlayerHealthBar>();
+        StrikeArea.SwitchPlayerOn(true);
     }
 
     private void FixedUpdate()

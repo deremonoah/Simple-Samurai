@@ -19,7 +19,7 @@ public class EnemysSystem : MonoBehaviour
     [SerializeField] GameObject atkEnd;
 
     public List<EnmWave> waves;
-    private int wcv;
+    private int WaveControlVariable;
 
     private GameManager GM;
 
@@ -31,6 +31,7 @@ public class EnemysSystem : MonoBehaviour
 
         GM = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnWave());
+        
     }
 
 
@@ -41,7 +42,7 @@ public class EnemysSystem : MonoBehaviour
             GM.OpenPickPan();
             spawned = false;
         }
-
+        Debug.Log(Time.timeScale);
     }
 
     public void SpawnEnemy(int point, GameObject enmPrefab)
@@ -80,18 +81,21 @@ public class EnemysSystem : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        
         yield return new WaitForSeconds(1);
-        if (wcv >= waves.Count)
+        if (WaveControlVariable >= waves.Count)
         {
+            
             GM.PlayerWins();
             yield return null;
         }
         else
         {
-            for (int lcv = 0; lcv < waves[wcv].enmsInWave.Length; lcv++)
+            
+            for (int lcv = 0; lcv < waves[WaveControlVariable].enmsInWave.Length; lcv++)
             {
-                SpawnEnemy(lcv, waves[wcv].enmsInWave[lcv]);
-
+                SpawnEnemy(lcv, waves[WaveControlVariable].enmsInWave[lcv]);
+                
                 if (lcv == 0)
                     enms[0].SetAsTarget();
 
@@ -99,7 +103,7 @@ public class EnemysSystem : MonoBehaviour
 
             }
 
-            wcv++;
+            WaveControlVariable++;
         }
         
 

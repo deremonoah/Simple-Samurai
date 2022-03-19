@@ -34,6 +34,7 @@ public class StrikeArea : MonoBehaviour
         GM = mc.GetComponent<GameManager>();
         enmySys = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
+        SoundMng = FindObjectOfType<SoundManager>();
         Debug.Log("started");
     }
 
@@ -69,9 +70,12 @@ public class StrikeArea : MonoBehaviour
                 {
                     SoundMng.PlaySound("hit");
                     enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
-                    if (Damger >= 25f && equipedWeapon.effs[0] == WeaponEffect.greed)
+                    if (Damger >= 15f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
                         GM.PayOut(1);
+                        if(Damger >=25)
+                        { GM.PayOut(2); }
+                        else { GM.PayOut(1); }
                     }
                 }
 
