@@ -15,6 +15,6 @@ MonoBehaviour:
   itemPanelIcon: {fileID: 0}
   myStrikeArea: {fileID: 21300000, guid: d9eace60d8692f542ac691e4c863fad7, type: 3}
   strikePointer: {fileID: 21300000, guid: 5ba21a44297900547a951e8ac54e52db, type: 3}
-  baseDamg: 5
+  baseDamg: 4
   maxDamg: 60
   effs: 00000000

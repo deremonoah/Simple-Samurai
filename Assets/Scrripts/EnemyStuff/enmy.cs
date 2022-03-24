@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class enmy : MonoBehaviour
 {
     //stats
-    [SerializeField] float HP, maxHP, armor,damgThreash,damgMin, damgMax;
+    private float HP;
+    [SerializeField] float maxHP, armor,damgMin, damgMax;
     
     //mostly timers n stuff
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
@@ -134,11 +135,12 @@ public class enmy : MonoBehaviour
         }
         if (antArm)
         {
-            HP -= (deal - armor);
+            HP -= deal;
         }
         else
         {
-            HP -= deal;
+            if (deal > armor)
+            { HP -= (deal - armor); }
         }
         
         curState = attackState.damaged;

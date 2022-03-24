@@ -1085,11 +1085,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 679986c8998191340b6eb46e6331e130, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1248,7 +1248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5c7a7771002a745bea07ea5f5a06c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSrc: {fileID: 389242397}
+  hit1: {fileID: 0}
+  hit2: {fileID: 0}
+  coin1: {fileID: 0}
+  coin2: {fileID: 0}
+  coin3: {fileID: 0}
 --- !u!1 &389713777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,7 +1971,7 @@ MonoBehaviour:
   mc: {fileID: 519420031}
   indere: 0
   maxDamg: 60
-  baseDamg: 5
+  baseDamg: 4
   damgMult: 10
   defaultDamgMult: 10
   target: 00000000

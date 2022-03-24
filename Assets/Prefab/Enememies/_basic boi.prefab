@@ -404,7 +404,7 @@ MonoBehaviour:
   armor: 5
   damgThreash: 25
   damgMin: 10
-  damgMax: 20
+  damgMax: 30
   randWaitmin: 1.5
   randWaitmax: 3
   readyingTimer: 2.5
