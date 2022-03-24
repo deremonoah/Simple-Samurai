@@ -42,7 +42,7 @@ public class EnemysSystem : MonoBehaviour
             GM.OpenPickPan();
             spawned = false;
         }
-        Debug.Log(Time.timeScale);
+        
     }
 
     public void SpawnEnemy(int point, GameObject enmPrefab)

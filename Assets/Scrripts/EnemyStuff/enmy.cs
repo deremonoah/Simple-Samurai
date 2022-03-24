@@ -42,7 +42,7 @@ public class enmy : MonoBehaviour
 
     private Coroutine attackRoutine;
 
-
+    private SoundManager soundMRef;
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -69,7 +69,7 @@ public class enmy : MonoBehaviour
         
          attackRoutine = StartCoroutine(attack());
 
-        
+        soundMRef = FindObjectOfType<SoundManager>();    
     }
 
     void Awake()
@@ -175,6 +175,7 @@ public class enmy : MonoBehaviour
         curState = attackState.swinging;
         yield return new WaitForSeconds(strikeTimer);
         playerHP.DamagePlayer(Random.Range(damgMin, damgMax));
+        soundMRef.PlaySound("hit");
         if (myAbility == Ability.steal)
         {
             int randRob = Random.Range(2, 4);

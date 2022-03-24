@@ -35,7 +35,6 @@ public class StrikeArea : MonoBehaviour
         enmySys = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
-        Debug.Log("started");
     }
 
     
@@ -133,8 +132,7 @@ public class StrikeArea : MonoBehaviour
         equipedWeapon = wee;
         for (int lcv = 0; lcv<wee.effs.Count; lcv++)
         {
-            Debug.Log("lcv: "+lcv);
-            Debug.Log("count: " + wee.effs.Count);
+            
 
             if (wee.effs[lcv] == WeaponEffect.odachi)
             {
