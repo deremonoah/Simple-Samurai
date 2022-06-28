@@ -10,4 +10,4 @@ public class Weapon : Item
     
     public List<WeaponEffect> effs;
 }
-public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow }
+public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost }

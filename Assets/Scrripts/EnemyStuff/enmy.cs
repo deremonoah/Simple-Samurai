@@ -131,6 +131,10 @@ public class enmy : MonoBehaviour
                 case WeaponEffect.antiarmor:
                     antArm = true;
                     break;
+                case WeaponEffect.lifeSteal:
+                    playerHP.HealPlayer(deal / 3);
+                    break;
+
             }
         }
         if (antArm)
@@ -218,7 +222,13 @@ public class enmy : MonoBehaviour
 
     IEnumerator OnFire()
     {
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        HP -= 1;
+        int randNum = Random.Range(0, 4);
+        if (randNum < 3)
+        {
+            StartCoroutine(OnFire());
+        }
     }
 
     public void SetAsTarget()

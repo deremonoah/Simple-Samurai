@@ -157,6 +157,8 @@ public class StrikeArea : MonoBehaviour
             {
                 TurnBow(false);
             }
+
+            
         }
     }
 
