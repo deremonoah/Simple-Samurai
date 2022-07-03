@@ -399,19 +399,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1232e913f8189a14289c30abf8d2c3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 80
+  HP: 0
   maxHP: 80
   armor: 5
-  damgThreash: 25
-  damgMin: 10
+  damgMin: 15
   damgMax: 30
-  randWaitmin: 1.5
-  randWaitmax: 3
+  healMin: 0
+  healMax: 0
+  randWaitmin: 1
+  randWaitmax: 2.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   myHPBar: {fileID: 2460627139670560194}
   enmsSys: {fileID: 0}
   atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
+  healPrefab: {fileID: 0}
   atkStart: {fileID: 0}
   atkEnd: {fileID: 0}
   myAbility: 0

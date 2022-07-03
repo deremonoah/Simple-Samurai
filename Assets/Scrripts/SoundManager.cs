@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
         coin1 = Resources.Load<AudioClip>("Sound/Effects/coin wav 1");
         coin2 = Resources.Load<AudioClip>("Sound/Effects/coin wav 2");
         coin3 = Resources.Load<AudioClip>("Sound/Effects/coin wav 3");
-        Debug.Log(coin1);
+        
     }
 
     

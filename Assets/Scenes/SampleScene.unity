@@ -1985,7 +1985,7 @@ MonoBehaviour:
   SoundMng: {fileID: 389242400}
   strikePointObj: {fileID: 428360338}
   equipedWeapon: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
-  Test: {fileID: 11400000, guid: 7e46e15efba913046a08cccb39ddda2c, type: 2}
+  Test: {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
 --- !u!1 &803688241
 GameObject:
   m_ObjectHideFlags: 0
@@ -6290,6 +6290,10 @@ PrefabInstance:
       propertyPath: EnmHPPointer
       value: 
       objectReference: {fileID: 900664852}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: waves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
       value: 

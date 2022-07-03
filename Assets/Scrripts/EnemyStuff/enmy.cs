@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class enmy : MonoBehaviour
 {
     //stats
-    private float HP;
-    [SerializeField] float maxHP, armor,damgMin, damgMax;
+    public float HP;
+    [SerializeField] float maxHP, armor,damgMin, damgMax, healMin, healMax;
     
     //mostly timers n stuff
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
@@ -24,7 +24,7 @@ public class enmy : MonoBehaviour
     [SerializeField] EnemysSystem enmsSys;
 
     //attack projectile stuff
-    [SerializeField] GameObject atkPrefab;
+    [SerializeField] GameObject atkPrefab, healPrefab;
     [SerializeField] GameObject atkStart;
     [SerializeField] GameObject atkEnd;
     attackState curState;
@@ -41,7 +41,7 @@ public class enmy : MonoBehaviour
     public GameObject HPPointer;
     public Canvas myCanvas;
 
-    private Coroutine attackRoutine;
+    private Coroutine myattackRoutine;
 
     private SoundManager soundMRef;
     enum attackState 
@@ -51,7 +51,7 @@ public class enmy : MonoBehaviour
 
     public enum Ability
     {
-        none,steal, antiarmor
+        none,steal, antiarmor, heal, multiHeal
     }
 
     void Start()
@@ -67,8 +67,14 @@ public class enmy : MonoBehaviour
         
         matDefault = GetComponent<SpriteRenderer>().material;
 
-        
-         attackRoutine = StartCoroutine(attack());
+        if (myAbility == Ability.heal)
+        {
+            myattackRoutine = StartCoroutine(healEnmRoutine());
+        } else
+        {
+            myattackRoutine = StartCoroutine(TheattackRoutine());
+        }
+         
 
         soundMRef = FindObjectOfType<SoundManager>();    
     }
@@ -110,10 +116,12 @@ public class enmy : MonoBehaviour
         myHPBar.fillAmount = HP / maxHP;
     }
 
-    public void HealEnemy(float heal)
+    public void Healenm(float heal)
     {
         HP += heal;
     }
+
+    
 
     public void damgEnemy(float deal, List<WeaponEffect> effects)
     {
@@ -154,12 +162,12 @@ public class enmy : MonoBehaviour
 
     public void Blocked()
     {
-        if(attackRoutine != null)
+        if(myattackRoutine != null)
         {
-            StopCoroutine(attackRoutine);
+            StopCoroutine(myattackRoutine);
         }
 
-        attackRoutine = StartCoroutine(attack());
+        StartMyRoutine();
     }
 
     public void SetThings( GameObject str, GameObject end)
@@ -168,13 +176,25 @@ public class enmy : MonoBehaviour
         atkEnd = end;
     }
 
-    IEnumerator attack()
+    public void StartMyRoutine()
+    {
+        if (myAbility == Ability.heal)
+        {
+            myattackRoutine = StartCoroutine(healEnmRoutine());
+        }
+        else
+        {
+            myattackRoutine = StartCoroutine(TheattackRoutine());
+        }
+    }
+
+    IEnumerator TheattackRoutine()
     {
         curState = attackState.waiting;
         yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
 
 
-        Strike();
+        StrikeUI();
         curState = attackState.readying;
         yield return new WaitForSeconds(readyingTimer);
 
@@ -188,9 +208,51 @@ public class enmy : MonoBehaviour
             GM.robPlayer(randRob);
             amountRobbed += randRob;
         }
-            
 
-        attackRoutine = StartCoroutine(attack());
+        StartMyRoutine();
+
+
+    }
+
+    IEnumerator healEnmRoutine()
+    {
+        curState = attackState.waiting;
+         bool hitIf = false;
+        enmy targetally = new enmy();
+        
+
+        yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
+
+        foreach (enmy i in enmsSys.enms)
+        {
+            Debug.Log("in foreach");
+            Debug.Log("hp: " + i.HP + "   max hap: " + i.maxHP);
+            if (i.HP < i.maxHP)
+            {
+                targetally = i;
+                hitIf = true;
+                break;
+            }
+        }
+
+
+        if (hitIf)
+        {
+            HealingUI();
+            curState = attackState.readying;
+            yield return new WaitForSeconds(readyingTimer);
+
+            curState = attackState.swinging;
+            yield return new WaitForSeconds(strikeTimer);
+
+            targetally.Healenm(Random.Range(healMin, healMax));
+            //soundMRef.PlaySound("heal"); make a heal sound
+
+
+            
+        }
+        StartMyRoutine();
+
     }
 
     private void OnValidate()
@@ -199,7 +261,7 @@ public class enmy : MonoBehaviour
             randWaitmax = randWaitmin;
     }
 
-    public void Strike()
+    public void StrikeUI()
     {
         GameObject atk = Instantiate(atkPrefab, atkStart.transform.position, atkStart.transform.rotation);
         atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform);
@@ -210,6 +272,20 @@ public class enmy : MonoBehaviour
                     newList.Add(swing);
 
         newList.Add(atk);
+        curAtks = newList;
+    }
+
+    public void HealingUI()
+    {
+        GameObject heal = Instantiate(healPrefab, atkStart.transform.position, atkStart.transform.rotation);
+        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform);
+        var newList = new List<GameObject>();
+        if (curAtks.Count > 0)
+            foreach (var swing in curAtks)
+                if (swing != null)
+                    newList.Add(swing);
+
+        newList.Add(heal);
         curAtks = newList;
     }
 
