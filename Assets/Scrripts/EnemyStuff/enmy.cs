@@ -200,7 +200,7 @@ public class enmy : MonoBehaviour
 
         curState = attackState.swinging;
         yield return new WaitForSeconds(strikeTimer);
-        playerHP.DamagePlayer(Random.Range(damgMin, damgMax));
+        playerHP.DamagePlayer(Random.Range(damgMin, damgMax),(int)myAbility);
         soundMRef.PlaySound("hit");
         if (myAbility == Ability.steal)
         {
@@ -225,8 +225,6 @@ public class enmy : MonoBehaviour
 
         foreach (enmy i in enmsSys.enms)
         {
-            Debug.Log("in foreach");
-            Debug.Log("hp: " + i.HP + "   max hap: " + i.maxHP);
             if (i.HP < i.maxHP)
             {
                 targetally = i;
@@ -248,10 +246,13 @@ public class enmy : MonoBehaviour
             targetally.Healenm(Random.Range(healMin, healMax));
             //soundMRef.PlaySound("heal"); make a heal sound
 
-
-            
+            myattackRoutine = StartCoroutine(healEnmRoutine());
         }
-        StartMyRoutine();
+        else
+        {
+            myattackRoutine = StartCoroutine(TheattackRoutine());
+        }
+        
 
     }
 

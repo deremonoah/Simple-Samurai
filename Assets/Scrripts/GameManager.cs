@@ -115,6 +115,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void OpenClosePanel(GameObject panel)
+    {
+        if (panel.activeInHierarchy == false)
+        {
+            panel.SetActive(true);
+            Paused = true;
+        }
+        else
+        {
+            panel.SetActive(false);
+            Paused = false;
+        }
+    }
+
     public void PayOut(int coin)
     {
         SoundMng.PlaySound("coin");
@@ -146,7 +160,7 @@ public class GameManager : MonoBehaviour
                 ResolveCurioEffect((Curio)randLootPicks[buttonID]);
             }
             randLootPicks.RemoveAt(buttonID);
-            Debug.Log("button proc");
+
             ClosePickPan();
         }
 
@@ -247,6 +261,5 @@ public class GameManager : MonoBehaviour
             buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
         }
 
-        Debug.Log(lootList.Count);
     }
 }

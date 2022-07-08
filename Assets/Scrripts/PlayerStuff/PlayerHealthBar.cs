@@ -42,13 +42,17 @@ public class PlayerHealthBar : MonoBehaviour
         healthBar.fillAmount = health / maxHealth;
     }
 
-    public void DamagePlayer(float damagePoints )
+    public void DamagePlayer(float damagePoints, int ability)
     {
         //add enum stuff for effects damage could have
-        if (health > 0)
+        if (ability == 2)
         {
-            health -= (Mathf.Max(1,damagePoints-armor));
+            health -= (Mathf.Max(1,damagePoints));
+        }else
+        {
+            health -= (Mathf.Max(1, damagePoints - armor));
         }
+        Debug.Log("ability: "+ability);
     }
 
     public void HealPlayer(float healingPoints)
