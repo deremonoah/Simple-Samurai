@@ -28,7 +28,7 @@ public class enmy : MonoBehaviour
     [SerializeField] GameObject atkStart;
     [SerializeField] GameObject atkEnd;
     attackState curState;
-    [SerializeField] Ability myAbility;
+    public Ability myAbility;
     private int amountRobbed = 0;
 
     private List<GameObject> curAtks = new List<GameObject>();

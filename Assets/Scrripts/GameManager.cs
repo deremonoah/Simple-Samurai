@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
-    [SerializeField] StrikeArea mainStrkArea;
+    public StrikeArea mainStrkArea;
 
     #region Farm Varibles
     private float FarmHeal = 20;

@@ -10,6 +10,7 @@ public class EnmAtKArea : MonoBehaviour
     private Transform endPos;
     [SerializeField] Vector2 dir;
     [SerializeField] float movspd;
+    private float multiPerry = 0;
 
     void Start()
     {
@@ -21,8 +22,17 @@ public class EnmAtKArea : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space)&& blocking)
         {
-            myenm.Blocked();
-            Destroy(gameObject);
+            if (multiPerry >0)
+            {
+                multiPerry -= 1;
+                GetComponent<SpriteRenderer>().color = Color.red;
+                //move the ui back a bit to give player more time
+            }
+            else
+            {
+                myenm.Blocked();
+                Destroy(gameObject);
+            }
         }
         transform.Translate(dir * movspd *Time.deltaTime);
         if (this.transform.position.x < endPos.transform.position.x)
@@ -49,5 +59,11 @@ public class EnmAtKArea : MonoBehaviour
         myenm = em;
 
         endPos = end;
+
+        /*if (myenm.myAbility == enmy.Ability.antiarmor)
+        {
+            multiPerry = 1;
+        }*/ 
+        //could use the multi perry thing for a boss or different ability instead
     }
 }

@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28d7abd935e3b4b4b9d4b219ac2aaf03, type: 3}
-  m_Name: HealerTest
+  m_Name: TestWave
   m_EditorClassIdentifier: 
   enmsInWave:
-  - {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  - {fileID: 4819740616665397237, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
+  - {fileID: 871295418511070493, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}

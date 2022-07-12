@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 136026133}
   - component: {fileID: 136026132}
   m_Layer: 5
-  m_Name: Blacksmith (1)
+  m_Name: Defenses Shop Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,11 +653,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 391981872}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1661,7 +1661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &337474712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2343,7 +2343,7 @@ GameObject:
   - component: {fileID: 391900845}
   - component: {fileID: 391900844}
   m_Layer: 5
-  m_Name: Close farm shop Buton
+  m_Name: Close Blacksmith shop Buton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2415,11 +2415,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1169944263}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3091,11 +3091,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 831375356}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3225,7 +3225,7 @@ MonoBehaviour:
   mc: {fileID: 519420031}
   indere: 0
   maxDamg: 100
-  baseDamg: 10
+  baseDamg: 20
   damgMult: 0
   defaultDamgMult: 0
   target: 02000000
@@ -3382,7 +3382,7 @@ GameObject:
   - component: {fileID: 659864835}
   - component: {fileID: 659864834}
   m_Layer: 5
-  m_Name: Sensai
+  m_Name: Sensai Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3454,11 +3454,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 893364461}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4951,7 +4951,7 @@ GameObject:
   - component: {fileID: 941223067}
   - component: {fileID: 941223066}
   m_Layer: 5
-  m_Name: Close farm shop Buton
+  m_Name: Close Defense shop Buton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5023,11 +5023,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 391981872}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5168,7 +5168,7 @@ GameObject:
   - component: {fileID: 981640289}
   - component: {fileID: 981640288}
   m_Layer: 5
-  m_Name: Close farm shop Buton
+  m_Name: Close shop Buton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5240,11 +5240,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 893364461}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6299,7 +6299,7 @@ MonoBehaviour:
   mc: {fileID: 519420031}
   indere: 0
   maxDamg: 100
-  baseDamg: 10
+  baseDamg: 20
   damgMult: 0
   defaultDamgMult: 0
   target: 03000000
@@ -7635,7 +7635,7 @@ GameObject:
   - component: {fileID: 1567971265}
   - component: {fileID: 1567971264}
   m_Layer: 5
-  m_Name: Blacksmith
+  m_Name: Blacksmith shop Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7707,11 +7707,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1169944263}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8405,7 +8405,7 @@ MonoBehaviour:
   mc: {fileID: 519420031}
   indere: 0
   maxDamg: 100
-  baseDamg: 10
+  baseDamg: 20
   damgMult: 0
   defaultDamgMult: 0
   target: 01000000
@@ -8649,7 +8649,7 @@ MonoBehaviour:
   mc: {fileID: 519420031}
   indere: 0
   maxDamg: 60
-  baseDamg: 5
+  baseDamg: 4
   damgMult: 10
   defaultDamgMult: 10
   target: 0000000002000000
@@ -8834,11 +8834,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseShopPan
-        m_Mode: 1
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 831375356}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10880,7 +10880,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
       value: 
