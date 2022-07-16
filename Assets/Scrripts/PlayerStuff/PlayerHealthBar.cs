@@ -52,7 +52,6 @@ public class PlayerHealthBar : MonoBehaviour
         {
             health -= (Mathf.Max(1, damagePoints - armor));
         }
-        Debug.Log("ability: "+ability);
     }
 
     public void HealPlayer(float healingPoints)

@@ -90,10 +90,6 @@ public class StrikeArea : MonoBehaviour
             SetWeapon(Test);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            GetComponent<PolygonCollider2D>().isTrigger = true;
-        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
