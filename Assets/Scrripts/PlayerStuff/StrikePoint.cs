@@ -25,7 +25,7 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] GameObject NormalEndBound;
     [SerializeField] GameObject SmallerEndBound;
     private GameObject CurrentEndBound;
-    [SerializeField] bool uping = false;
+    private bool uping = false;
     [SerializeField] float upSpeed;
 
     void Start()
