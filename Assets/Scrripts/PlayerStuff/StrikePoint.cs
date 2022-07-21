@@ -25,7 +25,7 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] GameObject NormalEndBound;
     [SerializeField] GameObject SmallerEndBound;
     private GameObject CurrentEndBound;
-    private bool uping = false;
+    [SerializeField] bool uping = false;
     [SerializeField] float upSpeed;
 
     void Start()
@@ -67,6 +67,7 @@ public class StrikePoint : MonoBehaviour
             {
                 pos = startpoint.transform.position;
                 rb.transform.position = startpoint.transform.position;
+                uping = false;
             }
         }
         
