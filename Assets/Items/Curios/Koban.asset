@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582431f5892f74c498e3445ec03e44bc, type: 3}
   m_Name: Koban
   m_EditorClassIdentifier: 
-  itemPanelIcon: {fileID: 21300000, guid: 3b71e3e09003a1b42a987cf44b826f38, type: 3}
+  itemPanelIcon: {fileID: 21300000, guid: 16aa1f62fdff10848b8f52092bb5302c, type: 3}
   curiEef: 0
   CurioNum: 50
