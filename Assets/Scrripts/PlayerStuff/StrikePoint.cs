@@ -72,7 +72,7 @@ public class StrikePoint : MonoBehaviour
         //changing the value in the if below changes the distance it will travel over all
         if (pos.x < -2f)
         { faceingRight = true; }
-        else if (pos.x > -0.2f)
+        else if (pos.x > -.8f)
         { faceingRight = false; }
 
         /*if (((faceingRight)&&(localScale.x < 0)) || ((!faceingRight)&&(localScale.x >0)))

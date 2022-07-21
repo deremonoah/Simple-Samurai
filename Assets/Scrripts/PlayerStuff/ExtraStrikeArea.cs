@@ -13,7 +13,8 @@ public class ExtraStrikeArea : MonoBehaviour
     private float timer,damgMult, defaultDamgMult, baseDamg,maxDamg;
     [SerializeField] List<int> target;
     public Weapon MyWeapon;
-    [SerializeField] float WhichAreaMe;
+    [SerializeField] int WhichAreaMe;
+
     void Awake()
     {
         mainArea = FindObjectOfType<StrikeArea>();
@@ -22,7 +23,6 @@ public class ExtraStrikeArea : MonoBehaviour
         enmySys = mc.GetComponent<EnemysSystem>();
         SoundMng = FindObjectOfType<SoundManager>();
         SetExtrasWeapon(MyWeapon);
-        Debug.Log("am awake");
         CheckTarget();
     }
 
@@ -41,7 +41,6 @@ public class ExtraStrikeArea : MonoBehaviour
 
         if (StrikeArea.PlayerOn)
         {
-            Debug.Log("player on");
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 timering = true;
@@ -54,13 +53,11 @@ public class ExtraStrikeArea : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space) && indere)
             {
-                Debug.Log("up and in dere");
                 float Damger = Mathf.Clamp(baseDamg + (timer * damgMult), 0, maxDamg);
                 CheckTarget();
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
                     
-                    Debug.Log("should hit");
                     enmySys.DamageEnemy(Damger, target[lcv], MyWeapon.effs);
                     SoundMng.PlaySound("hit");
                     if (Damger >= 20f && MyWeapon.effs[0] == WeaponEffect.greed)
@@ -93,6 +90,7 @@ public class ExtraStrikeArea : MonoBehaviour
     private void CheckTarget()
     {
         //reformat to case statement thing maybe
+        Debug.Log(enmySys.enms.Count);
         if (enmySys.enms.Count == 1)
         {
             target.Clear();
@@ -118,12 +116,13 @@ public class ExtraStrikeArea : MonoBehaviour
             }else
             {
                 target.Clear();
-                target.Add((int)WhichAreaMe);
+                target.Add(WhichAreaMe);
             }
         }else if (enmySys.enms.Count == 4)
         {
             target.Clear();
-            target.Add((int)WhichAreaMe);
+            target.Add(WhichAreaMe);
+            enmySys.SetTargetEnmPointer(WhichAreaMe, mainArea.BowPointers[WhichAreaMe]);
         }
     }
 

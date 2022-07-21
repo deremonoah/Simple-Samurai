@@ -308,9 +308,10 @@ public class enmy : MonoBehaviour
         }
     }
 
-    public void SetAsTarget()
+    public void SetTargetPointer(Sprite img)
     {
         HPPointer.SetActive(true);
+        HPPointer.GetComponent<SpriteRenderer>().sprite = img;
     }
 
 

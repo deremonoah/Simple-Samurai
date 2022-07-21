@@ -24,6 +24,7 @@ public class EnemysSystem : MonoBehaviour
     private GameManager GM;
 
     public GameObject EnmHPPointer;
+    private StrikeArea PlayerSA;
     
 
     void Start()
@@ -31,7 +32,7 @@ public class EnemysSystem : MonoBehaviour
 
         GM = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnWave());
-        
+        PlayerSA = FindObjectOfType<StrikeArea>();
     }
 
 
@@ -74,7 +75,7 @@ public class EnemysSystem : MonoBehaviour
 
         if (enms.Count != 0)
         {
-            enms[0].SetAsTarget();
+            enms[0].SetTargetPointer(PlayerSA.equipedWeapon.strikePointer);
         }
         
     }
@@ -97,7 +98,7 @@ public class EnemysSystem : MonoBehaviour
                 SpawnEnemy(lcv, waves[WaveControlVariable].enmsInWave[lcv]);
                 
                 if (lcv == 0)
-                    enms[0].SetAsTarget();
+                    enms[0].SetTargetPointer(PlayerSA.equipedWeapon.strikePointer);
 
                 yield return new WaitForSeconds(0.5f);
 
@@ -114,5 +115,12 @@ public class EnemysSystem : MonoBehaviour
         StartCoroutine(SpawnWave());
     }
 
-    
+    public void SetTargetEnmPointer(int num,Sprite pointer)
+    {
+        /*if (FindObjectOfType<StrikeArea>().equipedWeapon.effs[0] == WeaponEffect.bow)
+        {
+            enms[num].SetTargetPointer(pointer);
+        }*/
+        enms[num].SetTargetPointer(pointer);
+    }
 }

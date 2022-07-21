@@ -20,6 +20,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField]bool timering=false;
     [SerializeField] GameObject bottomOdachi;
     [SerializeField] List<GameObject> BowAreas;
+    public List<Sprite> BowPointers;
 
     public SoundManager SoundMng;
 
