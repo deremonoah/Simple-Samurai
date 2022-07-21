@@ -22,7 +22,10 @@ public class StrikePoint : MonoBehaviour
 
     [SerializeField] GameObject TopBound;
     [SerializeField] GameObject BottomBound;
-    private bool uping = true;
+    [SerializeField] GameObject NormalEndBound;
+    [SerializeField] GameObject SmallerEndBound;
+    private GameObject CurrentEndBound;
+    private bool uping = false;
     [SerializeField] float upSpeed;
 
     void Start()
@@ -31,6 +34,8 @@ public class StrikePoint : MonoBehaviour
         pos = transform.position;
 
         localScale = transform.localScale;
+
+        CurrentEndBound = NormalEndBound;
     }
 
     void Update()
@@ -72,7 +77,7 @@ public class StrikePoint : MonoBehaviour
         //changing the value in the if below changes the distance it will travel over all
         if (pos.x < -2f)
         { faceingRight = true; }
-        else if (pos.x > -.8f)
+        else if (pos.x > CurrentEndBound.transform.position.x)
         { faceingRight = false; }
 
         /*if (((faceingRight)&&(localScale.x < 0)) || ((!faceingRight)&&(localScale.x >0)))
@@ -117,5 +122,12 @@ public class StrikePoint : MonoBehaviour
         colld = gameObject.AddComponent<PolygonCollider2D>();
         colld.isTrigger = true;
     }
-   
+    public void SetBoundsSmaller()
+    {
+        CurrentEndBound = SmallerEndBound;
+    }
+    public void SetBoundsRegular()
+    {
+        CurrentEndBound = NormalEndBound;
+    }
 }

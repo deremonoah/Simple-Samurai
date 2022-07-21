@@ -154,7 +154,13 @@ public class StrikeArea : MonoBehaviour
                 TurnBow(false);
             }
 
-            
+            if (wee.effs[lcv] == WeaponEffect.greed)
+            {
+                strikePointObj.GetComponent<StrikePoint>().SetBoundsSmaller();
+            }else
+            {
+                strikePointObj.GetComponent<StrikePoint>().SetBoundsRegular();
+            }
         }
     }
 
