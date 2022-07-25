@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Wave5
   m_EditorClassIdentifier: 
   enmsInWave:
-  - {fileID: 2390960747628968264, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+  - {fileID: 308640407746481344, guid: 377e4f5418800f8429b8963266ebbc58, type: 3}
   - {fileID: 2390960747628968264, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
