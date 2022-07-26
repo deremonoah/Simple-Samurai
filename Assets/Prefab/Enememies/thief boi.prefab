@@ -47,6 +47,18 @@ PrefabInstance:
       propertyPath: randWaitmax
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkDirs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkDirs.Array.data[1].x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkDirs.Array.data[1].y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_RootOrder
       value: 0

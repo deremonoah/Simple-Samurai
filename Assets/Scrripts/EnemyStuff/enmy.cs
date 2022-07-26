@@ -25,8 +25,9 @@ public class enmy : MonoBehaviour
 
     //attack projectile stuff
     [SerializeField] GameObject atkPrefab, healPrefab;
-    [SerializeField] GameObject atkStart;
+    [SerializeField] List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
+    [SerializeField] List<Vector2> atkDirs,healDirs;
     attackState curState;
     public Ability myAbility;
     private int amountRobbed = 0;
@@ -170,9 +171,10 @@ public class enmy : MonoBehaviour
         StartMyRoutine();
     }
 
-    public void SetThings( GameObject str, GameObject end)
+    public void SetThings( List<GameObject> str, GameObject end)
     {
-        atkStart = str;
+        atkStarts = str;
+        
         atkEnd = end;
     }
 
@@ -264,8 +266,37 @@ public class enmy : MonoBehaviour
 
     public void StrikeUI()
     {
-        GameObject atk = Instantiate(atkPrefab, atkStart.transform.position, atkStart.transform.rotation);
-        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform);
+        var dir = Random.Range(0, atkDirs.Count);
+        //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
+
+        GameObject atk = Instantiate(atkPrefab, atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+
+        if (atkDirs[dir].y == 0)
+        {
+            atk.transform.position= atkStarts[0].transform.position;
+
+        }
+        else if (atkDirs[dir].y == -0.5)
+        {
+            atk.transform.position = atkStarts[1].transform.position;
+        }
+        else if (atkDirs[dir].y == 0.5)
+        {
+            atk.transform.position = atkStarts[2].transform.position;
+        }
+        /*else if (atkDirs[dir].x == 0)
+        {
+            atk.transform.position = atkStarts[1].transform.position;
+            atk.transform.Rotate(0f, 0f, 90f, Space.Self);
+        //this was an attempt to make it go down but its too off center for it to work
+        }*/
+        else
+        {
+            atk.transform.position = atkStarts[3].transform.position;
+        }
+        
+
+        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
         var newList = new List<GameObject>();
         if (curAtks.Count > 0)
             foreach (var swing in curAtks)
@@ -274,12 +305,14 @@ public class enmy : MonoBehaviour
 
         newList.Add(atk);
         curAtks = newList;
+
     }
 
     public void HealingUI()
     {
-        GameObject heal = Instantiate(healPrefab, atkStart.transform.position, atkStart.transform.rotation);
-        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform);
+        GameObject heal = Instantiate(healPrefab, atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+        var dir = Random.Range(0, healDirs.Count);
+        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform,healDirs[dir]);
         var newList = new List<GameObject>();
         if (curAtks.Count > 0)
             foreach (var swing in curAtks)

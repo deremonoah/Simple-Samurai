@@ -29,11 +29,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408578, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408578, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408578, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_LocalPosition.x
@@ -80,8 +80,16 @@ PrefabInstance:
       value: enm Atk thief
       objectReference: {fileID: 0}
     - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
+      propertyPath: dir.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
+      propertyPath: dir.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: movspd
-      value: 3.8
+      value: 3.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6acb7745697056b48ad06b95c511b245, type: 3}

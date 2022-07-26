@@ -15,7 +15,7 @@ public class EnemysSystem : MonoBehaviour
     [SerializeField] int recPos;
     
 
-    [SerializeField] GameObject atkStart;
+    [SerializeField] List<GameObject> attackkStarts;
     [SerializeField] GameObject atkEnd;
 
     public List<EnmWave> waves;
@@ -50,7 +50,7 @@ public class EnemysSystem : MonoBehaviour
     {
         enmy enm = Instantiate(enmPrefab, enmSpawns[point].transform.position, enmSpawns[point].transform.rotation).GetComponent<enmy>();
         enms.Add(enm);
-        enm.GetComponent<enmy>().SetThings(atkStart, atkEnd);
+        enm.GetComponent<enmy>().SetThings(attackkStarts, atkEnd);
         spawned = true;
         recPos = point;
     }

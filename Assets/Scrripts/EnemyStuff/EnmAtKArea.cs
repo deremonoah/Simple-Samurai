@@ -54,10 +54,10 @@ public class EnmAtKArea : MonoBehaviour
         blocking = false;
     }
 
-    public void Setstuff(enmy em, Transform end)
+    public void Setstuff(enmy em, Transform end, Vector2 direct)
     {
         myenm = em;
-
+        dir = direct;
         endPos = end;
 
         /*if (myenm.myAbility == enmy.Ability.antiarmor)
