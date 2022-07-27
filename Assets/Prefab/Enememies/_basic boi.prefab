@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.035}
+  m_AnchoredPosition: {x: 0, y: 2.37}
   m_SizeDelta: {x: 2.5, y: 0.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2144794318603522374
@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5893950105723898029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.552, y: 2.006, z: -0.26568952}
+  m_LocalPosition: {x: -1.552, y: 2.34, z: -0.26568952}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
   m_Children:
   - {fileID: 6091754414344736099}
@@ -402,7 +402,7 @@ MonoBehaviour:
   HP: 0
   maxHP: 80
   armor: 5
-  damgMin: 15
+  damgMin: 10
   damgMax: 30
   healMin: 0
   healMax: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   enmsSys: {fileID: 0}
   atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
   healPrefab: {fileID: 0}
-  atkStart: {fileID: 0}
+  atkStarts: []
   atkEnd: {fileID: 0}
   atkDirs:
   - {x: -1, y: 0}
