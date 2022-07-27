@@ -202,7 +202,15 @@ public class enmy : MonoBehaviour
 
         curState = attackState.swinging;
         yield return new WaitForSeconds(strikeTimer);
-        playerHP.DamagePlayer(Random.Range(damgMin, damgMax),(int)myAbility);
+
+        StartMyRoutine();
+
+
+    }
+
+    public void hitNow()
+    {
+        playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbility);
         soundMRef.PlaySound("hit");
         if (myAbility == Ability.steal)
         {
@@ -210,10 +218,6 @@ public class enmy : MonoBehaviour
             GM.robPlayer(randRob);
             amountRobbed += randRob;
         }
-
-        StartMyRoutine();
-
-
     }
 
     IEnumerator healEnmRoutine()
@@ -310,9 +314,9 @@ public class enmy : MonoBehaviour
 
     public void HealingUI()
     {
-        GameObject heal = Instantiate(healPrefab, atkStarts[0].transform.position, atkStarts[0].transform.rotation);
-        var dir = Random.Range(0, healDirs.Count);
-        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform,healDirs[dir]);
+        GameObject heal = Instantiate(healPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
+        //var dir = Random.Range(0, healDirs.Count);
+        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform,healDirs[0]);
         var newList = new List<GameObject>();
         if (curAtks.Count > 0)
             foreach (var swing in curAtks)

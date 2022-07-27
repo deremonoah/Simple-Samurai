@@ -35,7 +35,11 @@ public class EnmAtKArea : MonoBehaviour
             }
         }
         transform.Translate(dir * movspd *Time.deltaTime);
-        if (this.transform.position.x < endPos.transform.position.x || this.transform.position.y < endPos.transform.position.y)
+        if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (this.transform.position.y < endPos.transform.position.y && dir.x < 1))
+        {
+            myenm.hitNow();
+            Destroy(gameObject);
+        } else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
             Destroy(gameObject);
         }
