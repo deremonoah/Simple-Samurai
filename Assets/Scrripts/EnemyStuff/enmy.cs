@@ -24,10 +24,10 @@ public class enmy : MonoBehaviour
     [SerializeField] EnemysSystem enmsSys;
 
     //attack projectile stuff
-    [SerializeField] GameObject atkPrefab, healPrefab;
+    [SerializeField] GameObject atkPrefab, specialPrefab;
     [SerializeField] List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
-    [SerializeField] List<Vector2> atkDirs,healDirs;
+    [SerializeField] List<Vector2> atkDirs,SpecialDirs;
     attackState curState;
     public Ability myAbility;
     private int amountRobbed = 0;
@@ -272,6 +272,19 @@ public class enmy : MonoBehaviour
         yield return new WaitForSeconds(1);
         //create run away ui 
         //which then has to when hit stop this routine and if not it just destroys the enm thief clone
+        GameObject run = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
+        run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]);
+        yield return new WaitForSeconds(2);
+    }
+
+    public void IRan()
+    {
+        if (enmsSys.enms.Count == 1)
+        {
+            enmsSys.enms.Remove(this);
+            enmsSys.OpenTimer = 1.5f; 
+        }
+        Destroy(this.gameObject);
     }
 
     private void OnValidate()
@@ -326,9 +339,9 @@ public class enmy : MonoBehaviour
 
     public void HealingUI()
     {
-        GameObject heal = Instantiate(healPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
+        GameObject heal = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         //var dir = Random.Range(0, healDirs.Count);
-        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform,healDirs[0]);
+        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform,SpecialDirs[0]);
         var newList = new List<GameObject>();
         if (curAtks.Count > 0)
             foreach (var swing in curAtks)

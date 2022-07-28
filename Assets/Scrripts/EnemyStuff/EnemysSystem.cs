@@ -8,7 +8,7 @@ public class EnemysSystem : MonoBehaviour
     public GameObject[] enmSpawns;
     
     public List<enmy> enms;
-
+    public float OpenTimer = 0.5f;
     
     private bool spawned = false;
 
@@ -40,8 +40,14 @@ public class EnemysSystem : MonoBehaviour
     {
         if (spawned && enms.Count < 1)
         {
-            GM.OpenPickPan();
-            spawned = false;
+            if (OpenTimer <= 0)
+            {
+                spawned = false;
+                OpenTimer = 0.5f;
+                GM.OpenPickPan();
+            }
+            else
+            { OpenTimer -= Time.deltaTime; }
         }
         
     }

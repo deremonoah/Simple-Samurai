@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private List<Item> randLootPicks = new List<Item>();
     public StrikeArea mainStrkArea;
 
+
     #region Farm Varibles
     private float FarmHeal = 20;
     private float FarmIncHP = 10;

@@ -35,12 +35,18 @@ public class EnmAtKArea : MonoBehaviour
             }
         }
         transform.Translate(dir * movspd *Time.deltaTime);
-        if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (this.transform.position.y < endPos.transform.position.y && dir.x < 1))
+        if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
             myenm.hitNow();
             Destroy(gameObject);
         } else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
+
+            if (myenm.myAbility == enmy.Ability.steal)
+            {
+                myenm.IRan();
+            }
+            //this is spiecial reverse moves
             Destroy(gameObject);
         }
     }

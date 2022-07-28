@@ -48,8 +48,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: specialPrefab
+      value: 
+      objectReference: {fileID: 3509652709057987960, guid: 7ab98004fe2ad9a4e9fc5087a5844f14, type: 3}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: atkDirs.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: SpecialDirs.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: atkDirs.Array.data[1].x
@@ -58,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: atkDirs.Array.data[1].y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: SpecialDirs.Array.data[0].x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_RootOrder
