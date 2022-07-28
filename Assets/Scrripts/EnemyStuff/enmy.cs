@@ -184,10 +184,15 @@ public class enmy : MonoBehaviour
         {
             myattackRoutine = StartCoroutine(healEnmRoutine());
         }
+        else if (myAbility == Ability.steal && amountRobbed > 5)
+        {
+            myattackRoutine = StartCoroutine(RunRoutine());
+        }
         else
         {
             myattackRoutine = StartCoroutine(TheattackRoutine());
         }
+        
     }
 
     IEnumerator TheattackRoutine()
@@ -260,6 +265,13 @@ public class enmy : MonoBehaviour
         }
         
 
+    }
+
+    IEnumerator RunRoutine()
+    {
+        yield return new WaitForSeconds(1);
+        //create run away ui 
+        //which then has to when hit stop this routine and if not it just destroys the enm thief clone
     }
 
     private void OnValidate()
