@@ -406,19 +406,19 @@ MonoBehaviour:
   damgMax: 30
   healMin: 0
   healMax: 0
-  randWaitmin: 1
-  randWaitmax: 2.5
+  randWaitmin: 1.5
+  randWaitmax: 3.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   myHPBar: {fileID: 2460627139670560194}
   enmsSys: {fileID: 0}
   atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
-  healPrefab: {fileID: 0}
+  specialPrefab: {fileID: 0}
   atkStarts: []
   atkEnd: {fileID: 0}
   atkDirs:
   - {x: -1, y: 0}
-  healDirs: []
+  SpecialDirs: []
   myAbility: 0
   matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 4
