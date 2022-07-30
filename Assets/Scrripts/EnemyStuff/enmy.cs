@@ -153,7 +153,7 @@ public class enmy : MonoBehaviour
         else
         {
             if (deal > armor)
-            { HP -= (deal - armor); }
+            { HP = HP- (deal - armor); }
         }
         
         curState = attackState.damaged;

@@ -12,7 +12,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] bool indere;
     [SerializeField] float maxDamg = 70;
     [SerializeField] float baseDamg;
-    [SerializeField] float damgMult;
+    [SerializeField] float damgMult=1;
     [SerializeField] float defaultDamgMult;
     [SerializeField] List<int> target;
 
@@ -65,14 +65,14 @@ public class StrikeArea : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Space) && indere)
             {
-                float Damger = Mathf.Clamp(baseDamg + (timer * damgMult), 0, maxDamg);
+                float Damger = baseDamg + Mathf.Clamp( timer * damgMult, 0, maxDamg);
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
+                    Debug.Log(Damger);
                     enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit");
                     if (Damger >= 15f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
-                        GM.PayOut(1);
                         if(Damger >=25)
                         { GM.PayOut(2); }
                         else { GM.PayOut(1); }
