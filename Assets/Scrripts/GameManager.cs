@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         switch (cur.curiEef)
         {
             case CurioEffect.Koban:
-                playerCoins += 50;
+                playerCoins += cur.CurioNum;
                 break;
         }
     }
@@ -231,10 +231,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ImproveFarm()
-    {
-
-    }
 
     #endregion
 
@@ -260,6 +256,7 @@ public class GameManager : MonoBehaviour
         for (int lcv = 0; lcv < 3; lcv++)
         {
             buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
+            buttonImages[lcv].GetComponent<HoverTip>().tipToShow = randLootPicks[lcv].itemDescription;
         }
 
     }

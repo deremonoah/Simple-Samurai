@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: testArmor
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 0}
+  itemDescription: this is better armor just havent drawn a sprite yet
   armor: 10
+  armrEef: 0

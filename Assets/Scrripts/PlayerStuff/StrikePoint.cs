@@ -65,6 +65,7 @@ public class StrikePoint : MonoBehaviour
             //reset to start pos here
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                
                 pos = startpoint.transform.position;
                 rb.transform.position = startpoint.transform.position;
                 uping = false;

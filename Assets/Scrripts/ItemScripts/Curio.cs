@@ -6,6 +6,6 @@ using UnityEngine;
 public class Curio : Item
 {
     public CurioEffect curiEef;
-    public float CurioNum;
+    public int CurioNum;
 }
 public enum CurioEffect { Koban,healing,heal,incrArea,revive,greed }
