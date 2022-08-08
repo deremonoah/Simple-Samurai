@@ -269,7 +269,7 @@ public class enmy : MonoBehaviour
 
     IEnumerator RunRoutine()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         //create run away ui 
         //which then has to when hit stop this routine and if not it just destroys the enm thief clone
         GameObject run = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
@@ -362,7 +362,7 @@ public class enmy : MonoBehaviour
     IEnumerator OnFire()
     {
         yield return new WaitForSeconds(1f);
-        HP -= 1;
+        HP -= 2;
         int randNum = Random.Range(0, 4);
         if (randNum < 3)
         {

@@ -406,8 +406,8 @@ MonoBehaviour:
   damgMax: 30
   healMin: 0
   healMax: 0
-  randWaitmin: 1.5
-  randWaitmax: 3.5
+  randWaitmin: 1.8
+  randWaitmax: 3.8
   readyingTimer: 2.5
   strikeTimer: 0.4
   myHPBar: {fileID: 2460627139670560194}
