@@ -34,7 +34,6 @@ public class HoverTipManager : MonoBehaviour
     {
         tipText.text = tip;
         tipWindow.sizeDelta = new Vector2(tipText.preferredWidth > 400 ? 400 : tipText.preferredWidth, tipText.preferredHeight + 100);
-        //fudge the above line its just being annoying it wont autosize and just fuck it
         //was to small but added the +40 and +25 because I want to use big font
 
 
