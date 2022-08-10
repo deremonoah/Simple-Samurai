@@ -56,7 +56,7 @@ public class EnemysSystem : MonoBehaviour
     {
         enmy enm = Instantiate(enmPrefab, enmSpawns[point].transform.position, enmSpawns[point].transform.rotation).GetComponent<enmy>();
         enms.Add(enm);
-        enm.GetComponent<enmy>().SetThings(attackkStarts, atkEnd);
+        enm.GetComponent<enmy>().SetThings(attackkStarts, atkEnd, point);
         spawned = true;
         recPos = point;
     }
@@ -83,7 +83,17 @@ public class EnemysSystem : MonoBehaviour
         {
             enms[0].SetTargetPointer(PlayerSA.equipedWeapon.strikePointer);
         }
-        
+
+        UpdateEnmsPos();
+
+    }
+
+    public void UpdateEnmsPos()
+    {
+        for (int lcv = 0; lcv < enms.Count; lcv++)
+        {
+            enms[lcv].SetPosInList(lcv);
+        }
     }
 
     IEnumerator SpawnWave()

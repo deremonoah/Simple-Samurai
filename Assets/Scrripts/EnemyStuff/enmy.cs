@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class enmy : MonoBehaviour
 {
+    [SerializeField] int posInList;
     //stats
     public float HP;
     [SerializeField] float maxHP, armor,damgMin, damgMax, healMin, healMax;
-    
+
     //mostly timers n stuff
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
+    [SerializeField] float waitTimerOffset;
 
     private Camera mainCam;
     private GameManager GM;
@@ -101,11 +103,14 @@ public class enmy : MonoBehaviour
         {
             HP = maxHP;
         }
+
+        SetWaitTimerOffset();
         /*switch(curState)
         {
             case attackState.waiting: state = 0
 
         }*/
+        //below is the effect of range or mob honour
 
         anim.SetFloat("State", (int)curState);
         fillMyHP();
@@ -171,11 +176,31 @@ public class enmy : MonoBehaviour
         StartMyRoutine();
     }
 
-    public void SetThings( List<GameObject> str, GameObject end)
+    public void SetThings( List<GameObject> str, GameObject end, int point)
     {
         atkStarts = str;
-        
         atkEnd = end;
+        posInList = point;
+    }
+
+    public void SetPosInList(int pos)
+    {
+        posInList = pos;
+    }
+
+    public void SetWaitTimerOffset()
+    {
+        if (posInList > 0)
+        {
+            waitTimerOffset = 1;
+            if (posInList == 3)
+            {
+                waitTimerOffset = 2;
+            }
+        }else
+        {
+            waitTimerOffset = 0;
+        }
     }
 
     public void StartMyRoutine()
@@ -198,7 +223,7 @@ public class enmy : MonoBehaviour
     IEnumerator TheattackRoutine()
     {
         curState = attackState.waiting;
-        yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
+        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
 
 
         StrikeUI();
@@ -232,7 +257,7 @@ public class enmy : MonoBehaviour
         enmy targetally = new enmy();
         
 
-        yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
+        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
         foreach (enmy i in enmsSys.enms)
         {
@@ -269,8 +294,7 @@ public class enmy : MonoBehaviour
 
     IEnumerator RunRoutine()
     {
-        yield return new WaitForSeconds(2);
-        //create run away ui 
+        yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
         //which then has to when hit stop this routine and if not it just destroys the enm thief clone
         GameObject run = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]);
@@ -279,10 +303,11 @@ public class enmy : MonoBehaviour
 
     public void IRan()
     {
-        if (enmsSys.enms.Count == 1)
+        if (enmsSys.enms.Count >= 1)
         {
             enmsSys.enms.Remove(this);
-            enmsSys.OpenTimer = 1.5f; 
+            enmsSys.OpenTimer = 1.5f;
+            enmsSys.UpdateEnmsPos();
         }
         Destroy(this.gameObject);
     }
