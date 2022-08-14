@@ -386,10 +386,10 @@ public class enmy : MonoBehaviour
 
     IEnumerator OnFire()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         HP -= 2;
-        int randNum = Random.Range(0, 4);
-        if (randNum < 3)
+        int randNum = Random.Range(0, 6);
+        if (randNum < 6)
         {
             StartCoroutine(OnFire());
         }

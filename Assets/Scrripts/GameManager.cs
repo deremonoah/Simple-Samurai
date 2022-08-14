@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public bool Paused = false;
     private EnemysSystem enmsSys;
     public Text TextCoins;
-    private int playerCoins;
+    [SerializeField] int playerCoins;
     [SerializeField] PlayerHealthBar playerHP;
 
     public SoundManager SoundMng;
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
 
     #region Farm Varibles
-    private float FarmHeal = 20;
+    private float FarmHeal = 30;
     private float FarmIncHP = 10;
     private int FarmLvl = 1;
     
@@ -186,9 +186,9 @@ public class GameManager : MonoBehaviour
 
     public void FarmHealButton()
     {
-        if (playerCoins >= 10)
+        if (playerCoins >= 5)
         {
-            playerCoins -= 10;
+            playerCoins -= 5;
             playerHP.HealPlayer(FarmHeal);
         }
         
@@ -196,37 +196,34 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseMaxHPButton()
     {
-        if (playerCoins >= 20)
+        if (playerCoins >= 10)
         {
-            playerCoins -= 20;
+            playerCoins -= 10;
             playerHP.maxHealth +=FarmIncHP;
         }
     }
 
     public void ImproveFarmButton()
     {
-        if (playerCoins >=20)
+        if (playerCoins >=15)
         {
-            playerCoins -= 20;
+            playerCoins -= 15;
             FarmLvl++;
             switch (FarmLvl)
             {
                 case 2:
-                    FarmHeal = 30;
+                    FarmHeal = 40;
                     FarmIncHP = 15;
                     break;
                 case 3:
-                    FarmHeal = 40;
+                    FarmHeal = 60;
                     FarmIncHP = 25;
                     break;
                 case 4:
-                    FarmHeal = 50;
-                    FarmIncHP = 35;
+                    FarmHeal = 80;
+                    FarmIncHP = 40;
                     break;
-                case 5:
-                    FarmHeal = 60;
-                    FarmIncHP = 50;
-                    break;
+                
             }
         }
     }
