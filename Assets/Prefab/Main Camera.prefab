@@ -104,8 +104,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enms: []
+  OpenTimer: 0.5
   recPos: 0
-  atkStart: {fileID: 0}
+  attackkStarts: []
   atkEnd: {fileID: 0}
   waves:
   - {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
@@ -134,9 +135,12 @@ MonoBehaviour:
   pickPan: {fileID: 0}
   shopPan: {fileID: 0}
   winPan: {fileID: 0}
+  pausePan: {fileID: 0}
   Paused: 0
   TextCoins: {fileID: 0}
+  playerCoins: 0
   playerHP: {fileID: 0}
+  SoundMng: {fileID: 0}
   buttonImages:
   - {fileID: 0}
   - {fileID: 0}
@@ -149,6 +153,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e92af5917f19b847abebe98ed0412de, type: 2}
   - {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
   - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
+  - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
   mainStrkArea: {fileID: 0}
 --- !u!114 &1092464847776271020
 MonoBehaviour:

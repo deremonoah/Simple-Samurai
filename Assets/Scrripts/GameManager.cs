@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private float FarmHeal = 30;
     private float FarmIncHP = 10;
     private int FarmLvl = 1;
+    [SerializeField] List<GameObject> farmLvlImages;
     
     #endregion
 
@@ -174,6 +175,9 @@ public class GameManager : MonoBehaviour
             case CurioEffect.Koban:
                 playerCoins += cur.CurioNum;
                 break;
+            case CurioEffect.heal:
+                playerHP.HealPlayer(cur.CurioNum);
+                break;
         }
     }
 
@@ -205,7 +209,7 @@ public class GameManager : MonoBehaviour
 
     public void ImproveFarmButton()
     {
-        if (playerCoins >=15)
+        if (playerCoins >=15 && FarmLvl<4)
         {
             playerCoins -= 15;
             FarmLvl++;
@@ -214,14 +218,17 @@ public class GameManager : MonoBehaviour
                 case 2:
                     FarmHeal = 40;
                     FarmIncHP = 15;
+                    farmLvlImages[0].SetActive(true);
                     break;
                 case 3:
                     FarmHeal = 60;
                     FarmIncHP = 25;
+                    farmLvlImages[1].SetActive(true);
                     break;
                 case 4:
                     FarmHeal = 80;
                     FarmIncHP = 40;
+                    farmLvlImages[2].SetActive(true);
                     break;
                 
             }
@@ -233,10 +240,7 @@ public class GameManager : MonoBehaviour
 
     private void RandomItemPull()
     {
-        //add to the randweapon list from list of weapons but can't repeat numbers so we could generate 3 random numbers
-        //then we also should make sure the weapon doesn't match the one the player has and it could be an item so armor
-        //or curio but the player can only have 1 of each weapon armor and curio that this should check if the random 
-        //yeah pretty complicated we gonna start with just random numbers
+        
         var tempList = new List<Item>(lootList);
         var temp1 = Random.Range(0, tempList.Count);
         randLootPicks.Add(tempList[temp1]);
