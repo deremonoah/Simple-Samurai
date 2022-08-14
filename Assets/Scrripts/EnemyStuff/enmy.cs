@@ -9,6 +9,7 @@ public class enmy : MonoBehaviour
     //stats
     public float HP;
     [SerializeField] float maxHP, armor,damgMin, damgMax, healMin, healMax;
+    public enmy targetally;
 
     //mostly timers n stuff
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
@@ -122,7 +123,7 @@ public class enmy : MonoBehaviour
         myHPBar.fillAmount = HP / maxHP;
     }
 
-    public void Healenm(float heal)
+    public void healEnm(float heal)
     {
         HP += heal;
     }
@@ -254,7 +255,7 @@ public class enmy : MonoBehaviour
     {
         curState = attackState.waiting;
          bool hitIf = false;
-        enmy targetally = new enmy();
+         targetally = new enmy();
         
 
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
@@ -279,7 +280,7 @@ public class enmy : MonoBehaviour
             curState = attackState.swinging;
             yield return new WaitForSeconds(strikeTimer);
 
-            targetally.Healenm(Random.Range(healMin, healMax));
+
             //soundMRef.PlaySound("heal"); make a heal sound
 
             myattackRoutine = StartCoroutine(healEnmRoutine());
@@ -290,6 +291,11 @@ public class enmy : MonoBehaviour
         }
         
 
+    }
+
+    public void healAllyNow()
+    {
+        targetally.healEnm(Random.Range(healMin, healMax));
     }
 
     IEnumerator RunRoutine()

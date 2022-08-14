@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582431f5892f74c498e3445ec03e44bc, type: 3}
   m_Name: rice bowl
   m_EditorClassIdentifier: 
-  itemPanelIcon: {fileID: 0}
-  itemDescription: 
-  curiEef: 0
-  CurioNum: 0
+  itemPanelIcon: {fileID: 21300000, guid: 626ed3d7f14b9e14faec0ec4c1cc5575, type: 3}
+  itemDescription: a nurishing bowl of rice that heals you
+  curiEef: 2
+  CurioNum: 60

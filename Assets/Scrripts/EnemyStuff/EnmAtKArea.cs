@@ -45,9 +45,12 @@ public class EnmAtKArea : MonoBehaviour
             if (myenm.myAbility == enmy.Ability.steal)
             {
                 myenm.IRan();
+            }else if (myenm.myAbility == enmy.Ability.heal)
+            {
+                myenm.healAllyNow();
+                //this is spiecial reverse moves
+                Destroy(gameObject);
             }
-            //this is spiecial reverse moves
-            Destroy(gameObject);
         }
     }
 
