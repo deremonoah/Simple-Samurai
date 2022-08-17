@@ -8,4 +8,4 @@ public class Armor : Item
     public float armor;
     public ArmorEffect armrEef;
 }
-public enum ArmorEffect { turtle,greed,revive }
+public enum ArmorEffect { none,turtle,greed,revive }
