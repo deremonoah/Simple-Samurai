@@ -12,8 +12,10 @@ public class StrikePoint : MonoBehaviour
     
     [SerializeField] float frequency;
     [SerializeField] float magnitude;
-    
-    
+
+    [SerializeField] float inbetweenTimerMax;
+    [SerializeField] float inbetweenTimer;
+    [SerializeField] bool inbetween;
 
     bool faceingRight = true;
 
@@ -25,9 +27,10 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] GameObject NormalEndBound;
     [SerializeField] GameObject SmallerEndBound;
     private GameObject CurrentEndBound;
-    private bool uping = false;
+    [SerializeField] bool uping = false;
     [SerializeField] float upSpeed;
 
+    public float mostRecentX;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,6 +39,7 @@ public class StrikePoint : MonoBehaviour
         localScale = transform.localScale;
 
         CurrentEndBound = NormalEndBound;
+        inbetweenTimer = inbetweenTimerMax;
     }
 
     void Update()
@@ -44,9 +48,10 @@ public class StrikePoint : MonoBehaviour
         checkWhereToFace();
 
         
+
         if (StrikeArea.PlayerOn)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && !inbetween)
             {
                 Timer += Time.deltaTime;
                 if (faceingRight)
@@ -55,8 +60,9 @@ public class StrikePoint : MonoBehaviour
                 }
                 else if(!faceingRight)
                 {
-                    moveLeft();
+                    moveUPandDown();
                 }
+                mostRecentX = transform.localPosition.x;
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -65,13 +71,23 @@ public class StrikePoint : MonoBehaviour
             //reset to start pos here
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                
+                //mostRecentX = transform.position.x;
                 pos = startpoint.transform.position;
                 rb.transform.position = startpoint.transform.position;
+                inbetween = true;
                 uping = false;
             }
         }
-        
+
+        if (inbetween)
+        {
+            if (inbetweenTimer <= 0)
+            {
+                inbetween = false;
+                inbetweenTimer = inbetweenTimerMax;
+            }
+            else { inbetweenTimer -= Time.deltaTime; }
+        }
     }
 
     void checkWhereToFace()
@@ -96,8 +112,17 @@ public class StrikePoint : MonoBehaviour
         transform.position = pos + transform.up * Mathf.Sin(Timer * (frequency )) * magnitude;
     }
 
-    void moveLeft()
+    void moveUPandDown()
     {
+        /*if (transform.position.y == TopBound.transform.position.y)
+        {
+            uping = false;
+        }
+        if (transform.position.y == BottomBound.transform.position.y)
+        {
+            uping = true;
+        }
+
         if (uping)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, TopBound.transform.position.y), upSpeed * Time.deltaTime);
@@ -105,15 +130,10 @@ public class StrikePoint : MonoBehaviour
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, BottomBound.transform.position.y), upSpeed * Time.deltaTime);
-        }
-        if (transform.position.y == BottomBound.transform.position.y)
-        {
-            uping = true;
-        }
-        else if (transform.position.y == TopBound.transform.position.y)
-        {
-            uping = false;
-        }
+        }*/
+        
+        transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(Timer*frequency)*magnitude;
+        
     }
 
     public void ChangeStrikeSprite(Sprite spt)

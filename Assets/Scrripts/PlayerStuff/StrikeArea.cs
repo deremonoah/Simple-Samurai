@@ -25,6 +25,7 @@ public class StrikeArea : MonoBehaviour
     public SoundManager SoundMng;
 
     public GameObject strikePointObj;
+    private StrikePoint strikePoint;
 
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
@@ -36,6 +37,7 @@ public class StrikeArea : MonoBehaviour
         enmySys = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
+        strikePoint = strikePointObj.GetComponent<StrikePoint>();
     }
 
     
@@ -46,29 +48,35 @@ public class StrikeArea : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        if (timer > 2.5 && timer <4.4)
-        { damgMult = 12; }
-        else if (timer > 4.5)
+        if (strikePoint.mostRecentX < 1.5)
+        { damgMult = 1; }
+        else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 3)
+        { damgMult = 6; }
+        else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
+        { damgMult = 10; }
+        else if (strikePoint.mostRecentX >= 4)
         { damgMult = 20; }
+        
 
         if (PlayerOn)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                timering = true;
+                /*timering = true;
                 timer = 0;
                 damgMult = defaultDamgMult;
-                timer = 0;
+                timer = 0;*/
 
             }
 
 
             if (Input.GetKeyUp(KeyCode.Space) && indere)
             {
-                float Damger = baseDamg + Mathf.Clamp( timer * damgMult, 0, maxDamg);
+                float Damger = baseDamg + Mathf.Clamp(strikePoint.mostRecentX * damgMult, 0, maxDamg);
+                
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
-                    Debug.Log(Damger);
+                    Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
                     enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit");
                     if (Damger >= 15f && equipedWeapon.effs[0] == WeaponEffect.greed)
