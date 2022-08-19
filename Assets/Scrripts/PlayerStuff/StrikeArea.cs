@@ -26,6 +26,7 @@ public class StrikeArea : MonoBehaviour
 
     public GameObject strikePointObj;
     private StrikePoint strikePoint;
+    public bool justStruck;
 
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
@@ -38,6 +39,7 @@ public class StrikeArea : MonoBehaviour
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
+        justStruck = false;
     }
 
     
@@ -60,17 +62,8 @@ public class StrikeArea : MonoBehaviour
 
         if (PlayerOn)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                /*timering = true;
-                timer = 0;
-                damgMult = defaultDamgMult;
-                timer = 0;*/
 
-            }
-
-
-            if (Input.GetKeyUp(KeyCode.Space) && indere)
+            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && indere && !justStruck)
             {
                 float Damger = baseDamg + Mathf.Clamp(strikePoint.mostRecentX * damgMult, 0, maxDamg);
                 
@@ -79,6 +72,8 @@ public class StrikeArea : MonoBehaviour
                     Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
                     enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit");
+                    justStruck = true;
+                    timer = 0.1f;
                     if (Damger >= 15f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
                         if(Damger >=25)
@@ -87,12 +82,15 @@ public class StrikeArea : MonoBehaviour
                     }
                 }
 
-                timer = 0;
-                timering = false;
+
             }
         }
 
-        
+        if (timer<0 && justStruck)
+        {
+            justStruck = false;
+        }
+        else { timer -= Time.deltaTime; }
         
           if (Input.GetKeyDown(KeyCode.Alpha1))
         {

@@ -27,10 +27,10 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] GameObject NormalEndBound;
     [SerializeField] GameObject SmallerEndBound;
     private GameObject CurrentEndBound;
-    [SerializeField] bool uping = false;
     [SerializeField] float upSpeed;
 
     public float mostRecentX;
+    public bool pressing = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,7 +51,7 @@ public class StrikePoint : MonoBehaviour
 
         if (StrikeArea.PlayerOn)
         {
-            if (Input.GetKey(KeyCode.Space) && !inbetween)
+            if ((Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.Mouse0) )&& !inbetween)
             {
                 Timer += Time.deltaTime;
                 if (faceingRight)
@@ -64,18 +64,19 @@ public class StrikePoint : MonoBehaviour
                 }
                 mostRecentX = transform.localPosition.x;
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))&& !pressing)
             {
                 Timer = 0;
+                pressing = true;
             }
             //reset to start pos here
-            if (Input.GetKeyUp(KeyCode.Space))
+            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0))&& pressing)
             {
                 //mostRecentX = transform.position.x;
                 pos = startpoint.transform.position;
                 rb.transform.position = startpoint.transform.position;
                 inbetween = true;
-                uping = false;
+                pressing = false;
             }
         }
 
