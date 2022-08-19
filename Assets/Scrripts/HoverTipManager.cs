@@ -45,7 +45,7 @@ public class HoverTipManager : MonoBehaviour
             tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x - offScreenXoffSet, mousePos.y);
             Debug.Log("on left");
         }
-        else { tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x / 8, mousePos.y); }
+        else { tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x /8, mousePos.y); }
         
     }
 

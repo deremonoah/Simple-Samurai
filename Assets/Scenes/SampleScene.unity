@@ -7696,7 +7696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipText: {fileID: 997336999}
   tipWindow: {fileID: 1405031783}
-  offScreenXoffSet: 0
+  offScreenXoffSet: 800
   positionOffset: {x: 0, y: 0}
 --- !u!1 &1439485291
 GameObject:
@@ -11979,7 +11979,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
       value: 
