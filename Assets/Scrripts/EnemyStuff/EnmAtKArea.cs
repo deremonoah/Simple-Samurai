@@ -20,7 +20,7 @@ public class EnmAtKArea : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space)&& blocking)
+        if ((Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))&& blocking)
         {
             if (multiPerry >0)
             {
@@ -49,8 +49,8 @@ public class EnmAtKArea : MonoBehaviour
             {
                 myenm.healAllyNow();
                 //this is spiecial reverse moves
-                Destroy(gameObject);
             }
+            Destroy(gameObject);
         }
     }
 

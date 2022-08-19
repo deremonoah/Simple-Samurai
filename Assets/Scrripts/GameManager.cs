@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
             {
                 ResolveCurioEffect((Curio)randLootPicks[buttonID]);
             }
-            randLootPicks.RemoveAt(buttonID);
+            randLootPicks.Clear();
 
             ClosePickPan();
         }
@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
 
     private void RandomItemPull()
     {
-        
+        randLootPicks.Clear();
         var tempList = new List<Item>(lootList);
         var temp1 = Random.Range(0, tempList.Count);
         randLootPicks.Add(tempList[temp1]);
