@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5893950105723898029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.552, y: 2.34, z: -0.26568952}
+  m_LocalPosition: {x: -1.552, y: 2.34, z: -2}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
   m_Children:
   - {fileID: 6091754414344736099}
@@ -406,10 +406,13 @@ MonoBehaviour:
   damgMax: 30
   healMin: 0
   healMax: 0
+  targetally: {fileID: 0}
   randWaitmin: 1.8
   randWaitmax: 3.8
   readyingTimer: 2.5
   strikeTimer: 0.4
+  waitTimerOffset: 0
+  posInList: 0
   myHPBar: {fileID: 2460627139670560194}
   enmsSys: {fileID: 0}
   atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
@@ -486,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1981594130485249205, guid: 6434d79d4cb030246b1c18c024083f4e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.26568952
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1981594130485249205, guid: 6434d79d4cb030246b1c18c024083f4e, type: 3}
       propertyPath: m_LocalRotation.w

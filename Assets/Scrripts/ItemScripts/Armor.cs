@@ -9,7 +9,7 @@ public class Armor : Item
     public int eefNumOne, eefNumTwo;
     public ArmorEffect armrEef;
 }
-public enum ArmorEffect { none,turtle,greed,pheenix,sturdy,regen,spiked,crane,revive,beserker,leaf,scary }
+public enum ArmorEffect { none,turtle,greed,phoenix,sturdy,regen,spiked,crane,revive,beserker,leaf,scary }
 /* turtle: while not readying a strike you are turtled up and are better protected
  * pheenix: internet is out idk how to spell, but you come back with half your health so like 50 then 25 then death so if more health or you get it back your okay maybe
  * sturdy: the sturdy ability in pokemon but its just when you would die you are on 1 hp

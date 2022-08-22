@@ -50,11 +50,12 @@ public class ExtraStrikeArea : MonoBehaviour
 
             }
 
+            CheckTarget();
 
             if (Input.GetKeyUp(KeyCode.Space) && indere)
             {
                 float Damger = Mathf.Clamp(baseDamg + (timer * damgMult), 0, maxDamg);
-                CheckTarget();
+                
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
                     
@@ -113,10 +114,13 @@ public class ExtraStrikeArea : MonoBehaviour
             {
                 target.Clear();
                 target.Add(0);
-            }else
+                
+            }
+            else
             {
                 target.Clear();
                 target.Add(WhichAreaMe);
+                enmySys.SetTargetEnmPointer(WhichAreaMe, mainArea.BowPointers[WhichAreaMe]);
             }
         }else if (enmySys.enms.Count == 4)
         {

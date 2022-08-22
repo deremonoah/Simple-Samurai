@@ -53,9 +53,9 @@ public class StrikeArea : MonoBehaviour
         if (strikePoint.mostRecentX < 1.5)
         { damgMult = 1; }
         else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 3)
-        { damgMult = 6; }
+        { damgMult = 8; }
         else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
-        { damgMult = 10; }
+        { damgMult = 12; }
         else if (strikePoint.mostRecentX >= 4)
         { damgMult = 20; }
         

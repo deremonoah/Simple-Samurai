@@ -49,7 +49,15 @@ public class PlayerHealthBar : MonoBehaviour
 
         if (health <= 0f)
         {
-            Camera.main.GetComponent<GameManager>().OpenLossPan();
+            if (myArmor.armrEef == ArmorEffect.phoenix)
+            {
+                maxHealth = maxHealth / 2;
+                health = maxHealth;
+                //make it so player can't increase max hp probably
+                if (maxHealth <= 10)
+                { Camera.main.GetComponent<GameManager>().OpenLossPan(); }
+            }
+            else { Camera.main.GetComponent<GameManager>().OpenLossPan(); }
         }
     }
 

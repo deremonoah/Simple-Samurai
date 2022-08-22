@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class enmy : MonoBehaviour
 {
-    [SerializeField] int posInList;
+    
     //stats
     public float HP;
     [SerializeField] float maxHP, armor,damgMin, damgMax, healMin, healMax;
@@ -18,8 +18,8 @@ public class enmy : MonoBehaviour
     private Camera mainCam;
     private GameManager GM;
     private PlayerHealthBar playerHP;
-    
-    
+    [SerializeField] int posInList;
+
     //animation stuff
     private Animator anim;
     

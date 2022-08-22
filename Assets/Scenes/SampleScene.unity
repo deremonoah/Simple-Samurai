@@ -11991,7 +11991,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: waves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
+      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
       value: 
@@ -12035,7 +12035,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776271020, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: testArmor
       value: 
-      objectReference: {fileID: 11400000, guid: ca445cee3a30bea4aa8c88add7be2ccb, type: 2}
+      objectReference: {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
     - target: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: m_Name
       value: Main Camera

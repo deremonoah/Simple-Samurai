@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
   - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
   mainStrkArea: {fileID: 0}
+  bonusGold: 0
   farmLvlImages: []
 --- !u!114 &1092464847776271020
 MonoBehaviour:
@@ -171,6 +172,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   health: 100
   maxHealth: 100
-  armorNum: 0
+  armorNum: 5
   myArmor: {fileID: 11400000, guid: ba8a8d2ed6e56cc488237da71b56f496, type: 2}
   testArmor: {fileID: 11400000, guid: 2134eac3c1b49734da06d755ce35a994, type: 2}
