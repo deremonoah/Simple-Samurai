@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private List<Item> randLootPicks = new List<Item>();
     public StrikeArea mainStrkArea;
 
-
+    public bool bonusGold;
     #region Farm Varibles
     private float FarmHeal = 30;
     private float FarmIncHP = 10;
@@ -134,7 +134,12 @@ public class GameManager : MonoBehaviour
     public void PayOut(int coin)
     {
         SoundMng.PlaySound("coin");
-        playerCoins += coin;
+        int tempgold = 0;
+        if (bonusGold)
+        {
+            tempgold = Random.Range(playerHP.myArmor.eefNumOne, playerHP.myArmor.eefNumTwo+1);
+        }
+        playerCoins += coin+ tempgold;
         TextCoins.text = playerCoins.ToString();
     }
 

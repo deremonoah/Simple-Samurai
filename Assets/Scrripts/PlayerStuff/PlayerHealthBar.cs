@@ -10,11 +10,15 @@ public class PlayerHealthBar : MonoBehaviour
 
     public float health, maxHealth = 100;
     float lerpSpeed;
-    [SerializeField] float armor;
+    [SerializeField] float armorNum;
+    public Armor myArmor;
+    private GameManager gm;
 
+    [SerializeField] Armor testArmor;
     void Start()
     {
         health = maxHealth;
+        gm = FindObjectOfType<GameManager>();
     }
 
 
@@ -27,6 +31,20 @@ public class PlayerHealthBar : MonoBehaviour
 
         lerpSpeed = 3f * Time.deltaTime;
         
+        if (myArmor.armrEef == ArmorEffect.turtle)
+        {
+            if (!Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.Mouse0))
+            {
+                armorNum = myArmor.eefNumOne;
+            }
+            else { armorNum = myArmor.armor; }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetArmor(testArmor);
+        }
+
         HealthBarFiller();
 
         if (health <= 0f)
@@ -50,7 +68,7 @@ public class PlayerHealthBar : MonoBehaviour
             health -= (Mathf.Max(1,damagePoints));
         }else
         {
-            health -= (Mathf.Max(1, damagePoints - armor));
+            health -= (Mathf.Max(1, damagePoints - armorNum));
         }
     }
 
@@ -64,8 +82,11 @@ public class PlayerHealthBar : MonoBehaviour
 
     public void SetArmor(Armor am)
     {
-        Debug.Log($"armor is: {armor:0}");
-        armor = am.armor;
-        Debug.Log($"armor is: {armor}");
+        armorNum = am.armor;
+        myArmor = am;
+        if (myArmor.armrEef == ArmorEffect.greed)
+        {
+            gm.bonusGold = true;
+        }
     }
 }
