@@ -11894,12 +11894,16 @@ PrefabInstance:
       objectReference: {fileID: 715464449}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: 2134eac3c1b49734da06d755ce35a994, type: 2}
+    - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: ca445cee3a30bea4aa8c88add7be2ccb, type: 2}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: farmLvlImages.Array.size
       value: 3
