@@ -6,14 +6,14 @@ using UnityEngine;
 public class EnemysSystem : MonoBehaviour
 {
     public GameObject[] enmSpawns;
-    
+
     public List<enmy> enms;
     public float OpenTimer = 0.5f;
-    
+
     private bool spawned = false;
 
     [SerializeField] int recPos;
-    
+
 
     [SerializeField] List<GameObject> attackkStarts;
     [SerializeField] GameObject atkEnd;
@@ -25,7 +25,7 @@ public class EnemysSystem : MonoBehaviour
 
     public GameObject EnmHPPointer;
     private StrikeArea PlayerSA;
-    
+
 
     void Start()
     {
@@ -49,7 +49,7 @@ public class EnemysSystem : MonoBehaviour
             else
             { OpenTimer -= Time.deltaTime; }
         }
-        
+
     }
 
     public void SpawnEnemy(int point, GameObject enmPrefab)
@@ -62,7 +62,7 @@ public class EnemysSystem : MonoBehaviour
     }
     public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
     {
-        if(enms.Count > target)
+        if (enms.Count > target)
         {
             enms[target].damgEnemy(damg, effects);
         }
@@ -78,21 +78,19 @@ public class EnemysSystem : MonoBehaviour
         {
             enms.Remove(me);
         }
-        
+
         UpdateEnmsPos();
         if (enms.Count != 0)
         {
             enms[0].SetTargetPointer(PlayerSA.equipedWeapon.strikePointer);
         }
 
-       
-        if (PlayerSA.equipedWeapon.effs[0]==WeaponEffect.bow && enms.Count != 0)
+
+        if (PlayerSA.equipedWeapon.effs[0] == WeaponEffect.bow && enms.Count != 0)
         {
-            
-                SetBowPointers();
-            
+            SetBowPointers();
         }
-        
+
     }
 
     public void UpdateEnmsPos()
@@ -105,21 +103,21 @@ public class EnemysSystem : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        
+
         yield return new WaitForSeconds(1);
         if (WaveControlVariable >= waves.Count)
         {
-            
+
             GM.PlayerWins();
             yield return null;
         }
         else
         {
-            
+
             for (int lcv = 0; lcv < waves[WaveControlVariable].enmsInWave.Length; lcv++)
             {
                 SpawnEnemy(lcv, waves[WaveControlVariable].enmsInWave[lcv]);
-                
+
                 if (lcv == 0)
                     enms[0].SetTargetPointer(PlayerSA.equipedWeapon.strikePointer);
 
@@ -129,9 +127,12 @@ public class EnemysSystem : MonoBehaviour
 
             WaveControlVariable++;
         }
-        
+
+        if (PlayerSA.equipedWeapon.effs[0] == WeaponEffect.bow && enms.Count != 0)
+        {
             SetBowPointers();
-        
+        }
+
 
     }
 
@@ -140,11 +141,11 @@ public class EnemysSystem : MonoBehaviour
         StartCoroutine(SpawnWave());
     }
 
-    public void SetTargetEnmPointer(int num,Sprite pointer)
+    public void SetTargetEnmPointer(int num, Sprite pointer)
     {
         enms[num].SetTargetPointer(pointer);
     }
-    
+
     public void SetBowPointers()
     {
         foreach (enmy enm in enms)
@@ -154,7 +155,7 @@ public class EnemysSystem : MonoBehaviour
                 pointer.SetActive(false);
             }
         }
-        
+
         int enmIndex = 0;
         for (int PointerIndex = 0; PointerIndex < 3; PointerIndex++)
         {
@@ -163,7 +164,7 @@ public class EnemysSystem : MonoBehaviour
             {
                 enmIndex = 0;
             }
-            
+
             enms[enmIndex].BowPointers[PointerIndex].SetActive(true);
 
         }

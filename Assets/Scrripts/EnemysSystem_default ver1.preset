@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EnemysSystem_default ver1
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 2b89b8064bac9ca439aa1a4e41f5ef72, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enmSpawns.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enmSpawns.Array.data[0]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enmSpawns.Array.data[1]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enmSpawns.Array.data[2]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enmSpawns.Array.data[3]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: enms.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: OpenTimer
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: recPos
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: attackkStarts.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: attackkStarts.Array.data[0]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: attackkStarts.Array.data[1]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: attackkStarts.Array.data[2]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: attackkStarts.Array.data[3]
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: atkEnd
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 15f30f38d9d6c6d41a36787480ec93e1, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: e47e2a48ff7669a428e7de968cc26774, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 8877d478fa54a584cbbc7da656c33696, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[4]
+    value: 
+    objectReference: {fileID: 11400000, guid: b3721b69000f53d48a8981c5ecaa96d2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[5]
+    value: 
+    objectReference: {fileID: 11400000, guid: 2120487f544b9d14183076ff0675cb9e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[6]
+    value: 
+    objectReference: {fileID: 11400000, guid: 8b4bb5ef5ae54f44a80fe1b3cc1aa772, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[7]
+    value: 
+    objectReference: {fileID: 11400000, guid: 8ba7cb3554af55d4689ae52e77cfbfdf, type: 2}
+  - target: {fileID: 0}
+    propertyPath: waves.Array.data[8]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4b3d92d2a1b727d4ba632994330f4ebc, type: 2}
+  - target: {fileID: 0}
+    propertyPath: EnmHPPointer
+    value: 
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

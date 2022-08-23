@@ -92,6 +92,7 @@ public class StrikeArea : MonoBehaviour
             justStruck = false;
         }
         else { timer -= Time.deltaTime; }
+
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
