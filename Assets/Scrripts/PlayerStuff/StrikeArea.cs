@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StrikeArea : MonoBehaviour
 {
-    private EnemysSystem enmySys;
+    private EnemysSystem _enemySystem;
     public Camera mc;
     private GameManager GM;
     public static bool PlayerOn = true;
@@ -35,11 +35,12 @@ public class StrikeArea : MonoBehaviour
     void Start()
     {
         GM = mc.GetComponent<GameManager>();
-        enmySys = mc.GetComponent<EnemysSystem>();
+        _enemySystem = mc.GetComponent<EnemysSystem>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
         justStruck = false;
+
     }
 
     
@@ -70,7 +71,7 @@ public class StrikeArea : MonoBehaviour
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
                     Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
-                    enmySys.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
+                    _enemySystem.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit");
                     justStruck = true;
                     timer = 0.1f;
@@ -96,6 +97,7 @@ public class StrikeArea : MonoBehaviour
         {
             SetWeapon(Test);
         }
+
 
     }
 
@@ -174,4 +176,6 @@ public class StrikeArea : MonoBehaviour
     {
         PlayerOn = tf;
     }
+
+    
 }

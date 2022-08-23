@@ -97,7 +97,7 @@ public class enmy : MonoBehaviour
         {
             foreach (var atk in curAtks)
                 Destroy(atk);
-            enmsSys.Died(this);
+            enmsSys.OnDied(this);
             GM.PayOut(Random.Range(minCoin, maxCoin)+amountRobbed);
             Destroy(this.gameObject);
         }
@@ -408,39 +408,5 @@ public class enmy : MonoBehaviour
         HPPointer.GetComponent<SpriteRenderer>().sprite = img;
     }
 
-    public void SetBowPointers()
-    {
-        // bow pointers 0=blue 2nd, 1= green 3rd, 2=orange 4th (SA)
-        foreach (GameObject x in BowPointers)
-        {
-            x.SetActive(false);
-        }
-
-
-        if (posInList == 0 && enmsSys.enms.Count == 1)
-        {
-            for (int lcv = 0; lcv < BowPointers.Count; lcv++)
-            {
-                HPPointer.SetActive(true);
-                BowPointers[lcv].SetActive(true);
-            }
-        }else if(enmsSys.enms.Count ==2)
-        {
-            if (posInList == 0)
-            {
-                BowPointers[0].SetActive(true);
-            }else
-            {
-                HPPointer.SetActive(false);
-                BowPointers[1].SetActive(true);
-                BowPointers[2].SetActive(true);
-            }
-        }else if (enmsSys.enms.Count == 3)
-        {
-            if (posInList == 0)
-            {
-                BowPointers[2].SetActive(true);
-            }
-        }
-    }
+    
 }

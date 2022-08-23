@@ -103,7 +103,7 @@ public class ExtraStrikeArea : MonoBehaviour
             }
             else if (enmySys.enms.Count == 2)
             {
-                if (WhichAreaMe == 1)
+                if (WhichAreaMe == 2)
                 {
                     target.Clear();
                     target.Add(0);
@@ -126,14 +126,14 @@ public class ExtraStrikeArea : MonoBehaviour
                 {
                     target.Clear();
                     target.Add(WhichAreaMe);
-                    
+
                 }
             }
             else if (enmySys.enms.Count == 4)
             {
                 target.Clear();
                 target.Add(WhichAreaMe);
-                enmySys.SetTargetEnmPointer(WhichAreaMe, mainArea.BowPointers[WhichAreaMe]);
+
             }
         }
     }

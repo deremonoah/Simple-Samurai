@@ -72,25 +72,25 @@ public class EnemysSystem : MonoBehaviour
         return recPos;
     }
 
-    public void Died(enmy me)
+    public void OnDied(enmy me)
     {
         if (enms.Contains(me))
         {
             enms.Remove(me);
         }
-
+        
+        UpdateEnmsPos();
         if (enms.Count != 0)
         {
             enms[0].SetTargetPointer(PlayerSA.equipedWeapon.strikePointer);
         }
 
-        UpdateEnmsPos();
-        if (PlayerSA.equipedWeapon.effs[0]==WeaponEffect.bow)
+       
+        if (PlayerSA.equipedWeapon.effs[0]==WeaponEffect.bow && enms.Count != 0)
         {
-            foreach (enmy enm in enms)
-            {
-                enm.SetBowPointers();
-            }
+            
+                SetBowPointers();
+            
         }
         
     }
@@ -129,10 +129,9 @@ public class EnemysSystem : MonoBehaviour
 
             WaveControlVariable++;
         }
-        foreach (enmy enm in enms)
-        {
-            enm.SetBowPointers();
-        }
+        
+            SetBowPointers();
+        
 
     }
 
@@ -146,4 +145,28 @@ public class EnemysSystem : MonoBehaviour
         enms[num].SetTargetPointer(pointer);
     }
     
+    public void SetBowPointers()
+    {
+        foreach (enmy enm in enms)
+        {
+            foreach (GameObject pointer in enm.BowPointers)
+            {
+                pointer.SetActive(false);
+            }
+        }
+        
+        int enmIndex = 0;
+        for (int PointerIndex = 0; PointerIndex < 3; PointerIndex++)
+        {
+            enmIndex++;
+            if (enmIndex >= enms.Count)
+            {
+                enmIndex = 0;
+            }
+            
+            enms[enmIndex].BowPointers[PointerIndex].SetActive(true);
+
+        }
+    }
+
 }
