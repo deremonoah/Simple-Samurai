@@ -85,7 +85,14 @@ public class EnemysSystem : MonoBehaviour
         }
 
         UpdateEnmsPos();
-
+        if (PlayerSA.equipedWeapon.effs[0]==WeaponEffect.bow)
+        {
+            foreach (enmy enm in enms)
+            {
+                enm.SetBowPointers();
+            }
+        }
+        
     }
 
     public void UpdateEnmsPos()
@@ -122,7 +129,10 @@ public class EnemysSystem : MonoBehaviour
 
             WaveControlVariable++;
         }
-        
+        foreach (enmy enm in enms)
+        {
+            enm.SetBowPointers();
+        }
 
     }
 
@@ -133,10 +143,7 @@ public class EnemysSystem : MonoBehaviour
 
     public void SetTargetEnmPointer(int num,Sprite pointer)
     {
-        /*if (FindObjectOfType<StrikeArea>().equipedWeapon.effs[0] == WeaponEffect.bow)
-        {
-            enms[num].SetTargetPointer(pointer);
-        }*/
         enms[num].SetTargetPointer(pointer);
     }
+    
 }

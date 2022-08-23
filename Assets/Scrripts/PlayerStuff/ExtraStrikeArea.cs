@@ -14,6 +14,7 @@ public class ExtraStrikeArea : MonoBehaviour
     [SerializeField] List<int> target;
     public Weapon MyWeapon;
     [SerializeField] int WhichAreaMe;
+    private StrikePoint strikePoint;
 
     void Awake()
     {
@@ -21,6 +22,7 @@ public class ExtraStrikeArea : MonoBehaviour
         mc = Camera.main;
         GM = mc.GetComponent<GameManager>();
         enmySys = mc.GetComponent<EnemysSystem>();
+        strikePoint = FindObjectOfType<StrikePoint>();
         SoundMng = FindObjectOfType<SoundManager>();
         SetExtrasWeapon(MyWeapon);
         CheckTarget();
@@ -34,9 +36,13 @@ public class ExtraStrikeArea : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-        if (timer > 2.5 && timer < 4.4)
+        if (strikePoint.mostRecentX < 1.5)
+        { damgMult = 1; }
+        else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 3)
+        { damgMult = 8; }
+        else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
         { damgMult = 12; }
-        else if (timer > 4.5)
+        else if (strikePoint.mostRecentX >= 4)
         { damgMult = 20; }
 
         if (StrikeArea.PlayerOn)
@@ -58,16 +64,8 @@ public class ExtraStrikeArea : MonoBehaviour
                 
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
-                    
                     enmySys.DamageEnemy(Damger, target[lcv], MyWeapon.effs);
                     SoundMng.PlaySound("hit");
-                    if (Damger >= 20f && MyWeapon.effs[0] == WeaponEffect.greed)
-                    {
-                        GM.PayOut(1);
-                        if (Damger >= 25)
-                        { GM.PayOut(2); }
-                        else { GM.PayOut(1); }
-                    }
                 }
 
                 timer = 0;
@@ -91,42 +89,52 @@ public class ExtraStrikeArea : MonoBehaviour
     private void CheckTarget()
     {
         //reformat to case statement thing maybe
-        Debug.Log(enmySys.enms.Count);
-        if (enmySys.enms.Count == 1)
+
+        if (MyWeapon.effs[0] == WeaponEffect.odachi)
         {
-            target.Clear();
-            target.Add(0);
+
         }
-        else if (enmySys.enms.Count == 2)
+        else if (MyWeapon.effs[0] == WeaponEffect.bow)
         {
-            if (WhichAreaMe == 1)
+            if (enmySys.enms.Count == 1)
             {
                 target.Clear();
                 target.Add(0);
-            }else
-            {
-                target.Clear();
-                target.Add(1);
             }
-        }else if (enmySys.enms.Count == 3)
-        {
-            if (WhichAreaMe == 3)
+            else if (enmySys.enms.Count == 2)
             {
-                target.Clear();
-                target.Add(0);
-                
+                if (WhichAreaMe == 1)
+                {
+                    target.Clear();
+                    target.Add(0);
+                }
+                else
+                {
+                    target.Clear();
+                    target.Add(1);
+                }
             }
-            else
+            else if (enmySys.enms.Count == 3)
+            {
+                if (WhichAreaMe == 3)
+                {
+                    target.Clear();
+                    target.Add(0);
+
+                }
+                else
+                {
+                    target.Clear();
+                    target.Add(WhichAreaMe);
+                    
+                }
+            }
+            else if (enmySys.enms.Count == 4)
             {
                 target.Clear();
                 target.Add(WhichAreaMe);
                 enmySys.SetTargetEnmPointer(WhichAreaMe, mainArea.BowPointers[WhichAreaMe]);
             }
-        }else if (enmySys.enms.Count == 4)
-        {
-            target.Clear();
-            target.Add(WhichAreaMe);
-            enmySys.SetTargetEnmPointer(WhichAreaMe, mainArea.BowPointers[WhichAreaMe]);
         }
     }
 
