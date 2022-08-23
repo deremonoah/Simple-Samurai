@@ -40,10 +40,12 @@ public class PlayerHealthBar : MonoBehaviour
             else { armorNum = myArmor.armor; }
         }
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SetArmor(testArmor);
         }
+#endif
 
         HealthBarFiller();
 

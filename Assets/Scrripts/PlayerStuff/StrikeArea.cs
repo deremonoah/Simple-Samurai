@@ -92,12 +92,12 @@ public class StrikeArea : MonoBehaviour
             justStruck = false;
         }
         else { timer -= Time.deltaTime; }
-        
-          if (Input.GetKeyDown(KeyCode.Alpha1))
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetWeapon(Test);
         }
-
+#endif
 
     }
 
