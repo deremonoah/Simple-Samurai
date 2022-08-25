@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: 16aa1f62fdff10848b8f52092bb5302c, type: 3}
   itemDescription: 'Koban : A massive gold coin worth 25 regular coins'
+  itemLevel: 0
   curiEef: 0
   CurioNum: 20
+  CurioValueLevel: 14000000190000001e00000032000000

@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: 31cdbf4a99193d54587d3a1c43433840, type: 3}
   itemDescription: 'Kanabo: a heavy weapon designed to combat armor'
+  itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
   strikePointer: {fileID: 21300000, guid: 4e2aff0e874491b42a96d30faeafc6f6, type: 3}
-  baseDamage: 5
-  maxDamage: 80
+  baseDamageLevel:
+  - 5
+  - 7
+  - 10
+  - 14
+  maxDamageLevel:
+  - 80
+  - 90
+  - 110
+  - 140
   effs: 03000000

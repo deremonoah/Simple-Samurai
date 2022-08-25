@@ -10,7 +10,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     public float health, maxHealth = 100;
     float lerpSpeed;
-    [SerializeField] float armorNum;
+    [SerializeField] float armorValue;
     public Armor myArmor;
     private GameManager gm;
 
@@ -35,9 +35,9 @@ public class PlayerHealthBar : MonoBehaviour
         {
             if (!Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.Mouse0))
             {
-                armorNum = myArmor.eefNumOne;
+                armorValue = myArmor.effectNumberOneLevel[myArmor.itemLevel];
             }
-            else { armorNum = myArmor.armor; }
+            else { armorValue = myArmor.armorLevel[myArmor.itemLevel]; }
         }
 
 #if UNITY_EDITOR
@@ -78,7 +78,7 @@ public class PlayerHealthBar : MonoBehaviour
             health -= (Mathf.Max(1,damagePoints));
         }else
         {
-            health -= (Mathf.Max(1, damagePoints - armorNum));
+            health -= (Mathf.Max(1, damagePoints - armorValue));
         }
     }
 
@@ -92,7 +92,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     public void SetArmor(Armor am)
     {
-        armorNum = am.armor;
+        armorValue = am.armorLevel[am.itemLevel];
         myArmor = am;
         if (myArmor.armrEef == ArmorEffect.greed)
         {

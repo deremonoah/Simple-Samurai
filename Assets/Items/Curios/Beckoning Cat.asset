@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 0}
   itemDescription: this either decreases cost in shops or lets you find more gold
-  curiEef: 5
+  itemLevel: 0
+  curiEef: 6
   CurioNum: 2
+  CurioValueLevel: 01000000020000000400000006000000

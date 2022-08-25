@@ -7,6 +7,7 @@ public class Curio : Item
 {
     public CurioEffect curiEef;
     public int CurioNum;
+    public List<int> CurioValueLevel;
 }
 public enum CurioEffect { Koban,healing,heal,healOnGo,incrArea,revive,greed,quick,addedPoison,defenses,twoCurio,foresight }
 /*healing passive heal eh maybe not if there is an armor one

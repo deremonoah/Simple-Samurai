@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 80
+  maxHP: 90
   armor: 5
   damgMin: 10
   damgMax: 35

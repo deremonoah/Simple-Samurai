@@ -98,6 +98,13 @@ public class StrikeArea : MonoBehaviour
         {
             SetWeapon(Test);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            equipedWeapon.itemLevel += 1;
+            baseDamage = equipedWeapon.baseDamageLevel[equipedWeapon.itemLevel];
+            maxDamage = equipedWeapon.maxDamageLevel[equipedWeapon.itemLevel];
+        }
 #endif
 
     }
@@ -125,8 +132,8 @@ public class StrikeArea : MonoBehaviour
 
     public void SetWeapon(Weapon wee)
     {
-        baseDamage = wee.baseDamage;
-        maxDamage = wee.maxDamage;
+        baseDamage = wee.baseDamageLevel[wee.itemLevel];
+        maxDamage = wee.maxDamageLevel[wee.itemLevel];
         myStrikeAreaSprite.sprite = wee.myStrikeArea;
         strikePointObj.GetComponent<StrikePoint>().ChangeStrikeSprite(wee.strikePointer);
         //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 

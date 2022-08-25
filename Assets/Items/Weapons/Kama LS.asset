@@ -15,8 +15,17 @@ MonoBehaviour:
   itemPanelIcon: {fileID: 21300000, guid: a6e70c5f774eb2c46bf2eb1be2d5bb67, type: 3}
   itemDescription: 'Soul stealing Kama: this item kinda broken it has  a life steal
     effect'
+  itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: 7ca85e55e3874f94a93e9e0f481cf6b6, type: 3}
   strikePointer: {fileID: 21300000, guid: a6e70c5f774eb2c46bf2eb1be2d5bb67, type: 3}
-  baseDamage: 3
-  maxDamage: 50
+  baseDamageLevel:
+  - 3
+  - 4
+  - 5
+  - 6
+  maxDamageLevel:
+  - 50
+  - 60
+  - 70
+  - 85
   effs: 06000000

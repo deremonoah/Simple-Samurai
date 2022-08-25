@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 0}
   itemDescription: 
+  itemLevel: 0
   armor: 5
+  eefNumOne: 0
+  eefNumTwo: 0
+  armorLevel:
+  - 5
+  - 8
+  - 10
+  - 14
+  effectNumberOneLevel: 
+  EffectNumberTwoLevel: 
   armrEef: 0

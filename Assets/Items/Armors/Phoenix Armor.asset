@@ -15,7 +15,15 @@ MonoBehaviour:
   itemPanelIcon: {fileID: 0}
   itemDescription: 'Pheonix armor: on death you rise again with half as much health
     until you completley run out of health(less than 10)'
+  itemLevel: 0
   armor: 7
   eefNumOne: 0
   eefNumTwo: 0
+  armorLevel:
+  - 5
+  - 7
+  - 10
+  - 12
+  effectNumberOneLevel: 
+  EffectNumberTwoLevel: 
   armrEef: 3

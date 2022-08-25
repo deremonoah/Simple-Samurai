@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Armor", menuName = "Armor")]
 public class Armor : Item
 {
-    public float armor;
-    public int eefNumOne, eefNumTwo;
+    public List<float> armorLevel;
+    public List<int> effectNumberOneLevel, effectNumberTwoLevel;
     public ArmorEffect armrEef;
 }
 public enum ArmorEffect { none,turtle,greed,phoenix,sturdy,regen,spiked,crane,revive,beserker,leaf,scary }

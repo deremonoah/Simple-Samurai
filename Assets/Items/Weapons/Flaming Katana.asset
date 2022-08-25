@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: 486b4ceeb06c9464c83edf2578bd06c5, type: 3}
   itemDescription: a katana but on fire
+  itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: ff46c5ba06fad5343bcf62dc3f20f430, type: 3}
   strikePointer: {fileID: 21300000, guid: f3b458806648fe04798b2cda6673b958, type: 3}
-  baseDamage: 4
-  maxDamage: 65
+  baseDamageLevel:
+  - 4
+  - 6
+  - 8
+  - 11
+  maxDamageLevel:
+  - 65
+  - 70
+  - 80
+  - 95
   effs: 01000000

@@ -140,7 +140,7 @@ public class ExtraStrikeArea : MonoBehaviour
 
     private void SetExtrasWeapon(Weapon wee)
     {
-        baseDamg = wee.baseDamage;
-        maxDamg = wee.maxDamage;
+        baseDamg = wee.baseDamageLevel[wee.itemLevel];
+        maxDamg = wee.maxDamageLevel[wee.itemLevel];
     }
 }

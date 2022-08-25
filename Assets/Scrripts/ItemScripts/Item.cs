@@ -7,4 +7,5 @@ public class Item : ScriptableObject
 {
     public Sprite itemPanelIcon;
     public string itemDescription;
+    public int itemLevel;
 }

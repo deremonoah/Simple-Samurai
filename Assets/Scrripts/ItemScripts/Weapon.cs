@@ -6,8 +6,7 @@ using UnityEngine;
 public class Weapon : Item
 {
     public Sprite myStrikeArea,strikePointer;
-    public float baseDamage, maxDamage;
-    
+    public List<float> baseDamageLevel, maxDamageLevel;
     public List<WeaponEffect> effs;
 }
 public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost }

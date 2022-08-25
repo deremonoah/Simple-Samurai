@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 0}
   itemDescription: this is better armor just havent drawn a sprite yet
+  itemLevel: 0
   armor: 10
+  eefNumOne: 0
+  eefNumTwo: 0
+  armorLevel:
+  - 10
+  - 12
+  - 16
+  - 20
+  effectNumberOneLevel: 
+  EffectNumberTwoLevel: 
   armrEef: 0

@@ -15,8 +15,17 @@ MonoBehaviour:
   itemPanelIcon: {fileID: 21300000, guid: 8ad9b4e1492f35c40afd6a392b952049, type: 3}
   itemDescription: 'Yumi: A long ranged weapon that takes longer to ready but can
     strike any enemy'
+  itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: 0ff5d246ea054774f8c7c8728a0f3805, type: 3}
   strikePointer: {fileID: 21300000, guid: 8ad9b4e1492f35c40afd6a392b952049, type: 3}
-  baseDamage: 15
-  maxDamage: 120
+  baseDamageLevel:
+  - 10
+  - 15
+  - 20
+  - 35
+  maxDamageLevel:
+  - 100
+  - 120
+  - 140
+  - 180
   effs: 05000000

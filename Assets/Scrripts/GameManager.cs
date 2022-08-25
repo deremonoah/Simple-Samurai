@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
         int tempgold = 0;
         if (bonusGold)
         {
-            tempgold = Random.Range(playerHP.myArmor.eefNumOne, playerHP.myArmor.eefNumTwo+1);
+            tempgold = Random.Range(playerHP.myArmor.effectNumberOneLevel[playerHP.myArmor.itemLevel], playerHP.myArmor.effectNumberTwoLevel[playerHP.myArmor.itemLevel]);
         }
         playerCoins += coin+ tempgold;
         TextCoins.text = playerCoins.ToString();
