@@ -15,15 +15,14 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] int recPos;
 
 
-    [SerializeField] List<GameObject> attackkStartPoints;
-    [SerializeField] GameObject atkEnd;
+    [SerializeField] List<GameObject> attackStartPoints;
+    [SerializeField] GameObject attackEndPointStandard;
 
     public List<EnmWave> enemyWaves;
     private int WaveControlVariable;
 
     private GameManager GM;
 
-    public GameObject EnemyHPPointer;
     private StrikeArea PlayerStrikeArea;
 
 
@@ -56,7 +55,7 @@ public class EnemysManager : MonoBehaviour
     {
         enemy enm = Instantiate(enmPrefab, enemySpawnsPoints[point].transform.position, enemySpawnsPoints[point].transform.rotation).GetComponent<enemy>();
         aliveEnemys.Add(enm);
-        enm.GetComponent<enemy>().SetThings(attackkStartPoints, atkEnd, point);
+        enm.GetComponent<enemy>().SetThings(attackStartPoints, attackEndPointStandard, point);
         spawned = true;
         recPos = point;
     }

@@ -404,7 +404,7 @@ MonoBehaviour:
   maxHP: 80
   armor: 5
   damgMin: 10
-  damgMax: 30
+  damgMax: 35
   healMin: 0
   healMax: 0
   targetally: {fileID: 0}
