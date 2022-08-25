@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
-    public StrikeArea mainStrkArea;
+    public StrikeArea mainStrikeArea;
 
     public bool bonusGold;
     #region Farm Varibles
@@ -31,7 +31,15 @@ public class GameManager : MonoBehaviour
     private float FarmIncHP = 10;
     private int FarmLvl = 1;
     [SerializeField] List<GameObject> farmLvlImages;
-    
+
+    #endregion
+
+    #region BlackSmith Variables
+    private int improveWeaponCost = 10;
+    private int improveArmorCost = 10;
+    public Text improveWeaponText;
+    public Text improveArmorText;
+    private bool lootingUpgradesEnabled = false;
     #endregion
 
     void Start()
@@ -41,6 +49,10 @@ public class GameManager : MonoBehaviour
         playerCoins = 0;
         playerHP = GetComponent<PlayerHealthBar>();
         StrikeArea.SwitchPlayerOn(true);
+        for (int lcv=0;lcv<lootList.Count;lcv++)
+        {
+            lootList[lcv] = Instantiate(lootList[lcv]);
+        }
     }
 
     private void FixedUpdate()
@@ -156,11 +168,22 @@ public class GameManager : MonoBehaviour
         {
             if (randLootPicks[buttonID].GetType() == typeof(Weapon))
             {
-                mainStrkArea.SetWeapon(randLootPicks[buttonID] as Weapon);
+                if (lootingUpgradesEnabled && randLootPicks[buttonID].name == mainStrikeArea.equipedWeapon.name)
+                {
+                    mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
+                    mainStrikeArea.SetWeapon(mainStrikeArea.equipedWeapon);
+                }
+                else
+                { mainStrikeArea.SetWeapon(randLootPicks[buttonID] as Weapon); }
             }
             if (randLootPicks[buttonID].GetType() == typeof(Armor))
             {
-                FindObjectOfType<PlayerHealthBar>().SetArmor(randLootPicks[buttonID] as Armor);
+                if (lootingUpgradesEnabled && randLootPicks[buttonID].name == playerHP.myArmor.name)
+                {
+                    playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel + 1, 0, 3);
+                }
+                else
+                { playerHP.SetArmor(randLootPicks[buttonID] as Armor); }
             }
             if (randLootPicks[buttonID].GetType() == typeof(Curio))
             {
@@ -191,7 +214,7 @@ public class GameManager : MonoBehaviour
         winPan.SetActive(true);
     }
 
-    #region Shop Buttons
+    #region Farm Buttons
 
     public void FarmHealButton()
     {
@@ -243,6 +266,41 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region BlackSmith Buttons
+
+    public void ImproveWeaponButton()
+    {
+        if (playerCoins >= improveWeaponCost)
+        {
+            mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
+            mainStrikeArea.SetWeapon(mainStrikeArea.equipedWeapon);
+            playerCoins -= improveWeaponCost;
+            improveWeaponCost += 10;
+            improveWeaponText.text = "Improve Weapon " + improveWeaponCost + "g";
+        }
+    }
+
+    public void ImproveArmorButton()
+    {
+        if (playerCoins >= improveArmorCost)
+        {
+            playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel+1,0,3);
+            playerCoins -= improveArmorCost;
+            improveArmorCost += 10;
+            improveArmorText.text = "Improve Armor " + improveArmorCost + "g";
+        }
+    }
+
+    public void EnableLootingUpgrades()
+    {
+        if (playerCoins >= 10 && lootingUpgradesEnabled == false)
+        {
+            lootingUpgradesEnabled = true;
+            playerCoins -= 10;
+        }
+    }
+
+    #endregion
     private void RandomItemPull()
     {
         randLootPicks.Clear();

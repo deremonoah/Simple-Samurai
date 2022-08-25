@@ -16,14 +16,11 @@ MonoBehaviour:
   itemDescription: 'Golden armor of plenty: enemies drop more gold while you wear
     this armor'
   itemLevel: 0
-  armor: 4
-  eefNumOne: 1
-  eefNumTwo: 3
   armorLevel:
   - 3
   - 4
   - 5
   - 7
   effectNumberOneLevel: 00000000010000000200000004000000
-  EffectNumberTwoLevel: 0300000005000000070000000d000000
+  effectNumberTwoLevel: 02000000030000000500000009000000
   armrEef: 2

@@ -40,7 +40,7 @@ public class StrikeArea : MonoBehaviour
         SoundMng = FindObjectOfType<SoundManager>();
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
         justStruck = false;
-
+        equipedWeapon = Instantiate(equipedWeapon);
     }
 
     

@@ -16,14 +16,11 @@ MonoBehaviour:
   itemDescription: 'Turtle armor: allows you to turtle up while you are not readying
     an attack(holding down space bar) giving you great defense'
   itemLevel: 0
-  armor: 8
-  eefNumOne: 30
-  eefNumTwo: 0
   armorLevel:
   - 6
   - 7
   - 8
   - 9
   effectNumberOneLevel: 140000001c0000002400000032000000
-  EffectNumberTwoLevel: 
+  effectNumberTwoLevel: 
   armrEef: 1

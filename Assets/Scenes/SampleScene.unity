@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 221582218}
   - component: {fileID: 221582217}
   m_Layer: 5
-  m_Name: inc Max Hp
+  m_Name: Improve Armor Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1090,7 +1090,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1147.9999, y: 228.00003}
-  m_SizeDelta: {x: 1088, y: 240}
+  m_SizeDelta: {x: 1290, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &221582217
 MonoBehaviour:
@@ -1138,7 +1138,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseMaxHPButton
+        m_MethodName: ImproveArmorButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.47207695, b: 0.4438857, a: 1}
+  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5948,7 +5948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5968,7 +5968,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Improve Farm 20g
+  m_Text: Looting Upgrades 10g
 --- !u!222 &1016055167
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8386,7 +8386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1567971263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9205,8 +9205,9 @@ GameObject:
   - component: {fileID: 1673487026}
   - component: {fileID: 1673487025}
   - component: {fileID: 1673487024}
+  - component: {fileID: 1673487027}
   m_Layer: 5
-  m_Name: Improve farm Button
+  m_Name: Looting Upgrades Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9230,7 +9231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1148, y: -124}
-  m_SizeDelta: {x: 1088, y: 240}
+  m_SizeDelta: {x: 1290, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673487024
 MonoBehaviour:
@@ -9278,7 +9279,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ImproveFarmButton
+        m_MethodName: EnableLootingUpgrades
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9301,7 +9302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.72156864, g: 1, b: 0.77861685, a: 1}
+  m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9326,6 +9327,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673487022}
   m_CullTransparentMesh: 1
+--- !u!114 &1673487027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673487022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: if you find another one of the weapon or armor you have equiped it will
+    be upgraded for free
 --- !u!1 &1683209275
 GameObject:
   m_ObjectHideFlags: 0
@@ -10286,7 +10301,7 @@ GameObject:
   - component: {fileID: 1896132488}
   - component: {fileID: 1896132487}
   m_Layer: 5
-  m_Name: Text
+  m_Name: improve Armor Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10344,7 +10359,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: More Max HP 20g
+  m_Text: Improve Armor 10g
 --- !u!222 &1896132488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10790,7 +10805,7 @@ GameObject:
   - component: {fileID: 1987304090}
   - component: {fileID: 1987304089}
   m_Layer: 5
-  m_Name: Heal Button
+  m_Name: Improve Weapon Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10814,7 +10829,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1148, y: 568.00006}
-  m_SizeDelta: {x: 1088, y: 240}
+  m_SizeDelta: {x: 1290, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987304089
 MonoBehaviour:
@@ -10862,7 +10877,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: FarmHealButton
+        m_MethodName: ImproveWeaponButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10885,7 +10900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.98411447, b: 0.7216981, a: 1}
+  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11475,7 +11490,7 @@ GameObject:
   - component: {fileID: 2065491792}
   - component: {fileID: 2065491791}
   m_Layer: 5
-  m_Name: Text
+  m_Name: improve Weapon Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11533,9 +11548,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Blacksmith stuff
-
-'
+  m_Text: Improve Weapon 10g
 --- !u!222 &2065491792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12006,6 +12019,18 @@ PrefabInstance:
       propertyPath: mainStrkArea
       value: 
       objectReference: {fileID: 715464449}
+    - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: mainStrikeArea
+      value: 
+      objectReference: {fileID: 715464449}
+    - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: improveArmorText
+      value: 
+      objectReference: {fileID: 1896132487}
+    - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: improveWeaponText
+      value: 
+      objectReference: {fileID: 2065491791}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
       value: 10
