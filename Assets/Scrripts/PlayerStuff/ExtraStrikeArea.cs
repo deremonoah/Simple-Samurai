@@ -6,7 +6,7 @@ public class ExtraStrikeArea : MonoBehaviour
 {
     private Camera mc;
     private GameManager GM;
-    private EnemysSystem enmySys;
+    private EnemysManager enmySys;
     private SoundManager SoundMng;
     private StrikeArea mainArea;
     private bool indere,timering = false;
@@ -21,7 +21,7 @@ public class ExtraStrikeArea : MonoBehaviour
         mainArea = FindObjectOfType<StrikeArea>();
         mc = Camera.main;
         GM = mc.GetComponent<GameManager>();
-        enmySys = mc.GetComponent<EnemysSystem>();
+        enmySys = mc.GetComponent<EnemysManager>();
         strikePoint = FindObjectOfType<StrikePoint>();
         SoundMng = FindObjectOfType<SoundManager>();
         SetExtrasWeapon(MyWeapon);
@@ -96,12 +96,12 @@ public class ExtraStrikeArea : MonoBehaviour
         }
         else if (MyWeapon.effs[0] == WeaponEffect.bow)
         {
-            if (enmySys.enms.Count == 1)
+            if (enmySys.aliveEnemys.Count == 1)
             {
                 target.Clear();
                 target.Add(0);
             }
-            else if (enmySys.enms.Count == 2)
+            else if (enmySys.aliveEnemys.Count == 2)
             {
                 if (WhichAreaMe == 2)
                 {
@@ -114,7 +114,7 @@ public class ExtraStrikeArea : MonoBehaviour
                     target.Add(1);
                 }
             }
-            else if (enmySys.enms.Count == 3)
+            else if (enmySys.aliveEnemys.Count == 3)
             {
                 if (WhichAreaMe == 3)
                 {
@@ -129,7 +129,7 @@ public class ExtraStrikeArea : MonoBehaviour
 
                 }
             }
-            else if (enmySys.enms.Count == 4)
+            else if (enmySys.aliveEnemys.Count == 4)
             {
                 target.Clear();
                 target.Add(WhichAreaMe);
@@ -140,7 +140,7 @@ public class ExtraStrikeArea : MonoBehaviour
 
     private void SetExtrasWeapon(Weapon wee)
     {
-        baseDamg = wee.baseDamg;
-        maxDamg = wee.maxDamg;
+        baseDamg = wee.baseDamage;
+        maxDamg = wee.maxDamage;
     }
 }

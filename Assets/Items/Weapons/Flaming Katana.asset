@@ -16,6 +16,6 @@ MonoBehaviour:
   itemDescription: a katana but on fire
   myStrikeArea: {fileID: 21300000, guid: ff46c5ba06fad5343bcf62dc3f20f430, type: 3}
   strikePointer: {fileID: 21300000, guid: f3b458806648fe04798b2cda6673b958, type: 3}
-  baseDamg: 5
-  maxDamg: 65
+  baseDamage: 4
+  maxDamage: 65
   effs: 01000000

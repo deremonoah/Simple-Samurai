@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class enmy : MonoBehaviour
+public class enemy : MonoBehaviour
 {
     
     //stats
     public float HP;
     [SerializeField] float maxHP, armor,damgMin, damgMax, healMin, healMax;
-    public enmy targetally;
+    public enemy targetally;
 
     //mostly timers n stuff
     [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
     [SerializeField] float waitTimerOffset;
 
-    private Camera mainCam;
-    private GameManager GM;
-    private PlayerHealthBar playerHP;
+    private Camera _mainCam;
+    private GameManager _GM;
+    private PlayerHealthBar _playerHP;
     [SerializeField] int posInList;
 
     //animation stuff
     private Animator anim;
     
     public Image myHPBar;
-    [SerializeField] EnemysSystem enmsSys;
+    [SerializeField] EnemysManager enmsSys;
 
     //attack projectile stuff
     [SerializeField] GameObject atkPrefab, specialPrefab;
@@ -61,10 +61,10 @@ public class enmy : MonoBehaviour
 
     void Start()
     {
-        mainCam = Camera.main;
-        GM = mainCam.GetComponent<GameManager>();
-        playerHP = mainCam.GetComponent<PlayerHealthBar>();
-        enmsSys = mainCam.GetComponent<EnemysSystem>();
+        _mainCam = Camera.main;
+        _GM = _mainCam.GetComponent<GameManager>();
+        _playerHP = _mainCam.GetComponent<PlayerHealthBar>();
+        enmsSys = _mainCam.GetComponent<EnemysManager>();
         anim = GetComponent<Animator>();
         HP = maxHP;
         anim = GetComponent<Animator>();
@@ -98,7 +98,7 @@ public class enmy : MonoBehaviour
             foreach (var atk in curAtks)
                 Destroy(atk);
             enmsSys.OnDied(this);
-            GM.PayOut(Random.Range(minCoin, maxCoin)+amountRobbed);
+            _GM.PayOut(Random.Range(minCoin, maxCoin)+amountRobbed);
             Destroy(this.gameObject);
         }
         if (HP > maxHP)
@@ -148,7 +148,7 @@ public class enmy : MonoBehaviour
                     antArm = true;
                     break;
                 case WeaponEffect.lifeSteal:
-                    playerHP.HealPlayer(deal / 3);
+                    _playerHP.HealPlayer(deal / 3);
                     break;
 
             }
@@ -242,12 +242,12 @@ public class enmy : MonoBehaviour
 
     public void hitNow()
     {
-        playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbility);
+        _playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbility);
         soundMRef.PlaySound("hit");
         if (myAbility == Ability.steal)
         {
             int randRob = Random.Range(2, 4);
-            GM.robPlayer(randRob);
+            _GM.robPlayer(randRob);
             amountRobbed += randRob;
         }
     }
@@ -256,12 +256,12 @@ public class enmy : MonoBehaviour
     {
         curState = attackState.waiting;
          bool hitIf = false;
-         targetally = new enmy();
+         targetally = new enemy();
         
 
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
-        foreach (enmy i in enmsSys.enms)
+        foreach (enemy i in enmsSys.aliveEnemys)
         {
             if (i.HP < i.maxHP)
             {
@@ -310,9 +310,9 @@ public class enmy : MonoBehaviour
 
     public void IRan()
     {
-        if (enmsSys.enms.Count >= 1)
+        if (enmsSys.aliveEnemys.Count >= 1)
         {
-            enmsSys.enms.Remove(this);
+            enmsSys.aliveEnemys.Remove(this);
             enmsSys.OpenTimer = 1.5f;
             enmsSys.UpdateEnmsPos();
         }

@@ -6,7 +6,7 @@ public class EnmAtKArea : MonoBehaviour
 {
 
     private bool blocking;
-    private enmy myenm;
+    private enemy myenm;
     private Transform endPos;
     [SerializeField] Vector2 dir;
     [SerializeField] float movspd;
@@ -42,10 +42,10 @@ public class EnmAtKArea : MonoBehaviour
         } else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
 
-            if (myenm.myAbility == enmy.Ability.steal)
+            if (myenm.myAbility == enemy.Ability.steal)
             {
                 myenm.IRan();
-            }else if (myenm.myAbility == enmy.Ability.heal)
+            }else if (myenm.myAbility == enemy.Ability.heal)
             {
                 myenm.healAllyNow();
                 //this is spiecial reverse moves
@@ -67,7 +67,7 @@ public class EnmAtKArea : MonoBehaviour
         blocking = false;
     }
 
-    public void Setstuff(enmy em, Transform end, Vector2 direct)
+    public void Setstuff(enemy em, Transform end, Vector2 direct)
     {
         myenm = em;
         dir = direct;

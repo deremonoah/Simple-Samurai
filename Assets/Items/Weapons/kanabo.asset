@@ -16,6 +16,6 @@ MonoBehaviour:
   itemDescription: 'Kanabo: a heavy weapon designed to combat armor'
   myStrikeArea: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
   strikePointer: {fileID: 21300000, guid: 4e2aff0e874491b42a96d30faeafc6f6, type: 3}
-  baseDamg: 4
-  maxDamg: 80
+  baseDamage: 5
+  maxDamage: 80
   effs: 03000000

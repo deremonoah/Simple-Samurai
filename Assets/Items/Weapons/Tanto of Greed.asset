@@ -17,6 +17,6 @@ MonoBehaviour:
     gives you gold'
   myStrikeArea: {fileID: 21300000, guid: 16754b3bca9880d4e8a57f28a7351bf2, type: 3}
   strikePointer: {fileID: 21300000, guid: 535f2acb9f6d1d74595ab0f5daa7a66a, type: 3}
-  baseDamg: 5
-  maxDamg: 50
+  baseDamage: 4
+  maxDamage: 55
   effs: 02000000

@@ -3842,12 +3842,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mc: {fileID: 519420031}
-  indere: 0
-  maxDamg: 60
-  baseDamg: 3
+  inStrikeArea: 0
+  maxDamage: 60
+  baseDamage: 0
   damgMult: 1
-  defaultDamgMult: 10
-  target: 00000000
+  defaultDamageMult: 0
+  targetEnemy: 
   timer: 0
   timering: 0
   bottomOdachi: {fileID: 1687490589}
@@ -9452,12 +9452,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mc: {fileID: 519420031}
-  indere: 0
-  maxDamg: 60
-  baseDamg: 4
+  inStrikeArea: 0
+  maxDamage: 0
+  baseDamage: 0
   damgMult: 10
-  defaultDamgMult: 10
-  target: 0000000002000000
+  defaultDamageMult: 0
+  targetEnemy: 
   timer: 0
   timering: 0
   bottomOdachi: {fileID: 1687490589}

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Weapon : Item
 {
     public Sprite myStrikeArea,strikePointer;
-    public float baseDamg, maxDamg;
+    public float baseDamage, maxDamage;
     
     public List<WeaponEffect> effs;
 }

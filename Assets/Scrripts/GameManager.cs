@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject winPan;
     public GameObject pausePan;
     public bool Paused = false;
-    private EnemysSystem enmsSys;
+    private EnemysManager _enemyManager;
     public Text TextCoins;
     [SerializeField] int playerCoins;
     [SerializeField] PlayerHealthBar playerHP;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        enmsSys = GetComponent<EnemysSystem>();
+        _enemyManager = GetComponent<EnemysManager>();
         playerCoins = 0;
         playerHP = GetComponent<PlayerHealthBar>();
         StrikeArea.SwitchPlayerOn(true);
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         if (shopPan.GetComponent<Animator>().GetBool("Open"))
         {
             shopPan.GetComponent<Animator>().SetBool("Open", false);
-            enmsSys.StartNextWave();
+            _enemyManager.StartNextWave();
             Paused = false;
             StrikeArea.SwitchPlayerOn(true);
         }

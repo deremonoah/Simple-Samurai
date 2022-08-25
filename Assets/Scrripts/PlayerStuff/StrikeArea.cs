@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class StrikeArea : MonoBehaviour
 {
-    private EnemysSystem _enemySystem;
+    private EnemysManager _enemySystem;
     public Camera mc;
     private GameManager GM;
     public static bool PlayerOn = true;
-    [SerializeField] bool indere;
-    [SerializeField] float maxDamg = 70;
-    [SerializeField] float baseDamg;
+    [SerializeField] bool inStrikeArea;
+    [SerializeField] float maxDamage;
+    [SerializeField] float baseDamage;
     [SerializeField] float damgMult=1;
-    [SerializeField] float defaultDamgMult;
-    [SerializeField] List<int> target;
+    [SerializeField] float defaultDamageMult;
+    [SerializeField] List<int> targetEnemy;
 
     [SerializeField] float timer = 0;
     [SerializeField]bool timering=false;
@@ -35,7 +35,7 @@ public class StrikeArea : MonoBehaviour
     void Start()
     {
         GM = mc.GetComponent<GameManager>();
-        _enemySystem = mc.GetComponent<EnemysSystem>();
+        _enemySystem = mc.GetComponent<EnemysManager>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
@@ -64,14 +64,14 @@ public class StrikeArea : MonoBehaviour
         if (PlayerOn)
         {
 
-            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && indere && !justStruck)
+            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
-                float Damger = baseDamg + Mathf.Clamp(strikePoint.mostRecentX * damgMult, 0, maxDamg);
+                float Damger = baseDamage + Mathf.Clamp(strikePoint.mostRecentX * damgMult, 0, maxDamage);
                 
-                for (int lcv = 0; lcv < target.Count; lcv++)
+                for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
                     Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
-                    _enemySystem.DamageEnemy(Damger, target[lcv], equipedWeapon.effs);
+                    _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit");
                     justStruck = true;
                     timer = 0.1f;
@@ -106,13 +106,13 @@ public class StrikeArea : MonoBehaviour
     {
         if (other.name == "strike point")
         {
-            indere = true;
+            inStrikeArea = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        indere = false;
+        inStrikeArea = false;
     }
 
     private void TurnBow(bool iss)
@@ -125,8 +125,8 @@ public class StrikeArea : MonoBehaviour
 
     public void SetWeapon(Weapon wee)
     {
-        baseDamg = wee.baseDamg;
-        maxDamg = wee.maxDamg;
+        baseDamage = wee.baseDamage;
+        maxDamage = wee.maxDamage;
         myStrikeAreaSprite.sprite = wee.myStrikeArea;
         strikePointObj.GetComponent<StrikePoint>().ChangeStrikeSprite(wee.strikePointer);
         //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 
@@ -143,14 +143,14 @@ public class StrikeArea : MonoBehaviour
             if (wee.effs[lcv] == WeaponEffect.odachi)
             {
                 bottomOdachi.SetActive(true);
-                target.Add(1);
+                targetEnemy.Add(1);
             }
             else
             {
                 bottomOdachi.SetActive(false);
-                if (target.Count > 1)
+                if (targetEnemy.Count > 1)
                 {
-                    target.RemoveAt(1);
+                    targetEnemy.RemoveAt(1);
                 }
             }
 
