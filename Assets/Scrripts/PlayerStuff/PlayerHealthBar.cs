@@ -12,13 +12,13 @@ public class PlayerHealthBar : MonoBehaviour
     float lerpSpeed;
     [SerializeField] float armorValue;
     public Armor myArmor;
-    private GameManager gm;
+    private GameManager _gm;
 
     [SerializeField] Armor testArmor;
     void Start()
     {
         health = maxHealth;
-        gm = FindObjectOfType<GameManager>();
+        _gm = FindObjectOfType<GameManager>();
         myArmor = Instantiate(myArmor);
     }
 
@@ -30,7 +30,20 @@ public class PlayerHealthBar : MonoBehaviour
             health = maxHealth;
         }
 
-        lerpSpeed = 3f * Time.deltaTime;
+        if (health <= 0f)
+        {
+            if (myArmor.armrEef == ArmorEffect.phoenix)
+            {
+                maxHealth = maxHealth / 2;
+                health = maxHealth;
+                //make it so player can't increase max hp probably
+                if (maxHealth <= 10)
+                { _gm.OpenLossPan(); }
+            }
+            else { _gm.OpenLossPan(); }
+        }
+
+        lerpSpeed = 2f * Time.deltaTime;
         
         if (myArmor.armrEef == ArmorEffect.turtle)
         {
@@ -50,18 +63,7 @@ public class PlayerHealthBar : MonoBehaviour
 
         HealthBarFiller();
 
-        if (health <= 0f)
-        {
-            if (myArmor.armrEef == ArmorEffect.phoenix)
-            {
-                maxHealth = maxHealth / 2;
-                health = maxHealth;
-                //make it so player can't increase max hp probably
-                if (maxHealth <= 10)
-                { Camera.main.GetComponent<GameManager>().OpenLossPan(); }
-            }
-            else { Camera.main.GetComponent<GameManager>().OpenLossPan(); }
-        }
+        
     }
 
 
@@ -97,7 +99,7 @@ public class PlayerHealthBar : MonoBehaviour
         myArmor = Instantiate(am);
         if (myArmor.armrEef == ArmorEffect.greed)
         {
-            gm.bonusGold = true;
+            _gm.bonusGold = true;
         }
     }
 }

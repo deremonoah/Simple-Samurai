@@ -22,7 +22,7 @@ public class EnemysManager : MonoBehaviour
     private int WaveControlVariable;
 
     private GameManager GM;
-
+    private VillageDefense _villageDefense;
     private StrikeArea PlayerStrikeArea;
 
 
@@ -32,6 +32,7 @@ public class EnemysManager : MonoBehaviour
         GM = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnWave());
         PlayerStrikeArea = FindObjectOfType<StrikeArea>();
+        _villageDefense = FindObjectOfType<VillageDefense>();
     }
 
 
@@ -44,6 +45,7 @@ public class EnemysManager : MonoBehaviour
                 spawned = false;
                 OpenTimer = 0.5f;
                 GM.OpenPickPan();
+                _villageDefense.ResetVillage();
             }
             else
             { OpenTimer -= Time.deltaTime; }
@@ -104,6 +106,7 @@ public class EnemysManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(1);
+        _villageDefense.startDefending();
         if (WaveControlVariable >= enemyWaves.Count)
         {
             GM.PlayerWins();
