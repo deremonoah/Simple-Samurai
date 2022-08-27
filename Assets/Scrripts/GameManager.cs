@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     private List<Item> randLootPicks = new List<Item>();
     public StrikeArea mainStrikeArea;
 
+    public Image PlayerEquipedWeapon;
+    public Image PlayerEquipedArmor;
+    public Image PlayerEquipedCurio;
+
     public bool bonusGold;
     #region Farm Varibles
     private float FarmHeal = 30;
@@ -189,6 +193,9 @@ public class GameManager : MonoBehaviour
             {
                 ResolveCurioEffect((Curio)randLootPicks[buttonID]);
             }
+            PlayerEquipedItem(randLootPicks[buttonID]);
+
+
             randLootPicks.Clear();
 
             ClosePickPan();
@@ -301,6 +308,22 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    private void PlayerEquipedItem(Item it)
+    {
+        if (it.GetType() == typeof(Weapon))
+        {
+            PlayerEquipedWeapon.sprite = it.itemPanelIcon;
+        }
+        if (it.GetType() == typeof(Armor))
+        {
+            PlayerEquipedArmor.sprite = it.itemPanelIcon;
+        }
+        if (it.GetType() == typeof(Curio))
+        {
+            PlayerEquipedCurio.sprite = it.itemPanelIcon;
+        }
+    }
     private void RandomItemPull()
     {
         randLootPicks.Clear();

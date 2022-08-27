@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
   m_Name: BasicKatana
   m_EditorClassIdentifier: 
-  itemPanelIcon: {fileID: 0}
-  itemDescription: 
+  itemPanelIcon: {fileID: 21300000, guid: 2860562b34e6ba24d82e5de95d77aa61, type: 3}
+  itemDescription: a simple katana like the one you started the game with
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: ff46c5ba06fad5343bcf62dc3f20f430, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: f7964036f3c24c94facdd68abb9659cc, type: 3}
   strikePointer: {fileID: 21300000, guid: 5ba21a44297900547a951e8ac54e52db, type: 3}
   baseDamageLevel:
   - 3
