@@ -123,11 +123,13 @@ public class StrikeArea : MonoBehaviour
         inStrikeArea = false;
     }
 
-    private void TurnBow(bool iss)
+    private void TurnBow(bool iss,Weapon wee)
     {
         for (int lcv = 0; lcv < BowAreas.Count; lcv++)
         {
             BowAreas[lcv].SetActive(iss);
+            if (iss)
+            { BowAreas[lcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); }
         }
     }
 
@@ -152,6 +154,7 @@ public class StrikeArea : MonoBehaviour
             {
                 bottomOdachi.SetActive(true);
                 targetEnemy.Add(1);
+                bottomOdachi.GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee);
             }
             else
             {
@@ -164,11 +167,11 @@ public class StrikeArea : MonoBehaviour
 
             if (wee.effs[lcv] == WeaponEffect.bow)
             {
-                TurnBow(true);
+                TurnBow(true,wee);
             }
             else
             {
-                TurnBow(false);
+                TurnBow(false,wee);
             }
 
             if (wee.effs[lcv] == WeaponEffect.greed)

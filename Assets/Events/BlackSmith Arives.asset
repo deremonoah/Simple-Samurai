@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ac09ce114eff348ba6e863786ef5f2, type: 3}
+  m_Name: BlackSmith Arives
+  m_EditorClassIdentifier: 
+  textStatements:
+  - Would you be willing to let this black smith into your town I must warn you there
+    are bandits following me they will make your life more difficult
+  buttonOptions:
+  - Yes you can
+  - No I don't need your bandit problems too
+  myeventEffect: 0

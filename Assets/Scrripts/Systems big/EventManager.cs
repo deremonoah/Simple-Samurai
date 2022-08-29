@@ -22,7 +22,7 @@ public class EventManager : MonoBehaviour
     {
         //is it more efficent to send the data with the call or have a refrence to gm public variable like below?
         //or should i make it a static call so the gm doesn't need a private refrence to this?
-        if (_gm.playerCoins >= 30)
+        if (_gm.playerCoins >= 40)
         {
             //when the fight is over and looting done investing event
         }
