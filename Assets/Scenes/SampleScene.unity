@@ -7091,30 +7091,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1153951115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b6686eecef458f44a2f2dc0ef2a1a9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 11cd008ddab23bc48905eb15d6391b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VillageDefenseTimerMax: 30
-  _villageDefenseTimer: 0
-  VillagerLifeTimerMax: 1
-  _defending: 0
-  _beingRaided: 0
-  villagers: 30
-  FireSprites:
-  - {fileID: 46898438}
-  - {fileID: 400493605}
-  - {fileID: 1239902122}
-  - {fileID: 453734390}
-  - {fileID: 1191812148}
-  - {fileID: 642711595}
-  - {fileID: 1442853091}
-  - {fileID: 1884444898}
-  - {fileID: 319974338}
-  - {fileID: 1356044547}
-  - {fileID: 391179968}
-  - {fileID: 1678335425}
-  FireIndex: 0
-  threashHoldForFire: 0
+  EventPopUpText: {fileID: 1683209277}
+  EventPanel: {fileID: 1781174046}
 --- !u!1 &1169944263
 GameObject:
   m_ObjectHideFlags: 0
@@ -11221,7 +11202,7 @@ GameObject:
   - component: {fileID: 1781174049}
   - component: {fileID: 1781174048}
   m_Layer: 5
-  m_Name: Text Panel
+  m_Name: Event Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11244,8 +11225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -741.2257, y: -416.7016}
-  m_SizeDelta: {x: 1482.4509, y: 833.40295}
+  m_AnchoredPosition: {x: -1920, y: -1080.4}
+  m_SizeDelta: {x: 3840, y: 2160.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781174048
 MonoBehaviour:
@@ -13637,6 +13618,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 46898438}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 400493605}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 1239902122}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 453734390}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 1191812148}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 642711595}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[6]
+      value: 
+      objectReference: {fileID: 1442853091}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[7]
+      value: 
+      objectReference: {fileID: 1884444898}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[8]
+      value: 
+      objectReference: {fileID: 319974338}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[9]
+      value: 
+      objectReference: {fileID: 1356044547}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[10]
+      value: 
+      objectReference: {fileID: 391179968}
+    - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: FireSprites.Array.data[11]
+      value: 
+      objectReference: {fileID: 1678335425}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
 --- !u!1001 &1981594130697783970

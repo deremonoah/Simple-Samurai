@@ -9,7 +9,7 @@ public class ExtraStrikeArea : MonoBehaviour
     private EnemysManager enmySys;
     private SoundManager SoundMng;
     private StrikeArea mainArea;
-    private bool inStrikeArea,timering = false;
+    private bool inStrikeArea = false;
     private float timer,damgMult = 1, defaultDamgMult=1, baseDamage,maxDamage;
     [SerializeField] List<int> target;
     public Weapon MyWeapon;
@@ -48,7 +48,6 @@ public class ExtraStrikeArea : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                timering = true;
                 timer = 0;
                 damgMult = defaultDamgMult;
                 timer = 0;
@@ -68,7 +67,6 @@ public class ExtraStrikeArea : MonoBehaviour
                 }
                 justStruck = true;
                 timer = 0.1f;
-                timering = false;
             }
         }
         if (timer < 0 && justStruck)

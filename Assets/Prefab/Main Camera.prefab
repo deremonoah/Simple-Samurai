@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1092464847776270935}
   - component: {fileID: 1092464847776270928}
   - component: {fileID: 1092464847776271020}
+  - component: {fileID: 4886708299457330426}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -98,27 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b89b8064bac9ca439aa1a4e41f5ef72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enmSpawns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  enms: []
+  enemySpawnsPoints: []
+  aliveEnemys: []
   OpenTimer: 0.5
   recPos: 0
-  attackkStarts: []
-  atkEnd: {fileID: 0}
-  waves:
-  - {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
-  - {fileID: 11400000, guid: 15f30f38d9d6c6d41a36787480ec93e1, type: 2}
-  - {fileID: 11400000, guid: e47e2a48ff7669a428e7de968cc26774, type: 2}
-  - {fileID: 11400000, guid: 8877d478fa54a584cbbc7da656c33696, type: 2}
-  - {fileID: 11400000, guid: b3721b69000f53d48a8981c5ecaa96d2, type: 2}
-  - {fileID: 11400000, guid: 2120487f544b9d14183076ff0675cb9e, type: 2}
-  - {fileID: 11400000, guid: 8b4bb5ef5ae54f44a80fe1b3cc1aa772, type: 2}
-  - {fileID: 11400000, guid: 8ba7cb3554af55d4689ae52e77cfbfdf, type: 2}
-  - {fileID: 11400000, guid: 4b3d92d2a1b727d4ba632994330f4ebc, type: 2}
-  EnmHPPointer: {fileID: 0}
+  attackStartPoints: []
+  attackEndPointStandard: {fileID: 0}
+  enemyWaves: []
 --- !u!114 &1092464847776270928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,9 +141,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
   - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
   - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
-  mainStrkArea: {fileID: 0}
+  mainStrikeArea: {fileID: 0}
+  PlayerEquipedWeapon: {fileID: 0}
+  PlayerEquipedArmor: {fileID: 0}
+  PlayerEquipedCurio: {fileID: 0}
   bonusGold: 0
   farmLvlImages: []
+  improveWeaponText: {fileID: 0}
+  improveArmorText: {fileID: 0}
 --- !u!114 &1092464847776271020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +164,39 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   health: 100
   maxHealth: 100
-  armorNum: 5
+  armorValue: 0
   myArmor: {fileID: 11400000, guid: ba8a8d2ed6e56cc488237da71b56f496, type: 2}
   testArmor: {fileID: 11400000, guid: 2134eac3c1b49734da06d755ce35a994, type: 2}
+--- !u!114 &4886708299457330426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6686eecef458f44a2f2dc0ef2a1a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VillageDefenseTimerMax: 30
+  _villageDefenseTimer: 0
+  VillagerLifeTimerMax: 1
+  _defending: 0
+  _beingRaided: 0
+  villagers: 30
+  FireSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  FireIndex: 0
+  threashHoldForFire: 0

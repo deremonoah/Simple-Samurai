@@ -10,4 +10,5 @@ public class Event : ScriptableObject
     public List<string> buttonOptions;
     [SerializeField] EventEffect myeventEffect;
 }
-public enum EventEffect { blackSmith, moreVillagers, defenses}
+public enum EventEffect { blackSmith, moreVillagers, defenses, invest, leader, missingFamily}
+//like how the wild dog goes out with the leader guy to save a family who's house is burning down

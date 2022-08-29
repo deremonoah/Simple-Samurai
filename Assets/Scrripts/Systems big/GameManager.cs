@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject pausePan;
     public bool Paused = false;
     private EnemysManager _enemyManager;
+    private EventManager _eventManager;
     public Text TextCoins;
-    [SerializeField] int playerCoins;
+    public int playerCoins;
     [SerializeField] PlayerHealthBar playerHP;
 
     public SoundManager SoundMng;
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _eventManager = GetComponent<EventManager>();
         Time.timeScale = 1f;
         _enemyManager = GetComponent<EnemysManager>();
         playerCoins = 0;
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
         pickPan.GetComponent<Animator>().SetBool("Open", true);
         RandomItemPull();
         Paused = true;
+        _eventManager.CheckNextEvent();
         StrikeArea.SwitchPlayerOn(false);
     }
     public void ClosePickPan()
