@@ -9,12 +9,13 @@ public class ExtraStrikeArea : MonoBehaviour
     private EnemysManager enmySys;
     private SoundManager SoundMng;
     private StrikeArea mainArea;
-    private bool indere,timering = false;
-    private float timer,damgMult, defaultDamgMult, baseDamg,maxDamg;
+    private bool inStrikeArea,timering = false;
+    private float timer,damgMult = 1, defaultDamgMult=1, baseDamage,maxDamage;
     [SerializeField] List<int> target;
     public Weapon MyWeapon;
     [SerializeField] int WhichAreaMe;
     private StrikePoint strikePoint;
+    private bool justStruck = false;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class ExtraStrikeArea : MonoBehaviour
         enmySys = mc.GetComponent<EnemysManager>();
         strikePoint = FindObjectOfType<StrikePoint>();
         SoundMng = FindObjectOfType<SoundManager>();
+        MyWeapon = Instantiate(MyWeapon);
         SetExtrasWeapon(MyWeapon);
         CheckTarget();
     }
@@ -31,10 +33,7 @@ public class ExtraStrikeArea : MonoBehaviour
     private void Update()
     {
 
-        if (timering)
-        {
-            timer += Time.deltaTime;
-        }
+        
 
         if (strikePoint.mostRecentX < 1.5)
         { damgMult = 1; }
@@ -58,32 +57,37 @@ public class ExtraStrikeArea : MonoBehaviour
 
             CheckTarget();
 
-            if (Input.GetKeyUp(KeyCode.Space) && indere)
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
-                float Damger = Mathf.Clamp(baseDamg + (timer * damgMult), 0, maxDamg);
-                
+                float Damger = Mathf.Clamp(strikePoint.mostRecentX * damgMult, baseDamage, maxDamage);
+
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
                     enmySys.DamageEnemy(Damger, target[lcv], MyWeapon.effs);
                     SoundMng.PlaySound("hit");
                 }
-
-                timer = 0;
+                justStruck = true;
+                timer = 0.1f;
                 timering = false;
             }
         }
+        if (timer < 0 && justStruck)
+        {
+            justStruck = false;
+        }
+        else { timer -= Time.deltaTime; }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.name == "strike point")
         {
-            indere = true;
+            inStrikeArea = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        indere = false;
+        inStrikeArea = false;
     }
 
     private void CheckTarget()
@@ -92,7 +96,9 @@ public class ExtraStrikeArea : MonoBehaviour
 
         if (MyWeapon.effs[0] == WeaponEffect.odachi)
         {
-
+            target.Clear();
+            target.Add(0);
+            target.Add(2);
         }
         else if (MyWeapon.effs[0] == WeaponEffect.bow)
         {
@@ -140,7 +146,7 @@ public class ExtraStrikeArea : MonoBehaviour
 
     private void SetExtrasWeapon(Weapon wee)
     {
-        baseDamg = wee.baseDamageLevel[wee.itemLevel];
-        maxDamg = wee.maxDamageLevel[wee.itemLevel];
+        baseDamage = wee.baseDamageLevel[wee.itemLevel];
+        maxDamage = wee.maxDamageLevel[wee.itemLevel];
     }
 }

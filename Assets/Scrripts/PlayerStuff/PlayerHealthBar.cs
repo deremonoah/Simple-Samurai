@@ -20,6 +20,7 @@ public class PlayerHealthBar : MonoBehaviour
         health = maxHealth;
         _gm = FindObjectOfType<GameManager>();
         myArmor = Instantiate(myArmor);
+        testArmor = Instantiate(testArmor);
     }
 
 
@@ -96,7 +97,7 @@ public class PlayerHealthBar : MonoBehaviour
     public void SetArmor(Armor am)
     {
         armorValue = am.armorLevel[am.itemLevel];
-        myArmor = Instantiate(am);
+        myArmor = am;
         if (myArmor.armrEef == ArmorEffect.greed)
         {
             _gm.bonusGold = true;

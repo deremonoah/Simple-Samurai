@@ -5,11 +5,13 @@ using UnityEngine;
 public class VillageDefense : MonoBehaviour
 {
     public float VillageDefenseTimerMax;
-    private float _villageDefenseTimer;
+    [SerializeField] float _villageDefenseTimer;
+
     public float VillagerLifeTimerMax;
     private float _villagerLifeTimer;
-    private bool _defending;
-    private bool _beingRaided;
+
+    [SerializeField] bool _defending;
+    [SerializeField] bool _beingRaided;
     [SerializeField] int villagers;
     private int _villagersAtStart;
     private int _tempVillagerCount;
@@ -76,7 +78,9 @@ public class VillageDefense : MonoBehaviour
 
     public void ResetVillage()
     {
+        Debug.Log("called reset");
         _beingRaided = false;
+        _defending = false;
         _villagersAtStart = villagers;
         foreach (GameObject spr in FireSprites)
         {

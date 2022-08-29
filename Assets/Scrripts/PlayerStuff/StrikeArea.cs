@@ -31,7 +31,7 @@ public class StrikeArea : MonoBehaviour
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
     public Weapon equipedWeapon;
-    public Weapon Test;
+    public Weapon TestWeapon;
     void Start()
     {
         GM = mc.GetComponent<GameManager>();
@@ -41,6 +41,7 @@ public class StrikeArea : MonoBehaviour
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
         justStruck = false;
         equipedWeapon = Instantiate(equipedWeapon);
+        TestWeapon = Instantiate(TestWeapon);
     }
 
     
@@ -96,7 +97,7 @@ public class StrikeArea : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SetWeapon(Test);
+            SetWeapon(TestWeapon);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
