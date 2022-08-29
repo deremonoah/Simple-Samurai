@@ -67,7 +67,7 @@ public class StrikeArea : MonoBehaviour
 
             if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
-                float Damger = Mathf.Clamp(strikePoint.mostRecentX * damgMult, baseDamage, maxDamage);
+                float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult)+ baseDamage, 0, maxDamage);
                 
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
