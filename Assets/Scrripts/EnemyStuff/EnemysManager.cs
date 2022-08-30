@@ -19,7 +19,7 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] GameObject attackEndPointStandard;
 
     public List<EnmWave> enemyWaves;
-    private int WaveControlVariable;
+    public int WaveControlVariable;
 
     private GameManager GM;
     private VillageDefense _villageDefense;

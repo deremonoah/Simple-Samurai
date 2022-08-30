@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582431f5892f74c498e3445ec03e44bc, type: 3}
   m_Name: Quick Strike Hat
   m_EditorClassIdentifier: 
-  itemPanelIcon: {fileID: 0}
+  itemPanelIcon: {fileID: 21300000, guid: 391dbd39c9134654b90488e398a47e6d, type: 3}
   itemDescription: your pointer speed is increase while you have this hat
+  itemLevel: 0
   curiEef: 7
-  CurioNum: 0
+  CurioNum: 2
+  CurioValueLevel: 01000000020000000300000005000000

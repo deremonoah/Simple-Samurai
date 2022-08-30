@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78ac09ce114eff348ba6e863786ef5f2, type: 3}
-  m_Name: Investments Open
+  m_Name: Investments
   m_EditorClassIdentifier: 
   textStatements: []
   buttonOptions: []
