@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
 public class StrikePoint : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class StrikePoint : MonoBehaviour
     
     public GameObject startpoint;
 
-    
+    public PathCreator currentPath;
+    [SerializeField] float speed;
+    [SerializeField] float distanceTravelled;
+
     [SerializeField] float frequency;
     [SerializeField] float magnitude;
 
@@ -20,7 +24,7 @@ public class StrikePoint : MonoBehaviour
     bool faceingRight = true;
 
     private Vector3 pos, localScale;
-    [SerializeField] float Timer;
+    [SerializeField] float PathTimer, InbetweenTimer;
 
     [SerializeField] GameObject TopBound;
     [SerializeField] GameObject BottomBound;
@@ -50,9 +54,14 @@ public class StrikePoint : MonoBehaviour
 
         if (StrikeArea.PlayerOn)
         {
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && !inbetween)
+            {
+                PathTimer = 0;
+            }
             if ((Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.Mouse0) )&& !inbetween)
             {
-                Timer += Time.deltaTime;
+                PathTimer = Time.deltaTime;
+                InbetweenTimer += Time.deltaTime;
                 if (faceingRight)
                 {
                     moveRight();
@@ -65,7 +74,7 @@ public class StrikePoint : MonoBehaviour
             }
             if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))&& !pressing)
             {
-                Timer = 0;
+                InbetweenTimer = 0;
                 pressing = true;
             }
             //reset to start pos here
@@ -74,6 +83,7 @@ public class StrikePoint : MonoBehaviour
                 //mostRecentX = transform.position.x;
                 pos = startpoint.transform.position;
                 rb.transform.position = startpoint.transform.position;
+                distanceTravelled = 0;
                 inbetween = true;
                 pressing = false;
             }
@@ -108,8 +118,11 @@ public class StrikePoint : MonoBehaviour
 
     void moveRight()
     {
-        pos += transform.right * Time.deltaTime ;
-        transform.position = pos + transform.up * Mathf.Sin(Timer * (frequency )) * magnitude;
+        //old sign wave way
+        //pos += transform.right * Time.deltaTime ;
+        //transform.position = pos + transform.up * Mathf.Sin(InbetweenTimer * (frequency )) * magnitude;
+        distanceTravelled += speed * Time.deltaTime;
+        transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
     }
 
     void moveUPandDown()
@@ -132,7 +145,7 @@ public class StrikePoint : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, BottomBound.transform.position.y), upSpeed * Time.deltaTime);
         }*/
         
-        transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(Timer*frequency)*magnitude;
+        transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(InbetweenTimer*frequency)*magnitude;
         
     }
 
