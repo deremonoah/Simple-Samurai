@@ -394,9 +394,9 @@ public class enemy : MonoBehaviour
     IEnumerator OnFire()
     {
         yield return new WaitForSeconds(0.5f);
-        HP -= 2;
+        HP -= 1;
         int randNum = Random.Range(0, 6);
-        if (randNum < 6)
+        if (randNum < 4)
         {
             StartCoroutine(OnFire());
         }
