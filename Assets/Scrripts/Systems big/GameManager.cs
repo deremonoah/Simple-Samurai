@@ -26,9 +26,10 @@ public class GameManager : MonoBehaviour
     private List<Item> randLootPicks = new List<Item>();
     public StrikeArea mainStrikeArea;
 
-    public Image PlayerEquipedWeapon;
-    public Image PlayerEquipedArmor;
-    public Image PlayerEquipedCurio;
+    private PlayerEquipedItemsManager _playerEquipedItems;
+    //public Image PlayerEquipedWeapon;
+    //public Image PlayerEquipedArmor;
+    //public Image PlayerEquipedCurio;
 
     public bool bonusGold;
     #region Farm Varibles
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
         playerCoins = 0;
         playerHP = GetComponent<PlayerHealthBar>();
         StrikeArea.SwitchPlayerOn(true);
+        _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
+
         for (int lcv=0;lcv<lootList.Count;lcv++)
         {
             lootList[lcv] = Instantiate(lootList[lcv]);
@@ -75,6 +78,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         TextCoins.text = ("" + playerCoins);
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            RandomItemPull();
+        }
+#endif
     }
     public void OpenPickPan()
     {
@@ -173,30 +182,31 @@ public class GameManager : MonoBehaviour
     {
         if (pickPan.GetComponent<Animator>().GetBool("Open") == true)
         {
-            if (randLootPicks[buttonID].GetType() == typeof(Weapon))
-            {
-                if (lootingUpgradesEnabled && randLootPicks[buttonID].name == mainStrikeArea.equipedWeapon.name)
-                {
-                    mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
-                    mainStrikeArea.SetWeapon(mainStrikeArea.equipedWeapon);
-                }
-                else
-                { mainStrikeArea.SetWeapon(randLootPicks[buttonID] as Weapon); }
-            }
-            if (randLootPicks[buttonID].GetType() == typeof(Armor))
-            {
-                if (lootingUpgradesEnabled && randLootPicks[buttonID].name == playerHP.myArmor.name)
-                {
-                    playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel + 1, 0, 3);
-                }
-                else
-                { playerHP.SetArmor(randLootPicks[buttonID] as Armor); }
-            }
+            //if (randLootPicks[buttonID].GetType() == typeof(Weapon))
+            //{
+            //    if (lootingUpgradesEnabled && randLootPicks[buttonID].name == mainStrikeArea.equipedWeapon.name)
+            //    {
+            //        mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
+            //        mainStrikeArea.SetWeapon(mainStrikeArea.equipedWeapon);
+            //    }
+            //    else
+            //    { mainStrikeArea.SetWeapon(randLootPicks[buttonID] as Weapon); }
+            //}
+            //if (randLootPicks[buttonID].GetType() == typeof(Armor))
+            //{
+            //    if (lootingUpgradesEnabled && randLootPicks[buttonID].name == playerHP.myArmor.name)
+            //    {
+            //        playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel + 1, 0, 3);
+            //    }
+            //    else
+            //    { playerHP.SetArmor(randLootPicks[buttonID] as Armor); }
+            //}
+
             if (randLootPicks[buttonID].GetType() == typeof(Curio))
             {
-                ResolveCurioEffect((Curio)randLootPicks[buttonID]);
+                ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
             }
-            PlayerEquipedItem(randLootPicks[buttonID]);
+            _playerEquipedItems.EquipItem(randLootPicks[buttonID], lootingUpgradesEnabled);
 
 
             randLootPicks.Clear();
@@ -206,7 +216,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void ResolveCurioEffect(Curio cur)
+    private void ResolveManagerCurioEffect(Curio cur)
     {
         switch (cur.curiEef)
         {
@@ -215,6 +225,9 @@ public class GameManager : MonoBehaviour
                 break;
             case CurioEffect.heal:
                 playerHP.HealPlayer(cur.CurioNum);
+                break;
+            case CurioEffect.quick:
+                _playerEquipedItems.EquipItem(cur, lootingUpgradesEnabled);
                 break;
         }
     }
@@ -295,6 +308,7 @@ public class GameManager : MonoBehaviour
         if (playerCoins >= improveArmorCost)
         {
             playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel+1,0,3);
+            playerHP.SetArmor(playerHP.myArmor);
             playerCoins -= improveArmorCost;
             improveArmorCost += 10;
             improveArmorText.text = "Improve Armor " + improveArmorCost + "g";
@@ -312,21 +326,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    private void PlayerEquipedItem(Item it)
-    {
-        if (it.GetType() == typeof(Weapon))
-        {
-            PlayerEquipedWeapon.sprite = it.itemPanelIcon;
-        }
-        if (it.GetType() == typeof(Armor))
-        {
-            PlayerEquipedArmor.sprite = it.itemPanelIcon;
-        }
-        if (it.GetType() == typeof(Curio))
-        {
-            PlayerEquipedCurio.sprite = it.itemPanelIcon;
-        }
-    }
+
     private void RandomItemPull()
     {
         randLootPicks.Clear();

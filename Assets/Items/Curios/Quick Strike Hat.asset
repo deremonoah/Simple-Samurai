@@ -16,5 +16,5 @@ MonoBehaviour:
   itemDescription: your pointer speed is increase while you have this hat
   itemLevel: 0
   curiEef: 7
-  CurioNum: 2
+  CurioNum: 1
   CurioValueLevel: 01000000020000000300000005000000

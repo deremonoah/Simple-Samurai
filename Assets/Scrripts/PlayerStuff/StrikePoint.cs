@@ -11,7 +11,8 @@ public class StrikePoint : MonoBehaviour
     public GameObject startpoint;
 
     public PathCreator currentPath;
-    [SerializeField] float speed;
+    public PathCreator endPath;
+    public float speed;
     [SerializeField] float distanceTravelled;
 
     [SerializeField] float frequency;
@@ -70,6 +71,7 @@ public class StrikePoint : MonoBehaviour
                 {
                     moveUPandDown();
                 }
+                pos = transform.position;
                 mostRecentX = transform.localPosition.x;
             }
             if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))&& !pressing)
@@ -127,26 +129,11 @@ public class StrikePoint : MonoBehaviour
 
     void moveUPandDown()
     {
-        /*if (transform.position.y == TopBound.transform.position.y)
-        {
-            uping = false;
-        }
-        if (transform.position.y == BottomBound.transform.position.y)
-        {
-            uping = true;
-        }
 
-        if (uping)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, TopBound.transform.position.y), upSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, BottomBound.transform.position.y), upSpeed * Time.deltaTime);
-        }*/
-        
-        transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(InbetweenTimer*frequency)*magnitude;
-        
+        //using sin wave to move the problem was it would jump to the top for some reason
+        //transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(InbetweenTimer*frequency)*magnitude;
+        distanceTravelled += speed * Time.deltaTime;
+        transform.position = endPath.path.GetPointAtDistance(distanceTravelled);
     }
 
     public void ChangeStrikeSprite(Sprite spt)

@@ -26,7 +26,7 @@ public class VillageDefense : MonoBehaviour
         _villageDefenseTimer = VillageDefenseTimerMax;
         _villagerLifeTimer = VillagerLifeTimerMax;
         _villagersAtStart = villagers;
-        threashHoldForFire = _villagersAtStart / 11;
+        threashHoldForFire = (float)_villagersAtStart / 11;
         FireIndex = 0;
     }
 
@@ -50,16 +50,20 @@ public class VillageDefense : MonoBehaviour
             {
                 villagers -= 1;
                 _villagerLifeTimer = VillagerLifeTimerMax;
-                if (_villagersAtStart - villagers >= threashHoldForFire)
+                if ((float)_villagersAtStart - villagers >= threashHoldForFire)
                 {
-                    FireSprites[FireIndex].SetActive(true);
+                    Debug.Log("if check: "+ ((float)_villagersAtStart - villagers));
+                    if (FireIndex  < FireSprites.Count)
+                    { FireSprites[FireIndex].SetActive(true); }
                     _villagersAtStart = villagers;
+
+                    threashHoldForFire =_villagersAtStart / Mathf.Clamp((FireSprites.Count - FireIndex),1,50);
                     FireIndex++;
                 }
             }
             else { _villagerLifeTimer -= Time.deltaTime; }
         }
-        if (FireIndex >= 11)
+        if (FireIndex >= 11 && villagers <=0)
         {
             _gm.OpenLossPan();
         }
@@ -71,14 +75,13 @@ public class VillageDefense : MonoBehaviour
         _villageDefenseTimer = VillageDefenseTimerMax;
         _villagerLifeTimer = VillagerLifeTimerMax;
         _villagersAtStart = villagers;
-        threashHoldForFire = _villagersAtStart / 11;
+        threashHoldForFire = (float)_villagersAtStart / 11;
         FireIndex = 0;
-        Debug.Log(threashHoldForFire);
+        Debug.Log("fire therash hold: " + threashHoldForFire);
     }
 
     public void ResetVillage()
     {
-        Debug.Log("called reset");
         _beingRaided = false;
         _defending = false;
         _villagersAtStart = villagers;

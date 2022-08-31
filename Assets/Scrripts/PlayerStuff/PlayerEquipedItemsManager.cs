@@ -1,0 +1,70 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerEquipedItemsManager : MonoBehaviour
+{
+    public Weapon EquipedWeapon;
+    public Armor EquipedArmor;
+    public Curio EquipedCurio;
+
+    public Image weaponIcon;
+    public Image armorIcon;
+    public Image curioIcon;
+
+    private StrikeArea _mainStrikeArea;
+    private PlayerHealthBar _playerHP;
+    private StrikePoint _strikePointer;
+
+    private void Start()
+    {
+        _mainStrikeArea = FindObjectOfType<StrikeArea>();
+        _playerHP = FindObjectOfType<PlayerHealthBar>();
+        _strikePointer = FindObjectOfType<StrikePoint>();
+    }
+
+    public void EquipItem(Item item, bool lootingUpgradesEnabled)
+    {
+        if (item.GetType() == typeof(Weapon))
+        {
+            if (lootingUpgradesEnabled && item.name == _mainStrikeArea.equipedWeapon.name)
+            {
+                _mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(_mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
+            }
+            EquipedWeapon = (Weapon)item;
+            _mainStrikeArea.SetWeapon(item as Weapon);
+            weaponIcon.sprite = item.itemPanelIcon;
+        }
+        if (item.GetType() == typeof(Armor))
+        {
+            if (lootingUpgradesEnabled && item.name == _playerHP.myArmor.name)
+            {
+                _playerHP.myArmor.itemLevel = Mathf.Clamp(_playerHP.myArmor.itemLevel + 1, 0, 3);
+            }
+            EquipedArmor = (Armor)item; 
+            _playerHP.SetArmor(item as Armor);
+            armorIcon.sprite = item.itemPanelIcon;
+        }
+        if (item.GetType() == typeof(Curio))
+        {
+            //equip Curio to HP and strike Point and Strike area
+            ResolveCurioEffect(item as Curio);
+        }
+    }
+
+        private void ResolveCurioEffect(Curio cur)
+    {
+        switch (cur.curiEef)
+        {
+            case CurioEffect.quick:
+                //this gets called twice and Im not sure why
+                _strikePointer.speed = 6;
+                Debug.Log("Pointer speed: "+_strikePointer.speed);
+                curioIcon.sprite = cur.itemPanelIcon;
+                break;
+        }
+
+
+        }
+}

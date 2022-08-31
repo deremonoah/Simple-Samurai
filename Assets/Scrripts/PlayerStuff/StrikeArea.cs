@@ -16,8 +16,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] float defaultDamageMult;
     [SerializeField] List<int> targetEnemy;
 
-    [SerializeField] float timer = 0;
-    [SerializeField]bool timering=false;
+    private float _JustStruckTimer = 0;
     [SerializeField] GameObject bottomOdachi;
     [SerializeField] List<GameObject> BowAreas;
     public List<Sprite> BowPointers;
@@ -47,10 +46,6 @@ public class StrikeArea : MonoBehaviour
     
     void Update()
     {
-        if (timering)
-        {
-            timer += Time.deltaTime;
-        }
 
         if (strikePoint.mostRecentX < 1.5)
         { damgMult = 1; }
@@ -60,7 +55,7 @@ public class StrikeArea : MonoBehaviour
         { damgMult = 12; }
         else if (strikePoint.mostRecentX >= 4)
         { damgMult = 20; }
-        
+
 
         if (PlayerOn)
         {
@@ -75,7 +70,7 @@ public class StrikeArea : MonoBehaviour
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit");
                     justStruck = true;
-                    timer = 0.1f;
+                    _JustStruckTimer = 0.1f;
                     if (Damger >= 15f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
                         if(Damger >=25)
@@ -88,11 +83,11 @@ public class StrikeArea : MonoBehaviour
             }
         }
 
-        if (timer<0 && justStruck)
+        if (_JustStruckTimer<0 && justStruck)
         {
             justStruck = false;
         }
-        else { timer -= Time.deltaTime; }
+        else { _JustStruckTimer -= Time.deltaTime; }
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1))

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1092464847776270928}
   - component: {fileID: 1092464847776271020}
   - component: {fileID: 4886708299457330426}
+  - component: {fileID: 7633312787459196708}
+  - component: {fileID: 8227899104359019310}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -106,6 +108,7 @@ MonoBehaviour:
   attackStartPoints: []
   attackEndPointStandard: {fileID: 0}
   enemyWaves: []
+  WaveControlVariable: 0
 --- !u!114 &1092464847776270928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,9 +145,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
   - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
   mainStrikeArea: {fileID: 0}
-  PlayerEquipedWeapon: {fileID: 0}
-  PlayerEquipedArmor: {fileID: 0}
-  PlayerEquipedCurio: {fileID: 0}
   bonusGold: 0
   farmLvlImages: []
   improveWeaponText: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6686eecef458f44a2f2dc0ef2a1a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VillageDefenseTimerMax: 30
+  VillageDefenseTimerMax: 40
   _villageDefenseTimer: 0
   VillagerLifeTimerMax: 1
   _defending: 0
@@ -200,3 +200,43 @@ MonoBehaviour:
   - {fileID: 0}
   FireIndex: 0
   threashHoldForFire: 0
+--- !u!114 &7633312787459196708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89694e1d07b412640ab664cea9419902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipedWeapon: {fileID: 0}
+  EquipedArmor: {fileID: 0}
+  EquipedCurio: {fileID: 0}
+  weaponIcon: {fileID: 0}
+  armorIcon: {fileID: 0}
+  curioIcon: {fileID: 0}
+--- !u!114 &8227899104359019310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11cd008ddab23bc48905eb15d6391b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventPopUpText: {fileID: 0}
+  EventPanel: {fileID: 0}
+  Buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ButtonTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
