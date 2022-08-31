@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     //public Image PlayerEquipedArmor;
     //public Image PlayerEquipedCurio;
 
-    public bool bonusGold;
+
     #region Farm Varibles
     private float FarmHeal = 30;
     private float FarmIncHP = 10;
@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenClosePanel(GameObject panel)
     {
+        SetUpgradeCostsButtonsText();
         if (panel.activeInHierarchy == false)
         {
             panel.SetActive(true);
@@ -163,7 +164,7 @@ public class GameManager : MonoBehaviour
     {
         SoundMng.PlaySound("coin");
         int tempgold = 0;
-        if (bonusGold)
+        if (_playerEquipedItems.equipedArmor.armrEef == ArmorEffect.greed)
         {
             tempgold = Random.Range(playerHP.myArmor.effectNumberOneLevel[playerHP.myArmor.itemLevel], playerHP.myArmor.effectNumberTwoLevel[playerHP.myArmor.itemLevel]);
         }
@@ -293,25 +294,26 @@ public class GameManager : MonoBehaviour
 
     public void ImproveWeaponButton()
     {
-        if (playerCoins >= improveWeaponCost)
+        if (_playerEquipedItems.equipedWeapon.itemLevel + 1 <= 3 && playerCoins >= improveWeaponCost*(Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3)))
         {
-            mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
-            mainStrikeArea.SetWeapon(mainStrikeArea.equipedWeapon);
-            playerCoins -= improveWeaponCost;
-            improveWeaponCost += 10;
-            improveWeaponText.text = "Improve Weapon " + improveWeaponCost + "g";
+            _playerEquipedItems.equipedWeapon.itemLevel = Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3);
+            _playerEquipedItems.EquipItem(mainStrikeArea.equipedWeapon, lootingUpgradesEnabled);
+
+            playerCoins -= improveWeaponCost * Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel, 0, 3);
+            //improveWeaponCost += 10;
+            SetUpgradeCostsButtonsText();
         }
     }
 
     public void ImproveArmorButton()
     {
-        if (playerCoins >= improveArmorCost)
+        if (_playerEquipedItems.equipedArmor.itemLevel + 1 <= 3 && playerCoins >= improveArmorCost*(Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3)))
         {
-            playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel+1,0,3);
-            playerHP.SetArmor(playerHP.myArmor);
-            playerCoins -= improveArmorCost;
-            improveArmorCost += 10;
-            improveArmorText.text = "Improve Armor " + improveArmorCost + "g";
+            _playerEquipedItems.equipedArmor.itemLevel = Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel+1,0,3);
+            _playerEquipedItems.EquipItem(playerHP.myArmor, lootingUpgradesEnabled);
+            playerCoins -= improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel , 0, 3);
+            //improveArmorCost += 10;
+            SetUpgradeCostsButtonsText();
         }
     }
 
@@ -323,6 +325,16 @@ public class GameManager : MonoBehaviour
             playerCoins -= 10;
         }
     }
+
+    private void SetUpgradeCostsButtonsText()
+    {
+       int temp =improveWeaponCost * (_playerEquipedItems.equipedWeapon.itemLevel + 1);
+        improveWeaponText.text = "Improve Weapon " + temp + "g";
+
+        temp = improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3); ;
+        improveArmorText.text = "Improve Weapon " + temp + "g";
+    }
+
 
     #endregion
 

@@ -98,9 +98,6 @@ public class PlayerHealthBar : MonoBehaviour
     {
         armorValue = am.armorLevel[am.itemLevel];
         myArmor = am;
-        if (myArmor.armrEef == ArmorEffect.greed)
-        {
-            _gm.bonusGold = true;
-        }
+
     }
 }
