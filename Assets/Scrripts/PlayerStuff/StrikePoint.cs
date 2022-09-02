@@ -152,4 +152,9 @@ public class StrikePoint : MonoBehaviour
     {
         CurrentEndBound = NormalEndBound;
     }
+
+    public void ChangeStyle(PathCreator tempPath)
+    {
+        currentPath = tempPath;
+    }
 }
