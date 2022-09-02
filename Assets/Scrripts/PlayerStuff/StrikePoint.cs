@@ -13,6 +13,8 @@ public class StrikePoint : MonoBehaviour
     public PathCreator currentPath;
     public PathCreator endPath;
     public float speed;
+    private float currentSpeed;
+    [SerializeField] float endSpeed;
     [SerializeField] float distanceTravelled;
 
     [SerializeField] float frequency;
@@ -50,7 +52,7 @@ public class StrikePoint : MonoBehaviour
     {
         
         checkWhereToFace();
-
+        
         
 
         if (StrikeArea.PlayerOn)
@@ -61,15 +63,17 @@ public class StrikePoint : MonoBehaviour
             }
             if ((Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.Mouse0) )&& !inbetween)
             {
-                PathTimer = Time.deltaTime;
+                PathTimer += Time.deltaTime;
                 InbetweenTimer += Time.deltaTime;
                 if (faceingRight)
                 {
                     moveRight();
+                    currentSpeed = speed;
                 }
                 else if(!faceingRight)
                 {
                     moveUPandDown();
+                    currentSpeed = endSpeed;
                 }
                 pos = transform.position;
                 mostRecentX = transform.localPosition.x;
@@ -131,9 +135,9 @@ public class StrikePoint : MonoBehaviour
     {
 
         //using sin wave to move the problem was it would jump to the top for some reason
-        //transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(InbetweenTimer*frequency)*magnitude;
-        distanceTravelled += speed * Time.deltaTime;
-        transform.position = endPath.path.GetPointAtDistance(distanceTravelled);
+        transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(PathTimer*frequency)*magnitude;
+        //distanceTravelled += speed * Time.deltaTime;
+        //transform.position = endPath.path.GetPointAtDistance(distanceTravelled);
     }
 
     public void ChangeStrikeSprite(Sprite spt)
@@ -156,5 +160,18 @@ public class StrikePoint : MonoBehaviour
     public void ChangeStyle(PathCreator tempPath)
     {
         currentPath = tempPath;
+        if (tempPath.name == "Simple Style" )
+        {
+            speed = 5;
+        }else if(tempPath.name == "Mountain Path")
+        {
+            speed = 4f;
+        }else if(tempPath.name == "Rushing Boar")
+        {
+            speed = 2f;
+        }else
+        {
+            speed = 3f;
+        }
     }
 }
