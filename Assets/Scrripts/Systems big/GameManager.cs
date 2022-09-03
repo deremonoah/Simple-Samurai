@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void OpenClosePanel(GameObject panel)
+    public void togglePanel(GameObject panel)
     {
         SetUpgradeCostsButtonsText();
         if (panel.activeInHierarchy == false)

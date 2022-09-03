@@ -5,9 +5,9 @@ using PathCreation;
 
 public class StrikePoint : MonoBehaviour
 {
-    
+
     private Rigidbody2D rb;
-    
+
     public GameObject startpoint;
 
     public PathCreator currentPath;
@@ -35,6 +35,8 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] GameObject SmallerEndBound;
     private GameObject CurrentEndBound;
 
+
+    private bool _hasTransitionedPath;
     public float mostRecentX;
     public bool pressing = false;
     void Start()
@@ -50,10 +52,10 @@ public class StrikePoint : MonoBehaviour
 
     void Update()
     {
-        
+
         checkWhereToFace();
-        
-        
+
+
 
         if (StrikeArea.PlayerOn)
         {
@@ -61,7 +63,7 @@ public class StrikePoint : MonoBehaviour
             {
                 PathTimer = 0;
             }
-            if ((Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.Mouse0) )&& !inbetween)
+            if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) && !inbetween)
             {
                 PathTimer += Time.deltaTime;
                 InbetweenTimer += Time.deltaTime;
@@ -70,21 +72,26 @@ public class StrikePoint : MonoBehaviour
                     moveRight();
                     currentSpeed = speed;
                 }
-                else if(!faceingRight)
+                else if (!faceingRight)
                 {
+                    if (!_hasTransitionedPath)
+                    {
+                        currentSpeed = endSpeed;
+                        distanceTravelled = 0;
+                        _hasTransitionedPath = true;
+                    }
                     moveUPandDown();
-                    currentSpeed = endSpeed;
                 }
                 pos = transform.position;
                 mostRecentX = transform.localPosition.x;
             }
-            if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))&& !pressing)
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && !pressing)
             {
                 InbetweenTimer = 0;
                 pressing = true;
             }
             //reset to start pos here
-            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0))&& pressing)
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && pressing)
             {
                 //mostRecentX = transform.position.x;
                 pos = startpoint.transform.position;
@@ -92,6 +99,7 @@ public class StrikePoint : MonoBehaviour
                 distanceTravelled = 0;
                 inbetween = true;
                 pressing = false;
+                _hasTransitionedPath = false;
             }
         }
 
@@ -118,7 +126,7 @@ public class StrikePoint : MonoBehaviour
         {
             localScale.x *= -1;
         }*/
-        
+
         //transform.localScale = localScale;
     }
 
@@ -127,17 +135,17 @@ public class StrikePoint : MonoBehaviour
         //old sign wave way
         //pos += transform.right * Time.deltaTime ;
         //transform.position = pos + transform.up * Mathf.Sin(InbetweenTimer * (frequency )) * magnitude;
-        distanceTravelled += speed * Time.deltaTime;
+        distanceTravelled += currentSpeed * Time.deltaTime;
         transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
     }
 
     void moveUPandDown()
     {
-
         //using sin wave to move the problem was it would jump to the top for some reason
-        transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(PathTimer*frequency)*magnitude;
-        //distanceTravelled += speed * Time.deltaTime;
-        //transform.position = endPath.path.GetPointAtDistance(distanceTravelled);
+        //transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(PathTimer*frequency)*magnitude;
+        distanceTravelled += currentSpeed * Time.deltaTime;
+        var direction = currentPath.name == "Cresent Moon" ? distanceTravelled * -1 : distanceTravelled;
+        transform.position = endPath.path.GetPointAtDistance(direction);
     }
 
     public void ChangeStrikeSprite(Sprite spt)
@@ -160,16 +168,19 @@ public class StrikePoint : MonoBehaviour
     public void ChangeStyle(PathCreator tempPath)
     {
         currentPath = tempPath;
-        if (tempPath.name == "Simple Style" )
+        if (tempPath.name == "Simple Style")
         {
             speed = 5;
-        }else if(tempPath.name == "Mountain Path")
+        }
+        else if (tempPath.name == "Mountain Path")
         {
             speed = 4f;
-        }else if(tempPath.name == "Rushing Boar")
+        }
+        else if (tempPath.name == "Rushing Boar")
         {
             speed = 2f;
-        }else
+        }
+        else
         {
             speed = 3f;
         }
