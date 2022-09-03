@@ -22,6 +22,7 @@ public class EnemysManager : MonoBehaviour
     public int WaveControlVariable;
 
     private GameManager GM;
+    private GameFlowManager _flowManager;
     private VillageDefense _villageDefense;
     private StrikeArea PlayerStrikeArea;
 
@@ -33,6 +34,7 @@ public class EnemysManager : MonoBehaviour
         StartCoroutine(SpawnWave());
         PlayerStrikeArea = FindObjectOfType<StrikeArea>();
         _villageDefense = FindObjectOfType<VillageDefense>();
+        _flowManager = GetComponent<GameFlowManager>();
     }
 
 
@@ -44,7 +46,7 @@ public class EnemysManager : MonoBehaviour
             {
                 spawned = false;
                 OpenTimer = 0.5f;
-                GM.OpenPickPan();
+                _flowManager.StartMenues();
                 _villageDefense.ResetVillage();
             }
             else

@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
+    private GameManager _gm;
+    
+    
     [SerializeField] Animator _lootPanel;
     [SerializeField] GameObject _eventPanel;
     [SerializeField] Animator _villagePanel;
     [SerializeField] bool skipEvent;
 
     [ContextMenu("initialize")]
-    public void Initialized()
+
+    private void Start()
+    {
+        _gm = GetComponent<GameManager>();
+    }
+
+    public void StartMenues()
     {
         StopAllCoroutines();
         StartCoroutine(FlowRoutine());
@@ -18,8 +27,9 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator FlowRoutine()
     {
-         
         _lootPanel.SetBool("Open", true);
+        StrikeArea.SwitchPlayerOn(false);
+        _gm.RandomItemPull();
         while (_lootPanel.GetBool("Open"))
         {
             yield return null;
@@ -42,6 +52,6 @@ public class GameFlowManager : MonoBehaviour
             yield return null;
             continue;
         }
-
+        StrikeArea.SwitchPlayerOn(true);
     }
 }

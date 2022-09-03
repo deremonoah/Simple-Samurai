@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject shopPan;
     public GameObject winPan;
     public GameObject pausePan;
-    public bool Paused = false;
     private EnemysManager _enemyManager;
     private EventManager _eventManager;
     public Text TextCoins;
@@ -40,13 +39,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region BlackSmith Variables
-    private int improveWeaponCost = 10;
-    private int improveArmorCost = 10;
-    public Text improveWeaponText;
-    public Text improveArmorText;
-    private bool lootingUpgradesEnabled = false;
-    #endregion
+    [SerializeField] BlackSmithShop _blacksmithShop;
+
 
     void Start()
     {
@@ -57,6 +51,7 @@ public class GameManager : MonoBehaviour
         playerHP = GetComponent<PlayerHealthBar>();
         StrikeArea.SwitchPlayerOn(true);
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
+        _blacksmithShop = GetComponent<BlackSmithShop>();
 
         for (int lcv=0;lcv<lootList.Count;lcv++)
         {
@@ -88,25 +83,20 @@ public class GameManager : MonoBehaviour
     public void OpenPickPan()
     {
         pickPan.GetComponent<Animator>().SetBool("Open", true);
-        RandomItemPull();
-        Paused = true;
         _eventManager.CheckNextEvent();
-        StrikeArea.SwitchPlayerOn(false);
+        
     }
     public void ClosePickPan()
     {
         if (pickPan.GetComponent<Animator>().GetBool("Open"))
         {
             pickPan.GetComponent<Animator>().SetBool("Open", false);
-            OpenShopPan();
-            Paused = false;
         }
     }
 
     public void OpenShopPan()
     {
         shopPan.GetComponent<Animator>().SetBool("Open", true);
-        Paused = true;
     }
 
     public void CloseShopPan()
@@ -115,7 +105,6 @@ public class GameManager : MonoBehaviour
         {
             shopPan.GetComponent<Animator>().SetBool("Open", false);
             _enemyManager.StartNextWave();
-            Paused = false;
             StrikeArea.SwitchPlayerOn(true);
         }
     }
@@ -146,16 +135,14 @@ public class GameManager : MonoBehaviour
 
     public void togglePanel(GameObject panel)
     {
-        SetUpgradeCostsButtonsText();
+        _blacksmithShop.SetUpgradeCostsButtonsText();
         if (panel.activeInHierarchy == false)
         {
             panel.SetActive(true);
-            Paused = true;
         }
         else
         {
             panel.SetActive(false);
-            Paused = false;
         }
     }
 
@@ -185,31 +172,13 @@ public class GameManager : MonoBehaviour
     {
         if (pickPan.GetComponent<Animator>().GetBool("Open") == true)
         {
-            //if (randLootPicks[buttonID].GetType() == typeof(Weapon))
-            //{
-            //    if (lootingUpgradesEnabled && randLootPicks[buttonID].name == mainStrikeArea.equipedWeapon.name)
-            //    {
-            //        mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
-            //        mainStrikeArea.SetWeapon(mainStrikeArea.equipedWeapon);
-            //    }
-            //    else
-            //    { mainStrikeArea.SetWeapon(randLootPicks[buttonID] as Weapon); }
-            //}
-            //if (randLootPicks[buttonID].GetType() == typeof(Armor))
-            //{
-            //    if (lootingUpgradesEnabled && randLootPicks[buttonID].name == playerHP.myArmor.name)
-            //    {
-            //        playerHP.myArmor.itemLevel = Mathf.Clamp(playerHP.myArmor.itemLevel + 1, 0, 3);
-            //    }
-            //    else
-            //    { playerHP.SetArmor(randLootPicks[buttonID] as Armor); }
-            //}
+           
 
             if (randLootPicks[buttonID].GetType() == typeof(Curio))
             {
                 ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
             }
-            _playerEquipedItems.EquipItem(randLootPicks[buttonID], lootingUpgradesEnabled);
+            _playerEquipedItems.EquipItem(randLootPicks[buttonID], _blacksmithShop.lootingUpgradesEnabled);
 
 
             randLootPicks.Clear();
@@ -230,7 +199,7 @@ public class GameManager : MonoBehaviour
                 playerHP.HealPlayer(cur.CurioNum);
                 break;
             case CurioEffect.quick:
-                _playerEquipedItems.EquipItem(cur, lootingUpgradesEnabled);
+                _playerEquipedItems.EquipItem(cur, _blacksmithShop.lootingUpgradesEnabled);
                 break;
         }
     }
@@ -292,53 +261,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region BlackSmith Buttons
-
-    public void ImproveWeaponButton()
-    {
-        if (_playerEquipedItems.equipedWeapon.itemLevel + 1 <= 3 && playerCoins >= improveWeaponCost*(Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3)))
-        {
-            _playerEquipedItems.equipedWeapon.itemLevel = Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3);
-            _playerEquipedItems.EquipItem(mainStrikeArea.equipedWeapon, lootingUpgradesEnabled);
-
-            playerCoins -= improveWeaponCost * Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel, 0, 3);
-            //improveWeaponCost += 10;
-            SetUpgradeCostsButtonsText();
-        }
-    }
-
-    public void ImproveArmorButton()
-    {
-        if (_playerEquipedItems.equipedArmor.itemLevel + 1 <= 3 && playerCoins >= improveArmorCost*(Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3)))
-        {
-            _playerEquipedItems.equipedArmor.itemLevel = Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel+1,0,3);
-            _playerEquipedItems.EquipItem(playerHP.myArmor, lootingUpgradesEnabled);
-            playerCoins -= improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel , 0, 3);
-            //improveArmorCost += 10;
-            SetUpgradeCostsButtonsText();
-        }
-    }
-
-    public void EnableLootingUpgrades()
-    {
-        if (playerCoins >= 10 && lootingUpgradesEnabled == false)
-        {
-            lootingUpgradesEnabled = true;
-            playerCoins -= 10;
-        }
-    }
-
-    private void SetUpgradeCostsButtonsText()
-    {
-       int temp =improveWeaponCost * (_playerEquipedItems.equipedWeapon.itemLevel + 1);
-        improveWeaponText.text = "Improve Weapon " + temp + "g";
-
-        temp = improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3); ;
-        improveArmorText.text = "Improve Weapon " + temp + "g";
-    }
-
-
-    #endregion
+    
 
 
     public void RandomItemPull()

@@ -892,7 +892,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 391981872}
@@ -3205,7 +3205,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1169944263}
@@ -4225,7 +4225,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 831375356}
@@ -4725,7 +4725,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 656973426}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420034}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: togglePanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1781174046}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &656973426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4849,7 +4861,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 893364461}
@@ -7118,7 +7130,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 391981872}
@@ -7410,7 +7422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 893364461}
@@ -8578,49 +8590,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
   m_PrefabInstance: {fileID: 1092464847884120786}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1153951123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153951115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6227bb21fdf4d942b6cc403bf5d5533, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hotKey: 257
-  _specialEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 893364461}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &1153951124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153951115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7becf94ba7e3c4bb2bc5b983ddf664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lootPanel: {fileID: 337474715}
-  _eventPanel: {fileID: 1781174046}
-  _villagePanel: {fileID: 1406086299}
 --- !u!1 &1169944263
 GameObject:
   m_ObjectHideFlags: 0
@@ -11199,7 +11168,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1169944263}
@@ -12497,7 +12466,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OpenClosePanel
+        m_MethodName: togglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 831375356}
@@ -15321,7 +15290,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: close
 --- !u!222 &2122999801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15778,7 +15747,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
@@ -15903,6 +15872,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: improveArmorText
+      value: 
+      objectReference: {fileID: 1896132487}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: improveWeaponText
+      value: 
+      objectReference: {fileID: 2065491791}
     - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: VillageDefenseTimerMax
       value: 40
@@ -15955,6 +15932,22 @@ PrefabInstance:
       propertyPath: FireSprites.Array.data[11]
       value: 
       objectReference: {fileID: 1678335425}
+    - target: {fileID: 6446248681284272178, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: _specialEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 893364461}
+    - target: {fileID: 7089745053819230923, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: _lootPanel
+      value: 
+      objectReference: {fileID: 337474715}
+    - target: {fileID: 7089745053819230923, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: _eventPanel
+      value: 
+      objectReference: {fileID: 1781174046}
+    - target: {fileID: 7089745053819230923, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: _villagePanel
+      value: 
+      objectReference: {fileID: 1406086299}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: armorIcon
       value: 

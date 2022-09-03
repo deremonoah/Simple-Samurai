@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 4886708299457330426}
   - component: {fileID: 7633312787459196708}
   - component: {fileID: 8227899104359019310}
+  - component: {fileID: 7089745053819230923}
+  - component: {fileID: 6446248681284272178}
+  - component: {fileID: 1923051231482176407}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -145,10 +148,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
   - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
   mainStrikeArea: {fileID: 0}
-  bonusGold: 0
   farmLvlImages: []
-  improveWeaponText: {fileID: 0}
-  improveArmorText: {fileID: 0}
+  _blacksmithShop: {fileID: 0}
 --- !u!114 &1092464847776271020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,12 +213,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89694e1d07b412640ab664cea9419902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipedWeapon: {fileID: 0}
-  EquipedArmor: {fileID: 0}
-  EquipedCurio: {fileID: 0}
+  equipedWeapon: {fileID: 0}
+  equipedArmor: {fileID: 0}
+  equipedCurio: {fileID: 0}
   weaponIcon: {fileID: 0}
   armorIcon: {fileID: 0}
   curioIcon: {fileID: 0}
+  weaponUpgradeIcons: []
+  armorUpgradeIcons: []
 --- !u!114 &8227899104359019310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,3 +243,62 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &7089745053819230923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7becf94ba7e3c4bb2bc5b983ddf664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lootPanel: {fileID: 0}
+  _eventPanel: {fileID: 0}
+  _villagePanel: {fileID: 0}
+  skipEvent: 0
+--- !u!114 &6446248681284272178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6227bb21fdf4d942b6cc403bf5d5533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hotKey: 257
+  _specialEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1092464847776270928}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OpenClosePanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1923051231482176407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee96a0bfa67110c4fbc5c62574a2962e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  improveWeaponText: {fileID: 0}
+  improveArmorText: {fileID: 0}
+  lootingUpgradesEnabled: 0

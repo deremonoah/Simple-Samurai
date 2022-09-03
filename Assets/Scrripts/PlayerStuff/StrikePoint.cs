@@ -37,6 +37,7 @@ public class StrikePoint : MonoBehaviour
 
 
     private bool _hasTransitionedPath;
+    private Vector3 endPathPosition;
     public float mostRecentX;
     public bool pressing = false;
     void Start()
@@ -141,8 +142,6 @@ public class StrikePoint : MonoBehaviour
 
     void moveUPandDown()
     {
-        //using sin wave to move the problem was it would jump to the top for some reason
-        //transform.position = new Vector3(transform.position.x,startpoint.transform.position.y,transform.position.z)+transform.up*Mathf.Sin(PathTimer*frequency)*magnitude;
         distanceTravelled += currentSpeed * Time.deltaTime;
         var direction = currentPath.name == "Cresent Moon" ? distanceTravelled * -1 : distanceTravelled;
         transform.position = endPath.path.GetPointAtDistance(direction);
