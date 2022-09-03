@@ -2285,7 +2285,7 @@ GameObject:
   - component: {fileID: 337474713}
   - component: {fileID: 337474715}
   m_Layer: 5
-  m_Name: item pick panel
+  m_Name: Looting panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8606,6 +8606,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &1153951124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153951115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7becf94ba7e3c4bb2bc5b983ddf664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lootPanel: {fileID: 337474715}
+  _eventPanel: {fileID: 1781174046}
+  _villagePanel: {fileID: 1406086299}
 --- !u!1 &1169944263
 GameObject:
   m_ObjectHideFlags: 0
@@ -16000,6 +16015,10 @@ PrefabInstance:
       propertyPath: weaponUpgradeIcons.Array.data[2]
       value: 
       objectReference: {fileID: 1885691980}
+    - target: {fileID: 8227899104359019310, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8227899104359019310, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: EventPanel
       value: 

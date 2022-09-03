@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
         if (pickPan.GetComponent<Animator>().GetBool("Open"))
         {
             pickPan.GetComponent<Animator>().SetBool("Open", false);
-            //enmsSys.StartNextWave();
             OpenShopPan();
             Paused = false;
         }
@@ -164,9 +163,12 @@ public class GameManager : MonoBehaviour
     {
         SoundMng.PlaySound("coin");
         int tempgold = 0;
-        if (_playerEquipedItems.equipedArmor.armrEef == ArmorEffect.greed)
+        Armor equipedArmor = _playerEquipedItems.equipedArmor;
+        if (equipedArmor.armrEef == ArmorEffect.greed)
         {
-            tempgold = Random.Range(playerHP.myArmor.effectNumberOneLevel[playerHP.myArmor.itemLevel], playerHP.myArmor.effectNumberTwoLevel[playerHP.myArmor.itemLevel]);
+            int minInclusive = equipedArmor.effectNumberOneLevel[equipedArmor.itemLevel];
+            int maxExclusive = equipedArmor.effectNumberTwoLevel[equipedArmor.itemLevel] + 1;
+            tempgold = Random.Range(minInclusive, maxExclusive);
         }
         playerCoins += coin+ tempgold;
         TextCoins.text = playerCoins.ToString();
@@ -339,7 +341,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    private void RandomItemPull()
+    public void RandomItemPull()
     {
         randLootPicks.Clear();
         var tempList = new List<Item>(lootList);
