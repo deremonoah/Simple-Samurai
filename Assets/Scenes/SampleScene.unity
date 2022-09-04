@@ -15744,6 +15744,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 389713777}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackkStarts.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -15783,6 +15787,18 @@ PrefabInstance:
       propertyPath: enemyWaves.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: 4b3d92d2a1b727d4ba632994330f4ebc, type: 2}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 95e278e90aae3ff4e94773f50be89815, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 390422390671c78418b83753eca0f1a5, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackkStarts.Array.data[0]
       value: 

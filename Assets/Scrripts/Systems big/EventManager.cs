@@ -45,6 +45,7 @@ public class EventManager : MonoBehaviour
         {
             _nextEvent = Resources.Load<Event>("Events/BlackSmith");
         }
+
     }
 
     public void DisplayEvent()

@@ -26,6 +26,7 @@ public class EnemysManager : MonoBehaviour
     private VillageDefense _villageDefense;
     private StrikeArea PlayerStrikeArea;
 
+    [SerializeField] List<Sprite> OdachiSprites;
 
     void Start()
     {
@@ -93,6 +94,10 @@ public class EnemysManager : MonoBehaviour
         {
             SetBowPointers();
         }
+        if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.odachi && aliveEnemys.Count != 0)
+        {
+            SetOdachiPointers();
+        }
 
     }
 
@@ -134,6 +139,9 @@ public class EnemysManager : MonoBehaviour
         if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.bow && aliveEnemys.Count != 0)
         {
             SetBowPointers();
+        }else if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.odachi && aliveEnemys.Count != 0)
+        {
+            SetOdachiPointers();
         }
 
 
@@ -171,6 +179,20 @@ public class EnemysManager : MonoBehaviour
             aliveEnemys[enmIndex].BowPointers[PointerIndex].SetActive(true);
 
         }
+    }
+
+    public void SetOdachiPointers()
+    {
+        if (aliveEnemys.Count > 2)
+        {
+            aliveEnemys[1].SetTargetPointer(OdachiSprites[1]);
+            aliveEnemys[2].SetTargetPointer(OdachiSprites[2]);
+        }
+        else if(aliveEnemys.Count == 2)
+        {
+            aliveEnemys[1].SetTargetPointer(OdachiSprites[0]);
+        }
+
     }
 
 }
