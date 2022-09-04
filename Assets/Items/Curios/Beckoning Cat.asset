@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582431f5892f74c498e3445ec03e44bc, type: 3}
   m_Name: Beckoning Cat
   m_EditorClassIdentifier: 
-  itemPanelIcon: {fileID: 0}
+  itemPanelIcon: {fileID: 21300000, guid: 0e570b65549792041b1c8c5432b04bff, type: 3}
   itemDescription: this either decreases cost in shops or lets you find more gold
   itemLevel: 0
   curiEef: 6
   CurioNum: 2
-  CurioValueLevel: 01000000020000000400000006000000
+  CurioValueLevel: 01000000020000000300000005000000
