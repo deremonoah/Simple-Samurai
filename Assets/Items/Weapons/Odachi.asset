@@ -15,7 +15,7 @@ MonoBehaviour:
   itemPanelIcon: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
   itemDescription: 'Odachi: a weapon that can sweep and strike 2 enemies at once'
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: 7a143bc1b13e84548b3c5d0cafbe1152, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: a4f756be5e8167b419e524b20ab8d8f0, type: 3}
   strikePointer: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
   baseDamageLevel:
   - 4
