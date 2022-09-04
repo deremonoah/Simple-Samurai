@@ -71,9 +71,9 @@ public class StrikeArea : MonoBehaviour
                     SoundMng.PlaySound("hit");
                     justStruck = true;
                     _JustStruckTimer = 0.1f;
-                    if (Damger >= 15f && equipedWeapon.effs[0] == WeaponEffect.greed)
+                    if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
-                        if(Damger >=25)
+                        if(Damger >=30)
                         { GM.PayOut(2); }
                         else { GM.PayOut(1); }
                     }
@@ -171,10 +171,10 @@ public class StrikeArea : MonoBehaviour
 
             if (wee.effs[lcv] == WeaponEffect.greed)
             {
-                strikePointObj.GetComponent<StrikePoint>().SetBoundsSmaller();
+                //strikePointObj.GetComponent<StrikePoint>().SetBoundsSmaller();
             }else
             {
-                strikePointObj.GetComponent<StrikePoint>().SetBoundsRegular();
+                //strikePointObj.GetComponent<StrikePoint>().SetBoundsRegular();
             }
         }
     }

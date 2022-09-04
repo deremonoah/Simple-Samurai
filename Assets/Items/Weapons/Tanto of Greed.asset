@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: 'Tanto of Greed: bbasically hitting the enemy with enough force
     gives you gold'
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: 16754b3bca9880d4e8a57f28a7351bf2, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: b5ebd51a665826f4c95f1440808dc0ce, type: 3}
   strikePointer: {fileID: 21300000, guid: 535f2acb9f6d1d74595ab0f5daa7a66a, type: 3}
   baseDamageLevel:
   - 4

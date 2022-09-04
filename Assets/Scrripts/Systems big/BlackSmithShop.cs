@@ -67,7 +67,7 @@ public class BlackSmithShop : MonoBehaviour
         improveWeaponText.text = "Improve Weapon " + temp + "g";
 
         temp = improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3); ;
-        improveArmorText.text = "Improve Weapon " + temp + "g";
+        improveArmorText.text = "Improve Armor " + temp + "g";
     }
 
 

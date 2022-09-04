@@ -96,7 +96,13 @@ public class ExtraStrikeArea : MonoBehaviour
         {
             target.Clear();
             target.Add(0);
-            target.Add(2);
+            if (enmySys.aliveEnemys.Count > 2)
+            {
+                target.Add(1);
+            }else
+            {
+                target.Add(2);
+            }
         }
         else if (MyWeapon.effs[0] == WeaponEffect.bow)
         {
