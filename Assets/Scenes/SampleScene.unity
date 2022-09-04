@@ -1294,8 +1294,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951125}
+        m_TargetAssemblyTypeName: BlackSmithShop, Assembly-CSharp
         m_MethodName: ImproveArmorButton
         m_Mode: 1
         m_Arguments:
@@ -8590,6 +8590,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
   m_PrefabInstance: {fileID: 1092464847884120786}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1153951125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+  m_PrefabInstance: {fileID: 1092464847884120786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153951115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee96a0bfa67110c4fbc5c62574a2962e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1169944263
 GameObject:
   m_ObjectHideFlags: 0
@@ -11992,8 +12003,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951125}
+        m_TargetAssemblyTypeName: BlackSmithShop, Assembly-CSharp
         m_MethodName: EnableLootingUpgrades
         m_Mode: 1
         m_Arguments:
@@ -14206,8 +14217,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951125}
+        m_TargetAssemblyTypeName: BlackSmithShop, Assembly-CSharp
         m_MethodName: ImproveWeaponButton
         m_Mode: 1
         m_Arguments:
