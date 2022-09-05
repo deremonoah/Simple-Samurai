@@ -5877,7 +5877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &831375357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6543,7 +6543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &893364462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8891,6 +8891,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
   m_PrefabInstance: {fileID: 1092464847884120786}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1153951116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153951115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859bc5ef03d9a84ab4b5580983f8299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healText: {fileID: 910566254}
+  improveHealthText: {fileID: 1449706497}
+  improveFarmText: {fileID: 1875027158}
+  farmLvlImages:
+  - {fileID: 1703893226}
+  - {fileID: 1566562581}
+  - {fileID: 911855077}
+  reduceCost: 0
 --- !u!114 &1153951125 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
@@ -15945,7 +15965,7 @@ PrefabInstance:
       objectReference: {fileID: 1173574145}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.data[8]
@@ -15967,6 +15987,10 @@ PrefabInstance:
       propertyPath: lootList.Array.data[12]
       value: 
       objectReference: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+    - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: farmLvlImages.Array.size
       value: 3

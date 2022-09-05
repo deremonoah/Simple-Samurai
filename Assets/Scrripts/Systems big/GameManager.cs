@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private EventManager _eventManager;
     public Text TextCoins;
     public int playerCoins;
+    private int _reduceCost;
     [SerializeField] PlayerHealthBar playerHP;
 
     public SoundManager SoundMng;
@@ -26,21 +27,12 @@ public class GameManager : MonoBehaviour
     public StrikeArea mainStrikeArea;
 
     private PlayerEquipedItemsManager _playerEquipedItems;
-    //public Image PlayerEquipedWeapon;
-    //public Image PlayerEquipedArmor;
-    //public Image PlayerEquipedCurio;
+    
 
 
-    #region Farm Varibles
-    private float FarmHeal = 30;
-    private float FarmIncHP = 10;
-    private int FarmLvl = 1;
-    [SerializeField] List<GameObject> farmLvlImages;
-
-    #endregion
 
     [SerializeField] BlackSmithShop _blacksmithShop;
-
+    [SerializeField] FarmShop _farmShop;
 
     void Start()
     {
@@ -52,6 +44,7 @@ public class GameManager : MonoBehaviour
         StrikeArea.SwitchPlayerOn(true);
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _blacksmithShop = GetComponent<BlackSmithShop>();
+        _farmShop = GetComponent<FarmShop>();
 
         for (int lcv=0;lcv<lootList.Count;lcv++)
         {
@@ -136,6 +129,9 @@ public class GameManager : MonoBehaviour
     public void togglePanel(GameObject panel)
     {
         _blacksmithShop.SetUpgradeCostsButtonsText();
+        _farmShop.SetButtonCostsText();
+
+
         if (panel.activeInHierarchy == false)
         {
             panel.SetActive(true);
@@ -200,7 +196,7 @@ public class GameManager : MonoBehaviour
                 break;
             case CurioEffect.quick:
                 _playerEquipedItems.EquipItem(cur, _blacksmithShop.lootingUpgradesEnabled);
-                break;
+                break;              
         }
     }
 
@@ -208,59 +204,6 @@ public class GameManager : MonoBehaviour
     {
         winPan.SetActive(true);
     }
-
-    #region Farm Buttons
-
-    public void FarmHealButton()
-    {
-        if (playerCoins >= 5)
-        {
-            playerCoins -= 5;
-            playerHP.HealPlayer(FarmHeal);
-        }
-        
-    }
-
-    public void IncreaseMaxHPButton()
-    {
-        if (playerCoins >= 10)
-        {
-            playerCoins -= 10;
-            playerHP.maxHealth +=FarmIncHP;
-        }
-    }
-
-    public void ImproveFarmButton()
-    {
-        if (playerCoins >=15 && FarmLvl<4)
-        {
-            playerCoins -= 15;
-            FarmLvl++;
-            switch (FarmLvl)
-            {
-                case 2:
-                    FarmHeal = 40;
-                    FarmIncHP = 15;
-                    farmLvlImages[0].SetActive(true);
-                    break;
-                case 3:
-                    FarmHeal = 60;
-                    FarmIncHP = 25;
-                    farmLvlImages[1].SetActive(true);
-                    break;
-                case 4:
-                    FarmHeal = 80;
-                    FarmIncHP = 40;
-                    farmLvlImages[2].SetActive(true);
-                    break;
-                
-            }
-        }
-    }
-
-
-    #endregion
-
     
 
 
@@ -286,5 +229,10 @@ public class GameManager : MonoBehaviour
             buttonImages[lcv].GetComponent<HoverTip>().tipToShow = randLootPicks[lcv].itemDescription;
         }
 
+    }
+    public void ReducePrice(int gold)
+    {
+        _blacksmithShop.reduceCost = gold;
+        _farmShop.reduceCost = gold;
     }
 }

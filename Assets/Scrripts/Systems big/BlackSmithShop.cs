@@ -8,11 +8,12 @@ public class BlackSmithShop : MonoBehaviour
     private PlayerEquipedItemsManager _playerEquipedItems;
     private GameManager _gm;
 
-    private int improveWeaponCost = 10;
-    private int improveArmorCost = 10;
+    private int baseCost = 10;
     public Text improveWeaponText;
     public Text improveArmorText;
+    public Text lootingUpgradeText;
     public bool lootingUpgradesEnabled = false;
+    public int reduceCost;
     void Start()
     {
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
@@ -29,12 +30,15 @@ public class BlackSmithShop : MonoBehaviour
 
     public void ImproveWeaponButton()
     {
-        if (_playerEquipedItems.equipedWeapon.itemLevel + 1 <= 3 && _gm.playerCoins >= improveWeaponCost * (Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3)))
+        var itemLvl = Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3);
+        var cost = baseCost * itemLvl;
+
+        if (itemLvl <= 3 && _gm.playerCoins >= cost)
         {
-            _playerEquipedItems.equipedWeapon.itemLevel = Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3);
+            _playerEquipedItems.equipedWeapon.itemLevel = Mathf.Clamp(itemLvl, 0, 3);
             _playerEquipedItems.EquipItem(_playerEquipedItems.equipedWeapon, lootingUpgradesEnabled);
 
-            _gm.playerCoins -= improveWeaponCost * Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel, 0, 3);
+            _gm.playerCoins -= cost-reduceCost;
             //improveWeaponCost += 10;
             SetUpgradeCostsButtonsText();
         }
@@ -42,11 +46,16 @@ public class BlackSmithShop : MonoBehaviour
 
     public void ImproveArmorButton()
     {
-        if (_playerEquipedItems.equipedArmor.itemLevel + 1 <= 3 && _gm.playerCoins >= improveArmorCost * (Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3)))
+        var itemLvl = Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3);
+        var cost = baseCost * itemLvl;
+
+        if (itemLvl <= 3 && _gm.playerCoins >= cost)
         {
-            _playerEquipedItems.equipedArmor.itemLevel = Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3);
+            
+
+            _playerEquipedItems.equipedArmor.itemLevel = Mathf.Clamp(itemLvl, 0, 3);
             _playerEquipedItems.EquipItem(_playerEquipedItems.equipedArmor, lootingUpgradesEnabled);
-            _gm.playerCoins -= improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel, 0, 3);
+            _gm.playerCoins -= cost - reduceCost;
             //improveArmorCost += 10;
             SetUpgradeCostsButtonsText();
         }
@@ -63,10 +72,10 @@ public class BlackSmithShop : MonoBehaviour
 
     public void SetUpgradeCostsButtonsText()
     {
-        int temp = improveWeaponCost * (_playerEquipedItems.equipedWeapon.itemLevel + 1);
+        int temp = (baseCost * (_playerEquipedItems.equipedWeapon.itemLevel + 1))-reduceCost;
         improveWeaponText.text = "Improve Weapon " + temp + "g";
 
-        temp = improveArmorCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3); ;
+        temp = (baseCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3)- reduceCost);
         improveArmorText.text = "Improve Armor " + temp + "g";
     }
 

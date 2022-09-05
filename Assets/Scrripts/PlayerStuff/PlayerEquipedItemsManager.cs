@@ -20,11 +20,15 @@ public class PlayerEquipedItemsManager : MonoBehaviour
     private PlayerHealthBar _playerHP;
     private StrikePoint _strikePointer;
 
+    private GameManager _gm;
+
     private void Start()
     {
         _mainStrikeArea = FindObjectOfType<StrikeArea>();
         _playerHP = FindObjectOfType<PlayerHealthBar>();
         _strikePointer = FindObjectOfType<StrikePoint>();
+
+        _gm = GetComponent<GameManager>();
 
         equipedWeapon = Instantiate(equipedWeapon);
         equipedArmor = Instantiate(equipedArmor);
@@ -59,13 +63,15 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         if (item.GetType() == typeof(Curio))
         {
             //equip Curio to HP and strike Point and Strike area
+            equipedCurio = (Curio)item;
+            curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
         }
 
         UpdateItemUpgrades();
     }
 
-        private void ResolveCurioEffect(Curio cur)
+    private void ResolveCurioEffect(Curio cur)
     {
         switch (cur.curiEef)
         {
@@ -74,6 +80,9 @@ public class PlayerEquipedItemsManager : MonoBehaviour
                 _strikePointer.speed = 6;
                 Debug.Log("Pointer speed: "+_strikePointer.speed);
                 curioIcon.sprite = cur.itemPanelIcon;
+                break;
+            case CurioEffect.greed:
+                _gm.ReducePrice(equipedCurio.CurioNum);
                 break;
         }
 
