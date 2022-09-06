@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     public List<GameObject> Buttons;
     public List<Text> ButtonTexts;
     private EnemysManager _enemyManager;
+    private GameObject _blacksmithButton;
 
     void Start()
     {
@@ -72,6 +73,7 @@ public class EventManager : MonoBehaviour
     {
         _enemyManager.enemyWaves.Insert(2,Resources.Load<EnmWave>("Waves/Wave3.5"));
         _enemyManager.enemyWaves.RemoveAt(3);
+        _blacksmithButton.SetActive(true);
     }
 
     public void CloseEventPanel()
