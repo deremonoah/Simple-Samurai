@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameFlowManager : MonoBehaviour
 {
     private GameManager _gm;
-    
+    private LootingManager _lootManager;
     
     [SerializeField] Animator _lootPanel;
     [SerializeField] GameObject _eventPanel;
@@ -16,7 +16,7 @@ public class GameFlowManager : MonoBehaviour
 
     private void Start()
     {
-        _gm = GetComponent<GameManager>();
+        _lootManager = GetComponent<LootingManager>();
     }
 
     public void StartMenues()
@@ -29,7 +29,7 @@ public class GameFlowManager : MonoBehaviour
     {
         _lootPanel.SetBool("Open", true);
         StrikeArea.SwitchPlayerOn(false);
-        _gm.RandomItemPull();
+        _lootManager.RandomItemPull();
         while (_lootPanel.GetBool("Open"))
         {
             yield return null;

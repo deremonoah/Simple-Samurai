@@ -156,7 +156,7 @@ RectTransform:
   - {fileID: 928462828}
   - {fileID: 252261176}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -522,7 +522,7 @@ RectTransform:
   - {fileID: 103203123}
   - {fileID: 1631757288}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1977,8 +1977,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951116}
+        m_TargetAssemblyTypeName: FarmShop, Assembly-CSharp
         m_MethodName: ImproveFarmButton
         m_Mode: 1
         m_Arguments:
@@ -2460,7 +2460,7 @@ RectTransform:
   - {fileID: 892381027}
   - {fileID: 1947277989}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2607,8 +2607,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951127}
+        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
         m_MethodName: PickButton
         m_Mode: 3
         m_Arguments:
@@ -2805,7 +2805,7 @@ RectTransform:
   - {fileID: 361335135}
   - {fileID: 386513020}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3440,7 +3440,7 @@ RectTransform:
   - {fileID: 1633959343}
   - {fileID: 698871533}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3853,7 +3853,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 16
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -5877,7 +5877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &831375357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5895,7 +5895,7 @@ RectTransform:
   - {fileID: 586138470}
   - {fileID: 2082024045}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6348,7 +6348,7 @@ RectTransform:
   m_Children:
   - {fileID: 1579312947}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6476,8 +6476,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951127}
+        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
         m_MethodName: PickButton
         m_Mode: 3
         m_Arguments:
@@ -6559,7 +6559,7 @@ RectTransform:
   - {fileID: 981640287}
   - {fileID: 1449183727}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7226,11 +7226,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 1
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 561, y: 113}
+  m_AnchoredPosition: {x: 561, y: 112.99994}
   m_SizeDelta: {x: 960, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939239422
@@ -7988,8 +7988,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951116}
+        m_TargetAssemblyTypeName: FarmShop, Assembly-CSharp
         m_MethodName: IncreaseMaxHPButton
         m_Mode: 1
         m_Arguments:
@@ -8291,7 +8291,7 @@ RectTransform:
   - {fileID: 447577404}
   - {fileID: 900664855}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8891,11 +8891,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
   m_PrefabInstance: {fileID: 1092464847884120786}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1153951116
+--- !u!114 &1153951116 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+  m_PrefabInstance: {fileID: 1092464847884120786}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153951115}
   m_Enabled: 1
@@ -8903,14 +8902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f859bc5ef03d9a84ab4b5580983f8299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healText: {fileID: 910566254}
-  improveHealthText: {fileID: 1449706497}
-  improveFarmText: {fileID: 1875027158}
-  farmLvlImages:
-  - {fileID: 1703893226}
-  - {fileID: 1566562581}
-  - {fileID: 911855077}
-  reduceCost: 0
 --- !u!114 &1153951125 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
@@ -8920,6 +8911,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee96a0bfa67110c4fbc5c62574a2962e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1153951127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+  m_PrefabInstance: {fileID: 1092464847884120786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153951115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ce3946df8fda84180af4abd382f9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1169944263
@@ -8957,7 +8959,7 @@ RectTransform:
   - {fileID: 391900843}
   - {fileID: 192339681}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9035,7 +9037,7 @@ RectTransform:
   - {fileID: 951297485}
   - {fileID: 1885691981}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 14
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -10155,7 +10157,7 @@ RectTransform:
   - {fileID: 1710637657}
   - {fileID: 997336998}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -10231,7 +10233,7 @@ RectTransform:
   m_Children:
   - {fileID: 1994019900}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -10312,7 +10314,7 @@ RectTransform:
   - {fileID: 659864833}
   - {fileID: 136026131}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10469,8 +10471,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 952037323}
-  - {fileID: 939239421}
   - {fileID: 377830616}
   - {fileID: 1052566959}
   - {fileID: 2118183554}
@@ -10488,6 +10488,8 @@ RectTransform:
   - {fileID: 429182602}
   - {fileID: 1781174047}
   - {fileID: 1405031783}
+  - {fileID: 952037323}
+  - {fileID: 939239421}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11330,8 +11332,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951127}
+        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
         m_MethodName: PickButton
         m_Mode: 3
         m_Arguments:
@@ -13371,7 +13373,7 @@ RectTransform:
   - {fileID: 656973424}
   - {fileID: 1984272492}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -14112,8 +14114,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951127}
+        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
         m_MethodName: ClosePickPan
         m_Mode: 1
         m_Arguments:
@@ -15212,8 +15214,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1153951116}
+        m_TargetAssemblyTypeName: FarmShop, Assembly-CSharp
         m_MethodName: FarmHealButton
         m_Mode: 1
         m_Arguments:
@@ -15614,7 +15616,7 @@ RectTransform:
   - {fileID: 1959003398}
   - {fileID: 1661796394}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15812,7 +15814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683044066166119018, guid: 281aff14b93e4e648a0d0114d9625979, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 683044066166119018, guid: 281aff14b93e4e648a0d0114d9625979, type: 3}
       propertyPath: m_AnchorMax.x
@@ -15880,7 +15882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683044066166119018, guid: 281aff14b93e4e648a0d0114d9625979, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 113
+      value: 112.99994
       objectReference: {fileID: 0}
     - target: {fileID: 683044066166119018, guid: 281aff14b93e4e648a0d0114d9625979, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15965,7 +15967,7 @@ PrefabInstance:
       objectReference: {fileID: 1173574145}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.data[8]
@@ -15991,6 +15993,10 @@ PrefabInstance:
       propertyPath: lootList.Array.data[13]
       value: 
       objectReference: {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
+    - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
     - target: {fileID: 1092464847776270928, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: farmLvlImages.Array.size
       value: 3
@@ -16339,6 +16345,22 @@ PrefabInstance:
       propertyPath: improveWeaponText
       value: 
       objectReference: {fileID: 2065491791}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: LootingPanel
+      value: 
+      objectReference: {fileID: 337474711}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: buttonImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 872711923}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: buttonImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 1513229711}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: buttonImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 1499270764}
     - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: VillageDefenseTimerMax
       value: 40
@@ -16468,10 +16490,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1885691980}
     - target: {fileID: 8227899104359019310, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8227899104359019310, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: EventPanel
       value: 
       objectReference: {fileID: 1781174046}
@@ -16503,6 +16521,30 @@ PrefabInstance:
       propertyPath: ButtonTexts.Array.data[2]
       value: 
       objectReference: {fileID: 629412594}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: healText
+      value: 
+      objectReference: {fileID: 910566254}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: improveFarmText
+      value: 
+      objectReference: {fileID: 1875027158}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: improveHealthText
+      value: 
+      objectReference: {fileID: 1449706497}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: farmLvlImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 1703893226}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: farmLvlImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 1566562581}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: farmLvlImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 911855077}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
 --- !u!1001 &1981594130697783970

@@ -21,18 +21,13 @@ public class GameManager : MonoBehaviour
 
     public SoundManager SoundMng;
 
-    [SerializeField] Image[] buttonImages;
-    public List<Item> lootList;
-    private List<Item> randLootPicks = new List<Item>();
     public StrikeArea mainStrikeArea;
 
     private PlayerEquipedItemsManager _playerEquipedItems;
-    
+    private LootingManager _lootManager;
+    private BlackSmithShop _blacksmithShop;
+    private FarmShop _farmShop;
 
-
-
-    [SerializeField] BlackSmithShop _blacksmithShop;
-    [SerializeField] FarmShop _farmShop;
 
     void Start()
     {
@@ -46,10 +41,7 @@ public class GameManager : MonoBehaviour
         _blacksmithShop = GetComponent<BlackSmithShop>();
         _farmShop = GetComponent<FarmShop>();
 
-        for (int lcv=0;lcv<lootList.Count;lcv++)
-        {
-            lootList[lcv] = Instantiate(lootList[lcv]);
-        }
+        
     }
 
     private void FixedUpdate()
@@ -69,23 +61,11 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            RandomItemPull();
+            _lootManager.RandomItemPull();
         }
 #endif
     }
-    public void OpenPickPan()
-    {
-        pickPan.GetComponent<Animator>().SetBool("Open", true);
-        _eventManager.CheckNextEvent();
-        
-    }
-    public void ClosePickPan()
-    {
-        if (pickPan.GetComponent<Animator>().GetBool("Open"))
-        {
-            pickPan.GetComponent<Animator>().SetBool("Open", false);
-        }
-    }
+
 
     public void OpenShopPan()
     {
@@ -164,72 +144,11 @@ public class GameManager : MonoBehaviour
         TextCoins.text = playerCoins.ToString();
     }
 
-    public void PickButton(int buttonID)
-    {
-        if (pickPan.GetComponent<Animator>().GetBool("Open") == true)
-        {
-           
-
-            if (randLootPicks[buttonID].GetType() == typeof(Curio))
-            {
-                ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
-            }
-            _playerEquipedItems.EquipItem(randLootPicks[buttonID], _blacksmithShop.lootingUpgradesEnabled);
-
-
-            randLootPicks.Clear();
-
-            ClosePickPan();
-        }
-
-    }
-
-    private void ResolveManagerCurioEffect(Curio cur)
-    {
-        switch (cur.curiEef)
-        {
-            case CurioEffect.Koban:
-                playerCoins += cur.CurioNum;
-                break;
-            case CurioEffect.heal:
-                playerHP.HealPlayer(cur.CurioNum);
-                break;
-            case CurioEffect.quick:
-                _playerEquipedItems.EquipItem(cur, _blacksmithShop.lootingUpgradesEnabled);
-                break;              
-        }
-    }
-
     public void PlayerWins()
     {
         winPan.SetActive(true);
     }
     
-
-
-    public void RandomItemPull()
-    {
-        randLootPicks.Clear();
-        var tempList = new List<Item>(lootList);
-        var temp1 = Random.Range(0, tempList.Count);
-        randLootPicks.Add(tempList[temp1]);
-        tempList.RemoveAt(temp1);
-
-        var temp2 = Random.Range(0, tempList.Count);
-        randLootPicks.Add(tempList[temp2]);
-        tempList.RemoveAt(temp2);
-
-        var temp3 = Random.Range(0, tempList.Count);
-        randLootPicks.Add(tempList[temp3]);
-        tempList.RemoveAt(temp3);
-
-        for (int lcv = 0; lcv < 3; lcv++)
-        {
-            buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
-            buttonImages[lcv].GetComponent<HoverTip>().tipToShow = randLootPicks[lcv].itemDescription;
-        }
-
-    }
     public void ReducePrice(int gold)
     {
         _blacksmithShop.reduceCost = gold;

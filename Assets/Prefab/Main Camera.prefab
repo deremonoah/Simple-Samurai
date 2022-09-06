@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 7089745053819230923}
   - component: {fileID: 6446248681284272178}
   - component: {fileID: 1923051231482176407}
+  - component: {fileID: 3637811481354933246}
+  - component: {fileID: 8673687103061439174}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -112,6 +114,7 @@ MonoBehaviour:
   attackEndPointStandard: {fileID: 0}
   enemyWaves: []
   WaveControlVariable: 0
+  OdachiSprites: []
 --- !u!114 &1092464847776270928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +132,6 @@ MonoBehaviour:
   shopPan: {fileID: 0}
   winPan: {fileID: 0}
   pausePan: {fileID: 0}
-  Paused: 0
   TextCoins: {fileID: 0}
   playerCoins: 0
   playerHP: {fileID: 0}
@@ -148,8 +150,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
   - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
   mainStrikeArea: {fileID: 0}
-  farmLvlImages: []
-  _blacksmithShop: {fileID: 0}
 --- !u!114 &1092464847776271020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092464847776271022}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11cd008ddab23bc48905eb15d6391b64, type: 3}
   m_Name: 
@@ -301,4 +301,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   improveWeaponText: {fileID: 0}
   improveArmorText: {fileID: 0}
+  lootingUpgradeText: {fileID: 0}
   lootingUpgradesEnabled: 0
+  reduceCost: 0
+--- !u!114 &3637811481354933246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ce3946df8fda84180af4abd382f9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LootingPanel: {fileID: 0}
+  buttonImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  lootList:
+  - {fileID: 11400000, guid: 8182fcc23c639af458b506c751b69bcb, type: 2}
+  - {fileID: 11400000, guid: 05c1cf5f54c6e8d4488fe2009407334a, type: 2}
+  - {fileID: 11400000, guid: d947b29b7e2a8ff479024a3aa8bc31dd, type: 2}
+  - {fileID: 11400000, guid: ecb8155a09592374e97d5da5a3186bfd, type: 2}
+  - {fileID: 11400000, guid: 9e92af5917f19b847abebe98ed0412de, type: 2}
+  - {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
+  - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
+  - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
+  - {fileID: 11400000, guid: 2134eac3c1b49734da06d755ce35a994, type: 2}
+  - {fileID: 11400000, guid: ca445cee3a30bea4aa8c88add7be2ccb, type: 2}
+  - {fileID: 11400000, guid: 938616cdfce35ac46a3e87b23eba7793, type: 2}
+  - {fileID: 11400000, guid: ba8a8d2ed6e56cc488237da71b56f496, type: 2}
+  - {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+  - {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
+  - {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
+--- !u!114 &8673687103061439174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f859bc5ef03d9a84ab4b5580983f8299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healText: {fileID: 0}
+  improveHealthText: {fileID: 0}
+  improveFarmText: {fileID: 0}
+  farmLvlImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  reduceCost: 0
