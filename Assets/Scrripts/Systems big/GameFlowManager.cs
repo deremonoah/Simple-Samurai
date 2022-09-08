@@ -6,6 +6,7 @@ public class GameFlowManager : MonoBehaviour
 {
     private GameManager _gm;
     private LootingManager _lootManager;
+    private EventManager _eventManager;
     
     [SerializeField] Animator _lootPanel;
     [SerializeField] GameObject _eventPanel;
@@ -35,10 +36,11 @@ public class GameFlowManager : MonoBehaviour
             yield return null;
             continue;
         }
+        _eventManager.CheckNextEvent();
 
         if (!skipEvent)
         {
-            _eventPanel.SetActive(true);
+            _eventManager.DisplayEvent();
             while (_eventPanel.activeInHierarchy)
             {
                 yield return null;

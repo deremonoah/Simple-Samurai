@@ -65,6 +65,7 @@ public class EventManager : MonoBehaviour
                 Buttons[lcv].SetActive(true);
                 ButtonTexts[lcv].text = _nextEvent.buttonOptions[lcv];
             }
+            _nextEvent = null;
         }
 
     }
@@ -79,5 +80,11 @@ public class EventManager : MonoBehaviour
     public void CloseEventPanel()
     {
         EventPanel.SetActive(false);
+    }
+
+    public void EventButton(int num)
+    {
+        
+        CloseEventPanel();
     }
 }
