@@ -43,7 +43,7 @@ public class FarmShop : MonoBehaviour
         int cost = (healCost * healPurchasesThisTurn) - reduceCost;
         if (_gm.playerCoins >= cost)
         {
-            _gm.playerCoins -= cost - reduceCost;
+            _gm.playerCoins -= cost;
             _playerHP.HealPlayer(FarmHeal);
             healPurchasesThisTurn += 1;
         }

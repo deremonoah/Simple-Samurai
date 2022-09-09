@@ -16518,6 +16518,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: extraStrikeAreas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: armorUpgradeIcons.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -16525,6 +16529,22 @@ PrefabInstance:
       propertyPath: weaponUpgradeIcons.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: extraStrikeAreas.Array.data[0]
+      value: 
+      objectReference: {fileID: 1687490594}
+    - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: extraStrikeAreas.Array.data[1]
+      value: 
+      objectReference: {fileID: 1673043793}
+    - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: extraStrikeAreas.Array.data[2]
+      value: 
+      objectReference: {fileID: 608219617}
+    - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: extraStrikeAreas.Array.data[3]
+      value: 
+      objectReference: {fileID: 1242109161}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: armorUpgradeIcons.Array.data[0]
       value: 

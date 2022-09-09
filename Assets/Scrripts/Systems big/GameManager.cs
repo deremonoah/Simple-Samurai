@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _blacksmithShop = GetComponent<BlackSmithShop>();
         _farmShop = GetComponent<FarmShop>();
-
+        _lootManager = GetComponent<LootingManager>();
         
     }
 

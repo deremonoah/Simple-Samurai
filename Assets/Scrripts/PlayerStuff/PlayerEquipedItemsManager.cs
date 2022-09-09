@@ -22,6 +22,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
 
     private GameManager _gm;
 
+    [SerializeField] List<ExtraStrikeArea> extraStrikeAreas;
+
     private void Start()
     {
         _mainStrikeArea = FindObjectOfType<StrikeArea>();
@@ -41,6 +43,10 @@ public class PlayerEquipedItemsManager : MonoBehaviour
             if (lootingUpgradesEnabled && item.name == _mainStrikeArea.equipedWeapon.name)
             {
                 _mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(_mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
+                foreach (ExtraStrikeArea ex in extraStrikeAreas)
+                {
+                    ex.SetExtrasWeapon(_mainStrikeArea.equipedWeapon);
+                }
             }
             equipedWeapon = (Weapon)item;
             _mainStrikeArea.SetWeapon(item as Weapon);
