@@ -11,19 +11,24 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField] Animator _lootPanel;
     [SerializeField] GameObject _eventPanel;
     [SerializeField] Animator _villagePanel;
-    [SerializeField] bool skipEvent;
+    private FarmShop _farm;
+    private bool _isEvent;
 
     [ContextMenu("initialize")]
 
     private void Start()
     {
+        _gm = GetComponent<GameManager>();
         _lootManager = GetComponent<LootingManager>();
+        _eventManager = GetComponent<EventManager>();
+        _farm = GetComponent<FarmShop>();
     }
 
     public void StartMenues()
     {
         StopAllCoroutines();
         StartCoroutine(FlowRoutine());
+        _farm.ResetHealPurchases();
     }
 
     IEnumerator FlowRoutine()
@@ -36,15 +41,17 @@ public class GameFlowManager : MonoBehaviour
             yield return null;
             continue;
         }
-        _eventManager.CheckNextEvent();
+        
+        _isEvent = _eventManager.CheckNextEvent();
 
-        if (!skipEvent)
+        if (_isEvent)
         {
             _eventManager.DisplayEvent();
             while (_eventPanel.activeInHierarchy)
             {
                 yield return null;
                 continue;
+                //where to put _isEvent =false?
             }
         }
 

@@ -19,6 +19,7 @@ public class VillageDefense : MonoBehaviour
     [SerializeField] int FireIndex;
     [SerializeField] float threashHoldForFire;
     private GameManager _gm;
+    public int DamageTaken;
 
     void Start()
     {
@@ -49,6 +50,7 @@ public class VillageDefense : MonoBehaviour
             if (_villagerLifeTimer <= 0)
             {
                 villagers -= 1;
+                DamageTaken++;
                 _villagerLifeTimer = VillagerLifeTimerMax;
                 if ((float)_villagersAtStart - villagers >= threashHoldForFire)
                 {
