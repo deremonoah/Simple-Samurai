@@ -3769,7 +3769,8 @@ MonoBehaviour:
   startpoint: {fileID: 1439485291}
   currentPath: {fileID: 531414201}
   endPath: {fileID: 1392706998}
-  speed: 5
+  baseSpeed: 5
+  bonusSpeed: 0
   endSpeed: 5
   distanceTravelled: 0
   frequency: 4
@@ -11517,7 +11518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1567971263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14953,7 +14954,8 @@ MonoBehaviour:
   startpoint: {fileID: 1439485291}
   currentPath: {fileID: 0}
   endPath: {fileID: 0}
-  speed: 0
+  baseSpeed: 0
+  bonusSpeed: 0
   endSpeed: 0
   distanceTravelled: 0
   frequency: 0

@@ -12,7 +12,8 @@ public class StrikePoint : MonoBehaviour
 
     public PathCreator currentPath;
     public PathCreator endPath;
-    public float speed;
+    public float baseSpeed;
+    public float bonusSpeed;
     private float currentSpeed;
     [SerializeField] float endSpeed;
     [SerializeField] float distanceTravelled;
@@ -71,7 +72,7 @@ public class StrikePoint : MonoBehaviour
                 if (faceingRight)
                 {
                     moveRight();
-                    currentSpeed = speed;
+                    currentSpeed = baseSpeed + bonusSpeed;
                 }
                 else if (!faceingRight)
                 {
@@ -169,19 +170,19 @@ public class StrikePoint : MonoBehaviour
         currentPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
-            speed = 5;
+            baseSpeed = 5;
         }
         else if (tempPath.name == "Mountain Path")
         {
-            speed = 4f;
+            baseSpeed = 4f;
         }
         else if (tempPath.name == "Rushing Boar")
         {
-            speed = 2f;
+            baseSpeed = 2f;
         }
         else
         {
-            speed = 3f;
+            baseSpeed = 3f;
         }
     }
 }

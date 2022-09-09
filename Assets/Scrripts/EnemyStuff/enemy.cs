@@ -35,7 +35,7 @@ public class enemy : MonoBehaviour
     public Ability myAbility;
     private int amountRobbed = 0;
 
-    private List<GameObject> curAtks = new List<GameObject>();
+    private List<GameObject> currentAttacks = new List<GameObject>();
 
     public Material matWhite;
     private Material matDefault;
@@ -95,7 +95,7 @@ public class enemy : MonoBehaviour
         //Hp ifs
         if (HP<=0)
         {
-            foreach (var atk in curAtks)
+            foreach (var atk in currentAttacks)
                 Destroy(atk);
             enmsSys.OnDied(this);
             _GM.PayOut(Random.Range(minCoin, maxCoin)+amountRobbed);
@@ -305,6 +305,7 @@ public class enemy : MonoBehaviour
         //which then has to when hit stop this routine and if not it just destroys the enm thief clone
         GameObject run = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]);
+        currentAttacks.Add(run);
         yield return new WaitForSeconds(2);
     }
 
@@ -359,13 +360,13 @@ public class enemy : MonoBehaviour
 
         atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
         var newList = new List<GameObject>();
-        if (curAtks.Count > 0)
-            foreach (var swing in curAtks)
+        if (currentAttacks.Count > 0)
+            foreach (var swing in currentAttacks)
                 if (swing != null)
                     newList.Add(swing);
 
         newList.Add(atk);
-        curAtks = newList;
+        currentAttacks = newList;
 
     }
 
@@ -375,13 +376,13 @@ public class enemy : MonoBehaviour
         //var dir = Random.Range(0, healDirs.Count);
         heal.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform,SpecialDirs[0]);
         var newList = new List<GameObject>();
-        if (curAtks.Count > 0)
-            foreach (var swing in curAtks)
+        if (currentAttacks.Count > 0)
+            foreach (var swing in currentAttacks)
                 if (swing != null)
                     newList.Add(swing);
 
         newList.Add(heal);
-        curAtks = newList;
+        currentAttacks = newList;
     }
 
     IEnumerator Flash()

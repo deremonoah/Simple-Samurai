@@ -77,8 +77,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         {
             case CurioEffect.quick:
                 //this gets called twice and Im not sure why
-                _strikePointer.speed = 6;
-                Debug.Log("Pointer speed: "+_strikePointer.speed);
+                _strikePointer.bonusSpeed = 1;
+                Debug.Log("Pointer speed: "+_strikePointer.baseSpeed);
                 curioIcon.sprite = cur.itemPanelIcon;
                 break;
             case CurioEffect.greed:

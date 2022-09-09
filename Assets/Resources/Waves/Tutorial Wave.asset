@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d7abd935e3b4b4b9d4b219ac2aaf03, type: 3}
   m_Name: Tutorial Wave
   m_EditorClassIdentifier: 
-  enmsInWave: []
+  enmsInWave:
+  - {fileID: 2591190870528044838, guid: 13b8fe6809dbd724f8c7e25415320fd1, type: 3}

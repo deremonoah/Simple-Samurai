@@ -77,7 +77,7 @@ public class EventManager : MonoBehaviour
                 Buttons[lcv].SetActive(true);
                 ButtonTexts[lcv].text = _nextEvent.buttonOptions[lcv];
             }
-            _nextEvent = null;
+            
         }
 
     }
@@ -103,19 +103,41 @@ public class EventManager : MonoBehaviour
     public void CloseEventPanel()
     {
         EventPanel.SetActive(false);
+        _nextEvent = null;
     }
 
     public void EventButton(int num)
     {
         if (num == 0)
         {
-            //yes stuff
+            firstResault();
         }
 
         if (num == 1)
         {
             //no response strat
         }
+        ResolvePassiveEffect();
         CloseEventPanel();
+    }
+
+    public void firstResault()
+    {
+        if (_nextEvent.myeventEffect == EventEffect.blackSmith)
+        {
+            BlackSmithArived();
+        }
+        if (_nextEvent.myeventEffect == EventEffect.damagedCity && _gm.playerCoins>10)
+        {
+            RepairVillage();
+            _gm.playerCoins -= 10;
+            //the 10 can be changed I would like to make it based on how damaged the village was
+            //also if the player can't afford or doesn't pay it needs to enable a button that can repair on the village panel
+        }
+    }
+
+    public void ResolvePassiveEffect()
+    {
+        //now player can invest
     }
 }
