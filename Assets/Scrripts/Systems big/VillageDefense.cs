@@ -21,6 +21,11 @@ public class VillageDefense : MonoBehaviour
     private GameManager _gm;
     public int DamageTaken;
 
+    [SerializeField] List<GameObject> TurnedOnShopButtons;
+    [SerializeField] GameObject BlackSmithButton;
+    [SerializeField] GameObject RepairVillageButton;
+    [SerializeField] List<GameObject> _damagedShops;
+
     void Start()
     {
         _gm = FindObjectOfType<GameManager>();
@@ -29,6 +34,7 @@ public class VillageDefense : MonoBehaviour
         _villagersAtStart = villagers;
         threashHoldForFire = (float)_villagersAtStart / 11;
         FireIndex = 0;
+        _damagedShops = new List<GameObject>();
     }
 
     
@@ -92,5 +98,42 @@ public class VillageDefense : MonoBehaviour
             spr.SetActive(false);
         }
 
+    }
+
+
+    public void DamagedVillage()
+    {
+        int rand = Random.Range(0, TurnedOnShopButtons.Count);
+        Debug.Log("rand range for village" + rand);
+        GameObject temp = TurnedOnShopButtons[rand];
+        TurnedOnShopButtons.RemoveAt(rand);
+        temp.SetActive(false);
+        _damagedShops.Add(temp);
+
+        RepairVillageButton.SetActive(true);
+    }
+
+    public void RepairVillage()
+    {
+        if (_gm.playerCoins >= 10)
+        {
+            foreach (GameObject but in _damagedShops)
+            {
+                TurnedOnShopButtons.Add(but);
+                but.SetActive(true);
+            }
+            _gm.playerCoins -= 10;
+            _damagedShops.Clear();
+            DamageTaken = 0;
+        }else
+        {
+            DamagedVillage();
+        }
+    }
+
+    public void TurnOnBlackSmith()
+    {
+        BlackSmithButton.SetActive(true);
+        TurnedOnShopButtons.Add(BlackSmithButton);
     }
 }

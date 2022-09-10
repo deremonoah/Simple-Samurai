@@ -8,7 +8,6 @@ public class BlackSmithShop : MonoBehaviour
     private PlayerEquipedItemsManager _playerEquipedItems;
     private GameManager _gm;
 
-    [SerializeField] GameObject blacksmithButton;
 
     private int baseCost = 10;
     public Text improveWeaponText;
@@ -81,8 +80,4 @@ public class BlackSmithShop : MonoBehaviour
         improveArmorText.text = "Improve Armor " + temp + "g";
     }
 
-    public void TurnOnButton()
-    {
-        blacksmithButton.SetActive(true);
-    }
 }

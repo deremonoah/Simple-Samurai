@@ -194,10 +194,10 @@ public class enemy : MonoBehaviour
     {
         if (posInList > 0)
         {
-            waitTimerOffset = 1;
+            waitTimerOffset = 1.5f;
             if (posInList == 3)
             {
-                waitTimerOffset = 2;
+                waitTimerOffset = 2.5f;
             }
         }else
         {

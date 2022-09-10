@@ -87,18 +87,10 @@ public class EventManager : MonoBehaviour
         //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
         _enemyManager.enemyWaves.Insert(2,Resources.Load<EnmWave>("Waves/Wave3.5"));
         _enemyManager.enemyWaves.RemoveAt(3);
-        _blacksmith.TurnOnButton();
+        _villageDefense.TurnOnBlackSmith();
     }
 
-    public void RepairVillage()
-    {
-        //pay gold to repair the village also the progress on improvement or shop needs to be shut down
-    }
 
-    public void DamagedVillage()
-    {
-        //has a chance to disable a shop or 2 if damage was bad enough
-    }
 
     public void CloseEventPanel()
     {
@@ -115,7 +107,7 @@ public class EventManager : MonoBehaviour
 
         if (num == 1)
         {
-            //no response strat
+            SecondResault();
         }
         ResolvePassiveEffect();
         CloseEventPanel();
@@ -129,12 +121,19 @@ public class EventManager : MonoBehaviour
         }
         if (_nextEvent.myeventEffect == EventEffect.damagedCity && _gm.playerCoins>10)
         {
-            RepairVillage();
-            _gm.playerCoins -= 10;
-            //the 10 can be changed I would like to make it based on how damaged the village was
+            _villageDefense.RepairVillage();
             //also if the player can't afford or doesn't pay it needs to enable a button that can repair on the village panel
         }
     }
+
+    public void SecondResault()
+    {
+        if (_nextEvent.myeventEffect == EventEffect.damagedCity)
+        {
+            _villageDefense.DamagedVillage();
+        }
+    }
+
 
     public void ResolvePassiveEffect()
     {

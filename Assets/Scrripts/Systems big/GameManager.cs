@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private EventManager _eventManager;
     public Text TextCoins;
     public int playerCoins;
-    private int _reduceCost;
     [SerializeField] PlayerHealthBar playerHP;
 
     public SoundManager SoundMng;
@@ -28,6 +27,7 @@ public class GameManager : MonoBehaviour
     private BlackSmithShop _blacksmithShop;
     private FarmShop _farmShop;
 
+    
 
     void Start()
     {
@@ -148,10 +148,11 @@ public class GameManager : MonoBehaviour
     {
         winPan.SetActive(true);
     }
-    
+
     public void ReducePrice(int gold)
     {
         _blacksmithShop.reduceCost = gold;
         _farmShop.reduceCost = gold;
     }
+
 }
