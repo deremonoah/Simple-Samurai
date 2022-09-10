@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     private BlackSmithShop _blacksmithShop;
     private FarmShop _farmShop;
 
-    
+    private bool _blacksmithInvested;
+    private bool _farmInvested;
 
     void Start()
     {
@@ -155,4 +156,37 @@ public class GameManager : MonoBehaviour
         _farmShop.reduceCost = gold;
     }
 
+    public void InvestmentsPayOut()
+    {
+        int payout = 0;
+        if (_blacksmithInvested)
+        {
+            payout += Random.Range(1, 11);
+        }
+        if (_farmInvested)
+        {
+            payout += Random.Range(2, 5);
+        }
+        playerCoins += payout;
+    }
+
+    public void BlacksmithInvest()
+    {
+        if (playerCoins >= 20 && !_blacksmithInvested)
+        {
+            playerCoins -= 20;
+            _blacksmithInvested = true;
+            //in future make this scalable with population
+        }
+    }
+
+    public void FarmInvest()
+    {
+        if (playerCoins >= 20 && !_farmInvested)
+        {
+            playerCoins -= 20;
+            _farmInvested = true;
+            //in future make this scalable with population
+        }
+    }
 }

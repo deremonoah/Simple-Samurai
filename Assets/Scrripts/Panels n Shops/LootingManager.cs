@@ -15,6 +15,7 @@ public class LootingManager : MonoBehaviour
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
+    public List<HoverTip> HoverHelpers;
 
     void Start()
     {
@@ -83,7 +84,7 @@ public class LootingManager : MonoBehaviour
         for (int lcv = 0; lcv < 3; lcv++)
         {
             buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
-            buttonImages[lcv].GetComponent<HoverTip>().tipToShow = randLootPicks[lcv].itemDescription;
+            HoverHelpers[lcv].tipToShow = randLootPicks[lcv].itemDescription;
         }
 
     }

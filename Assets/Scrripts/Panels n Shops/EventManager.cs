@@ -15,12 +15,19 @@ public class EventManager : MonoBehaviour
     private BlackSmithShop _blacksmith;
     private VillageDefense _villageDefense;
 
+    [SerializeField] GameObject blacksmithInvestButton;
+    [SerializeField] GameObject farmInvestButton;
+    private bool _investingEnabled = false;
+
     void Start()
     {
         _gm = FindObjectOfType<GameManager>();
         _enemyManager = GetComponent<EnemysManager>();
         _blacksmith = GetComponent<BlackSmithShop>();
         _villageDefense = GetComponent<VillageDefense>();
+        blacksmithInvestButton.SetActive(false);
+        farmInvestButton.SetActive(false);
+
         for (int lcv = 0; lcv < Buttons.Count; lcv++)
         {
             Buttons[lcv].SetActive(false);
@@ -41,9 +48,9 @@ public class EventManager : MonoBehaviour
         //is it more efficent to send the data with the call or have a refrence to gm public variable like below?
         //or should i make it a static call so the gm doesn't need a private refrence to this?
         bool isEvent = false;
-        if (_gm.playerCoins >= 40)
+        if (_gm.playerCoins >= 40 && !_investingEnabled)
         {
-            //this event should only happen once
+            _investingEnabled = true;
             _nextEvent = Resources.Load<Event>("Events/Investments");
             isEvent = true;
         }
@@ -81,16 +88,6 @@ public class EventManager : MonoBehaviour
         }
 
     }
-
-    public void BlackSmithArived()
-    {
-        //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
-        _enemyManager.enemyWaves.Insert(2,Resources.Load<EnmWave>("Waves/Wave3.5"));
-        _enemyManager.enemyWaves.RemoveAt(3);
-        _villageDefense.TurnOnBlackSmith();
-    }
-
-
 
     public void CloseEventPanel()
     {
@@ -138,5 +135,26 @@ public class EventManager : MonoBehaviour
     public void ResolvePassiveEffect()
     {
         //now player can invest
+        if (_nextEvent.myeventEffect == EventEffect.invest)
+        {
+            EnableInvesting();
+        }
     }
+
+    #region Event Specific Classes
+    public void BlackSmithArived()
+    {
+        //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
+        _enemyManager.enemyWaves.Insert(2, Resources.Load<EnmWave>("Waves/Wave3.5"));
+        _enemyManager.enemyWaves.RemoveAt(3);
+        _villageDefense.TurnOnBlackSmith();
+    }
+
+    public void EnableInvesting()
+    {
+        blacksmithInvestButton.SetActive(true);
+        farmInvestButton.SetActive(true);
+    }
+
+    #endregion
 }

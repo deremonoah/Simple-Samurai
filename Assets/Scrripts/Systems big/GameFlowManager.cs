@@ -55,6 +55,8 @@ public class GameFlowManager : MonoBehaviour
             }
         }
 
+        _gm.InvestmentsPayOut();
+
         _villagePanel.SetBool("Open", true);
         while (_villagePanel.GetBool("Open"))
         {

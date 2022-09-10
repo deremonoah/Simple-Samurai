@@ -91,7 +91,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
                 _gm.ReducePrice(equipedCurio.CurioNum);
                 break;
         }
-
+        if (equipedCurio.curiEef != CurioEffect.greed) { _gm.ReducePrice(0); }
+        if (equipedCurio.curiEef != CurioEffect.quick) { _strikePointer.bonusSpeed = 0; }
 
     }
     private void UpdateItemUpgrades()
