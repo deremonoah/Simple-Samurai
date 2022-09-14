@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tanto of Greed
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: ed8b186cac3d3b746bbbde30ab5ef562, type: 3}
-  itemDescription: 'Tanto of Greed: bbasically hitting the enemy with enough force
+  itemDescription: 'Tanto of Greed: basically hitting the enemy with enough force
     gives you gold'
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: b5ebd51a665826f4c95f1440808dc0ce, type: 3}

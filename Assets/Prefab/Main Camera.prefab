@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1923051231482176407}
   - component: {fileID: 3637811481354933246}
   - component: {fileID: 8673687103061439174}
+  - component: {fileID: 9187118953220397927}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -136,19 +137,6 @@ MonoBehaviour:
   playerCoins: 0
   playerHP: {fileID: 0}
   SoundMng: {fileID: 0}
-  buttonImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  lootList:
-  - {fileID: 11400000, guid: 8182fcc23c639af458b506c751b69bcb, type: 2}
-  - {fileID: 11400000, guid: 05c1cf5f54c6e8d4488fe2009407334a, type: 2}
-  - {fileID: 11400000, guid: d947b29b7e2a8ff479024a3aa8bc31dd, type: 2}
-  - {fileID: 11400000, guid: ecb8155a09592374e97d5da5a3186bfd, type: 2}
-  - {fileID: 11400000, guid: 9e92af5917f19b847abebe98ed0412de, type: 2}
-  - {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
-  - {fileID: 11400000, guid: 02038d5b8f418fb4da35f1cba6d370ae, type: 2}
-  - {fileID: 11400000, guid: 6e265f1574206a244aa45e46acf03ed0, type: 2}
   mainStrikeArea: {fileID: 0}
 --- !u!114 &1092464847776271020
 MonoBehaviour:
@@ -201,6 +189,13 @@ MonoBehaviour:
   - {fileID: 0}
   FireIndex: 0
   threashHoldForFire: 0
+  DamageTaken: 0
+  TurnedOnShopButtons: []
+  BlackSmithButton: {fileID: 0}
+  RepairVillageButton: {fileID: 0}
+  _damagedShops: []
+  populationIcon: {fileID: 0}
+  populationText: {fileID: 0}
 --- !u!114 &7633312787459196708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +216,7 @@ MonoBehaviour:
   curioIcon: {fileID: 0}
   weaponUpgradeIcons: []
   armorUpgradeIcons: []
+  extraStrikeAreas: []
 --- !u!114 &8227899104359019310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +239,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  blacksmithInvestButton: {fileID: 0}
+  farmInvestButton: {fileID: 0}
 --- !u!114 &7089745053819230923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +256,6 @@ MonoBehaviour:
   _lootPanel: {fileID: 0}
   _eventPanel: {fileID: 0}
   _villagePanel: {fileID: 0}
-  skipEvent: 0
 --- !u!114 &6446248681284272178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +334,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
   - {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
   - {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
+  HoverHelpers: []
 --- !u!114 &8673687103061439174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,3 +355,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   reduceCost: 0
+--- !u!114 &9187118953220397927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba6cf18d9dfe824bbf121bca02e41b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialPanel: {fileID: 0}
+  tutorialText: {fileID: 0}
+  SensaiSprite: {fileID: 0}

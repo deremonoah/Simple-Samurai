@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Event", menuName = "Event")]
 public class Event : ScriptableObject
 {
+    [TextArea(3,10)]
     public List<string> textStatements;
     //0 yes, 1 no if its a yes or no obviously
     public List<string> buttonOptions;

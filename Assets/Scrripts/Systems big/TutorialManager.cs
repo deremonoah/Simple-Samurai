@@ -57,14 +57,14 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         TrainingDummy.StrikeUI();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         
         tutorialText.text = "Lay low your enemy!";
         List<WeaponEffect> noneEffects = new List<WeaponEffect>();
         noneEffects.Add(WeaponEffect.none);
         TrainingDummy.damgEnemy(900, noneEffects);
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(6f);
         _tutorialState = TutorialState.done;
 
         if (_tutorialState == TutorialState.done)

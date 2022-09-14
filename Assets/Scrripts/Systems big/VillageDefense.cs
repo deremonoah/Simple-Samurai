@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VillageDefense : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class VillageDefense : MonoBehaviour
     [SerializeField] GameObject RepairVillageButton;
     [SerializeField] List<GameObject> _damagedShops;
 
+    [SerializeField] GameObject populationIcon;
+    [SerializeField] Text populationText;
     void Start()
     {
         _gm = FindObjectOfType<GameManager>();
@@ -75,6 +78,8 @@ public class VillageDefense : MonoBehaviour
         {
             _gm.OpenLossPan();
         }
+
+        populationText.text = "" + villagers;
     }
 
     public void startDefending()
@@ -135,5 +140,10 @@ public class VillageDefense : MonoBehaviour
     {
         BlackSmithButton.SetActive(true);
         TurnedOnShopButtons.Add(BlackSmithButton);
+    }
+
+    public void DisplayPopulation(bool state)
+    {
+        populationIcon.SetActive(state);
     }
 }

@@ -59,12 +59,20 @@ public class EventManager : MonoBehaviour
             _nextEvent = Resources.Load<Event>("Events/BlackSmith");
             isEvent = true;
         }
+
+        //make it a list of events not just one but the 2nd damage one can over write the first
+        if (_villageDefense.DamageTaken >= 1)
+        {
+            _nextEvent = Resources.Load<Event>("Events/smolDamagedCity");
+            _villageDefense.DisplayPopulation(true);
+            isEvent = true;
+        }
         if (_villageDefense.DamageTaken >= 10)
         {
             _nextEvent = Resources.Load<Event>("Events/DamagedCity");
             isEvent = true;
         }
-
+        
         return isEvent;
     }
 
