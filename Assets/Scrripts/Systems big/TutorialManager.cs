@@ -49,7 +49,7 @@ public class TutorialManager : MonoBehaviour
                 yield return null;
             }
             TrainingDummy = _enemyManager.aliveEnemys[0];
-            tutorialText.text = "pretty simple right?";
+            tutorialText.text = "The further right the pointer goes the more damage you do";
             _tutorialState = TutorialState.toBlock;
         }
         yield return new WaitForSeconds(1.5f);
