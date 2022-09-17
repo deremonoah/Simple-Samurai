@@ -7,10 +7,11 @@ public class TutorialManager : MonoBehaviour
 {
     [SerializeField] GameObject tutorialPanel;
     [SerializeField] Text tutorialText;
-    [SerializeField] GameObject SensaiSprite;
+    [SerializeField] Sprite SensaiSprite;
     private bool _tutorialing;
     private TutorialState _tutorialState = TutorialState.tohold;
     private enemy TrainingDummy;
+    private float _timer = 1;
     private EnemysManager _enemyManager;
     bool buttonInput => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0);
 
@@ -30,7 +31,6 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         tutorialPanel.SetActive(true);
-        SensaiSprite.SetActive(true);
         tutorialText.text = "Hold Down the Space bar or Left Mouse button";
         
         while(_tutorialState == TutorialState.tohold)
@@ -54,7 +54,7 @@ public class TutorialManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1.5f);
         tutorialText.text = "now block this attack";
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         TrainingDummy.StrikeUI();
         yield return new WaitForSeconds(4f);
@@ -71,7 +71,7 @@ public class TutorialManager : MonoBehaviour
         {
             _tutorialing = false;
             tutorialPanel.SetActive(false);
-            SensaiSprite.SetActive(false);
+            //SensaiSprite.SetActive(false);
         }
     }
 
