@@ -8,8 +8,7 @@ public class HoverTipManager : MonoBehaviour
 {
     //remember to disable raycasting on the Tip Window and Text
     public TextMeshProUGUI tipText;
-    public GameObject tipWindow;
-    private RectTransform _tipWindowRectTransform;
+    public RectTransform tipWindow;
     public float offScreenXoffSet;
     [SerializeField] Vector2 positionOffset;
 
@@ -31,23 +30,22 @@ public class HoverTipManager : MonoBehaviour
     void Start()
     {
         HideTip();
-        _tipWindowRectTransform = (RectTransform) tipWindow.transform;
     }
 
     private void ShowTip(string tip, Vector2 mousePos)
     {
         tipText.text = tip;
-        _tipWindowRectTransform.sizeDelta = new Vector2(tipText.preferredWidth > 700 ? 700 : tipText.preferredWidth, tipText.preferredHeight+100);
+        tipWindow.sizeDelta = new Vector2(tipText.preferredWidth > 700 ? 700 : tipText.preferredWidth, tipText.preferredHeight+100);
 
 
         tipWindow.gameObject.SetActive(true);
 
         if (mousePos.x +200 > Screen.width)
         {
-            tipWindow.transform.position = new Vector2(mousePos.x + _tipWindowRectTransform.sizeDelta.x - offScreenXoffSet, mousePos.y);
+            tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x - offScreenXoffSet, mousePos.y);
             Debug.Log("on left");
         }
-        else { tipWindow.transform.position = new Vector2(mousePos.x + _tipWindowRectTransform.sizeDelta.x /8, mousePos.y); }
+        else { tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x /8, mousePos.y); }
         
     }
 
