@@ -35,23 +35,34 @@ public class HoverTipManager : MonoBehaviour
     private void ShowTip(string tip, Vector2 mousePos)
     {
         tipText.text = tip;
-        tipWindow.sizeDelta = new Vector2(tipText.preferredWidth > 700 ? 700 : tipText.preferredWidth, tipText.preferredHeight+100);
-
-
+        tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x / 8, mousePos.y);
         tipWindow.gameObject.SetActive(true);
 
-        if (mousePos.x +200 > Screen.width)
-        {
-            tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x - offScreenXoffSet, mousePos.y);
-            Debug.Log("on left");
-        }
-        else { tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x /8, mousePos.y); }
-        
+
+        //if (tipWindow == null)
+        //{ return; }
+        //tipText.text = tip;
+        //tipWindow.sizeDelta = new Vector2(tipText.preferredWidth > 700 ? 700 : tipText.preferredWidth, tipText.preferredHeight + 100);
+
+        //tipWindow.gameObject.SetActive(true);
+
+        //if (mousePos.x + 200 > Screen.width)
+        //{
+        //    tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x - offScreenXoffSet, mousePos.y);
+        //    Debug.Log("on left");
+        //}
+        //else { tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x / 8, mousePos.y); }
     }
 
     private void HideTip()
     {
         tipText.text = default;
-        tipWindow.gameObject.SetActive(false);
+        if (tipWindow != null)
+        {
+            tipWindow.gameObject.SetActive(false);
+        }
+
     }
+
+   
 }
