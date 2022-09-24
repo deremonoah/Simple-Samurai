@@ -408,8 +408,8 @@ MonoBehaviour:
   healMin: 0
   healMax: 0
   targetally: {fileID: 0}
-  randWaitmin: 1.8
-  randWaitmax: 3.8
+  randWaitmin: 2.5
+  randWaitmax: 4
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
