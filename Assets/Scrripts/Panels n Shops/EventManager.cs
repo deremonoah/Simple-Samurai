@@ -18,6 +18,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] GameObject blacksmithInvestButton;
     [SerializeField] GameObject farmInvestButton;
     private bool _investingEnabled = false;
+    public GameObject blacksmithBackground;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class EventManager : MonoBehaviour
         _villageDefense = GetComponent<VillageDefense>();
         blacksmithInvestButton.SetActive(false);
         farmInvestButton.SetActive(false);
+        blacksmithBackground.SetActive(false);
 
         for (int lcv = 0; lcv < Buttons.Count; lcv++)
         {
@@ -156,6 +158,7 @@ public class EventManager : MonoBehaviour
         _enemyManager.enemyWaves.Insert(2, Resources.Load<EnmWave>("Waves/Wave3.5"));
         _enemyManager.enemyWaves.RemoveAt(3);
         _villageDefense.TurnOnBlackSmith();
+        blacksmithBackground.SetActive(true);
     }
 
     public void EnableInvesting()
