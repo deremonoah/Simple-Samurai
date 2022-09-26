@@ -123,19 +123,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PayOut(int coin)
+    public void PayOut(int min, int maxInclusive)
     {
         SoundMng.PlaySound("coin");
-        int tempgold = 0;
+        maxInclusive++;
+        //above when it calculates to make it inclusive for the random number
+        int ExtraCoins = 0;
+        int dropedCoins = Random.Range(min, maxInclusive);
         Armor equipedArmor = _playerEquipedItems.equipedArmor;
         if (equipedArmor.armrEef == ArmorEffect.greed)
         {
             int minInclusive = equipedArmor.effectNumberOneLevel[equipedArmor.itemLevel];
             int maxExclusive = equipedArmor.effectNumberTwoLevel[equipedArmor.itemLevel] + 1;
-            tempgold = Random.Range(minInclusive, maxExclusive);
+            ExtraCoins = Random.Range(minInclusive, maxExclusive);
         }
-        playerCoins += coin+ tempgold;
+        playerCoins += dropedCoins+ ExtraCoins;
         TextCoins.text = playerCoins.ToString();
+    }
+
+    public void SkipPickPayOut()
+    {
+        PayOut(2, 5);
     }
 
     public void robPlayer(int coin)

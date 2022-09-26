@@ -74,8 +74,8 @@ public class StrikeArea : MonoBehaviour
                     if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
                         if(Damger >=30)
-                        { GM.PayOut(2); }
-                        else { GM.PayOut(1); }
+                        { GM.PayOut(2,3); }
+                        else { GM.PayOut(1,2); }
                     }
                 }
 

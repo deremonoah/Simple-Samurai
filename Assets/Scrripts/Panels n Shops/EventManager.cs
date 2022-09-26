@@ -14,6 +14,7 @@ public class EventManager : MonoBehaviour
     private EnemysManager _enemyManager;
     private BlackSmithShop _blacksmith;
     private VillageDefense _villageDefense;
+    private bool _villageHasBeenDamaged = false;
 
     [SerializeField] GameObject blacksmithInvestButton;
     [SerializeField] GameObject farmInvestButton;
@@ -63,15 +64,17 @@ public class EventManager : MonoBehaviour
         }
 
         //make it a list of events not just one but the 2nd damage one can over write the first
-        if (_villageDefense.DamageTaken >= 1)
+        if (_villageDefense.DamageTaken >= 1 && !_villageHasBeenDamaged)
         {
             _nextEvent = Resources.Load<Event>("Events/smolDamagedCity");
             _villageDefense.DisplayPopulation(true);
             isEvent = true;
+            _villageHasBeenDamaged = true;
         }
         if (_villageDefense.DamageTaken >= 10)
         {
             _nextEvent = Resources.Load<Event>("Events/DamagedCity");
+            _villageDefense.DisplayPopulation(true);
             isEvent = true;
         }
         
