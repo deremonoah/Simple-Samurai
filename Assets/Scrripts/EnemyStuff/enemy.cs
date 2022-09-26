@@ -403,6 +403,7 @@ public class enemy : MonoBehaviour
         int randNum = Random.Range(0, 10);
         if (randNum < 8)
         {
+            OnFireSprite.SetActive(true);
             StartCoroutine(OnFire());
         }else
         {
