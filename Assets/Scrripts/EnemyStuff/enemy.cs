@@ -49,6 +49,8 @@ public class enemy : MonoBehaviour
     private Coroutine myattackRoutine;
 
     private SoundManager soundMRef;
+    [SerializeField] GameObject OnFireSprite;
+
     enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -143,12 +145,14 @@ public class enemy : MonoBehaviour
                     break;
                 case WeaponEffect.flame:
                     StartCoroutine(OnFire());
+                    OnFireSprite.SetActive(true);
                     break;
                 case WeaponEffect.antiarmor:
                     antArm = true;
                     break;
                 case WeaponEffect.lifeSteal:
-                    _playerHP.HealPlayer(deal / 3);
+                    _playerHP.HealPlayer(deal / 6);
+                    //get it to calculate armor aswell
                     break;
 
             }
@@ -396,10 +400,13 @@ public class enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         HP -= 1;
-        int randNum = Random.Range(0, 6);
-        if (randNum < 4)
+        int randNum = Random.Range(0, 10);
+        if (randNum < 8)
         {
             StartCoroutine(OnFire());
+        }else
+        {
+            OnFireSprite.SetActive(false);
         }
     }
 
