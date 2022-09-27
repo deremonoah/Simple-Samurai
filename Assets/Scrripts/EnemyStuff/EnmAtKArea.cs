@@ -31,6 +31,7 @@ public class EnmAtKArea : MonoBehaviour
             else
             {
                 myenm.Blocked();
+                FindObjectOfType<SoundManager>().PlaySound("block");
                 Destroy(gameObject);
             }
         }
