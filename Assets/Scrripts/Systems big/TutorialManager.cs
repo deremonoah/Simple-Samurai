@@ -52,7 +52,7 @@ public class TutorialManager : MonoBehaviour
             tutorialText.text = "The further right the pointer goes the more damage you do";
             _tutorialState = TutorialState.toBlock;
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(5f);
         tutorialText.text = "now block this attack";
         yield return new WaitForSeconds(1.5f);
 
