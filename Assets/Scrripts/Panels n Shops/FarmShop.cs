@@ -107,4 +107,9 @@ public class FarmShop : MonoBehaviour
     {
         healPurchasesThisTurn = 1;
     }
+
+    public void GotMoreVillagers()
+    {
+        healPurchasesThisTurn += 1;
+    }
 }

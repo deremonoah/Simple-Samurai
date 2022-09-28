@@ -8,7 +8,8 @@ public class EventManager : MonoBehaviour
     private GameManager _gm;
     public Text EventPopUpText;
     public GameObject EventPanel;
-    private Event _nextEvent;
+    private List<Event> _nextEvents = new List<Event>();
+    private Event _currentEvent;
     public List<GameObject> Buttons;
     public List<Text> ButtonTexts;
     private EnemysManager _enemyManager;
@@ -20,6 +21,9 @@ public class EventManager : MonoBehaviour
     [SerializeField] GameObject farmInvestButton;
     private bool _investingEnabled = false;
     public GameObject blacksmithBackground;
+    private bool _lostMany;
+    [SerializeField] bool hasPicked;
+
 
     void Start()
     {
@@ -39,10 +43,11 @@ public class EventManager : MonoBehaviour
     }
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             CheckNextEvent();
-            DisplayEvent();
+            CallDisplayEvents();
         }
     }
 
@@ -50,63 +55,94 @@ public class EventManager : MonoBehaviour
     {
         //is it more efficent to send the data with the call or have a refrence to gm public variable like below?
         //or should i make it a static call so the gm doesn't need a private refrence to this?
-        bool isEvent = false;
+
+        _nextEvents = new List<Event>();
+
         if (_gm.playerCoins >= 40 && !_investingEnabled)
         {
             _investingEnabled = true;
-            _nextEvent = Resources.Load<Event>("Events/Investments");
-            isEvent = true;
+            _nextEvents.Add(Resources.Load<Event>("Events/Investments"));
         }
-        if (_enemyManager.WaveControlVariable == 2)
+        if (_enemyManager.WaveControlVariable >= 2 && !blacksmithBackground.activeSelf)
         {
-            _nextEvent = Resources.Load<Event>("Events/BlackSmith");
-            isEvent = true;
+            _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
+        }
+
+
+
+        var rand = Random.Range(0, 10);
+        if (rand < 3 && (_lostMany || _enemyManager.WaveControlVariable >= 8))
+        {
+            _nextEvents.Add(Resources.Load<Event>("Events/Refugees"));
         }
 
         //make it a list of events not just one but the 2nd damage one can over write the first
-        if (_villageDefense.DamageTaken >= 1 && !_villageHasBeenDamaged)
+        //if (_villageDefense.DamageTaken >= 1 && !_villageHasBeenDamaged)
+        //{
+        //    _nextEvents.Add(Resources.Load<Event>("Events/smolDamagedCity"));
+        //    _villageDefense.DisplayPopulation(true);
+        //    _villageHasBeenDamaged = true;
+        //}
+        //if (_villageDefense.DamageTaken >= 10 )
+        //{
+        //    _villageDefense.DamageTaken = 0;
+        //    _nextEvents = Resources.Load<Event>("Events/DamagedCity");
+        //    _villageDefense.DisplayPopulation(true);
+        //    _lostMany = true;
+        //}
+
+        if (_villageDefense.DamageTaken >= 1)
         {
-            _nextEvent = Resources.Load<Event>("Events/smolDamagedCity");
             _villageDefense.DisplayPopulation(true);
-            isEvent = true;
-            _villageHasBeenDamaged = true;
+            if (_villageDefense.DamageTaken >= 10)
+            {
+                _nextEvents.Add(Resources.Load<Event>("Events/DamagedCity"));
+                _lostMany = true;
+            }
+            else if (!_villageHasBeenDamaged)
+            {
+                _nextEvents.Add(Resources.Load<Event>("Events/smolDamagedCity"));
+                _villageHasBeenDamaged = true;
+            }
         }
-        if (_villageDefense.DamageTaken >= 10)
-        {
-            _nextEvent = Resources.Load<Event>("Events/DamagedCity");
-            _villageDefense.DisplayPopulation(true);
-            isEvent = true;
-        }
-        
-        return isEvent;
+
+
+        return _nextEvents.Count > 0;
     }
 
-    public void DisplayEvent()
+    public void CallDisplayEvents()
     {
-        if (_nextEvent != null)
+        StartCoroutine(DisplayEventsRoutine());
+    }
+
+    private IEnumerator DisplayEventsRoutine()
+    {
+        EventPanel.SetActive(true);
+
+
+        foreach (Event eve in _nextEvents)
         {
-            EventPanel.SetActive(true);
-            EventPopUpText.text = _nextEvent.textStatements[0];
+            _currentEvent = eve;
+            EventPopUpText.text = eve.textStatements[0];
             for (int lcv = 0; lcv < Buttons.Count; lcv++)
             {
                 Buttons[lcv].SetActive(false);
 
             }
-            for (int lcv = 0; lcv < _nextEvent.buttonOptions.Count; lcv++)
+            for (int lcv = 0; lcv < eve.buttonOptions.Count; lcv++)
             {
                 Buttons[lcv].SetActive(true);
-                ButtonTexts[lcv].text = _nextEvent.buttonOptions[lcv];
+                ButtonTexts[lcv].text = eve.buttonOptions[lcv];
             }
-            
+            hasPicked = false;
+            while (!hasPicked)
+            {
+                yield return null;
+            }
         }
-
-    }
-
-    public void CloseEventPanel()
-    {
         EventPanel.SetActive(false);
-        _nextEvent = null;
     }
+
 
     public void EventButton(int num)
     {
@@ -120,25 +156,37 @@ public class EventManager : MonoBehaviour
             SecondResault();
         }
         ResolvePassiveEffect();
-        CloseEventPanel();
+        hasPicked = true;
     }
 
     public void firstResault()
     {
-        if (_nextEvent.myeventEffect == EventEffect.blackSmith)
+        if (_currentEvent.myeventEffect == EventEffect.blackSmith)
         {
             BlackSmithArived();
         }
-        if (_nextEvent.myeventEffect == EventEffect.damagedCity && _gm.playerCoins>10)
+        if (_currentEvent.myeventEffect == EventEffect.damagedCity)
         {
-            _villageDefense.RepairVillage();
+            if (_gm.playerCoins >= 10)
+            {
+                _villageDefense.RepairVillage();
+            }
+            else
+            {
+                _villageDefense.DamagedVillage();
+            }
             //also if the player can't afford or doesn't pay it needs to enable a button that can repair on the village panel
+        }
+        if (_currentEvent.myeventEffect == EventEffect.moreVillagers)
+        {
+            _villageDefense.villagers += Random.Range(5, 16);
+            _gm._farmShop.GotMoreVillagers();
         }
     }
 
     public void SecondResault()
     {
-        if (_nextEvent.myeventEffect == EventEffect.damagedCity)
+        if (_currentEvent.myeventEffect == EventEffect.damagedCity)
         {
             _villageDefense.DamagedVillage();
         }
@@ -148,7 +196,7 @@ public class EventManager : MonoBehaviour
     public void ResolvePassiveEffect()
     {
         //now player can invest
-        if (_nextEvent.myeventEffect == EventEffect.invest)
+        if (_currentEvent.myeventEffect == EventEffect.invest)
         {
             EnableInvesting();
         }

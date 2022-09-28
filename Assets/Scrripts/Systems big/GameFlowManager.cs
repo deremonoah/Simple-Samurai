@@ -46,7 +46,7 @@ public class GameFlowManager : MonoBehaviour
 
         if (_isEvent)
         {
-            _eventManager.DisplayEvent();
+            _eventManager.CallDisplayEvents();
             while (_eventPanel.activeInHierarchy)
             {
                 yield return null;

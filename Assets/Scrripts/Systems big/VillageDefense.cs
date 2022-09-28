@@ -13,7 +13,7 @@ public class VillageDefense : MonoBehaviour
 
     [SerializeField] bool _defending;
     [SerializeField] bool _beingRaided;
-    [SerializeField] int villagers;
+    public int villagers;
     private int _villagersAtStart;
     private int _tempVillagerCount;
     public List<GameObject> FireSprites;
@@ -127,13 +127,15 @@ public class VillageDefense : MonoBehaviour
                 TurnedOnShopButtons.Add(but);
                 but.SetActive(true);
             }
+            RepairVillageButton.SetActive(false);
             _gm.playerCoins -= 10;
             _damagedShops.Clear();
             DamageTaken = 0;
-        }else
+        }
+        /*else
         {
             DamagedVillage();
-        }
+        }*/
     }
 
     public void TurnOnBlackSmith()

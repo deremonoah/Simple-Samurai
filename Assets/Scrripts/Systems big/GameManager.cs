@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private PlayerEquipedItemsManager _playerEquipedItems;
     private LootingManager _lootManager;
     private BlackSmithShop _blacksmithShop;
-    private FarmShop _farmShop;
+    public FarmShop _farmShop;
 
     private bool _blacksmithInvested;
     private bool _farmInvested;
