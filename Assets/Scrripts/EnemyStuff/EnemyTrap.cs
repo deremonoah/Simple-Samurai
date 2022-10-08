@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EnemyTrap : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private PlayerHealthBar playerHP;
+    private void Start()
     {
-        
-    }
+        playerHP = FindObjectOfType<PlayerHealthBar>();
 
-    // Update is called once per frame
-    void Update()
+    }
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.name == "strike point")
+        {
+            //maybe make it random range or antiarmor
+            playerHP.DamagePlayer(20f,0);
+            Destroy(this.gameObject);
+        }
     }
 }
+

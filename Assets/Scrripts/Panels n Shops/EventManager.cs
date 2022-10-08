@@ -58,17 +58,11 @@ public class EventManager : MonoBehaviour
 
         _nextEvents = new List<Event>();
 
-        if (_gm.playerCoins >= 40 && !_investingEnabled)
-        {
-            _investingEnabled = true;
-            _nextEvents.Add(Resources.Load<Event>("Events/Investments"));
-        }
-        if (_enemyManager.WaveControlVariable >= 2 && !blacksmithBackground.activeSelf)
+        var wave = _enemyManager.WaveControlVariable;
+        if ((wave == 2 || wave == 6 ) && !blacksmithBackground.activeSelf)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
         }
-
-
 
         var rand = Random.Range(0, 10);
         if (rand < 3 && (_lostMany || _enemyManager.WaveControlVariable >= 8))
@@ -106,6 +100,11 @@ public class EventManager : MonoBehaviour
             }
         }
 
+        if (_gm.playerCoins >= 40 && !_investingEnabled)
+        {
+            _investingEnabled = true;
+            _nextEvents.Add(Resources.Load<Event>("Events/Investments"));
+        }
 
         return _nextEvents.Count > 0;
     }
