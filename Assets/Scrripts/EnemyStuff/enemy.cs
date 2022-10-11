@@ -48,7 +48,6 @@ public class enemy : MonoBehaviour
 
     private Coroutine myattackRoutine;
 
-    private SoundManager soundMRef;
     [SerializeField] GameObject OnFireSprite;
 
     enum attackState 
@@ -83,7 +82,7 @@ public class enemy : MonoBehaviour
         }
          
 
-        soundMRef = FindObjectOfType<SoundManager>();    
+            
     }
 
     void Awake()
@@ -247,7 +246,7 @@ public class enemy : MonoBehaviour
     public void hitNow()
     {
         _playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbility);
-        soundMRef.PlaySound("hit");
+        
         if (myAbility == Ability.steal)
         {
             int randRob = Random.Range(2, 4);

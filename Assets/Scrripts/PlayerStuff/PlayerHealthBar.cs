@@ -15,12 +15,15 @@ public class PlayerHealthBar : MonoBehaviour
     private GameManager _gm;
 
     [SerializeField] Armor testArmor;
+    private SoundManager _soundManager;
+
     void Start()
     {
         health = maxHealth;
         _gm = FindObjectOfType<GameManager>();
         myArmor = Instantiate(myArmor);
         testArmor = Instantiate(testArmor);
+        _soundManager = FindObjectOfType<SoundManager>();
     }
 
 
@@ -84,6 +87,7 @@ public class PlayerHealthBar : MonoBehaviour
         {
             health -= (Mathf.Max(1, damagePoints - armorValue));
         }
+        _soundManager.PlaySound("hit");
     }
 
     public void HealPlayer(float healingPoints)

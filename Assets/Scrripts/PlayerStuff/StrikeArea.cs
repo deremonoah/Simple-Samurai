@@ -68,7 +68,7 @@ public class StrikeArea : MonoBehaviour
                 {
                     Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
-                    SoundMng.PlaySound("hit");
+                    SoundMng.PlaySound("hit",Damger);
                     justStruck = true;
                     _JustStruckTimer = 0.1f;
                     if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
