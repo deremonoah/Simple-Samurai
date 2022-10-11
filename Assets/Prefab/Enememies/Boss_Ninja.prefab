@@ -1,67 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &797705739695017087
+--- !u!1001 &2765593167707755158
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2144794318603522368, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144794318603522368, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.0580003
-      objectReference: {fileID: 0}
-    - target: {fileID: 2846447603511719801, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.108
-      objectReference: {fileID: 0}
-    - target: {fileID: 2846447603511719801, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.764
-      objectReference: {fileID: 0}
-    - target: {fileID: 3562744342560505691, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.592
-      objectReference: {fileID: 0}
-    - target: {fileID: 3562744342560505691, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.028
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: armor
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: maxHP
-      value: 90
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: damgMax
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: damgMin
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefab
-      value: 
-      objectReference: {fileID: 2240746861720578230, guid: 00dfc9748f4b3234d94712753f60b369, type: 3}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: randWaitmax
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: randWaitmin
-      value: 6
+      propertyPath: myAbilities.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myAbilities.Array.data[0]
-      value: 2
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: myAbilities.Array.data[1]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_RootOrder
@@ -110,14 +70,14 @@ PrefabInstance:
     - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1235134c37a11f44084a92dc2ba32b4f, type: 3}
+      objectReference: {fileID: 21300000, guid: bfeb844126acd4a4fbe5291126d9b8d1, type: 3}
     - target: {fileID: 7314057531085316391, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Name
-      value: Gunner
+      value: Boss_Ninja
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

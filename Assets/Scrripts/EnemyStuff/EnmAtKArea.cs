@@ -43,10 +43,10 @@ public class EnmAtKArea : MonoBehaviour
         } else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
 
-            if (myenm.myAbility == enemy.Ability.steal)
+            if (myenm.myAbilities[0] == enemy.Ability.steal)
             {
                 myenm.IRan();
-            }else if (myenm.myAbility == enemy.Ability.heal)
+            }else if (myenm.myAbilities[0] == enemy.Ability.heal)
             {
                 myenm.healAllyNow();
                 //this is spiecial reverse moves

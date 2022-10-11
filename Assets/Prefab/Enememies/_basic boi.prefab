@@ -499,7 +499,7 @@ MonoBehaviour:
   atkDirs:
   - {x: -1, y: 0}
   SpecialDirs: []
-  myAbility: 0
+  myAbilities: 00000000
   matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 4
   maxCoin: 6

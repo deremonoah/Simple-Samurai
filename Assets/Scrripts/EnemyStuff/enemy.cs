@@ -32,7 +32,7 @@ public class enemy : MonoBehaviour
     [SerializeField] GameObject atkEnd;
     [SerializeField] List<Vector2> atkDirs,SpecialDirs;
     attackState curState;
-    public Ability myAbility;
+    public List<Ability> myAbilities;
     private int amountRobbed = 0;
 
     private List<GameObject> currentAttacks = new List<GameObject>();
@@ -57,7 +57,7 @@ public class enemy : MonoBehaviour
 
     public enum Ability
     {
-        none,steal, antiarmor, heal, multiHeal
+        none,steal, antiarmor, heal, multiHeal, ninja, boss
     }
 
     void Start()
@@ -73,7 +73,7 @@ public class enemy : MonoBehaviour
         
         matDefault = GetComponent<SpriteRenderer>().material;
 
-        if (myAbility == Ability.heal)
+        if (myAbilities[0] == Ability.heal)
         {
             myattackRoutine = StartCoroutine(healEnmRoutine());
         } else
@@ -210,11 +210,11 @@ public class enemy : MonoBehaviour
 
     public void StartMyRoutine()
     {
-        if (myAbility == Ability.heal)
+        if (myAbilities[0] == Ability.heal)
         {
             myattackRoutine = StartCoroutine(healEnmRoutine());
         }
-        else if (myAbility == Ability.steal && amountRobbed > 5)
+        else if (myAbilities[0] == Ability.steal && amountRobbed > 5)
         {
             myattackRoutine = StartCoroutine(RunRoutine());
         }
@@ -245,9 +245,9 @@ public class enemy : MonoBehaviour
 
     public void hitNow()
     {
-        _playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbility);
+        _playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbilities[0]);
         
-        if (myAbility == Ability.steal)
+        if (myAbilities[0] == Ability.steal)
         {
             int randRob = Random.Range(2, 4);
             _GM.robPlayer(randRob);
