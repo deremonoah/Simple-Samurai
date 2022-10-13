@@ -1,5 +1,47 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2833710505979115777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4891363053065188268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e2eb4643150e544ad9e2af475aaf93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  maxHP: 300
+  armor: 5
+  damgMin: 15
+  damgMax: 40
+  healMin: 0
+  healMax: 0
+  targetally: {fileID: 0}
+  randWaitmin: 2.5
+  randWaitmax: 4
+  readyingTimer: 2.5
+  strikeTimer: 0.4
+  waitTimerOffset: 0
+  posInList: 0
+  myHPBar: {fileID: 0}
+  enmsSys: {fileID: 0}
+  atkPrefab: {fileID: 5675845330809881521, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
+  specialPrefab: {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+  atkStarts: []
+  atkEnd: {fileID: 0}
+  atkDirs: []
+  SpecialDirs: []
+  myAbilities: 
+  matWhite: {fileID: 0}
+  minCoin: 12
+  maxCoin: 20
+  HPPointer: {fileID: 0}
+  BowPointers: []
+  myCanvas: {fileID: 0}
+  OnFireSprite: {fileID: 0}
 --- !u!1001 &2765593167707755158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,6 +52,14 @@ PrefabInstance:
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: maxHP
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: damgMax
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: damgMin
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myAbilities.Array.size
@@ -81,3 +131,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+--- !u!1 &4891363053065188268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2765593167707755158}
+  m_PrefabAsset: {fileID: 0}
