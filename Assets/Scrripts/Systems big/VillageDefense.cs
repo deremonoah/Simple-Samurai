@@ -89,6 +89,7 @@ public class VillageDefense : MonoBehaviour
         _villagerLifeTimer = VillagerLifeTimerMax;
         _villagersAtStart = villagers;
         threashHoldForFire = (float)_villagersAtStart / 11;
+        DamageTaken = 0;
         FireIndex = 0;
         Debug.Log("fire therash hold: " + threashHoldForFire);
     }

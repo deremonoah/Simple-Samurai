@@ -65,7 +65,7 @@ public class EventManager : MonoBehaviour
         }
 
         var rand = Random.Range(0, 10);
-        if (rand < 3 && (_lostMany || _enemyManager.WaveControlVariable >= 8))
+        if (rand < 3 && (_lostMany || _enemyManager.WaveControlVariable >= 6))
         {
             _nextEvents.Add(Resources.Load<Event>("Events/Refugees"));
         }
