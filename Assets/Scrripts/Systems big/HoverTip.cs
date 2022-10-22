@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     //remember to disable raycasting on the Tip Window and Text
+    [TextArea(3, 10)]
     public string tipToShow;
     private float timeToWait = 0.5f;
 

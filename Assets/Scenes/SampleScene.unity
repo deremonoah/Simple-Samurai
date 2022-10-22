@@ -2292,6 +2292,7 @@ GameObject:
   - component: {fileID: 306832607}
   - component: {fileID: 306832606}
   - component: {fileID: 306832605}
+  - component: {fileID: 306832608}
   m_Layer: 5
   m_Name: Improve farm Button
   m_TagString: Untagged
@@ -2416,6 +2417,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306832603}
   m_CullTransparentMesh: 1
+--- !u!114 &306832608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306832603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Upgrading the farm will make the above buttons heal more or increase
+    your HP even more
 --- !u!1 &319974338
 GameObject:
   m_ObjectHideFlags: 0
@@ -14101,7 +14116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipToShow: 
+  tipToShow: allows you when you pick up a copy of an equiped weapon or armor it
+    gives you an upgrade free of charge
 --- !u!1 &1678335425
 GameObject:
   m_ObjectHideFlags: 0
