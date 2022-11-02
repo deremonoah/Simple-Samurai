@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class EnemysManager : MonoBehaviour
 {
@@ -28,6 +28,8 @@ public class EnemysManager : MonoBehaviour
 
     [SerializeField] List<Sprite> OdachiSprites;
 
+    public Image bossHPBar;
+    [SerializeField] GameObject bossHPContainter;
     void Start()
     {
 
@@ -61,6 +63,8 @@ public class EnemysManager : MonoBehaviour
         enemy enm = Instantiate(enmPrefab, enemySpawnsPoints[point].transform.position, enemySpawnsPoints[point].transform.rotation).GetComponent<enemy>();
         aliveEnemys.Add(enm);
         enm.GetComponent<enemy>().SetThings(attackStartPoints, attackEndPointStandard, point);
+        if(enm.myAbilities[0] == enemy.Ability.boss)
+        { bossHPContainter.SetActive(true); }
         spawned = true;
         recPos = point;
     }
@@ -99,6 +103,8 @@ public class EnemysManager : MonoBehaviour
             SetOdachiPointers();
         }
 
+        if (me.myAbilities[0] == enemy.Ability.boss)
+        { bossHPContainter.SetActive(false); }
     }
 
     public void UpdateEnmsPos()

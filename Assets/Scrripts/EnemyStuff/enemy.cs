@@ -7,8 +7,8 @@ public class enemy : MonoBehaviour
 {
     
     //stats
-    public float HP;
-    [SerializeField] float maxHP, armor,damgMin, damgMax, healMin, healMax;
+    public float HP, maxHP;
+    [SerializeField] float armor,damgMin, damgMax, healMin, healMax;
     public enemy targetally;
 
     //mostly timers n stuff
@@ -24,7 +24,7 @@ public class enemy : MonoBehaviour
     private Animator anim;
     
     public Image myHPBar;
-    [SerializeField] EnemysManager enmsSys;
+    public EnemysManager enmsSys;
 
     //attack projectile stuff
     [SerializeField] GameObject atkPrefab, specialPrefab;
@@ -60,7 +60,7 @@ public class enemy : MonoBehaviour
         none,steal, antiarmor, heal, multiHeal, ninja, boss
     }
 
-    void Start()
+    protected virtual void Start()
     {
         _mainCam = Camera.main;
         _GM = _mainCam.GetComponent<GameManager>();
@@ -120,7 +120,7 @@ public class enemy : MonoBehaviour
         
 
     }
-    void fillMyHP()
+    protected virtual void fillMyHP()
     {
         myHPBar.fillAmount = HP / maxHP;
     }
