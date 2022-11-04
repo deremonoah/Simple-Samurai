@@ -29,6 +29,8 @@ public class VillageDefense : MonoBehaviour
 
     [SerializeField] GameObject populationIcon;
     [SerializeField] Text populationText;
+
+    public bool Turotialing;
     void Start()
     {
         _gm = FindObjectOfType<GameManager>();
@@ -43,43 +45,46 @@ public class VillageDefense : MonoBehaviour
     
     void Update()
     {
-        if (_defending)
+        if (!Turotialing)
         {
-            _villageDefenseTimer -= Time.deltaTime;
-        }
-        if (_villageDefenseTimer <= 0)
-        {
-            _defending = false;
-            _beingRaided = true;
-            _villageDefenseTimer = VillageDefenseTimerMax;
-            FireSprites[0].SetActive(true);
-        }
-        if (_beingRaided)
-        {
-            if (_villagerLifeTimer <= 0)
+            if (_defending)
             {
-                villagers -= 1;
-                DamageTaken++;
-                _villagerLifeTimer = VillagerLifeTimerMax;
-                if ((float)_villagersAtStart - villagers >= threashHoldForFire)
-                {
-                    Debug.Log("if check: "+ ((float)_villagersAtStart - villagers));
-                    if (FireIndex  < FireSprites.Count)
-                    { FireSprites[FireIndex].SetActive(true); }
-                    _villagersAtStart = villagers;
-
-                    threashHoldForFire =_villagersAtStart / Mathf.Clamp((FireSprites.Count - FireIndex),1,50);
-                    FireIndex++;
-                }
+                _villageDefenseTimer -= Time.deltaTime;
             }
-            else { _villagerLifeTimer -= Time.deltaTime; }
-        }
-        if (FireIndex >= 11 && villagers <=0)
-        {
-            _gm.OpenLossPan();
-        }
+            if (_villageDefenseTimer <= 0)
+            {
+                _defending = false;
+                _beingRaided = true;
+                _villageDefenseTimer = VillageDefenseTimerMax;
+                FireSprites[0].SetActive(true);
+            }
+            if (_beingRaided)
+            {
+                if (_villagerLifeTimer <= 0)
+                {
+                    villagers -= 1;
+                    DamageTaken++;
+                    _villagerLifeTimer = VillagerLifeTimerMax;
+                    if ((float)_villagersAtStart - villagers >= threashHoldForFire)
+                    {
+                        Debug.Log("if check: " + ((float)_villagersAtStart - villagers));
+                        if (FireIndex < FireSprites.Count)
+                        { FireSprites[FireIndex].SetActive(true); }
+                        _villagersAtStart = villagers;
 
-        populationText.text = "" + villagers;
+                        threashHoldForFire = _villagersAtStart / Mathf.Clamp((FireSprites.Count - FireIndex), 1, 50);
+                        FireIndex++;
+                    }
+                }
+                else { _villagerLifeTimer -= Time.deltaTime; }
+            }
+            if (FireIndex >= 11 && villagers <= 0)
+            {
+                _gm.OpenLossPan();
+            }
+
+            populationText.text = "" + villagers;
+        }
     }
 
     public void startDefending()

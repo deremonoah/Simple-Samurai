@@ -16,5 +16,6 @@ public class Boss : enemy
     {
         base.Start();
         bossHP = enmsSys.bossHPBar;
+
     }
 }

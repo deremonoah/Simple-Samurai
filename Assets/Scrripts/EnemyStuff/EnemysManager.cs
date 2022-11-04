@@ -30,6 +30,9 @@ public class EnemysManager : MonoBehaviour
 
     public Image bossHPBar;
     [SerializeField] GameObject bossHPContainter;
+    public GameObject BossHPPointer;
+    public List<GameObject> BossBowPointers;
+
     void Start()
     {
 

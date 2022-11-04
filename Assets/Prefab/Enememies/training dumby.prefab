@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 8350575608656021472, guid: deb778ebd8f863a4a890e3878c4e4182, type: 3}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmax
-      value: 15
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmin
-      value: 10
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_RootOrder

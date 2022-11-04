@@ -20,6 +20,7 @@ public class TutorialManager : MonoBehaviour
         if (_tutorialing)
         {
             _enemyManager.enemyWaves.Insert(0, Resources.Load<EnmWave>("Waves/Tutorial Wave"));
+            FindObjectOfType<VillageDefense>().Turotialing = true;
             Debug.Log("if");
         }
         else
@@ -66,12 +67,14 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(6f);
         _tutorialState = TutorialState.done;
+        //FindObjectOfType<VillageDefense>().Turotialing = false;
 
         if (_tutorialState == TutorialState.done)
         {
             _tutorialing = false;
             tutorialPanel.SetActive(false);
             SensaiSprite.SetActive(false);
+            FindObjectOfType<VillageDefense>().Turotialing = false;
         }
     }
 
