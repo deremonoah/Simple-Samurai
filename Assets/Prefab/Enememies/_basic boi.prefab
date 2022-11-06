@@ -492,8 +492,9 @@ MonoBehaviour:
   posInList: 0
   myHPBar: {fileID: 2460627139670560194}
   enmsSys: {fileID: 0}
-  atkPrefab: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
-  specialPrefab: {fileID: 0}
+  atkPrefabs:
+  - {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
+  specialPrefabs: []
   atkStarts: []
   atkEnd: {fileID: 0}
   atkDirs:

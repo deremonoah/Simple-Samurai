@@ -11,5 +11,5 @@ public class Event : ScriptableObject
     public List<string> buttonOptions;
     public EventEffect myeventEffect;
 }
-public enum EventEffect { blackSmith, moreVillagers, defenses, invest, leader, missingFamily, damagedCity}
+public enum EventEffect { blackSmith, moreVillagers, defenses, invest, leader, missingFamily, damagedCity, urHurt}
 //like how the wild dog goes out with the leader guy to save a family who's house is burning down

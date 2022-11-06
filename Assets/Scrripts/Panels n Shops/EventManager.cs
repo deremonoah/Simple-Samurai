@@ -20,6 +20,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] GameObject blacksmithInvestButton;
     [SerializeField] GameObject farmInvestButton;
     private bool _investingEnabled = false;
+    private bool _toldAboutHeal = false;
     public GameObject blacksmithBackground;
     private bool _lostMany;
     [SerializeField] bool hasPicked;
@@ -58,14 +59,15 @@ public class EventManager : MonoBehaviour
 
         _nextEvents = new List<Event>();
 
+        var rand = Random.Range(0, 10);
         var wave = _enemyManager.WaveControlVariable;
-        if ((wave == 2 || wave == 6 ) && !blacksmithBackground.activeSelf)
+        if ((wave >=3 && rand <= 5 ) && !blacksmithBackground.activeSelf)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
         }
 
-        var rand = Random.Range(0, 10);
-        if (rand < 3 && (_lostMany || _enemyManager.WaveControlVariable >= 6))
+        rand = Random.Range(0, 10);
+        if (rand <= 3 && (_lostMany || _enemyManager.WaveControlVariable >= 6))
         {
             _nextEvents.Add(Resources.Load<Event>("Events/Refugees"));
         }
@@ -104,6 +106,12 @@ public class EventManager : MonoBehaviour
         {
             _investingEnabled = true;
             _nextEvents.Add(Resources.Load<Event>("Events/Investments"));
+        }
+
+        if (FindObjectOfType<PlayerHealthBar>().health < 100 && _toldAboutHeal == false)
+        {
+            _toldAboutHeal = true;
+            _nextEvents.Add(Resources.Load<Event>("Events/UrHurt"));
         }
 
         return _nextEvents.Count > 0;
@@ -205,8 +213,7 @@ public class EventManager : MonoBehaviour
     public void BlackSmithArived()
     {
         //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
-        _enemyManager.enemyWaves.Insert(2, Resources.Load<EnmWave>("Waves/Wave3.5"));
-        _enemyManager.enemyWaves.RemoveAt(3);
+        _enemyManager.enemyWaves.Insert(_enemyManager.WaveControlVariable, Resources.Load<EnmWave>("Waves/Wave3.5"));
         _villageDefense.TurnOnBlackSmith();
         blacksmithBackground.SetActive(true);
     }

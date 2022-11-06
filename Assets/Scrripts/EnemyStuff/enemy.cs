@@ -26,8 +26,8 @@ public class enemy : MonoBehaviour
     public Image myHPBar;
     public EnemysManager enmsSys;
 
-    //attack projectile stuff
-    [SerializeField] GameObject atkPrefab, specialPrefab;
+    //attack projectile stuff **also fully utelizing the multiple attack and special prefabs has not been used yet
+    [SerializeField] List<GameObject> atkPrefabs, specialPrefabs;
     [SerializeField] List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
     [SerializeField] List<Vector2> atkDirs,SpecialDirs;
@@ -306,7 +306,7 @@ public class enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
         //which then has to when hit stop this routine and if not it just destroys the enm thief clone
-        GameObject run = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
+        GameObject run = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]);
         currentAttacks.Add(run);
         yield return new WaitForSeconds(2);
@@ -334,7 +334,7 @@ public class enemy : MonoBehaviour
         var dir = Random.Range(0, atkDirs.Count);
         //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
 
-        GameObject atk = Instantiate(atkPrefab, atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+        GameObject atk = Instantiate(atkPrefabs[0], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
 
         if (atkDirs[dir].y == 0)
         {
@@ -375,7 +375,7 @@ public class enemy : MonoBehaviour
 
     public void HealingUI()
     {
-        GameObject heal = Instantiate(specialPrefab, atkStarts[3].transform.position, atkStarts[3].transform.rotation);
+        GameObject heal = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         //var dir = Random.Range(0, healDirs.Count);
         heal.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform,SpecialDirs[0]);
         var newList = new List<GameObject>();

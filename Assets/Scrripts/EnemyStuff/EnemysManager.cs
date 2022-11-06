@@ -33,6 +33,8 @@ public class EnemysManager : MonoBehaviour
     public GameObject BossHPPointer;
     public List<GameObject> BossBowPointers;
 
+    [SerializeField] List<Transform> caltropSpots;
+    [SerializeField] List<Transform> smokeSpots;
     void Start()
     {
 
@@ -204,4 +206,12 @@ public class EnemysManager : MonoBehaviour
 
     }
 
+    public List<List<Transform>> GetNinjaInfo()
+    {
+        List<List<Transform>> temp = new List<List<Transform>>();
+        temp.Add(caltropSpots);
+        temp.Add(smokeSpots);
+
+        return temp;
+    }
 }
