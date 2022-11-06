@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   maxHP: 300
-  armor: 5
+  armor: 7
   damgMin: 15
   damgMax: 40
   healMin: 0
   healMax: 0
   targetally: {fileID: 0}
-  randWaitmin: 2.5
+  randWaitmin: 2.2
   randWaitmax: 4
   readyingTimer: 2.5
   strikeTimer: 0.4
@@ -30,6 +30,7 @@ MonoBehaviour:
   enmsSys: {fileID: 0}
   atkPrefabs:
   - {fileID: 5675845330809881521, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
+  - {fileID: 2318151515997860959, guid: 283c014b6d910ff42ba511628597be66, type: 3}
   specialPrefabs:
   - {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
   - {fileID: 6007896807255045066, guid: 177d067923d913d48ac87d21f8481d4d, type: 3}

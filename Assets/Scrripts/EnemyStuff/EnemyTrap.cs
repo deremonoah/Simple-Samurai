@@ -13,8 +13,8 @@ public class EnemyTrap : MonoBehaviour
     {
         if (other.name == "strike point")
         {
-            //maybe make it random range or antiarmor
-            playerHP.DamagePlayer(5f,0);
+            //it is anti armor now
+            playerHP.DamagePlayer(10f,2);
             Destroy(this.gameObject);
         }
     }

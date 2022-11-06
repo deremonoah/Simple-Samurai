@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4834321361636996913}
   - component: {fileID: 1438825287033169902}
   - component: {fileID: 6609362372095362422}
+  - component: {fileID: 3435962680609800066}
   m_Layer: 0
   m_Name: 'Smoke Bomb '
   m_TagString: Untagged
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3435962680609800066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6007896807255045066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0758a76aa61fdc141912116d91eadd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

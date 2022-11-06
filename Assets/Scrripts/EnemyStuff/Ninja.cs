@@ -19,7 +19,7 @@ public class Ninja : enemy
     protected override void StartMyRoutine()
     {
         Debug.Log("got ninja action");
-        int rand = Random.Range(0, 4);
+        int rand = Random.Range(0, 5);
         if (rand == 0)
         { myActionRoutine = StartCoroutine(SpawnCaltrop()); }
         else if (rand == 1)
@@ -32,7 +32,8 @@ public class Ninja : enemy
 
     IEnumerator SpawnCaltrop()
     {
-        int rand = Random.Range(0, _caltropSpots.Count);
+        int rand = Random.Range(0, _caltropSpots.Count+2);
+        rand = Mathf.Clamp(rand - 2, 0, _caltropSpots.Count - 1);
         Debug.Log(_caltropSpots.Count);
         Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation);
         yield return new WaitForSeconds(2f);

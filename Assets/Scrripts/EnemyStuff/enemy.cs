@@ -226,7 +226,7 @@ public class enemy : MonoBehaviour
         
     }
 
-    #region attack Stuff
+    #region Attack Stuff
     protected virtual IEnumerator TheAttackRoutine()
     {
         curState = attackState.waiting;
@@ -248,9 +248,10 @@ public class enemy : MonoBehaviour
     public void AttackUI()
     {
         var dir = Random.Range(0, atkDirs.Count);
+        int randAttack = Random.Range(0, atkPrefabs.Count);
         //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
 
-        GameObject atk = Instantiate(atkPrefabs[0], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+        GameObject atk = Instantiate(atkPrefabs[randAttack], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
 
         if (atkDirs[dir].y == 0)
         {
