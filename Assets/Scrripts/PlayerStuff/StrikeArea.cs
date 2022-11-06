@@ -66,7 +66,7 @@ public class StrikeArea : MonoBehaviour
                 
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
-                    Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
+                    //Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit",Damger);
                     justStruck = true;

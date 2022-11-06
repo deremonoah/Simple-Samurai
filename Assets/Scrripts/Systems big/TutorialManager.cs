@@ -57,7 +57,7 @@ public class TutorialManager : MonoBehaviour
         tutorialText.text = "now block this attack";
         yield return new WaitForSeconds(1.5f);
 
-        TrainingDummy.StrikeUI();
+        TrainingDummy.AttackUI();
         yield return new WaitForSeconds(4f);
         
         tutorialText.text = "Lay low your enemy!";

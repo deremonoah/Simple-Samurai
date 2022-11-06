@@ -67,7 +67,7 @@ public class VillageDefense : MonoBehaviour
                     _villagerLifeTimer = VillagerLifeTimerMax;
                     if ((float)_villagersAtStart - villagers >= threashHoldForFire)
                     {
-                        Debug.Log("if check: " + ((float)_villagersAtStart - villagers));
+                        //Debug.Log("if check: " + ((float)_villagersAtStart - villagers));
                         if (FireIndex < FireSprites.Count)
                         { FireSprites[FireIndex].SetActive(true); }
                         _villagersAtStart = villagers;
@@ -96,7 +96,7 @@ public class VillageDefense : MonoBehaviour
         threashHoldForFire = (float)_villagersAtStart / 11;
         DamageTaken = 0;
         FireIndex = 0;
-        Debug.Log("fire therash hold: " + threashHoldForFire);
+        //Debug.Log("fire therash hold: " + threashHoldForFire);
     }
 
     public void ResetVillage()

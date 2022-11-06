@@ -116,6 +116,21 @@ MonoBehaviour:
   enemyWaves: []
   WaveControlVariable: 0
   OdachiSprites: []
+  bossHPBar: {fileID: 0}
+  bossHPContainter: {fileID: 0}
+  BossHPPointer: {fileID: 0}
+  BossBowPointers: []
+  caltropSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  smokeSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1092464847776270928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +153,7 @@ MonoBehaviour:
   playerHP: {fileID: 0}
   SoundMng: {fileID: 0}
   mainStrikeArea: {fileID: 0}
+  _farmShop: {fileID: 0}
 --- !u!114 &1092464847776271020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +212,7 @@ MonoBehaviour:
   _damagedShops: []
   populationIcon: {fileID: 0}
   populationText: {fileID: 0}
+  Turotialing: 0
 --- !u!114 &7633312787459196708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +258,8 @@ MonoBehaviour:
   - {fileID: 0}
   blacksmithInvestButton: {fileID: 0}
   farmInvestButton: {fileID: 0}
+  blacksmithBackground: {fileID: 0}
+  hasPicked: 0
 --- !u!114 &7089745053819230923
 MonoBehaviour:
   m_ObjectHideFlags: 0

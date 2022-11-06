@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 3684361221490979078}
   myCanvas: {fileID: 8416036972795924870}
   OnFireSprite: {fileID: 2864164581738822656}
+  basicAttackDiversity: 1
   bossHP: {fileID: 0}
 --- !u!1001 &2765593167707755158
 PrefabInstance:

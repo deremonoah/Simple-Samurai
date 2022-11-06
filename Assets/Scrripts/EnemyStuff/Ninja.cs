@@ -16,14 +16,35 @@ public class Ninja : enemy
         _smokeSpots = temp[1];
     }
 
-    private void SpawnCaltrop()
+    protected override void StartMyRoutine()
     {
-        int rand = Random.Range(0, _caltropSpots.Count);
+        Debug.Log("got ninja action");
+        int rand = Random.Range(0, 4);
+        if (rand == 0)
+        { myActionRoutine = StartCoroutine(SpawnCaltrop()); }
+        else if (rand == 1)
+        { myActionRoutine = StartCoroutine(SpawnSmoke()); }
+        else { myActionRoutine = base.StartCoroutine(TheAttackRoutine()); }
+        
     }
 
-    private void SpawnSmoke()
+    
+
+    IEnumerator SpawnCaltrop()
+    {
+        int rand = Random.Range(0, _caltropSpots.Count);
+        Debug.Log(_caltropSpots.Count);
+        Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation);
+        yield return new WaitForSeconds(2f);
+        StartMyRoutine();
+    }
+
+    IEnumerator SpawnSmoke()
     {
         int rand = Random.Range(0,_smokeSpots.Count);
+        Instantiate(specialPrefabs[1], _smokeSpots[rand].position, transform.rotation);
+        yield return new WaitForSeconds(1f);
+        StartMyRoutine();
     }
     
 }

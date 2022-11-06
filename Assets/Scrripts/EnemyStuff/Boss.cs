@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Boss : enemy
+public class Boss : Ninja
 {
     [SerializeField] Image bossHP;
 

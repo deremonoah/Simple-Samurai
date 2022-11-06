@@ -27,7 +27,7 @@ public class enemy : MonoBehaviour
     public EnemysManager enmsSys;
 
     //attack projectile stuff **also fully utelizing the multiple attack and special prefabs has not been used yet
-    [SerializeField] List<GameObject> atkPrefabs, specialPrefabs;
+    public List<GameObject> atkPrefabs, specialPrefabs;
     [SerializeField] List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
     [SerializeField] List<Vector2> atkDirs,SpecialDirs;
@@ -46,9 +46,10 @@ public class enemy : MonoBehaviour
     public List<GameObject> BowPointers;
     public Canvas myCanvas;
 
-    private Coroutine myattackRoutine;
+    public Coroutine myActionRoutine;
 
     [SerializeField] GameObject OnFireSprite;
+    [SerializeField] bool basicAttackDiversity;
 
     enum attackState 
     { 
@@ -75,10 +76,10 @@ public class enemy : MonoBehaviour
 
         if (myAbilities[0] == Ability.heal)
         {
-            myattackRoutine = StartCoroutine(healEnmRoutine());
+            myActionRoutine = StartCoroutine(healEnmRoutine());
         } else
         {
-            myattackRoutine = StartCoroutine(TheattackRoutine());
+            myActionRoutine = StartCoroutine(TheAttackRoutine());
         }
          
 
@@ -173,9 +174,9 @@ public class enemy : MonoBehaviour
 
     public void Blocked()
     {
-        if(myattackRoutine != null)
+        if(myActionRoutine != null)
         {
-            StopCoroutine(myattackRoutine);
+            StopCoroutine(myActionRoutine);
         }
 
         StartMyRoutine();
@@ -208,30 +209,31 @@ public class enemy : MonoBehaviour
         }
     }
 
-    public void StartMyRoutine()
+    protected virtual void StartMyRoutine()
     {
         if (myAbilities[0] == Ability.heal)
         {
-            myattackRoutine = StartCoroutine(healEnmRoutine());
+            myActionRoutine = StartCoroutine(healEnmRoutine());
         }
         else if (myAbilities[0] == Ability.steal && amountRobbed > 5)
         {
-            myattackRoutine = StartCoroutine(RunRoutine());
+            myActionRoutine = StartCoroutine(RunRoutine());
         }
         else
         {
-            myattackRoutine = StartCoroutine(TheattackRoutine());
+            myActionRoutine = StartCoroutine(TheAttackRoutine());
         }
         
     }
 
-    IEnumerator TheattackRoutine()
+    #region attack Stuff
+    protected virtual IEnumerator TheAttackRoutine()
     {
         curState = attackState.waiting;
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
 
 
-        StrikeUI();
+        AttackUI();
         curState = attackState.readying;
         yield return new WaitForSeconds(readyingTimer);
 
@@ -240,6 +242,55 @@ public class enemy : MonoBehaviour
 
         StartMyRoutine();
 
+
+    }
+
+    public void AttackUI()
+    {
+        var dir = Random.Range(0, atkDirs.Count);
+        //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
+
+        GameObject atk = Instantiate(atkPrefabs[0], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+
+        if (atkDirs[dir].y == 0)
+        {
+            if (basicAttackDiversity)
+            {
+                int rand = Random.Range(0, 3);
+                atk.transform.position = atkStarts[rand].transform.position;
+            }
+            else
+            { atk.transform.position = atkStarts[0].transform.position; }
+        }
+        else if (atkDirs[dir].y == -0.5)
+        {
+            atk.transform.position = atkStarts[1].transform.position;
+        }
+        else if (atkDirs[dir].y == 0.5)
+        {
+            atk.transform.position = atkStarts[2].transform.position;
+        }
+        /*else if (atkDirs[dir].x == 0)
+        {
+            atk.transform.position = atkStarts[1].transform.position;
+            atk.transform.Rotate(0f, 0f, 90f, Space.Self);
+        //this was an attempt to make it go down but its too off center for it to work
+        }*/
+        else
+        {
+            atk.transform.position = atkStarts[3].transform.position;
+        }
+
+
+        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
+        var newList = new List<GameObject>();
+        if (currentAttacks.Count > 0)
+            foreach (var swing in currentAttacks)
+                if (swing != null)
+                    newList.Add(swing);
+
+        newList.Add(atk);
+        currentAttacks = newList;
 
     }
 
@@ -254,6 +305,7 @@ public class enemy : MonoBehaviour
             amountRobbed += randRob;
         }
     }
+    #endregion
 
     IEnumerator healEnmRoutine()
     {
@@ -287,11 +339,11 @@ public class enemy : MonoBehaviour
 
             //soundMRef.PlaySound("heal"); make a heal sound
 
-            myattackRoutine = StartCoroutine(healEnmRoutine());
+            myActionRoutine = StartCoroutine(healEnmRoutine());
         }
         else
         {
-            myattackRoutine = StartCoroutine(TheattackRoutine());
+            myActionRoutine = StartCoroutine(TheAttackRoutine());
         }
         
 
@@ -329,49 +381,7 @@ public class enemy : MonoBehaviour
             randWaitmax = randWaitmin;
     }
 
-    public void StrikeUI()
-    {
-        var dir = Random.Range(0, atkDirs.Count);
-        //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
-
-        GameObject atk = Instantiate(atkPrefabs[0], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
-
-        if (atkDirs[dir].y == 0)
-        {
-            atk.transform.position= atkStarts[0].transform.position;
-
-        }
-        else if (atkDirs[dir].y == -0.5)
-        {
-            atk.transform.position = atkStarts[1].transform.position;
-        }
-        else if (atkDirs[dir].y == 0.5)
-        {
-            atk.transform.position = atkStarts[2].transform.position;
-        }
-        /*else if (atkDirs[dir].x == 0)
-        {
-            atk.transform.position = atkStarts[1].transform.position;
-            atk.transform.Rotate(0f, 0f, 90f, Space.Self);
-        //this was an attempt to make it go down but its too off center for it to work
-        }*/
-        else
-        {
-            atk.transform.position = atkStarts[3].transform.position;
-        }
-        
-
-        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
-        var newList = new List<GameObject>();
-        if (currentAttacks.Count > 0)
-            foreach (var swing in currentAttacks)
-                if (swing != null)
-                    newList.Add(swing);
-
-        newList.Add(atk);
-        currentAttacks = newList;
-
-    }
+    
 
     public void HealingUI()
     {
@@ -415,6 +425,5 @@ public class enemy : MonoBehaviour
         HPPointer.SetActive(true);
         HPPointer.GetComponent<SpriteRenderer>().sprite = img;
     }
-
-    
+ 
 }
