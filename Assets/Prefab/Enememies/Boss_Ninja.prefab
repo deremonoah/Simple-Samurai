@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 300
+  maxHP: 250
   armor: 7
-  damgMin: 15
-  damgMax: 40
+  damgMin: 20
+  damgMax: 60
   healMin: 0
   healMax: 0
   targetally: {fileID: 0}

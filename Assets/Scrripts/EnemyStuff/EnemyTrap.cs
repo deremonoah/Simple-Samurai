@@ -14,7 +14,7 @@ public class EnemyTrap : MonoBehaviour
         if (other.name == "strike point")
         {
             //it is anti armor now
-            playerHP.DamagePlayer(10f,2);
+            playerHP.DamagePlayer(null,10f,2);
             Destroy(this.gameObject);
         }
     }

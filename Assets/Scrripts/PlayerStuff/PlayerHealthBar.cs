@@ -16,6 +16,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     [SerializeField] Armor testArmor;
     private SoundManager _soundManager;
+    private PlayerDefense _playerDefense;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerHealthBar : MonoBehaviour
         myArmor = Instantiate(myArmor);
         testArmor = Instantiate(testArmor);
         _soundManager = FindObjectOfType<SoundManager>();
+        _playerDefense = FindObjectOfType<PlayerDefense>();
     }
 
 
@@ -77,17 +79,27 @@ public class PlayerHealthBar : MonoBehaviour
         healthBar.fillAmount = health / maxHealth;
     }
 
-    public void DamagePlayer(float damagePoints, int ability)
+    public void DamagePlayer(enemy enmy,float damagePoints, int ability)
     {
         //add enum stuff for effects damage could have
-        if (ability == 2)
+        if (_playerDefense.isDefended() && enmy != null)
         {
-            health -= (Mathf.Max(1,damagePoints));
-        }else
-        {
-            health -= (Mathf.Max(1, damagePoints - armorValue));
+            //this is where I would check which player defense they have so ima make that script
+            _playerDefense.DefendPlayer(enmy);
         }
-        _soundManager.PlaySound("hit");
+        else
+        {
+            if (ability == 2)
+            {
+                health -= (Mathf.Max(1, damagePoints));
+            }
+            else
+            {
+                health -= (Mathf.Max(1, damagePoints - armorValue));
+            }
+            //this is also where I could add throns type armor well I still would need to check if enemy is null again
+            _soundManager.PlaySound("hit");
+        }
     }
 
     public void HealPlayer(float healingPoints)

@@ -297,7 +297,7 @@ public class enemy : MonoBehaviour
 
     public void hitNow()
     {
-        _playerHP.DamagePlayer(Random.Range(damgMin, damgMax), (int)myAbilities[0]);
+        _playerHP.DamagePlayer(this,Random.Range(damgMin, damgMax), (int)myAbilities[0]);
         
         if (myAbilities[0] == Ability.steal)
         {
