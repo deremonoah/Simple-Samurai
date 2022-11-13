@@ -8,7 +8,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject tutorialPanel;
     [SerializeField] Text tutorialText;
     [SerializeField] GameObject SensaiSprite;
-    [SerializeField] bool _tutorialing = false;
+    private bool _tutorialing;
     private TutorialState _tutorialState = TutorialState.tohold;
     private enemy TrainingDummy;
     private EnemysManager _enemyManager;
@@ -63,64 +63,58 @@ public class TutorialManager : MonoBehaviour
         tutorialText.text = "Lay low your enemy!";
         List<WeaponEffect> noneEffects = new List<WeaponEffect>();
         noneEffects.Add(WeaponEffect.none);
-        TrainingDummy.damgEnemy(920, noneEffects);
+        TrainingDummy.damgEnemy(900, noneEffects);
 
         yield return new WaitForSeconds(6f);
-        tutorialPanel.SetActive(false);
         _tutorialState = TutorialState.done;
         //FindObjectOfType<VillageDefense>().Turotialing = false;
 
-
-    }
-
-    private void Update()
-    {
-        if (_tutorialState == TutorialState.done && _enemyManager.aliveEnemys.Count < 1)
+        if (_tutorialState == TutorialState.done)
         {
             _tutorialing = false;
+            tutorialPanel.SetActive(false);
             SensaiSprite.SetActive(false);
             FindObjectOfType<VillageDefense>().Turotialing = false;
-            Destroy(this);
         }
     }
 
-    /*   void Update()
-       {
-           if (_tutorialing)
-           {
-               //SensaiSprite.SetActive(true);
-               tutorialPanel.SetActive(true);
-               tutorialText.text = "Hold Down the Space bar or Left Mouse button";
-               if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) && _tutorialState == TutorialState.tohold)
-               {
-                   _tutorialState = TutorialState.toRelease;
-                   tutorialText.text = "Now release the button while that moving sword icon is over the strike area ... the red shape";
+ /*   void Update()
+    {
+        if (_tutorialing)
+        {
+            //SensaiSprite.SetActive(true);
+            tutorialPanel.SetActive(true);
+            tutorialText.text = "Hold Down the Space bar or Left Mouse button";
+            if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) && _tutorialState == TutorialState.tohold)
+            {
+                _tutorialState = TutorialState.toRelease;
+                tutorialText.text = "Now release the button while that moving sword icon is over the strike area ... the red shape";
+                
+            }
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && _tutorialState == TutorialState.toRelease)
+            {
+                tutorialText.text = "pretty simple right?";
+                _tutorialState = TutorialState.toBlock;
+            }
+            if (_tutorialState == TutorialState.toBlock)
+            {
+                _timer -= Time.deltaTime;
+                if (_timer >= 1)
+                {
+                    tutorialText.text = "now block this attack";
+                    TrainingDummy.StrikeUI();
+                    _tutorialState = TutorialState.done;
+                }
+            }
 
-               }
-               if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && _tutorialState == TutorialState.toRelease)
-               {
-                   tutorialText.text = "pretty simple right?";
-                   _tutorialState = TutorialState.toBlock;
-               }
-               if (_tutorialState == TutorialState.toBlock)
-               {
-                   _timer -= Time.deltaTime;
-                   if (_timer >= 1)
-                   {
-                       tutorialText.text = "now block this attack";
-                       TrainingDummy.StrikeUI();
-                       _tutorialState = TutorialState.done;
-                   }
-               }
-
-               if (_tutorialState == TutorialState.done)
-               {
-                   _tutorialing = false;
-                   tutorialPanel.SetActive(false);
-                   //SensaiSprite.SetActive(false);
-               }
-           }
-       }*/
+            if (_tutorialState == TutorialState.done)
+            {
+                _tutorialing = false;
+                tutorialPanel.SetActive(false);
+                //SensaiSprite.SetActive(false);
+            }
+        }
+    }*/
 
 
     public void yesToTutorial()
@@ -128,8 +122,6 @@ public class TutorialManager : MonoBehaviour
         _tutorialing = true;
         Debug.Log("yes tutorial");
     }
-
-
 }
 public enum TutorialState { tohold,toRelease,toBlock, done}
 
