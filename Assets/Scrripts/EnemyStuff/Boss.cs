@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class Boss : Ninja
 {
     [SerializeField] Image bossHP;
+    private bool hasswap = false;
 
     protected override void fillMyHP()
     {
         bossHP.fillAmount = HP / maxHP;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if (HP < maxHP / 2)
+        base.Update();
+        if (HP < maxHP / 2 && !hasswap)
         {
-            //SwapSpots();
+            SwapSpots();
+            hasswap = true;
         }
     }
 
@@ -40,9 +43,10 @@ public class Boss : Ninja
 
             enmsSys.aliveEnemys[posInList + 1] = this;
             enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
+            Debug.Log(targetToSwap.GetComponent<enemy>().myAbilities[0]);
 
             enmsSys.UpdateEnmsPos();
-            //this is pretty jank but i think it will work
+            //this is pretty jank but i think it will work, it did repeat this but thats cause update obviously
         }
     }
 }

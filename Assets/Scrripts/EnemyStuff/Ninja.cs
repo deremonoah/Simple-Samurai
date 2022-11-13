@@ -18,7 +18,6 @@ public class Ninja : enemy
 
     protected override void StartMyRoutine()
     {
-        Debug.Log("got ninja action");
         int rand = Random.Range(0, 5);
         if (rand == 0)
         { myActionRoutine = StartCoroutine(SpawnCaltrop()); }

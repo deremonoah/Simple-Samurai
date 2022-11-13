@@ -92,7 +92,7 @@ public class enemy : MonoBehaviour
         
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //Hp ifs
         if (HP<=0)
