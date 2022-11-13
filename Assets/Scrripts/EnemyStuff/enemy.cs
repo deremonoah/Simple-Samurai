@@ -18,7 +18,7 @@ public class enemy : MonoBehaviour
     private Camera _mainCam;
     private GameManager _GM;
     private PlayerHealthBar _playerHP;
-    [SerializeField] int posInList;
+    public int posInList;
 
     //animation stuff
     private Animator anim;
@@ -321,6 +321,7 @@ public class enemy : MonoBehaviour
         {
             if (i.HP < i.maxHP)
             {
+                targetally = i;
                 targetally = i;
                 hitIf = true;
                 break;
