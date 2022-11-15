@@ -20164,7 +20164,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 8f476cb710b90b344bbeef5b48fc8061, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
@@ -20645,6 +20645,90 @@ PrefabInstance:
       propertyPath: tutorialPanel
       value: 
       objectReference: {fileID: 1298856241}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[0].a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[0].b
+      value: 0.73800004
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[0].g
+      value: 0.426179
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[0].r
+      value: 0.404424
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[1].a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[1].b
+      value: 0.922
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[1].g
+      value: 0.86937565
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[1].r
+      value: 0.496958
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[2].a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[2].b
+      value: 0.133206
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[2].g
+      value: 0.28984007
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[2].r
+      value: 0.894
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[3].a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[3].b
+      value: 0.43867922
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[3].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[3].r
+      value: 0.46739805
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[4].a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[4].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[4].g
+      value: 0.745
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: tutorialColors.Array.data[4].r
+      value: 0.035058822
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
 --- !u!1001 &1981594130697783970
