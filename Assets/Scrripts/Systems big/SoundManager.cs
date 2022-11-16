@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioClip hit1, hit2, coin1, coin2, coin3,block1;
     private AudioSource myaudioSrc;
+    private List<AudioClip> senseiSounds;
 
     void Start()
     {
@@ -16,6 +17,13 @@ public class SoundManager : MonoBehaviour
         coin2 = Resources.Load<AudioClip>("Sound/Effects/coin wav 2");
         coin3 = Resources.Load<AudioClip>("Sound/Effects/coin wav 3");
         block1 = Resources.Load<AudioClip>("Sound/Effects/metal hit try 2");
+
+        senseiSounds = new List<AudioClip>();
+        senseiSounds.Add(Resources.Load<AudioClip>("Sound/Sensei/sensei 1"));
+        senseiSounds.Add(Resources.Load<AudioClip>("Sound/Sensei/sensei 2"));
+        senseiSounds.Add(Resources.Load<AudioClip>("Sound/Sensei/sensei 3"));
+        senseiSounds.Add(Resources.Load<AudioClip>("Sound/Sensei/sensei 4"));
+        senseiSounds.Add(Resources.Load<AudioClip>("Sound/Sensei/sensei 5"));
     }
 
     
@@ -38,6 +46,10 @@ public class SoundManager : MonoBehaviour
 
             case "block":
                 myaudioSrc.PlayOneShot(block1);
+                break;
+            case "sensei":
+                rand = Random.Range(0, 5);
+                myaudioSrc.PlayOneShot(senseiSounds[rand]);
                 break;
         }
     }

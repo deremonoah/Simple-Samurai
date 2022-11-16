@@ -3639,7 +3639,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Sensai
+  m_Text: 'Sensei
 
 '
 --- !u!222 &343081722
@@ -6432,7 +6432,7 @@ GameObject:
   - component: {fileID: 659864835}
   - component: {fileID: 659864834}
   m_Layer: 5
-  m_Name: Sensai Button
+  m_Name: Sensei Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
