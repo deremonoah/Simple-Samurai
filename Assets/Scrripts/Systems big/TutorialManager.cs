@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    [Header("Dependancy")]
     [SerializeField] GameObject tutorialPanel;
     [SerializeField] Text tutorialText;
     [SerializeField] GameObject SensaiSprite;
+    [SerializeField] PanelTweening _panelTweening;
+
+    [Header("Configuration")]
+    [SerializeField] List<Color> tutorialColors;
+
     private bool _tutorialing;
     private TutorialState _tutorialState = TutorialState.tohold;
     private enemy TrainingDummy;
@@ -17,18 +23,19 @@ public class TutorialManager : MonoBehaviour
     bool buttonInput => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0);
 
     private Image _tutorialImage;
-    [SerializeField] List<Color> tutorialColors;
+    private int index;
 
     IEnumerator Start()
     {
+        tutorialPanel.SetActive(false);
         _tutorialImage = tutorialPanel.GetComponent<Image>();
-        _enemyManager = GetComponent<EnemysManager>();
+        _enemyManager = FindObjectOfType<EnemysManager>();
         _soundManager = FindObjectOfType<SoundManager>();
 
         if (_tutorialing)
         {
             _enemyManager.enemyWaves.Insert(0, Resources.Load<EnmWave>("Waves/Tutorial Wave"));
-            FindObjectOfType<VillageDefense>().Turotialing = true;
+            FindObjectOfType<VillageDefense>().Tutorialing = true;
             Debug.Log("if");
         }
         else
@@ -37,11 +44,15 @@ public class TutorialManager : MonoBehaviour
         }
         Debug.Log("started tutorial");
 
+        SensaiSprite.SetActive(true);
         yield return new WaitForSeconds(1);
         tutorialPanel.SetActive(true);
-        SensaiSprite.SetActive(true);
-        tutorialText.text = "Hold Down the Space bar or Left Mouse button";
-        _soundManager.PlaySound("sensei");
+
+
+        string text = "Hold Down the Space bar or Left Mouse button";
+        UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
+        
+       
         
         while(_tutorialState == TutorialState.tohold)
         {
@@ -50,9 +61,9 @@ public class TutorialManager : MonoBehaviour
                 yield return null; 
             }
             _tutorialState = TutorialState.toRelease;
-            _tutorialImage.color = tutorialColors[0];
-            tutorialText.text = "Now release the button while that sword icon is over the strike area ... the red shape";
-            _soundManager.PlaySound("sensei");
+            
+            text = "Now release the button while that sword icon is over the strike area ... the red shape";
+            UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
         }
         while (_tutorialState == TutorialState.toRelease)
         {
@@ -61,23 +72,28 @@ public class TutorialManager : MonoBehaviour
                 yield return null;
             }
             TrainingDummy = _enemyManager.aliveEnemys[0];
-            _tutorialImage.color = tutorialColors[1];
-            tutorialText.text = "The further right the pointer goes the more damage you do";
-            _soundManager.PlaySound("sensei");
+
+            text = "The further right the pointer goes the more damage you do";
+            UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
+
             _tutorialState = TutorialState.toBlock;
         }
+        
         yield return new WaitForSeconds(6.5f);
-        _tutorialImage.color = tutorialColors[2];
-        tutorialText.text = "now block this attack";
-        _soundManager.PlaySound("sensei");
+
+        
+        text = "now block this attack";
+        UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
+
         yield return new WaitForSeconds(1.5f);
 
         TrainingDummy.AttackUI();
         yield return new WaitForSeconds(4f);
 
-        _tutorialImage.color = tutorialColors[3];
-        tutorialText.text = "Lay low your enemy!";
-        _soundManager.PlaySound("sensei");
+        
+        text = "Lay low your enemy!";
+        UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
+
         List<WeaponEffect> noneEffects = new List<WeaponEffect>();
         noneEffects.Add(WeaponEffect.none);
         TrainingDummy.damgEnemy(900, noneEffects);
@@ -88,16 +104,21 @@ public class TutorialManager : MonoBehaviour
             yield return null;
             continue;
         }
+
         _tutorialState = TutorialState.congrats;
 
 
-        _tutorialImage.color = tutorialColors[4];
-        tutorialText.text = "you seem got the hang of it right?";
-        _soundManager.PlaySound("sensei");
+        
+        text = "you seem to got the hang of it right?";
+        UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
+
         yield return new WaitForSeconds(4.2f);
-        tutorialText.text = "well you are this villages only hope for survival so don't die";
-        _soundManager.PlaySound("sensei");
+
+        text = "well you are this villages only hope for survival so don't die";
+        UpdatePanel(tutorialColors[index++% tutorialColors.Count], text);
+
         yield return new WaitForSeconds(7f);
+
         _tutorialState = TutorialState.done;
 
         if (_tutorialState == TutorialState.done)
@@ -105,10 +126,18 @@ public class TutorialManager : MonoBehaviour
             _tutorialing = false;
             tutorialPanel.SetActive(false);
             SensaiSprite.SetActive(false);
-            FindObjectOfType<VillageDefense>().Turotialing = false;
+            FindObjectOfType<VillageDefense>().Tutorialing = false;
         }
     }
 
+
+    private void UpdatePanel(Color co, string text)
+    {
+        _tutorialImage.color = co;
+        tutorialText.text = text;
+        _soundManager.PlaySound("sensei");
+        _panelTweening.ExecuteTween();
+    }
 
     public void yesToTutorial()
     {

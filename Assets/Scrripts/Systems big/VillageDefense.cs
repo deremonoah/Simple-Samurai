@@ -30,7 +30,7 @@ public class VillageDefense : MonoBehaviour
     [SerializeField] GameObject populationIcon;
     [SerializeField] Text populationText;
 
-    public bool Turotialing;
+    public bool Tutorialing;
     void Start()
     {
         _gm = FindObjectOfType<GameManager>();
@@ -45,7 +45,7 @@ public class VillageDefense : MonoBehaviour
     
     void Update()
     {
-        if (!Turotialing)
+        if (!Tutorialing)
         {
             if (_defending)
             {

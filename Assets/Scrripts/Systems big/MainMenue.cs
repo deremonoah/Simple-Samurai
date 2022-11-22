@@ -19,7 +19,7 @@ public class MainMenue : MonoBehaviour
     {
         yield return SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
         Debug.Log("got here");
-        FindObjectOfType<TutorialManager>().yesToTutorial();
+        FindObjectOfType<TutorialManager>(true).yesToTutorial();
         yield return SceneManager.UnloadSceneAsync(0);
     }
 }

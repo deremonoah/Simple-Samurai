@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 1923051231482176407}
   - component: {fileID: 3637811481354933246}
   - component: {fileID: 8673687103061439174}
-  - component: {fileID: 9187118953220397927}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -212,7 +211,7 @@ MonoBehaviour:
   _damagedShops: []
   populationIcon: {fileID: 0}
   populationText: {fileID: 0}
-  Turotialing: 0
+  Tutorialing: 0
 --- !u!114 &7633312787459196708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,18 +373,3 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   reduceCost: 0
---- !u!114 &9187118953220397927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092464847776271022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba6cf18d9dfe824bbf121bca02e41b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialPanel: {fileID: 0}
-  tutorialText: {fileID: 0}
-  SensaiSprite: {fileID: 0}

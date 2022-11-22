@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 79878790}
   - component: {fileID: 79878789}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Tutorial Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6286,6 +6286,66 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &651557686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651557687}
+  - component: {fileID: 651557688}
+  m_Layer: 5
+  m_Name: Tutorial Manager Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &651557687
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651557686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1298856242}
+  m_Father: {fileID: 1410867510}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &651557688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651557686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba6cf18d9dfe824bbf121bca02e41b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialPanel: {fileID: 1298856241}
+  tutorialText: {fileID: 79878789}
+  SensaiSprite: {fileID: 1292247362}
+  _panelTweening: {fileID: 1298856245}
+  tutorialColors:
+  - {r: 1, g: 1, b: 1, a: 0.8}
+  - {r: 0.404424, g: 0.426179, b: 0.73800004, a: 0.8}
+  - {r: 0.496958, g: 0.86937565, b: 0.922, a: 0.8}
+  - {r: 0.894, g: 0.28984007, b: 0.133206, a: 0.8}
+  - {r: 0.46739805, g: 1, b: 0.43867922, a: 0.8}
+  - {r: 0.035058822, g: 0.745, b: 0, a: 0.8}
 --- !u!1 &656973423
 GameObject:
   m_ObjectHideFlags: 0
@@ -12083,6 +12143,7 @@ GameObject:
   - component: {fileID: 1298856242}
   - component: {fileID: 1298856244}
   - component: {fileID: 1298856243}
+  - component: {fileID: 1298856245}
   m_Layer: 5
   m_Name: Tutorial Panel
   m_TagString: Untagged
@@ -12097,18 +12158,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298856241}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 79878788}
-  m_Father: {fileID: 1410867510}
-  m_RootOrder: 16
+  m_Father: {fileID: 651557687}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -734, y: 523}
-  m_SizeDelta: {x: -2006.4, y: -1303.257}
+  m_SizeDelta: {x: 1733.6, y: 757.2357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1298856243
 MonoBehaviour:
@@ -12148,6 +12209,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298856241}
   m_CullTransparentMesh: 1
+--- !u!114 &1298856245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298856241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103ebb2ec3ae44244bf68ed3719ce7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationThing:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.74210584
+      outSlope: 0.74210584
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.13495201
+      value: 1.1001487
+      inSlope: -0.068628326
+      outSlope: -0.068628326
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4904127
+      outWeight: 0.13407585
+    - serializedVersion: 3
+      time: 0.56717205
+      value: 1.0091391
+      inSlope: -0.057042453
+      outSlope: -0.057042453
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.021114767
+      outSlope: -0.021114767
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  speed: 1
 --- !u!1 &1299394306
 GameObject:
   m_ObjectHideFlags: 0
@@ -13157,7 +13273,7 @@ RectTransform:
   - {fileID: 563998600}
   - {fileID: 952037323}
   - {fileID: 939239421}
-  - {fileID: 1298856242}
+  - {fileID: 651557687}
   - {fileID: 1531856564}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -20633,102 +20749,6 @@ PrefabInstance:
       propertyPath: farmLvlImages.Array.data[2]
       value: 
       objectReference: {fileID: 911855077}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: SensaiSprite
-      value: 
-      objectReference: {fileID: 1292247362}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialText
-      value: 
-      objectReference: {fileID: 79878789}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialPanel
-      value: 
-      objectReference: {fileID: 1298856241}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[0].a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[0].b
-      value: 0.73800004
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[0].g
-      value: 0.426179
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[0].r
-      value: 0.404424
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[1].a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[1].b
-      value: 0.922
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[1].g
-      value: 0.86937565
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[1].r
-      value: 0.496958
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[2].a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[2].b
-      value: 0.133206
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[2].g
-      value: 0.28984007
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[2].r
-      value: 0.894
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[3].a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[3].b
-      value: 0.43867922
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[3].g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[3].r
-      value: 0.46739805
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[4].a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[4].b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[4].g
-      value: 0.745
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187118953220397927, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
-      propertyPath: tutorialColors.Array.data[4].r
-      value: 0.035058822
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
 --- !u!1001 &1981594130697783970

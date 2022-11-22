@@ -5,30 +5,34 @@ using UnityEngine;
 public class PanelTweening : MonoBehaviour
 {
     [SerializeField] AnimationCurve animationThing;
-    [SerializeField] float speed=1;
+
+    [Min(0.01f)]
+    [SerializeField] float speed = 1;
 
 
     [ContextMenu("ExecuteTween")]
     public void ExecuteTween()
     {
-        Debug.Log("executeTween");
         StartCoroutine(TweenRoutine());
     }
 
 
     private IEnumerator TweenRoutine()
     {
+
         float timer = 0f;
         Vector3 InitialScale = transform.localScale;
-        var Duration = animationThing.keys[^1].time;
-        Debug.Log(Duration);
+        var Duration = animationThing.keys[animationThing.keys.Length - 1].time;
 
-        while(timer<=1)
+
+        while (timer <= Duration)
         {
             transform.localScale = InitialScale * animationThing.Evaluate(timer);
-            timer += Time.deltaTime;
+            timer += Time.deltaTime * speed;
             yield return null;
         }
         transform.localScale = InitialScale;
+
     }
+
 }
