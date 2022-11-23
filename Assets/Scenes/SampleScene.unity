@@ -4146,6 +4146,7 @@ MonoBehaviour:
   coin2: {fileID: 0}
   coin3: {fileID: 0}
   block1: {fileID: 0}
+  smokebomb: {fileID: 0}
 --- !u!1 &389713777
 GameObject:
   m_ObjectHideFlags: 0
@@ -20449,6 +20450,10 @@ PrefabInstance:
       propertyPath: testArmor
       value: 
       objectReference: {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
+    - target: {fileID: 1092464847776271020, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: armorValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: m_Name
       value: Main Camera

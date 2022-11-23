@@ -18,6 +18,7 @@ public class enemy : MonoBehaviour
     private Camera _mainCam;
     private GameManager _GM;
     private PlayerHealthBar _playerHP;
+    private SoundManager _soundManager;
     public int posInList;
 
     //animation stuff
@@ -50,6 +51,7 @@ public class enemy : MonoBehaviour
 
     [SerializeField] GameObject OnFireSprite;
     [SerializeField] bool basicAttackDiversity;
+    
 
     enum attackState 
     { 
@@ -70,6 +72,7 @@ public class enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         HP = maxHP;
         anim = GetComponent<Animator>();
+        _soundManager = FindObjectOfType<SoundManager>();
         //matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         
         matDefault = GetComponent<SpriteRenderer>().material;
@@ -303,6 +306,7 @@ public class enemy : MonoBehaviour
         {
             int randRob = Random.Range(2, 4);
             _GM.robPlayer(randRob);
+            _soundManager.PlaySound("yoink");
             amountRobbed += randRob;
         }
     }
