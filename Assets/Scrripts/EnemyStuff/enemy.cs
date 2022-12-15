@@ -8,12 +8,11 @@ public class enemy : MonoBehaviour
     
     //stats
     public float HP, maxHP;
-    [SerializeField] float armor,damgMin, damgMax, healMin, healMax;
+    [SerializeField] float armor, damgMin, damgMax;
     public enemy targetally;
 
     //mostly timers n stuff
-    [SerializeField] float randWaitmin, randWaitmax, readyingTimer, strikeTimer;
-    [SerializeField] float waitTimerOffset;
+    protected float randWaitmin, randWaitmax, readyingTimer, strikeTimer, waitTimerOffset;
 
     private Camera _mainCam;
     private GameManager _GM;
@@ -29,14 +28,14 @@ public class enemy : MonoBehaviour
 
     //attack projectile stuff **also fully utelizing the multiple attack and special prefabs has not been used yet
     public List<GameObject> atkPrefabs, specialPrefabs;
-    [SerializeField] List<GameObject> atkStarts;
+    protected List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
     [SerializeField] List<Vector2> atkDirs,SpecialDirs;
-    attackState curState;
+    protected attackState curState;
     public List<Ability> myAbilities;
     private int amountRobbed = 0;
 
-    private List<GameObject> currentAttacks = new List<GameObject>();
+    protected List<GameObject> currentAttacks = new List<GameObject>();
 
     public Material matWhite;
     private Material matDefault;
@@ -53,7 +52,7 @@ public class enemy : MonoBehaviour
     [SerializeField] bool basicAttackDiversity;
     
 
-    enum attackState 
+    public enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
     }
@@ -73,19 +72,11 @@ public class enemy : MonoBehaviour
         HP = maxHP;
         anim = GetComponent<Animator>();
         _soundManager = FindObjectOfType<SoundManager>();
-        //matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         
         matDefault = GetComponent<SpriteRenderer>().material;
 
-        if (myAbilities[0] == Ability.heal)
-        {
-            myActionRoutine = StartCoroutine(healEnmRoutine());
-        } else
-        {
+        
             myActionRoutine = StartCoroutine(TheAttackRoutine());
-        }
-         
-
             
     }
 
@@ -112,13 +103,8 @@ public class enemy : MonoBehaviour
         }
 
         SetWaitTimerOffset();
-        /*switch(curState)
-        {
-            case attackState.waiting: state = 0
 
-        }*/
         //below is the effect of range or mob honour
-
         anim.SetFloat("State", (int)curState);
         fillMyHP();
         
@@ -214,11 +200,7 @@ public class enemy : MonoBehaviour
 
     protected virtual void StartMyRoutine()
     {
-        if (myAbilities[0] == Ability.heal)
-        {
-            myActionRoutine = StartCoroutine(healEnmRoutine());
-        }
-        else if (myAbilities[0] == Ability.steal && amountRobbed > 5)
+        if (myAbilities[0] == Ability.steal && amountRobbed > 5)
         {
             myActionRoutine = StartCoroutine(RunRoutine());
         }
@@ -274,12 +256,6 @@ public class enemy : MonoBehaviour
         {
             atk.transform.position = atkStarts[2].transform.position;
         }
-        /*else if (atkDirs[dir].x == 0)
-        {
-            atk.transform.position = atkStarts[1].transform.position;
-            atk.transform.Rotate(0f, 0f, 90f, Space.Self);
-        //this was an attempt to make it go down but its too off center for it to work
-        }*/
         else
         {
             atk.transform.position = atkStarts[3].transform.position;
@@ -312,53 +288,7 @@ public class enemy : MonoBehaviour
     }
     #endregion
 
-    IEnumerator healEnmRoutine()
-    {
-        curState = attackState.waiting;
-         bool hitIf = false;
-         targetally = new enemy();
-        
-
-        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
-
-        foreach (enemy i in enmsSys.aliveEnemys)
-        {
-            if (i.HP < i.maxHP)
-            {
-                targetally = i;
-                targetally = i;
-                hitIf = true;
-                break;
-            }
-        }
-
-
-        if (hitIf)
-        {
-            HealingUI();
-            curState = attackState.readying;
-            yield return new WaitForSeconds(readyingTimer);
-
-            curState = attackState.swinging;
-            yield return new WaitForSeconds(strikeTimer);
-
-
-            //soundMRef.PlaySound("heal"); make a heal sound
-
-            myActionRoutine = StartCoroutine(healEnmRoutine());
-        }
-        else
-        {
-            myActionRoutine = StartCoroutine(TheAttackRoutine());
-        }
-        
-
-    }
-
-    public void healAllyNow()
-    {
-        targetally.healEnm(Random.Range(healMin, healMax));
-    }
+    
 
     IEnumerator RunRoutine()
     {
@@ -387,22 +317,6 @@ public class enemy : MonoBehaviour
             randWaitmax = randWaitmin;
     }
 
-    
-
-    public void HealingUI()
-    {
-        GameObject heal = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
-        //var dir = Random.Range(0, healDirs.Count);
-        heal.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform,SpecialDirs[0]);
-        var newList = new List<GameObject>();
-        if (currentAttacks.Count > 0)
-            foreach (var swing in currentAttacks)
-                if (swing != null)
-                    newList.Add(swing);
-
-        newList.Add(heal);
-        currentAttacks = newList;
-    }
 
     IEnumerator Flash()
     {
