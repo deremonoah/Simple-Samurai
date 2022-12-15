@@ -1,42 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2637103135994134730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4819740616665397237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a87a49de764a394a9e66b311a067c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  maxHP: 120
-  armor: 2
-  damgMin: 15
-  damgMax: 30
-  targetally: {fileID: 0}
-  posInList: 0
-  myHPBar: {fileID: 380008003601914637}
-  enmsSys: {fileID: 0}
-  atkPrefabs:
-  - {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
-  specialPrefabs:
-  - {fileID: 8813521334607434375, guid: 507f2bb704beb1e44a148ef8139e5929, type: 3}
-  atkEnd: {fileID: 0}
-  myAbilities: 
-  matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
-  minCoin: 4
-  maxCoin: 10
-  HPPointer: {fileID: 8352394184097733551}
-  BowPointers: []
-  myCanvas: {fileID: 8487439495077647839}
-  OnFireSprite: {fileID: 2791451987063568473}
-  basicAttackDiversity: 0
-  healMin: 40
-  healMax: 60
 --- !u!1001 &2838367399995021007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,10 +94,6 @@ PrefabInstance:
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: minCoin
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myAbility
@@ -258,34 +217,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
---- !u!1 &4819740616665397237 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &8487439495077647839 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8352394184097733551 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6091754414344736096, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &380008003601914637 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2460627139670560194, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &2791451987063568473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
