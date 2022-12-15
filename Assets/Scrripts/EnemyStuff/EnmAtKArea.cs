@@ -48,7 +48,7 @@ public class EnmAtKArea : MonoBehaviour
                 myenm.IRan();
             }else if (myenm.myAbilities[0] == enemy.Ability.heal)
             {
-                myenm.healAllyNow();
+                myenm.GetComponent<Healer>().healAllyNow();
                 //this is spiecial reverse moves
             }
             Destroy(gameObject);

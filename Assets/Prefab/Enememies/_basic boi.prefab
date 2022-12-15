@@ -481,8 +481,6 @@ MonoBehaviour:
   armor: 5
   damgMin: 10
   damgMax: 35
-  healMin: 0
-  healMax: 0
   targetally: {fileID: 0}
   randWaitmin: 2.5
   randWaitmax: 4
@@ -511,6 +509,7 @@ MonoBehaviour:
   - {fileID: 1531267132036637584}
   myCanvas: {fileID: 5956742078480892688}
   OnFireSprite: {fileID: 134776856686358166}
+  basicAttackDiversity: 0
 --- !u!1 &8628111613924925506
 GameObject:
   m_ObjectHideFlags: 0
