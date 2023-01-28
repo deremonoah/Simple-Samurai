@@ -17,6 +17,7 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] Armor testArmor;
     private SoundManager _soundManager;
     private PlayerDefense _playerDefense;
+    private Curio _myCurio;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerHealthBar : MonoBehaviour
         testArmor = Instantiate(testArmor);
         _soundManager = FindObjectOfType<SoundManager>();
         _playerDefense = FindObjectOfType<PlayerDefense>();
+        _myCurio = FindObjectOfType<PlayerEquipedItemsManager>().equipedCurio;
     }
 
 
@@ -48,6 +50,12 @@ public class PlayerHealthBar : MonoBehaviour
             }
             else { _gm.OpenLossPan(); }
         }
+
+        if(_myCurio.curiEef ==CurioEffect.healOnGo && health<= maxHealth/2)
+        {
+            health += _myCurio.CurioNum;
+        }
+
 
         lerpSpeed = 2f * Time.deltaTime;
         
