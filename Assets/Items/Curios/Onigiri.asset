@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582431f5892f74c498e3445ec03e44bc, type: 3}
+  m_Name: Onigiri
+  m_EditorClassIdentifier: 
+  itemPanelIcon: {fileID: 21300000, guid: e1dc73a4a2b7cc143a9a008007535828, type: 3}
+  itemDescription: this will heal you when your HP is below half
+  itemLevel: 0
+  curiEef: 3
+  CurioNum: 40
+  CurioValueLevel: 

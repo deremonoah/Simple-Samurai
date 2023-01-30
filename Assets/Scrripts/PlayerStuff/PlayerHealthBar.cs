@@ -17,7 +17,7 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] Armor testArmor;
     private SoundManager _soundManager;
     private PlayerDefense _playerDefense;
-    private Curio _myCurio;
+    [SerializeField] Curio _myCurio;
 
     void Start()
     {
@@ -50,11 +50,16 @@ public class PlayerHealthBar : MonoBehaviour
             }
             else { _gm.OpenLossPan(); }
         }
-
-        if(_myCurio.curiEef ==CurioEffect.healOnGo && health<= maxHealth/2)
+        
+        if (_myCurio != null)
         {
-            health += _myCurio.CurioNum;
+            if (_myCurio.curiEef == CurioEffect.healOnGo && health <= maxHealth / 2)
+            {
+                health += _myCurio.CurioNum;
+                FindObjectOfType<PlayerEquipedItemsManager>().ClearConsumable();
+            }
         }
+        
 
 
         lerpSpeed = 2f * Time.deltaTime;
@@ -123,5 +128,9 @@ public class PlayerHealthBar : MonoBehaviour
         armorValue = am.armorLevel[am.itemLevel];
         myArmor = am;
 
+    }
+    public void SetCurio(Curio cur)
+    {
+        _myCurio = cur;
     }
 }

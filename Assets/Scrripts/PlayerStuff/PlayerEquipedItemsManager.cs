@@ -72,6 +72,7 @@ public class PlayerEquipedItemsManager : MonoBehaviour
             equipedCurio = (Curio)item;
             curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
+            _playerHP.SetCurio(equipedCurio);
         }
 
         UpdateItemUpgrades();
@@ -119,5 +120,10 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         {
             armorUpgradeIcons[lcv].SetActive(true);
         }
+    }
+    public void ClearConsumable()
+    {
+        equipedCurio = null;
+        curioIcon.sprite = Resources.Load<Sprite>("Blank");
     }
 }
