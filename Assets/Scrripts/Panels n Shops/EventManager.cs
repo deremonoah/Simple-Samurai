@@ -21,7 +21,8 @@ public class EventManager : MonoBehaviour
     [SerializeField] GameObject farmInvestButton;
     private bool _investingEnabled = false;
     private bool _toldAboutHeal = false;
-    public GameObject blacksmithBackground;
+    //public GameObject blacksmithBackground; new background doesn't work
+    private bool hasBlacksmith= false;
     private bool _lostMany;
     [SerializeField] bool hasPicked;
 
@@ -34,7 +35,7 @@ public class EventManager : MonoBehaviour
         _villageDefense = GetComponent<VillageDefense>();
         blacksmithInvestButton.SetActive(false);
         farmInvestButton.SetActive(false);
-        blacksmithBackground.SetActive(false);
+        //blacksmithBackground.SetActive(false);
 
         for (int lcv = 0; lcv < Buttons.Count; lcv++)
         {
@@ -61,7 +62,7 @@ public class EventManager : MonoBehaviour
 
         var rand = Random.Range(0, 10);
         var wave = _enemyManager.WaveControlVariable;
-        if ((wave >=3 && rand <= 5 ) && !blacksmithBackground.activeSelf)
+        if ((wave >=3 && rand <= 5 ) && !hasBlacksmith)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
         }
@@ -215,7 +216,8 @@ public class EventManager : MonoBehaviour
         //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
         _enemyManager.enemyWaves.Insert(_enemyManager.WaveControlVariable, Resources.Load<EnmWave>("Waves/Wave3.5"));
         _villageDefense.TurnOnBlackSmith();
-        blacksmithBackground.SetActive(true);
+        //blacksmithBackground.SetActive(true);
+        hasBlacksmith = true;
     }
 
     public void EnableInvesting()
