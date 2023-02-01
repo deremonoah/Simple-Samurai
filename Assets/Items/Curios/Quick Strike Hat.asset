@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Quick Strike Hat
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: 391dbd39c9134654b90488e398a47e6d, type: 3}
-  itemDescription: your pointer speed is increase while you have this hat
+  itemDescription: 'Hat of the Quick: your pointer speed is increase while you have
+    this hat'
   itemLevel: 0
   curiEef: 7
   CurioNum: 1

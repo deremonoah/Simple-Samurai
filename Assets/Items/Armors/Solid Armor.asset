@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Solid Armor
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: b67d11fd47fe043468b5b7df36584d90, type: 3}
-  itemDescription: this is better armor just havent drawn a sprite yet
+  itemDescription: 'Solid Armor: better than simple armor but nothing amazing'
   itemLevel: 0
   armorLevel:
   - 10
