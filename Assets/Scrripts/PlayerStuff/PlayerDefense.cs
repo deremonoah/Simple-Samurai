@@ -74,7 +74,7 @@ public class PlayerDefense : MonoBehaviour
         //amount will either be positive or negative(if we unequip the curio)
         //would need to take gold unless its a curio effect(which would also need to be able to be undone)
         var temp = EquipedDefense;
-        EquipedDefense = new int[EquipedDefense.Length+1];
+        EquipedDefense = new int[amount];
 
         for (int lcv = 0; lcv < temp.Length; lcv++)
         {
@@ -82,6 +82,7 @@ public class PlayerDefense : MonoBehaviour
         }
     }
 
+    //this is the same as the above that I made later
     public void IncreaseSlotsButton()
     {
         int[] temp = new int[EquipedDefense.Length+1];
@@ -94,12 +95,7 @@ public class PlayerDefense : MonoBehaviour
 
     public void ReadyDefense(int def)
     {
-        if(def == 0)
-        { /*enable pit*/ }
-        else if(def == 1)
-        { }
-        else if(def == 2)
-        {/*enable spikes */ }
+        //I am changing to a ui click and drag slot based system will just be more readable
     }
 
     public int DefenseCosts()
