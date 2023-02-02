@@ -7,6 +7,7 @@ public class PlayerDefense : MonoBehaviour
     //0= none 1=pit 2= palasade 3= spikes
     private int[] EquipedDefense;
     [SerializeField] int defenseSlotsLevel;
+    private float _palasadeHPMax=40,_palasadeHP =40;
 
     void Start()
     {
@@ -15,26 +16,57 @@ public class PlayerDefense : MonoBehaviour
 
     public bool isDefended()
     {
-        if (EquipedDefense[0] < 1)
+        for (int lcv = 0; lcv < EquipedDefense.Length; lcv++)
         {
+            if (EquipedDefense[lcv] > 0)
+            {
+                return true;
+            }
+        }
+        
+        
             return false;
-        }
-        else
-        {
-            return true;
-        }
+        
     }
 
-    public void DefendPlayer(enemy enmy)
+    public void DefendPlayer(enemy enmy,float Damg)
     {
         //depending on which of the defenses is selected it will do a different thing the to enemy
 
-        //spikes deals damage to the enemy(does it stop their attack? and is it for a whole round or does it go away after 
+        //spikes(3) deals damage to the enemy(does it stop their attack? and is it for a whole round or does it go away after 
         //an amount of damge?)
 
-        //pit stops the attack and stuns the enemy for a time (one time use or upgrade for multiple?)
+        //pit(1) stops the attack and stuns the enemy for a time (one time use or upgrade for multiple?)
 
-        //palacade extra hp bar will appear and tank some early damage(I would think it can stop multiple attacks)
+        //palacade(2) extra hp bar will appear and tank some early damage(I would think it can stop multiple attacks)
+
+        //this for loop will resolve the first defense that isn't 0 and then remove itself and exit the loop so it doesn't resolve multiple against one enemy
+        for(int lcv =0; lcv<EquipedDefense.Length;lcv++)
+        {
+            //palacade
+            if(EquipedDefense[lcv]==2)
+            {
+                _palasadeHP -= Damg;
+                if (_palasadeHP <= 0)
+                { EquipedDefense[lcv] = 0; }
+                break;
+            }
+            else if (EquipedDefense[lcv] == 1)
+            {
+                //enemy is basically stunned
+                EquipedDefense[lcv] = 0;
+                break;
+            }
+            else if(EquipedDefense[lcv]==3)
+            {
+                //deal damage to enemy then destroyed
+                EquipedDefense[lcv] = 0;
+                break;
+            }
+
+        }
+
+
     }
 
     private void ChangeDefenseSlots(int amount)
@@ -52,6 +84,31 @@ public class PlayerDefense : MonoBehaviour
 
     public void IncreaseSlotsButton()
     {
+        int[] temp = new int[EquipedDefense.Length+1];
+        for(int lcv = 0; lcv<EquipedDefense.Length; lcv++)
+        {
+            temp[lcv] = EquipedDefense[lcv];
+        }
+        EquipedDefense = temp;
+    }
 
+    public void ReadyDefense(int def)
+    {
+        if(def == 0)
+        { /*enable pit*/ }
+        else if(def == 1)
+        { }
+        else if(def == 2)
+        {/*enable spikes */ }
+    }
+
+    public int DefenseCosts()
+    {
+        int overallCost= 0;
+        for(int lcv = 0; lcv<EquipedDefense.Length;lcv++)
+        {
+            overallCost += 5;
+        }
+        return overallCost;
     }
 }

@@ -98,7 +98,7 @@ public class PlayerHealthBar : MonoBehaviour
         if (_playerDefense.isDefended() && enmy != null)
         {
             //this is where I would check which player defense they have so ima make that script
-            _playerDefense.DefendPlayer(enmy);
+            _playerDefense.DefendPlayer(enmy,damagePoints);
         }
         else
         {
