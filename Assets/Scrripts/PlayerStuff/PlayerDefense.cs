@@ -1,17 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDefense : MonoBehaviour
 {
     //0= none 1=pit 2= palasade 3= spikes
     private int[] EquipedDefense;
     [SerializeField] int defenseSlotsLevel;
-    private float _palasadeHPMax=40,_palasadeHP =40;
+    [SerializeField] float _palisadeHPMax=40,_palisadeHP =40;
+    [SerializeField] GameObject PalisadeUI;
+    [SerializeField] Image fillPalisade;
 
     void Start()
     {
         EquipedDefense = new int[1];
+        PalisadeUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (PalisadeUI.activeSelf)
+        {
+            fillPalisadeBar();
+        }
+    }
+    private void fillPalisadeBar()
+    {
+        fillPalisade.fillAmount = _palisadeHP / _palisadeHPMax;
+    }
+    //below is a proto type to test stuff
+    public void EquipPalisade()
+    {
+        EquipedDefense[0] = 2;
+        _palisadeHP = _palisadeHPMax;
+        PalisadeUI.SetActive(true);
     }
 
     public bool isDefended()
@@ -46,9 +67,9 @@ public class PlayerDefense : MonoBehaviour
             //palacade
             if(EquipedDefense[lcv]==2)
             {
-                _palasadeHP -= Damg;
-                if (_palasadeHP <= 0)
-                { EquipedDefense[lcv] = 0; }
+                _palisadeHP -= Damg;
+                if (_palisadeHP <= 0)
+                { EquipedDefense[lcv] = 0; PalisadeUI.SetActive(false); }
                 break;
             }
             else if (EquipedDefense[lcv] == 1)
@@ -107,4 +128,5 @@ public class PlayerDefense : MonoBehaviour
         }
         return overallCost;
     }
+
 }
