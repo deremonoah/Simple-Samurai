@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Transform ParentToReturnTo;
+    public defenseKind defense;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -24,3 +25,4 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 }
+public enum defenseKind { none, pit, palisade, spikes }

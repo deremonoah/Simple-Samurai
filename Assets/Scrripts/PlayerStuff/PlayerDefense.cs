@@ -117,6 +117,8 @@ public class PlayerDefense : MonoBehaviour
     public void ReadyDefense(int def)
     {
         //I am changing to a ui click and drag slot based system will just be more readable
+        if(def == 2)
+        { EquipPalisade(); }
     }
 
     public int DefenseCosts()
