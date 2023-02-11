@@ -8,6 +8,11 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     public void OnDrop(PointerEventData eventData)
     {
         //put the dragable.defense into this containers holder and then update the manager I have to make
+        Dragable d = eventData.pointerDrag.GetComponent<Dragable>();
+        if(d != null)
+        {
+            d.ParentToReturnTo = this.transform;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
