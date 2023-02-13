@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int DefenseNum = 0;
+    [SerializeField] int SpotInDefenseList;
     public void OnDrop(PointerEventData eventData)
     {
         //put the dragable.defense into this containers holder and then update the manager I have to make
@@ -15,7 +16,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             clearZone();
             d.ParentToReturnTo = this.transform;
             DefenseNum = (int)d.defense;
-            FindObjectOfType<PlayerDefense>().ReadyDefense(DefenseNum);
+            FindObjectOfType<PlayerDefense>().ReadyDefense(DefenseNum,SpotInDefenseList);
             //call and equip the right defense
         }
     }

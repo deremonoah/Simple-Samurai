@@ -14,7 +14,7 @@ public class PlayerDefense : MonoBehaviour
 
     void Start()
     {
-        EquipedDefense = new int[1];
+        EquipedDefense = new int[3];
         PalisadeUI.SetActive(false);
     }
 
@@ -115,25 +115,25 @@ public class PlayerDefense : MonoBehaviour
         EquipedDefense = temp;
     }
 
-    public void ReadyDefense(int def)
+    public void ReadyDefense(int def, int index)
     {
         //I am changing to a ui click and drag slot based system will just be more readable
         if(def == 2)/*Palisade*/
         {
-            EquipedDefense[0] = 2;
+            EquipedDefense[index] = 2;
             _palisadeHP = _palisadeHPMax;
             PalisadeUI.SetActive(true);
         }
         else if(def == 1)/*Pit*/
         {
-            EquipedDefense[0] = 1;
+            EquipedDefense[index] = 1;
             //enable ui for pit and diable others
             PalisadeUI.SetActive(false);
             //I will need to figure out how the defense works adding if there is only 1 slot stuff like that 
         }
         else if(def == 3)/*Spikes*/
         {
-            EquipedDefense[0] = 3;
+            EquipedDefense[index] = 3;
             PalisadeUI.SetActive(false);
             //enable ui which I will change to be setting the image not activating and deactivating one
         }
