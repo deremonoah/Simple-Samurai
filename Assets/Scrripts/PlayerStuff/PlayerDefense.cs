@@ -1,14 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerDefense : MonoBehaviour
 {
     //0= none 1=pit 2= palasade 3= spikes
-    private int[] EquipedDefense;
+    public int[] EquipedDefense;
     [SerializeField] int defenseSlotsLevel;
     [SerializeField] float _palisadeHPMax=40,_palisadeHP =40;
     [SerializeField] GameObject PalisadeUI;
     [SerializeField] Image fillPalisade;
+    [SerializeField] List<Dragable> DefenseUIs;
 
     void Start()
     {
@@ -28,12 +30,7 @@ public class PlayerDefense : MonoBehaviour
         fillPalisade.fillAmount = _palisadeHP / _palisadeHPMax;
     }
     //below is a proto type to test stuff
-    public void EquipPalisade()
-    {
-        EquipedDefense[0] = 2;
-        _palisadeHP = _palisadeHPMax;
-        PalisadeUI.SetActive(true);
-    }
+    
 
     public bool isDefended()
     {
@@ -74,14 +71,18 @@ public class PlayerDefense : MonoBehaviour
             }
             else if (EquipedDefense[lcv] == 1)
             {
-                //enemy is basically stunned
+                //enemy is basically stunned currently trying block but should add a stunned function
                 EquipedDefense[lcv] = 0;
+                enmy.Blocked();
                 break;
             }
             else if(EquipedDefense[lcv]==3)
             {
                 //deal damage to enemy then destroyed
                 EquipedDefense[lcv] = 0;
+                List<WeaponEffect> temp= new List<WeaponEffect>();
+                temp.Add(WeaponEffect.none);
+                enmy.damgEnemy(30, temp);
                 break;
             }
 
@@ -117,8 +118,25 @@ public class PlayerDefense : MonoBehaviour
     public void ReadyDefense(int def)
     {
         //I am changing to a ui click and drag slot based system will just be more readable
-        if(def == 2)
-        { EquipPalisade(); }
+        if(def == 2)/*Palisade*/
+        {
+            EquipedDefense[0] = 2;
+            _palisadeHP = _palisadeHPMax;
+            PalisadeUI.SetActive(true);
+        }
+        else if(def == 1)/*Pit*/
+        {
+            EquipedDefense[0] = 1;
+            //enable ui for pit and diable others
+            PalisadeUI.SetActive(false);
+            //I will need to figure out how the defense works adding if there is only 1 slot stuff like that 
+        }
+        else if(def == 3)/*Spikes*/
+        {
+            EquipedDefense[0] = 3;
+            PalisadeUI.SetActive(false);
+            //enable ui which I will change to be setting the image not activating and deactivating one
+        }
     }
 
     public int DefenseCosts()
