@@ -8,19 +8,23 @@ public class PlayerDefense : MonoBehaviour
     public int[] EquipedDefense;
     [SerializeField] int defenseSlotsLevel;
     [SerializeField] float _palisadeHPMax=40,_palisadeHP =40;
-    [SerializeField] GameObject PalisadeUI;
+    [SerializeField] List<GameObject> DefensesUIList;
     [SerializeField] Image fillPalisade;
-    [SerializeField] List<Dragable> DefenseUIs;
+    [SerializeField] List<Dragable> DefenseDragables;
+    [SerializeField] DropZone EquipedDefenseSlot;
 
     void Start()
     {
         EquipedDefense = new int[3];
-        PalisadeUI.SetActive(false);
+        for (int lcv = 0; lcv < DefensesUIList.Count; lcv++)
+        {
+            DefensesUIList[lcv].SetActive(false);
+        }
     }
 
     private void Update()
     {
-        if (PalisadeUI.activeSelf)
+        if (DefensesUIList[1].activeSelf)
         {
             fillPalisadeBar();
         }
@@ -66,7 +70,11 @@ public class PlayerDefense : MonoBehaviour
             {
                 _palisadeHP -= Damg;
                 if (_palisadeHP <= 0)
-                { EquipedDefense[lcv] = 0; PalisadeUI.SetActive(false); }
+                { 
+                    EquipedDefense[lcv] = 0; 
+                    DefensesUIList[1].SetActive(false);
+                    EquipedDefenseSlot.clearZone();
+                }
                 break;
             }
             else if (EquipedDefense[lcv] == 1)
@@ -74,6 +82,8 @@ public class PlayerDefense : MonoBehaviour
                 //enemy is basically stunned currently trying block but should add a stunned function
                 EquipedDefense[lcv] = 0;
                 enmy.Blocked();
+                DefensesUIList[0].SetActive(false);
+                EquipedDefenseSlot.clearZone();
                 break;
             }
             else if(EquipedDefense[lcv]==3)
@@ -82,7 +92,9 @@ public class PlayerDefense : MonoBehaviour
                 EquipedDefense[lcv] = 0;
                 List<WeaponEffect> temp= new List<WeaponEffect>();
                 temp.Add(WeaponEffect.none);
-                enmy.damgEnemy(30, temp);
+                enmy.damgEnemy(40, temp);
+                DefensesUIList[2].SetActive(false);
+                EquipedDefenseSlot.clearZone();
                 break;
             }
 
@@ -122,21 +134,30 @@ public class PlayerDefense : MonoBehaviour
         {
             EquipedDefense[index] = 2;
             _palisadeHP = _palisadeHPMax;
-            PalisadeUI.SetActive(true);
+            SetDefenseUI(1);
         }
         else if(def == 1)/*Pit*/
         {
             EquipedDefense[index] = 1;
             //enable ui for pit and diable others
-            PalisadeUI.SetActive(false);
+            SetDefenseUI(0);
             //I will need to figure out how the defense works adding if there is only 1 slot stuff like that 
         }
         else if(def == 3)/*Spikes*/
         {
             EquipedDefense[index] = 3;
-            PalisadeUI.SetActive(false);
+            SetDefenseUI(2);
             //enable ui which I will change to be setting the image not activating and deactivating one
         }
+    }
+
+    public void SetDefenseUI(int index)
+    {
+        for (int lcv = 0; lcv < DefensesUIList.Count; lcv++)
+        {
+            DefensesUIList[lcv].SetActive(false);
+        }
+        DefensesUIList[index].SetActive(true);
     }
 
     public int DefenseCosts()
