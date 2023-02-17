@@ -14,11 +14,6 @@ public class MusicManager : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        //musicSource.volume = musicVolume;
-    }
-
     public void SetMusicVolume()
     {
         musicSource.volume = _slider.value;

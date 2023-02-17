@@ -47,13 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.P) )
-        {
-            if (!pausePan.activeSelf)
-            { OpenPausePan(); }
-            else
-            { ClosePausePan(); }
-        }
+        
     }
 
     void Update()
@@ -65,6 +59,13 @@ public class GameManager : MonoBehaviour
             _lootManager.RandomItemPull();
         }
 #endif
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!pausePan.activeSelf)
+            { OpenPausePan(); }
+            else
+            { ClosePausePan(); }
+        }
     }
 
 

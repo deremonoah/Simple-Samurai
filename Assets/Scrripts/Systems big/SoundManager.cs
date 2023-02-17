@@ -97,13 +97,10 @@ public class SoundManager : MonoBehaviour
         soundVolume = volume;
     }*/
 
-    private void Update()
-    {
-        myaudioSrc.volume = soundVolume;
-    }
+    
 
     public void SetSoundVolume()
     {
-        soundVolume = _slider.value;
+        myaudioSrc.volume = _slider.value;
     }
 }
