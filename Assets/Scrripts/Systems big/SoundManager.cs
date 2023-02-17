@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class SoundManager : MonoBehaviour
     private AudioSource myaudioSrc;
     private List<AudioClip> _senseiSounds, _yoinkSounds;
 
+    [SerializeField] float Volume;
+    [SerializeField] AudioMixer mixer;
+    [SerializeField] float soundVolume = 1;
+    [SerializeField] Slider _slider;
     void Start()
     {
         myaudioSrc = GetComponent<AudioSource>();
@@ -75,5 +81,29 @@ public class SoundManager : MonoBehaviour
                 else { myaudioSrc.PlayOneShot(hit1); }
                 break;
         }
+    }
+
+    /*private void Update()
+    {
+        _slider.onValueChanged.AddListener((v) +>{
+            myaudioSrc.volume = (float)v;
+        });
+        myaudioSrc.volume = soundVolume;
+    //fuck this shit why does it never just work!!!!!
+    }
+
+    public void SetSoundVolume(float volume)
+    {
+        soundVolume = volume;
+    }*/
+
+    private void Update()
+    {
+        myaudioSrc.volume = soundVolume;
+    }
+
+    public void SetSoundVolume()
+    {
+        soundVolume = _slider.value;
     }
 }
