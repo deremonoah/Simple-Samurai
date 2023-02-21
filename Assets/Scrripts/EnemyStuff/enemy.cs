@@ -50,7 +50,7 @@ public class enemy : MonoBehaviour
 
     [SerializeField] GameObject OnFireSprite;
     [SerializeField] bool basicAttackDiversity;
-    
+    [SerializeField] bool longRanged;
 
     public enum attackState 
     { 
@@ -189,16 +189,20 @@ public class enemy : MonoBehaviour
 
     public void SetWaitTimerOffset()
     {
-        if (posInList > 0)
+        if (!longRanged)
         {
-            waitTimerOffset = 1.5f;
-            if (posInList == 3)
+            if (posInList > 0)
             {
-                waitTimerOffset = 2.5f;
+                waitTimerOffset = 1.5f;
+                if (posInList == 3)
+                {
+                    waitTimerOffset = 2.5f;
+                }
             }
-        }else
-        {
-            waitTimerOffset = 0;
+            else
+            {
+                waitTimerOffset = 0;
+            }
         }
     }
 
