@@ -1,57 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2833710505979115777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891363053065188268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20e2eb4643150e544ad9e2af475aaf93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  maxHP: 250
-  armor: 7
-  damgMin: 20
-  damgMax: 60
-  healMin: 0
-  healMax: 0
-  targetally: {fileID: 0}
-  randWaitmin: 2.2
-  randWaitmax: 4
-  readyingTimer: 2.5
-  strikeTimer: 0.4
-  waitTimerOffset: 0
-  posInList: 0
-  myHPBar: {fileID: 0}
-  enmsSys: {fileID: 0}
-  atkPrefabs:
-  - {fileID: 5675845330809881521, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
-  - {fileID: 2318151515997860959, guid: 283c014b6d910ff42ba511628597be66, type: 3}
-  specialPrefabs:
-  - {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
-  - {fileID: 6007896807255045066, guid: 177d067923d913d48ac87d21f8481d4d, type: 3}
-  atkStarts: []
-  atkEnd: {fileID: 0}
-  atkDirs:
-  - {x: -1, y: 0}
-  SpecialDirs: []
-  myAbilities: 0600000005000000
-  matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
-  minCoin: 12
-  maxCoin: 20
-  HPPointer: {fileID: 8280745359955222518}
-  BowPointers:
-  - {fileID: 7929288348020886648}
-  - {fileID: 110895359976218351}
-  - {fileID: 3684361221490979078}
-  myCanvas: {fileID: 8416036972795924870}
-  OnFireSprite: {fileID: 2864164581738822656}
-  basicAttackDiversity: 1
-  bossHP: {fileID: 0}
 --- !u!1001 &2765593167707755158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,3 +137,54 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2765593167707755158}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2833710505979115777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4891363053065188268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e2eb4643150e544ad9e2af475aaf93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  maxHP: 250
+  armor: 7
+  damgMin: 20
+  damgMax: 60
+  targetally: {fileID: 0}
+  randWaitmin: 1.7
+  randWaitmax: 3.5
+  readyingTimer: 2.5
+  strikeTimer: 0.4
+  waitTimerOffset: 0
+  posInList: 0
+  myHPBar: {fileID: 0}
+  enmsSys: {fileID: 0}
+  atkPrefabs:
+  - {fileID: 5675845330809881521, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
+  - {fileID: 2318151515997860959, guid: 283c014b6d910ff42ba511628597be66, type: 3}
+  specialPrefabs:
+  - {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+  - {fileID: 6007896807255045066, guid: 177d067923d913d48ac87d21f8481d4d, type: 3}
+  atkStarts: []
+  atkEnd: {fileID: 0}
+  atkDirs:
+  - {x: -1, y: 0}
+  SpecialDirs: []
+  myAbilities: 0600000005000000
+  matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
+  minCoin: 12
+  maxCoin: 20
+  HPPointer: {fileID: 8280745359955222518}
+  BowPointers:
+  - {fileID: 7929288348020886648}
+  - {fileID: 110895359976218351}
+  - {fileID: 3684361221490979078}
+  myCanvas: {fileID: 8416036972795924870}
+  OnFireSprite: {fileID: 2864164581738822656}
+  basicAttackDiversity: 1
+  longRanged: 0
+  bossHP: {fileID: 0}

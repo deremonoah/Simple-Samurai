@@ -170,7 +170,8 @@ public class StrikePoint : MonoBehaviour
         currentPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
-            baseSpeed = 5;
+            baseSpeed = 10;
+            //was 5 am testing other numbers
         }
         else if (tempPath.name == "Mountain Path")
         {

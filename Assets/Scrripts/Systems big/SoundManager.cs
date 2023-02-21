@@ -12,7 +12,6 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] float Volume;
     [SerializeField] AudioMixer mixer;
-    [SerializeField] float soundVolume = 1;
     [SerializeField] Slider _slider;
     void Start()
     {

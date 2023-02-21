@@ -482,8 +482,8 @@ MonoBehaviour:
   damgMin: 10
   damgMax: 35
   targetally: {fileID: 0}
-  randWaitmin: 2.5
-  randWaitmax: 4
+  randWaitmin: 2
+  randWaitmax: 3.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -510,6 +510,7 @@ MonoBehaviour:
   myCanvas: {fileID: 5956742078480892688}
   OnFireSprite: {fileID: 134776856686358166}
   basicAttackDiversity: 0
+  longRanged: 0
 --- !u!1 &8628111613924925506
 GameObject:
   m_ObjectHideFlags: 0
