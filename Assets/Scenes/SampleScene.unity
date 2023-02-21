@@ -4308,7 +4308,6 @@ MonoBehaviour:
   smokebomb: {fileID: 0}
   Volume: 0
   mixer: {fileID: 0}
-  soundVolume: 0
   _slider: {fileID: 694073844}
 --- !u!1 &389713777
 GameObject:
@@ -5038,9 +5037,9 @@ MonoBehaviour:
   startpoint: {fileID: 1439485291}
   currentPath: {fileID: 531414201}
   endPath: {fileID: 1392706998}
-  baseSpeed: 5
+  baseSpeed: 6.5
   bonusSpeed: 0
-  endSpeed: 4.5
+  endSpeed: 6
   distanceTravelled: 0
   frequency: 4
   magnitude: 2
