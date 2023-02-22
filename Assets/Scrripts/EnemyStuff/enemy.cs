@@ -82,7 +82,6 @@ public class enemy : MonoBehaviour
     void Awake()
     {
         HPPointer.SetActive(false);
-        
     }
 
     protected virtual void Update()
@@ -243,9 +242,12 @@ public class enemy : MonoBehaviour
     {
         var dir = Random.Range(0, atkDirs.Count);
         int randAttack = Random.Range(0, atkPrefabs.Count);
+        float dmg = Random.Range(damgMin, damgMax);
         //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
 
         GameObject atk = Instantiate(atkPrefabs[randAttack], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+
+        atk.GetComponent<EnmAtKArea>().SetDamage(dmg, damgMax);
 
         if (atkDirs[dir].y == 0)
         {
@@ -289,9 +291,9 @@ public class enemy : MonoBehaviour
 
     }
 
-    public void hitNow()
+    public void hitNow(float dmg)
     {
-        _playerHP.DamagePlayer(this,Random.Range(damgMin, damgMax), (int)myAbilities[0]);
+        _playerHP.DamagePlayer(this,dmg, (int)myAbilities[0]);
         
         if (myAbilities[0] == Ability.steal)
         {

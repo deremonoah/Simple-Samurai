@@ -11,6 +11,7 @@ public class EnmAtKArea : MonoBehaviour
     [SerializeField] Vector2 dir;
     [SerializeField] float movspd;
     private float multiPerry = 0;
+    private float damage;
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class EnmAtKArea : MonoBehaviour
         transform.Translate(dir * movspd *Time.deltaTime);
         if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
-            myenm.hitNow();
+            myenm.hitNow(damage);
             Destroy(gameObject);
         } else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
@@ -79,5 +80,33 @@ public class EnmAtKArea : MonoBehaviour
             multiPerry = 1;
         }*/ 
         //could use the multi perry thing for a boss or different ability instead
+    }
+
+    public void SetDamage(float dmg, float maxDmg)
+    {
+        var temp = this.gameObject.GetComponent<SpriteRenderer>().color;
+
+        float alph = dmg / maxDmg;
+        if(alph < .4f)
+        {
+            alph = 0.25f;
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(temp.r, temp.g+.4f, temp.b+.4f, alph);
+        }
+        else if(alph < .65f && alph >= .4f)
+        {
+            alph = .6f;
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(temp.r, temp.g+.2f, temp.b+.2f, alph);
+        }
+        else
+        {
+            alph = .8f;
+            temp = new Color(temp.r, temp.g, temp.b, alph);
+        }
+
+        Debug.Log("actual number: " + dmg/maxDmg);
+        Debug.Log("alpha: " + alph);
+        Debug.Log(this.gameObject.GetComponent<SpriteRenderer>().color.a);
+        
+        damage = dmg;
     }
 }

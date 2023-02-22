@@ -71,8 +71,8 @@ public class StrikePoint : MonoBehaviour
                 InbetweenTimer += Time.deltaTime;
                 if (faceingRight)
                 {
-                    moveRight();
                     currentSpeed = baseSpeed + bonusSpeed;
+                    moveRight();
                 }
                 else if (!faceingRight)
                 {
@@ -170,20 +170,25 @@ public class StrikePoint : MonoBehaviour
         currentPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
-            baseSpeed = 10;
+            baseSpeed = 6.5f;
             //was 5 am testing other numbers
         }
         else if (tempPath.name == "Mountain Path")
         {
-            baseSpeed = 4f;
+            baseSpeed = 6f;
         }
         else if (tempPath.name == "Rushing Boar")
         {
-            baseSpeed = 2.5f;
+            baseSpeed = 3f;
+        }
+        else if(tempPath.name == "Serpent Strike")
+        {
+            baseSpeed = 4f;
         }
         else
         {
-            baseSpeed = 3f;
+            baseSpeed = 5f;
         }
+
     }
 }
