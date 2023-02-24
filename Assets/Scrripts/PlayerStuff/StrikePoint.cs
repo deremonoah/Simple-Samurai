@@ -179,7 +179,7 @@ public class StrikePoint : MonoBehaviour
         }
         else if (tempPath.name == "Rushing Boar")
         {
-            baseSpeed = 3f;
+            baseSpeed = 4f;
         }
         else if(tempPath.name == "Serpent Strike")
         {
