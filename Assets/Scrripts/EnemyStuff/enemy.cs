@@ -35,7 +35,7 @@ public class enemy : MonoBehaviour
     public List<Ability> myAbilities;
     private int amountRobbed = 0;
 
-    private List<GameObject> currentAttacks = new List<GameObject>();
+    public List<GameObject> currentAttacks = new List<GameObject>();
 
     public Material matWhite;
     private Material matDefault;
@@ -91,6 +91,7 @@ public class enemy : MonoBehaviour
         {
             foreach (var atk in currentAttacks)
                 Destroy(atk);
+
             enmsSys.OnDied(this);
             _GM.PayOut(minCoin + amountRobbed, maxCoin);
             Destroy(this.gameObject);

@@ -33,8 +33,9 @@ public class Healer : enemy
                     newList.Add(swing);
 
         newList.Add(heal);
-        _mycurrentAttacks = newList;
+        base.currentAttacks = newList;
     }
+
 
     IEnumerator healEnmRoutine()
     {
