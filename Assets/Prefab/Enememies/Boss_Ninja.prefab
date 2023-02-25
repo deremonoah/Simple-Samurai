@@ -150,13 +150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 250
+  maxHP: 300
   armor: 7
   damgMin: 20
   damgMax: 60
   targetally: {fileID: 0}
-  randWaitmin: 1.7
-  randWaitmax: 3.5
+  randWaitmin: 1.5
+  randWaitmax: 3.2
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   - {x: -1, y: 0}
   SpecialDirs: []
   myAbilities: 0600000005000000
+  currentAttacks: []
   matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 12
   maxCoin: 20
