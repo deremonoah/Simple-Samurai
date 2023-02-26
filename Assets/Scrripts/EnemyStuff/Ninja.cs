@@ -18,13 +18,26 @@ public class Ninja : enemy
 
     protected override void StartMyRoutine()
     {
-        int rand = Random.Range(0, 5);
-        if (rand == 0)
-        { myActionRoutine = StartCoroutine(SpawnCaltrop()); }
-        else if (rand == 1)
-        { myActionRoutine = StartCoroutine(SpawnSmoke()); }
-        else { myActionRoutine = base.StartCoroutine(TheAttackRoutine()); }
+        bool hasStarted = false;
+        for (int lcv = 0; lcv < myAbilities.Count; lcv++)
+        {
+            if (myAbilities[lcv] == Ability.ninja)
+            {
+                int rand = Random.Range(0, 5);
+                if (rand == 0)
+                { myActionRoutine = StartCoroutine(SpawnCaltrop()); }
+                else if (rand == 1)
+                { myActionRoutine = StartCoroutine(SpawnSmoke()); }
+                hasStarted = true;
+            }
+        }
+
+        if (!hasStarted)
+        {
+            base.StartMyRoutine();
+        }
         
+
     }
 
     

@@ -96,12 +96,7 @@ public class StrikePoint : MonoBehaviour
             if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && pressing)
             {
                 //mostRecentX = transform.position.x;
-                pos = startpoint.transform.position;
-                rb.transform.position = startpoint.transform.position;
-                distanceTravelled = 0;
-                inbetween = true;
-                pressing = false;
-                _hasTransitionedPath = false;
+                PointerReturnToStart();
             }
         }
 
@@ -114,6 +109,16 @@ public class StrikePoint : MonoBehaviour
             }
             else { inbetweenTimer -= Time.deltaTime; }
         }
+    }
+
+    public void PointerReturnToStart()
+    {
+        pos = startpoint.transform.position;
+        rb.transform.position = startpoint.transform.position;
+        distanceTravelled = 0;
+        inbetween = true;
+        pressing = false;
+        _hasTransitionedPath = false;
     }
 
     void checkWhereToFace()

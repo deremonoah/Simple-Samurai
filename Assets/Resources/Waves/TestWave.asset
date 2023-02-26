@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: TestWave
   m_EditorClassIdentifier: 
   enmsInWave:
-  - {fileID: 2439367679896805130, guid: d8a1083b5bd542246a03ad9b709b53b5, type: 3}
-  - {fileID: 7967648078374350149, guid: 16eede737ae738a429750df33740b7c4, type: 3}
+  - {fileID: 8301494197658914682, guid: cd2e55ce3a32ecc4490a6969bfb7ed4d, type: 3}

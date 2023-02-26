@@ -36,12 +36,14 @@ public class EnmAtKArea : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
         transform.Translate(dir * movspd *Time.deltaTime);
         if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
             myenm.hitNow(damage);
             Destroy(gameObject);
-        } else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
+        }
+        else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
 
             if (myenm.myAbilities[0] == enemy.Ability.steal)

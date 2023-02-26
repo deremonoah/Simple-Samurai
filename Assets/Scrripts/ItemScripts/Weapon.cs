@@ -9,4 +9,4 @@ public class Weapon : Item
     public List<float> baseDamageLevel, maxDamageLevel;
     public List<WeaponEffect> effs;
 }
-public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost }
+public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata }

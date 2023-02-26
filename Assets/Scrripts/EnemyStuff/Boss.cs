@@ -16,7 +16,7 @@ public class Boss : Ninja
     protected override void Update()
     {
         base.Update();
-        if (HP < maxHP / 2 && !hasswap)
+        if ((base.myAbilities[1] == Ability.ninja) && HP < maxHP / 2 && !hasswap)
         {
             SwapSpots();
             hasswap = true;
@@ -27,6 +27,11 @@ public class Boss : Ninja
     {
         base.Start();
         bossHP = enmsSys.bossHPBar;
+    }
+
+    protected override void StartMyRoutine()
+    {
+        base.StartMyRoutine();
     }
 
     private void SwapSpots()

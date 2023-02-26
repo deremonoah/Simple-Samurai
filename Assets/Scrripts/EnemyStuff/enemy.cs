@@ -51,6 +51,7 @@ public class enemy : MonoBehaviour
     [SerializeField] GameObject OnFireSprite;
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
+    public float stunnTimer = 0;
 
     public enum attackState 
     { 
@@ -59,7 +60,7 @@ public class enemy : MonoBehaviour
 
     public enum Ability
     {
-        none,steal, antiarmor, heal, multiHeal, ninja, boss
+        none,steal, antiarmor, heal, multiHeal, ninja, boss, sasumata
     }
 
     protected virtual void Start()
@@ -147,6 +148,9 @@ public class enemy : MonoBehaviour
                     _playerHP.HealPlayer(deal / 6);
                     //get it to calculate armor aswell
                     break;
+                case WeaponEffect.sasumata:
+                    this.Stunned();
+                    break;
 
             }
         }
@@ -173,6 +177,11 @@ public class enemy : MonoBehaviour
         }
 
         StartMyRoutine();
+    }
+
+    public void Stunned()
+    {
+        stunnTimer = 2.5f;
     }
 
     public void SetThings( List<GameObject> str, GameObject end, int point)
@@ -208,22 +217,36 @@ public class enemy : MonoBehaviour
 
     protected virtual void StartMyRoutine()
     {
-        
-        if (myAbilities[0] == Ability.steal && amountRobbed > 5)
+        bool hasStarted = false;
+        for (int lcv = 0; lcv < myAbilities.Count; lcv++)
         {
-            myActionRoutine = StartCoroutine(RunRoutine());
+            if (myAbilities[lcv] == Ability.steal && amountRobbed > 5)
+            {
+                myActionRoutine = StartCoroutine(RunRoutine());
+                hasStarted = true;
+            }
+            else if(myAbilities[lcv] == Ability.sasumata)
+            {
+                //like 50% of the time sasumata special other half regular attack
+                int rand = Random.Range(0, 2);
+                if(rand == 1)
+                {
+                    myActionRoutine = StartCoroutine(SasumataRoutine());
+                    hasStarted = true;
+                }
+            }
         }
-        else
+        if (!hasStarted)
         {
             myActionRoutine = StartCoroutine(TheAttackRoutine());
         }
-        
     }
 
     #region Attack Stuff
     protected virtual IEnumerator TheAttackRoutine()
     {
         curState = attackState.waiting;
+        yield return new WaitForSeconds(stunnTimer);
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
 
 
@@ -237,6 +260,23 @@ public class enemy : MonoBehaviour
         StartMyRoutine();
 
 
+    }
+
+    public IEnumerator SasumataRoutine()
+    {
+        curState = attackState.waiting;
+        yield return new WaitForSeconds(stunnTimer);
+        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
+
+
+        SpecialUI();
+        curState = attackState.readying;
+        yield return new WaitForSeconds(readyingTimer);
+
+        curState = attackState.swinging;
+        yield return new WaitForSeconds(strikeTimer);
+
+        StartMyRoutine();
     }
 
     public void AttackUI()
@@ -292,6 +332,47 @@ public class enemy : MonoBehaviour
 
     }
 
+    public void SpecialUI()
+    {
+        var dir = Random.Range(0, SpecialDirs.Count);
+        int randSpecial = Random.Range(0, specialPrefabs.Count);
+        float dmg = Random.Range(damgMin, damgMax);
+
+        GameObject special = Instantiate(specialPrefabs[randSpecial], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
+        
+
+        // set damage if any    special.GetComponent<EnmAtKArea>().SetDamage(dmg, damgMax);
+
+        if (SpecialDirs[dir].y == 0)
+        {
+            if (basicAttackDiversity)
+            {
+                int rand = Random.Range(0, 3);
+                special.transform.position = atkStarts[rand].transform.position;
+            }
+            else
+            { special.transform.position = atkStarts[0].transform.position; }
+        }
+        else if (SpecialDirs[dir].y == -0.5)
+        {
+            special.transform.position = atkStarts[1].transform.position;
+        }
+        else if (SpecialDirs[dir].y == 0.5)
+        {
+            special.transform.position = atkStarts[2].transform.position;
+        }
+
+        special.GetComponent<SasumataUIScript>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
+        var newList = new List<GameObject>();
+        if (currentAttacks.Count > 0)
+            foreach (var swing in currentAttacks)
+                if (swing != null)
+                    newList.Add(swing);
+
+        newList.Add(special);
+        currentAttacks = newList;
+    }
+
     public void hitNow(float dmg)
     {
         _playerHP.DamagePlayer(this,dmg, (int)myAbilities[0]);
@@ -303,6 +384,11 @@ public class enemy : MonoBehaviour
             _soundManager.PlaySound("yoink");
             amountRobbed += randRob;
         }
+    }
+    public void hitNow()
+    {
+        float dmg = Random.Range(damgMin, damgMax);
+        _playerHP.DamagePlayer(this, dmg, (int)myAbilities[0]);
     }
     #endregion
 

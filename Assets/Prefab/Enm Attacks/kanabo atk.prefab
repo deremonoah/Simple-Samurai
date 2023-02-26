@@ -25,7 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408578, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323148977417408578, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408578, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_Name
-      value: enm atk BIG
+      value: kanabo atk
       objectReference: {fileID: 0}
     - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: dir.x
