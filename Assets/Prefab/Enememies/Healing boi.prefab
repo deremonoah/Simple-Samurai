@@ -286,8 +286,8 @@ MonoBehaviour:
   damgMin: 15
   damgMax: 40
   targetally: {fileID: 0}
-  randWaitmin: 3
-  randWaitmax: 4
+  randWaitmin: 2.5
+  randWaitmax: 3.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -305,6 +305,7 @@ MonoBehaviour:
   SpecialDirs:
   - {x: 1, y: 0}
   myAbilities: 03000000
+  currentAttacks: []
   matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 4
   maxCoin: 10
@@ -317,5 +318,6 @@ MonoBehaviour:
   OnFireSprite: {fileID: 2791451987063568473}
   basicAttackDiversity: 0
   longRanged: 0
+  stunnTimer: 0
   healMin: 40
   healMax: 60
