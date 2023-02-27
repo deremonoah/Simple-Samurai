@@ -31,6 +31,7 @@ public class TutorialManager : MonoBehaviour
         _tutorialImage = tutorialPanel.GetComponent<Image>();
         _enemyManager = FindObjectOfType<EnemysManager>();
         _soundManager = FindObjectOfType<SoundManager>();
+        _panelTweening = FindObjectOfType<PanelTweening>();
 
         if (_tutorialing)
         {
@@ -136,7 +137,9 @@ public class TutorialManager : MonoBehaviour
         _tutorialImage.color = co;
         tutorialText.text = text;
         _soundManager.PlaySound("sensei");
-        _panelTweening.ExecuteTween();
+        //_panelTweening.ExecuteTween();
+        //yeah not sure why above line didn't cause issues before but now does maybe its because I went to a new version of unity
+        //but it works without it so...
     }
 
     public void yesToTutorial()
