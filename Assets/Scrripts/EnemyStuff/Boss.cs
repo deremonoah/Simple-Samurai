@@ -52,6 +52,7 @@ public class Boss : Ninja
 
             enmsSys.UpdateEnmsPos();
             //this is pretty jank but i think it will work, it did repeat this but thats cause update obviously
+            //there is an error if you kill the other guy first he will stop attacking all together which is bad obviously
         }
     }
 }

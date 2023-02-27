@@ -163,7 +163,9 @@ public class enemy : MonoBehaviour
             if (deal > armor)
             { HP = HP- (deal - armor); }
         }
-        
+
+        Debug.Log("damage delt to enemy "+(deal-armor));
+
         curState = attackState.damaged;
         StartCoroutine(Flash());
         

@@ -48,13 +48,13 @@ public class StrikeArea : MonoBehaviour
     {
 
         if (strikePoint.mostRecentX < 1.5)
-        { damgMult = 1; }
+        { damgMult = 2; }
         else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 3)
         { damgMult = 8; }
         else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
         { damgMult = 12; }
         else if (strikePoint.mostRecentX >= 4)
-        { damgMult = 20; }
+        { damgMult = 16; }
 
 
         if (PlayerOn)
@@ -71,6 +71,9 @@ public class StrikeArea : MonoBehaviour
                     SoundMng.PlaySound("hit",Damger);
                     justStruck = true;
                     _JustStruckTimer = 0.1f;
+
+                    Debug.Log("original damage: "+Damger+"   damage Multiplier: " + damgMult);
+
                     if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
                         if(Damger >=30)

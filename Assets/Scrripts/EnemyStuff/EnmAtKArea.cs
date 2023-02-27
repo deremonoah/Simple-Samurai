@@ -104,10 +104,6 @@ public class EnmAtKArea : MonoBehaviour
             alph = .8f;
             temp = new Color(temp.r, temp.g, temp.b, alph);
         }
-
-        Debug.Log("actual number: " + dmg/maxDmg);
-        Debug.Log("alpha: " + alph);
-        Debug.Log(this.gameObject.GetComponent<SpriteRenderer>().color.a);
         
         damage = dmg;
     }
