@@ -22,6 +22,7 @@ public class SasumataUIScript : MonoBehaviour
         if (hasPointer)
         {
             FindObjectOfType<StrikePoint>().gameObject.transform.position = this.gameObject.transform.position;
+            movspd = 3.5f;
         }
 
         if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))

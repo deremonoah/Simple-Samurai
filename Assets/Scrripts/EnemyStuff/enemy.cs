@@ -364,7 +364,7 @@ public class enemy : MonoBehaviour
             special.transform.position = atkStarts[2].transform.position;
         }
 
-        special.GetComponent<SasumataUIScript>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
+        special.GetComponent<SasumataUIScript>().Setstuff(this, atkEnd.transform, SpecialDirs[dir]);
         var newList = new List<GameObject>();
         if (currentAttacks.Count > 0)
             foreach (var swing in currentAttacks)

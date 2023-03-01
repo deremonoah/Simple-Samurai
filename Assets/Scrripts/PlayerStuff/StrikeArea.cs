@@ -54,7 +54,7 @@ public class StrikeArea : MonoBehaviour
         else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
         { damgMult = 12; }
         else if (strikePoint.mostRecentX >= 4)
-        { damgMult = 16; }
+        { damgMult = 18; }
 
 
         if (PlayerOn)
