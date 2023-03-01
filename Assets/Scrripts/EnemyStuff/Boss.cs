@@ -36,7 +36,7 @@ public class Boss : Ninja
 
     private void SwapSpots()
     {
-        if (posInList < enmsSys.aliveEnemys.Count)
+        if (posInList +1 < enmsSys.aliveEnemys.Count)
         {
             var targetToSwap = enmsSys.aliveEnemys[posInList + 1].gameObject;
             var targetPos = targetToSwap.transform.position;
