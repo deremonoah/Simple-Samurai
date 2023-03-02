@@ -150,7 +150,7 @@ public class enemy : MonoBehaviour
                     //get it to calculate armor aswell
                     break;
                 case WeaponEffect.sasumata:
-                    this.Stunned();
+                    this.Stunned(deal);
                     break;
 
             }
@@ -174,7 +174,7 @@ public class enemy : MonoBehaviour
 
     public void Blocked()
     {
-        if(stunnTimer <=0)
+        if(stunnTimer <= 0)
         {
             if(myActionRoutine != null)
             {
@@ -184,12 +184,13 @@ public class enemy : MonoBehaviour
         }
     }
 
-    public void Stunned()
+    public void Stunned(float num)
     {
-        stunnTimer += 2.5f;
-        if (stunnTimer > 7.5)
+        if(num > 40){ stunnTimer += 1f; }
+        else { stunnTimer += 0.5f; }
+        if (stunnTimer > 4)
         {
-            stunnTimer = 7.5f;
+            stunnTimer = 4f;
         }
         StunnedSprite.SetActive(true);
     }

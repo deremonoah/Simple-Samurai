@@ -81,7 +81,7 @@ public class PlayerDefense : MonoBehaviour
             {
                 //enemy is basically stunned currently trying block but should add a stunned function
                 EquipedDefense[lcv] = 0;
-                enmy.Stunned();
+                enmy.Stunned(50);
                 enmy.Blocked();
                 DefensesUIList[0].SetActive(false);
                 EquipedDefenseSlot.clearZone();
