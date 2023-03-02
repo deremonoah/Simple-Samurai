@@ -9,28 +9,35 @@ public class SasumataUIScript : MonoBehaviour
     [SerializeField] Vector2 dir;
     [SerializeField] float movspd;
     private bool hasPointer;
+    private float StartTimer;
+
     void Start()
     {
         hasPointer = false;
+        StartTimer = 0.5f;
     }
 
     
     void Update()
     {
-        transform.Translate(dir * movspd * Time.deltaTime);
-
-        if (hasPointer)
+        if(StartTimer<=0)
         {
-            FindObjectOfType<StrikePoint>().gameObject.transform.position = this.gameObject.transform.position;
-            movspd = 3.5f;
-        }
+            transform.Translate(dir * movspd * Time.deltaTime);
 
-        if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
-        {
-            StrikeArea.PlayerOn = true;
-            FindObjectOfType<StrikePoint>().PointerReturnToStart();
-            Destroy(gameObject);
+            if (hasPointer)
+            {
+                FindObjectOfType<StrikePoint>().gameObject.transform.position = this.gameObject.transform.position;
+                movspd = 3.5f;
+            }
+
+            if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
+            {
+                StrikeArea.PlayerOn = true;
+                FindObjectOfType<StrikePoint>().PointerReturnToStart();
+                Destroy(gameObject);
+            }
         }
+        else { StartTimer -= Time.deltaTime; }
     }
 
     public void Setstuff(enemy em, Transform end, Vector2 direct)

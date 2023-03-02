@@ -23061,7 +23061,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
+      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
@@ -23260,7 +23260,7 @@ PrefabInstance:
       objectReference: {fileID: 337474711}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.size
@@ -23270,6 +23270,10 @@ PrefabInstance:
       propertyPath: lootList.Array.data[15]
       value: 
       objectReference: {fileID: 11400000, guid: c3ec131037544864d81f8b7d2e972416, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: cac92d5b374cc410b84c2ddd1d8d4e45, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[0]
       value: 
