@@ -7,9 +7,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2144794318603522369, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846447603511719801, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846447603511719801, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.53
       objectReference: {fileID: 0}
     - target: {fileID: 5893950105723898029, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
@@ -99,6 +119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Ninja
       objectReference: {fileID: 0}
+    - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -135,6 +159,11 @@ GameObject:
 --- !u!1 &2864164581738822656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2765593167707755158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6427641400014695199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2765593167707755158}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &-2833710505979115777
@@ -186,6 +215,8 @@ MonoBehaviour:
   - {fileID: 3684361221490979078}
   myCanvas: {fileID: 8416036972795924870}
   OnFireSprite: {fileID: 2864164581738822656}
+  StunnedSprite: {fileID: 6427641400014695199}
   basicAttackDiversity: 1
   longRanged: 0
+  stunnTimer: 0
   bossHP: {fileID: 0}

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2039801547031303992, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.92
@@ -50,6 +54,14 @@ PrefabInstance:
     - target: {fileID: 2875731891815238777, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.57
       objectReference: {fileID: 0}
     - target: {fileID: 5218301876157161198, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
@@ -219,6 +231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healing boi
       objectReference: {fileID: 0}
+    - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -316,6 +332,7 @@ MonoBehaviour:
   - {fileID: 3612959248713446751}
   myCanvas: {fileID: 8487439495077647839}
   OnFireSprite: {fileID: 2791451987063568473}
+  StunnedSprite: {fileID: 0}
   basicAttackDiversity: 0
   longRanged: 0
   stunnTimer: 0

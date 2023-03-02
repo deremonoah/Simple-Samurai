@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2144794318603522368, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.9490001
+      value: 2.185
       objectReference: {fileID: 0}
     - target: {fileID: 2846447603511719801, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -21,7 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3562744342560505691, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92
+      value: 2.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: armor
@@ -154,6 +162,10 @@ PrefabInstance:
     - target: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Name
       value: thief boi
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

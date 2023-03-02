@@ -49,6 +49,7 @@ public class enemy : MonoBehaviour
     public Coroutine myActionRoutine;
 
     [SerializeField] GameObject OnFireSprite;
+    [SerializeField] GameObject StunnedSprite;
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
     public float stunnTimer = 0;
@@ -184,6 +185,10 @@ public class enemy : MonoBehaviour
     public void Stunned()
     {
         stunnTimer += 2.5f;
+        if (stunnTimer > 7.5)
+        {
+            stunnTimer = 7.5f;
+        }
     }
 
     public void SetThings( List<GameObject> str, GameObject end, int point)
@@ -248,8 +253,11 @@ public class enemy : MonoBehaviour
     protected virtual IEnumerator TheAttackRoutine()
     {
         curState = attackState.waiting;
+        if (stunnTimer > 0) { StunnedSprite.SetActive(true); }
         yield return new WaitForSeconds(stunnTimer);
         stunnTimer = 0f;
+        StunnedSprite.SetActive(false);
+
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
 
 

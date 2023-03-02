@@ -67,6 +67,18 @@ PrefabInstance:
       propertyPath: specialPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 7046325851854752150, guid: 165389059ecb56d448629a00148cf606, type: 3}
+    - target: {fileID: 135602043026154991, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 135602043026154991, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864164581738822656, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4891363053065188268, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: m_Name
       value: Boss_Sasumata
@@ -130,6 +142,18 @@ PrefabInstance:
     - target: {fileID: 4891363053065188275, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427641400014695199, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121459495038080317, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121459495038080317, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.77
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312a944bc74725b43861ac10146ef041, type: 3}

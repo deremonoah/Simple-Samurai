@@ -23,4 +23,5 @@ public enum CurioEffect { Koban,healing,heal,healOnGo,incrArea,revive,greed,quic
  * like if you take enough damage you loose the curio and one of your other 2 at random
  * scary kabudo mask: if forget if its a kabudo the masks samurai wear yeah same as the armor adds initial wait timer
  * foresight: it allows you to see what enemies are coming next round if the defenses can have a tower it will have a similar effect
+ * something that increases the maximum time an enemy can be stunned for which is as easy as changing the enemy 7.5 in stunned to a variable that can be set but would it update if changed well I guess it could be static
 */
