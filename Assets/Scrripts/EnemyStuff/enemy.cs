@@ -186,11 +186,12 @@ public class enemy : MonoBehaviour
 
     public void Stunned(float num)
     {
-        if(num > 40){ stunnTimer += 1f; }
-        else { stunnTimer += 0.5f; }
-        if (stunnTimer > 4)
+        if(num >= 75){ stunnTimer += 2; }
+        else if(num >= 50){ stunnTimer += 1f; }
+        else if(num >=25) { stunnTimer += 0.5f; }
+        if (stunnTimer > 5)
         {
-            stunnTimer = 4f;
+            stunnTimer = 5f;
         }
         StunnedSprite.SetActive(true);
     }
