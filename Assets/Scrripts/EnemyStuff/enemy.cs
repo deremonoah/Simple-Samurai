@@ -183,7 +183,7 @@ public class enemy : MonoBehaviour
 
     public void Stunned()
     {
-        stunnTimer = 2.5f;
+        stunnTimer += 2.5f;
     }
 
     public void SetThings( List<GameObject> str, GameObject end, int point)
@@ -249,6 +249,7 @@ public class enemy : MonoBehaviour
     {
         curState = attackState.waiting;
         yield return new WaitForSeconds(stunnTimer);
+        stunnTimer = 0f;
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
 
 
