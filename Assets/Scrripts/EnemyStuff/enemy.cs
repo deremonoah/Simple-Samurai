@@ -174,12 +174,14 @@ public class enemy : MonoBehaviour
 
     public void Blocked()
     {
-        if(myActionRoutine != null)
+        if(stunnTimer <=0)
         {
-            StopCoroutine(myActionRoutine);
+            if(myActionRoutine != null)
+            {
+                StopCoroutine(myActionRoutine);
+                StartMyRoutine();
+            }
         }
-
-        StartMyRoutine();
     }
 
     public void Stunned()
@@ -189,6 +191,7 @@ public class enemy : MonoBehaviour
         {
             stunnTimer = 7.5f;
         }
+        StunnedSprite.SetActive(true);
     }
 
     public void SetThings( List<GameObject> str, GameObject end, int point)
@@ -225,24 +228,33 @@ public class enemy : MonoBehaviour
     protected virtual void StartMyRoutine()
     {
         bool hasStarted = false;
-        for (int lcv = 0; lcv < myAbilities.Count; lcv++)
+        if(stunnTimer>0)
         {
-            if (myAbilities[lcv] == Ability.steal && amountRobbed > 5)
+            myActionRoutine = StartCoroutine(StunnedRoutine());
+            hasStarted = true;
+        }
+        if(!hasStarted)
+        {
+            for (int lcv = 0; lcv < myAbilities.Count; lcv++)
             {
-                myActionRoutine = StartCoroutine(RunRoutine());
-                hasStarted = true;
-            }
-            else if(myAbilities[lcv] == Ability.sasumata)
-            {
-                //like 50% of the time sasumata special other half regular attack
-                int rand = Random.Range(0, 2);
-                if(rand == 1)
+                if (myAbilities[lcv] == Ability.steal && amountRobbed > 5)
                 {
-                    myActionRoutine = StartCoroutine(SasumataRoutine());
+                    myActionRoutine = StartCoroutine(RunRoutine());
                     hasStarted = true;
+                }
+                else if (myAbilities[lcv] == Ability.sasumata)
+                {
+                    //like 50% of the time sasumata special other half regular attack
+                    int rand = Random.Range(0, 2);
+                    if (rand == 1)
+                    {
+                        myActionRoutine = StartCoroutine(SasumataRoutine());
+                        hasStarted = true;
+                    }
                 }
             }
         }
+        
         if (!hasStarted)
         {
             myActionRoutine = StartCoroutine(TheAttackRoutine());
@@ -253,10 +265,6 @@ public class enemy : MonoBehaviour
     protected virtual IEnumerator TheAttackRoutine()
     {
         curState = attackState.waiting;
-        if (stunnTimer > 0) { StunnedSprite.SetActive(true); }
-        yield return new WaitForSeconds(stunnTimer);
-        stunnTimer = 0f;
-        StunnedSprite.SetActive(false);
 
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
 
@@ -276,7 +284,6 @@ public class enemy : MonoBehaviour
     public IEnumerator SasumataRoutine()
     {
         curState = attackState.waiting;
-        yield return new WaitForSeconds(stunnTimer);
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
 
@@ -286,6 +293,19 @@ public class enemy : MonoBehaviour
 
         curState = attackState.swinging;
         yield return new WaitForSeconds(strikeTimer);
+
+        StartMyRoutine();
+    }
+
+    public IEnumerator StunnedRoutine()
+    { 
+        while(stunnTimer>0)
+        {
+            stunnTimer -= Time.deltaTime;
+            yield return null;
+        }
+        
+        StunnedSprite.SetActive(false);
 
         StartMyRoutine();
     }
