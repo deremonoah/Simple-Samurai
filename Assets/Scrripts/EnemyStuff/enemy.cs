@@ -52,7 +52,7 @@ public class enemy : MonoBehaviour
     [SerializeField] GameObject StunnedSprite;
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
-    public float stunnTimer = 0;
+    public float stunTimer = 0;
 
     public enum attackState 
     { 
@@ -174,7 +174,7 @@ public class enemy : MonoBehaviour
 
     public void Blocked()
     {
-        if(stunnTimer <= 0)
+        if(stunTimer <= 0)
         {
             if(myActionRoutine != null)
             {
@@ -186,14 +186,16 @@ public class enemy : MonoBehaviour
 
     public void Stunned(float num)
     {
-        if(num >= 75){ stunnTimer += 2; }
-        else if(num >= 50){ stunnTimer += 1f; }
-        else if(num >=25) { stunnTimer += 0.5f; }
-        if (stunnTimer > 5)
+        if(num >= 60){ stunTimer += 2; }
+        else if(num >= 40){ stunTimer += 1f; }
+        else if(num >=20) { stunTimer += 0.5f; }
+        Debug.Log(stunTimer);
+        if (stunTimer > 5)
         {
-            stunnTimer = 5f;
+            stunTimer = 5f;
         }
-        StunnedSprite.SetActive(true);
+        if (stunTimer > 0)
+        { StunnedSprite.SetActive(true); }
     }
 
     public void SetThings( List<GameObject> str, GameObject end, int point)
@@ -230,7 +232,7 @@ public class enemy : MonoBehaviour
     protected virtual void StartMyRoutine()
     {
         bool hasStarted = false;
-        if(stunnTimer>0)
+        if(stunTimer>0)
         {
             myActionRoutine = StartCoroutine(StunnedRoutine());
             hasStarted = true;
@@ -301,12 +303,12 @@ public class enemy : MonoBehaviour
 
     public IEnumerator StunnedRoutine()
     { 
-        while(stunnTimer>0)
+        while(stunTimer>0)
         {
-            stunnTimer -= Time.deltaTime;
+            stunTimer -= Time.deltaTime;
             yield return null;
         }
-        
+        stunTimer = 0f;
         StunnedSprite.SetActive(false);
 
         StartMyRoutine();

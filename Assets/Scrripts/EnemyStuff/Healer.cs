@@ -43,7 +43,7 @@ public class Healer : enemy
         bool hitIf = false;
         targetally = new enemy();
 
-        yield return new WaitForSeconds(base.stunnTimer);
+        yield return new WaitForSeconds(base.stunTimer);
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
         foreach (enemy i in enmsSys.aliveEnemys)

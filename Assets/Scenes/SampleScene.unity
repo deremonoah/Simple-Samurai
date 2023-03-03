@@ -6806,8 +6806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -550}
-  m_SizeDelta: {x: 1000, y: 240}
+  m_AnchoredPosition: {x: -13, y: -550}
+  m_SizeDelta: {x: 800, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &656973425
 MonoBehaviour:
@@ -8168,8 +8168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1233, y: -550}
-  m_SizeDelta: {x: 1000, y: 240}
+  m_AnchoredPosition: {x: -966, y: -550}
+  m_SizeDelta: {x: 800, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785613817
 MonoBehaviour:
@@ -18970,8 +18970,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1920, y: -1080.4}
-  m_SizeDelta: {x: 3840, y: 2160.9}
+  m_AnchoredPosition: {x: -1385, y: -1080.4}
+  m_SizeDelta: {x: 2770, y: 2160.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781174048
 MonoBehaviour:
@@ -18986,7 +18986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.392}
+  m_Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 0.6666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20460,8 +20460,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1234, y: -550}
-  m_SizeDelta: {x: 1000, y: 240}
+  m_AnchoredPosition: {x: 936, y: -550}
+  m_SizeDelta: {x: 800, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1984272493
 MonoBehaviour:
@@ -23061,7 +23061,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: b3721b69000f53d48a8981c5ecaa96d2, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
