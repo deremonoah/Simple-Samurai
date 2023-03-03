@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlackSmith
   m_EditorClassIdentifier: 
   textStatements:
-  - Would you be willing to let this black smith into your town I must warn you there
+  - Would you be willing to let this blacksmith into your town I must warn you there
     are bandits following me they will make your life more difficult
   buttonOptions:
   - Yes you can
