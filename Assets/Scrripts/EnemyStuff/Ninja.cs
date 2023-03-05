@@ -25,10 +25,16 @@ public class Ninja : enemy
             {
                 int rand = Random.Range(0, 5);
                 if (rand == 0)
-                { myActionRoutine = StartCoroutine(SpawnCaltrop()); }
+                { 
+                    myActionRoutine = StartCoroutine(SpawnCaltrop());
+                    hasStarted = true;
+                }
                 else if (rand == 1)
-                { myActionRoutine = StartCoroutine(SpawnSmoke()); }
-                hasStarted = true;
+                { 
+                    myActionRoutine = StartCoroutine(SpawnSmoke());
+                    hasStarted = true;
+                }
+                
             }
         }
 

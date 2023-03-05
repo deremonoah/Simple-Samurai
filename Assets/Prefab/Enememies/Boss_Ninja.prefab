@@ -112,6 +112,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 909d9dae8fa118b4a97468d340fdba1a, type: 3}
     - target: {fileID: 7314057531085316391, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316391, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 0}
@@ -218,5 +222,5 @@ MonoBehaviour:
   StunnedSprite: {fileID: 6427641400014695199}
   basicAttackDiversity: 1
   longRanged: 0
-  stunnTimer: 0
+  stunTimer: 0
   bossHP: {fileID: 0}
