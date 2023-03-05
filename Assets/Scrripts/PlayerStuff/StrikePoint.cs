@@ -40,7 +40,6 @@ public class StrikePoint : MonoBehaviour
     private bool _hasTransitionedPath;
     private Vector3 endPathPosition;
     public float mostRecentX;
-    public bool pressing = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,7 +56,8 @@ public class StrikePoint : MonoBehaviour
 
         checkWhereToFace();
 
-
+        //inbetween is to check if the player should be in between swings because of the cool down timer
+        //this makes me think maybe a fun alternative mode is Hyper Samurai where all the attacks are faster maybe bigger and you pointer moves insanley fast
 
         if (StrikeArea.PlayerOn)
         {
@@ -87,13 +87,12 @@ public class StrikePoint : MonoBehaviour
                 pos = transform.position;
                 mostRecentX = transform.localPosition.x;
             }
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && !pressing)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
             {
                 InbetweenTimer = 0;
-                pressing = true;
             }
             //reset to start pos here
-            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && pressing)
+            if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))
             {
                 //mostRecentX = transform.position.x;
                 PointerReturnToStart();
@@ -117,8 +116,9 @@ public class StrikePoint : MonoBehaviour
         rb.transform.position = startpoint.transform.position;
         distanceTravelled = 0;
         inbetween = true;
-        pressing = false;
+        inbetweenTimer = inbetweenTimerMax;
         _hasTransitionedPath = false;
+        PathTimer = 0;
     }
 
     void checkWhereToFace()

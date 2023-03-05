@@ -73,7 +73,7 @@ public class StrikeArea : MonoBehaviour
                     PlayerOn = false;
                     _JustStruckTimer = 0.1f;
 
-                    Debug.Log("original damage: "+Damger+"   damage Multiplier: " + damgMult);
+                    
 
                     if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {

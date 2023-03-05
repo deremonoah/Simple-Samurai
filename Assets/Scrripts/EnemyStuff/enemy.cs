@@ -165,7 +165,7 @@ public class enemy : MonoBehaviour
             { HP = HP- (deal - armor); }
         }
 
-        Debug.Log("damage delt to enemy "+(deal-armor));
+   
 
         curState = attackState.damaged;
         StartCoroutine(Flash());
@@ -189,7 +189,7 @@ public class enemy : MonoBehaviour
         if(num >= 60){ stunTimer += 2; }
         else if(num >= 40){ stunTimer += 1f; }
         else if(num >=20) { stunTimer += 0.5f; }
-        Debug.Log(stunTimer);
+
         if (stunTimer > 5)
         {
             stunTimer = 5f;
