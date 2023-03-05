@@ -72,7 +72,7 @@ public class StrikeArea : MonoBehaviour
                     justStruck = true;
                     PlayerOn = false;
                     _JustStruckTimer = 0.1f;
-
+                    Debug.Log("Enemy: "+targetEnemy[lcv] + "   damage: " + Damger);
                     
 
                     if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
@@ -153,6 +153,10 @@ public class StrikeArea : MonoBehaviour
             if (wee.effs[lcv] == WeaponEffect.odachi)
             {
                 bottomOdachi.SetActive(true);
+                if (targetEnemy.Count > 1)
+                {
+                    targetEnemy.RemoveAt(1);
+                }
                 targetEnemy.Add(1);
                 bottomOdachi.GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee);
             }
