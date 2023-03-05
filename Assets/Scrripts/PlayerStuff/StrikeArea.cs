@@ -16,7 +16,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] float defaultDamageMult;
     [SerializeField] List<int> targetEnemy;
 
-    private float _JustStruckTimer = 0;
+    
     [SerializeField] GameObject bottomOdachi;
     [SerializeField] List<GameObject> BowAreas;
     public List<Sprite> BowPointers;
@@ -25,7 +25,7 @@ public class StrikeArea : MonoBehaviour
 
     public GameObject strikePointObj;
     private StrikePoint strikePoint;
-    public bool justStruck;
+    
 
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
@@ -38,7 +38,7 @@ public class StrikeArea : MonoBehaviour
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
-        justStruck = false;
+        
         equipedWeapon = Instantiate(equipedWeapon);
         TestWeapon = Instantiate(TestWeapon);
     }
@@ -60,7 +60,7 @@ public class StrikeArea : MonoBehaviour
         if (PlayerOn)
         {
 
-            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
+            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea)
             {
                 float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult)+ baseDamage, 0, maxDamage);
                 
@@ -69,9 +69,6 @@ public class StrikeArea : MonoBehaviour
                     //Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit",Damger);
-                    justStruck = true;
-                    PlayerOn = false;
-                    _JustStruckTimer = 0.1f;
 
                     Debug.Log("original damage: "+Damger+"   damage Multiplier: " + damgMult);
 
@@ -87,12 +84,7 @@ public class StrikeArea : MonoBehaviour
             }
         }
 
-        if (_JustStruckTimer<0 && justStruck)
-        {
-            justStruck = false;
-            PlayerOn = true;
-        }
-        else { _JustStruckTimer -= Time.deltaTime; }
+        
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha1))

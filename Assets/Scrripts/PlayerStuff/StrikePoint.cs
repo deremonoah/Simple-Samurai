@@ -21,9 +21,7 @@ public class StrikePoint : MonoBehaviour
     [SerializeField] float frequency;
     [SerializeField] float magnitude;
 
-    [SerializeField] float inbetweenTimerMax;
-    [SerializeField] float inbetweenTimer;
-    [SerializeField] bool inbetween;
+    
 
     bool faceingRight = true;
 
@@ -49,7 +47,6 @@ public class StrikePoint : MonoBehaviour
         localScale = transform.localScale;
 
         CurrentEndBound = NormalEndBound;
-        inbetweenTimer = inbetweenTimerMax;
     }
 
     void Update()
@@ -61,11 +58,11 @@ public class StrikePoint : MonoBehaviour
 
         if (StrikeArea.PlayerOn)
         {
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && !inbetween)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
             {
                 PathTimer = 0;
             }
-            if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0)) && !inbetween)
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))
             {
                 PathTimer += Time.deltaTime;
                 InbetweenTimer += Time.deltaTime;
@@ -100,15 +97,7 @@ public class StrikePoint : MonoBehaviour
             }
         }
 
-        if (inbetween)
-        {
-            if (inbetweenTimer <= 0)
-            {
-                inbetween = false;
-                inbetweenTimer = inbetweenTimerMax;
-            }
-            else { inbetweenTimer -= Time.deltaTime; }
-        }
+        
     }
 
     public void PointerReturnToStart()
@@ -116,7 +105,6 @@ public class StrikePoint : MonoBehaviour
         pos = startpoint.transform.position;
         rb.transform.position = startpoint.transform.position;
         distanceTravelled = 0;
-        inbetween = true;
         pressing = false;
         _hasTransitionedPath = false;
     }
