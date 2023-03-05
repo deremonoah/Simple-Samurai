@@ -12,7 +12,7 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] bool inStrikeArea;
     [SerializeField] float maxDamage;
     [SerializeField] float baseDamage;
-    [SerializeField] float damgMult=1;
+    [SerializeField] float damgMult=2;
     [SerializeField] float defaultDamageMult;
     [SerializeField] List<int> targetEnemy;
 
@@ -70,6 +70,7 @@ public class StrikeArea : MonoBehaviour
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit",Damger);
                     justStruck = true;
+                    PlayerOn = false;
                     _JustStruckTimer = 0.1f;
 
                     Debug.Log("original damage: "+Damger+"   damage Multiplier: " + damgMult);
@@ -89,6 +90,7 @@ public class StrikeArea : MonoBehaviour
         if (_JustStruckTimer<0 && justStruck)
         {
             justStruck = false;
+            PlayerOn = true;
         }
         else { _JustStruckTimer -= Time.deltaTime; }
 
