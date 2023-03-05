@@ -5053,7 +5053,6 @@ MonoBehaviour:
   NormalEndBound: {fileID: 173264193}
   SmallerEndBound: {fileID: 281415966}
   mostRecentX: 0
-  pressing: 0
 --- !u!60 &428360343
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -11629,7 +11628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Looting Upgrades 10g
+  m_Text: Looting Upgrades 5g
 --- !u!222 &1016055167
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21077,7 +21076,6 @@ MonoBehaviour:
   NormalEndBound: {fileID: 0}
   SmallerEndBound: {fileID: 0}
   mostRecentX: 0
-  pressing: 0
 --- !u!60 &2016481667
 PolygonCollider2D:
   m_ObjectHideFlags: 0

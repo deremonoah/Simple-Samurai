@@ -24,14 +24,20 @@ public class BlackSmithShop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+#if UNITY_EDITOR       
+        if(Input.GetKeyDown(KeyCode.R))
+        { 
+            _playerEquipedItems.equipedWeapon.itemLevel = 0;
+            _playerEquipedItems.EquipItem(_playerEquipedItems.equipedWeapon, lootingUpgradesEnabled);
+        }
+#endif
     }
 
     
 
     public void ImproveWeaponButton()
     {
-        var itemLvl = Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 3);
+        var itemLvl = Mathf.Clamp(_playerEquipedItems.equipedWeapon.itemLevel + 1, 0, 4);
         var cost = (baseCost * itemLvl)-reduceCost;
 
         if (itemLvl <= 3 && _gm.playerCoins >= cost)
@@ -47,13 +53,11 @@ public class BlackSmithShop : MonoBehaviour
 
     public void ImproveArmorButton()
     {
-        var itemLvl = Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3);
+        var itemLvl = Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 4);
         var cost = (baseCost * itemLvl)-reduceCost;
 
         if (itemLvl <= 3 && _gm.playerCoins >= cost)
         {
-            
-
             _playerEquipedItems.equipedArmor.itemLevel = Mathf.Clamp(itemLvl, 0, 3);
             _playerEquipedItems.EquipItem(_playerEquipedItems.equipedArmor, lootingUpgradesEnabled);
             _gm.playerCoins -= cost;
@@ -64,10 +68,10 @@ public class BlackSmithShop : MonoBehaviour
 
     public void EnableLootingUpgrades()
     {
-        if (_gm.playerCoins >= 10 && lootingUpgradesEnabled == false)
+        if (_gm.playerCoins >= 5 && lootingUpgradesEnabled == false)
         {
             lootingUpgradesEnabled = true;
-            _gm.playerCoins -= 10;
+            _gm.playerCoins -= 5;
         }
     }
 
