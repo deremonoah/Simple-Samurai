@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 0
   maxHP: 120
-  armor: 2
+  armor: 4
   damgMin: 15
   damgMax: 40
   targetally: {fileID: 0}
@@ -335,6 +335,6 @@ MonoBehaviour:
   StunnedSprite: {fileID: 0}
   basicAttackDiversity: 0
   longRanged: 0
-  stunnTimer: 0
+  stunTimer: 0
   healMin: 40
   healMax: 60

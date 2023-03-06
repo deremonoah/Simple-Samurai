@@ -5037,7 +5037,7 @@ MonoBehaviour:
   startpoint: {fileID: 1439485291}
   currentPath: {fileID: 531414201}
   endPath: {fileID: 1392706998}
-  baseSpeed: 6.5
+  baseSpeed: 7
   bonusSpeed: 0
   endSpeed: 5
   distanceTravelled: 0
