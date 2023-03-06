@@ -109,6 +109,7 @@ public class PlayerHealthBar : MonoBehaviour
             else
             {
                 health -= (Mathf.Max(1, damagePoints - armorValue));
+                Debug.Log("max: " + Mathf.Max(1, damagePoints - armorValue));
             }
             //this is also where I could add throns type armor well I still would need to check if enemy is null again
             _soundManager.PlaySound("hit");

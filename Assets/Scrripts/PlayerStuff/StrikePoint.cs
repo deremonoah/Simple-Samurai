@@ -175,7 +175,7 @@ public class StrikePoint : MonoBehaviour
         currentPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
-            baseSpeed = 6.5f;
+            baseSpeed = 7f;
             //was 5 am testing other numbers
         }
         else if (tempPath.name == "Mountain Path")
@@ -188,7 +188,7 @@ public class StrikePoint : MonoBehaviour
         }
         else if(tempPath.name == "Serpent Strike")
         {
-            baseSpeed = 4f;
+            baseSpeed = 4.5f;
         }
         else
         {
