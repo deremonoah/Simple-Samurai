@@ -10,9 +10,10 @@ public class EnmAtKArea : MonoBehaviour
     private Transform endPos;
     [SerializeField] Vector2 dir;
     [SerializeField] float movspd;
-    private float multiPerry = 0;
+    [SerializeField] float multiPerry;
     private float damage;
-
+    private bool parried= false;
+    private float parriedTimer;
     void Start()
     {
         
@@ -27,7 +28,14 @@ public class EnmAtKArea : MonoBehaviour
             {
                 multiPerry -= 1;
                 GetComponent<SpriteRenderer>().color = Color.red;
-                //move the ui back a bit to give player more time
+
+                var pos = this.gameObject.transform.position;
+                this.gameObject.transform.position = new Vector2(pos.x + 1.5f, pos.y);
+
+                damage = damage * .7f;
+                var temp = this.gameObject.GetComponent<SpriteRenderer>().color;
+                float alph = .6f;
+                this.gameObject.GetComponent<SpriteRenderer>().color = new Color(temp.r, temp.g + .2f, temp.b + .2f, alph);
             }
             else
             {
@@ -37,7 +45,17 @@ public class EnmAtKArea : MonoBehaviour
             }
         }
 
-        transform.Translate(dir * movspd *Time.deltaTime);
+        //movement
+        
+        transform.Translate(dir * movspd * Time.deltaTime);
+
+        /*else
+        { transform.Translate(-dir * movspd * Time.deltaTime); }
+
+        if (parriedTimer > 0)
+        { parriedTimer -= Time.deltaTime; }
+        else { parried = false; }*/
+
         if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
             myenm.hitNow(damage);

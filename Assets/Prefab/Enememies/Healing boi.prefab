@@ -284,6 +284,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2838367399995021007}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6354901805306949446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2838367399995021007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &-6386235926874281460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +337,7 @@ MonoBehaviour:
   - {fileID: 3612959248713446751}
   myCanvas: {fileID: 8487439495077647839}
   OnFireSprite: {fileID: 2791451987063568473}
-  StunnedSprite: {fileID: 0}
+  StunnedSprite: {fileID: 6354901805306949446}
   basicAttackDiversity: 0
   longRanged: 0
   stunTimer: 0
