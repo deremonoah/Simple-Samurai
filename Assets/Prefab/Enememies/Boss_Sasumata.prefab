@@ -24,8 +24,12 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: randWaitmax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: randWaitmin
-      value: 2.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: atkPrefabs.Array.size

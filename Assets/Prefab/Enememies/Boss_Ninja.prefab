@@ -188,8 +188,8 @@ MonoBehaviour:
   damgMin: 20
   damgMax: 60
   targetally: {fileID: 0}
-  randWaitmin: 1.5
-  randWaitmax: 3.2
+  randWaitmin: 0.7
+  randWaitmax: 1.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
