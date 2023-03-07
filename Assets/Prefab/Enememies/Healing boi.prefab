@@ -302,7 +302,7 @@ MonoBehaviour:
   damgMin: 15
   damgMax: 40
   targetally: {fileID: 0}
-  randWaitmin: 1.5
+  randWaitmin: 2.5
   randWaitmax: 3.5
   readyingTimer: 2.5
   strikeTimer: 0.4
