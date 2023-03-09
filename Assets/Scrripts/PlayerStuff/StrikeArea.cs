@@ -30,6 +30,9 @@ public class StrikeArea : MonoBehaviour
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
     public Weapon equipedWeapon;
+    public Weapon PrimaryWeapon;
+    public Weapon SecondaryWeapon;
+    private bool dualWielding = false;
     public Weapon TestWeapon;
     void Start()
     {
@@ -41,6 +44,10 @@ public class StrikeArea : MonoBehaviour
         justStruck = false;
         equipedWeapon = Instantiate(equipedWeapon);
         TestWeapon = Instantiate(TestWeapon);
+
+        //2 weapon system
+        PrimaryWeapon = equipedWeapon;
+        SecondaryWeapon = Instantiate(SecondaryWeapon);
     }
 
     
@@ -60,31 +67,49 @@ public class StrikeArea : MonoBehaviour
         if (PlayerOn)
         {
 
-            if ((Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
-                float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult)+ baseDamage, 0, maxDamage);
-                
+                float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
+
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
                     //Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
-                    SoundMng.PlaySound("hit",Damger);
+                    SoundMng.PlaySound("hit", Damger);
                     justStruck = true;
                     PlayerOn = false;
                     _JustStruckTimer = 0.1f;
                     //Debug.Log("Enemy: "+targetEnemy[lcv] + "   damage: " + Damger);
-                    
+
 
                     if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
                     {
-                        if(Damger >=30)
-                        { GM.PayOut(2,3); }
-                        else { GM.PayOut(1,2); }
+                        if (Damger >= 30)
+                        { GM.PayOut(2, 3); }
+                        else { GM.PayOut(1, 2); }
                     }
                 }
-
-
             }
+
+            //all that needs be done is a curio that allows dual weilding or "weapon swapping" or an unlocked player ability
+            //current issue is that the transitions feels super jank like its just super abrupt and if you swing fast it basically flashes
+            //the idea was you could make a concious decision about what weapon you would want when but that doesn't really happen
+            //when I was playing it was still just get that pointer as far as it will go and do some damage!
+            if((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && dualWielding)
+            {
+                if (equipedWeapon == PrimaryWeapon)
+                {
+                    if (SecondaryWeapon != null)
+                    { SetWeapon(SecondaryWeapon); }
+                }
+                else
+                {
+                    SetWeapon(PrimaryWeapon);
+                }
+            }
+
+
+
         }
 
         if (_JustStruckTimer<0 && justStruck)

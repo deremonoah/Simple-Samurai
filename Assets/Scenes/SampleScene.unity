@@ -7783,6 +7783,8 @@ MonoBehaviour:
   strikePointObj: {fileID: 428360338}
   justStruck: 0
   equipedWeapon: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+  PrimaryWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 11400000, guid: d947b29b7e2a8ff479024a3aa8bc31dd, type: 2}
   TestWeapon: {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
 --- !u!1 &724075132
 GameObject:
@@ -16862,7 +16864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -17938,6 +17940,8 @@ MonoBehaviour:
   strikePointObj: {fileID: 428360338}
   justStruck: 0
   equipedWeapon: {fileID: 11400000, guid: 9e92af5917f19b847abebe98ed0412de, type: 2}
+  PrimaryWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 0}
   TestWeapon: {fileID: 0}
 --- !u!60 &1687490592
 PolygonCollider2D:
@@ -23059,7 +23063,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 8877d478fa54a584cbbc7da656c33696, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
