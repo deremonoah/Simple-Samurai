@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sasumata
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: 1747006efadba93459ac0f1bb1a09769, type: 3}
-  itemDescription: 
+  itemDescription: 'Sasumata: this weapon allows the player to trap enemy weapons(stun
+    effect)'
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
   strikePointer: {fileID: 21300000, guid: 30b1a2bf2b620a8498166822d211dadb, type: 3}

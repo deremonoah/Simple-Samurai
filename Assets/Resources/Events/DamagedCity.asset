@@ -15,6 +15,6 @@ MonoBehaviour:
   textStatements:
   - The town has suffered damage from the bandit raid we need 10 gold to repair it
   buttonOptions:
-  - Yes repairs are paramount (loose 10 g)
+  - Yes repairs are paramount (costs 10 g)
   - No! its my gold
   myeventEffect: 6
