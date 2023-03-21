@@ -56,7 +56,7 @@ public class FarmShop : MonoBehaviour
         if (_gm.playerCoins >= cost)
         {
             _gm.playerCoins -= cost;
-            _playerHP.maxHealth += FarmIncHP;
+            _playerHP.IncreaseMaxHPBy(FarmIncHP);
             IncreasedMaxHPtimes += 1;
         }
         SetButtonCostsText();

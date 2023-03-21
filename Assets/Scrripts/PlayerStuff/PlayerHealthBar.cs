@@ -19,6 +19,10 @@ public class PlayerHealthBar : MonoBehaviour
     private PlayerDefense _playerDefense;
     [SerializeField] Curio _myCurio;
 
+    [SerializeField] GameObject HpBarUI;
+    [SerializeField] GameObject HpBarBackground;
+    [SerializeField] GameObject DefensesUIParent;
+
     void Start()
     {
         health = maxHealth;
@@ -133,5 +137,16 @@ public class PlayerHealthBar : MonoBehaviour
     public void SetCurio(Curio cur)
     {
         _myCurio = cur;
+    }
+
+    public void IncreaseMaxHPBy(float Xhealth)
+    {
+        maxHealth += Xhealth;
+        //I need to increase the size of hp bar and background then I also need to move the defenses over
+        //the increase should also be proportional. there are 4 levels so probably 4 ifs or a switch statement so maybe take in level
+
+        HpBarUI.transform.localScale = new Vector3(1.1f, 1, 1);
+        HpBarUI.transform.position =new Vector3(HpBarUI.transform.position.x+20,HpBarUI.transform.position.y,transform.position.z);
+
     }
 }
