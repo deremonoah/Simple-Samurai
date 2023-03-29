@@ -269,8 +269,16 @@ public class enemy : MonoBehaviour
     protected virtual IEnumerator TheAttackRoutine()
     {
         curState = attackState.waiting;
+        
+
 
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
+
+        //for event panel enemies being pacifist
+        while (EventManager.PanelUP == true)
+        {
+            yield return null;
+        }
 
 
         AttackUI();

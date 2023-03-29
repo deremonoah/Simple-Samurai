@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class EventEnemy : enemy
 {
+    private EventManager EM;
+    [SerializeField] Event myEvent;
+
+    protected override void Start()
+    {
+        EM = FindObjectOfType<EventManager>();
+        base.Start();
+        EM.PopUpEvent(myEvent);
+    }
+
+
+
     // a guy who is like hey join our group
     //this would happen before they start attacking
 
@@ -16,5 +28,5 @@ public class EventEnemy : enemy
 
     //it might also need a way to stop other enemies from attacking 
     //maybe a static variable wait in the start function but also it will need to start as normal if violence is chosen
-    
+
 }

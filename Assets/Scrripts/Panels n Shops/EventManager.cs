@@ -25,7 +25,7 @@ public class EventManager : MonoBehaviour
     private bool hasBlacksmith= false;
     private bool _lostMany;
     [SerializeField] bool hasPicked;
-
+    public static bool PanelUP = false;
 
     void Start()
     {
@@ -50,6 +50,13 @@ public class EventManager : MonoBehaviour
         {
             CheckNextEvent();
             CallDisplayEvents();
+        }
+        if(EventPanel.active == true)
+        {
+            PanelUP = true;
+        }else
+        {
+            PanelUP = false;
         }
     }
 
@@ -123,6 +130,20 @@ public class EventManager : MonoBehaviour
         StartCoroutine(DisplayEventsRoutine());
     }
 
+    private IEnumerator OneEvent()
+    {
+        EventPanel.SetActive(true);
+        SetUpPanel();
+
+        hasPicked = false;
+        while(!hasPicked)
+        {
+            yield return null;
+        }
+
+        EventPanel.SetActive(false);
+    }
+
     private IEnumerator DisplayEventsRoutine()
     {
         EventPanel.SetActive(true);
@@ -131,17 +152,8 @@ public class EventManager : MonoBehaviour
         foreach (Event eve in _nextEvents)
         {
             _currentEvent = eve;
-            EventPopUpText.text = eve.textStatements[0];
-            for (int lcv = 0; lcv < Buttons.Count; lcv++)
-            {
-                Buttons[lcv].SetActive(false);
-
-            }
-            for (int lcv = 0; lcv < eve.buttonOptions.Count; lcv++)
-            {
-                Buttons[lcv].SetActive(true);
-                ButtonTexts[lcv].text = eve.buttonOptions[lcv];
-            }
+            SetUpPanel();
+            
             hasPicked = false;
             while (!hasPicked)
             {
@@ -151,6 +163,20 @@ public class EventManager : MonoBehaviour
         EventPanel.SetActive(false);
     }
 
+    private void SetUpPanel()
+    {
+        EventPopUpText.text = _currentEvent.textStatements[0];
+        for (int lcv = 0; lcv < Buttons.Count; lcv++)
+        {
+            Buttons[lcv].SetActive(false);
+
+        }
+        for (int lcv = 0; lcv < _currentEvent.buttonOptions.Count; lcv++)
+        {
+            Buttons[lcv].SetActive(true);
+            ButtonTexts[lcv].text = _currentEvent.buttonOptions[lcv];
+        }
+    }
 
     public void EventButton(int num)
     {
@@ -190,6 +216,8 @@ public class EventManager : MonoBehaviour
             _villageDefense.villagers += Random.Range(5, 16);
             _gm._farmShop.GotMoreVillagers();
         }
+
+
     }
 
     public void SecondResault()
@@ -224,6 +252,18 @@ public class EventManager : MonoBehaviour
     {
         blacksmithInvestButton.SetActive(true);
         farmInvestButton.SetActive(true);
+    }
+
+    //some kind of event pop up mid combat
+    public void AddEvent(Event evn)
+    {
+        _nextEvents.Add(evn);
+    }
+
+    public void PopUpEvent(Event evn)
+    {
+        _currentEvent = evn;
+        StartCoroutine(OneEvent());
     }
 
     #endregion
