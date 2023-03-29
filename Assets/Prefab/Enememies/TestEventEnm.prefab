@@ -154,4 +154,4 @@ MonoBehaviour:
   basicAttackDiversity: 1
   longRanged: 0
   stunTimer: 0
-  myEvent: {fileID: 11400000, guid: 03f7b4d1c3991354a85746048f083054, type: 2}
+  myEvent: {fileID: 11400000, guid: 6f3ab4bf92aed49f3a1a63fa988d0137, type: 2}

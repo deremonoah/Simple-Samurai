@@ -217,7 +217,15 @@ public class EventManager : MonoBehaviour
             _gm._farmShop.GotMoreVillagers();
         }
 
-
+        if(_currentEvent.myeventEffect == EventEffect.joinBandits)
+        {
+            //it should fade to black could be done with a panel transition on  a timer
+            //and ending combat
+            //then it needs to have the player and thier stuff flipped which will actually be harder than I initilally thought with the strike system ui's current set up
+            //while in between rounds it needs a different background so a new one of those
+            //new bandit equivalents for the different shops with maybe a different spin or take
+            _enemyManager.ClearCurrentWave();
+        }
     }
 
     public void SecondResault()

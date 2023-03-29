@@ -94,9 +94,10 @@ public class enemy : MonoBehaviour
             foreach (var atk in currentAttacks)
                 Destroy(atk);
 
-            enmsSys.OnDied(this);
             _GM.PayOut(minCoin + amountRobbed, maxCoin);
-            Destroy(this.gameObject);
+            enmsSys.OnDied(this);
+            
+            
         }
         if (HP > maxHP)
         {

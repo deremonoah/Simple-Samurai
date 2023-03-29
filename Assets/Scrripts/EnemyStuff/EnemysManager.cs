@@ -110,6 +110,8 @@ public class EnemysManager : MonoBehaviour
 
         if (me.myAbilities[0] == enemy.Ability.boss)
         { bossHPContainter.SetActive(false); }
+
+        Destroy(me.gameObject);
     }
 
     public void UpdateEnmsPos()
@@ -213,5 +215,14 @@ public class EnemysManager : MonoBehaviour
         temp.Add(smokeSpots);
 
         return temp;
+    }
+
+    public void ClearCurrentWave()
+    {
+        for(int lcv = aliveEnemys.Count-1;lcv >= 0;lcv--)
+        {
+            Debug.Log(lcv + " " + aliveEnemys.Count);
+            OnDied(aliveEnemys[lcv]);
+        }
     }
 }
