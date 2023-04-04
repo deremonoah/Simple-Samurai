@@ -15103,6 +15103,7 @@ GameObject:
   - component: {fileID: 1410867511}
   - component: {fileID: 1410867512}
   - component: {fileID: 1410867513}
+  - component: {fileID: 1410867514}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15260,6 +15261,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _highlightColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
   _pressedColor: {r: 0.3773585, g: 0.3755785, b: 0.3755785, a: 1}
+--- !u!114 &1410867514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410867506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61018d4265f014c828403d7ccbbfc0b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponColor: {r: 0.8490566, g: 0.10012458, b: 0.10012458, a: 0.78431374}
+  armorColor: {r: 0.057404764, g: 0.25362477, b: 0.8113208, a: 0.78431374}
+  curioColor: {r: 0.9339623, g: 0.91711825, b: 0.3127893, a: 0.78431374}
 --- !u!1 &1412889775
 GameObject:
   m_ObjectHideFlags: 0
@@ -23104,7 +23120,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ff83832a1f95af44bd36eac504618d8, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
@@ -23357,6 +23373,22 @@ PrefabInstance:
       propertyPath: buttonImages.Array.data[2]
       value: 
       objectReference: {fileID: 1499270764}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BackGroundHoverBoxes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BackGroundHoverBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 826116293}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BackGroundHoverBoxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 541349526}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BackGroundHoverBoxes.Array.data[2]
+      value: 
+      objectReference: {fileID: 2134968423}
     - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: populationIcon
       value: 

@@ -15,7 +15,10 @@ public class LootingManager : MonoBehaviour
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
+    //refrences of the background boxes for tool tips
     public List<HoverTip> HoverHelpers;
+    //this is for changing their colors
+    public List<Image> BackGroundHoverBoxes;
 
     void Start()
     {
@@ -85,6 +88,18 @@ public class LootingManager : MonoBehaviour
         {
             buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
             HoverHelpers[lcv].tipToShow = randLootPicks[lcv].itemDescription;
+            if(randLootPicks[lcv].GetType()==typeof(Weapon))
+            {
+                BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().weaponColor;
+            }
+            else if(randLootPicks[lcv].GetType()==typeof(Armor))
+            {
+                BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().armorColor;
+            }
+            else
+            {
+                BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().curioColor;
+            }
         }
 
     }
