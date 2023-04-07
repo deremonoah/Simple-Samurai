@@ -19,6 +19,7 @@ public class LootingManager : MonoBehaviour
     public List<HoverTip> HoverHelpers;
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
+    public List<Image> PlayerItemBoarders;
 
     void Start()
     {
@@ -32,6 +33,15 @@ public class LootingManager : MonoBehaviour
         {
             lootList[lcv] = Instantiate(lootList[lcv]);
         }
+
+        //below is for the boarders around players equiped items
+        PlayerItemBoarders[0].color = FindObjectOfType<ColorManager>().weaponColor;
+        PlayerItemBoarders[1].color = FindObjectOfType<ColorManager>().armorColor;
+        PlayerItemBoarders[2].color = FindObjectOfType<ColorManager>().curioColor;
+        for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
+        {
+            PlayerItemBoarders[lcv].gameObject.SetActive(false);
+        }
     }
 
     public void OpenPickPan()
@@ -39,12 +49,18 @@ public class LootingManager : MonoBehaviour
         LootingPanel.GetComponent<Animator>().SetBool("Open", true);
         _eventManager.CheckNextEvent();
 
+        
     }
     public void ClosePickPan()
     {
         if (LootingPanel.GetComponent<Animator>().GetBool("Open"))
         {
             LootingPanel.GetComponent<Animator>().SetBool("Open", false);
+        }
+
+        for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
+        {
+            PlayerItemBoarders[lcv].gameObject.SetActive(false);
         }
     }
 
@@ -102,6 +118,12 @@ public class LootingManager : MonoBehaviour
             }
         }
 
+
+        //turning on item boarders for equiped items
+        for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
+        {
+            PlayerItemBoarders[lcv].gameObject.SetActive(true);
+        }
     }
 
     private void ResolveManagerCurioEffect(Curio cur)
