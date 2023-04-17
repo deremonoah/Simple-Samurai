@@ -514,6 +514,7 @@ MonoBehaviour:
   StunnedSprite: {fileID: 9174621448005728649}
   basicAttackDiversity: 0
   longRanged: 0
+  Agression: 1
   stunTimer: 0
 --- !u!1 &8628111613924925506
 GameObject:

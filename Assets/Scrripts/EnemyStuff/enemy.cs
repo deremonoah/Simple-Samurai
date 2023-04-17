@@ -52,6 +52,7 @@ public class enemy : MonoBehaviour
     [SerializeField] GameObject StunnedSprite;
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
+    [SerializeField] int Agression;
     public float stunTimer = 0;
 
     public enum attackState 
@@ -233,6 +234,9 @@ public class enemy : MonoBehaviour
     protected virtual void StartMyRoutine()
     {
         bool hasStarted = false;
+
+        MoveUP();
+
         if(stunTimer>0)
         {
             myActionRoutine = StartCoroutine(StunnedRoutine());
@@ -436,7 +440,28 @@ public class enemy : MonoBehaviour
     }
     #endregion
 
+    private void MoveUP()
+    {
+        int rand = Random.Range(0, 11);
+        if (rand <= Agression)
+        {
+            var enmList = FindObjectOfType<EnemysManager>().aliveEnemys;
+            if(posInList>0 && enmList.Count>1)
+            {
+                //move up
+                var targetToSwap = enmsSys.aliveEnemys[posInList -1].gameObject;
+                var targetPos = targetToSwap.transform.position;
+                var myOldPos = this.gameObject.transform.position;
 
+                this.transform.position = targetPos;
+                targetToSwap.transform.position = myOldPos;
+                enmsSys.aliveEnemys[posInList -1] = this;
+                enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
+
+                enmsSys.UpdateEnmsPos();
+            }
+        }
+    }
 
     IEnumerator RunRoutine()
     {
