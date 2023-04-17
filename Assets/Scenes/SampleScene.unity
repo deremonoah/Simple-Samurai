@@ -5625,7 +5625,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1318539240}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerDefense, Assembly-CSharp
         m_MethodName: EquipPalisade
         m_Mode: 1
@@ -9623,7 +9623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &893364462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14113,29 +14113,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
   m_PrefabInstance: {fileID: 1092464847884120786}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1318539240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318539231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de38262bc5b3f5946ad043a1a5fd5456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EquipedDefense: 
-  defenseSlotsLevel: 1
-  _palisadeHPMax: 40
-  _palisadeHP: 40
-  DefensesUIList:
-  - {fileID: 886091089}
-  - {fileID: 1487034466}
-  - {fileID: 769725069}
-  fillPalisade: {fileID: 920159430}
-  DefenseDragables: []
-  EquipedDefenseSlot: {fileID: 208010393}
 --- !u!1 &1330686192
 GameObject:
   m_ObjectHideFlags: 0
@@ -15336,6 +15313,8 @@ GameObject:
   - component: {fileID: 1410867512}
   - component: {fileID: 1410867513}
   - component: {fileID: 1410867514}
+  - component: {fileID: 1410867515}
+  - component: {fileID: 1410867516}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15508,6 +15487,48 @@ MonoBehaviour:
   weaponColor: {r: 0.8490566, g: 0.10012458, b: 0.10012458, a: 0.78431374}
   armorColor: {r: 0.057404764, g: 0.25362477, b: 0.8113208, a: 0.78431374}
   curioColor: {r: 0.9339623, g: 0.91711825, b: 0.3127893, a: 0.78431374}
+--- !u!114 &1410867515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410867506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcb5b82937d640ce96d60855aff9503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  styleUIs:
+  - {fileID: 1872324163}
+  - {fileID: 1503813846}
+  - {fileID: 1075598214}
+  - {fileID: 261264323}
+  panelButton: {fileID: 659864832}
+--- !u!114 &1410867516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410867506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de38262bc5b3f5946ad043a1a5fd5456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipedDefense: 
+  defenseSlotsLevel: 1
+  _palisadeHPMax: 40
+  _palisadeHP: 40
+  DefensesUIList:
+  - {fileID: 886091089}
+  - {fileID: 1487034466}
+  - {fileID: 769725069}
+  fillPalisade: {fileID: 920159430}
+  DefenseDragables: []
+  EquipedDefenseSlot: {fileID: 208010393}
+  DefenseButton: {fileID: 0}
 --- !u!1 &1412889775
 GameObject:
   m_ObjectHideFlags: 0
@@ -23825,6 +23846,26 @@ PrefabInstance:
       propertyPath: BackGroundHoverBoxes.Array.data[2]
       value: 
       objectReference: {fileID: 896321565}
+    - target: {fileID: 4204912713055807307, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: fillPalisade
+      value: 
+      objectReference: {fileID: 920159430}
+    - target: {fileID: 4204912713055807307, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: EquipedDefenseSlot
+      value: 
+      objectReference: {fileID: 208010393}
+    - target: {fileID: 4204912713055807307, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DefensesUIList.Array.data[0]
+      value: 
+      objectReference: {fileID: 886091089}
+    - target: {fileID: 4204912713055807307, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DefensesUIList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1487034466}
+    - target: {fileID: 4204912713055807307, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DefensesUIList.Array.data[2]
+      value: 
+      objectReference: {fileID: 769725069}
     - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: populationIcon
       value: 
@@ -24085,7 +24126,8 @@ PrefabInstance:
       propertyPath: farmLvlImages.Array.data[2]
       value: 
       objectReference: {fileID: 911855077}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4204912713055807307, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
 --- !u!1001 &1981594130697783970
 PrefabInstance:
