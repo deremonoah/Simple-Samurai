@@ -20,6 +20,7 @@ public class PlayerDefense : MonoBehaviour
         {
             DefensesUIList[lcv].SetActive(false);
         }
+        DefenseButton.SetActive(false);
     }
 
     private void Update()
