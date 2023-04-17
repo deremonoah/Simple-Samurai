@@ -15528,7 +15528,7 @@ MonoBehaviour:
   fillPalisade: {fileID: 920159430}
   DefenseDragables: []
   EquipedDefenseSlot: {fileID: 208010393}
-  DefenseButton: {fileID: 0}
+  DefenseButton: {fileID: 136026130}
 --- !u!1 &1412889775
 GameObject:
   m_ObjectHideFlags: 0
