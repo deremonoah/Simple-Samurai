@@ -122,6 +122,29 @@ public class EventManager : MonoBehaviour
             _nextEvents.Add(Resources.Load<Event>("Events/UrHurt"));
         }
 
+        //sensei style related ifs
+        if(wave==4)
+        {
+            //tell player about next 2 styles and enable the ui and the sensei panel itself
+            _nextEvents.Add(Resources.Load<Event>("Events/SensieUnlock"));
+            FindObjectOfType<SenseiPanel>().newStyles(2);
+            FindObjectOfType<SenseiPanel>().EnableButton();
+            //above line should enable serpent strike and cresent moon
+        }
+
+        if(wave==8)
+        {
+            _nextEvents.Add(Resources.Load<Event>("Events/SensieUnlock"));
+            FindObjectOfType<SenseiPanel>().newStyles(4);
+            //this will enable mountains and boar
+        }
+
+        if(wave==6)
+        {
+            _nextEvents.Add(Resources.Load<Event>("Events/DefenseUnlock"));
+            FindObjectOfType<PlayerDefense>().EnableDefenseButton();
+        }
+
         return _nextEvents.Count > 0;
     }
 

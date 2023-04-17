@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1923051231482176407}
   - component: {fileID: 3637811481354933246}
   - component: {fileID: 8673687103061439174}
+  - component: {fileID: 4204912713055807307}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,6 +172,10 @@ MonoBehaviour:
   armorValue: 0
   myArmor: {fileID: 11400000, guid: ba8a8d2ed6e56cc488237da71b56f496, type: 2}
   testArmor: {fileID: 11400000, guid: 2134eac3c1b49734da06d755ce35a994, type: 2}
+  _myCurio: {fileID: 0}
+  HpBarUI: {fileID: 0}
+  HpBarBackground: {fileID: 0}
+  DefensesUIParent: {fileID: 0}
 --- !u!114 &4886708299457330426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +262,6 @@ MonoBehaviour:
   - {fileID: 0}
   blacksmithInvestButton: {fileID: 0}
   farmInvestButton: {fileID: 0}
-  blacksmithBackground: {fileID: 0}
   hasPicked: 0
 --- !u!114 &7089745053819230923
 MonoBehaviour:
@@ -353,6 +357,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
   - {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
   HoverHelpers: []
+  BackGroundHoverBoxes: []
+  PlayerItemBoarders: []
 --- !u!114 &8673687103061439174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,3 +379,26 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   reduceCost: 0
+--- !u!114 &4204912713055807307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de38262bc5b3f5946ad043a1a5fd5456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipedDefense: 
+  defenseSlotsLevel: 1
+  _palisadeHPMax: 40
+  _palisadeHP: 40
+  DefensesUIList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fillPalisade: {fileID: 0}
+  DefenseDragables: []
+  EquipedDefenseSlot: {fileID: 0}

@@ -12,7 +12,7 @@ public class PlayerDefense : MonoBehaviour
     [SerializeField] Image fillPalisade;
     [SerializeField] List<Dragable> DefenseDragables;
     [SerializeField] DropZone EquipedDefenseSlot;
-
+    [SerializeField] GameObject DefenseButton;
     void Start()
     {
         EquipedDefense = new int[3];
@@ -169,6 +169,11 @@ public class PlayerDefense : MonoBehaviour
             overallCost += 5;
         }
         return overallCost;
+    }
+
+    public void EnableDefenseButton()
+    {
+        DefenseButton.SetActive(true);
     }
 
 }
