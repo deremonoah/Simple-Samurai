@@ -459,6 +459,13 @@ public class enemy : MonoBehaviour
                 enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
 
                 enmsSys.UpdateEnmsPos();
+
+                if (posInList == 0)
+                {
+                    this.SetTargetPointer(FindObjectOfType<PlayerEquipedItemsManager>().equipedWeapon.strikePointer);
+                }
+
+                targetToSwap.GetComponent<enemy>().DisablePointer();
             }
         }
     }
@@ -518,5 +525,9 @@ public class enemy : MonoBehaviour
         HPPointer.SetActive(true);
         HPPointer.GetComponent<SpriteRenderer>().sprite = img;
     }
- 
+    
+    public void DisablePointer()
+    {
+        HPPointer.SetActive(false);
+    }
 }
