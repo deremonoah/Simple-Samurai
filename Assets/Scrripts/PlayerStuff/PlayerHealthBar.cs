@@ -23,6 +23,8 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] GameObject HpBarBackground;
     [SerializeField] GameObject DefensesUIParent;
 
+    [SerializeField] GameObject PlayerOnFireSprite;
+
     void Start()
     {
         health = maxHealth;
@@ -109,6 +111,10 @@ public class PlayerHealthBar : MonoBehaviour
             if (ability == 2)
             {
                 health -= (Mathf.Max(1, damagePoints));
+            } else if(ability ==8)
+            {
+                health -= (Mathf.Max(1, damagePoints));
+                StartCoroutine(OnFire());
             }
             else
             {
@@ -117,6 +123,23 @@ public class PlayerHealthBar : MonoBehaviour
             }
             //this is also where I could add throns type armor well I still would need to check if enemy is null again
             _soundManager.PlaySound("hit");
+        }
+    }
+
+    IEnumerator OnFire()
+    {
+        yield return new WaitForSeconds(0.5f);
+        //we might need to add an if checking a immunity to fire
+        health -= 1;
+        int randNum = Random.Range(0, 10);
+        if (randNum < 8)
+        {
+            PlayerOnFireSprite.SetActive(true);
+            StartCoroutine(OnFire());
+        }
+        else
+        {
+            PlayerOnFireSprite.SetActive(false);
         }
     }
 

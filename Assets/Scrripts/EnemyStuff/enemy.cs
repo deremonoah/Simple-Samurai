@@ -62,7 +62,7 @@ public class enemy : MonoBehaviour
 
     public enum Ability
     {
-        none,steal, antiarmor, heal, multiHeal, ninja, boss, sasumata
+        none,steal, antiarmor, heal, multiHeal, ninja, boss, sasumata,fire
     }
 
     protected virtual void Start()

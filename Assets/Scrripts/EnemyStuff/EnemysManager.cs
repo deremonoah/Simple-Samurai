@@ -165,6 +165,16 @@ public class EnemysManager : MonoBehaviour
         ResetAgressionMax();
     }
 
+    private void GenerateWave()
+    {
+        //this might take in a value of difficulty
+        //so I need to be able to toss enemies in a wave
+        //well i don't need a wave I just need to generate a list of the enemies using the prefabs
+
+        //that means I need a list of all the enemies and they all need some dificulty value on them
+        //but maybe there would need to be another value to indicate that there should be a boss on x wave
+    }
+
     public void StartNextWave()
     {
         StartCoroutine(SpawnWave());
