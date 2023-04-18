@@ -35,6 +35,9 @@ public class EnemysManager : MonoBehaviour
 
     [SerializeField] List<Transform> caltropSpots;
     [SerializeField] List<Transform> smokeSpots;
+
+    //this is the number that is the top end of the random number for if enemies move up
+    private int maxAgression;
     void Start()
     {
 
@@ -43,6 +46,7 @@ public class EnemysManager : MonoBehaviour
         PlayerStrikeArea = FindObjectOfType<StrikeArea>();
         _villageDefense = FindObjectOfType<VillageDefense>();
         _flowManager = GetComponent<GameFlowManager>();
+        maxAgression = 11;
     }
 
 
@@ -157,7 +161,8 @@ public class EnemysManager : MonoBehaviour
             SetOdachiPointers();
         }
 
-
+        //because this is the start of a new combat this is a good time to
+        ResetAgressionMax();
     }
 
     public void StartNextWave()
@@ -225,4 +230,25 @@ public class EnemysManager : MonoBehaviour
             OnDied(aliveEnemys[lcv]);
         }
     }
+
+ #region Enemy Agression
+
+    public int GetMaxAgression()
+    {
+        return maxAgression;
+    }
+
+    //this is called after an enemy moves up to make it harder in higher agression waves that there isn't excessive swapping
+    public void IncreaseAgressionRange(int agro)
+    {
+        maxAgression += 8;
+        //I could change this to increase by the specific enemies agression, so 3 would make it effectivley 13 and that specific enemy to be under or equal to 3
+        //if it were higher like 8 to 18 yeah ill try it. eh still feels like too much swaping also this happens right after a block
+    }
+
+    private void ResetAgressionMax()
+    {
+        maxAgression = 11;
+    }
+ #endregion
 }

@@ -52,7 +52,7 @@ public class enemy : MonoBehaviour
     [SerializeField] GameObject StunnedSprite;
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
-    [SerializeField] int Agression;
+    [SerializeField] int Aggression;
     public float stunTimer = 0;
 
     public enum attackState 
@@ -442,8 +442,8 @@ public class enemy : MonoBehaviour
 
     private void MoveUP()
     {
-        int rand = Random.Range(0, 11);
-        if (rand <= Agression)
+        int rand = Random.Range(0, enmsSys.GetMaxAgression());
+        if (rand <= Aggression)
         {
             var enmList = FindObjectOfType<EnemysManager>().aliveEnemys;
             if(posInList>0 && enmList.Count>1)
@@ -465,6 +465,8 @@ public class enemy : MonoBehaviour
                     this.SetTargetPointer(FindObjectOfType<PlayerEquipedItemsManager>().equipedWeapon.strikePointer);
                 }
 
+                enmsSys.IncreaseAgressionRange(Aggression);
+                //all of a sudden idk if i spelled agression right ah yes 2 gs
                 targetToSwap.GetComponent<enemy>().DisablePointer();
             }
         }
