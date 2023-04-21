@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: rice bowl
   m_EditorClassIdentifier: 
   itemPanelIcon: {fileID: 21300000, guid: 626ed3d7f14b9e14faec0ec4c1cc5575, type: 3}
-  itemDescription: 'Bowl of Rice: a nurishing bowl of rice that heals you when picked
-    up'
+  itemDescription: 'Bowl of Rice: a nurishing bowl of rice that heals you  by 60
+    when picked up'
   itemLevel: 0
   curiEef: 2
   CurioNum: 60
