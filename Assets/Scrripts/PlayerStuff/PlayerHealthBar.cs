@@ -9,6 +9,8 @@ public class PlayerHealthBar : MonoBehaviour
     public Image healthBar;
 
     public float health, maxHealth = 100;
+    private float bonusHealth=0;
+    private bool hadBonusHP;
     float lerpSpeed;
     [SerializeField] float armorValue;
     public Armor myArmor;
@@ -160,6 +162,18 @@ public class PlayerHealthBar : MonoBehaviour
     public void SetCurio(Curio cur)
     {
         _myCurio = cur;
+        if(_myCurio.curiEef == CurioEffect.XtHealth && !hadBonusHP)
+        {
+            IncreaseMaxHPBy(_myCurio.CurioNum);
+            health += _myCurio.CurioNum;
+            hadBonusHP = true;
+        }
+        else if(_myCurio.curiEef != CurioEffect.XtHealth && hadBonusHP)
+        {
+            hadBonusHP = false;
+            //currently the extra health will be 50 but in future i will have to make it dynamic
+            ReduceMaxHP(50);
+        }
     }
 
     public void IncreaseMaxHPBy(float Xhealth)
@@ -168,8 +182,9 @@ public class PlayerHealthBar : MonoBehaviour
         //I need to increase the size of hp bar and background then I also need to move the defenses over
         //the increase should also be proportional. there are 4 levels so probably 4 ifs or a switch statement so maybe take in level
 
-        HpBarUI.transform.localScale = new Vector3(1.1f, 1, 1);
-        HpBarUI.transform.position =new Vector3(HpBarUI.transform.position.x+20,HpBarUI.transform.position.y,transform.position.z);
-
+    }
+    public void ReduceMaxHP(float lessHP)
+    {
+        maxHealth -= lessHP;
     }
 }
