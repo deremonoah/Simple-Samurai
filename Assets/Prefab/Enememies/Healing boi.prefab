@@ -307,7 +307,7 @@ MonoBehaviour:
   damgMin: 15
   damgMax: 40
   targetally: {fileID: 0}
-  randWaitmin: 2.5
+  randWaitmin: 2
   randWaitmax: 3.5
   readyingTimer: 2.5
   strikeTimer: 0.4
@@ -340,6 +340,7 @@ MonoBehaviour:
   StunnedSprite: {fileID: 6354901805306949446}
   basicAttackDiversity: 0
   longRanged: 0
+  Aggression: 0
   stunTimer: 0
   healMin: 40
   healMax: 60
