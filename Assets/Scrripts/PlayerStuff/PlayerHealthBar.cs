@@ -181,7 +181,10 @@ public class PlayerHealthBar : MonoBehaviour
         maxHealth += Xhealth;
         //I need to increase the size of hp bar and background then I also need to move the defenses over
         //the increase should also be proportional. there are 4 levels so probably 4 ifs or a switch statement so maybe take in level
-
+        HpBarUI.transform.localScale = new Vector3(1.2f, 1, 1);
+        
+        HpBarBackground.transform.localScale = new Vector3(1.2f, 1, 1);
+        HpBarBackground.transform.position = new Vector3(HpBarUI.transform.position.x + 10, HpBarUI.transform.position.y, transform.position.z);
     }
     public void ReduceMaxHP(float lessHP)
     {
