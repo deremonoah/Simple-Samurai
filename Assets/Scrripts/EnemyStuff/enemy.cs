@@ -53,6 +53,7 @@ public class enemy : MonoBehaviour
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
     [SerializeField] int Aggression;
+    public List<int> difficulty;
     public float stunTimer = 0;
 
     public enum attackState 

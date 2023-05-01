@@ -36,6 +36,9 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] List<Transform> caltropSpots;
     [SerializeField] List<Transform> smokeSpots;
 
+    [SerializeField] List<GameObject> enemyPrefabs;
+    [SerializeField] List<int> DifficultyWaves;
+
     //this is the number that is the top end of the random number for if enemies move up
     private int maxAgression;
     void Start()
@@ -102,15 +105,7 @@ public class EnemysManager : MonoBehaviour
             aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
         }
 
-
-        if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.bow && aliveEnemys.Count != 0)
-        {
-            SetBowPointers();
-        }
-        if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.odachi && aliveEnemys.Count != 0)
-        {
-            SetOdachiPointers();
-        }
+        SetSpecialPointers();
 
         if (me.myAbilities[0] == enemy.Ability.boss)
         { bossHPContainter.SetActive(false); }
@@ -131,15 +126,14 @@ public class EnemysManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         _villageDefense.startDefending();
-        if (WaveControlVariable >= enemyWaves.Count)
+        if (WaveControlVariable >= DifficultyWaves.Count)
         {
             GM.PlayerWins();
             yield return null;
         }
         else
         {
-
-            for (int lcv = 0; lcv < enemyWaves[WaveControlVariable].enmsInWave.Length; lcv++)
+            /*for (int lcv = 0; lcv < enemyWaves[WaveControlVariable].enmsInWave.Length; lcv++)
             {
                 SpawnEnemy(lcv, enemyWaves[WaveControlVariable].enmsInWave[lcv]);
 
@@ -148,31 +142,68 @@ public class EnemysManager : MonoBehaviour
 
                 yield return new WaitForSeconds(0.5f);
 
+            } this is the old code that spawned in the dudes*/
+
+            List<GameObject> currentWave = GenerateWave();
+
+            for (int lcv = 0; lcv < currentWave.Count; lcv++)
+            {
+                SpawnEnemy(lcv, currentWave[lcv]);
+
+                if (lcv == 0)
+                    aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
+
+                yield return new WaitForSeconds(0.5f);
+
             }
 
+
+
             WaveControlVariable++;
+            Debug.Log("wcv in spawn=" + WaveControlVariable);
         }
 
-        if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.bow && aliveEnemys.Count != 0)
-        {
-            SetBowPointers();
-        }else if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.odachi && aliveEnemys.Count != 0)
-        {
-            SetOdachiPointers();
-        }
+        SetSpecialPointers();
 
         //because this is the start of a new combat this is a good time to
         ResetAgressionMax();
     }
 
-    private void GenerateWave()
+    private List<GameObject> GenerateWave()
     {
         //this might take in a value of difficulty
-        //so I need to be able to toss enemies in a wave
+        //planning so I need to be able to toss enemies in a wave
         //well i don't need a wave I just need to generate a list of the enemies using the prefabs
 
         //that means I need a list of all the enemies and they all need some dificulty value on them
         //but maybe there would need to be another value to indicate that there should be a boss on x wave
+
+        //this will get the difficulty for the round
+        Debug.Log("wcv in generate"+WaveControlVariable);
+        var roundDifficulty = DifficultyWaves[WaveControlVariable];
+
+        //now I need a loop to put enemies in a list or
+        List<GameObject> templist = enemyPrefabs;
+        List<GameObject> currentWave= new List<GameObject>();
+
+        while(roundDifficulty>0)
+        {
+            int rand = Random.Range(0, enemyPrefabs.Count);
+            int individualDificulty = templist[rand].GetComponent<enemy>().difficulty[currentWave.Count];
+            Debug.Log("individual dif "+individualDificulty+"     ||  round dif "+roundDifficulty);
+            if (individualDificulty<=roundDifficulty)
+            {
+                currentWave.Add(templist[rand]);
+                roundDifficulty -= individualDificulty;
+            }
+            else
+            {
+                templist.RemoveAt(rand);
+            }
+        }
+
+        return currentWave;
+
     }
 
     public void StartNextWave()
@@ -183,6 +214,18 @@ public class EnemysManager : MonoBehaviour
     public void SetTargetEnmPointer(int num, Sprite pointer)
     {
         aliveEnemys[num].SetTargetPointer(pointer);
+    }
+
+    private void SetSpecialPointers()
+    {
+        if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.bow && aliveEnemys.Count != 0)
+        {
+            SetBowPointers();
+        }
+        else if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.odachi && aliveEnemys.Count != 0)
+        {
+            SetOdachiPointers();
+        }
     }
 
     public void SetBowPointers()

@@ -6079,11 +6079,11 @@ RectTransform:
   - {fileID: 886091090}
   - {fileID: 769725070}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -983, y: 192}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &515546753
@@ -7304,7 +7304,7 @@ RectTransform:
   m_Children:
   - {fileID: 1298856242}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11178,12 +11178,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1410867510}
-  m_RootOrder: 17
+  m_Father: {fileID: 952037323}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 561, y: 112.99994}
+  m_AnchoredPosition: {x: 500, y: 68}
   m_SizeDelta: {x: 960, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939239422
@@ -16075,7 +16075,6 @@ RectTransform:
   - {fileID: 1781174047}
   - {fileID: 563998600}
   - {fileID: 952037323}
-  - {fileID: 939239421}
   - {fileID: 651557687}
   - {fileID: 1531856564}
   - {fileID: 503822473}
@@ -17272,7 +17271,7 @@ RectTransform:
   - {fileID: 192894609}
   - {fileID: 1105453199}
   m_Father: {fileID: 1410867510}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24622,6 +24621,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1895677734}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
       value: 
       objectReference: {fileID: 1182808062}
@@ -24706,6 +24709,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 028bc00dfae14d24695313325759ed2e, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DifficultyWaves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: caltropSpots.Array.data[0]
       value: 
       objectReference: {fileID: 2010046865}
@@ -24725,6 +24732,42 @@ PrefabInstance:
       propertyPath: caltropSpots.Array.data[4]
       value: 
       objectReference: {fileID: 1281774430}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2439367679896805130, guid: d8a1083b5bd542246a03ad9b709b53b5, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 871295418511070493, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1010790756612851598, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 7967648078374350149, guid: 16eede737ae738a429750df33740b7c4, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4819740616665397237, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 308640407746481344, guid: 377e4f5418800f8429b8963266ebbc58, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 2390960747628968264, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 5866957077413314479, guid: 034b259e87f8f43cd99f77977fb3d626, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: OdachiSprites.Array.data[0]
       value: 
@@ -24760,6 +24803,18 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemySpawnsPoints.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DifficultyWaves.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DifficultyWaves.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DifficultyWaves.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackkStartPoints.Array.size
@@ -24867,7 +24922,7 @@ PrefabInstance:
       objectReference: {fileID: 337474711}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.size
@@ -24881,6 +24936,10 @@ PrefabInstance:
       propertyPath: lootList.Array.data[16]
       value: 
       objectReference: {fileID: 11400000, guid: cac92d5b374cc410b84c2ddd1d8d4e45, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: fa3a90828e8304518bf48a0891c7b826, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[0]
       value: 

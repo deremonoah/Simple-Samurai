@@ -104,6 +104,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: difficulty
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: damgThreash
       value: 0
       objectReference: {fileID: 0}
@@ -139,6 +143,22 @@ PrefabInstance:
       propertyPath: atkPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 5338052958082804479, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: difficulty.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: difficulty.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: difficulty.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: difficulty.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myAbilities.Array.data[0]
       value: 2
