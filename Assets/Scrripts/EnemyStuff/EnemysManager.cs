@@ -126,6 +126,7 @@ public class EnemysManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         _villageDefense.startDefending();
+        Debug.Log("wcv" + WaveControlVariable + " >=? " + DifficultyWaves.Count);
         if (WaveControlVariable >= DifficultyWaves.Count)
         {
             GM.PlayerWins();
@@ -144,9 +145,10 @@ public class EnemysManager : MonoBehaviour
 
             } this is the old code that spawned in the dudes*/
 
-            List<GameObject> currentWave = GenerateWave();
+            List<GameObject> currentWave = new List<GameObject>();
+            currentWave = GenerateWave();
 
-            for (int lcv = 0; lcv < currentWave.Count; lcv++)
+            for (int lcv = 0; lcv < currentWave.Count ||lcv > 4; lcv++)
             {
                 SpawnEnemy(lcv, currentWave[lcv]);
 
@@ -156,11 +158,9 @@ public class EnemysManager : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
 
             }
-
-
-
             WaveControlVariable++;
             Debug.Log("wcv in spawn=" + WaveControlVariable);
+
         }
 
         SetSpecialPointers();
@@ -180,28 +180,40 @@ public class EnemysManager : MonoBehaviour
 
         //this will get the difficulty for the round
         Debug.Log("wcv in generate"+WaveControlVariable);
-        var roundDifficulty = DifficultyWaves[WaveControlVariable];
+        int roundDifficulty = DifficultyWaves[WaveControlVariable];
 
         //now I need a loop to put enemies in a list or
-        List<GameObject> templist = enemyPrefabs;
+        List<GameObject> templist = new List<GameObject>();
+        //loading temp list with enemy prefabs
+        for(int lcv=0;lcv<enemyPrefabs.Count;lcv++)
+        {
+            templist.Add(enemyPrefabs[lcv]);
+        }
         List<GameObject> currentWave= new List<GameObject>();
 
-        while(roundDifficulty>0)
+        while(roundDifficulty>0 && templist.Count>0 && currentWave.Count < 5)
         {
-            int rand = Random.Range(0, enemyPrefabs.Count);
+            int rand = Random.Range(0, templist.Count);
             int individualDificulty = templist[rand].GetComponent<enemy>().difficulty[currentWave.Count];
-            Debug.Log("individual dif "+individualDificulty+"     ||  round dif "+roundDifficulty);
-            if (individualDificulty<=roundDifficulty)
+
+            //Debug.Log("individual dif "+individualDificulty+"     ||  round dif "+roundDifficulty);
+            Debug.Log("rand: "+rand);
+            if (individualDificulty<=roundDifficulty && rand<templist.Count)
             {
+                Debug.Log("added to current wave");
                 currentWave.Add(templist[rand]);
                 roundDifficulty -= individualDificulty;
+                if(currentWave.Count == 4)
+                {
+                    break;
+                }
             }
             else
             {
                 templist.RemoveAt(rand);
             }
         }
-
+        Debug.Log("returned");
         return currentWave;
 
     }
