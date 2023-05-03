@@ -24626,7 +24626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
@@ -24755,15 +24755,15 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 871295418511070493, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      objectReference: {fileID: 1010790756612851598, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 1010790756612851598, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      objectReference: {fileID: 7967648078374350149, guid: 16eede737ae738a429750df33740b7c4, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 7967648078374350149, guid: 16eede737ae738a429750df33740b7c4, type: 3}
+      objectReference: {fileID: 871295418511070493, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.data[5]
       value: 
@@ -24818,7 +24818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: DifficultyWaves.Array.data[0]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: DifficultyWaves.Array.data[1]
