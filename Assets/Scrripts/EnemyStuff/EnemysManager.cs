@@ -37,6 +37,7 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] List<Transform> smokeSpots;
 
     [SerializeField] List<GameObject> enemyPrefabs;
+    [SerializeField] List<GameObject> bossPrefabs;
     [SerializeField] List<int> DifficultyWaves;
 
     //this is the number that is the top end of the random number for if enemies move up
@@ -184,12 +185,23 @@ public class EnemysManager : MonoBehaviour
 
         //now I need a loop to put enemies in a list or
         List<GameObject> tempEnemylist = new List<GameObject>();
+        List<GameObject> currentWave = new List<GameObject>();
+
+        //temporary boss part
+        if (WaveControlVariable>7)
+        {
+            int bossRand = Random.Range(0, bossPrefabs.Count);
+            currentWave.Add(bossPrefabs[bossRand]);
+            bossPrefabs.RemoveAt(bossRand);
+        }
+
+        
         //loading temp list with enemy prefabs
         for(int lcv=0;lcv<enemyPrefabs.Count;lcv++)
         {
             tempEnemylist.Add(enemyPrefabs[lcv]);
         }
-        List<GameObject> currentWave= new List<GameObject>();
+        
 
         while(roundDifficulty>0 && tempEnemylist.Count>0 && currentWave.Count < 5)
         {

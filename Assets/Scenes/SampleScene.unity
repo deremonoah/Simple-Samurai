@@ -5487,7 +5487,7 @@ MonoBehaviour:
   startpoint: {fileID: 1439485291}
   currentPath: {fileID: 531414201}
   endPath: {fileID: 1392706998}
-  baseSpeed: 7
+  baseSpeed: 7.5
   bonusSpeed: 0
   endSpeed: 5
   distanceTravelled: 0
@@ -24621,6 +24621,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1895677734}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: bossPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 9
       objectReference: {fileID: 0}
@@ -24705,12 +24709,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1096055509}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: bossPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4891363053065188268, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: bossPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8301494197658914682, guid: cd2e55ce3a32ecc4490a6969bfb7ed4d, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[10]
       value: 
       objectReference: {fileID: 11400000, guid: 028bc00dfae14d24695313325759ed2e, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: DifficultyWaves.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: caltropSpots.Array.data[0]
@@ -24835,6 +24847,14 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: DifficultyWaves.Array.data[7]
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DifficultyWaves.Array.data[8]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: DifficultyWaves.Array.data[9]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackkStartPoints.Array.size
