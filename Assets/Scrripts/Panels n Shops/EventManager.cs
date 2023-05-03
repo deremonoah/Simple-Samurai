@@ -69,7 +69,7 @@ public class EventManager : MonoBehaviour
 
         var rand = Random.Range(0, 10);
         var wave = _enemyManager.WaveControlVariable;
-        if ((wave >=3 && rand <= 5 ) && !hasBlacksmith)
+        if ((wave >=1 && rand <= 4 ) && !hasBlacksmith)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
         }
@@ -123,7 +123,7 @@ public class EventManager : MonoBehaviour
         }
 
         //sensei style related ifs
-        if(wave==4)
+        if(wave==2)
         {
             //tell player about next 2 styles and enable the ui and the sensei panel itself
             _nextEvents.Add(Resources.Load<Event>("Events/SensieUnlock"));
@@ -132,18 +132,20 @@ public class EventManager : MonoBehaviour
             //above line should enable serpent strike and cresent moon
         }
 
-        if(wave==8)
+        if(wave==6)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/SensieUnlock"));
             FindObjectOfType<SenseiPanel>().newStyles(4);
             //this will enable mountains and boar
         }
 
-        if(wave==6)
+        if(wave==5)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/DefenseUnlock"));
             FindObjectOfType<PlayerDefense>().EnableDefenseButton();
         }
+
+        //I have changed the numbers becuase the expo build will be shorter teh 3 above and the blacksmith
 
         return _nextEvents.Count > 0;
     }

@@ -183,25 +183,25 @@ public class EnemysManager : MonoBehaviour
         int roundDifficulty = DifficultyWaves[WaveControlVariable];
 
         //now I need a loop to put enemies in a list or
-        List<GameObject> templist = new List<GameObject>();
+        List<GameObject> tempEnemylist = new List<GameObject>();
         //loading temp list with enemy prefabs
         for(int lcv=0;lcv<enemyPrefabs.Count;lcv++)
         {
-            templist.Add(enemyPrefabs[lcv]);
+            tempEnemylist.Add(enemyPrefabs[lcv]);
         }
         List<GameObject> currentWave= new List<GameObject>();
 
-        while(roundDifficulty>0 && templist.Count>0 && currentWave.Count < 5)
+        while(roundDifficulty>0 && tempEnemylist.Count>0 && currentWave.Count < 5)
         {
-            int rand = Random.Range(0, templist.Count);
-            int individualDificulty = templist[rand].GetComponent<enemy>().difficulty[currentWave.Count];
+            int rand = Random.Range(0, tempEnemylist.Count);
+            int individualDificulty = tempEnemylist[rand].GetComponent<enemy>().difficulty[currentWave.Count];
 
             //Debug.Log("individual dif "+individualDificulty+"     ||  round dif "+roundDifficulty);
             Debug.Log("rand: "+rand);
-            if (individualDificulty<=roundDifficulty && rand<templist.Count)
+            if (individualDificulty<=roundDifficulty && rand<tempEnemylist.Count)
             {
                 Debug.Log("added to current wave");
-                currentWave.Add(templist[rand]);
+                currentWave.Add(tempEnemylist[rand]);
                 roundDifficulty -= individualDificulty;
                 if(currentWave.Count == 4)
                 {
@@ -210,7 +210,7 @@ public class EnemysManager : MonoBehaviour
             }
             else
             {
-                templist.RemoveAt(rand);
+                tempEnemylist.RemoveAt(rand);
             }
         }
         Debug.Log("returned");
