@@ -39,6 +39,8 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] List<GameObject> enemyPrefabs;
     [SerializeField] List<GameObject> bossPrefabs;
     [SerializeField] List<int> DifficultyWaves;
+    [SerializeField] List<GameObject> FreshEnemies;
+    //above refering to enemies not yet used
 
     //this is the number that is the top end of the random number for if enemies move up
     private int maxAgression;
@@ -222,6 +224,7 @@ public class EnemysManager : MonoBehaviour
             }
             else
             {
+                FreshEnemies.Add(tempEnemylist[rand]);
                 tempEnemylist.RemoveAt(rand);
             }
         }
