@@ -341,7 +341,7 @@ MonoBehaviour:
   basicAttackDiversity: 0
   longRanged: 0
   Aggression: 0
-  difficulty: 01000000020000000300000004000000
+  difficulty: 02000000020000000300000004000000
   stunTimer: 0
   healMin: 40
   healMax: 60

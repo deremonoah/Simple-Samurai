@@ -23,8 +23,8 @@ MonoBehaviour:
   - 8
   - 12
   maxDamageLevel:
-  - 65
-  - 75
+  - 50
+  - 60
+  - 70
   - 90
-  - 120
   effs: 04000000

@@ -199,12 +199,21 @@ public class EnemysManager : MonoBehaviour
 
         
         //loading temp list with enemy prefabs
-        for(int lcv=0;lcv<enemyPrefabs.Count;lcv++)
+        
+        
+        for (int lcv = 0; lcv < enemyPrefabs.Count; lcv++)
         {
             tempEnemylist.Add(enemyPrefabs[lcv]);
         }
+        //this makes the fresh enemies more likley
+        for (int lcv = 0; lcv < FreshEnemies.Count; lcv++)
+        {
+            tempEnemylist.Add(FreshEnemies[lcv]);
+            
+        }
         
-
+        
+        
         while(roundDifficulty>0 && tempEnemylist.Count>0 && currentWave.Count < 5)
         {
             int rand = Random.Range(0, tempEnemylist.Count);
@@ -214,10 +223,29 @@ public class EnemysManager : MonoBehaviour
             Debug.Log("rand: "+rand);
             if (individualDificulty<=roundDifficulty && rand<tempEnemylist.Count)
             {
-                Debug.Log("added to current wave");
+                //adding enemy to current wave
                 currentWave.Add(tempEnemylist[rand]);
                 roundDifficulty -= individualDificulty;
-                if(currentWave.Count == 4)
+                
+                //check if they were in fresh enemies they aren't now so they shouldn't be in there
+                //I think this current system will favor more difficult enemies because they will get rejected more and make it more likley they then appear
+                for(int lcv= 0;lcv<FreshEnemies.Count;lcv++)
+                {
+                    if(tempEnemylist[rand] == FreshEnemies[lcv])
+                    {
+                        FreshEnemies.RemoveAt(lcv);
+                        lcv--;
+                        //incase there are repeats it doesn't skip over any
+                    }
+                }
+
+                //then maybe removing it to have less repeats and can't have this before becasue above code would lose refrence
+                int coin = Random.Range(0, 2);
+                if (coin == 0)
+                { tempEnemylist.RemoveAt(rand); }
+
+                //so we don't go past 4 enemies in a wave
+                if (currentWave.Count == 4)
                 {
                     break;
                 }
