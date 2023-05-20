@@ -20,14 +20,16 @@ public class LootingManager : MonoBehaviour
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
     public List<Image> PlayerItemBoarders;
+    
 
     void Start()
     {
         _gm = GetComponent<GameManager>();
-        _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
+        _playerEquipedItems = FindObjectOfType<PlayerEquipedItemsManager>();
         _eventManager = GetComponent<EventManager>();
         _blacksmithShop = GetComponent<BlackSmithShop>();
         _playerHP = GetComponent<PlayerHealthBar>();
+
 
         for (int lcv = 0; lcv < lootList.Count; lcv++)
         {
@@ -38,6 +40,9 @@ public class LootingManager : MonoBehaviour
         PlayerItemBoarders[0].color = FindObjectOfType<ColorManager>().weaponColor;
         PlayerItemBoarders[1].color = FindObjectOfType<ColorManager>().armorColor;
         PlayerItemBoarders[2].color = FindObjectOfType<ColorManager>().curioColor;
+
+
+
         for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
         {
             PlayerItemBoarders[lcv].gameObject.SetActive(false);
@@ -124,6 +129,12 @@ public class LootingManager : MonoBehaviour
         {
             PlayerItemBoarders[lcv].gameObject.SetActive(true);
         }
+
+        //updating hovertips
+        PlayerItemBoarders[0].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedWeapon.itemDescription;
+        PlayerItemBoarders[1].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedArmor.itemDescription;
+        if (_playerEquipedItems.equipedCurio != null)
+        { PlayerItemBoarders[2].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedCurio.itemDescription; }
     }
 
     private void ResolveManagerCurioEffect(Curio cur)
