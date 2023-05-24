@@ -57,7 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: myAbilities.Array.size
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: myAbilities.Array.data[0]
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: myAbilities.Array.data[1]

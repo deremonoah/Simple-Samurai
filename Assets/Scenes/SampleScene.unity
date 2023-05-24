@@ -4831,6 +4831,8 @@ MonoBehaviour:
   coin3: {fileID: 0}
   block1: {fileID: 0}
   smokebomb: {fileID: 0}
+  upgrade: {fileID: 0}
+  damageItem: {fileID: 0}
   Volume: 0
   mixer: {fileID: 0}
   _slider: {fileID: 694073844}
@@ -6582,6 +6584,7 @@ GameObject:
   - component: {fileID: 574514632}
   - component: {fileID: 574514634}
   - component: {fileID: 574514633}
+  - component: {fileID: 574514635}
   m_Layer: 5
   m_Name: curio item boarder
   m_TagString: Untagged
@@ -6646,6 +6649,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574514631}
   m_CullTransparentMesh: 1
+--- !u!114 &574514635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574514631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: 
 --- !u!1 &586138469
 GameObject:
   m_ObjectHideFlags: 0
@@ -23184,6 +23200,7 @@ GameObject:
   - component: {fileID: 2046699976}
   - component: {fileID: 2046699978}
   - component: {fileID: 2046699977}
+  - component: {fileID: 2046699979}
   m_Layer: 5
   m_Name: weapon item boarder
   m_TagString: Untagged
@@ -23248,6 +23265,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046699975}
   m_CullTransparentMesh: 1
+--- !u!114 &2046699979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046699975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: 
 --- !u!1 &2065491789
 GameObject:
   m_ObjectHideFlags: 0
@@ -23689,6 +23719,7 @@ GameObject:
   - component: {fileID: 2094695406}
   - component: {fileID: 2094695408}
   - component: {fileID: 2094695407}
+  - component: {fileID: 2094695409}
   m_Layer: 5
   m_Name: armor item boarder
   m_TagString: Untagged
@@ -23753,6 +23784,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094695405}
   m_CullTransparentMesh: 1
+--- !u!114 &2094695409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094695405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: 
 --- !u!1001 &2104362939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24690,7 +24734,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 11
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
@@ -24731,11 +24775,11 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: 15f30f38d9d6c6d41a36787480ec93e1, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 15f30f38d9d6c6d41a36787480ec93e1, type: 2}
+      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[2]
       value: 

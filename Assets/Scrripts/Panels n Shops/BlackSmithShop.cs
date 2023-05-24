@@ -7,8 +7,7 @@ public class BlackSmithShop : MonoBehaviour
 {
     private PlayerEquipedItemsManager _playerEquipedItems;
     private GameManager _gm;
-
-
+    private SoundManager _soundM;
     private int baseCost = 10;
     public Text improveWeaponText;
     public Text improveArmorText;
@@ -19,6 +18,7 @@ public class BlackSmithShop : MonoBehaviour
     {
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _gm = GetComponent<GameManager>();
+        _soundM = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -46,6 +46,7 @@ public class BlackSmithShop : MonoBehaviour
             _playerEquipedItems.EquipItem(_playerEquipedItems.equipedWeapon, lootingUpgradesEnabled);
 
             _gm.playerCoins -= cost;
+            _soundM.PlaySound("upgrade");
             //improveWeaponCost += 10;
             SetUpgradeCostsButtonsText();
         }
@@ -60,6 +61,8 @@ public class BlackSmithShop : MonoBehaviour
         {
             _playerEquipedItems.equipedArmor.itemLevel = Mathf.Clamp(itemLvl, 0, 3);
             _playerEquipedItems.EquipItem(_playerEquipedItems.equipedArmor, lootingUpgradesEnabled);
+
+            _soundM.PlaySound("upgrade");
             _gm.playerCoins -= cost;
             //improveArmorCost += 10;
             SetUpgradeCostsButtonsText();

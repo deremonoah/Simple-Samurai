@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip hit1, hit2, coin1, coin2, coin3, block1, smokebomb;
+    public AudioClip hit1, hit2, coin1, coin2, coin3, block1, smokebomb, upgrade, damageItem;
     private AudioSource myaudioSrc;
     private List<AudioClip> _senseiSounds, _yoinkSounds;
+    
 
     [SerializeField] float Volume;
     [SerializeField] AudioMixer mixer;
@@ -23,6 +24,8 @@ public class SoundManager : MonoBehaviour
         coin3 = Resources.Load<AudioClip>("Sound/Effects/coin wav 3");
         block1 = Resources.Load<AudioClip>("Sound/Effects/metal hit try 2");
         smokebomb = Resources.Load<AudioClip>("Sound/Effects/Smoke 1");
+        upgrade = Resources.Load<AudioClip>("Sound/Effects/UpgradeSound");
+        damageItem = Resources.Load<AudioClip>("Sound/Effects/Breaking Noise temp");
 
         _senseiSounds = new List<AudioClip>();
         _senseiSounds.Add(Resources.Load<AudioClip>("Sound/Sensei/sensei 1"));
@@ -34,6 +37,7 @@ public class SoundManager : MonoBehaviour
         _yoinkSounds = new List<AudioClip>();
         _yoinkSounds.Add(Resources.Load<AudioClip>("Sound/Effects/Yoink 1"));
         _yoinkSounds.Add(Resources.Load<AudioClip>("Sound/Effects/Yoink 2"));
+
     }
 
     
@@ -68,6 +72,13 @@ public class SoundManager : MonoBehaviour
             case "smoke":
                 myaudioSrc.PlayOneShot(smokebomb);
                 break;
+            case "upgrade":
+                myaudioSrc.PlayOneShot(upgrade);
+                break;
+            case "breakItem":
+                myaudioSrc.PlayOneShot(damageItem);
+                break;
+
         }
     }
     public void PlaySound(string clip,float value)

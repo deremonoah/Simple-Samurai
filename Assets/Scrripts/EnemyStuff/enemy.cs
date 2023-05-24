@@ -185,6 +185,16 @@ public class enemy : MonoBehaviour
                 StartMyRoutine();
             }
         }
+        
+        if (myAbilities[0] == Ability.blacksmith)
+        {
+            int rand = Random.Range(0, 3);
+            if (rand <= 1)
+            {
+                FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(1);
+                _soundManager.PlaySound("breakItem");
+            }
+        }
     }
 
     public void Stunned(float num)
@@ -433,12 +443,18 @@ public class enemy : MonoBehaviour
             _soundManager.PlaySound("yoink");
             amountRobbed += randRob;
         }
+        else if (myAbilities[0] == Ability.blacksmith)
+        {
+            int rand = Random.Range(0, 3);
+            if(rand <= 1)
+            {
+                FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(2);
+                _soundManager.PlaySound("breakItem");
+            }
+        }
+
     }
-    public void hitNow()
-    {
-        float dmg = Random.Range(damgMin, damgMax);
-        _playerHP.DamagePlayer(this, dmg, (int)myAbilities[0]);
-    }
+
     #endregion
 
     private void MoveUP()

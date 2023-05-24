@@ -19,7 +19,7 @@ public class GameFlowManager : MonoBehaviour
     private void Start()
     {
         _gm = GetComponent<GameManager>();
-        _lootManager = GetComponent<LootingManager>();
+        _lootManager = FindObjectOfType<LootingManager>();
         _eventManager = GetComponent<EventManager>();
         _farm = GetComponent<FarmShop>();
     }

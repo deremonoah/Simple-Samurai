@@ -132,12 +132,14 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         //weapon
         if(kind == 1)
         {
-            
+            equipedWeapon.itemLevel = Mathf.Clamp(equipedWeapon.itemLevel - 1, 0, 3);
+            EquipItem(equipedWeapon, false);
         }
         //armor
         else if(kind == 2)
         {
-
+            equipedArmor.itemLevel = Mathf.Clamp(equipedArmor.itemLevel - 1, 0, 3);
+            EquipItem(equipedArmor, false);
         }
     }
 }

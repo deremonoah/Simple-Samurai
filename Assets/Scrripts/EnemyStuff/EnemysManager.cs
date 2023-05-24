@@ -129,11 +129,27 @@ public class EnemysManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         _villageDefense.startDefending();
-        Debug.Log("wcv" + WaveControlVariable + " >=? " + DifficultyWaves.Count);
+        
         if (WaveControlVariable >= DifficultyWaves.Count)
         {
             GM.PlayerWins();
             yield return null;
+        }else if (enemyWaves.Count > 0)
+        {
+            //this uses whatever wave is there 
+
+            for (int lcv = 0; lcv < enemyWaves[0].enmsInWave.Length || lcv > 4; lcv++)
+            {
+                SpawnEnemy(lcv, enemyWaves[0].enmsInWave[lcv]);
+
+                if (lcv == 0)
+                    aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
+
+                yield return new WaitForSeconds(0.5f);
+
+            }
+
+            enemyWaves.RemoveAt(0);
         }
         else
         {
@@ -165,6 +181,7 @@ public class EnemysManager : MonoBehaviour
             Debug.Log("wcv in spawn=" + WaveControlVariable);
 
         }
+        
 
         SetSpecialPointers();
 
