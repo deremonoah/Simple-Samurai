@@ -126,4 +126,18 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         equipedCurio = null;
         curioIcon.sprite = Resources.Load<Sprite>("Blank");
     }
+
+    public void DamageItem(int kind)
+    {
+        //weapon
+        if(kind == 1)
+        {
+            
+        }
+        //armor
+        else if(kind == 2)
+        {
+
+        }
+    }
 }
