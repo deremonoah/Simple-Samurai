@@ -43,7 +43,6 @@ public class TutorialManager : MonoBehaviour
         {
             yield break;
         }
-        Debug.Log("started tutorial");
 
         SensaiSprite.SetActive(true);
         yield return new WaitForSeconds(1);
@@ -51,6 +50,7 @@ public class TutorialManager : MonoBehaviour
 
 
         string text = "Hold Down the Space bar or Left Mouse button";
+        _soundManager.PlaySound("sensei");
         UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
         
        
@@ -64,6 +64,7 @@ public class TutorialManager : MonoBehaviour
             _tutorialState = TutorialState.toRelease;
             
             text = "Now release the button while that sword icon is over the strike area ... the red shape";
+            _soundManager.PlaySound("sensei");
             UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
         }
         while (_tutorialState == TutorialState.toRelease)
@@ -75,6 +76,7 @@ public class TutorialManager : MonoBehaviour
             TrainingDummy = _enemyManager.aliveEnemys[0];
 
             text = "The further right the pointer goes the more damage you do";
+            _soundManager.PlaySound("sensei");
             UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
 
             _tutorialState = TutorialState.toBlock;
@@ -84,6 +86,7 @@ public class TutorialManager : MonoBehaviour
 
         
         text = "now block this attack";
+        _soundManager.PlaySound("sensei");
         UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
 
         yield return new WaitForSeconds(1.5f);
@@ -93,6 +96,7 @@ public class TutorialManager : MonoBehaviour
 
         
         text = "Lay low your enemy!";
+        _soundManager.PlaySound("sensei");
         UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
 
         List<WeaponEffect> noneEffects = new List<WeaponEffect>();
@@ -111,6 +115,7 @@ public class TutorialManager : MonoBehaviour
 
         
         text = "you seem to got the hang of it right?";
+        _soundManager.PlaySound("sensei");
         UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
 
         yield return new WaitForSeconds(4.2f);
