@@ -275,7 +275,7 @@ public class EventManager : MonoBehaviour
     public void BlackSmithArived()
     {
         //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
-        _enemyManager.enemyWaves.Insert(_enemyManager.WaveControlVariable, Resources.Load<EnmWave>("Waves/Wave3.5"));
+        _enemyManager.enemyWaves.Add(Resources.Load<EnmWave>("Waves/Wave3.5"));
         _villageDefense.TurnOnBlackSmith();
         //blacksmithBackground.SetActive(true);
         hasBlacksmith = true;
