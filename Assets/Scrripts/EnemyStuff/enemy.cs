@@ -175,7 +175,7 @@ public class enemy : MonoBehaviour
         
     }
 
-    public void Blocked()
+    public void Blocked(AttackEffect atkeef)
     {
         if(stunTimer <= 0)
         {
@@ -186,14 +186,10 @@ public class enemy : MonoBehaviour
             }
         }
         
-        if (myAbilities[0] == Ability.blacksmith)
+        if (HasAbility(Ability.blacksmith) && atkeef == AttackEffect.DamageWeapon)
         {
-            int rand = Random.Range(0, 3);
-            if (rand <= 1)
-            {
                 FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(1);
                 _soundManager.PlaySound("breakItem");
-            }
         }
     }
 
@@ -255,14 +251,13 @@ public class enemy : MonoBehaviour
         }
         if(!hasStarted)
         {
-            for (int lcv = 0; lcv < myAbilities.Count; lcv++)
-            {
-                if (myAbilities[lcv] == Ability.steal && amountRobbed > 5)
+            
+                if (HasAbility(Ability.steal) && amountRobbed > 5)
                 {
                     myActionRoutine = StartCoroutine(RunRoutine());
                     hasStarted = true;
                 }
-                else if (myAbilities[lcv] == Ability.sasumata)
+                else if (HasAbility(Ability.sasumata))
                 {
                     //like 50% of the time sasumata special other half regular attack
                     int rand = Random.Range(0, 2);
@@ -272,7 +267,7 @@ public class enemy : MonoBehaviour
                         hasStarted = true;
                     }
                 }
-            }
+            
         }
 
         if (!hasStarted)
@@ -307,6 +302,18 @@ public class enemy : MonoBehaviour
         StartMyRoutine();
 
 
+    }
+
+    private bool HasAbility(Ability abl)
+    {
+        for (int lcv = 0; lcv < myAbilities.Count; lcv++)
+        {
+            if(myAbilities[lcv]==abl)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public IEnumerator SasumataRoutine()
@@ -432,25 +439,23 @@ public class enemy : MonoBehaviour
         currentAttacks = newList;
     }
 
-    public void hitNow(float dmg)
+    public void hitNow(float dmg,AttackEffect atkeef)
     {
         _playerHP.DamagePlayer(this,dmg, (int)myAbilities[0]);
         
-        if (myAbilities[0] == Ability.steal)
+        if (HasAbility(Ability.steal))
         {
             int randRob = Random.Range(2, 4);
             _GM.robPlayer(randRob);
             _soundManager.PlaySound("yoink");
             amountRobbed += randRob;
         }
-        else if (myAbilities[0] == Ability.blacksmith)
+        else if (HasAbility(Ability.blacksmith) && atkeef == AttackEffect.DamageArmor)
         {
-            int rand = Random.Range(0, 3);
-            if(rand <= 1)
-            {
-                FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(2);
-                _soundManager.PlaySound("breakItem");
-            }
+ 
+            FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(2);
+            _soundManager.PlaySound("breakItem");
+
         }
 
     }

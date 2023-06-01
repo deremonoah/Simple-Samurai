@@ -14,6 +14,8 @@ public class EnmAtKArea : MonoBehaviour
     private float damage;
     private bool parried= false;
     private float parriedTimer;
+    [SerializeField] AttackEffect atkEef;
+
     void Start()
     {
         
@@ -39,7 +41,7 @@ public class EnmAtKArea : MonoBehaviour
             }
             else
             {
-                myenm.Blocked();
+                myenm.Blocked(atkEef);
                 FindObjectOfType<SoundManager>().PlaySound("block");
                 Destroy(gameObject);
             }
@@ -58,7 +60,7 @@ public class EnmAtKArea : MonoBehaviour
 
         if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
-            myenm.hitNow(damage);
+            myenm.hitNow(damage,atkEef);
             Destroy(gameObject);
         }
         else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
@@ -125,4 +127,8 @@ public class EnmAtKArea : MonoBehaviour
         
         damage = dmg;
     }
+}
+public enum AttackEffect
+{
+    none, DamageWeapon, DamageArmor
 }
