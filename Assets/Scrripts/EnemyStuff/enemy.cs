@@ -8,7 +8,7 @@ public class enemy : MonoBehaviour
     
     //stats
     public float HP, maxHP;
-    [SerializeField] float armor, damgMin, damgMax;
+    [SerializeField] float armor, damgMin, damgMax, defendValue, defendingMin, defendingMax;
     public enemy targetally;
 
     //mostly timers n stuff
@@ -53,6 +53,10 @@ public class enemy : MonoBehaviour
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
     [SerializeField] int Aggression;
+    [SerializeField] int Defensiveness;
+
+    private float currentDefense=0;
+
     public List<int> difficulty;
     public float stunTimer = 0;
 
@@ -160,12 +164,12 @@ public class enemy : MonoBehaviour
         }
         if (antArm)
         {
-            HP -= deal;
+            HP -= Mathf.Clamp((deal - currentDefense), 1, deal);
         }
         else
         {
             if (deal > armor)
-            { HP = HP- (deal - armor); }
+            { HP = HP- Mathf.Clamp((deal - armor - currentDefense),1,deal); }
         }
 
    
@@ -251,7 +255,7 @@ public class enemy : MonoBehaviour
         }
         if(!hasStarted)
         {
-            
+                //speccial abiliy routines
                 if (HasAbility(Ability.steal) && amountRobbed > 5)
                 {
                     myActionRoutine = StartCoroutine(RunRoutine());
@@ -272,7 +276,12 @@ public class enemy : MonoBehaviour
 
         if (!hasStarted)
         {
-            myActionRoutine = StartCoroutine(TheAttackRoutine());
+            //this way 0 defensiveness never blocks and it still is 10% increments
+            int rand = Random.Range(1, 11);
+            if (rand > Defensiveness)
+            { myActionRoutine = StartCoroutine(TheAttackRoutine()); }
+            else
+            { myActionRoutine = StartCoroutine(TheDefendingRoutine()); }
         }
     }
 
@@ -461,8 +470,31 @@ public class enemy : MonoBehaviour
     }
 
     #endregion
+    protected virtual IEnumerator TheDefendingRoutine()
+    {
+        curState = attackState.waiting;
 
-    private void MoveUP()
+        yield return new WaitForSeconds(waitTimerOffset + randWaitmax);
+        // was this yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset)); 
+        //gonna test it defending quicker see how it look
+
+
+        //for event panel enemies being pacifist
+        while (EventManager.PanelUP == true)
+        {
+            yield return null;
+        }
+
+        currentDefense = defendValue;
+        //there should also be indication to the player shields over enemy hp or the strike area changes color and maybe the enemy
+        //it waits between lowest and highest defend timer and defense is up during that time
+        yield return new WaitForSeconds(Random.Range(defendingMin,defendingMax));
+
+        //because we need their current deffense to be 0 while attacking
+        currentDefense = 0;
+        StartMyRoutine();
+    }
+        private void MoveUP()
     {
         int rand = Random.Range(0, enmsSys.GetMaxAgression());
         if (rand <= Aggression)

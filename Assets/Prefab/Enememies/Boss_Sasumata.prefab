@@ -36,6 +36,10 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: Defensiveness
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: atkPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}

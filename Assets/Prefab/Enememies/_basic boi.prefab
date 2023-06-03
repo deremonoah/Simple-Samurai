@@ -482,6 +482,9 @@ MonoBehaviour:
   armor: 6
   damgMin: 10
   damgMax: 35
+  defendValue: 10
+  defendingMin: 0.5
+  defendingMax: 1
   targetally: {fileID: 0}
   randWaitmin: 2.5
   randWaitmax: 4.5
@@ -515,6 +518,7 @@ MonoBehaviour:
   basicAttackDiversity: 0
   longRanged: 0
   Aggression: 0
+  Defensiveness: 1
   difficulty: 01000000010000000200000003000000
   stunTimer: 0
 --- !u!1 &8628111613924925506

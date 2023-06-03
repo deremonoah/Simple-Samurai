@@ -80,6 +80,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: defendValue
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmax
       value: 2
       objectReference: {fileID: 0}
@@ -90,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: strikeTimer
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: Defensiveness
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: readyingTimerMax

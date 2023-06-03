@@ -187,6 +187,9 @@ MonoBehaviour:
   armor: 7
   damgMin: 20
   damgMax: 60
+  defendValue: 30
+  defendingMin: 1
+  defendingMax: 1.6
   targetally: {fileID: 0}
   randWaitmin: 1.5
   randWaitmax: 3.2
@@ -222,5 +225,8 @@ MonoBehaviour:
   StunnedSprite: {fileID: 6427641400014695199}
   basicAttackDiversity: 1
   longRanged: 0
+  Aggression: 0
+  Defensiveness: 3
+  difficulty: 
   stunTimer: 0
   bossHP: {fileID: 0}
