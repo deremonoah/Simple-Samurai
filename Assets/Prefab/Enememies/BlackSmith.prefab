@@ -72,6 +72,18 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: defendValue
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: defendingMax
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: defendingMin
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: Defensiveness
       value: 3
       objectReference: {fileID: 0}

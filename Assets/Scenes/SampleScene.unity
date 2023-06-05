@@ -16244,6 +16244,7 @@ MonoBehaviour:
   weaponColor: {r: 0.9150943, g: 0.5222944, b: 0.5222944, a: 0.78431374}
   armorColor: {r: 0.51690996, g: 0.61814696, b: 0.9056604, a: 0.78431374}
   curioColor: {r: 0.9433962, g: 0.93906873, b: 0.7075472, a: 0.78431374}
+  defendingColor: {r: 0.31083125, g: 0.36578435, b: 0.5188679, a: 1}
 --- !u!114 &1410867515
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -474,7 +474,7 @@ public class enemy : MonoBehaviour
     {
         curState = attackState.waiting;
 
-        yield return new WaitForSeconds(waitTimerOffset + randWaitmax);
+        yield return new WaitForSeconds(waitTimerOffset + randWaitmin);
         // was this yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset)); 
         //gonna test it defending quicker see how it look
 
@@ -486,12 +486,14 @@ public class enemy : MonoBehaviour
         }
 
         currentDefense = defendValue;
+        GetComponent<SpriteRenderer>().color = FindObjectOfType<ColorManager>().defendingColor;
         //there should also be indication to the player shields over enemy hp or the strike area changes color and maybe the enemy
         //it waits between lowest and highest defend timer and defense is up during that time
         yield return new WaitForSeconds(Random.Range(defendingMin,defendingMax));
 
         //because we need their current deffense to be 0 while attacking
         currentDefense = 0;
+        GetComponent<SpriteRenderer>().color = Color.white;
         StartMyRoutine();
     }
         private void MoveUP()

@@ -482,9 +482,9 @@ MonoBehaviour:
   armor: 6
   damgMin: 10
   damgMax: 35
-  defendValue: 10
-  defendingMin: 0.5
-  defendingMax: 1
+  defendValue: 18
+  defendingMin: 2
+  defendingMax: 3.5
   targetally: {fileID: 0}
   randWaitmin: 2.5
   randWaitmax: 4.5

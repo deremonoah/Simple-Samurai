@@ -7,6 +7,6 @@ public class ColorManager : MonoBehaviour
     public Color weaponColor;
     public Color armorColor;
     public Color curioColor;
-
+    public Color defendingColor;
 
 }
