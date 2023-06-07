@@ -11,7 +11,9 @@ public class StrikePoint : MonoBehaviour
     public GameObject startpoint;
 
     public PathCreator currentPath;
+    private PathCreator equipedPath;
     public PathCreator endPath;
+    
     public float baseSpeed;
     public float bonusSpeed;
     private float currentSpeed;
@@ -40,6 +42,14 @@ public class StrikePoint : MonoBehaviour
     private bool _hasTransitionedPath;
     private Vector3 endPathPosition;
     public float mostRecentX;
+
+    //confused style stuff
+    private float oldspeed;
+    private float confusedTimer;
+    private bool StyleConfused;
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,10 +59,15 @@ public class StrikePoint : MonoBehaviour
 
         CurrentEndBound = NormalEndBound;
         inbetweenTimer = inbetweenTimerMax;
+
+        StyleConfused = true;
+        confusedTimer = 0.25f;
     }
 
     void Update()
     {
+        
+
 
         checkWhereToFace();
 
@@ -108,6 +123,18 @@ public class StrikePoint : MonoBehaviour
             }
             else { inbetweenTimer -= Time.deltaTime; }
         }
+
+        //new confusion attack from sensie makes your speed vary from slow to really fast
+        if (StyleConfused && confusedTimer <= 0)
+        {
+            oldspeed = baseSpeed;
+
+            //negative is interesting but it might be too random and when it just slows down over the strike area you just let go and are fine
+            //maybe i should try 2 random numbers it chooses between one like below and the other more regular or weighted some how idk
+            baseSpeed = Random.Range(-5f, 12f);
+            confusedTimer = Random.Range(0.1f,0.3f);
+        }
+        else { confusedTimer -= Time.deltaTime; }
     }
 
     public void PointerReturnToStart()
@@ -173,6 +200,7 @@ public class StrikePoint : MonoBehaviour
     public void ChangeStyle(PathCreator tempPath)
     {
         currentPath = tempPath;
+        //equipedPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
             baseSpeed = 7.5f;
@@ -196,4 +224,5 @@ public class StrikePoint : MonoBehaviour
         }
 
     }
+    
 }

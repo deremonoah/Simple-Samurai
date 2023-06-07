@@ -130,5 +130,5 @@ public class EnmAtKArea : MonoBehaviour
 }
 public enum AttackEffect
 {
-    none, DamageWeapon, DamageArmor
+    none, DamageWeapon, DamageArmor, confuseStyle
 }

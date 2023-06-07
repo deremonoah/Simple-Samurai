@@ -466,6 +466,10 @@ public class enemy : MonoBehaviour
             _soundManager.PlaySound("breakItem");
 
         }
+        else if(atkeef == AttackEffect.confuseStyle)
+        {
+            //change current style
+        }
 
     }
 
