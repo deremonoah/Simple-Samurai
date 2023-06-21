@@ -45,9 +45,9 @@ public class StrikePoint : MonoBehaviour
 
     //confused style stuff
     private float oldspeed;
-    private float confusedTimer;
-    private bool StyleConfused;
-
+    private float StyleconfusedTimer;
+    private bool Styleconfused;
+    //could also have a stun timer that makes them unable to move pointer for a bit by disabling player for a set time
 
 
     void Start()
@@ -60,8 +60,8 @@ public class StrikePoint : MonoBehaviour
         CurrentEndBound = NormalEndBound;
         inbetweenTimer = inbetweenTimerMax;
 
-        StyleConfused = true;
-        confusedTimer = 0.25f;
+        StyleconfusedTimer = 0f;
+        Styleconfused = false;
     }
 
     void Update()
@@ -125,16 +125,21 @@ public class StrikePoint : MonoBehaviour
         }
 
         //new confusion attack from sensie makes your speed vary from slow to really fast
-        if (StyleConfused && confusedTimer <= 0)
+        //when the player becomes confused the timer will be set to above that
+        if (StyleconfusedTimer >= 0)
         {
-            oldspeed = baseSpeed;
 
             //negative is interesting but it might be too random and when it just slows down over the strike area you just let go and are fine
             //maybe i should try 2 random numbers it chooses between one like below and the other more regular or weighted some how idk
-            baseSpeed = Random.Range(-5f, 12f);
-            confusedTimer = Random.Range(0.1f,0.3f);
+
+            StyleconfusedTimer -= Time.deltaTime;
+        }else if(Styleconfused && StyleconfusedTimer <=0)
+        {
+            //this is so we don't keep setting base speed in above or changing
+            Styleconfused = false;
+            baseSpeed = oldspeed;
         }
-        else { confusedTimer -= Time.deltaTime; }
+
     }
 
     public void PointerReturnToStart()
@@ -225,4 +230,10 @@ public class StrikePoint : MonoBehaviour
 
     }
     
+
+    public void ConfuseStyle(float timer)
+    {
+        oldspeed = baseSpeed;
+        StyleconfusedTimer = timer;
+    }
 }

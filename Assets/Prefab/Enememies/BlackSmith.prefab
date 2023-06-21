@@ -65,15 +65,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: armor
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: maxHP
-      value: 180
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: defendValue
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: randWaitmax
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: randWaitmin
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: defendingMax
@@ -95,6 +103,10 @@ PrefabInstance:
       propertyPath: myAbilities.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: atkPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4522770860429595620, guid: 23715886ab0019f488d88095ca7eeb84, type: 3}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: atkPrefabs.Array.data[1]
       value: 

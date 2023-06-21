@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &391161849293219743
+--- !u!1001 &2775167527212281618
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,72 +8,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: armor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: maxHP
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: damgMax
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: damgMin
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: Aggression
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: defendValue
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: defendingMax
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: Defensiveness
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkDirs.Array.size
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: basicAttackDiversity
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkDirs.Array.data[1].x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkDirs.Array.data[1].y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkDirs.Array.data[2].x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkDirs.Array.data[2].y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.data[1]
+      propertyPath: atkPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 5338052958082804479, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 8104370679388829252, guid: 066ff848469868a4d9d4ef2a5e57eef8, type: 3}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 5815974617280760368, guid: 62ee26b90e4c32f4da05bd4e0d6db6ac, type: 3}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.data[5]
-      value: 
-      objectReference: {fileID: 2240746861720578230, guid: 00dfc9748f4b3234d94712753f60b369, type: 3}
-    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-      propertyPath: atkPrefabs.Array.data[6]
-      value: 
-      objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+      objectReference: {fileID: 1282941304787356720, guid: da908037880ff9b4f93b4711bc92efe3, type: 3}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myAbilities.Array.data[0]
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_RootOrder
@@ -122,10 +90,14 @@ PrefabInstance:
     - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e58b1071f9f884249aeec6ae1c813bc0, type: 3}
+      objectReference: {fileID: 21300000, guid: 43faa73d940f36c4494122ebb9f71bb5, type: 3}
+    - target: {fileID: 7314057531085316391, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Name
-      value: Sensei
+      value: Farmer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

@@ -6,15 +6,15 @@ public class EnmAtKArea : MonoBehaviour
 {
 
     private bool blocking;
-    private enemy myenm;
-    private Transform endPos;
-    [SerializeField] Vector2 dir;
+    public enemy myenm;
+    public Transform endPos;
+    public Vector2 dir;
     [SerializeField] float movspd;
     [SerializeField] float multiPerry;
-    private float damage;
+    public float damage;
     private bool parried= false;
     private float parriedTimer;
-    [SerializeField] AttackEffect atkEef;
+    public AttackEffect atkEef;
 
     void Start()
     {
@@ -22,7 +22,7 @@ public class EnmAtKArea : MonoBehaviour
     }
 
     
-    void Update()
+    protected virtual void Update()
     {
         if ((Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))&& blocking)
         {
