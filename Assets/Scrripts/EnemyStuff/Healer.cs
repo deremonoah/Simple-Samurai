@@ -44,30 +44,40 @@ public class Healer : enemy
         targetally = new enemy();
 
         yield return new WaitForSeconds(base.stunTimer);
-        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
         foreach (enemy i in enmsSys.aliveEnemys)
         {
             if (i.HP < i.maxHP)
             {
                 targetally = i;
-                targetally = i;
                 hitIf = true;
                 break;
             }
         }
 
+        
+
+        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
+
+
+        curState = attackState.readying;
+        if (hitIf)
+        {
+            //turn green
+            GetComponent<SpriteRenderer>().color = FindObjectOfType<ColorManager>().AboutToHealColor;
+        }
+        yield return new WaitForSeconds(readyingTimer);
 
         if (hitIf)
         {
             HealingUI();
-            curState = attackState.readying;
-            yield return new WaitForSeconds(readyingTimer);
+            
 
             curState = attackState.swinging;
             yield return new WaitForSeconds(strikeTimer);
 
             myActionRoutine = StartCoroutine(healEnmRoutine());
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
         else
         {

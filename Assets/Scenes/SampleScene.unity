@@ -16244,7 +16244,8 @@ MonoBehaviour:
   weaponColor: {r: 0.9150943, g: 0.5222944, b: 0.5222944, a: 0.78431374}
   armorColor: {r: 0.51690996, g: 0.61814696, b: 0.9056604, a: 0.78431374}
   curioColor: {r: 0.9433962, g: 0.93906873, b: 0.7075472, a: 0.78431374}
-  defendingColor: {r: 0.31083125, g: 0.36578435, b: 0.5188679, a: 1}
+  defendingColor: {r: 0.21791562, g: 0.30738047, b: 0.5566038, a: 1}
+  AboutToHealColor: {r: 0.30753848, g: 0.8679245, b: 0.25792095, a: 1}
 --- !u!114 &1410867515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24776,7 +24777,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 15f30f38d9d6c6d41a36787480ec93e1, type: 2}
+      objectReference: {fileID: 11400000, guid: caef97689baeb294189a365a69f24168, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 

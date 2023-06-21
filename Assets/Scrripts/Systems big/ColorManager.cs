@@ -8,5 +8,6 @@ public class ColorManager : MonoBehaviour
     public Color armorColor;
     public Color curioColor;
     public Color defendingColor;
+    public Color AboutToHealColor;
 
 }
