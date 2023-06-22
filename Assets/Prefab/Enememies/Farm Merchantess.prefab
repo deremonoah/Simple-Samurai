@@ -12,6 +12,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6386235926874281460, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
+      propertyPath: atkPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8463170646872369030, guid: 941b09d35e2224940a6993389f2b6872, type: 3}
+    - target: {fileID: -6386235926874281460, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
       propertyPath: specialPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 999305772569223129, guid: b4504ee02d9f341429023fc7fbe9eaab, type: 3}

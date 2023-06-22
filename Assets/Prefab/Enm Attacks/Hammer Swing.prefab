@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: movspd
       value: 3.6
       objectReference: {fileID: 0}
+    - target: {fileID: 1878947063964747001, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
+      propertyPath: movespeed
+      value: 3.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5338052958082804478, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
       propertyPath: m_RootOrder
       value: 0

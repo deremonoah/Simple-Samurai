@@ -9,7 +9,7 @@ public class EnmAtKArea : MonoBehaviour
     public enemy myenm;
     public Transform endPos;
     public Vector2 dir;
-    [SerializeField] float movspd;
+    public float movespeed;
     [SerializeField] float multiPerry;
     public float damage;
     private bool parried= false;
@@ -49,7 +49,7 @@ public class EnmAtKArea : MonoBehaviour
 
         //movement
         
-        transform.Translate(dir * movspd * Time.deltaTime);
+        transform.Translate(dir * movespeed * Time.deltaTime);
 
         /*else
         { transform.Translate(-dir * movspd * Time.deltaTime); }

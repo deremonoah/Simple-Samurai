@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PathCreation;
 
 public class EnemysManager : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] List<GameObject> bossPrefabs;
     [SerializeField] List<int> DifficultyWaves;
     [SerializeField] List<GameObject> FreshEnemies;
+
+    [SerializeField] List<PathCreator> thrownPaths;
     //above refering to enemies not yet used
 
     //this is the number that is the top end of the random number for if enemies move up
@@ -354,6 +357,12 @@ public class EnemysManager : MonoBehaviour
             Debug.Log(lcv + " " + aliveEnemys.Count);
             OnDied(aliveEnemys[lcv]);
         }
+    }
+
+    public PathCreator GetRandomThrowPath()
+    {
+        int rand = Random.Range(0, thrownPaths.Count);
+        return thrownPaths[rand];
     }
 
  #region Enemy Agression

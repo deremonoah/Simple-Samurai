@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: m_Name
-      value: enm Atk thief
+      value: thief atk down
       objectReference: {fileID: 0}
     - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: dir.x
@@ -97,6 +97,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
       propertyPath: movspd
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781426941275979333, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
+      propertyPath: movespeed
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:

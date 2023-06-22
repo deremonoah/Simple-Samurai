@@ -122,5 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc8773ac9b36d44694a5551ce3186d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myenm: {fileID: 0}
+  endPos: {fileID: 0}
   dir: {x: -1, y: 0}
-  movspd: 3.5
+  movespeed: 3.8
+  multiPerry: 0
+  damage: 0
+  atkEef: 0
