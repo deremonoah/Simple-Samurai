@@ -8868,10 +8868,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -3.4469428, y: 0.30200326, z: 0}
-      - {x: 0.5748391, y: 3.4655385, z: 0}
-      - {x: 1.930018, y: 0.44789314, z: 0}
-      - {x: 2.7404141, y: -1.5741632, z: 0}
+      - {x: 2.7660937, y: -1.5433626, z: 0}
+      - {x: 2.2606738, y: 1.101203, z: 0}
+      - {x: -1.7355647, y: 2.1825378, z: 0}
+      - {x: -3.486844, y: 0.37248087, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -14342,10 +14342,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -3.4469428, y: 0.30200326, z: 0}
-      - {x: -1.5970592, y: 1.6534133, z: 0}
-      - {x: 2.6204305, y: -0.5868008, z: 0}
-      - {x: 2.767582, y: -0.8584652, z: 0}
+      - {x: 2.7073119, y: -0.7836127, z: 0}
+      - {x: 2.4369783, y: -0.43100357, z: 0}
+      - {x: -1.6062751, y: 1.3555502, z: 0}
+      - {x: -3.4163356, y: 0.1096642, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -17004,10 +17004,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -3.7183776, y: 0.630962, z: 0}
-      - {x: -2.2706795, y: 1.4492261, z: 0}
-      - {x: 2.0397935, y: 1.1951811, z: 0}
-      - {x: 2.8501897, y: -0.82687515, z: 0}
+      - {x: 2.8718765, y: -0.81870836, z: 0}
+      - {x: 2.4487453, y: 0.88556945, z: 0}
+      - {x: -0.9363036, y: 1.6965706, z: 0}
+      - {x: -3.7571783, y: 0.6387431, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -25021,7 +25021,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard

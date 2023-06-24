@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnmAtKArea : MonoBehaviour
 {
 
-    private bool blocking;
+    public bool blocking;
     public enemy myenm;
     public Transform endPos;
     public Vector2 dir;
     public float movespeed;
-    [SerializeField] float multiPerry;
+    public float multiPerry;
     public float damage;
     private bool parried= false;
     private float parriedTimer;
