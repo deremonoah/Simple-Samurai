@@ -49,7 +49,7 @@ public class RotatingAtk : EnmAtKArea
         distanceTravelled += base.movespeed * Time.deltaTime;
         transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
 
-        //making it rotate 0.5 for tea pot rn
+        //making it rotate 0.5 for tea pot rn, i could also leave it at 0 if i don't want it to move but would prob look weird that way
         rotateNum += rotateSpeed;
         this.transform.rotation = Quaternion.Euler(Vector3.forward *rotateNum);
 

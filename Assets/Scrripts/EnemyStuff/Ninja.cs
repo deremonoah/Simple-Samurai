@@ -6,6 +6,7 @@ public class Ninja : enemy
 {
     private List<Transform> _caltropSpots;
     private List<Transform> _smokeSpots;
+    [SerializeField] List<GameObject> trapsSet;
 
     protected override void Start()
     {
@@ -14,6 +15,16 @@ public class Ninja : enemy
         temp = enmsSys.GetNinjaInfo();
         _caltropSpots = temp[0];
         _smokeSpots = temp[1];
+    }
+
+    protected override void Update()
+    {
+        if(base.HP<=0)
+        {
+            foreach (var trap in trapsSet)
+                Destroy(trap);
+        }
+        base.Update();
     }
 
     protected override void StartMyRoutine()
@@ -53,7 +64,7 @@ public class Ninja : enemy
         int rand = Random.Range(0, _caltropSpots.Count+2);
         rand = Mathf.Clamp(rand - 2, 0, _caltropSpots.Count - 1);
         Debug.Log(_caltropSpots.Count);
-        Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation);
+        trapsSet.Add(Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation));
         yield return new WaitForSeconds(2f);
         StartMyRoutine();
     }
@@ -61,7 +72,7 @@ public class Ninja : enemy
     IEnumerator SpawnSmoke()
     {
         int rand = Random.Range(0,_smokeSpots.Count);
-        Instantiate(specialPrefabs[1], _smokeSpots[rand].position, transform.rotation);
+        trapsSet.Add(Instantiate(specialPrefabs[1], _smokeSpots[rand].position, transform.rotation));
         yield return new WaitForSeconds(1f);
         StartMyRoutine();
     }
