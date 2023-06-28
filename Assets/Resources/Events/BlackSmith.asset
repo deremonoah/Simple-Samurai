@@ -19,3 +19,4 @@ MonoBehaviour:
   - Yes you can
   - No I don't need your bandit problems too
   myeventEffect: 0
+  eventImage: {fileID: 21300000, guid: 0650741e53d8f2c458df89af49999818, type: 3}

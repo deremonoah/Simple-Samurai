@@ -8,6 +8,7 @@ public class EventManager : MonoBehaviour
     private GameManager _gm;
     public Text EventPopUpText;
     public GameObject EventPanel;
+    public Image EventImage;
     private List<Event> _nextEvents = new List<Event>();
     private Event _currentEvent;
     public List<GameObject> Buttons;
@@ -178,7 +179,10 @@ public class EventManager : MonoBehaviour
         {
             _currentEvent = eve;
             SetUpPanel();
-            
+
+            if(eve.eventImage !=null)
+            EventImage.sprite = eve.eventImage;
+
             hasPicked = false;
             while (!hasPicked)
             {

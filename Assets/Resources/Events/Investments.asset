@@ -18,3 +18,4 @@ MonoBehaviour:
   - Sounds good
   - I'm not interested
   myeventEffect: 3
+  eventImage: {fileID: 21300000, guid: 16aa1f62fdff10848b8f52092bb5302c, type: 3}

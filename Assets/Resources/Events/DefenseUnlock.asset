@@ -18,3 +18,4 @@ MonoBehaviour:
   buttonOptions:
   - interesting
   myeventEffect: 10
+  eventImage: {fileID: 21300000, guid: a3d11362f3e89134196a06d8f6d99512, type: 3}
