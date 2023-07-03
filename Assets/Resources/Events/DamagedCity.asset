@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DamagedCity
   m_EditorClassIdentifier: 
   textStatements:
-  - The town has suffered damage from the bandit raid we need 10 gold to repair it
+  - The town has suffered damage from the bandit raid, and we need 10 gold for repairs.
   buttonOptions:
   - Yes repairs are paramount (costs 10 g)
   - No! its my gold
   myeventEffect: 6
+  eventImage: {fileID: 0}
