@@ -62,7 +62,8 @@ public class Ninja : enemy
     IEnumerator SpawnCaltrop()
     {
         int rand = Random.Range(0, _caltropSpots.Count+2);
-        rand = Mathf.Clamp(rand - 2, 0, _caltropSpots.Count - 1);
+        rand = Mathf.Clamp(rand - 2, 0, _caltropSpots.Count);
+        //look up better way of weighting outcomes of randomness
         Debug.Log(_caltropSpots.Count);
         trapsSet.Add(Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation));
         yield return new WaitForSeconds(2f);

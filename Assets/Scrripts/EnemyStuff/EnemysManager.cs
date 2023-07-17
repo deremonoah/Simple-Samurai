@@ -181,7 +181,7 @@ public class EnemysManager : MonoBehaviour
 
             }
             WaveControlVariable++;
-            Debug.Log("wcv in spawn=" + WaveControlVariable);
+
 
         }
         
@@ -202,7 +202,7 @@ public class EnemysManager : MonoBehaviour
         //but maybe there would need to be another value to indicate that there should be a boss on x wave
 
         //this will get the difficulty for the round
-        Debug.Log("wcv in generate"+WaveControlVariable);
+        //Debug.Log("wcv in generate"+WaveControlVariable);
         int roundDifficulty = DifficultyWaves[WaveControlVariable];
 
         //now I need a loop to put enemies in a list or
@@ -240,7 +240,6 @@ public class EnemysManager : MonoBehaviour
             int individualDificulty = tempEnemylist[rand].GetComponent<enemy>().difficulty[currentWave.Count];
 
             //Debug.Log("individual dif "+individualDificulty+"     ||  round dif "+roundDifficulty);
-            Debug.Log("rand: "+rand);
             if (individualDificulty<=roundDifficulty && rand<tempEnemylist.Count)
             {
                 //adding enemy to current wave
@@ -276,7 +275,7 @@ public class EnemysManager : MonoBehaviour
                 tempEnemylist.RemoveAt(rand);
             }
         }
-        Debug.Log("returned");
+
         return currentWave;
 
     }

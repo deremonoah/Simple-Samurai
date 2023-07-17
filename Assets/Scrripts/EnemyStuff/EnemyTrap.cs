@@ -18,6 +18,24 @@ public class EnemyTrap : MonoBehaviour
             playerHP.DamagePlayer(null, damageFromTrap, 2);
             Destroy(this.gameObject);
         }
+        else
+        {
+            //for sumo block
+            FindObjectOfType<StrikeArea>().BeingBlocked(true);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.name == "strike point" && damageFromTrap == 0)
+        {
+            FindObjectOfType<StrikeArea>().BeingBlocked(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        FindObjectOfType<StrikeArea>().BeingBlocked(false);
     }
 }
 

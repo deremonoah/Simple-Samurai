@@ -8428,7 +8428,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f7964036f3c24c94facdd68abb9659cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c35ec0794fe4381419c330223a8fd5cc, type: 3}
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
@@ -25097,7 +25097,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
@@ -25142,7 +25142,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 8f476cb710b90b344bbeef5b48fc8061, type: 2}
+      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 
