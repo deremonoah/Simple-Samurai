@@ -70,7 +70,7 @@ public class EventManager : MonoBehaviour
 
         var rand = Random.Range(0, 10);
         var wave = _enemyManager.WaveControlVariable;
-        if ((wave >=1 && rand <= 4 ) && !hasBlacksmith)
+        if ((wave >=1 && rand <= 4 ) ||(wave>=8 && wave<=10) && !hasBlacksmith)
         {
             _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
         }
@@ -144,6 +144,8 @@ public class EventManager : MonoBehaviour
         {
             _nextEvents.Add(Resources.Load<Event>("Events/DefenseUnlock"));
             FindObjectOfType<PlayerDefense>().EnableDefenseButton();
+            _villageDefense.AddButtonToList(FindObjectOfType<PlayerDefense>().DefenseButton);
+            
         }
 
         //I have changed the numbers becuase the expo build will be shorter teh 3 above and the blacksmith
@@ -280,7 +282,8 @@ public class EventManager : MonoBehaviour
     {
         //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
         _enemyManager.enemyWaves.Add(Resources.Load<EnmWave>("Waves/Wave3.5"));
-        _villageDefense.TurnOnBlackSmith();
+        _villageDefense.AddButtonToList(_blacksmith.panelBSButton);
+        _blacksmith.TurnOnBlackSmith();
         //blacksmithBackground.SetActive(true);
         hasBlacksmith = true;
     }

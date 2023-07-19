@@ -7,6 +7,7 @@ public class BlackSmithShop : MonoBehaviour
 {
     private PlayerEquipedItemsManager _playerEquipedItems;
     private GameManager _gm;
+    public GameObject panelBSButton;
     private SoundManager _soundM;
     private int baseCost = 10;
     public Text improveWeaponText;
@@ -19,6 +20,7 @@ public class BlackSmithShop : MonoBehaviour
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _gm = GetComponent<GameManager>();
         _soundM = FindObjectOfType<SoundManager>();
+        panelBSButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -86,5 +88,9 @@ public class BlackSmithShop : MonoBehaviour
         temp = (baseCost * Mathf.Clamp(_playerEquipedItems.equipedArmor.itemLevel + 1, 0, 3))- reduceCost;
         improveArmorText.text = "Improve Armor " + temp + "g";
     }
-
+    public void TurnOnBlackSmith()
+    {
+        panelBSButton.SetActive(true);
+        //TurnedOnShopButtons.Add(BlackSmithButton);
+    }
 }

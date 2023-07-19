@@ -12,7 +12,7 @@ public class PlayerDefense : MonoBehaviour
     [SerializeField] Image fillPalisade;
     [SerializeField] List<Dragable> DefenseDragables;
     [SerializeField] DropZone EquipedDefenseSlot;
-    [SerializeField] GameObject DefenseButton;
+    public GameObject DefenseButton;
     void Start()
     {
         EquipedDefense = new int[3];

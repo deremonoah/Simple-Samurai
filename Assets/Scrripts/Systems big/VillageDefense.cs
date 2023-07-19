@@ -23,7 +23,6 @@ public class VillageDefense : MonoBehaviour
     public int DamageTaken;
 
     [SerializeField] List<GameObject> TurnedOnShopButtons;
-    [SerializeField] GameObject BlackSmithButton;
     [SerializeField] GameObject RepairVillageButton;
     [SerializeField] List<GameObject> _damagedShops;
 
@@ -144,14 +143,14 @@ public class VillageDefense : MonoBehaviour
         }*/
     }
 
-    public void TurnOnBlackSmith()
-    {
-        BlackSmithButton.SetActive(true);
-        TurnedOnShopButtons.Add(BlackSmithButton);
-    }
 
     public void DisplayPopulation(bool state)
     {
         populationIcon.SetActive(state);
+    }
+
+    public void AddButtonToList(GameObject but)
+    {
+        TurnedOnShopButtons.Add(but);
     }
 }
