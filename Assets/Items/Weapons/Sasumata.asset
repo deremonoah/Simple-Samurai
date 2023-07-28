@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: 'Sasumata: this weapon allows the player to trap enemy weapons(stun
     effect)'
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: eee0ee468c630fc448970a08e1c121e4, type: 3}
   strikePointer: {fileID: 21300000, guid: 30b1a2bf2b620a8498166822d211dadb, type: 3}
   baseDamageLevel:
   - 4
