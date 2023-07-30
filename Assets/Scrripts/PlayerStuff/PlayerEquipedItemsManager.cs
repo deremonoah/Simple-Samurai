@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class PlayerEquipedItemsManager : MonoBehaviour
 {
     public Weapon equipedWeapon;
+    public Weapon PrimaryWeapon;
+    public Weapon SecondaryWeapon;
+
     public Armor equipedArmor;
     public Curio equipedCurio;
 
-    public Image weaponIcon;
+    public Image PrimaryweaponIcon;
+    public Image SecondaryWeaponIcon;
+    [SerializeField] GameObject SecondaryWeaponUI;
+
     public Image armorIcon;
     public Image curioIcon;
 
@@ -23,6 +29,7 @@ public class PlayerEquipedItemsManager : MonoBehaviour
     private GameManager _gm;
 
     [SerializeField] List<ExtraStrikeArea> extraStrikeAreas;
+    public bool twoWeapons;
 
     private void Start()
     {
@@ -33,6 +40,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         _gm = GetComponent<GameManager>();
 
         equipedWeapon = Instantiate(equipedWeapon);
+        PrimaryWeapon = equipedWeapon;
+        SecondaryWeapon = Instantiate(SecondaryWeapon);
         equipedArmor = Instantiate(equipedArmor);
     }
 
@@ -50,8 +59,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
             }
             equipedWeapon = (Weapon)item;
             _mainStrikeArea.SetWeapon(item as Weapon);
-            weaponIcon.sprite = item.itemPanelIcon;
-
+            PrimaryweaponIcon.sprite = item.itemPanelIcon;
+            //we will  have to update this to if unlocked and no secondary add it there or stock pile
            
 
         }
@@ -141,5 +150,10 @@ public class PlayerEquipedItemsManager : MonoBehaviour
             equipedArmor.itemLevel = Mathf.Clamp(equipedArmor.itemLevel - 1, 0, 3);
             EquipItem(equipedArmor, false);
         }
+    }
+
+    public void UnlockTwoWeapons()
+    {
+        twoWeapons = true;
     }
 }

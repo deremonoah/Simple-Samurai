@@ -8,8 +8,11 @@ public class StrikeArea : MonoBehaviour
     private EnemysManager _enemySystem;
     public Camera mc;
     private GameManager GM;
+    private PlayerEquipedItemsManager _myItemsManager;
     public static bool PlayerOn = true;
     [SerializeField] bool inStrikeArea;
+    //buff area refers to what buff it gives that it got from what ever buff area
+    private int inBuffArea;
     [SerializeField] float maxDamage;
     [SerializeField] float baseDamage;
     [SerializeField] float damgMult=2;
@@ -30,24 +33,21 @@ public class StrikeArea : MonoBehaviour
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
     private SpriteRenderer myStrikeAreaSprite;
     public Weapon equipedWeapon;
-    public Weapon PrimaryWeapon;
-    public Weapon SecondaryWeapon;
-    private bool dualWielding = false;
+
+
     public Weapon TestWeapon;
     void Start()
     {
         GM = mc.GetComponent<GameManager>();
         _enemySystem = mc.GetComponent<EnemysManager>();
+        _myItemsManager = FindObjectOfType<PlayerEquipedItemsManager>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
         strikePoint = strikePointObj.GetComponent<StrikePoint>();
         justStruck = false;
-        equipedWeapon = Instantiate(equipedWeapon);
+        SetWeapon(_myItemsManager.PrimaryWeapon);
         TestWeapon = Instantiate(TestWeapon);
 
-        //2 weapon system
-        PrimaryWeapon = equipedWeapon;
-        SecondaryWeapon = Instantiate(SecondaryWeapon);
     }
 
     
@@ -66,8 +66,19 @@ public class StrikeArea : MonoBehaviour
 
         if (PlayerOn)
         {
+            //for buff areas
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inBuffArea>=0)
+            {
+                //resolve buff effect this is where i can prob use strategy pattern
+                if(inBuffArea == 1)
+                {
+                    SwapWeapon();
+                }
+                inBuffArea = -1;
+            }
 
-            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
+            //for attacking in strike area
+                if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
                 float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
 
@@ -88,23 +99,6 @@ public class StrikeArea : MonoBehaviour
                         { GM.PayOut(2, 3); }
                         else { GM.PayOut(1, 2); }
                     }
-                }
-            }
-
-            //all that needs be done is a curio that allows dual weilding or "weapon swapping" or an unlocked player ability
-            //current issue is that the transitions feels super jank like its just super abrupt and if you swing fast it basically flashes
-            //the idea was you could make a concious decision about what weapon you would want when but that doesn't really happen
-            //when I was playing it was still just get that pointer as far as it will go and do some damage!
-            if((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && dualWielding)
-            {
-                if (equipedWeapon == PrimaryWeapon)
-                {
-                    if (SecondaryWeapon != null)
-                    { SetWeapon(SecondaryWeapon); }
-                }
-                else
-                {
-                    SetWeapon(PrimaryWeapon);
                 }
             }
 
@@ -213,6 +207,20 @@ public class StrikeArea : MonoBehaviour
         }
     }
 
+    public void SwapWeapon()
+    {
+        if (equipedWeapon == _myItemsManager.SecondaryWeapon)
+        {
+            
+             SetWeapon(_myItemsManager.PrimaryWeapon); 
+        }
+        else
+        {
+            if(_myItemsManager.SecondaryWeapon != null)
+            SetWeapon(_myItemsManager.SecondaryWeapon);
+        }
+    }
+
     public static void SwitchPlayerOn(bool tf)
     {
         PlayerOn = tf;
@@ -222,4 +230,12 @@ public class StrikeArea : MonoBehaviour
     {
         inStrikeArea = !isblocked;
     }
+
+    public void RecieveBuff(int buff)
+    {
+        //public enum Buff { swapEnemy, swapWeapon, speedUp, damageUp, }
+        inBuffArea = buff;
+    }
+
+    
 }
