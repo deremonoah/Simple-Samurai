@@ -50,7 +50,7 @@ public class Boss : Ninja
             enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
             Debug.Log(targetToSwap.GetComponent<enemy>().myAbilities[0]);
 
-            enmsSys.UpdateEnmsPos();
+            enmsSys.UpdateEnmsPosRefrence();
             //this is pretty jank but i think it will work, it did repeat this but thats cause update obviously
             //there is an error if you kill the other guy first he will stop attacking all together which is bad obviously
         }

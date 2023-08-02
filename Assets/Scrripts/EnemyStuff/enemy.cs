@@ -518,7 +518,7 @@ public class enemy : MonoBehaviour
                 enmsSys.aliveEnemys[posInList -1] = this;
                 enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
 
-                enmsSys.UpdateEnmsPos();
+                enmsSys.UpdateEnmsPosRefrence();
 
                 if (posInList == 0)
                 {
@@ -548,7 +548,7 @@ public class enemy : MonoBehaviour
         {
             enmsSys.aliveEnemys.Remove(this);
             enmsSys.OpenTimer = 1.5f;
-            enmsSys.UpdateEnmsPos();
+            enmsSys.UpdateEnmsPosRefrence();
         }
         Destroy(this.gameObject);
     }

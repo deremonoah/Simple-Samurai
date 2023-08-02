@@ -25,13 +25,10 @@ public class BuffStrikeArea : MonoBehaviour
         //set an in buff area variable to true (maybe returns effect)
         if(other.name == "strike point")
         {
-            if (mybuff == Buff.swapWeapon && playerEquips.twoWeapons)
-            {
-                //might want too change the player equips to on strike areas but whatever for now
+           
                 mainStrikeArea.RecieveBuff((int)mybuff);
-            }
-            //rest of the ifs or this is where we have ones that inherate form this and use strategy pattern
-            //the base for the buffs would be a buff class that would have a refrence to the players i think and a buff method
+                //im realizing that I should be able to have get rid of the ifs
+
         }
     }
 

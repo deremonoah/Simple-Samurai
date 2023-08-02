@@ -38,6 +38,7 @@ public class LootingManager : MonoBehaviour
 
         //below is for the boarders around players equiped items
         PlayerItemBoarders[0].color = FindObjectOfType<ColorManager>().weaponColor;
+        PlayerItemBoarders[3].color = FindObjectOfType<ColorManager>().weaponColor;
         PlayerItemBoarders[1].color = FindObjectOfType<ColorManager>().armorColor;
         PlayerItemBoarders[2].color = FindObjectOfType<ColorManager>().curioColor;
 

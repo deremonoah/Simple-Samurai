@@ -105,7 +105,7 @@ public class EnemysManager : MonoBehaviour
             aliveEnemys.Remove(me);
         }
 
-        UpdateEnmsPos();
+        UpdateEnmsPosRefrence();
         if (aliveEnemys.Count != 0)
         {
             aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
@@ -119,7 +119,7 @@ public class EnemysManager : MonoBehaviour
         Destroy(me.gameObject);
     }
 
-    public void UpdateEnmsPos()
+    public void UpdateEnmsPosRefrence()
     {
         for (int lcv = 0; lcv < aliveEnemys.Count; lcv++)
         {
@@ -362,6 +362,35 @@ public class EnemysManager : MonoBehaviour
     {
         int rand = Random.Range(0, thrownPaths.Count);
         return thrownPaths[rand];
+    }
+
+    public void CycleEnemyList()
+    {
+        //set position just tells the enemy which spots its in for the list
+        //aliveEnemys is the list enemy classes alive rn
+
+        aliveEnemys.Add(aliveEnemys[0]);
+        aliveEnemys.RemoveAt(0);
+        //this puts the first guy last in the list but their positions in space still need to be changed so player sees
+
+        for(int lcv=0;lcv<aliveEnemys.Count;lcv++)
+        {
+            //this gets the specific enemy game object and then moves them to the proper spawn spot they should now be in
+            aliveEnemys[lcv].gameObject.transform.position = enemySpawnsPoints[lcv].transform.position;
+        }
+
+
+        // I think i need below
+        UpdateEnmsPosRefrence();
+        if (aliveEnemys.Count != 0)
+        {
+            aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
+        }
+
+        //have to removepointer from enemy in back
+        aliveEnemys[aliveEnemys.Count - 1].DisablePointer();
+
+        SetSpecialPointers();
     }
 
  #region Enemy Agression

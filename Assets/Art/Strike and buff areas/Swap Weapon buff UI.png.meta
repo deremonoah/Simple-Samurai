@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 54d9aee2920632f4c9902394b1650bce
+guid: 04f5276ebcd95584eb381166b9ab9d3f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0.92
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -62,9 +62,34 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -79,7 +104,19 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 73, y: 75}
+      - {x: -72, y: 75}
+      - {x: -74, y: 74}
+      - {x: -75, y: 72}
+      - {x: -75, y: -72.9399}
+      - {x: -74, y: -74}
+      - {x: -73, y: -75}
+      - {x: 73, y: -75}
+      - {x: 74, y: -74}
+      - {x: 75, y: -72.92592}
+      - {x: 75, y: 73}
+      - {x: 74, y: 74}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0

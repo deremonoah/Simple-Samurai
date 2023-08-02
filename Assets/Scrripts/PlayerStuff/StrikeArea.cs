@@ -70,10 +70,16 @@ public class StrikeArea : MonoBehaviour
             if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inBuffArea>=0)
             {
                 //resolve buff effect this is where i can prob use strategy pattern
-                if(inBuffArea == 1)
+                if(inBuffArea == 1 && _myItemsManager.twoWeapons)
                 {
                     SwapWeapon();
                 }
+                if(inBuffArea == 0)
+                {
+                    _enemySystem.CycleEnemyList();
+                }
+                
+                //this needs to be at the end to reset the buff
                 inBuffArea = -1;
             }
 
@@ -219,6 +225,7 @@ public class StrikeArea : MonoBehaviour
             if(_myItemsManager.SecondaryWeapon != null)
             SetWeapon(_myItemsManager.SecondaryWeapon);
         }
+        //swapped set up for checking if primary matched and secondary in else because first run would always be the wrong one
     }
 
     public static void SwitchPlayerOn(bool tf)
