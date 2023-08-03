@@ -27,8 +27,8 @@ public class BuffStrikeArea : MonoBehaviour
         {
            
                 mainStrikeArea.RecieveBuff((int)mybuff);
+            Debug.Log(mybuff);
                 //im realizing that I should be able to have get rid of the ifs
-
         }
     }
 

@@ -8800,6 +8800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mc: {fileID: 519420031}
   inStrikeArea: 0
+  inBuffArea: 0
+  currentBuff: 0
   maxDamage: 60
   baseDamage: 3
   damgMult: 1
@@ -13224,7 +13226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55025145b39ba19458d8a6df6b6c0162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mybuff: 0
+  mybuff: 3
 --- !u!212 &1020389527
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20377,6 +20379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mc: {fileID: 519420031}
   inStrikeArea: 0
+  inBuffArea: 0
+  currentBuff: 0
   maxDamage: 65
   baseDamage: 4
   damgMult: 10
@@ -26238,7 +26242,7 @@ PrefabInstance:
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
+      objectReference: {fileID: 11400000, guid: caef97689baeb294189a365a69f24168, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[1]
       value: 

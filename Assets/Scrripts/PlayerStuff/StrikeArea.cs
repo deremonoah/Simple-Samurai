@@ -12,7 +12,9 @@ public class StrikeArea : MonoBehaviour
     public static bool PlayerOn = true;
     [SerializeField] bool inStrikeArea;
     //buff area refers to what buff it gives that it got from what ever buff area
-    private int inBuffArea;
+    [SerializeField] int inBuffArea;
+    [SerializeField] int currentBuff;
+
     [SerializeField] float maxDamage;
     [SerializeField] float baseDamage;
     [SerializeField] float damgMult=2;
@@ -73,20 +75,41 @@ public class StrikeArea : MonoBehaviour
                 if(inBuffArea == 1 && _myItemsManager.twoWeapons)
                 {
                     SwapWeapon();
+                    inBuffArea = -1;
                 }
                 if(inBuffArea == 0)
                 {
                     _enemySystem.CycleEnemyList();
+                    inBuffArea = -1;
                 }
-                
+                if(inBuffArea == 2)
+                {
+                    //speed buff
+                    inBuffArea = -1;
+                }
+                if(inBuffArea == 3)
+                {
+                    //damage up
+                    currentBuff = inBuffArea;
+                    inBuffArea = -1;
+                }
                 //this needs to be at the end to reset the buff
-                inBuffArea = -1;
+                
             }
 
             //for attacking in strike area
-                if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
+               else if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
                 float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
+
+                if(currentBuff == 3)
+                {
+                    //testing double damage
+                    Debug.Log("in if");
+                    Damger += Damger;
+                    currentBuff = -1;
+                }
+
 
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
@@ -106,6 +129,12 @@ public class StrikeArea : MonoBehaviour
                         else { GM.PayOut(1, 2); }
                     }
                 }
+                
+            }
+            else if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                //after player releases they lose the buff
+                currentBuff = -1;
             }
 
 
@@ -241,6 +270,8 @@ public class StrikeArea : MonoBehaviour
     public void RecieveBuff(int buff)
     {
         //public enum Buff { swapEnemy, swapWeapon, speedUp, damageUp, }
+        //this is so when a buffed pointer doesn't lose it passing through another buff area and it will be fine after its use because it will be reset
+        
         inBuffArea = buff;
     }
 
