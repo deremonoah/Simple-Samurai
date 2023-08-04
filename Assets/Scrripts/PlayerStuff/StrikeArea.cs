@@ -29,7 +29,7 @@ public class StrikeArea : MonoBehaviour
     public SoundManager SoundMng;
 
     public GameObject strikePointObj;
-    private StrikePoint strikePoint;
+    private StrikePoint _mystrikePoint;
     public bool justStruck;
 
     //myStrikeAreaSprite.sprite = the sprite you want from weapon
@@ -45,7 +45,7 @@ public class StrikeArea : MonoBehaviour
         _myItemsManager = FindObjectOfType<PlayerEquipedItemsManager>();
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
-        strikePoint = strikePointObj.GetComponent<StrikePoint>();
+        _mystrikePoint = strikePointObj.GetComponent<StrikePoint>();
         justStruck = false;
         SetWeapon(_myItemsManager.PrimaryWeapon);
         TestWeapon = Instantiate(TestWeapon);
@@ -56,13 +56,13 @@ public class StrikeArea : MonoBehaviour
     void Update()
     {
 
-        if (strikePoint.mostRecentX < 1.5)
+        if (_mystrikePoint.mostRecentX < 1.5)
         { damgMult = 2; }
-        else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 3)
+        else if (_mystrikePoint.mostRecentX >= 1.5 && _mystrikePoint.mostRecentX < 3)
         { damgMult = 8; }
-        else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
+        else if (_mystrikePoint.mostRecentX >= 3 && _mystrikePoint.mostRecentX < 4)
         { damgMult = 12; }
-        else if (strikePoint.mostRecentX >= 4.5)
+        else if (_mystrikePoint.mostRecentX >= 4.5)
         { damgMult = 18; }
 
 
@@ -71,7 +71,7 @@ public class StrikeArea : MonoBehaviour
             //for buff areas
             if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inBuffArea>=0)
             {
-                //resolve buff effect this is where i can prob use strategy pattern
+                //resolve buff effect because this is when player releases over the area
                 if(inBuffArea == 1 && _myItemsManager.twoWeapons)
                 {
                     SwapWeapon();
@@ -85,6 +85,8 @@ public class StrikeArea : MonoBehaviour
                 if(inBuffArea == 2)
                 {
                     //speed buff
+                    _mystrikePoint.bonusSpeed = 3;
+                    
                     inBuffArea = -1;
                 }
                 if(inBuffArea == 3)
@@ -100,7 +102,7 @@ public class StrikeArea : MonoBehaviour
             //for attacking in strike area
                else if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
-                float Damger = Mathf.Clamp((strikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
+                float Damger = Mathf.Clamp((_mystrikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
 
                 if(currentBuff == 3)
                 {
@@ -113,7 +115,7 @@ public class StrikeArea : MonoBehaviour
 
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
-                    Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+strikePoint.mostRecentX);
+                    Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+_mystrikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit", Damger);
                     justStruck = true;

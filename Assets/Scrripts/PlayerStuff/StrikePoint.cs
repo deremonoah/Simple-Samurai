@@ -151,6 +151,8 @@ public class StrikePoint : MonoBehaviour
         inbetweenTimer = inbetweenTimerMax;
         _hasTransitionedPath = false;
         PathTimer = 0;
+        //reset bonus speed
+        bonusSpeed = 0;
     }
 
     void checkWhereToFace()
