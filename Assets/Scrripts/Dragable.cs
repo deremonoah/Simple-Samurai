@@ -6,7 +6,9 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 {
     public Transform ParentToReturnTo;
     private Transform DispenserToReturnTo;
+    public DragableType mytype;
     public defenseKind defense;
+    public Item myitem;
 
     public void Start()
     {
@@ -36,4 +38,5 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         this.transform.SetParent(DispenserToReturnTo);
     }
 }
+public enum DragableType { defense, item }
 public enum defenseKind { none, pit, palisade, spikes }

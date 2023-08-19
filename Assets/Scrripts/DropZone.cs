@@ -7,6 +7,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 {
     public int DefenseNum = 0;
     [SerializeField] int SpotInDefenseList;
+
+    [SerializeField] 
     public void OnDrop(PointerEventData eventData)
     {
         //put the dragable.defense into this containers holder and then update the manager I have to make
@@ -15,8 +17,16 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         {
             clearZone();
             d.ParentToReturnTo = this.transform;
-            DefenseNum = (int)d.defense;
-            FindObjectOfType<PlayerDefense>().ReadyDefense(DefenseNum,SpotInDefenseList);
+            if(d.mytype == DragableType.defense)
+            { 
+                DefenseNum = (int)d.defense;
+                FindObjectOfType<PlayerDefense>().ReadyDefense(DefenseNum, SpotInDefenseList);
+            }
+            else if(d.mytype == DragableType.item)
+            {
+                //I should probably make these 3 seperate classes one parent with 2 children for defenses and one for items
+                
+            }
             //call and equip the right defense
         }
     }
@@ -42,4 +52,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             }
         }
     }
+
 }
+
+public enum ArmoryItemSlotType { Inventory, primaryWeapon, SecondaryWeapon, Armor, Curio}
