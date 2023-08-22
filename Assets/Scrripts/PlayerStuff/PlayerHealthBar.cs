@@ -27,7 +27,10 @@ public class PlayerHealthBar : MonoBehaviour
 
     [SerializeField] GameObject PlayerOnFireSprite;
     [SerializeField] GameObject angrySymbol;
-    private float revengeTimer = 0f;
+
+    [SerializeField] private float timeAngrySymbolIsOnScreen = 2f;
+    private Vector3 startingScale;
+
     void Start()
     {
         health = maxHealth;
@@ -39,7 +42,7 @@ public class PlayerHealthBar : MonoBehaviour
         _myCurio = FindObjectOfType<PlayerEquipedItemsManager>().equipedCurio;
         angrySymbol.SetActive(false);
 
-        StartCoroutine(RevengeRoutine());
+        startingScale = angrySymbol.transform.localScale;
     }
 
 
@@ -72,7 +75,11 @@ public class PlayerHealthBar : MonoBehaviour
             }
         }
         
-
+        //testing
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            StartCoroutine(RevengeRoutine());
+        }
 
         lerpSpeed = 2f * Time.deltaTime;
         
@@ -153,23 +160,22 @@ public class PlayerHealthBar : MonoBehaviour
         _soundManager.PlaySound("hit");
     }
 
+
     IEnumerator RevengeRoutine()
     {
-        
         angrySymbol.SetActive(true);
-        
-        //provides damage buff
-        while (revengeTimer<=.25f)
-        {
-            Debug.Log(revengeTimer);
-            revengeTimer += Time.deltaTime;
-            yield return new WaitForSeconds(0.1f);
-            Vector3 scaleChange = new Vector3(angrySymbol.transform.localScale.x-(revengeTimer/10), angrySymbol.transform.localScale.y- (revengeTimer/10), 1);
-            angrySymbol.transform.localScale = scaleChange;
-            //damage and sprite size scale down over time
-            continue;
-        }
+        float revengeTimer = 0;
+        Vector3 startingScale = angrySymbol.transform.localScale;
 
+        while (revengeTimer <= timeAngrySymbolIsOnScreen)
+        {
+            revengeTimer += Time.deltaTime;
+            angrySymbol.transform.localScale =
+                Vector3.Lerp(startingScale, Vector3.zero, revengeTimer / timeAngrySymbolIsOnScreen);
+            yield return null;
+        }
+        angrySymbol.SetActive(false);
+        angrySymbol.transform.localScale = startingScale;
     }
 
     IEnumerator OnFire()
