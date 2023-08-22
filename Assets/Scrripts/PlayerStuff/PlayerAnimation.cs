@@ -13,6 +13,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] float readyingTimerMax;
     [SerializeField] bool ready=false;
     [SerializeField] bool postatk = false;
+
     // 0 = idle, 1 = readying, 2 = ready, 3 = strike
     void Start()
     {
@@ -64,4 +65,5 @@ public class PlayerAnimation : MonoBehaviour
         }
         anim.SetFloat("playerState", playerstate);
     }
+   
 }

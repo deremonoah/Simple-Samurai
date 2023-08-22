@@ -26,7 +26,8 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] GameObject DefensesUIParent;
 
     [SerializeField] GameObject PlayerOnFireSprite;
-
+    [SerializeField] GameObject angrySymbol;
+    private float revengeTimer = 0f;
     void Start()
     {
         health = maxHealth;
@@ -36,6 +37,9 @@ public class PlayerHealthBar : MonoBehaviour
         _soundManager = FindObjectOfType<SoundManager>();
         _playerDefense = FindObjectOfType<PlayerDefense>();
         _myCurio = FindObjectOfType<PlayerEquipedItemsManager>().equipedCurio;
+        angrySymbol.SetActive(false);
+
+        StartCoroutine(RevengeRoutine());
     }
 
 
@@ -125,7 +129,47 @@ public class PlayerHealthBar : MonoBehaviour
             }
             //this is also where I could add throns type armor well I still would need to check if enemy is null again
             _soundManager.PlaySound("hit");
+            //Start RevengeRoutine
         }
+    }
+
+    public void DamagePlayerNoRevenge(float damagePoints, int ability)
+    {
+        if (ability == 2)
+        {
+            health -= (Mathf.Max(1, damagePoints));
+        }
+        else if (ability == 8)
+        {
+            health -= (Mathf.Max(1, damagePoints));
+            StartCoroutine(OnFire());
+        }
+        else
+        {
+            health -= (Mathf.Max(1, damagePoints - armorValue));
+            //Debug.Log("No Revenge max: " + Mathf.Max(1, damagePoints - armorValue));
+        }
+
+        _soundManager.PlaySound("hit");
+    }
+
+    IEnumerator RevengeRoutine()
+    {
+        
+        angrySymbol.SetActive(true);
+        
+        //provides damage buff
+        while (revengeTimer<=.25f)
+        {
+            Debug.Log(revengeTimer);
+            revengeTimer += Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+            Vector3 scaleChange = new Vector3(angrySymbol.transform.localScale.x-(revengeTimer/10), angrySymbol.transform.localScale.y- (revengeTimer/10), 1);
+            angrySymbol.transform.localScale = scaleChange;
+            //damage and sprite size scale down over time
+            continue;
+        }
+
     }
 
     IEnumerator OnFire()
