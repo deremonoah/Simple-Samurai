@@ -136,7 +136,7 @@ public class PlayerHealthBar : MonoBehaviour
             }
             //this is also where I could add throns type armor well I still would need to check if enemy is null again
             _soundManager.PlaySound("hit");
-            //Start RevengeRoutine
+            StartCoroutine(RevengeRoutine());
         }
     }
 
@@ -166,6 +166,7 @@ public class PlayerHealthBar : MonoBehaviour
         angrySymbol.SetActive(true);
         float revengeTimer = 0;
         Vector3 startingScale = angrySymbol.transform.localScale;
+        FindObjectOfType<StrikeArea>().RevengeBuff();
 
         while (revengeTimer <= timeAngrySymbolIsOnScreen)
         {

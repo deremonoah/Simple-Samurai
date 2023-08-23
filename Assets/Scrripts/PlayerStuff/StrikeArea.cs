@@ -36,6 +36,7 @@ public class StrikeArea : MonoBehaviour
     private SpriteRenderer myStrikeAreaSprite;
     public Weapon equipedWeapon;
 
+    private float revengeTimer;
 
     public Weapon TestWeapon;
     void Start()
@@ -115,7 +116,9 @@ public class StrikeArea : MonoBehaviour
 
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
-                    Debug.Log(Damger +"  damgMult: "+damgMult + "  most recentX: "+_mystrikePoint.mostRecentX);
+                    //revenge calculation below
+                    Damger +=revengeTimer*25;
+                    Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit", Damger);
                     justStruck = true;
@@ -138,7 +141,10 @@ public class StrikeArea : MonoBehaviour
                 //after player releases they lose the buff
                 currentBuff = -1;
             }
-
+            if(revengeTimer>0)
+            {
+                revengeTimer -= Time.deltaTime;
+            }
 
 
         }
@@ -277,5 +283,9 @@ public class StrikeArea : MonoBehaviour
         inBuffArea = buff;
     }
 
+    public void RevengeBuff()
+    {
+        revengeTimer = 2f;
+    }
     
 }
