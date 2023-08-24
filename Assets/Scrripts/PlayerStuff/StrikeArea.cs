@@ -117,7 +117,7 @@ public class StrikeArea : MonoBehaviour
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
                     //revenge calculation below
-                    Damger +=revengeTimer*25;
+                    Damger +=revengeTimer*30;
                     Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     SoundMng.PlaySound("hit", Damger);
