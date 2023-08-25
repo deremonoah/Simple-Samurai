@@ -5,12 +5,15 @@ using UnityEngine;
 public class Armory : MonoBehaviour
 {
     public List<Item> stockPile;
-    //[Serialized Field] holderItemInv primaryWeapon
-    //[Serialized Field] holder secondry weapon
-    //[Serialized Field] holder armor
-    //[Serialized Field] holder first curio
-    //[Serialized Field] holder secondary curio
-    //[Serialized Field] List<holder> armorySlots;
+    [SerializeField] DropZone primaryWeaponHolder;
+    [SerializeField] DropZone secondryWeaponHolder;
+    [SerializeField] DropZone primaryArmorHolder;
+    [SerializeField] DropZone secondaryArmorHolder;
+    [SerializeField] DropZone primaryCurioHolder;
+    [SerializeField] DropZone secondaryCurioHolder;
+    [SerializeField] List<DropZone> InventorySlotsActive;
+    [SerializeField] List<DropZone> InventorySlotsInActive;
+
 
     //ill need an event to pop up when players have 1 too many items
     //having more upgrades providing some buff? (a buff for item combos/ sets of armors)
@@ -43,7 +46,9 @@ public class Armory : MonoBehaviour
 
     public void OpenArmoryPanel()
     {
-        //load list of items
+        //load primary and secondary items
+        //maybe a get playerEquipedItems that returns a list of the items
+        //load list of items to inventroy slots
     }
 
     public void CloseArmoryPanel()

@@ -78,6 +78,7 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         if (item.GetType() == typeof(Curio))
         {
             //equip Curio to HP and strike Point and Strike area
+            //get it to not equip consumables replacing an item
             equipedCurio = (Curio)item;
             curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
@@ -85,6 +86,23 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         }
 
         UpdateItemUpgrades();
+    }
+
+    //I need a way to handle getting the secondary stuff equiped
+    public void EquipSecondary(Item item)
+    {
+        if (item.GetType() == typeof(Weapon))
+        {
+            //this is a place holder gotta afigure out a good structure
+        }
+        if (item.GetType() == typeof(Armor))
+        {  
+
+        }
+        if (item.GetType() == typeof(Curio))
+        {
+            
+        }
     }
 
     private void ResolveCurioEffect(Curio cur)

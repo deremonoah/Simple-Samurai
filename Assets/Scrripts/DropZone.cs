@@ -7,9 +7,10 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 {
     public int DefenseNum = 0;
     [SerializeField] int SpotInDefenseList;
+    [SerializeField] DropZoneType Droptype;
+    public Dragable heldDragable;
 
-    [SerializeField] 
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         //put the dragable.defense into this containers holder and then update the manager I have to make
         Dragable d = eventData.pointerDrag.GetComponent<Dragable>();
@@ -25,7 +26,20 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             else if(d.mytype == DragableType.item)
             {
                 //I should probably make these 3 seperate classes one parent with 2 children for defenses and one for items
-                
+                if((int)Droptype>=3 &&(int)Droptype<=5)
+                {
+                    //3 to 5 are primary weapons
+                    FindObjectOfType<PlayerEquipedItemsManager>().EquipItem(heldDragable.myitem,false);
+                }
+                else if((int)Droptype >= 6 && (int)Droptype <= 8)
+                {
+                    //for secondary stuff
+                    FindObjectOfType<PlayerEquipedItemsManager>().EquipSecondary(heldDragable.myitem);
+                }
+                else if(Droptype == DropZoneType.Inventory)
+                {
+                    //search list and 
+                }
             }
             //call and equip the right defense
         }
@@ -55,4 +69,4 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
 }
 
-public enum ArmoryItemSlotType { Inventory, primaryWeapon, SecondaryWeapon, Armor, Curio}
+public enum DropZoneType { none, Defense, Inventory, primaryWeapon, primaryArmor,primaryCurio, secondaryWeapon, secondaryArmor,secondaryCurio}
