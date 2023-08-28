@@ -50,8 +50,9 @@ public class LootingManager : MonoBehaviour
         }
     }
 
-    public void OpenPickPan()
+    public void OpenPickPan(string kind)
     {
+
         LootingPanel.GetComponent<Animator>().SetBool("Open", true);
         _eventManager.CheckNextEvent();
 
@@ -87,6 +88,11 @@ public class LootingManager : MonoBehaviour
 
             ClosePickPan();
         }
+        if(learning)
+        {
+            //LearnPicks[buttonID] resolve its effect for now enstantiating a buff area
+        }
+        
 
     }
 
@@ -136,6 +142,13 @@ public class LootingManager : MonoBehaviour
         PlayerItemBoarders[1].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedArmor.itemDescription;
         if (_playerEquipedItems.equipedCurio != null)
         { PlayerItemBoarders[2].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedCurio.itemDescription; }
+    }
+
+
+    public void Learning()
+    {
+        //this either needs to take in an event with specific choices or have random bonus effects and multiple lists for different things
+
     }
 
     private void ResolveManagerCurioEffect(Curio cur)
