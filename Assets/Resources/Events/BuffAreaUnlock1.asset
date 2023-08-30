@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ac09ce114eff348ba6e863786ef5f2, type: 3}
+  m_Name: BuffAreaUnlock1
+  m_EditorClassIdentifier: 
+  textStatements:
+  - which of the following effects would you like to learn?
+  buttonOptions:
+  - Multiple weapons
+  - Change enemy order
+  - Speed
+  myeventEffect: 11
+  eventImage: {fileID: 21300000, guid: e58b1071f9f884249aeec6ae1c813bc0, type: 3}

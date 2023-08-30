@@ -14,5 +14,5 @@ public class Event : ScriptableObject
     public Sprite eventImage;
 
 }
-public enum EventEffect { blackSmith, moreVillagers, defenses, invest, leader, missingFamily, damagedCity, urHurt, joinBandits,sensieUnlock,unlockDefense}
+public enum EventEffect { blackSmith, moreVillagers, defenses, invest, leader, missingFamily, damagedCity, urHurt, joinBandits,sensieUnlock,unlockDefense,buffAreaUnlock}
 //like how the wild dog goes out with the leader guy to save a family who's house is burning down

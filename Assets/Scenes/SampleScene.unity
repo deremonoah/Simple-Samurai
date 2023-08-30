@@ -8492,8 +8492,8 @@ MonoBehaviour:
   BuffPrefabs:
   - {fileID: 2161763158148697713, guid: df9e4957f85545244b6608ac328eba35, type: 3}
   - {fileID: 8500191960246671568, guid: b2896586a1591914c9dad417745009db, type: 3}
-  - {fileID: 959822857035285430, guid: 2fc7a4bfc5054a344aec8882fe91c8e6, type: 3}
   - {fileID: 856924944138858613, guid: 43e9ae48b4fd4b949bcf0ee93777bbc1, type: 3}
+  - {fileID: 959822857035285430, guid: 2fc7a4bfc5054a344aec8882fe91c8e6, type: 3}
   buffParent: {fileID: 551469138}
   test: 0
 --- !u!1 &622895960
@@ -31704,6 +31704,10 @@ PrefabInstance:
       propertyPath: _villagePanel
       value: 
       objectReference: {fileID: 1406086299}
+    - target: {fileID: 7089745053819230923, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: _PickPanelManager
+      value: 
+      objectReference: {fileID: 1153951127}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: armorIcon
       value: 

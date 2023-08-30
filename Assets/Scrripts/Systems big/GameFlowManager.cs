@@ -8,7 +8,7 @@ public class GameFlowManager : MonoBehaviour
     private PickPanManager _PickPanManager;
     private EventManager _eventManager;
     
-    [SerializeField] PickPanManager _lootPanel;
+    [SerializeField] PickPanManager _PickPanelManager;
     [SerializeField] GameObject _eventPanel;
     [SerializeField] Animator _villagePanel;
     private FarmShop _farm;
@@ -33,15 +33,18 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator FlowRoutine()
     {
-        _lootPanel.OpenPickPan(0);
+        //looting stuff
+        _PickPanelManager.OpenPickPan(0);
         StrikeArea.SwitchPlayerOn(false);
         _PickPanManager.RandomItemPull();
-        while (_lootPanel.isPanelOpen())
+        while (_PickPanelManager.isPanelOpen())
         {
             yield return null;
             continue;
         }
-        
+
+
+        //event stuff
         _isEvent = _eventManager.CheckNextEvent();
 
         if (_isEvent)
@@ -55,8 +58,21 @@ public class GameFlowManager : MonoBehaviour
             }
         }
 
+        //after event could be unlock thing maybe
+
+        //a call to if the player learns unlocks rn
+
+        while(_PickPanelManager.isPanelOpen())
+        {
+            yield return null;
+            continue;
+        }
+
+
         _gm.InvestmentsPayOut();
 
+
+        //village stuff
         _villagePanel.SetBool("Open", true);
         while (_villagePanel.GetBool("Open"))
         {

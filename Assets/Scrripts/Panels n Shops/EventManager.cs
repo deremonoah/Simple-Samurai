@@ -9,8 +9,8 @@ public class EventManager : MonoBehaviour
     public Text EventPopUpText;
     public GameObject EventPanel;
     public Image EventImage;
-    private List<Event> _nextEvents = new List<Event>();
-    private Event _currentEvent;
+    [SerializeField] List<Event> _nextEvents = new List<Event>();
+    [SerializeField] Event _currentEvent;
     public List<GameObject> Buttons;
     public List<Text> ButtonTexts;
     private EnemysManager _enemyManager;
@@ -148,6 +148,17 @@ public class EventManager : MonoBehaviour
             
         }
 
+        if(wave == 1)
+        {
+            //FindObjectOfType<BuffAreaManager>().PlaceBuff(0);
+            //trigger needs to prompt player so how to load up the pick panel after events are done?
+            //gotta make a thing to load pick pan to promt player
+            //just make it an event BuffAreaUnlock1
+            _nextEvents.Add(Resources.Load<Event>("Events/BuffAreaUnlock1"));
+        }
+
+
+
         //I have changed the numbers becuase the expo build will be shorter teh 3 above and the blacksmith
 
         return _nextEvents.Count > 0;
@@ -220,6 +231,11 @@ public class EventManager : MonoBehaviour
         {
             SecondResault();
         }
+
+        if(num == 2)
+        {
+            ThirdResault();
+        }
         ResolvePassiveEffect();
         hasPicked = true;
     }
@@ -257,6 +273,10 @@ public class EventManager : MonoBehaviour
             //new bandit equivalents for the different shops with maybe a different spin or take
             _enemyManager.ClearCurrentWave();
         }
+        if (_currentEvent.myeventEffect == EventEffect.buffAreaUnlock)
+        {
+            FindObjectOfType<BuffAreaManager>().PlaceBuff(0);
+        }
     }
 
     public void SecondResault()
@@ -265,8 +285,20 @@ public class EventManager : MonoBehaviour
         {
             _villageDefense.DamagedVillage();
         }
+        else if (_currentEvent.myeventEffect == EventEffect.buffAreaUnlock)
+        {
+            FindObjectOfType<BuffAreaManager>().PlaceBuff(1);
+        }
     }
 
+
+    public void ThirdResault()
+    {
+        if(_currentEvent.myeventEffect == EventEffect.buffAreaUnlock)
+        {
+            FindObjectOfType<BuffAreaManager>().PlaceBuff(2);
+        }
+    }
 
     public void ResolvePassiveEffect()
     {
