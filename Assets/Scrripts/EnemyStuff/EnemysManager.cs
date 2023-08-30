@@ -417,4 +417,9 @@ public class EnemysManager : MonoBehaviour
         maxAgression = 11;
     }
  #endregion
+
+    public void IncreaseNextWaveDifficulty(int much)
+    {
+        DifficultyWaves[WaveControlVariable] += much;
+    }
 }

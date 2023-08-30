@@ -309,11 +309,16 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void ClearEventList()
+    {
+        _nextEvents.Clear();
+    }
+
     #region Event Specific Classes
     public void BlackSmithArived()
     {
         //take in temp variable then call shop.TurnOnButton() so the temp = whatever the shop is
-        _enemyManager.enemyWaves.Add(Resources.Load<EnmWave>("Waves/Wave3.5"));
+        _enemyManager.IncreaseNextWaveDifficulty(3);
         _villageDefense.AddButtonToList(_blacksmith.panelBSButton);
         _blacksmith.TurnOnBlackSmith();
         //blacksmithBackground.SetActive(true);

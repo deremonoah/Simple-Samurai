@@ -70,7 +70,7 @@ public class GameFlowManager : MonoBehaviour
 
 
         _gm.InvestmentsPayOut();
-
+        _eventManager.ClearEventList();
 
         //village stuff
         _villagePanel.SetBool("Open", true);
