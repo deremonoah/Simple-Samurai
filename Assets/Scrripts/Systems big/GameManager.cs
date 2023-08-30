@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public StrikeArea mainStrikeArea;
 
     private PlayerEquipedItemsManager _playerEquipedItems;
-    private LootingManager _lootManager;
+    private PickPanManager _PickPanManager;
     private BlackSmithShop _blacksmithShop;
     public FarmShop _farmShop;
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _blacksmithShop = GetComponent<BlackSmithShop>();
         _farmShop = GetComponent<FarmShop>();
-        _lootManager = GetComponent<LootingManager>();
+        _PickPanManager = GetComponent<PickPanManager>();
         
     }
 
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            _lootManager.RandomItemPull();
+            _PickPanManager.RandomItemPull();
         }
 #endif
         if (Input.GetKeyDown(KeyCode.P))

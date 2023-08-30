@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LootingManager : MonoBehaviour
+public class PickPanManager : MonoBehaviour
 {
     [SerializeField] GameObject LootingPanel;
     private GameManager _gm;
@@ -20,7 +20,8 @@ public class LootingManager : MonoBehaviour
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
     public List<Image> PlayerItemBoarders;
-    
+
+    private bool learning, looting;
 
     void Start()
     {
@@ -50,13 +51,18 @@ public class LootingManager : MonoBehaviour
         }
     }
 
-    public void OpenPickPan(string kind)
+    public void OpenPickPan(int kind)
     {
-
         LootingPanel.GetComponent<Animator>().SetBool("Open", true);
         _eventManager.CheckNextEvent();
-
-        
+        if(kind == 0)
+        {
+            looting = true;
+        }
+        if(kind ==1)
+        {
+            learning = true;
+        }
     }
     public void ClosePickPan()
     {
@@ -73,7 +79,7 @@ public class LootingManager : MonoBehaviour
 
     public void PickButton(int buttonID)
     {
-        if (LootingPanel.GetComponent<Animator>().GetBool("Open") == true)
+        if (looting)
         {
 
 
@@ -90,7 +96,7 @@ public class LootingManager : MonoBehaviour
         }
         if(learning)
         {
-            //LearnPicks[buttonID] resolve its effect for now enstantiating a buff area
+            //LearnPicks[buttonID] resolve its effect for now instantiating a buff area
         }
         
 
@@ -167,4 +173,8 @@ public class LootingManager : MonoBehaviour
         }
     }
 
+    public bool isPanelOpen()
+    {
+        return LootingPanel.GetComponent<Animator>().GetBool("Open");
+    }
 }

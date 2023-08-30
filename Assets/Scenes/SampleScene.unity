@@ -31695,7 +31695,7 @@ PrefabInstance:
     - target: {fileID: 7089745053819230923, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: _lootPanel
       value: 
-      objectReference: {fileID: 337474715}
+      objectReference: {fileID: 1153951127}
     - target: {fileID: 7089745053819230923, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: _eventPanel
       value: 
