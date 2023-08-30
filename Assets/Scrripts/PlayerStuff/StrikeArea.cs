@@ -50,7 +50,7 @@ public class StrikeArea : MonoBehaviour
         justStruck = false;
         SetWeapon(_myItemsManager.PrimaryWeapon);
         TestWeapon = Instantiate(TestWeapon);
-
+        inBuffArea = -1;
     }
 
     
