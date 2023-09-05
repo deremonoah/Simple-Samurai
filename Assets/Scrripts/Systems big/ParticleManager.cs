@@ -23,6 +23,8 @@ public class ParticleManager : MonoBehaviour
         {
             angrySymbol.emissionRate -= 1;
             lowerEmmisionTimer = 0.11f;
+            Color temp = new Color(1f,1f,1f,angrySymbol.startColor.a-(angrySymbol.emissionRate*0.01f));
+            //angrySymbol.startColor = new ParticleSystem.MinMaxGradient(temp);
         }
         else { lowerEmmisionTimer -= Time.deltaTime; }
 
