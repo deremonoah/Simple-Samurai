@@ -39,4 +39,16 @@ public class ParticleManager : MonoBehaviour
         angrySymbol.emissionRate = 15;
         lowerEmmisionTimer = 0.11f;
     }
+
+    public void BuffPointer(string type)
+    {
+        if(type == "speed")
+        {
+
+        }
+        if(type == "damage")
+        {
+            //not sure if I want this one here
+        }
+    }
 }
