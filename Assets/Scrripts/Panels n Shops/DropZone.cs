@@ -9,15 +9,45 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     [SerializeField] int SpotInDefenseList;
     [SerializeField] DropZoneType Droptype;
     public Dragable heldDragable;
+    private bool rightType;
+
+    
 
     public virtual void OnDrop(PointerEventData eventData)
     {
         //put the dragable.defense into this containers holder and then update the manager I have to make
+        Debug.Log("onDrop");
         Dragable d = eventData.pointerDrag.GetComponent<Dragable>();
-        if(d != null)
+        if(d.mytype == DragableType.defense && Droptype ==DropZoneType.Defense)
+        {
+            //should check this before because defenses wont have any item
+            rightType = true;
+        }
+        
+        else if(d.myitem.GetType() == typeof(Armor) && ((int)Droptype == 4 || (int)Droptype == 7))
+        {
+            //checks if the item is armor and if this dropzone is compatible with armor
+            rightType = true;
+        }
+        else if (d.myitem.GetType() == typeof(Weapon) && ((int)Droptype == 3 || (int)Droptype == 6))
+        {
+            //checks if the item is armor and if this dropzone is compatible with armor
+            rightType = true;
+        }
+        else if (d.myitem.GetType() == typeof(Curio) && ((int)Droptype == 5 || (int)Droptype == 8))
+        {
+            //checks if the item is armor and if this dropzone is compatible with armor
+            rightType = true;
+        } else if(Droptype == DropZoneType.Inventory)
+        {
+            rightType = true;
+        }
+
+        if (d != null && rightType && heldDragable ==null)
         {
             clearZone();
             d.ParentToReturnTo = this.transform;
+            heldDragable = d;
             if(d.mytype == DragableType.defense)
             { 
                 DefenseNum = (int)d.defense;
@@ -40,8 +70,18 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 {
                     //search list and 
                 }
+                rightType = false;
+            }
+            else if(d != null && rightType && heldDragable != null)
+            {
+                heldDragable.ParentToReturnTo = d.ParentToReturnTo;
+                heldDragable.transform.SetParent(heldDragable.ParentToReturnTo);
+                rightType = false;
             }
             //call and equip the right defense
+
+            //reset so the next item has to match
+            
         }
     }
 
