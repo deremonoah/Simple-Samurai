@@ -165,6 +165,7 @@ public class PlayerHealthBar : MonoBehaviour
     {
         angrySymbol.SetActive(true);
         float revengeTimer = 0;
+        FindObjectOfType<ParticleManager>().Revenge();
         Vector3 startingScale = angrySymbol.transform.localScale;
         FindObjectOfType<StrikeArea>().RevengeBuff();
 
