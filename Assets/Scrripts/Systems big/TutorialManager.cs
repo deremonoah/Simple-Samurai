@@ -101,7 +101,7 @@ public class TutorialManager : MonoBehaviour
 
         List<WeaponEffect> noneEffects = new List<WeaponEffect>();
         noneEffects.Add(WeaponEffect.none);
-        TrainingDummy.damgEnemy(900, noneEffects);
+        TrainingDummy.damageEnemy(900, noneEffects);
 
         
         while (_enemyManager.aliveEnemys.Count > 0)

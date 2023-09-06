@@ -60,6 +60,15 @@ public class enemy : MonoBehaviour
     public List<int> difficulty;
     public float stunTimer = 0;
 
+    //selfheal stuff
+    [SerializeField] float _healAmount;
+    private bool _regening = false;
+    [SerializeField] float regenTimer ,regenMaxTimer;
+    [SerializeField] float healThreashold;
+    [SerializeField] bool aboveHealThreashold;
+
+    private int regenTracker;
+
     public enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -110,6 +119,8 @@ public class enemy : MonoBehaviour
             HP = maxHP;
         }
 
+        
+
         SetWaitTimerOffset();
         /*switch(curState)
         {
@@ -135,7 +146,7 @@ public class enemy : MonoBehaviour
 
     
 
-    public void damgEnemy(float deal, List<WeaponEffect> effects)
+    public void damageEnemy(float deal, List<WeaponEffect> effects)
     {
 
         bool antArm = false;
@@ -161,6 +172,12 @@ public class enemy : MonoBehaviour
                     break;
 
             }
+        }
+        if(_regening && deal < healThreashold)
+        {
+            _regening = false;
+            //should have a custome noise and for the sumo the bowl should go flying
+            StopCoroutine(RegenRoutine());
         }
         if (antArm)
         {
@@ -247,6 +264,11 @@ public class enemy : MonoBehaviour
         bool hasStarted = false;
 
         MoveUP();
+
+        /*if(myActionRoutine != null)
+        {
+            hasStarted = true;
+        }*/
 
         if(stunTimer>0)
         {
@@ -580,6 +602,31 @@ public class enemy : MonoBehaviour
         {
             OnFireSprite.SetActive(false);
         }
+    }
+
+    IEnumerator RegenRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        HP += _healAmount;
+        if (HP != maxHP && regenTracker <12)
+        {
+            //keep sprite as healing
+            regenTracker++;
+            StartCoroutine(RegenRoutine());
+        }
+        else
+        {
+            regenTracker = 4;
+            StartMyRoutine();
+        }
+    }
+
+    public void StartRegen(float healAmount)
+    {
+        _healAmount = healAmount;
+        _regening = true;
+        regenTimer = regenMaxTimer;
+        myActionRoutine = StartCoroutine(RegenRoutine());
     }
 
     public void SetTargetPointer(Sprite img)

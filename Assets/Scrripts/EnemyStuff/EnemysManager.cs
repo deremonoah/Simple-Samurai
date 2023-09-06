@@ -90,7 +90,7 @@ public class EnemysManager : MonoBehaviour
     {
         if (aliveEnemys.Count > target)
         {
-            aliveEnemys[target].damgEnemy(damg, effects);
+            aliveEnemys[target].damageEnemy(damg, effects);
         }
     }
     public int GetPos()

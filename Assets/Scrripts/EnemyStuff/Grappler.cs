@@ -36,6 +36,10 @@ public class Grappler : enemy
         bool hasStarted = false;
         int rand = Random.Range(0, 10);
         actionCount++;
+
+        //this should stop duplicate attacks and too many actions
+        StopCoroutine(TheAttackRoutine());
+
         if(actionCount>3)
         {
             foreach (var block in blocksSet)
@@ -45,6 +49,14 @@ public class Grappler : enemy
         {
             hasStarted = true;
             myActionRoutine = StartCoroutine(SpawnBlock());
+        }
+
+        rand = Random.Range(0, 10);
+        //has and 70% chance to heal we may adjust later
+        if (base.HP<base.maxHP/2 && rand>2)
+        {
+            base.StartRegen(6f);
+            hasStarted = true;
         }
         //should also check if they have the self heal ability if they want to self heal based on stuff or maybe put that in base startmyroutine
         if (!hasStarted)

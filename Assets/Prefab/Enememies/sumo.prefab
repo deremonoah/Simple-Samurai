@@ -217,6 +217,11 @@ MonoBehaviour:
   Defensiveness: 1
   difficulty: 03000000040000000600000007000000
   stunTimer: 0
+  _healAmount: 0
+  regenTimer: 0
+  regenMaxTimer: 8
+  healThreashold: 40
+  aboveHealThreashold: 0
   blockprefab: {fileID: 2241141551349325259, guid: 90d86f7fae5bdf245a175399cf6cd090, type: 3}
   blocksSet: []
   _blockSpots: []

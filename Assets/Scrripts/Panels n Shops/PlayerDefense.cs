@@ -94,7 +94,7 @@ public class PlayerDefense : MonoBehaviour
                 EquipedDefense[lcv] = 0;
                 List<WeaponEffect> temp= new List<WeaponEffect>();
                 temp.Add(WeaponEffect.none);
-                enmy.damgEnemy(40, temp);
+                enmy.damageEnemy(40, temp);
                 DefensesUIList[2].SetActive(false);
                 EquipedDefenseSlot.clearZone();
                 break;
