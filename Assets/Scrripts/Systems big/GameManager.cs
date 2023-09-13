@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
     public void PlayerWins()
     {
         winPan.SetActive(true);
+        FindObjectOfType<VillageDefense>().PlayerWon();
     }
 
     public void ReducePrice(int gold)

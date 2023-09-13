@@ -153,4 +153,10 @@ public class VillageDefense : MonoBehaviour
     {
         TurnedOnShopButtons.Add(but);
     }
+
+    public void PlayerWon()
+    {
+         _defending = false;
+         _beingRaided = false;
+    }
 }
