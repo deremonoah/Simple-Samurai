@@ -23,7 +23,7 @@ public class Grappler : enemy
 
     protected override void Update()
     {
-        if (base.HP <= 0)
+        if (base.getCurrentHP() <= 0)
         {
             foreach (var trap in blocksSet)
                 Destroy(trap);
@@ -53,7 +53,7 @@ public class Grappler : enemy
 
         rand = Random.Range(0, 10);
         //has and 70% chance to heal we may adjust later
-        if (base.HP<base.maxHP/2 && rand>2)
+        if (base.getCurrentHP() < base.maxHP/2 && rand>2)
         {
             base.StartRegen(6f);
             hasStarted = true;

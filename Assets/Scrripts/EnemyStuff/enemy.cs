@@ -7,9 +7,10 @@ public class enemy : MonoBehaviour
 {
     
     //stats
-    public float HP, maxHP;
+    private float HP;
+    public float maxHP;
     [SerializeField] float armor, damgMin, damgMax, defendValue, defendingMin, defendingMax;
-    public enemy targetally;
+    //private enemy targetally;
 
     //mostly timers n stuff
     public float randWaitmin, randWaitmax, readyingTimer, strikeTimer, waitTimerOffset;
@@ -638,5 +639,10 @@ public class enemy : MonoBehaviour
     public void DisablePointer()
     {
         HPPointer.SetActive(false);
+    }
+
+    public float getCurrentHP()
+    {
+        return HP;
     }
 }

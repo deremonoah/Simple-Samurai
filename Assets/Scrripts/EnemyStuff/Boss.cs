@@ -10,13 +10,13 @@ public class Boss : Ninja
 
     protected override void fillMyHP()
     {
-        bossHP.fillAmount = HP / maxHP;
+        bossHP.fillAmount = base.getCurrentHP() / maxHP;
     }
 
     protected override void Update()
     {
         base.Update();
-        if ((base.myAbilities[1] == Ability.ninja) && HP < maxHP / 2 && !hasswap)
+        if ((base.myAbilities[1] == Ability.ninja) && base.getCurrentHP() < maxHP / 2 && !hasswap)
         {
             SwapSpots();
             hasswap = true;

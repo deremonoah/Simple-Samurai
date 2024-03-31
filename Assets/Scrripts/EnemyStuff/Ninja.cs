@@ -19,7 +19,7 @@ public class Ninja : enemy
 
     protected override void Update()
     {
-        if(base.HP<=0)
+        if(base.getCurrentHP() <= 0)
         {
             foreach (var trap in trapsSet)
                 Destroy(trap);

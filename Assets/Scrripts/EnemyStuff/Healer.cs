@@ -6,7 +6,7 @@ public class Healer : enemy
 {
     [SerializeField] float healMin, healMax;
     private List<GameObject> _mycurrentAttacks = new List<GameObject>();
-    
+    private enemy targetally;
 
     protected override void Start()
     {
@@ -47,7 +47,7 @@ public class Healer : enemy
 
         foreach (enemy i in enmsSys.aliveEnemys)
         {
-            if (i.HP < i.maxHP)
+            if (i.getCurrentHP() < i.maxHP)
             {
                 targetally = i;
                 hitIf = true;
