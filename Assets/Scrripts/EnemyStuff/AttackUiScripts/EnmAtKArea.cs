@@ -6,8 +6,8 @@ public class EnmAtKArea : MonoBehaviour
 {
 
     public bool blocking;
-    public enemy myenm;
-    public Transform endPos;
+    [HideInInspector] public enemy myenm;
+    [HideInInspector] public Transform endPos;
     public Vector2 dir;
     public float movespeed;
     public float multiPerry;

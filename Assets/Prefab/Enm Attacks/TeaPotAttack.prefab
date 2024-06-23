@@ -105,7 +105,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.15, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.54081637, y: 0.49659863}
@@ -191,4 +191,16 @@ MonoBehaviour:
   damage: 0
   atkEef: 0
   PathTimer: 0
+--- !u!114 &-5494088592105624716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8463170646872369030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13834d95aa0b239449917a3103a02894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rotateSpeed: 0.5

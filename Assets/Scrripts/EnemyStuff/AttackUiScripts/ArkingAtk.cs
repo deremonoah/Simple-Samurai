@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class RotatingAtk : EnmAtKArea
+public class ArkingAtk : EnmAtKArea
 {
     [SerializeField] float PathTimer;
     private PathCreator currentPath;
     private float distanceTravelled;
-    private float rotateNum=0;
-    [SerializeField] float rotateSpeed;
-
+    
+    
+    
     private void Start()
     {
         //this is where it should get or set it's path
@@ -48,10 +48,6 @@ public class RotatingAtk : EnmAtKArea
         //moves
         distanceTravelled += base.movespeed * Time.deltaTime;
         transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
-
-        //making it rotate 0.5 for tea pot rn, i could also leave it at 0 if i don't want it to move but would prob look weird that way
-        rotateNum += rotateSpeed;
-        this.transform.rotation = Quaternion.Euler(Vector3.forward *rotateNum);
 
         //once the attack is past designated area it is destoryed
         if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
