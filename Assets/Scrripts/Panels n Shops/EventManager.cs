@@ -186,7 +186,7 @@ public class EventManager : MonoBehaviour
     private IEnumerator DisplayEventsRoutine()
     {
         EventPanel.SetActive(true);
-
+        hasPicked = false;
 
         foreach (Event eve in _nextEvents)
         {
@@ -196,7 +196,7 @@ public class EventManager : MonoBehaviour
             if(eve.eventImage !=null)
             EventImage.sprite = eve.eventImage;
 
-            hasPicked = false;
+            //hasPicked = false; was causing an infinite loop
             while (!hasPicked)
             {
                 yield return null;

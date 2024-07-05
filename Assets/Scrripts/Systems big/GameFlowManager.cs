@@ -33,6 +33,7 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator FlowRoutine()
     {
+        Debug.Log("in flow routine");
         //looting stuff
         _PickPanelManager.OpenPickPan(0);
         StrikeArea.SwitchPlayerOn(false);
