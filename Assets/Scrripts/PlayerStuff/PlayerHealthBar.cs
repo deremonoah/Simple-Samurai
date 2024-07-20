@@ -30,6 +30,13 @@ public class PlayerHealthBar : MonoBehaviour
 
     [SerializeField] private float timeAngrySymbolIsOnScreen = 2f;
     private Vector3 startingScale;
+    private ColorManager colman;
+
+    //poison stuff added
+    public Text PoisonText;
+    private Coroutine poisoning;
+    private bool isPoisoned;
+    private int PoisonTimer = 20;
 
     void Start()
     {
@@ -41,8 +48,11 @@ public class PlayerHealthBar : MonoBehaviour
         _playerDefense = FindObjectOfType<PlayerDefense>();
         _myCurio = FindObjectOfType<PlayerEquipedItemsManager>().equipedCurio;
         angrySymbol.SetActive(false);
+        colman = FindObjectOfType<ColorManager>();
 
         startingScale = angrySymbol.transform.localScale;
+        PoisonText.text = "";
+        isPoisoned = false;
     }
 
 
@@ -123,14 +133,27 @@ public class PlayerHealthBar : MonoBehaviour
         {
             if (ability == 2)
             {
+                //anti armor
                 health -= (Mathf.Max(1, damagePoints));
             } else if(ability ==8)
             {
+                //fire ability
                 health -= (Mathf.Max(1, damagePoints));
                 StartCoroutine(OnFire());
+            } else if(ability == 12)
+            {
+                //poison
+                if (isPoisoned)
+                    {
+                    PoisonTimer -= 3;
+                    }
+                else
+                { poisoning = StartCoroutine(PoisonedRoutine()); }
+                
             }
             else
             {
+                //regular attack
                 health -= (Mathf.Max(1, damagePoints - armorValue));
                 //Debug.Log("max: " + Mathf.Max(1, damagePoints - armorValue));
             }
@@ -238,5 +261,37 @@ public class PlayerHealthBar : MonoBehaviour
     public void ReduceMaxHP(float lessHP)
     {
         maxHealth -= lessHP;
+    }
+
+    public void CuredofPoison()
+    {
+        //stop poison routine
+        //might need to call color manager to have color consistancy
+        healthBar.color = Color.red;
+        PoisonText.text = "";
+        StopCoroutine(poisoning);
+        //restore poisonTimer
+        PoisonTimer = 20;
+        isPoisoned = false;
+    }
+
+    IEnumerator PoisonedRoutine()
+    {
+        isPoisoned = true;
+        yield return new WaitForSeconds(1f);
+        PoisonTimer = 20;
+        healthBar.color = colman.PoisonedColor;
+        //healthBar.color =  Color.black;
+        //would like to change that to purple
+        //PoisonText.gameObject.SetActive(true); can just have no text
+
+        while (PoisonTimer>0)
+        {
+            yield return new WaitForSeconds(1f);
+            PoisonTimer--;
+            PoisonText.text = ""+PoisonTimer;
+        }
+        //if secCount<=0
+        health = 0;
     }
 }

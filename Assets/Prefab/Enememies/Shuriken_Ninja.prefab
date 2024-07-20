@@ -32,7 +32,51 @@ PrefabInstance:
       value: -0.622
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: damgMax
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: damgMin
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: longRanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: defendValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: randWaitmax
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: randWaitmin
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: Defensiveness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: atkPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8568252206828867109, guid: 046cb1a0d2249ce439607cc7f4794b8c, type: 3}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8568252206828867109, guid: 046cb1a0d2249ce439607cc7f4794b8c, type: 3}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5675845330809881521, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: atkPrefabs.Array.data[3]
       value: 
       objectReference: {fileID: 8568252206828867109, guid: 046cb1a0d2249ce439607cc7f4794b8c, type: 3}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -80,6 +124,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6dd5fdc1384ea7f418c13eef56935c7b, type: 3}
@@ -101,7 +153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Name
-      value: Ninja_Thrower
+      value: Shuriken_Ninja
       objectReference: {fileID: 0}
     - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive

@@ -77,7 +77,7 @@ public class enemy : MonoBehaviour
 
     public enum Ability
     {
-        none,steal, antiarmor, heal, multiHeal, ninja, boss, sasumata,fire, blacksmith, sensei, farmWife
+        none,steal, antiarmor, heal, multiHeal, ninja, boss, sasumata,fire, blacksmith, sensei, farmWife, poison
     }
 
     protected virtual void Start()
@@ -111,6 +111,11 @@ public class enemy : MonoBehaviour
                 Destroy(atk);
 
             _GM.PayOut(minCoin + amountRobbed, maxCoin);
+            if(myAbilities[0]==Ability.poison)
+            {
+                FindObjectOfType<PlayerHealthBar>().CuredofPoison();
+                //currently this wouldn't check if there are other enemies with the ability to poison, but worry about it later
+            }
             enmsSys.OnDied(this);
             
             

@@ -52,7 +52,9 @@ public class EventManager : MonoBehaviour
             CheckNextEvent();
             CallDisplayEvents();
         }
+#pragma warning disable CS0618 // Type or member is obsolete
         if(EventPanel.active == true)
+#pragma warning restore CS0618 // Type or member is obsolete
         {
             PanelUP = true;
         }else

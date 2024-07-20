@@ -9,5 +9,5 @@ public class ColorManager : MonoBehaviour
     public Color curioColor;
     public Color defendingColor;
     public Color AboutToHealColor;
-
+    public Color PoisonedColor;
 }
