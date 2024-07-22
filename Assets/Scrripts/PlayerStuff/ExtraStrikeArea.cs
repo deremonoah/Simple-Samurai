@@ -37,12 +37,20 @@ public class ExtraStrikeArea : MonoBehaviour
 
         if (strikePoint.mostRecentX < 1.5)
         { damgMult = 1; }
-        else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 3)
+        else if (strikePoint.mostRecentX >= 2.1 && strikePoint.mostRecentX < 2.84)
+        { damgMult = 4; }
+        else if (strikePoint.mostRecentX >= 2.84 && strikePoint.mostRecentX < 3.6)
         { damgMult = 8; }
-        else if (strikePoint.mostRecentX >= 3 && strikePoint.mostRecentX < 4)
+        else if (strikePoint.mostRecentX >= 3.6 && strikePoint.mostRecentX < 4.32)
         { damgMult = 12; }
-        else if (strikePoint.mostRecentX >= 4)
+        else if (strikePoint.mostRecentX >= 4.32)
         { damgMult = 20; }
+
+        //original if numbers were a bit off (1.5,3,4 those were the lines had less variability(multipliers were 1, 8, 12, 20))
+        // new correct numbers that line up with the strike are builder are as follows
+        // 1.35,2.1,2.84,3.6,4.32
+        //dif:.75,.74,.76,.72 I am okay with these they don't need to be perfect, it comes down to where the center is located which implies
+        //as long as most of the pointer is in one area you are fine
 
         if (StrikeArea.PlayerOn)
         {
