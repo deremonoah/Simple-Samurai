@@ -36,15 +36,15 @@ public class ExtraStrikeArea : MonoBehaviour
         
 
         if (strikePoint.mostRecentX < 1.5)
-        { damgMult = 1; }
+        { damgMult = MyWeapon.damageMults[0]; }
         else if (strikePoint.mostRecentX >= 2.1 && strikePoint.mostRecentX < 2.84)
-        { damgMult = 4; }
+        { damgMult = MyWeapon.damageMults[1]; }
         else if (strikePoint.mostRecentX >= 2.84 && strikePoint.mostRecentX < 3.6)
-        { damgMult = 8; }
+        { damgMult = MyWeapon.damageMults[2]; }
         else if (strikePoint.mostRecentX >= 3.6 && strikePoint.mostRecentX < 4.32)
-        { damgMult = 12; }
+        { damgMult = MyWeapon.damageMults[3]; }
         else if (strikePoint.mostRecentX >= 4.32)
-        { damgMult = 20; }
+        { damgMult = MyWeapon.damageMults[4]; }
 
         //original if numbers were a bit off (1.5,3,4 those were the lines had less variability(multipliers were 1, 8, 12, 20))
         // new correct numbers that line up with the strike are builder are as follows
