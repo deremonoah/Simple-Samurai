@@ -4549,7 +4549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &337474712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19119,7 +19119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 
-  MyWeapon: {fileID: 0}
+  MyWeapon: {fileID: 11400000, guid: d4d7766a130f7fc488bacb0679a80558, type: 2}
   WhichAreaMe: 1
 --- !u!60 &934625132
 PolygonCollider2D:
@@ -21024,7 +21024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 
-  MyWeapon: {fileID: 0}
+  MyWeapon: {fileID: 11400000, guid: d4d7766a130f7fc488bacb0679a80558, type: 2}
   WhichAreaMe: 2
 --- !u!60 &1054881122
 PolygonCollider2D:
@@ -37004,7 +37004,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
@@ -37020,7 +37020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.size
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enmSpawns.Array.data[0]
@@ -37187,6 +37187,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5058154531069331146, guid: 87fdd2591e5d16442aa6ac2fba52a42b, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 5370437428042502042, guid: d128bcabf39efb04eb090994b8470201, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: OdachiSprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
@@ -37214,6 +37218,10 @@ PrefabInstance:
       propertyPath: attackkStarts.Array.data[3]
       value: 
       objectReference: {fileID: 1088390464}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[10]
+      value: 
+      objectReference: {fileID: 3143599910317617200, guid: a4a19a57ffa845a49a854d9fc849543e, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackStartPoints.Array.size
       value: 4
