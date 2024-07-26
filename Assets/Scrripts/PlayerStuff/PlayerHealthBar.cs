@@ -278,7 +278,7 @@ public class PlayerHealthBar : MonoBehaviour
     IEnumerator PoisonedRoutine()
     {
         isPoisoned = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.3f);
         PoisonTimer = 20;
         healthBar.color = colman.PoisonedColor;
         //healthBar.color =  Color.black;
