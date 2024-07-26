@@ -33,18 +33,19 @@ public class ExtraStrikeArea : MonoBehaviour
     private void Update()
     {
 
-        
 
         if (strikePoint.mostRecentX < 1.5)
         { damgMult = MyWeapon.damageMults[0]; }
-        else if (strikePoint.mostRecentX >= 2.1 && strikePoint.mostRecentX < 2.84)
+        else if (strikePoint.mostRecentX >= 1.5 && strikePoint.mostRecentX < 2.1)
         { damgMult = MyWeapon.damageMults[1]; }
-        else if (strikePoint.mostRecentX >= 2.84 && strikePoint.mostRecentX < 3.6)
+        else if (strikePoint.mostRecentX >= 2.1 && strikePoint.mostRecentX < 2.84)
         { damgMult = MyWeapon.damageMults[2]; }
-        else if (strikePoint.mostRecentX >= 3.6 && strikePoint.mostRecentX < 4.32)
+        else if (strikePoint.mostRecentX >= 2.84 && strikePoint.mostRecentX < 3.6)
         { damgMult = MyWeapon.damageMults[3]; }
-        else if (strikePoint.mostRecentX >= 4.32)
+        else if (strikePoint.mostRecentX >= 3.6 && strikePoint.mostRecentX < 4.32)
         { damgMult = MyWeapon.damageMults[4]; }
+        else if (strikePoint.mostRecentX >= 4.32)
+        { damgMult = MyWeapon.damageMults[5]; }
 
         //original if numbers were a bit off (1.5,3,4 those were the lines had less variability(multipliers were 1, 8, 12, 20))
         // new correct numbers that line up with the strike are builder are as follows
@@ -134,25 +135,31 @@ public class ExtraStrikeArea : MonoBehaviour
             }
             else if (enmySys.aliveEnemys.Count == 3)
             {
-                if (WhichAreaMe == 3)
+                    target.Clear();
+                    target.Add(WhichAreaMe);
+            }
+        }
+        else if(MyWeapon.effs[0]==WeaponEffect.shuriken)
+        {
+            if (enmySys.aliveEnemys.Count == 1)
+            {
+                target.Clear();
+                target.Add(0);
+            }
+            else if (enmySys.aliveEnemys.Count == 2)
+            {
+                if (WhichAreaMe == 2)
                 {
                     target.Clear();
                     target.Add(0);
-
                 }
                 else
                 {
                     target.Clear();
-                    target.Add(WhichAreaMe);
-
+                    target.Add(1);
                 }
             }
-            else if (enmySys.aliveEnemys.Count == 4)
-            {
-                target.Clear();
-                target.Add(WhichAreaMe);
-
-            }
+            
         }
     }
 

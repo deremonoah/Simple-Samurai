@@ -8,6 +8,6 @@ public class Weapon : Item
     public Sprite myStrikeArea,strikePointer;
     public List<float> baseDamageLevel, maxDamageLevel;
     public List<WeaponEffect> effs;
-    public float[] damageMults= new float[5];
+    public float[] damageMults= new float[6];
 }
-public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata }
+public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata, shuriken,multiTarget }

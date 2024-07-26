@@ -28,3 +28,10 @@ MonoBehaviour:
   - 80
   - 95
   effs: 01000000
+  damageMults:
+  - 2
+  - 7
+  - 7
+  - 11
+  - 15
+  - 19

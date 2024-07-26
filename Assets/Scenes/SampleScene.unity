@@ -855,6 +855,7 @@ Transform:
   - {fileID: 1439485292}
   - {fileID: 1687490590}
   - {fileID: 1616028703}
+  - {fileID: 1820538372}
   - {fileID: 327096932}
   - {fileID: 803688242}
   - {fileID: 858963099}
@@ -2136,7 +2137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 95181845}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192339680
 GameObject:
@@ -3728,7 +3729,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 95181845}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301850500
 GameObject:
@@ -4378,7 +4379,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 95181845}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &331458923
 GameObject:
@@ -12843,7 +12844,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 95181845}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563998599
 GameObject:
@@ -15509,11 +15510,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9300f20a5c04cb541bf41db1eecc7a50, type: 3}
   - {fileID: 21300000, guid: 50b721de45a09b047892985c11bdfe3c, type: 3}
   - {fileID: 21300000, guid: 4544802d796bca74b9e1ce826d01242b, type: 3}
+  shurikenAreas:
+  - {fileID: 934625129}
+  - {fileID: 1054881119}
   SoundMng: {fileID: 389242400}
   strikePointObj: {fileID: 428360338}
   justStruck: 0
   equipedWeapon: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
-  TestWeapon: {fileID: 11400000, guid: 7d75a0bb9a617e842b87e4d0ea2a08cb, type: 2}
+  TestWeapon: {fileID: 11400000, guid: d4d7766a130f7fc488bacb0679a80558, type: 2}
 --- !u!1 &724075132
 GameObject:
   m_ObjectHideFlags: 0
@@ -16350,7 +16354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 95181845}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808154808
 GameObject:
@@ -16968,7 +16972,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 95181845}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864540550
 GameObject:
@@ -19069,6 +19073,151 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2182368788513098030, guid: ac11f089db0d8424da5a7238920e5ef0, type: 3}
   m_PrefabInstance: {fileID: 2182368787832861694}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &934625129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 934625130}
+  - component: {fileID: 934625133}
+  - component: {fileID: 934625132}
+  - component: {fileID: 934625131}
+  m_Layer: 0
+  m_Name: Shuriken strike area 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &934625130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934625129}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.888, y: -0.183, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1820538372}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934625131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934625129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d721ebbd8f94f948bec15edd032e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 
+  MyWeapon: {fileID: 0}
+  WhichAreaMe: 1
+--- !u!60 &934625132
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934625129}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 2.6}
+    newSize: {x: 3, y: 2.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.24, y: 0.96999997}
+      - {x: 1.23, y: 1}
+      - {x: 1.12, y: 0.97999996}
+      - {x: 0.84, y: 0.85999995}
+      - {x: 0.78, y: 0.83}
+      - {x: 0.45999998, y: 0.97999996}
+      - {x: 0.39, y: 1.03}
+      - {x: 0.32999998, y: 1.03}
+      - {x: 0.31, y: 1.02}
+      - {x: 0.34, y: 0.93}
+      - {x: 0.48, y: 0.57}
+      - {x: 0.26999998, y: 0.22}
+      - {x: 0.26999998, y: 0.14999999}
+      - {x: 0.28, y: 0.12}
+      - {x: 0.74, y: 0.29}
+      - {x: 1.14, y: 0.08}
+      - {x: 1.16, y: 0.08}
+      - {x: 1.1899999, y: 0.089999996}
+      - {x: 1.17, y: 0.21}
+      - {x: 1.06, y: 0.47}
+      - {x: 1.05, y: 0.57}
+--- !u!212 &934625133
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934625129}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 2876c2141ca62574fb8cd9a3d7d03073, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3, y: 2.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &936263934
 GameObject:
   m_ObjectHideFlags: 0
@@ -20829,6 +20978,156 @@ RectTransform:
   m_AnchoredPosition: {x: 22, y: -8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1054881119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1054881120}
+  - component: {fileID: 1054881123}
+  - component: {fileID: 1054881122}
+  - component: {fileID: 1054881121}
+  m_Layer: 0
+  m_Name: Shuriken strike area 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1054881120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054881119}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.895, y: -0.177, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children: []
+  m_Father: {fileID: 1820538372}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1054881121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054881119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d721ebbd8f94f948bec15edd032e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 
+  MyWeapon: {fileID: 0}
+  WhichAreaMe: 2
+--- !u!60 &1054881122
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054881119}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 2.6}
+    newSize: {x: 3, y: 2.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1999999, y: -0.29999998}
+      - {x: 1.1999999, y: -0.25}
+      - {x: 1.15, y: -0.24}
+      - {x: 1.01, y: -0.29999998}
+      - {x: 0.71999997, y: -0.39999998}
+      - {x: 0.53999996, y: -0.29}
+      - {x: 0.38, y: -0.22}
+      - {x: 0.29999998, y: -0.19}
+      - {x: 0.28, y: -0.21}
+      - {x: 0.28, y: -0.22999999}
+      - {x: 0.32999998, y: -0.35999998}
+      - {x: 0.39999998, y: -0.55}
+      - {x: 0.41, y: -0.69}
+      - {x: 0.31, y: -0.87}
+      - {x: 0.22, y: -1.05}
+      - {x: 0.22, y: -1.0699999}
+      - {x: 0.24, y: -1.0799999}
+      - {x: 0.28, y: -1.0799999}
+      - {x: 0.7, y: -0.94}
+      - {x: 0.81, y: -1.01}
+      - {x: 1.02, y: -1.14}
+      - {x: 1.1, y: -1.16}
+      - {x: 1.14, y: -1.16}
+      - {x: 1.15, y: -1.15}
+      - {x: 1, y: -0.68}
+      - {x: 1.14, y: -0.44}
+--- !u!212 &1054881123
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054881119}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: b1f9d57771ba3b44291943d39618bade, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3, y: 2.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1063805847
 GameObject:
   m_ObjectHideFlags: 0
@@ -29099,6 +29398,7 @@ MonoBehaviour:
   bottomOdachi: {fileID: 1687490589}
   BowAreas: []
   BowPointers: []
+  shurikenAreas: []
   SoundMng: {fileID: 0}
   strikePointObj: {fileID: 428360338}
   justStruck: 0
@@ -30961,6 +31261,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785688924}
   m_CullTransparentMesh: 1
+--- !u!1 &1820538371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820538372}
+  m_Layer: 0
+  m_Name: Shuriken strike areas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820538372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820538371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 934625130}
+  - {fileID: 1054881120}
+  m_Father: {fileID: 95181845}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823431077
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,6 +58,7 @@ public class PickPanManager : MonoBehaviour
         if(kind == 0)
         {
             looting = true;
+            return;
         }
         if(kind ==1)
         {

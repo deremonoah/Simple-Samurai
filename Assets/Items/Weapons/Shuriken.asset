@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
-  m_Name: Odachi
+  m_Name: Shuriken
   m_EditorClassIdentifier: 
-  itemPanelIcon: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
-  itemDescription: 'Odachi: a weapon that can sweep and strike 2 enemies at once'
+  itemPanelIcon: {fileID: 21300000, guid: 89310b98910506543b847054154fff73, type: 3}
+  itemDescription: this is banned in canada, the UK, and Austrailia for some reason
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: a4f756be5e8167b419e524b20ab8d8f0, type: 3}
-  strikePointer: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: 79466f053ac4fff408d2634c09300de0, type: 3}
+  strikePointer: {fileID: 21300000, guid: 8258fd9a5629ce84fa12107a9884e618, type: 3}
   baseDamageLevel:
   - 4
-  - 6
-  - 8
-  - 12
+  - 7
+  - 10
+  - 14
   maxDamageLevel:
-  - 50
   - 60
-  - 70
-  - 90
-  effs: 040000000b000000
+  - 68
+  - 80
+  - 96
+  effs: 0a0000000b000000
   damageMults:
   - 2
-  - 8
-  - 8
-  - 12
-  - 17
-  - 21
+  - 10
+  - 16
+  - 2
+  - 10
+  - 16

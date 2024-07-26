@@ -26,6 +26,9 @@ public class StrikeArea : MonoBehaviour
     [SerializeField] List<GameObject> BowAreas;
     public List<Sprite> BowPointers;
 
+    [SerializeField] List<GameObject> shurikenAreas;
+    //will need shuriken pointers and that functionality working eventually
+
     public SoundManager SoundMng;
 
     public GameObject strikePointObj;
@@ -58,14 +61,17 @@ public class StrikeArea : MonoBehaviour
     {
 
         if (_mystrikePoint.mostRecentX < 1.5)
-        { damgMult = 2; }
-        else if (_mystrikePoint.mostRecentX >= 1.5 && _mystrikePoint.mostRecentX < 3)
-        { damgMult = 8; }
-        else if (_mystrikePoint.mostRecentX >= 3 && _mystrikePoint.mostRecentX < 4)
-        { damgMult = 12; }
-        else if (_mystrikePoint.mostRecentX >= 4.5)
-        { damgMult = 18; }
-
+        { damgMult = equipedWeapon.damageMults[0]; }
+        else if(_mystrikePoint.mostRecentX >= 1.5 && _mystrikePoint.mostRecentX < 2.1)
+        { damgMult = equipedWeapon.damageMults[1]; }
+        else if (_mystrikePoint.mostRecentX >= 2.1 && _mystrikePoint.mostRecentX < 2.84)
+        { damgMult = equipedWeapon.damageMults[2]; }
+        else if (_mystrikePoint.mostRecentX >= 2.84 && _mystrikePoint.mostRecentX < 3.6)
+        { damgMult = equipedWeapon.damageMults[3]; }
+        else if (_mystrikePoint.mostRecentX >= 3.6 && _mystrikePoint.mostRecentX < 4.32)
+        { damgMult = equipedWeapon.damageMults[4]; }
+        else if (_mystrikePoint.mostRecentX >= 4.32)
+        { damgMult = equipedWeapon.damageMults[5]; }
 
         if (PlayerOn)
         {
@@ -185,15 +191,75 @@ public class StrikeArea : MonoBehaviour
         inStrikeArea = false;
     }
 
-    private void TurnBow(bool iss,Weapon wee)
+    private void turnMultiStrikeAreas(bool iss, Weapon wee)
     {
-        for (int lcv = 0; lcv < BowAreas.Count; lcv++)
+
+        if(iss ==false)
         {
-            BowAreas[lcv].SetActive(iss);
-            if (iss)
-            { BowAreas[lcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); }
+            //turns all of these off
+            bottomOdachi.SetActive(false);
+            if (targetEnemy.Count > 1)
+            {
+                targetEnemy.RemoveAt(1);
+            }
+
+            //bow
+            for (int bowlcv = 0; bowlcv < BowAreas.Count; bowlcv++)
+            {
+                BowAreas[bowlcv].SetActive(false);
+                if (iss)
+                { BowAreas[bowlcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); }
+            }
+
+            //shuriken
+            for (int shurlcv = 0; shurlcv < shurikenAreas.Count; shurlcv++)
+            {
+                shurikenAreas[shurlcv].SetActive(false);
+            }
+
+            //dont need to check ifs
+            return;
+        }
+
+        for (int lcv = 0; lcv < wee.effs.Count; lcv++)
+        {
+
+            //odachi
+            if (wee.effs[0] == WeaponEffect.odachi)
+            {
+                bottomOdachi.SetActive(true);
+                if (targetEnemy.Count > 1)
+                {
+                    targetEnemy.RemoveAt(1);
+                }
+                targetEnemy.Add(1);
+                bottomOdachi.GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee);
+            }
+            
+            //bow
+            if (wee.effs[lcv] == WeaponEffect.bow)
+            {
+                for (int bowlcv = 0; bowlcv < BowAreas.Count; bowlcv++)
+                {
+                    BowAreas[bowlcv].SetActive(iss);
+                    if (iss)
+                    { BowAreas[bowlcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); }
+                }
+            }
+
+            //shuriken
+            if (wee.effs[lcv] == WeaponEffect.shuriken)
+            {
+                for(int shurlcv=0;shurlcv<shurikenAreas.Count;shurlcv++)
+                {
+                    shurikenAreas[shurlcv].SetActive(true);
+                    //shurikenAreas[shurlcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); shouldnt need
+                }
+            }
+
         }
     }
+
 
     public void SetWeapon(Weapon wee)
     {
@@ -210,42 +276,14 @@ public class StrikeArea : MonoBehaviour
         equipedWeapon = wee;
         for (int lcv = 0; lcv<wee.effs.Count; lcv++)
         {
-            
-
-            if (wee.effs[lcv] == WeaponEffect.odachi)
+            //probably should just add a multistrike weapon effect to simplify this if yes will do
+            if (wee.effs[lcv] == WeaponEffect.multiTarget)
             {
-                bottomOdachi.SetActive(true);
-                if (targetEnemy.Count > 1)
-                {
-                    targetEnemy.RemoveAt(1);
-                }
-                targetEnemy.Add(1);
-                bottomOdachi.GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee);
+                turnMultiStrikeAreas(true,wee);
             }
             else
             {
-                bottomOdachi.SetActive(false);
-                if (targetEnemy.Count > 1)
-                {
-                    targetEnemy.RemoveAt(1);
-                }
-            }
-
-            if (wee.effs[lcv] == WeaponEffect.bow)
-            {
-                TurnBow(true,wee);
-            }
-            else
-            {
-                TurnBow(false,wee);
-            }
-
-            if (wee.effs[lcv] == WeaponEffect.greed)
-            {
-                //strikePointObj.GetComponent<StrikePoint>().SetBoundsSmaller();
-            }else
-            {
-                //strikePointObj.GetComponent<StrikePoint>().SetBoundsRegular();
+                turnMultiStrikeAreas(false,wee);
             }
         }
     }
