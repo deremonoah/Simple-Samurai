@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
+  m_Name: BlowGun
+  m_EditorClassIdentifier: 
+  itemPanelIcon: {fileID: 21300000, guid: efd21efd17c86ed488f036615e78effb, type: 3}
+  itemDescription: A simple tube that shoots a deadly dart with a poison that will
+    kill your enemy in due time
+  itemLevel: 0
+  myStrikeArea: {fileID: 21300000, guid: bb1056e34f8b75e42a3d05990ef78319, type: 3}
+  strikePointer: {fileID: 21300000, guid: ad2b92d04a1cd8f4da392861d8bbeccc, type: 3}
+  baseDamageLevel:
+  - 1
+  - 1
+  - 1
+  - 1
+  maxDamageLevel:
+  - 5
+  - 10
+  - 15
+  - 30
+  effs: 070000000b000000
+  damageMults:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 2
+  - 3

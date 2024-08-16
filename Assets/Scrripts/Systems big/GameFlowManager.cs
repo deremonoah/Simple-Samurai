@@ -38,6 +38,7 @@ public class GameFlowManager : MonoBehaviour
         _PickPanelManager.OpenPickPan(0);
         StrikeArea.SwitchPlayerOn(false);
         _PickPanManager.RandomItemPull();
+
         while (_PickPanelManager.isPanelOpen())
         {
             yield return null;
