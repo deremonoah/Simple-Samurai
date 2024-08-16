@@ -16,7 +16,7 @@ MonoBehaviour:
   itemDescription: A simple tube that shoots a deadly dart with a poison that will
     kill your enemy in due time
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: bb1056e34f8b75e42a3d05990ef78319, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: 850a07953ea41f04382d94c64e7bcdbc, type: 3}
   strikePointer: {fileID: 21300000, guid: ad2b92d04a1cd8f4da392861d8bbeccc, type: 3}
   baseDamageLevel:
   - 1
@@ -28,7 +28,7 @@ MonoBehaviour:
   - 10
   - 15
   - 30
-  effs: 070000000b000000
+  effs: 070000000b0000000d000000
   damageMults:
   - 1
   - 1

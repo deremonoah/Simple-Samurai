@@ -28,6 +28,7 @@ public class StrikeArea : MonoBehaviour
 
     [SerializeField] List<GameObject> shurikenAreas;
     //will need shuriken pointers and that functionality working eventually
+    [SerializeField] List<GameObject> PoisonBlowGunAreas;
 
     public SoundManager SoundMng;
 
@@ -59,7 +60,7 @@ public class StrikeArea : MonoBehaviour
     
     void Update()
     {
-
+        #region Damage Multiplier Ifs
         if (_mystrikePoint.mostRecentX < 1.5)
         { damgMult = equipedWeapon.damageMults[0]; }
         else if(_mystrikePoint.mostRecentX >= 1.5 && _mystrikePoint.mostRecentX < 2.1)
@@ -72,6 +73,7 @@ public class StrikeArea : MonoBehaviour
         { damgMult = equipedWeapon.damageMults[4]; }
         else if (_mystrikePoint.mostRecentX >= 4.32)
         { damgMult = equipedWeapon.damageMults[5]; }
+        #endregion
 
         if (PlayerOn)
         {
@@ -193,8 +195,9 @@ public class StrikeArea : MonoBehaviour
 
     private void turnMultiStrikeAreas(bool iss, Weapon wee)
     {
-
-        if(iss ==false)
+        Debug.Log("in multiStrikeAreas method");
+        #region turnOFFStrikeAreasLoops
+        if (iss ==false)
         {
             //turns all of these off
             bottomOdachi.SetActive(false);
@@ -203,7 +206,7 @@ public class StrikeArea : MonoBehaviour
                 targetEnemy.RemoveAt(1);
             }
 
-            //bow
+            //bow disssabled
             for (int bowlcv = 0; bowlcv < BowAreas.Count; bowlcv++)
             {
                 BowAreas[bowlcv].SetActive(false);
@@ -211,21 +214,32 @@ public class StrikeArea : MonoBehaviour
                 { BowAreas[bowlcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); }
             }
 
-            //shuriken
+            //shuriken disabled
             for (int shurlcv = 0; shurlcv < shurikenAreas.Count; shurlcv++)
             {
                 shurikenAreas[shurlcv].SetActive(false);
             }
 
+            //BlowGun OFF
+            
+                for (int blowlcv = 0; blowlcv < PoisonBlowGunAreas.Count; blowlcv++)
+                {
+                    PoisonBlowGunAreas[blowlcv].SetActive(false);
+                    //shurikenAreas[shurlcv].GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee); shouldnt need
+                }
+            
+
             //dont need to check ifs
             return;
         }
+        #endregion
 
+        #region turnONStrikeAreaIfs
         for (int lcv = 0; lcv < wee.effs.Count; lcv++)
         {
 
-            //odachi
-            if (wee.effs[0] == WeaponEffect.odachi)
+            //odachi ON
+            if (wee.effs[lcv] == WeaponEffect.odachi)
             {
                 bottomOdachi.SetActive(true);
                 if (targetEnemy.Count > 1)
@@ -236,7 +250,7 @@ public class StrikeArea : MonoBehaviour
                 bottomOdachi.GetComponent<ExtraStrikeArea>().SetExtrasWeapon(wee);
             }
             
-            //bow
+            //bow ON
             if (wee.effs[lcv] == WeaponEffect.bow)
             {
                 for (int bowlcv = 0; bowlcv < BowAreas.Count; bowlcv++)
@@ -247,7 +261,7 @@ public class StrikeArea : MonoBehaviour
                 }
             }
 
-            //shuriken
+            //shuriken ON
             if (wee.effs[lcv] == WeaponEffect.shuriken)
             {
                 for(int shurlcv=0;shurlcv<shurikenAreas.Count;shurlcv++)
@@ -257,7 +271,21 @@ public class StrikeArea : MonoBehaviour
                 }
             }
 
+            //BlowGun ON
+            if(wee.effs[0] == WeaponEffect.poison && wee.effs[1] == WeaponEffect.multiTarget)
+            {
+                    for (int blowlcv = 0; blowlcv < PoisonBlowGunAreas.Count; blowlcv++)
+                {
+                    PoisonBlowGunAreas[blowlcv].SetActive(true);
+                    
+                }
+                //will go through 1st pass so no need to check more, 
+                //the other ones are set up to factor in error in order or inconsistant placement on effects
+                return;
+            }
+
         }
+        #endregion
     }
 
 
@@ -280,6 +308,7 @@ public class StrikeArea : MonoBehaviour
             if (wee.effs[lcv] == WeaponEffect.multiTarget)
             {
                 turnMultiStrikeAreas(true,wee);
+                return;
             }
             else
             {

@@ -27,7 +27,7 @@ MonoBehaviour:
   - 68
   - 80
   - 96
-  effs: 0a0000000b000000
+  effs: 0a0000000c0000000b000000
   damageMults:
   - 2
   - 10

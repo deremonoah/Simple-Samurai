@@ -100,66 +100,69 @@ public class ExtraStrikeArea : MonoBehaviour
     private void CheckTarget()
     {
         //reformat to case statement thing maybe
-
-        if (MyWeapon.effs[0] == WeaponEffect.odachi)
+        foreach (WeaponEffect we in MyWeapon.effs)
         {
-            target.Clear();
-            target.Add(0);
-            if (enmySys.aliveEnemys.Count > 2)
-            {
-                target.Add(2);
-            }else
-            {
-                target.Add(1);
-            }
-        }
-        else if (MyWeapon.effs[0] == WeaponEffect.bow)
-        {
-            if (enmySys.aliveEnemys.Count == 1)
+            if (we == WeaponEffect.odachi)
             {
                 target.Clear();
                 target.Add(0);
+                if (enmySys.aliveEnemys.Count > 2)
+                {
+                    target.Add(2);
+                }
+                else
+                {
+                    target.Add(1);
+                }
             }
-            else if (enmySys.aliveEnemys.Count == 2)
+            else if (we == WeaponEffect.FourTarget)
             {
-                if (WhichAreaMe == 2)
+                if (enmySys.aliveEnemys.Count == 1)
                 {
                     target.Clear();
                     target.Add(0);
                 }
-                else
+                else if (enmySys.aliveEnemys.Count == 2)
                 {
-                    target.Clear();
-                    target.Add(1);
+                    if (WhichAreaMe == 2)
+                    {
+                        target.Clear();
+                        target.Add(0);
+                    }
+                    else
+                    {
+                        target.Clear();
+                        target.Add(1);
+                    }
                 }
-            }
-            else if (enmySys.aliveEnemys.Count == 3)
-            {
+                else if (enmySys.aliveEnemys.Count == 3)
+                {
                     target.Clear();
                     target.Add(WhichAreaMe);
+                }
             }
-        }
-        else if(MyWeapon.effs[0]==WeaponEffect.shuriken)
-        {
-            if (enmySys.aliveEnemys.Count == 1)
+            else if (we == WeaponEffect.ThreeTarget)
             {
-                target.Clear();
-                target.Add(0);
-            }
-            else if (enmySys.aliveEnemys.Count == 2)
-            {
-                if (WhichAreaMe == 2)
+                if (enmySys.aliveEnemys.Count == 1)
                 {
                     target.Clear();
                     target.Add(0);
                 }
-                else
+                else if (enmySys.aliveEnemys.Count == 2)
                 {
-                    target.Clear();
-                    target.Add(1);
+                    if (WhichAreaMe == 2)
+                    {
+                        target.Clear();
+                        target.Add(0);
+                    }
+                    else
+                    {
+                        target.Clear();
+                        target.Add(1);
+                    }
                 }
+
             }
-            
         }
     }
 

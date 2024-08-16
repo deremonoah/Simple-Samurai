@@ -51,7 +51,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -104,7 +104,73 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 173, y: -3}
+      - {x: 173, y: 14}
+      - {x: 70, y: 66}
+      - {x: 13, y: 167}
+      - {x: 5, y: 174}
+      - {x: -1, y: 174}
+      - {x: -6, y: 162}
+      - {x: -64, y: 61}
+      - {x: -159, y: 15}
+      - {x: -168, y: 6}
+      - {x: -168, y: -11}
+      - {x: -61, y: -60}
+      - {x: -2, y: -167}
+      - {x: 1, y: -169}
+      - {x: 6, y: -169}
+      - {x: 24, y: -125}
+      - {x: 62, y: -58}
+    - - {x: -7, y: -25}
+      - {x: -9, y: -25}
+      - {x: -12, y: -23}
+      - {x: -19, y: -18}
+      - {x: -19, y: -17}
+      - {x: -21, y: -14}
+      - {x: -24, y: -9}
+      - {x: -24, y: -7}
+      - {x: -25, y: -6}
+      - {x: -25, y: 0}
+      - {x: -26, y: 2}
+      - {x: -25, y: 3}
+      - {x: -25, y: 8}
+      - {x: -24, y: 9}
+      - {x: -23, y: 12}
+      - {x: -22, y: 16}
+      - {x: -20, y: 18}
+      - {x: -20, y: 19}
+      - {x: -13, y: 25}
+      - {x: -8, y: 28}
+      - {x: -6, y: 28}
+      - {x: -5, y: 29}
+      - {x: -1, y: 29}
+      - {x: 0, y: 30}
+      - {x: 6, y: 30}
+      - {x: 7, y: 29}
+      - {x: 11, y: 29}
+      - {x: 12, y: 28}
+      - {x: 14, y: 28}
+      - {x: 20, y: 24}
+      - {x: 21, y: 24}
+      - {x: 26, y: 19}
+      - {x: 26, y: 18}
+      - {x: 29, y: 14}
+      - {x: 29, y: 12}
+      - {x: 31, y: 8}
+      - {x: 31, y: -5}
+      - {x: 30, y: -6}
+      - {x: 30, y: -9}
+      - {x: 27, y: -14}
+      - {x: 23, y: -20}
+      - {x: 22, y: -20}
+      - {x: 17, y: -24}
+      - {x: 13, y: -25}
+      - {x: 12, y: -26}
+      - {x: 9, y: -26}
+      - {x: 8, y: -27}
+      - {x: -3, y: -27}
+      - {x: -4, y: -26}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
     internalID: 0

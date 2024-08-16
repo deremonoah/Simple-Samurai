@@ -10,4 +10,4 @@ public class Weapon : Item
     public List<WeaponEffect> effs;
     public float[] damageMults= new float[6];
 }
-public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata, shuriken,multiTarget }
+public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata, shuriken,multiTarget, ThreeTarget, FourTarget }
