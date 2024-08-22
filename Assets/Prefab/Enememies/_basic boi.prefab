@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1232e913f8189a14289c30abf8d2c3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
   maxHP: 100
   armor: 6
   damgMin: 10
@@ -485,7 +484,6 @@ MonoBehaviour:
   defendValue: 18
   defendingMin: 2
   defendingMax: 3.5
-  targetally: {fileID: 0}
   randWaitmin: 2.5
   randWaitmax: 4.5
   readyingTimer: 2.5
@@ -521,6 +519,11 @@ MonoBehaviour:
   Defensiveness: 2
   difficulty: 01000000010000000200000003000000
   stunTimer: 0
+  _healAmount: 0
+  regenTimer: 0
+  regenMaxTimer: 0
+  healThreashold: 0
+  aboveHealThreashold: 0
 --- !u!1 &8628111613924925506
 GameObject:
   m_ObjectHideFlags: 0

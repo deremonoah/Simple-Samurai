@@ -125,6 +125,7 @@ public class EnemysManager : MonoBehaviour
         {
             aliveEnemys[lcv].SetPosInList(lcv);
         }
+        //maybe call pointer manager here?
     }
 
     IEnumerator SpawnWave()
@@ -290,55 +291,7 @@ public class EnemysManager : MonoBehaviour
         aliveEnemys[num].SetTargetPointer(pointer);
     }
 
-    private void SetSpecialPointers()
-    {
-        if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.bow && aliveEnemys.Count != 0)
-        {
-            SetBowPointers();
-        }
-        else if (PlayerStrikeArea.equipedWeapon.effs[0] == WeaponEffect.odachi && aliveEnemys.Count != 0)
-        {
-            SetOdachiPointers();
-        }
-    }
-
-    public void SetBowPointers()
-    {
-        foreach (enemy enm in aliveEnemys)
-        {
-            foreach (GameObject pointer in enm.BowPointers)
-            {
-                pointer.SetActive(false);
-            }
-        }
-
-        int enmIndex = 0;
-        for (int PointerIndex = 0; PointerIndex < 3; PointerIndex++)
-        {
-            enmIndex++;
-            if (enmIndex >= aliveEnemys.Count)
-            {
-                enmIndex = 0;
-            }
-
-            aliveEnemys[enmIndex].BowPointers[PointerIndex].SetActive(true);
-
-        }
-    }
-
-    public void SetOdachiPointers()
-    {
-        if (aliveEnemys.Count > 2)
-        {
-            aliveEnemys[1].SetTargetPointer(OdachiSprites[1]);
-            aliveEnemys[2].SetTargetPointer(OdachiSprites[2]);
-        }
-        else if(aliveEnemys.Count == 2)
-        {
-            aliveEnemys[1].SetTargetPointer(OdachiSprites[0]);
-        }
-
-    }
+    
 
     public List<List<Transform>> GetNinjaInfo()
     {
@@ -394,6 +347,7 @@ public class EnemysManager : MonoBehaviour
             aliveEnemys[aliveEnemys.Count - 1].DisablePointer();
 
             SetSpecialPointers();
+            //would call pointer manager here once working
         }
     }
 

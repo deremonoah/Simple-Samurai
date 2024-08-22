@@ -156,6 +156,7 @@ public class enemy : MonoBehaviour
     {
 
         bool antArm = false;
+        bool poison = false;
         for (int lcv =0;lcv<effects.Count;lcv++)
         {
             switch (effects[lcv])
@@ -176,7 +177,9 @@ public class enemy : MonoBehaviour
                 case WeaponEffect.sasumata:
                     this.Stunned(deal);
                     break;
-
+                case WeaponEffect.poison:
+                    poison = true;
+                    break;
             }
         }
         if(_regening && deal < healThreashold)
@@ -189,13 +192,21 @@ public class enemy : MonoBehaviour
         {
             HP -= Mathf.Clamp((deal - currentDefense), 1, deal);
         }
-        else
+        else if(!poison)
         {
             if (deal > armor)
             { HP = HP- Mathf.Clamp((deal - armor - currentDefense),1,deal); }
         }
+        else if(poison)
+        {
+            //damage that would be done calculates stuff instead
+            //this is where we calculate the time poison to kill yes?
+            //int poisTime =(maxHP-deal)/5;
+            //(100-35)=65/5= 13 so 23 in all what is max damage and what is low?
+            //these numbers are real low and we can give the blowgun more damage but it doesn't deal the damage
+            //poisTime+=10;
+        }
 
-   
 
         curState = attackState.damaged;
         StartCoroutine(Flash());
