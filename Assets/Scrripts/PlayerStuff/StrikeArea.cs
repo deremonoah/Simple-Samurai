@@ -195,10 +195,9 @@ public class StrikeArea : MonoBehaviour
 
     private void turnMultiStrikeAreas(bool iss, Weapon wee)
     {
-        Debug.Log("in multiStrikeAreas method");
+        
         #region turnOFFStrikeAreasLoops
-        if (iss ==false)
-        {
+        
             //turns all of these off
             bottomOdachi.SetActive(false);
             if (targetEnemy.Count > 1)
@@ -229,9 +228,12 @@ public class StrikeArea : MonoBehaviour
                 }
             
 
-            //dont need to check ifs
+            //turned all extras off and thats it
+            if(!iss)
+        {
             return;
         }
+        
         #endregion
 
         #region turnONStrikeAreaIfs

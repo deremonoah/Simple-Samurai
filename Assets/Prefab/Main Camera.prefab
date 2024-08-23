@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &62411855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 62411856}
+  - component: {fileID: 62411857}
+  m_Layer: 0
+  m_Name: PointerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &62411856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62411855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1092464847776270930}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &62411857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62411855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea426711cc23d304cb0367ed40a3a487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1092464847776271022
 GameObject:
   m_ObjectHideFlags: 0
@@ -22,7 +65,8 @@ GameObject:
   - component: {fileID: 1923051231482176407}
   - component: {fileID: 3637811481354933246}
   - component: {fileID: 8673687103061439174}
-  - component: {fileID: 4204912713055807307}
+  - component: {fileID: 617079858}
+  - component: {fileID: 617079859}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -40,7 +84,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 62411856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,15 +152,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b89b8064bac9ca439aa1a4e41f5ef72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnsPoints: []
+  enemySpawnsPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   aliveEnemys: []
   OpenTimer: 0.5
   recPos: 0
-  attackStartPoints: []
+  attackStartPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   attackEndPointStandard: {fileID: 0}
   enemyWaves: []
   WaveControlVariable: 0
-  OdachiSprites: []
+  OdachiSprites:
+  - {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+  - {fileID: 21300000, guid: 95e278e90aae3ff4e94773f50be89815, type: 3}
+  - {fileID: 21300000, guid: 390422390671c78418b83753eca0f1a5, type: 3}
   bossHPBar: {fileID: 0}
   bossHPContainter: {fileID: 0}
   BossHPPointer: {fileID: 0}
@@ -128,6 +184,27 @@ MonoBehaviour:
   - {fileID: 0}
   smokeSpots:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyPrefabs:
+  - {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  - {fileID: 2439367679896805130, guid: d8a1083b5bd542246a03ad9b709b53b5, type: 3}
+  - {fileID: 1010790756612851598, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+  - {fileID: 7967648078374350149, guid: 16eede737ae738a429750df33740b7c4, type: 3}
+  - {fileID: 871295418511070493, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+  - {fileID: 4819740616665397237, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
+  - {fileID: 308640407746481344, guid: 377e4f5418800f8429b8963266ebbc58, type: 3}
+  - {fileID: 2390960747628968264, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+  - {fileID: 5058154531069331146, guid: 87fdd2591e5d16442aa6ac2fba52a42b, type: 3}
+  - {fileID: 5370437428042502042, guid: d128bcabf39efb04eb090994b8470201, type: 3}
+  - {fileID: 3143599910317617200, guid: a4a19a57ffa845a49a854d9fc849543e, type: 3}
+  bossPrefabs:
+  - {fileID: 4891363053065188268, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+  - {fileID: 8301494197658914682, guid: cd2e55ce3a32ecc4490a6969bfb7ed4d, type: 3}
+  DifficultyWaves: 01000000020000000300000003000000070000000400000005000000090000000300000004000000
+  FreshEnemies: []
+  thrownPaths:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -169,13 +246,17 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   health: 100
   maxHealth: 100
-  armorValue: 0
+  armorValue: 5
   myArmor: {fileID: 11400000, guid: ba8a8d2ed6e56cc488237da71b56f496, type: 2}
-  testArmor: {fileID: 11400000, guid: 2134eac3c1b49734da06d755ce35a994, type: 2}
+  testArmor: {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
   _myCurio: {fileID: 0}
   HpBarUI: {fileID: 0}
   HpBarBackground: {fileID: 0}
   DefensesUIParent: {fileID: 0}
+  PlayerOnFireSprite: {fileID: 0}
+  angrySymbol: {fileID: 0}
+  timeAngrySymbolIsOnScreen: 2
+  PoisonText: {fileID: 0}
 --- !u!114 &4886708299457330426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6686eecef458f44a2f2dc0ef2a1a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VillageDefenseTimerMax: 40
+  VillageDefenseTimerMax: 35
   _villageDefenseTimer: 0
   VillagerLifeTimerMax: 1
   _defending: 0
@@ -207,11 +288,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   FireIndex: 0
   threashHoldForFire: 0
   DamageTaken: 0
-  TurnedOnShopButtons: []
-  BlackSmithButton: {fileID: 0}
+  TurnedOnShopButtons:
+  - {fileID: 0}
+  - {fileID: 0}
   RepairVillageButton: {fileID: 0}
   _damagedShops: []
   populationIcon: {fileID: 0}
@@ -229,15 +313,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89694e1d07b412640ab664cea9419902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipedWeapon: {fileID: 0}
-  equipedArmor: {fileID: 0}
+  equipedWeapon: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+  PrimaryWeapon: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+  SecondaryWeapon: {fileID: 11400000, guid: d947b29b7e2a8ff479024a3aa8bc31dd, type: 2}
+  equipedArmor: {fileID: 11400000, guid: ba8a8d2ed6e56cc488237da71b56f496, type: 2}
   equipedCurio: {fileID: 0}
-  weaponIcon: {fileID: 0}
+  PrimaryweaponIcon: {fileID: 0}
+  SecondaryWeaponIcon: {fileID: 0}
+  SecondaryWeaponUI: {fileID: 0}
   armorIcon: {fileID: 0}
   curioIcon: {fileID: 0}
-  weaponUpgradeIcons: []
-  armorUpgradeIcons: []
-  extraStrikeAreas: []
+  weaponUpgradeIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  armorUpgradeIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  extraStrikeAreas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  twoWeapons: 1
 --- !u!114 &8227899104359019310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,13 +344,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092464847776271022}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11cd008ddab23bc48905eb15d6391b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EventPopUpText: {fileID: 0}
   EventPanel: {fileID: 0}
+  EventImage: {fileID: 0}
+  _nextEvents: []
+  _currentEvent: {fileID: 0}
   Buttons:
   - {fileID: 0}
   - {fileID: 0}
@@ -275,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7becf94ba7e3c4bb2bc5b983ddf664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lootPanel: {fileID: 0}
+  _PickPanelManager: {fileID: 3637811481354933246}
   _eventPanel: {fileID: 0}
   _villagePanel: {fileID: 0}
 --- !u!114 &6446248681284272178
@@ -318,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee96a0bfa67110c4fbc5c62574a2962e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelBSButton: {fileID: 0}
   improveWeaponText: {fileID: 0}
   improveArmorText: {fileID: 0}
   lootingUpgradeText: {fileID: 0}
@@ -356,9 +459,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
   - {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
   - {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
-  HoverHelpers: []
-  BackGroundHoverBoxes: []
-  PlayerItemBoarders: []
+  - {fileID: 11400000, guid: c3ec131037544864d81f8b7d2e972416, type: 2}
+  - {fileID: 11400000, guid: cac92d5b374cc410b84c2ddd1d8d4e45, type: 2}
+  - {fileID: 11400000, guid: fa3a90828e8304518bf48a0891c7b826, type: 2}
+  HoverHelpers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BackGroundHoverBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  PlayerItemBoarders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &8673687103061439174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +495,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   reduceCost: 0
---- !u!114 &4204912713055807307
+--- !u!114 &617079858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -388,17 +504,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1092464847776271022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de38262bc5b3f5946ad043a1a5fd5456, type: 3}
+  m_Script: {fileID: 11500000, guid: f0e0a3cf2603d284f94e2a2d2eacc28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipedDefense: 
-  defenseSlotsLevel: 1
-  _palisadeHPMax: 40
-  _palisadeHP: 40
-  DefensesUIList:
+  BuffPrefabs:
+  - {fileID: 2161763158148697713, guid: df9e4957f85545244b6608ac328eba35, type: 3}
+  - {fileID: 8500191960246671568, guid: b2896586a1591914c9dad417745009db, type: 3}
+  - {fileID: 856924944138858613, guid: 43e9ae48b4fd4b949bcf0ee93777bbc1, type: 3}
+  - {fileID: 959822857035285430, guid: 2fc7a4bfc5054a344aec8882fe91c8e6, type: 3}
+  buffParent: {fileID: 0}
+  test: 0
+--- !u!114 &617079859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092464847776271022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3c17d4917614dea9c65b28a7a6bbcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stockPile:
+  - {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
+  - {fileID: 11400000, guid: c3ec131037544864d81f8b7d2e972416, type: 2}
+  - {fileID: 11400000, guid: cac92d5b374cc410b84c2ddd1d8d4e45, type: 2}
+  blankDragablePrefab: {fileID: 4682275641143446427, guid: 56bc2f19802a45d4795d530b33e8822a, type: 3}
+  primaryWeaponHolder: {fileID: 0}
+  secondryWeaponHolder: {fileID: 0}
+  primaryArmorHolder: {fileID: 0}
+  secondaryArmorHolder: {fileID: 0}
+  primaryCurioHolder: {fileID: 0}
+  secondaryCurioHolder: {fileID: 0}
+  InventorySlotsActive:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  fillPalisade: {fileID: 0}
-  DefenseDragables: []
-  EquipedDefenseSlot: {fileID: 0}
+  InventorySlotsInActive:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

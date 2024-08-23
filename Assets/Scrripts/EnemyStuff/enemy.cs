@@ -156,7 +156,7 @@ public class enemy : MonoBehaviour
     {
 
         bool antArm = false;
-        bool poison = false;
+        bool poisoned = false;
         for (int lcv =0;lcv<effects.Count;lcv++)
         {
             switch (effects[lcv])
@@ -178,7 +178,7 @@ public class enemy : MonoBehaviour
                     this.Stunned(deal);
                     break;
                 case WeaponEffect.poison:
-                    poison = true;
+                    poisoned = true;
                     break;
             }
         }
@@ -192,12 +192,12 @@ public class enemy : MonoBehaviour
         {
             HP -= Mathf.Clamp((deal - currentDefense), 1, deal);
         }
-        else if(!poison)
+        else if(!poisoned)
         {
             if (deal > armor)
             { HP = HP- Mathf.Clamp((deal - armor - currentDefense),1,deal); }
         }
-        else if(poison)
+        else if(poisoned)
         {
             //damage that would be done calculates stuff instead
             //this is where we calculate the time poison to kill yes?

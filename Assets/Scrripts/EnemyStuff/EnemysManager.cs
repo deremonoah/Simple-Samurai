@@ -43,15 +43,17 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] List<GameObject> FreshEnemies;
 
     [SerializeField] List<PathCreator> thrownPaths;
+
+    private PointerManager PM;
     //above refering to enemies not yet used
 
     //this is the number that is the top end of the random number for if enemies move up
     private int maxAgression;
     void Start()
     {
-
         GM = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnWave());
+        PM = FindObjectOfType<PointerManager>();
         PlayerStrikeArea = FindObjectOfType<StrikeArea>();
         _villageDefense = FindObjectOfType<VillageDefense>();
         _flowManager = GetComponent<GameFlowManager>();
@@ -111,7 +113,7 @@ public class EnemysManager : MonoBehaviour
             aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
         }
 
-        SetSpecialPointers();
+        PM.UpdatePointers(aliveEnemys);
 
         if (me.myAbilities[0] == enemy.Ability.boss)
         { bossHPContainter.SetActive(false); }
@@ -185,9 +187,9 @@ public class EnemysManager : MonoBehaviour
 
 
         }
-        
 
-        SetSpecialPointers();
+
+        PM.UpdatePointers(aliveEnemys);
 
         //because this is the start of a new combat this is a good time to
         ResetAgressionMax();
@@ -346,7 +348,7 @@ public class EnemysManager : MonoBehaviour
             //have to removepointer from enemy in back
             aliveEnemys[aliveEnemys.Count - 1].DisablePointer();
 
-            SetSpecialPointers();
+            PM.UpdatePointers(aliveEnemys);
             //would call pointer manager here once working
         }
     }
