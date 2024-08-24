@@ -279,6 +279,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8578998539530337361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5795378092382644894, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2838367399995021007}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2791451987063568473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -301,7 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a87a49de764a394a9e66b311a067c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
   maxHP: 120
   armor: 4
   damgMin: 15
@@ -309,7 +319,6 @@ MonoBehaviour:
   defendValue: 35
   defendingMin: 2.8
   defendingMax: 3.8
-  targetally: {fileID: 0}
   randWaitmin: 2
   randWaitmax: 3.5
   readyingTimer: 2.5
@@ -347,5 +356,12 @@ MonoBehaviour:
   Defensiveness: 3
   difficulty: 02000000020000000300000004000000
   stunTimer: 0
+  _healAmount: 0
+  regenTimer: 0
+  regenMaxTimer: 0
+  healThreashold: 0
+  aboveHealThreashold: 0
+  PoisonText: {fileID: 8578998539530337361}
+  isPoisoned: 0
   healMin: 40
   healMax: 60

@@ -151,6 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8349600621484805486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5795378092382644894, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2572378017422108656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2480426746001492326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -173,7 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24143f0dca42f2b42bf3d44f5775e244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
   maxHP: 190
   armor: 0
   damgMin: 15
@@ -181,7 +191,6 @@ MonoBehaviour:
   defendValue: 20
   defendingMin: 0.5
   defendingMax: 1
-  targetally: {fileID: 0}
   randWaitmin: 2
   randWaitmax: 3
   readyingTimer: 2
@@ -222,6 +231,8 @@ MonoBehaviour:
   regenMaxTimer: 8
   healThreashold: 40
   aboveHealThreashold: 0
+  PoisonText: {fileID: 8349600621484805486}
+  isPoisoned: 0
   blockprefab: {fileID: 2241141551349325259, guid: 90d86f7fae5bdf245a175399cf6cd090, type: 3}
   blocksSet: []
   _blockSpots: []

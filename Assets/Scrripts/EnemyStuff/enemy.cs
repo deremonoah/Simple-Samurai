@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class enemy : MonoBehaviour
 {
@@ -67,6 +68,13 @@ public class enemy : MonoBehaviour
     [SerializeField] float regenTimer ,regenMaxTimer;
     [SerializeField] float healThreashold;
     [SerializeField] bool aboveHealThreashold;
+
+    //poison Variables
+    public TMP_Text PoisonText;
+    private Coroutine WasPoisonedRoutine;
+    private float PoisonTimer;
+    //might not need to be public aoe healer should remove debuffs
+    public bool isPoisoned = false;
 
     private int regenTracker;
 
@@ -156,7 +164,7 @@ public class enemy : MonoBehaviour
     {
 
         bool antArm = false;
-        bool poisoned = false;
+        
         for (int lcv =0;lcv<effects.Count;lcv++)
         {
             switch (effects[lcv])
@@ -178,7 +186,8 @@ public class enemy : MonoBehaviour
                     this.Stunned(deal);
                     break;
                 case WeaponEffect.poison:
-                    poisoned = true;
+                    HP -= 1;
+                    GotPoisoned(deal);
                     break;
             }
         }
@@ -192,20 +201,12 @@ public class enemy : MonoBehaviour
         {
             HP -= Mathf.Clamp((deal - currentDefense), 1, deal);
         }
-        else if(!poisoned)
+        else
         {
             if (deal > armor)
             { HP = HP- Mathf.Clamp((deal - armor - currentDefense),1,deal); }
         }
-        else if(poisoned)
-        {
-            //damage that would be done calculates stuff instead
-            //this is where we calculate the time poison to kill yes?
-            //int poisTime =(maxHP-deal)/5;
-            //(100-35)=65/5= 13 so 23 in all what is max damage and what is low?
-            //these numbers are real low and we can give the blowgun more damage but it doesn't deal the damage
-            //poisTime+=10;
-        }
+        
 
 
         curState = attackState.damaged;
@@ -660,5 +661,46 @@ public class enemy : MonoBehaviour
     public float getCurrentHP()
     {
         return HP;
+    }
+
+    private void GotPoisoned(float Damage)
+    {
+        //this is to centralize where all the poison stuff except variables are
+        //calculate poison timer
+        PoisonTimer = (maxHP-Damage) / 10;
+        WasPoisonedRoutine = StartCoroutine(PoisonedRoutine());
+        //poison timer number should be set here 
+    }
+
+    public void CuredofPoison()
+    {
+        //stop poison routine
+        //might need to call color manager to have color consistancy
+        myHPBar.color = Color.red;
+        PoisonText.text = "";
+        StopCoroutine(WasPoisonedRoutine);
+        //restore poisonTimer
+        PoisonTimer = 20;
+        isPoisoned = false;
+    }
+
+    IEnumerator PoisonedRoutine()
+    {
+        isPoisoned = true;
+        yield return new WaitForSeconds(.3f);
+        //set poisonTimer off initial attack
+        myHPBar.color = FindObjectOfType<ColorManager>().PoisonedColor;
+        //healthBar.color =  Color.black;
+        //would like to change that to purple
+        //PoisonText.gameObject.SetActive(true); can just have no text
+
+        while (PoisonTimer > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            PoisonTimer--;
+            PoisonText.text = "" + (int)PoisonTimer;
+        }
+        //if secCount<=0
+        HP = 0;
     }
 }

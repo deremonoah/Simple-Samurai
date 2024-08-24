@@ -34,7 +34,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     //poison stuff added
     public Text PoisonText;
-    private Coroutine poisoning;
+    private Coroutine WasPoisonedRoutine;
     private bool isPoisoned;
     private int PoisonTimer = 20;
 
@@ -148,7 +148,7 @@ public class PlayerHealthBar : MonoBehaviour
                     PoisonTimer -= 3;
                     }
                 else
-                { poisoning = StartCoroutine(PoisonedRoutine()); }
+                { WasPoisonedRoutine = StartCoroutine(PoisonedRoutine()); }
                 
             }
             else
@@ -269,7 +269,7 @@ public class PlayerHealthBar : MonoBehaviour
         //might need to call color manager to have color consistancy
         healthBar.color = Color.red;
         PoisonText.text = "";
-        StopCoroutine(poisoning);
+        StopCoroutine(WasPoisonedRoutine);
         //restore poisonTimer
         PoisonTimer = 20;
         isPoisoned = false;
