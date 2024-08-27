@@ -37138,6 +37138,78 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BowPointers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BlowPointers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BowPointers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ad9b4e1492f35c40afd6a392b952049, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BowPointers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9300f20a5c04cb541bf41db1eecc7a50, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BowPointers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 50b721de45a09b047892985c11bdfe3c, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BowPointers.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4544802d796bca74b9e1ce826d01242b, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiPointers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BlowPointers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 88397901fa0ebe0429ca4588245f3e9a, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BlowPointers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 806890bea78af834796f57c1b53a12e1, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BlowPointers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: c80e807ce2c68004a808f7702287808c, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: BlowPointers.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3807c30ca4f0b1d47a807298017e277c, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: ShurikenPointers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiPointers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiPointers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 95e278e90aae3ff4e94773f50be89815, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: OdachiPointers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 390422390671c78418b83753eca0f1a5, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: ShurikenPointers.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: e3050f76fb32ffc43860f8ae791a1265, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: ShurikenPointers.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: cdf027deaf809cd45bbba65fc0a73409, type: 3}
+    - target: {fileID: 62411857, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: ShurikenPointers.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b071374468918b4196230677b3b4b65, type: 3}
     - target: {fileID: 617079858, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: buffParent
       value: 

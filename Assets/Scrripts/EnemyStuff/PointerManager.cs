@@ -5,10 +5,11 @@ using UnityEngine;
 public class PointerManager : MonoBehaviour
 {
     //private lists and load resources or public sprites?
-    //for bows
-    //for shurikens
-    //for darts
-    //for odachi
+    [SerializeField] List<Sprite> BowPointers;
+    [SerializeField] List<Sprite> ShurikenPointers;
+    [SerializeField] List<Sprite> BlowPointers;
+    [SerializeField] List<Sprite> OdachiPointers;
+    
     void Start()
     {
         //if private we need to load the resources
