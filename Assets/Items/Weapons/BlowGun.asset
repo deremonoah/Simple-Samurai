@@ -17,7 +17,12 @@ MonoBehaviour:
     kill your enemy in due time
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: 850a07953ea41f04382d94c64e7bcdbc, type: 3}
-  strikePointer: {fileID: 21300000, guid: ad2b92d04a1cd8f4da392861d8bbeccc, type: 3}
+  StrikePoint: {fileID: 21300000, guid: ad2b92d04a1cd8f4da392861d8bbeccc, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: 88397901fa0ebe0429ca4588245f3e9a, type: 3}
+  - {fileID: 21300000, guid: 806890bea78af834796f57c1b53a12e1, type: 3}
+  - {fileID: 21300000, guid: c80e807ce2c68004a808f7702287808c, type: 3}
+  - {fileID: 21300000, guid: 3807c30ca4f0b1d47a807298017e277c, type: 3}
   baseDamageLevel:
   - 1
   - 1

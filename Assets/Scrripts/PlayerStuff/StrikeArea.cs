@@ -296,7 +296,7 @@ public class StrikeArea : MonoBehaviour
         baseDamage = wee.baseDamageLevel[wee.itemLevel];
         maxDamage = wee.maxDamageLevel[wee.itemLevel];
         myStrikeAreaSprite.sprite = wee.myStrikeArea;
-        strikePointObj.GetComponent<StrikePoint>().ChangeStrikeSprite(wee.strikePointer);
+        strikePointObj.GetComponent<StrikePoint>().ChangeStrikeSprite(wee.StrikePoint);
         //get help figureing out how to refresh spritet colider or why it didnt work the old way that you deleted 
         var colld = GetComponent<PolygonCollider2D>();
         DestroyImmediate(colld);

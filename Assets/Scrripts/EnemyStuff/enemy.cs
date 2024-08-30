@@ -560,10 +560,7 @@ public class enemy : MonoBehaviour
 
                 enmsSys.UpdateEnmsPosRefrence();
 
-                if (posInList == 0)
-                {
-                    this.SetTargetPointer(FindObjectOfType<PlayerEquipedItemsManager>().equipedWeapon.strikePointer);
-                }
+                enmsSys.UpdateOurPointers();
 
                 enmsSys.IncreaseAgressionRange(Aggression);
                 //all of a sudden idk if i spelled agression right ah yes 2 gs
@@ -647,10 +644,21 @@ public class enemy : MonoBehaviour
         myActionRoutine = StartCoroutine(RegenRoutine());
     }
 
-    public void SetTargetPointer(Sprite img)
+    public void SetTargetPointers(List<Sprite> myPointers)
     {
+        //this is called from pointer manager on individual enemies
         HPPointer.SetActive(true);
-        HPPointer.GetComponent<SpriteRenderer>().sprite = img;
+        HPPointer.GetComponent<SpriteRenderer>().sprite = myPointers[0];
+        myPointers.RemoveAt(0);
+        if (myPointers.Count>0)
+        {
+            for (int lcv = 0; lcv < myPointers.Count; lcv++)
+            {
+                BowPointers[lcv].SetActive(true);
+                BowPointers[lcv].GetComponent<SpriteRenderer>().sprite = myPointers[lcv];
+            }
+            //if multiple we set 1st one then remove from list and enable a number of 2ndary pointers which are then set
+        }
     }
     
     public void DisablePointer()

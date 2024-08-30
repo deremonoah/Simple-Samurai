@@ -9,25 +9,22 @@ public class PointerManager : MonoBehaviour
     [SerializeField] List<Sprite> ShurikenPointers;
     [SerializeField] List<Sprite> BlowPointers;
     [SerializeField] List<Sprite> OdachiPointers;
-    
+    private PlayerEquipedItemsManager EqM;
+    private EnemysManager EnmM;
     void Start()
     {
         //if private we need to load the resources
+        EqM = FindObjectOfType<PlayerEquipedItemsManager>();
+        EnmM = FindObjectOfType<EnemysManager>();
     }
 
     //how is the system comunicated with? told when and given info by the enemy manager
     //then it based on equiped weapon from player tells the enemies what to do?
 
     //what need to change about enemies
-    //change the name of bow pointers to skinny pointers
+    //change the name of bow pointers to extra pointers
     //shuriken likley will need different placement for clarity
     //draw different color pointers for shuriken and darts
-
-    public void UpdatePointers(List<enemy> enms)
-    {
-        //figure out which sprite list to use
-        //or change weapons to have a list of pointers, everywhere they use the first its just [0]
-    }
 
 
     /*this is how we were doing it before in enemy manager
@@ -87,4 +84,64 @@ public class PointerManager : MonoBehaviour
      * 
      * 
      */
+
+    public void UpdateAliveEnmsPointers(List<enemy> aliveEnms)
+    {
+        //check if list has at least 1 dude!
+        if (aliveEnms.Count < 1) { return; }
+        //This is for the individual Asking to get updated
+        List<Sprite> pointersToGive=new List<Sprite>();
+        Weapon we = EqM.equipedWeapon;
+        pointersToGive = we.PointersList;
+        int enmCount=0;
+        List<List<Sprite>> ListOfEnemySprites = new List<List<Sprite>>();
+        bool dont = false;
+
+        for (int lcv = 0; lcv < aliveEnms.Count; lcv++)
+        {
+            ListOfEnemySprites.Add(new List<Sprite>());
+        }
+        //pcv is pointer control variable to go through list of Pointers
+        for(int lcv=0;lcv<we.effs.Count;lcv++)
+        {
+            if(we.effs[lcv]==WeaponEffect.odachi)
+            {
+                //odachi special because if 2 enemies they both get the 1st
+                //if 3 1st gets 1st then goes in order
+                if(aliveEnms.Count<=2)
+                {
+                    ListOfEnemySprites[0].Add(pointersToGive[0]);
+                    if (aliveEnms.Count == 2)
+                    { ListOfEnemySprites[1].Add(pointersToGive[0]); }
+
+                    dont = true;
+                }
+            }
+        }
+        //this if is to not repeat code
+        if (!dont)
+        {
+            //every other pointer adding situation and hands out pointers like candy
+            for (int pcv = 0; pcv < pointersToGive.Count; pcv++)
+            {
+                //assign Enm[enmCount] pcvTh sprite
+                ListOfEnemySprites[enmCount].Add(pointersToGive[pcv]);
+                enmCount++;
+                if (enmCount >= aliveEnms.Count)
+                {
+                    enmCount = 0;
+                }
+
+            }
+        }
+        //Actually Telling the enemies what their list is
+        for(int lcv=0;lcv<aliveEnms.Count;lcv++)
+        {
+            //catch if list is empty don't tell enemy
+            if (ListOfEnemySprites[lcv].Count > 0)
+            {
+                aliveEnms[lcv].SetTargetPointers(ListOfEnemySprites[lcv]);
+            }
+        }
+    }
 }

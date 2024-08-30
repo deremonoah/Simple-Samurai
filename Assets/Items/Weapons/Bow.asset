@@ -17,7 +17,12 @@ MonoBehaviour:
     strike any enemy'
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: 0ff5d246ea054774f8c7c8728a0f3805, type: 3}
-  strikePointer: {fileID: 21300000, guid: 8ad9b4e1492f35c40afd6a392b952049, type: 3}
+  StrikePoint: {fileID: 21300000, guid: 8ad9b4e1492f35c40afd6a392b952049, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: 8ad9b4e1492f35c40afd6a392b952049, type: 3}
+  - {fileID: 21300000, guid: 9300f20a5c04cb541bf41db1eecc7a50, type: 3}
+  - {fileID: 21300000, guid: 50b721de45a09b047892985c11bdfe3c, type: 3}
+  - {fileID: 21300000, guid: 4544802d796bca74b9e1ce826d01242b, type: 3}
   baseDamageLevel:
   - 10
   - 15

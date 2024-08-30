@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PathCreation;
+using TMPro;
 
 public class EnemysManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class EnemysManager : MonoBehaviour
     [SerializeField] GameObject bossHPContainter;
     public GameObject BossHPPointer;
     public List<GameObject> BossBowPointers;
+    public TMP_Text bossPoisonText;
 
     [SerializeField] List<Transform> caltropSpots;
     [SerializeField] List<Transform> smokeSpots;
@@ -108,12 +110,8 @@ public class EnemysManager : MonoBehaviour
         }
 
         UpdateEnmsPosRefrence();
-        if (aliveEnemys.Count != 0)
-        {
-            aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
-        }
 
-        PM.UpdatePointers(aliveEnemys);
+        PM.UpdateAliveEnmsPointers(aliveEnemys);
 
         if (me.myAbilities[0] == enemy.Ability.boss)
         { bossHPContainter.SetActive(false); }
@@ -148,8 +146,7 @@ public class EnemysManager : MonoBehaviour
             {
                 SpawnEnemy(lcv, enemyWaves[0].enmsInWave[lcv]);
 
-                if (lcv == 0)
-                    aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
+                
 
                 yield return new WaitForSeconds(0.5f);
 
@@ -177,9 +174,6 @@ public class EnemysManager : MonoBehaviour
             {
                 SpawnEnemy(lcv, currentWave[lcv]);
 
-                if (lcv == 0)
-                    aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
-
                 yield return new WaitForSeconds(0.5f);
 
             }
@@ -189,7 +183,7 @@ public class EnemysManager : MonoBehaviour
         }
 
 
-        PM.UpdatePointers(aliveEnemys);
+        PM.UpdateAliveEnmsPointers(aliveEnemys);
 
         //because this is the start of a new combat this is a good time to
         ResetAgressionMax();
@@ -288,13 +282,7 @@ public class EnemysManager : MonoBehaviour
         StartCoroutine(SpawnWave());
     }
 
-    public void SetTargetEnmPointer(int num, Sprite pointer)
-    {
-        aliveEnemys[num].SetTargetPointer(pointer);
-    }
-
     
-
     public List<List<Transform>> GetNinjaInfo()
     {
         List<List<Transform>> temp = new List<List<Transform>>();
@@ -338,17 +326,13 @@ public class EnemysManager : MonoBehaviour
             }
 
 
-            // I think i need below
+            // updates pos of enemies so its ready for pointer update
             UpdateEnmsPosRefrence();
-            if (aliveEnemys.Count != 0)
-            {
-                aliveEnemys[0].SetTargetPointer(PlayerStrikeArea.equipedWeapon.strikePointer);
-            }
 
             //have to removepointer from enemy in back
             aliveEnemys[aliveEnemys.Count - 1].DisablePointer();
 
-            PM.UpdatePointers(aliveEnemys);
+            PM.UpdateAliveEnmsPointers(aliveEnemys);
             //would call pointer manager here once working
         }
     }
@@ -377,5 +361,11 @@ public class EnemysManager : MonoBehaviour
     public void IncreaseNextWaveDifficulty(int much)
     {
         DifficultyWaves[WaveControlVariable] += much;
+    }
+
+    public void UpdateOurPointers()
+    {
+        //this is called by individual enemies when needed
+        PM.UpdateAliveEnmsPointers(aliveEnemys);
     }
 }

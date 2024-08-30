@@ -16,7 +16,11 @@ MonoBehaviour:
   itemDescription: 'Odachi: a weapon that can sweep and strike 2 enemies at once'
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: a4f756be5e8167b419e524b20ab8d8f0, type: 3}
-  strikePointer: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+  StrikePoint: {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
+  - {fileID: 21300000, guid: 95e278e90aae3ff4e94773f50be89815, type: 3}
+  - {fileID: 21300000, guid: 390422390671c78418b83753eca0f1a5, type: 3}
   baseDamageLevel:
   - 4
   - 6

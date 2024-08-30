@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class Boss : Ninja
 {
-    [SerializeField] Image bossHP;
+    
     private bool hasswap = false;
 
-    protected override void fillMyHP()
+    /*protected override void fillMyHP()
     {
         bossHP.fillAmount = base.getCurrentHP() / maxHP;
-    }
+    we can set the regular hp no problem so IDK why we have this other one
+    lets see if it works
+    }*/
 
     protected override void Update()
     {
@@ -26,7 +28,8 @@ public class Boss : Ninja
     protected override void Start()
     {
         base.Start();
-        bossHP = enmsSys.bossHPBar;
+        base.myHPBar = enmsSys.bossHPBar;
+        base.PoisonText = enmsSys.bossPoisonText;
     }
 
     protected override void StartMyRoutine()

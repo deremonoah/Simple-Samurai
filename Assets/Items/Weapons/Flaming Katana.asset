@@ -16,7 +16,9 @@ MonoBehaviour:
   itemDescription: 'Flaming Katana: this blade will leave your enemies burning'
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: e86bde69b4b15f84d81687c553816bac, type: 3}
-  strikePointer: {fileID: 21300000, guid: f3b458806648fe04798b2cda6673b958, type: 3}
+  StrikePoint: {fileID: 21300000, guid: f3b458806648fe04798b2cda6673b958, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: f3b458806648fe04798b2cda6673b958, type: 3}
   baseDamageLevel:
   - 4
   - 6

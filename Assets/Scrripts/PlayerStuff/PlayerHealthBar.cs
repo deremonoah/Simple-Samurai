@@ -269,7 +269,8 @@ public class PlayerHealthBar : MonoBehaviour
         //might need to call color manager to have color consistancy
         healthBar.color = Color.red;
         PoisonText.text = "";
-        StopCoroutine(WasPoisonedRoutine);
+        if (WasPoisonedRoutine == null)
+        { StopCoroutine(WasPoisonedRoutine); }
         //restore poisonTimer
         PoisonTimer = 20;
         isPoisoned = false;
