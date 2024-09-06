@@ -191,12 +191,7 @@ public class enemy : MonoBehaviour
                     break;
             }
         }
-        if(_regening && deal < healThreashold)
-        {
-            _regening = false;
-            //should have a custome noise and for the sumo the bowl should go flying
-            StopCoroutine(RegenRoutine());
-        }
+        OnHitEffect(deal);
         if (antArm)
         {
             HP -= Mathf.Clamp((deal - currentDefense), 1, deal);
@@ -212,6 +207,20 @@ public class enemy : MonoBehaviour
         curState = attackState.damaged;
         StartCoroutine(Flash());
         
+    }
+
+    protected virtual void OnHitEffect(float deal)
+    {
+        //this is overwritten by other scripts
+        //maybe in future we will give enemies a rage on a certain number of hits, but that is for future Noah ha ha
+        if (_regening && deal > healThreashold)
+        {
+            Debug.Log("regen stoped");
+            _regening = false;
+            //should have a custome noise maybe bowl breaks and sprite the sumo the bowl should go flying
+            StopCoroutine(myActionRoutine);
+            StartMyRoutine();
+        }
     }
 
     public void Blocked(AttackEffect atkeef)
@@ -626,12 +635,12 @@ public class enemy : MonoBehaviour
         if (HP != maxHP && regenTracker <12)
         {
             //keep sprite as healing
+            Debug.Log("Regen" + HP);
             regenTracker++;
-            StartCoroutine(RegenRoutine());
+            myActionRoutine =StartCoroutine(RegenRoutine());
         }
         else
         {
-            regenTracker = 4;
             StartMyRoutine();
         }
     }

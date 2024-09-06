@@ -12,7 +12,7 @@ public class Ninja : enemy
     {
         base.Start();
         List<List<Transform>> temp = new List<List<Transform>>();
-        temp = enmsSys.GetNinjaInfo();
+        temp = enmsSys.GetTrapSpawnSpots();
         _caltropSpots = temp[0];
         _smokeSpots = temp[1];
     }

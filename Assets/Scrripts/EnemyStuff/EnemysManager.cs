@@ -283,7 +283,7 @@ public class EnemysManager : MonoBehaviour
     }
 
     
-    public List<List<Transform>> GetNinjaInfo()
+    public List<List<Transform>> GetTrapSpawnSpots()
     {
         List<List<Transform>> temp = new List<List<Transform>>();
         temp.Add(caltropSpots);

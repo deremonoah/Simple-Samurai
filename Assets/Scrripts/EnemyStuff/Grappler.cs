@@ -11,12 +11,12 @@ public class Grappler : enemy
     [SerializeField] List<GameObject> blocksSet;
     [SerializeField] List<Transform> _blockSpots;
     private int actionCount;
-
+    private int lastAction; //0 is attack, 1 is block, 2 is heal
     protected override void Start()
     {
         base.Start();
         List<List<Transform>> temp = new List<List<Transform>>();
-        temp = enmsSys.GetNinjaInfo();
+        temp = enmsSys.GetTrapSpawnSpots();
         _blockSpots = temp[0];
         actionCount = 0;
     }
@@ -38,30 +38,32 @@ public class Grappler : enemy
         actionCount++;
 
         //this should stop duplicate attacks and too many actions
-        StopCoroutine(TheAttackRoutine());
+        StopCoroutine(myActionRoutine);
 
         if(actionCount>3)
         {
             foreach (var block in blocksSet)
                 Destroy(block);
             blocksSet.Clear(); }
-        if(rand<4)//has 40% chance to put up block
+        if(rand<4 &&lastAction!=1)//has 40% chance to put up block
         {
             hasStarted = true;
             myActionRoutine = StartCoroutine(SpawnBlock());
+            lastAction = 1;
         }
-
-        rand = Random.Range(0, 10);
-        //has and 70% chance to heal we may adjust later
-        if (base.getCurrentHP() < base.maxHP/2 && rand>2)
+        //has and 40% chance to heal and wont heal twice in a row
+        else if (base.getCurrentHP() < base.maxHP/2 && rand>5 && lastAction!=2)
         {
+            Debug.Log("started Regen & last action:" +lastAction);
             base.StartRegen(6f);
             hasStarted = true;
+            lastAction = 2;
         }
         //should also check if they have the self heal ability if they want to self heal based on stuff or maybe put that in base startmyroutine
         if (!hasStarted)
         {
             base.StartMyRoutine();
+            lastAction = 0;
         }
     }
 

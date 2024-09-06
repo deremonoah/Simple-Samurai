@@ -229,7 +229,7 @@ MonoBehaviour:
   _healAmount: 0
   regenTimer: 0
   regenMaxTimer: 8
-  healThreashold: 40
+  healThreashold: 30
   aboveHealThreashold: 0
   PoisonText: {fileID: 8349600621484805486}
   isPoisoned: 0
