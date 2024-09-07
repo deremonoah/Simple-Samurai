@@ -139,7 +139,7 @@ public class PlayerHealthBar : MonoBehaviour
             {
                 //fire ability
                 health -= (Mathf.Max(1, damagePoints));
-                StartCoroutine(OnFire());
+                StartCoroutine(OnFire(damagePoints));
             } else if(ability == 12)
             {
                 //poison
@@ -172,7 +172,7 @@ public class PlayerHealthBar : MonoBehaviour
         else if (ability == 8)
         {
             health -= (Mathf.Max(1, damagePoints));
-            StartCoroutine(OnFire());
+            StartCoroutine(OnFire(damagePoints));
         }
         else
         {
@@ -203,21 +203,26 @@ public class PlayerHealthBar : MonoBehaviour
         angrySymbol.transform.localScale = startingScale;
     }
 
-    IEnumerator OnFire()
+    IEnumerator OnFire(float dmg)
     {
+        int FireLasts = 14;
+        if (dmg < 20) { FireLasts += 7; }
+        if (dmg < 14) { FireLasts += 7; }
+        //dmg sets how long fire should last on average
         yield return new WaitForSeconds(0.5f);
+        PlayerOnFireSprite.SetActive(true);
         //we might need to add an if checking a immunity to fire
-        health -= 1;
-        int randNum = Random.Range(0, 10);
-        if (randNum < 8)
+        health -= 1.5f;
+        int randFire = Random.Range(0, 8);
+        while (randFire<FireLasts)
         {
-            PlayerOnFireSprite.SetActive(true);
-            StartCoroutine(OnFire());
+            yield return new WaitForSeconds(0.5f);
+            health -= 1;
+            randFire++;
         }
-        else
-        {
-            PlayerOnFireSprite.SetActive(false);
-        }
+       
+        PlayerOnFireSprite.SetActive(false);
+        
     }
 
     public void HealPlayer(float healingPoints)

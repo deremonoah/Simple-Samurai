@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2153459462505239228
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8162332374352837662, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5170068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837662, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.20861661
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837662, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837662, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837664, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6db8ca015222c3145a2b791e7ca68bd4, type: 3}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_Name
+      value: Fire Trap
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8162332374352837662, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+--- !u!1 &7828648086093999774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+  m_PrefabInstance: {fileID: 2153459462505239228}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &1349648079204995378
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828648086093999774}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5170068, y: 0.20861661}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 2.5, y: 2.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.55897945, y: 0.41415015}
+      - {x: 0.55897945, y: 0.5341501}
+      - {x: 0.4889795, y: 0.58415014}
+      - {x: 0.5289795, y: 0.63415015}
+      - {x: 0.55897945, y: 0.7241501}
+      - {x: 0.54897946, y: 0.94415015}
+      - {x: 0.3889795, y: 1.1541501}
+      - {x: 0.3289795, y: 1.1041502}
+      - {x: 0.30897948, y: 0.9841501}
+      - {x: 0.2889795, y: 1.1641501}
+      - {x: 0.20897949, y: 1.51415}
+      - {x: 0.19897948, y: 1.52415}
+      - {x: 0.08897949, y: 1.52415}
+      - {x: 0.008979492, y: 1.4241501}
+      - {x: -0.0010205078, y: 1.28415}
+      - {x: -0.0910205, y: 1.2241502}
+      - {x: -0.1310205, y: 1.1841501}
+      - {x: -0.1910205, y: 1.2041501}
+      - {x: -0.2610205, y: 1.1941501}
+      - {x: -0.3910205, y: 1.1541501}
+      - {x: -0.5110205, y: 0.9841501}
+      - {x: -0.4910205, y: 0.82415015}
+      - {x: -0.5710205, y: 0.81415015}
+      - {x: -0.6410205, y: 0.74415016}
+      - {x: -0.7010205, y: 0.6041502}
+      - {x: -0.7010205, y: 0.45415014}
+      - {x: -0.65102047, y: 0.15415016}
+      - {x: -0.5310205, y: 0.0041501615}
+      - {x: -0.3810205, y: -0.055849835}
+      - {x: 0.008979492, y: -0.055849835}
+      - {x: 0.22897948, y: -0.0058498383}
+      - {x: 0.36897948, y: 0.08415016}
+      - {x: 0.47897947, y: 0.20415016}

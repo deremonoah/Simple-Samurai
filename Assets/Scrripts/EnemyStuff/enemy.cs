@@ -78,6 +78,10 @@ public class enemy : MonoBehaviour
 
     private int regenTracker;
 
+    //testing new block?
+    private List<Transform> BlockSpots;
+    private GameObject BlockSet;
+
     public enum attackState 
     { 
         waiting,readying,swinging,damaging,damaged
@@ -101,6 +105,8 @@ public class enemy : MonoBehaviour
         //matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         
         matDefault = GetComponent<SpriteRenderer>().material;
+        var temp = enmsSys.GetTrapSpawnSpots();
+        BlockSpots = temp[0];
 
             myActionRoutine = StartCoroutine(TheAttackRoutine());  
     }
@@ -123,6 +129,10 @@ public class enemy : MonoBehaviour
             {
                 FindObjectOfType<PlayerHealthBar>().CuredofPoison();
                 //currently this wouldn't check if there are other enemies with the ability to poison, but worry about it later
+            }
+            if(BlockSet!=null)
+            {
+                Destroy(BlockSet);
             }
             enmsSys.OnDied(this);
             
@@ -320,7 +330,20 @@ public class enemy : MonoBehaviour
                         hasStarted = true;
                     }
                 }
-            
+                else if(HasAbility(Ability.fire))
+            {
+                //testing basically a new trap or maybe chaning it to a block, maybe the traps should only go 
+                //off if you stop there? so players have more agency and they would need a lot of stuff covered
+                int rand = Random.Range(0, 6);
+                //50% for test
+                if(rand<4)
+                {
+                    myActionRoutine = StartCoroutine(BlockRoutine());
+                    //make fire trap
+                    //need info from enemy trap
+                    hasStarted = true;
+                }
+            }
         }
 
         if (!hasStarted)
@@ -523,6 +546,19 @@ public class enemy : MonoBehaviour
     }
 
     #endregion
+    
+    private IEnumerator BlockRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+        int rand = Random.Range(0, BlockSpots.Count + 2);
+        rand = Mathf.Clamp(rand - 2, 0, BlockSpots.Count);
+        //look up better way of weighting outcomes of randomness
+        BlockSet=(Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation));
+        yield return new WaitForSeconds(0.5f);
+        StartMyRoutine();
+    }
+
+
     protected virtual IEnumerator TheDefendingRoutine()
     {
         curState = attackState.waiting;

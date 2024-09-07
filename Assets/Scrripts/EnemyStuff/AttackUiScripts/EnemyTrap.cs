@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyTrap : MonoBehaviour
 {
     private PlayerHealthBar playerHP;
+    [SerializeField] WeaponEffect TrapEffect;
     [SerializeField] float damageFromTrap;
     private void Start()
     {
@@ -15,7 +16,12 @@ public class EnemyTrap : MonoBehaviour
         if (other.name == "strike point" && damageFromTrap>0)
         {
             //it is anti armor now
-            playerHP.DamagePlayer(null, damageFromTrap, 2);
+            if (TrapEffect == WeaponEffect.flame)
+            {
+                playerHP.DamagePlayer(null, 0, 8);
+            }
+            else
+            { playerHP.DamagePlayer(null, damageFromTrap, 2); }
             Destroy(this.gameObject);
         }
         else

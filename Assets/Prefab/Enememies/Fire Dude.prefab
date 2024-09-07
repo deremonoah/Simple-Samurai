@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: damgMin
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: maxCoin
@@ -71,6 +71,14 @@ PrefabInstance:
       propertyPath: myAbilities.Array.data[0]
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: specialPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: specialPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7828648086093999774, guid: 8fffed98890baf14a8c11be63aa37697, type: 3}
     - target: {fileID: 7314057531085316388, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_RootOrder
       value: 0
