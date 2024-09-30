@@ -10,5 +10,9 @@ public class Weapon : Item
     public List<float> baseDamageLevel, maxDamageLevel;
     public List<WeaponEffect> effs;
     public float[] damageMults= new float[6];
+    [Header("Audio")]
+    public List<AudioClip> readyingSounds;
+    public List<AudioClip> launchingSounds;
+    public List<AudioClip> HitingSounds;
 }
 public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata, shuriken,multiTarget, ThreeTarget, FourTarget }

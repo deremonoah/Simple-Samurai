@@ -72,7 +72,7 @@ public class ExtraStrikeArea : MonoBehaviour
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
                     enmySys.DamageEnemy(Damger, target[lcv], MyWeapon.effs);
-                    SoundMng.PlaySound("hit");
+                    
                 }
                 justStruck = true;
                 timer = 0.1f;

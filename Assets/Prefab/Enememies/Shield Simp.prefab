@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2144794318603522368, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2846447603511719801, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562744342560505691, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.328
+      objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: armor
       value: 20
@@ -100,20 +116,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61e9bad755a63b545a1cf235b321ce55, type: 3}
+    - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Color.b
-      value: 0.5377358
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Color.g
-      value: 0.5377358
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316389, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Color.r
-      value: 0.5377358
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_Name
-      value: Heavy_Armor
+      value: Shield Simp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

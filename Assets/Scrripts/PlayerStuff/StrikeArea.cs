@@ -126,9 +126,9 @@ public class StrikeArea : MonoBehaviour
                 {
                     //revenge calculation below
                     Damger +=revengeTimer*30;
-                    Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
+                    //Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
                     _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
-                    SoundMng.PlaySound("hit", Damger);
+                    
                     justStruck = true;
                     PlayerOn = false;
                     _JustStruckTimer = 0.1f;
@@ -165,17 +165,8 @@ public class StrikeArea : MonoBehaviour
         else { _JustStruckTimer -= Time.deltaTime; }
 
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetWeapon(TestWeapon);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            equipedWeapon.itemLevel += 1;
-            baseDamage = equipedWeapon.baseDamageLevel[equipedWeapon.itemLevel];
-            maxDamage = equipedWeapon.maxDamageLevel[equipedWeapon.itemLevel];
-        }
+        
+        
 #endif
 
     }
@@ -293,6 +284,7 @@ public class StrikeArea : MonoBehaviour
 
     public void SetWeapon(Weapon wee)
     {
+        //stats
         baseDamage = wee.baseDamageLevel[wee.itemLevel];
         maxDamage = wee.maxDamageLevel[wee.itemLevel];
         myStrikeAreaSprite.sprite = wee.myStrikeArea;

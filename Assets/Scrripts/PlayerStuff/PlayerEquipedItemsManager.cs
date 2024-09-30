@@ -45,7 +45,19 @@ public class PlayerEquipedItemsManager : MonoBehaviour
         equipedArmor = Instantiate(equipedArmor);
     }
 
-    public void EquipItem(Item item, bool lootingUpgradesEnabled)
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            EquipItem(_mainStrikeArea.TestWeapon,false);
+        }
+
+    }
+       
+#endif
+
+public void EquipItem(Item item, bool lootingUpgradesEnabled)
     {
         if (item.GetType() == typeof(Weapon))
         {

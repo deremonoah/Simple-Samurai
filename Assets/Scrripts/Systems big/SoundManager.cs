@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip hit1, hit2, coin1, coin2, coin3, block1, smokebomb, upgrade, damageItem;
     private AudioSource myaudioSrc;
     private List<AudioClip> _senseiSounds, _yoinkSounds;
-    
+    private PlayerEquipedItemsManager EquipedManager;
 
     [SerializeField] float Volume;
     [SerializeField] AudioMixer mixer;
@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         myaudioSrc = GetComponent<AudioSource>();
+        EquipedManager=FindObjectOfType<PlayerEquipedItemsManager>();
         hit1 = Resources.Load<AudioClip>("Sound/Effects/new Hit");
         hit2 = Resources.Load<AudioClip>("Sound/Effects/hit 2 wav");
         coin1 = Resources.Load<AudioClip>("Sound/Effects/coin wav 1");
@@ -83,14 +84,26 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySound(string clip,float value)
     {
+        AudioClip clipToPlay=hit1;
+
+        Debug.Log("where are we?" +value);
+        //this doesn't work all the time?
         switch (clip)
         {
             case "hit":
                 //checks the value which is the damage to out put a more fitting damage sound
-                if (value <= 10) { myaudioSrc.PlayOneShot(hit2); }
-                else { myaudioSrc.PlayOneShot(hit1); }
+                if (value <= 10) { clipToPlay=hit2; }
+                else { clipToPlay = hit1; }
+                
+                if (EquipedManager.equipedWeapon.HitingSounds.Count > 0)
+                {
+                    var rand = Random.Range(0, EquipedManager.equipedWeapon.HitingSounds.Count);
+                    clipToPlay = EquipedManager.equipedWeapon.HitingSounds[rand];
+                }
                 break;
         }
+        
+        myaudioSrc.PlayOneShot(clipToPlay);
     }
 
     /*private void Update()

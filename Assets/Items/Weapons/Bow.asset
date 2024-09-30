@@ -41,3 +41,9 @@ MonoBehaviour:
   - 14
   - 18
   - 24
+  readyingSounds: []
+  launchingSounds: []
+  HitingSounds:
+  - {fileID: 8300000, guid: c0ca3df665b8b954baa6b41b8aa1f1d6, type: 3}
+  - {fileID: 8300000, guid: 039851df44a4b87409717f4b12ea719c, type: 3}
+  - {fileID: 8300000, guid: 62fd74c1aaebfaa46bb3329d88371892, type: 3}

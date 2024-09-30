@@ -184,9 +184,11 @@ public class enemy : MonoBehaviour
                 case WeaponEffect.flame:
                     StartCoroutine(OnFire());
                     OnFireSprite.SetActive(true);
+                    //add sound effect here
                     break;
                 case WeaponEffect.antiarmor:
                     antArm = true;
+                    //maybe different sound
                     break;
                 case WeaponEffect.lifeSteal:
                     _playerHP.HealPlayer(deal / 6);
@@ -211,8 +213,9 @@ public class enemy : MonoBehaviour
             if (deal > armor)
             { HP = HP- Mathf.Clamp((deal - armor - currentDefense),1,deal); }
         }
-        
 
+        //play sound
+        _soundManager.PlaySound("hit", deal);
 
         curState = attackState.damaged;
         StartCoroutine(Flash());
