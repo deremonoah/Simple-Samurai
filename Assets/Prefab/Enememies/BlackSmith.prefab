@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44421948293784112, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0650741e53d8f2c458df89af49999818, type: 3}
     - target: {fileID: 871295418511070466, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: m_Size.x
       value: 3
@@ -126,6 +130,14 @@ PrefabInstance:
     - target: {fileID: 871295418511070493, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: m_Name
       value: BlackSmith
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551898289450451620, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551898289450451620, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}

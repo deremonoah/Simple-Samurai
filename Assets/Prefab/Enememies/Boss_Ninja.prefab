@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Ninja
       objectReference: {fileID: 0}
+    - target: {fileID: 7568975946382005783, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 909d9dae8fa118b4a97468d340fdba1a, type: 3}
     - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -182,7 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e2eb4643150e544ad9e2af475aaf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 0
   maxHP: 300
   armor: 7
   damgMin: 20
@@ -190,7 +193,6 @@ MonoBehaviour:
   defendValue: 30
   defendingMin: 1
   defendingMax: 1.6
-  targetally: {fileID: 0}
   randWaitmin: 1.5
   randWaitmax: 3.2
   readyingTimer: 2.5
@@ -229,4 +231,11 @@ MonoBehaviour:
   Defensiveness: 3
   difficulty: 
   stunTimer: 0
-  bossHP: {fileID: 0}
+  _healAmount: 0
+  regenTimer: 0
+  regenMaxTimer: 0
+  healThreashold: 0
+  aboveHealThreashold: 0
+  PoisonText: {fileID: 0}
+  isPoisoned: 0
+  trapsSet: []

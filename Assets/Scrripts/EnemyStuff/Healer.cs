@@ -60,7 +60,7 @@ public class Healer : enemy
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
 
-        curState = attackState.readying;
+        curState = attackState.waiting;
         if (hitIf)
         {
             //turn green
@@ -73,7 +73,7 @@ public class Healer : enemy
             HealingUI();
             
 
-            curState = attackState.swinging;
+            curState = attackState.ThrowingAttack;
             yield return new WaitForSeconds(strikeTimer);
 
             myActionRoutine = StartCoroutine(healEnmRoutine());

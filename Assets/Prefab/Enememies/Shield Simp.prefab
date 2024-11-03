@@ -135,5 +135,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield Simp
       objectReference: {fileID: 0}
+    - target: {fileID: 7568975946382005783, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61e9bad755a63b545a1cf235b321ce55, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

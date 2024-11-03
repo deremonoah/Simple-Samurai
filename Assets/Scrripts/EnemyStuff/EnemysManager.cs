@@ -7,7 +7,9 @@ using TMPro;
 
 public class EnemysManager : MonoBehaviour
 {
+    [Header("Enemy Positions")]
     public GameObject[] enemySpawnsPoints;
+    public Transform attackThrowMarker;
 
     public List<enemy> aliveEnemys;
     public float OpenTimer = 0.5f;
@@ -80,15 +82,16 @@ public class EnemysManager : MonoBehaviour
 
     }
 
-    public void SpawnEnemy(int point, GameObject enmPrefab)
+    public void SpawnEnemy(int pos, GameObject enmPrefab)
     {
-        enemy enm = Instantiate(enmPrefab, enemySpawnsPoints[point].transform.position, enemySpawnsPoints[point].transform.rotation).GetComponent<enemy>();
+        enemy enm = Instantiate(enmPrefab, enemySpawnsPoints[pos].transform.position, enemySpawnsPoints[pos].transform.rotation).GetComponent<enemy>();
         aliveEnemys.Add(enm);
-        enm.GetComponent<enemy>().SetThings(attackStartPoints, attackEndPointStandard, point);
+        enm.GetComponent<enemy>().SetThings(attackStartPoints, attackEndPointStandard, pos);
+        enm.GetComponent<enemy>().SetPositionRefrences(enemySpawnsPoints[pos].transform, attackThrowMarker);
         if(enm.myAbilities[0] == enemy.Ability.boss)
         { bossHPContainter.SetActive(true); }
         spawned = true;
-        recPos = point;
+        recPos = pos;
     }
     public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
     {

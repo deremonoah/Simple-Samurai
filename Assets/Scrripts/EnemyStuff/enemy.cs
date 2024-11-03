@@ -7,24 +7,33 @@ using TMPro;
 public class enemy : MonoBehaviour
 {
     
-    //stats
+    [Header("Stats")]
     private float HP;
     public float maxHP;
     [SerializeField] float armor, damgMin, damgMax, defendValue, defendingMin, defendingMax;
     //private enemy targetally;
 
     //mostly timers n stuff
+    [Header("timers")]
     public float randWaitmin, randWaitmax, readyingTimer, strikeTimer, waitTimerOffset;
 
     private Camera _mainCam;
     private GameManager _GM;
     private PlayerHealthBar _playerHP;
     private SoundManager _soundManager;
-    public int posInList;
 
-    //animation stuff
+    [Header("Position in List")]
+    public int posInList;
+    private Transform spotToReturnTo;
+    private Transform attackThrowMarker;
+    //this is for handling the enemy moving from thier spot up to attack area for better animation
+
+    [Header("AnimatorGORefrence")]
+    public GameObject spriteChild;
     private Animator anim;
-    
+    //below the state is what handles animation timing
+    protected attackState curState;
+
     public Image myHPBar;
     public EnemysManager enmsSys;
 
@@ -33,14 +42,14 @@ public class enemy : MonoBehaviour
     public List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
     public List<Vector2> atkDirs,SpecialDirs;
-    protected attackState curState;
+    
     public List<Ability> myAbilities;
     private int amountRobbed = 0;
 
     public List<GameObject> currentAttacks = new List<GameObject>();
 
-    public Material matWhite;
-    private Material matDefault;
+    //public Material matWhite;
+    
 
     [SerializeField] int minCoin, maxCoin;
 
@@ -84,7 +93,7 @@ public class enemy : MonoBehaviour
 
     public enum attackState 
     { 
-        waiting,readying,swinging,damaging,damaged
+        waiting,ThrowingAttack,damaged
     }
 
     public enum Ability
@@ -98,13 +107,12 @@ public class enemy : MonoBehaviour
         _GM = _mainCam.GetComponent<GameManager>();
         _playerHP = _mainCam.GetComponent<PlayerHealthBar>();
         enmsSys = _mainCam.GetComponent<EnemysManager>();
-        anim = GetComponent<Animator>();
+        anim = spriteChild.GetComponent<Animator>();
         HP = maxHP;
-        anim = GetComponent<Animator>();
+        
         _soundManager = FindObjectOfType<SoundManager>();
         //matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         
-        matDefault = GetComponent<SpriteRenderer>().material;
         var temp = enmsSys.GetTrapSpawnSpots();
         BlockSpots = temp[0];
 
@@ -218,7 +226,6 @@ public class enemy : MonoBehaviour
         _soundManager.PlaySound("hit", deal);
 
         curState = attackState.damaged;
-        StartCoroutine(Flash());
         
     }
 
@@ -273,6 +280,13 @@ public class enemy : MonoBehaviour
         atkStarts = str;
         atkEnd = end;
         posInList = point;
+    }
+
+    public void SetPositionRefrences(Transform mypos, Transform attackMark)
+    {
+        spotToReturnTo = mypos;
+        attackThrowMarker = attackMark;
+
     }
 
     public void SetPosInList(int pos)
@@ -374,18 +388,48 @@ public class enemy : MonoBehaviour
         {
             yield return null;
         }
+        curState = attackState.ThrowingAttack;
+        StartCoroutine(moveToShowAttack());
 
-
-        AttackUI();
-        curState = attackState.readying;
         yield return new WaitForSeconds(readyingTimer);
-
-        curState = attackState.swinging;
+        //AttackUI();
+        
+        curState = attackState.waiting;
+        
         yield return new WaitForSeconds(strikeTimer);
 
         StartMyRoutine();
 
 
+    }
+
+    public IEnumerator moveToShowAttack()
+    {
+        //this function has the enemy move up to the front of the strike area then attack
+        var sPos=spriteChild.transform.position;
+        float t = 0;
+        
+        while (t<1)
+        {
+            sPos = spriteChild.transform.position;
+            t = t + Time.deltaTime* 4f;
+            spriteChild.transform.position = Vector3.Lerp(sPos, attackThrowMarker.position, t);
+            yield return null;
+        }
+
+        spriteChild.transform.position = attackThrowMarker.position;
+
+        //moving back to their spot
+        t = 0;
+
+        while (t < 1)
+        {
+            sPos = spriteChild.transform.position;
+            t = t + Time.deltaTime;
+            spriteChild.transform.position = Vector3.Lerp(sPos, spotToReturnTo.position, t);
+            yield return null;
+        }
+        spriteChild.transform.position = spotToReturnTo.position;
     }
 
     private bool HasAbility(Ability abl)
@@ -407,10 +451,10 @@ public class enemy : MonoBehaviour
 
 
         SpecialUI();
-        curState = attackState.readying;
+        curState = attackState.ThrowingAttack;
         yield return new WaitForSeconds(readyingTimer);
+        curState = attackState.waiting;
 
-        curState = attackState.swinging;
         yield return new WaitForSeconds(strikeTimer);
 
         StartMyRoutine();
@@ -645,12 +689,7 @@ public class enemy : MonoBehaviour
     }
 
 
-    IEnumerator Flash()
-    {
-        GetComponent<SpriteRenderer>().material = matWhite;
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().material = matDefault;
-    }
+    
 
     IEnumerator OnFire()
     {

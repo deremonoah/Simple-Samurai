@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: thief boi
       objectReference: {fileID: 0}
+    - target: {fileID: 7568975946382005783, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e0a9572c2fd88ef42b4785087a1c8c8f, type: 3}
     - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0

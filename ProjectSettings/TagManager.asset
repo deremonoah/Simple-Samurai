@@ -47,6 +47,9 @@ TagManager:
   - name: base strike area
     uniqueID: 432511749
     locked: 0
+  - name: Enemy
+    uniqueID: 4245917227
+    locked: 0
   - name: buff strike area
     uniqueID: 1397026693
     locked: 0

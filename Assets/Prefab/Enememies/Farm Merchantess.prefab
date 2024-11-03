@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farm Merchantess
       objectReference: {fileID: 0}
+    - target: {fileID: 5650205098284138712, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 933bcc57853ce89499a71698dc6d7355, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9edbbb1f04448947a25ef8cfafcb8ae, type: 3}
 --- !u!114 &2333108766688159101 stripped

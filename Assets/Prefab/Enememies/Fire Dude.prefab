@@ -159,5 +159,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Dude
       objectReference: {fileID: 0}
+    - target: {fileID: 7568975946382005783, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b3df1bc4b72ffe74684a1ccc31a6a479, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

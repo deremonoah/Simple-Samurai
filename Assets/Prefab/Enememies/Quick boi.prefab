@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quick boi
       objectReference: {fileID: 0}
+    - target: {fileID: 7568975946382005783, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a5dc216704d43c14a9f2c68bd5dcccf1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
 --- !u!114 &4894749904811597880 stripped

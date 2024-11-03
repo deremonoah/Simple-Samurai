@@ -86,7 +86,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip clipToPlay=hit1;
 
-        Debug.Log("where are we?" +value);
+        //Debug.Log("where are we?" +value);
         //this doesn't work all the time?
         switch (clip)
         {
