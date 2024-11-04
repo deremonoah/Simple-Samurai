@@ -8,7 +8,7 @@ public class enemy : MonoBehaviour
 {
     
     [Header("Stats")]
-    private float HP;
+    public float HP;
     public float maxHP;
     [SerializeField] float armor, damgMin, damgMax, defendValue, defendingMin, defendingMax;
     //private enemy targetally;
@@ -91,6 +91,16 @@ public class enemy : MonoBehaviour
     private List<Transform> BlockSpots;
     private GameObject BlockSet;
 
+    //adding deligates to actually implement the stategy pattern
+    public delegate void FireDeligatedAction();
+    public FireDeligatedAction delegateAction;
+    public bool hasPickedAction = false;
+
+    public void SendActionUI()
+    {
+        delegateAction();
+    }
+
     public enum attackState 
     { 
         waiting,ThrowingAttack,damaged
@@ -116,7 +126,7 @@ public class enemy : MonoBehaviour
         var temp = enmsSys.GetTrapSpawnSpots();
         BlockSpots = temp[0];
 
-            myActionRoutine = StartCoroutine(TheAttackRoutine());  
+        DecideNStartAction();  
     }
 
     void Awake()
@@ -239,7 +249,7 @@ public class enemy : MonoBehaviour
             _regening = false;
             //should have a custome noise maybe bowl breaks and sprite the sumo the bowl should go flying
             StopCoroutine(myActionRoutine);
-            StartMyRoutine();
+            DecideNStartAction();
         }
     }
 
@@ -250,7 +260,7 @@ public class enemy : MonoBehaviour
             if(myActionRoutine != null)
             {
                 StopCoroutine(myActionRoutine);
-                StartMyRoutine();
+                DecideNStartAction();
             }
         }
         
@@ -313,9 +323,8 @@ public class enemy : MonoBehaviour
         }
     }
 
-    protected virtual void StartMyRoutine()
+    protected virtual void DecideNStartAction()
     {
-        bool hasStarted = false;
 
         //maybe move up should be a coroutine, so I can have it only happen at the end of frames
         MoveUP();
@@ -328,15 +337,16 @@ public class enemy : MonoBehaviour
         if(stunTimer>0)
         {
             myActionRoutine = StartCoroutine(StunnedRoutine());
-            hasStarted = true;
+            hasPickedAction = true;
         }
-        if(!hasStarted)
+        if(!hasPickedAction)
         {
                 //speccial abiliy routines
                 if (HasAbility(Ability.steal) && amountRobbed > 5)
                 {
-                    myActionRoutine = StartCoroutine(RunRoutine());
-                    hasStarted = true;
+                //myActionRoutine = StartCoroutine(RunRoutine());
+                    delegateAction = BeginRunUI;
+                    hasPickedAction = true;
                 }
                 else if (HasAbility(Ability.sasumata))
                 {
@@ -345,38 +355,44 @@ public class enemy : MonoBehaviour
                     if (rand == 1)
                     {
                         myActionRoutine = StartCoroutine(SasumataRoutine());
-                        hasStarted = true;
+                        hasPickedAction = true;
                     }
                 }
                 else if(HasAbility(Ability.fire))
             {
                 //testing basically a new trap or maybe chaning it to a block, maybe the traps should only go 
                 //off if you stop there? so players have more agency and they would need a lot of stuff covered
-                int rand = Random.Range(0, 6);
+                //int rand = Random.Range(0, 6);
                 //50% for test
-                if(rand<4)
+                /*if(rand<4)
                 {
                     myActionRoutine = StartCoroutine(BlockRoutine());
                     //make fire trap
                     //need info from enemy trap
                     hasStarted = true;
-                }
+                }*/
+                //removed blocking for the time being
             }
         }
 
-        if (!hasStarted)
-        {
-            //this way 0 defensiveness never blocks and it still is 10% increments
-            int rand = Random.Range(1, 11);
-            if (rand > Defensiveness)
-            { myActionRoutine = StartCoroutine(TheAttackRoutine()); }
-            else
-            { myActionRoutine = StartCoroutine(TheDefendingRoutine()); }
-        }
+        
+            //we are chaning the attack routine back into the action routine
+            //and making the deligate decide what they are doing,
+            //so for children of this we just need to overwrite this
+            //int rand = Random.Range(1, 11);
+            if (!hasPickedAction)
+            {
+                delegateAction = AttackUI;
+            }
+        myActionRoutine = StartCoroutine(TheActionRoutine());
+            
+            /*else
+            { myActionRoutine = StartCoroutine(TheDefendingRoutine()); }*/
+        
     }
 
     #region Attack Stuff
-    protected virtual IEnumerator TheAttackRoutine()
+    protected virtual IEnumerator TheActionRoutine()
     {
         curState = attackState.waiting;
         
@@ -400,10 +416,8 @@ public class enemy : MonoBehaviour
         curState = attackState.waiting;
         
         yield return new WaitForSeconds(strikeTimer);
-
-        StartMyRoutine();
-
-
+        hasPickedAction = false;
+        DecideNStartAction();
     }
 
     public IEnumerator moveToShowAttack()
@@ -464,7 +478,7 @@ public class enemy : MonoBehaviour
 
         yield return new WaitForSeconds(strikeTimer);
 
-        StartMyRoutine();
+        DecideNStartAction();
     }
 
     public IEnumerator StunnedRoutine()
@@ -477,7 +491,7 @@ public class enemy : MonoBehaviour
         stunTimer = 0f;
         StunnedSprite.SetActive(false);
 
-        StartMyRoutine();
+        DecideNStartAction();
     }
 
     public void AttackUI()
@@ -609,7 +623,7 @@ public class enemy : MonoBehaviour
         //look up better way of weighting outcomes of randomness
         BlockSet=(Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation));
         yield return new WaitForSeconds(0.5f);
-        StartMyRoutine();
+        DecideNStartAction();
     }
 
 
@@ -637,7 +651,7 @@ public class enemy : MonoBehaviour
         //because we need their current deffense to be 0 while attacking
         currentDefense = 0;
         spriteChild.GetComponent<SpriteRenderer>().color = Color.white;
-        StartMyRoutine();
+        DecideNStartAction();
     }
         private void MoveUP()
     {
@@ -669,14 +683,11 @@ public class enemy : MonoBehaviour
         }
     }
 
-    IEnumerator RunRoutine()
+    public void BeginRunUI()
     {
-        yield return new WaitForSeconds(Random.Range(randWaitmin, randWaitmax));
-        //which then has to when hit stop this routine and if not it just destroys the enm thief clone
         GameObject run = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]);
         currentAttacks.Add(run);
-        yield return new WaitForSeconds(2);
     }
 
     public void IRan()
@@ -727,7 +738,7 @@ public class enemy : MonoBehaviour
         }
         else
         {
-            StartMyRoutine();
+            DecideNStartAction();
         }
     }
 

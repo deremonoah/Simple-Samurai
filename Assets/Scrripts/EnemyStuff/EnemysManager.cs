@@ -18,7 +18,6 @@ public class EnemysManager : MonoBehaviour
 
     [SerializeField] int recPos;
 
-
     [SerializeField] List<GameObject> attackStartPoints;
     [SerializeField] GameObject attackEndPointStandard;
 

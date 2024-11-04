@@ -31,7 +31,7 @@ public class Grappler : enemy
         base.Update();
     }
 
-    protected override void StartMyRoutine()
+    protected override void DecideNStartAction()
     {
         bool hasStarted = false;
         int rand = Random.Range(0, 10);
@@ -62,7 +62,7 @@ public class Grappler : enemy
         //should also check if they have the self heal ability if they want to self heal based on stuff or maybe put that in base startmyroutine
         if (!hasStarted)
         {
-            base.StartMyRoutine();
+            base.DecideNStartAction();
             lastAction = 0;
         }
     }
@@ -73,6 +73,6 @@ public class Grappler : enemy
         blocksSet.Add(Instantiate(blockprefab, _blockSpots[rand].position, transform.rotation));
 
         yield return new WaitForSeconds(1f);
-        StartMyRoutine();
+        DecideNStartAction();
     }
 }

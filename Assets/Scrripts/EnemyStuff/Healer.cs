@@ -12,13 +12,37 @@ public class Healer : enemy
     {
         base.Start();
         StopAllCoroutines();
-        myActionRoutine = StartCoroutine(healEnmRoutine());
-    }
+        DecideNStartAction();
+    } 
 
-
-    protected override void StartMyRoutine()
+    protected override void DecideNStartAction()
     {
-        myActionRoutine = StartCoroutine(healEnmRoutine());
+        //myActionRoutine = StartCoroutine(healEnmRoutine());
+        Debug.Log("in healer decide");
+        bool hitIf = false;
+        targetally = new enemy();
+        foreach (enemy i in enmsSys.aliveEnemys)
+        {
+            if (i.getCurrentHP() < i.maxHP)
+            {
+                targetally = i;
+                hitIf = true;
+                break;
+            }
+        }
+        if(hitIf)
+        {
+            delegateAction = healAllyNow;
+            hasPickedAction = true;
+        }
+        else
+        {
+            //no one to heal then hit
+            base.delegateAction = AttackUI;
+            //Do I need to overwrite the 
+        }
+        //this call after the action is set
+        myActionRoutine = StartCoroutine(TheActionRoutine());
     }
 
     public void HealingUI()
@@ -37,7 +61,7 @@ public class Healer : enemy
     }
 
 
-    IEnumerator healEnmRoutine()
+    /*IEnumerator healEnmRoutine()
     {
         curState = attackState.waiting;
         bool hitIf = false;
@@ -64,7 +88,7 @@ public class Healer : enemy
         if (hitIf)
         {
             //turn green
-            GetComponent<SpriteRenderer>().color = FindObjectOfType<ColorManager>().AboutToHealColor;
+            spriteChild.GetComponent<SpriteRenderer>().color = FindObjectOfType<ColorManager>().AboutToHealColor;
         }
         yield return new WaitForSeconds(readyingTimer);
 
@@ -77,15 +101,16 @@ public class Healer : enemy
             yield return new WaitForSeconds(strikeTimer);
 
             myActionRoutine = StartCoroutine(healEnmRoutine());
-            GetComponent<SpriteRenderer>().color = Color.white;
+            spriteChild.GetComponent<SpriteRenderer>().color = Color.white;
         }
         else
         {
-            myActionRoutine = StartCoroutine(TheAttackRoutine());
+            myActionRoutine = StartCoroutine(TheActionRoutine());
         }
 
-
-    }
+    this was the old way I did the routine now I am using deligates hope it works
+    with the new animation system
+    }*/
 
     public void healAllyNow()
     {

@@ -8,6 +8,6 @@ public class AnimationCaller : MonoBehaviour
 
     public void SendAttack()
     {
-        myscript.AttackUI();
+        myscript.SendActionUI();
     }
 }

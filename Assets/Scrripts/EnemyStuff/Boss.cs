@@ -32,9 +32,9 @@ public class Boss : Ninja
         base.PoisonText = enmsSys.bossPoisonText;
     }
 
-    protected override void StartMyRoutine()
+    protected override void DecideNStartAction()
     {
-        base.StartMyRoutine();
+        base.DecideNStartAction();
     }
 
     private void SwapSpots()
