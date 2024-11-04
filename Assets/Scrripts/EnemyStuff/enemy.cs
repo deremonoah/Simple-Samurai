@@ -317,6 +317,7 @@ public class enemy : MonoBehaviour
     {
         bool hasStarted = false;
 
+        //maybe move up should be a coroutine, so I can have it only happen at the end of frames
         MoveUP();
 
         /*if(myActionRoutine != null)
@@ -388,11 +389,13 @@ public class enemy : MonoBehaviour
         {
             yield return null;
         }
-        curState = attackState.ThrowingAttack;
+        //the showing also turns on the animation to throw the attack
         StartCoroutine(moveToShowAttack());
 
-        yield return new WaitForSeconds(readyingTimer);
-        //AttackUI();
+        //can we wait for another coroutine to be done? google says yes, below line seems simple enough
+        yield return moveToShowAttack();
+        //yield return new WaitForSeconds(readyingTimer);
+        //the readying timer seems a bit useless now could remove more than likley as it is the same
         
         curState = attackState.waiting;
         
@@ -416,8 +419,12 @@ public class enemy : MonoBehaviour
             spriteChild.transform.position = Vector3.Lerp(sPos, attackThrowMarker.position, t);
             yield return null;
         }
-
+        
         spriteChild.transform.position = attackThrowMarker.position;
+        //play animation
+        curState = attackState.ThrowingAttack;
+        //wait for the right amount time for the animation to finish hopefully
+        yield return new WaitForSeconds(0.5f);
 
         //moving back to their spot
         t = 0;
@@ -449,9 +456,9 @@ public class enemy : MonoBehaviour
         curState = attackState.waiting;
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
-
-        SpecialUI();
         curState = attackState.ThrowingAttack;
+        SpecialUI();
+        
         yield return new WaitForSeconds(readyingTimer);
         curState = attackState.waiting;
 
@@ -620,20 +627,21 @@ public class enemy : MonoBehaviour
         {
             yield return null;
         }
-
+        
         currentDefense = defendValue;
-        GetComponent<SpriteRenderer>().color = FindObjectOfType<ColorManager>().defendingColor;
+        spriteChild.GetComponent<SpriteRenderer>().color = FindObjectOfType<ColorManager>().defendingColor;
         //there should also be indication to the player shields over enemy hp or the strike area changes color and maybe the enemy
         //it waits between lowest and highest defend timer and defense is up during that time
         yield return new WaitForSeconds(Random.Range(defendingMin,defendingMax));
 
         //because we need their current deffense to be 0 while attacking
         currentDefense = 0;
-        GetComponent<SpriteRenderer>().color = Color.white;
+        spriteChild.GetComponent<SpriteRenderer>().color = Color.white;
         StartMyRoutine();
     }
         private void MoveUP()
     {
+        //why outsource max agression?
         int rand = Random.Range(0, enmsSys.GetMaxAgression());
         if (rand <= Aggression)
         {

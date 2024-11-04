@@ -139,6 +139,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2765593167707755158}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &544600790189419140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2445335703602919442, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2765593167707755158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &8416036972795924870 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -199,6 +204,7 @@ MonoBehaviour:
   strikeTimer: 0.4
   waitTimerOffset: 0
   posInList: 0
+  spriteChild: {fileID: 544600790189419140}
   myHPBar: {fileID: 0}
   enmsSys: {fileID: 0}
   atkPrefabs:
@@ -214,7 +220,6 @@ MonoBehaviour:
   SpecialDirs: []
   myAbilities: 0600000005000000
   currentAttacks: []
-  matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 12
   maxCoin: 20
   HPPointer: {fileID: 8280745359955222518}

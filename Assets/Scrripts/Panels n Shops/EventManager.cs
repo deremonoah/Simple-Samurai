@@ -72,9 +72,10 @@ public class EventManager : MonoBehaviour
 
         var rand = Random.Range(0, 10);
         var wave = _enemyManager.WaveControlVariable;
-        if ((wave >=1 && rand <= 4 ) ||(wave>=8 && wave<=10) && !hasBlacksmith)
+        if ((wave >=1 && rand <= 4 ) ||(wave>=8 && wave<=10))
         {
-            _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith"));
+            if (!hasBlacksmith)
+            { _nextEvents.Add(Resources.Load<Event>("Events/BlackSmith")); }
         }
 
         rand = Random.Range(0, 10);
