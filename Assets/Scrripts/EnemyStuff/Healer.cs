@@ -18,7 +18,7 @@ public class Healer : enemy
     protected override void DecideNStartAction()
     {
         //myActionRoutine = StartCoroutine(healEnmRoutine());
-        Debug.Log("in healer decide");
+        
         bool hitIf = false;
         targetally = new enemy();
         foreach (enemy i in enmsSys.aliveEnemys)
@@ -30,16 +30,19 @@ public class Healer : enemy
                 break;
             }
         }
-        if(hitIf)
+        Debug.Log("hit if is:" + hitIf);
+        if (hitIf)
         {
-            delegateAction = healAllyNow;
+            delegateAction = HealingUI;
             hasPickedAction = true;
         }
         else
         {
             //no one to heal then hit
-            base.delegateAction = AttackUI;
-            //Do I need to overwrite the 
+            Debug.Log("in healer attack decision");
+            AttackUI();
+            delegateAction = base.AttackUI;
+            hasPickedAction = true;
         }
         //this call after the action is set
         myActionRoutine = StartCoroutine(TheActionRoutine());
