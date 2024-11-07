@@ -235,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e81aa05f0d4ef104f803b91d7e79e69f, type: 3}
+    - target: {fileID: 8186756724622919039, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: myscript
+      value: 
+      objectReference: {fileID: -6386235926874281460}
     - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -321,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a87a49de764a394a9e66b311a067c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 0
   maxHP: 120
   armor: 4
   damgMin: 15
@@ -372,5 +377,6 @@ MonoBehaviour:
   aboveHealThreashold: 0
   PoisonText: {fileID: 8578998539530337361}
   isPoisoned: 0
+  hasPickedAction: 0
   healMin: 40
   healMax: 60
