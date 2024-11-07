@@ -11,8 +11,8 @@ public class Healer : enemy
     protected override void Start()
     {
         base.Start();
-        StopAllCoroutines();
-        DecideNStartAction();
+        //StopAllCoroutines(); if base starts the coroutine we don't want to stop it
+        //DecideNStartAction(); base class already calls it
     } 
 
     protected override void DecideNStartAction()
@@ -20,7 +20,7 @@ public class Healer : enemy
         //myActionRoutine = StartCoroutine(healEnmRoutine());
         
         bool hitIf = false;
-        targetally = new enemy();
+        targetally = null;
         foreach (enemy i in enmsSys.aliveEnemys)
         {
             if (i.getCurrentHP() < i.maxHP)
@@ -40,8 +40,8 @@ public class Healer : enemy
         {
             //no one to heal then hit
             Debug.Log("in healer attack decision");
-            AttackUI();
-            delegateAction = base.AttackUI;
+            //AttackUI(); calling it works, but deligating it doesn't why?
+            delegateAction = AttackUI;
             hasPickedAction = true;
         }
         //this call after the action is set

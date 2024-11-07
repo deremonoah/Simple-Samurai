@@ -127,6 +127,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2572378017422108656}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &170433031115579362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2445335703602919442, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2572378017422108656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &8149392656905938144 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -196,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24143f0dca42f2b42bf3d44f5775e244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 0
   maxHP: 190
   armor: 0
   damgMin: 15
@@ -209,6 +215,7 @@ MonoBehaviour:
   strikeTimer: 0.4
   waitTimerOffset: 0
   posInList: 0
+  spriteChild: {fileID: 170433031115579362}
   myHPBar: {fileID: 114572913680067122}
   enmsSys: {fileID: 0}
   atkPrefabs:
@@ -221,7 +228,6 @@ MonoBehaviour:
   SpecialDirs: []
   myAbilities: 00000000
   currentAttacks: []
-  matWhite: {fileID: 2100000, guid: c419d7ef44ea6aa45880135a70b38d61, type: 2}
   minCoin: 7
   maxCoin: 12
   HPPointer: {fileID: 8590808088516782736}
@@ -245,6 +251,7 @@ MonoBehaviour:
   aboveHealThreashold: 0
   PoisonText: {fileID: 8349600621484805486}
   isPoisoned: 0
+  hasPickedAction: 0
   blockprefab: {fileID: 2241141551349325259, guid: 90d86f7fae5bdf245a175399cf6cd090, type: 3}
   blocksSet: []
   _blockSpots: []

@@ -126,6 +126,7 @@ public class EnemysManager : MonoBehaviour
         for (int lcv = 0; lcv < aliveEnemys.Count; lcv++)
         {
             aliveEnemys[lcv].SetPosInList(lcv);
+            aliveEnemys[lcv].SetPositionRefrences(enemySpawnsPoints[lcv].transform, attackThrowMarker);
         }
         //maybe call pointer manager here?
     }

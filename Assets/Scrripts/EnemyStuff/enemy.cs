@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class enemy : MonoBehaviour
 {
-    
+
     [Header("Stats")]
     public float HP;
     public float maxHP;
@@ -41,15 +42,15 @@ public class enemy : MonoBehaviour
     public List<GameObject> atkPrefabs, specialPrefabs;
     public List<GameObject> atkStarts;
     [SerializeField] GameObject atkEnd;
-    public List<Vector2> atkDirs,SpecialDirs;
-    
+    public List<Vector2> atkDirs, SpecialDirs;
+
     public List<Ability> myAbilities;
     private int amountRobbed = 0;
 
     public List<GameObject> currentAttacks = new List<GameObject>();
 
     //public Material matWhite;
-    
+
 
     [SerializeField] int minCoin, maxCoin;
 
@@ -66,7 +67,7 @@ public class enemy : MonoBehaviour
     [SerializeField] int Aggression;
     [SerializeField] int Defensiveness;
 
-    private float currentDefense=0;
+    private float currentDefense = 0;
 
     public List<int> difficulty;
     public float stunTimer = 0;
@@ -74,7 +75,7 @@ public class enemy : MonoBehaviour
     //selfheal stuff
     [SerializeField] float _healAmount;
     private bool _regening = false;
-    [SerializeField] float regenTimer ,regenMaxTimer;
+    [SerializeField] float regenTimer, regenMaxTimer;
     [SerializeField] float healThreashold;
     [SerializeField] bool aboveHealThreashold;
 
@@ -92,13 +93,24 @@ public class enemy : MonoBehaviour
     private GameObject BlockSet;
 
     //adding deligates to actually implement the stategy pattern
-    public delegate void FireDeligatedAction();
-    public FireDeligatedAction delegateAction;
+    public System.Action DelegateAction;
+    public System.Action delegateAction
+    {
+        get
+        {
+            return DelegateAction;
+        }
+        set
+        {
+            DelegateAction = value;
+            Debug.Log($"Action changed to {value}");
+        }
+    }
     public bool hasPickedAction = false;
 
     public void SendActionUI()
     {
-        delegateAction();
+        delegateAction.Invoke();
     }
 
     public enum attackState 
