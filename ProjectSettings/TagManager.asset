@@ -53,11 +53,11 @@ TagManager:
   - name: buff strike area
     uniqueID: 1397026693
     locked: 0
-  - name: pointer
-    uniqueID: 3966444063
-    locked: 0
   - name: enemy attacks
     uniqueID: 3091842159
+    locked: 0
+  - name: pointer
+    uniqueID: 3966444063
     locked: 0
   - name: Smoke bomb
     uniqueID: 967084145

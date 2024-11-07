@@ -103,7 +103,6 @@ public class enemy : MonoBehaviour
         set
         {
             DelegateAction = value;
-            Debug.Log($"Action changed to {value}");
         }
     }
     public bool hasPickedAction = false;
@@ -374,15 +373,15 @@ public class enemy : MonoBehaviour
             {
                 //testing basically a new trap or maybe chaning it to a block, maybe the traps should only go 
                 //off if you stop there? so players have more agency and they would need a lot of stuff covered
-                //int rand = Random.Range(0, 6);
+                int rand = Random.Range(0, 6);
                 //50% for test
-                /*if(rand<4)
+                if(rand<4)
                 {
-                    myActionRoutine = StartCoroutine(BlockRoutine());
+                    DelegateAction = PlaceTrap;
                     //make fire trap
                     //need info from enemy trap
-                    hasStarted = true;
-                }*/
+                    hasPickedAction = true;
+                }
                 //removed blocking for the time being
             }
         }
@@ -629,15 +628,13 @@ public class enemy : MonoBehaviour
 
     #endregion
     
-    private IEnumerator BlockRoutine()
+    private void PlaceTrap()
     {
-        yield return new WaitForSeconds(0.5f);
+        //currently places sumo blocks and fire dude trap
         int rand = Random.Range(0, BlockSpots.Count + 2);
         rand = Mathf.Clamp(rand - 2, 0, BlockSpots.Count);
         //look up better way of weighting outcomes of randomness
         BlockSet=(Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation));
-        yield return new WaitForSeconds(0.5f);
-        DecideNStartAction();
     }
 
 
