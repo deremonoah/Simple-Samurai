@@ -92,7 +92,7 @@ public class enemy : MonoBehaviour
 
     //testing new block?
     private List<Transform> BlockSpots;
-    private GameObject BlockSet;
+    private List<GameObject> BlockSets;
 
     //adding deligates to actually implement the stategy pattern
     public System.Action DelegateAction;
@@ -132,6 +132,7 @@ public class enemy : MonoBehaviour
         enmsSys = _mainCam.GetComponent<EnemysManager>();
         anim = spriteChild.GetComponent<Animator>();
         HP = maxHP;
+        BlockSets = new List<GameObject>();
 
         parM = FindObjectOfType<ParticleManager>();
 
@@ -163,9 +164,12 @@ public class enemy : MonoBehaviour
                 FindObjectOfType<PlayerHealthBar>().CuredofPoison();
                 //currently this wouldn't check if there are other enemies with the ability to poison, but worry about it later
             }
-            if(BlockSet!=null)
+            if(BlockSets.Count>0)
             {
-                Destroy(BlockSet);
+                foreach (GameObject trap in BlockSets)
+                {
+                    Destroy(trap);
+                }
             }
             enmsSys.OnDied(this);
             
@@ -232,7 +236,10 @@ public class enemy : MonoBehaviour
                     break;
                 case WeaponEffect.poison:
                     HP -= 1;
-                    GotPoisoned(deal);
+                    if (!isPoisoned)
+                        GotPoisoned(deal);
+                    else PoisonTimer -= deal / 8;
+                    //for future refrence the 8 should probably be what scales
                     break;
             }
         }
@@ -377,9 +384,9 @@ public class enemy : MonoBehaviour
             {
                 //testing basically a new trap or maybe chaning it to a block, maybe the traps should only go 
                 //off if you stop there? so players have more agency and they would need a lot of stuff covered
-                int rand = Random.Range(0, 6);
+                int rand = Random.Range(0, 10);
                 //50% for test
-                if(rand<4)
+                if(rand<3)
                 {
                     DelegateAction = PlaceTrap;
                     //make fire trap
@@ -638,7 +645,8 @@ public class enemy : MonoBehaviour
         int rand = Random.Range(0, BlockSpots.Count + 2);
         rand = Mathf.Clamp(rand - 2, 0, BlockSpots.Count);
         //look up better way of weighting outcomes of randomness
-        BlockSet=(Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation));
+        var trap=Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation);
+        BlockSets.Add(trap);
     }
 
 
@@ -796,7 +804,7 @@ public class enemy : MonoBehaviour
     {
         //this is to centralize where all the poison stuff except variables are
         //calculate poison timer
-        PoisonTimer = (maxHP-Damage) / 10;
+        PoisonTimer = (maxHP-Damage) / 8;
         WasPoisonedRoutine = StartCoroutine(PoisonedRoutine());
         //poison timer number should be set here 
     }

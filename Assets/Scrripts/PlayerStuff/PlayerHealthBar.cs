@@ -300,4 +300,11 @@ public class PlayerHealthBar : MonoBehaviour
         //if secCount<=0
         health = 0;
     }
+
+    public void CurePlayerStatusEffects()
+    {
+        StopAllCoroutines();
+        PlayerOnFireSprite.SetActive(false);
+        //both fire and poison are coroutines
+    }
 }

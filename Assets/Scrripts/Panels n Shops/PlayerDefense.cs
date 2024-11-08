@@ -13,8 +13,10 @@ public class PlayerDefense : MonoBehaviour
     [SerializeField] List<Dragable> DefenseDragables;
     [SerializeField] DropZone EquipedDefenseSlot;
     public GameObject DefenseButton;
+    private GameManager gm;
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         EquipedDefense = new int[3];
         for (int lcv = 0; lcv < DefensesUIList.Count; lcv++)
         {
@@ -150,6 +152,33 @@ public class PlayerDefense : MonoBehaviour
             EquipedDefense[index] = 3;
             SetDefenseUI(2);
             //enable ui which I will change to be setting the image not activating and deactivating one
+        }
+    }
+
+    public void equipPit()
+    {
+        if (gm.playerCoins >= 5)
+        {
+            ReadyDefense(1, 0);
+            gm.playerCoins -= 5;
+        }
+    }
+
+    public void equipPalasade()
+    {
+        if (gm.playerCoins >= 10)
+        {
+            ReadyDefense(2, 0);
+            gm.playerCoins -= 10;
+        }
+    }
+
+    public void equipSpikes()
+    {
+        if (gm.playerCoins >= 8)
+        {
+            ReadyDefense(3, 0);
+            gm.playerCoins -= 8;
         }
     }
 

@@ -66,12 +66,14 @@ public class EnemysManager : MonoBehaviour
 
     void Update()
     {
+        //OnDied this happens after to check AliveEnemys<0
         if (spawned && aliveEnemys.Count < 1)
         {
             if (OpenTimer <= 0)
             {
                 spawned = false;
                 OpenTimer = 0.5f;
+                FindObjectOfType<PlayerHealthBar>().CurePlayerStatusEffects();
                 _flowManager.StartMenues();
                 _villageDefense.ResetVillage();
             }
