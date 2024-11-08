@@ -156,8 +156,8 @@ public class EventManager : MonoBehaviour
             //FindObjectOfType<BuffAreaManager>().PlaceBuff(0);
             //trigger needs to prompt player so how to load up the pick panel after events are done?
             //gotta make a thing to load pick pan to promt player
-            //just make it an event BuffAreaUnlock1
-            _nextEvents.Add(Resources.Load<Event>("Events/BuffAreaUnlock1"));
+            //just make it an event BuffAreaUnlock1 not sure I want to show this unfinished system off
+            //_nextEvents.Add(Resources.Load<Event>("Events/BuffAreaUnlock1"));
         }
 
 

@@ -38,7 +38,10 @@ public class Grappler : enemy
         actionCount++;
 
         //this should stop duplicate attacks and too many actions
-        StopCoroutine(myActionRoutine);
+        if (myActionRoutine != null)
+        {
+            StopCoroutine(myActionRoutine);
+        }
 
         if(actionCount>3)
         {

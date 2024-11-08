@@ -88,6 +88,8 @@ public class enemy : MonoBehaviour
 
     private int regenTracker;
 
+    private ParticleManager parM;
+
     //testing new block?
     private List<Transform> BlockSpots;
     private GameObject BlockSet;
@@ -130,7 +132,9 @@ public class enemy : MonoBehaviour
         enmsSys = _mainCam.GetComponent<EnemysManager>();
         anim = spriteChild.GetComponent<Animator>();
         HP = maxHP;
-        
+
+        parM = FindObjectOfType<ParticleManager>();
+
         _soundManager = FindObjectOfType<SoundManager>();
         //matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         
@@ -247,7 +251,7 @@ public class enemy : MonoBehaviour
         _soundManager.PlaySound("hit", deal);
 
         curState = attackState.damaged;
-        
+        parM.ShowDamage(spriteChild.transform, deal);
     }
 
     protected virtual void OnHitEffect(float deal)

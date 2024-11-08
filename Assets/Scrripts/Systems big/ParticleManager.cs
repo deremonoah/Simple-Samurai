@@ -6,6 +6,8 @@ public class ParticleManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem angrySymbol;
     [SerializeField] ParticleSystem buffUp;
+    [SerializeField] GameObject smolBlood;
+    [SerializeField] GameObject bigBlood;
     //blood flying
     //coins?
     private float raging = 0f;
@@ -50,5 +52,20 @@ public class ParticleManager : MonoBehaviour
         {
             //not sure if I want this one here
         }
+    }
+
+    public void ShowDamage(Transform pos,float dmg)
+    {
+        var par=gameObject;
+        if(dmg<=26)
+        {
+            par=Instantiate(smolBlood, pos, pos);
+            par.transform.parent = pos;
+            return;
+        }
+        //instatiate blood spray or burst
+        par=Instantiate(bigBlood, pos, pos);
+        //parent it to follow for the animation
+        par.transform.parent = pos;
     }
 }
