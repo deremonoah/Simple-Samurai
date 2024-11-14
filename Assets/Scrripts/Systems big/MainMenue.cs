@@ -11,6 +11,11 @@ public class MainMenue : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void TutorialThenGame()
     {
         StartCoroutine(TutorialRoutine());
