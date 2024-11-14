@@ -39760,7 +39760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1673487023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48907,12 +48907,40 @@ PrefabInstance:
       objectReference: {fileID: 337474711}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 024def485cd14e440bbe89a879073552, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3ec131037544864d81f8b7d2e972416, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: cac92d5b374cc410b84c2ddd1d8d4e45, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: fa3a90828e8304518bf48a0891c7b826, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: d53a10447839c3d4ab7778193918eb3c, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: d4d7766a130f7fc488bacb0679a80558, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.data[18]
       value: 
-      objectReference: {fileID: 11400000, guid: d53a10447839c3d4ab7778193918eb3c, type: 2}
+      objectReference: {fileID: 11400000, guid: d4d7766a130f7fc488bacb0679a80558, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.data[19]
       value: 
