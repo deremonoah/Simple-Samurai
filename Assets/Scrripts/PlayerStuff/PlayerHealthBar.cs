@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerHealthBar : MonoBehaviour
 {
+    [Header("Ui refrences")]
+    public Image healthBarInCombat;
+    public Image InPanelHPBar;
+    public Text HpNumbers;
+    [SerializeField] GameObject hpInCombat;
+    [SerializeField] GameObject hpInPanels;
+    public bool inCombat;
 
-    public Image healthBar;
-
+    [Header("Numbers")]
     public float health, maxHealth = 100;
-    private float bonusHealth=0;
+    private float bonusHealth = 0;
     private bool hadBonusHP;
     float lerpSpeed;
     [SerializeField] float armorValue;
@@ -38,6 +44,9 @@ public class PlayerHealthBar : MonoBehaviour
     private bool isPoisoned;
     private int PoisonTimer = 20;
 
+    //stuff for multiple hp bars
+
+
     void Start()
     {
         health = maxHealth;
@@ -53,6 +62,9 @@ public class PlayerHealthBar : MonoBehaviour
         startingScale = angrySymbol.transform.localScale;
         PoisonText.text = "";
         isPoisoned = false;
+
+        inCombat = true;
+        HPIsInCombat(inCombat);
     }
 
 
@@ -75,7 +87,7 @@ public class PlayerHealthBar : MonoBehaviour
             }
             else { _gm.OpenLossPan(); }
         }
-        
+
         if (_myCurio != null)
         {
             if (_myCurio.curiEef == CurioEffect.healOnGo && health <= maxHealth / 2)
@@ -84,15 +96,15 @@ public class PlayerHealthBar : MonoBehaviour
                 FindObjectOfType<PlayerEquipedItemsManager>().ClearConsumable();
             }
         }
-        
+
         //testing
-        if(Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             StartCoroutine(RevengeRoutine());
         }
 
         lerpSpeed = 2f * Time.deltaTime;
-        
+
         if (myArmor.armrEef == ArmorEffect.turtle)
         {
             if (!Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.Mouse0))
@@ -111,14 +123,36 @@ public class PlayerHealthBar : MonoBehaviour
 
         HealthBarFiller();
 
-        
+
     }
 
 
     void HealthBarFiller()
     {
         //healthBar.fillAmount = health / Mathf.Lerp(healthBar.fillAmount, health / maxHealth,lerpSpeed);
-        healthBar.fillAmount = health / maxHealth;
+        if (inCombat)
+        { healthBarInCombat.fillAmount = health / maxHealth; }
+        else
+        //will it work while disabled
+        {
+            InPanelHPBar.fillAmount = health / maxHealth;
+            HpNumbers.text = (int)health + "/" + maxHealth;
+        }
+    }
+
+    public void HPIsInCombat(bool oo)
+    {
+        inCombat = oo;
+        if(inCombat)
+        {
+            hpInCombat.SetActive(true);
+            hpInPanels.SetActive(false);
+        }
+        else
+        {
+            hpInPanels.SetActive(true);
+            hpInCombat.SetActive(false);
+        }
     }
 
     public void DamagePlayer(enemy enmy,float damagePoints, int ability)
@@ -272,7 +306,7 @@ public class PlayerHealthBar : MonoBehaviour
     {
         //stop poison routine
         //might need to call color manager to have color consistancy
-        healthBar.color = Color.red;
+        healthBarInCombat.color = Color.red;
         PoisonText.text = "";
         if (WasPoisonedRoutine != null)
         { StopCoroutine(WasPoisonedRoutine); }
@@ -286,7 +320,7 @@ public class PlayerHealthBar : MonoBehaviour
         isPoisoned = true;
         yield return new WaitForSeconds(.3f);
         PoisonTimer = 20;
-        healthBar.color = colman.PoisonedColor;
+        healthBarInCombat.color = colman.PoisonedColor;
         //healthBar.color =  Color.black;
         //would like to change that to purple
         //PoisonText.gameObject.SetActive(true); can just have no text

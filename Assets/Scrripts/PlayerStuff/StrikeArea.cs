@@ -329,6 +329,8 @@ public class StrikeArea : MonoBehaviour
     public static void SwitchPlayerOn(bool tf)
     {
         PlayerOn = tf;
+        //also turns the hp bar on correctly
+
     }
 
     public void BeingBlocked(bool isblocked)

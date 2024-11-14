@@ -13,6 +13,7 @@ public class GameFlowManager : MonoBehaviour
     [SerializeField] Animator _villagePanel;
     private FarmShop _farm;
     private bool _isEvent;
+    private PlayerHealthBar _php;
 
     [ContextMenu("initialize")]
 
@@ -22,10 +23,12 @@ public class GameFlowManager : MonoBehaviour
         _PickPanManager = FindObjectOfType<PickPanManager>();
         _eventManager = GetComponent<EventManager>();
         _farm = GetComponent<FarmShop>();
+        _php = GetComponent<PlayerHealthBar>();
     }
 
     public void StartMenues()
     {
+        _php.HPIsInCombat(false);
         StopAllCoroutines();
         StartCoroutine(FlowRoutine());
         _farm.ResetHealPurchases();
@@ -82,5 +85,6 @@ public class GameFlowManager : MonoBehaviour
             continue;
         }
         StrikeArea.SwitchPlayerOn(true);
+        _php.HPIsInCombat(true);
     }
 }
