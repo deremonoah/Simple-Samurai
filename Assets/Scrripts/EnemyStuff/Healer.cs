@@ -31,7 +31,9 @@ public class Healer : enemy
             }
         }
         Debug.Log("hit if is:" + hitIf);
-        if (hitIf)
+        int rand = Random.Range(0, 10);
+        //trying at 70 percent
+        if (hitIf && rand<7)
         {
             delegateAction = HealingUI;
             hasPickedAction = true;
