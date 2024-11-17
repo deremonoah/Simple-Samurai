@@ -95,16 +95,16 @@ public class enemy : MonoBehaviour
     private List<GameObject> BlockSets;
 
     //adding deligates to actually implement the stategy pattern
-    public System.Action DelegateAction;
+    public System.Action _DelegateAction;
     public System.Action delegateAction
     {
         get
         {
-            return DelegateAction;
+            return _DelegateAction;
         }
         set
         {
-            DelegateAction = value;
+            _DelegateAction = value;
         }
     }
     public bool hasPickedAction = false;
@@ -388,7 +388,7 @@ public class enemy : MonoBehaviour
                 //50% for test
                 if(rand<3)
                 {
-                    DelegateAction = PlaceTrap;
+                    _DelegateAction = PlaceTrap;
                     //make fire trap
                     //need info from enemy trap
                     hasPickedAction = true;
@@ -839,5 +839,7 @@ public class enemy : MonoBehaviour
         }
         //if secCount<=0
         HP = 0;
+        PoisonText.text = "";
+        myHPBar.color = Color.red;
     }
 }

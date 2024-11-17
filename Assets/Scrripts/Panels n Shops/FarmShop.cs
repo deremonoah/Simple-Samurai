@@ -9,7 +9,7 @@ public class FarmShop : MonoBehaviour
     private PlayerHealthBar _playerHP;
 
     private float FarmHeal = 30;
-    private float FarmIncHP = 10;
+    private float FarmIncHP = 25;
     private int FarmLvl = 1;
 
     public Text healText;
@@ -73,17 +73,17 @@ public class FarmShop : MonoBehaviour
             {
                 case 2:
                     FarmHeal = 40;
-                    FarmIncHP = 15;
+                    FarmIncHP = 30;
                     farmLvlImages[0].SetActive(true);
                     break;
                 case 3:
                     FarmHeal = 60;
-                    FarmIncHP = 25;
+                    FarmIncHP = 60;
                     farmLvlImages[1].SetActive(true);
                     break;
                 case 4:
                     FarmHeal = 80;
-                    FarmIncHP = 40;
+                    FarmIncHP = 100;
                     farmLvlImages[2].SetActive(true);
                     break;
 

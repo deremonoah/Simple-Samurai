@@ -29,53 +29,45 @@ public class Ninja : enemy
 
     protected override void DecideNStartAction()
     {
-        bool hasStarted = false;
+        
         for (int lcv = 0; lcv < myAbilities.Count; lcv++)
         {
             if (myAbilities[lcv] == Ability.ninja)
             {
                 int rand = Random.Range(0, 5);
                 if (rand == 0)
-                { 
-                    myActionRoutine = StartCoroutine(SpawnCaltrop());
-                    hasStarted = true;
+                {
+                    delegateAction = SpawnCaltrop;
+                    hasPickedAction = true;
                 }
                 else if (rand == 1)
-                { 
-                    myActionRoutine = StartCoroutine(SpawnSmoke());
-                    hasStarted = true;
+                {
+                    delegateAction = SpawnSmoke;
+                    hasPickedAction = true;
                 }
                 
             }
         }
 
-        if (!hasStarted)
-        {
-            base.DecideNStartAction();
-        }
+        base.DecideNStartAction();
         
-
     }
 
     
 
-    IEnumerator SpawnCaltrop()
+    public void SpawnCaltrop()
     {
         int rand = Random.Range(0, _caltropSpots.Count+2);
         rand = Mathf.Clamp(rand - 2, 0, _caltropSpots.Count);
         //look up better way of weighting outcomes of randomness
         Debug.Log(_caltropSpots.Count);
         trapsSet.Add(Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation));
-        yield return new WaitForSeconds(2f);
-        DecideNStartAction();
     }
 
-    IEnumerator SpawnSmoke()
+    public void SpawnSmoke()
     {
         int rand = Random.Range(0,_smokeSpots.Count);
         trapsSet.Add(Instantiate(specialPrefabs[1], _smokeSpots[rand].position, transform.rotation));
-        yield return new WaitForSeconds(1f);
-        DecideNStartAction();
     }
     
 }
