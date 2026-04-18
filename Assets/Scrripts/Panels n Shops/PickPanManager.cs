@@ -47,7 +47,7 @@ public class PickPanManager : MonoBehaviour
 
         for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
         {
-            PlayerItemBoarders[lcv].gameObject.SetActive(false);
+            PlayerItemBoarders[lcv].color = new Color(0,0,0,0);//disabling image component didn't work (as its the raycast target for tool tips), so changing alpha leaves it at 0 & invisible while in combat or town
         }
     }
 
@@ -74,8 +74,10 @@ public class PickPanManager : MonoBehaviour
 
         for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
         {
-            PlayerItemBoarders[lcv].gameObject.SetActive(false);
+            PlayerItemBoarders[lcv].color = new Color(0, 0, 0, 0);//we only disable the square to help with selecting of the object, so it can still be hovered
         }
+
+        updatePlayerEquipedHoverTips();//so if they want to look at it in town they can
     }
 
     public void PickButton(int buttonID)
@@ -119,7 +121,7 @@ public class PickPanManager : MonoBehaviour
         randLootPicks.Add(tempList[temp3]);
         tempList.RemoveAt(temp3);
 
-        for (int lcv = 0; lcv < 3; lcv++)
+        for (int lcv = 0; lcv < 3; lcv++)//setting the color is now like inabling the image
         {
             buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
             HoverHelpers[lcv].tipToShow = randLootPicks[lcv].itemDescription;
@@ -137,20 +139,18 @@ public class PickPanManager : MonoBehaviour
             }
         }
 
-
-        //turning on item boarders for equiped items
-        for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
-        {
-            PlayerItemBoarders[lcv].gameObject.SetActive(true);
-        }
-
         //updating hovertips
+        updatePlayerEquipedHoverTips();
+    }
+
+
+    public void updatePlayerEquipedHoverTips()
+    {
         PlayerItemBoarders[0].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedWeapon.itemDescription;
         PlayerItemBoarders[1].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedArmor.itemDescription;
         if (_playerEquipedItems.equipedCurio != null)
         { PlayerItemBoarders[2].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedCurio.itemDescription; }
     }
-
 
     public void Learning()
     {
