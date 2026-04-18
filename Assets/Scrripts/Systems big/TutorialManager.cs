@@ -85,11 +85,11 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(6.5f);
 
         
-        text = "now block this attack";
+        text = "block attacks by releasing the pointer over NEW shapes";
         _soundManager.PlaySound("sensei");
         UpdatePanel(tutorialColors[index++ % tutorialColors.Count], text);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
 
         TrainingDummy.AttackUI();
         yield return new WaitForSeconds(4f);
