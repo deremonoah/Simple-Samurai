@@ -48742,6 +48742,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1895677734}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: e026ee1b1749e474ea9a9c60489a6241, type: 2}
@@ -48801,6 +48805,10 @@ PrefabInstance:
       propertyPath: caltropSpots.Array.data[4]
       value: 
       objectReference: {fileID: 1281774430}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[11]
+      value: 
+      objectReference: {fileID: 5866957077413314479, guid: 034b259e87f8f43cd99f77977fb3d626, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackStartPoints.Array.data[0]
       value: 
