@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1911478753010723866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 183992008374186147, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183992008374186147, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 183992008374186147, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851598, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_Name
+      value: Fire Dude_Armored
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010790756612851600, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73c4136d0f29f4dadbec098ed535c327, type: 3}
