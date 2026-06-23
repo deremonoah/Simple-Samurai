@@ -35,6 +35,7 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] GameObject angrySymbol;
 
     [SerializeField] private float timeAngrySymbolIsOnScreen = 2f;
+
     private Vector3 startingScale;
     private ColorManager colman;
 
@@ -168,7 +169,9 @@ public class PlayerHealthBar : MonoBehaviour
             if (ability == 2)
             {
                 //anti armor
-                health -= (Mathf.Max(1, damagePoints));
+                float resolveDmg = Mathf.Max(1, damagePoints);
+                health -= resolveDmg;
+                ParticleManager.instance.ShowPayerDamage(resolveDmg);
             } else if(ability ==8)
             {
                 //fire ability
@@ -188,7 +191,9 @@ public class PlayerHealthBar : MonoBehaviour
             else
             {
                 //regular attack
-                health -= (Mathf.Max(1, damagePoints - armorValue));
+                float resolveDmg = Mathf.Max(1, damagePoints - armorValue);
+                health -= resolveDmg;
+                ParticleManager.instance.ShowPayerDamage(resolveDmg);
                 //Debug.Log("max: " + Mathf.Max(1, damagePoints - armorValue));
             }
             //this is also where I could add throns type armor well I still would need to check if enemy is null again

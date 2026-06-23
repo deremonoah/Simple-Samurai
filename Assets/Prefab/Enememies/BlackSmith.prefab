@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackSmith
       objectReference: {fileID: 0}
+    - target: {fileID: 1238115961760376371, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 5551898289450451620, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.25

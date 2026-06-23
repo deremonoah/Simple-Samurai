@@ -79,6 +79,8 @@ public class enemy : MonoBehaviour
     [SerializeField] float healThreashold;
     [SerializeField] bool aboveHealThreashold;
 
+    [SerializeField] Transform hurtPoint;//for the particle system to hopefully work better, more hard coding lol
+
     //poison Variables
     public TMP_Text PoisonText;
     private Coroutine WasPoisonedRoutine;
@@ -258,7 +260,7 @@ public class enemy : MonoBehaviour
         _soundManager.PlaySound("hit", deal);
 
         curState = attackState.damaged;
-        parM.ShowDamage(spriteChild.transform, deal);
+        parM.ShowDamage(hurtPoint, deal);
     }
 
     protected virtual void OnHitEffect(float deal)

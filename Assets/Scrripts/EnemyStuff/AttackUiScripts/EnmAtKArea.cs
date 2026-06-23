@@ -16,6 +16,8 @@ public class EnmAtKArea : MonoBehaviour
     private float parriedTimer;
     public AttackEffect atkEef;
 
+    private Vector2 posBlock;
+
     void Start()
     {
         
@@ -29,6 +31,7 @@ public class EnmAtKArea : MonoBehaviour
             if (multiPerry >0)
             {
                 multiPerry -= 1;
+                ParticleManager.instance.BlockedHere(posBlock, damage);
                 GetComponent<SpriteRenderer>().color = Color.red;
 
                 var pos = this.gameObject.transform.position;
@@ -43,6 +46,7 @@ public class EnmAtKArea : MonoBehaviour
             {
                 myenm.Blocked(atkEef);
                 FindObjectOfType<SoundManager>().PlaySound("block");
+                ParticleManager.instance.BlockedHere(posBlock,damage);
                 Destroy(gameObject);
             }
         }
@@ -61,6 +65,7 @@ public class EnmAtKArea : MonoBehaviour
         if ((this.transform.position.x < endPos.transform.position.x && dir.x<1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
             myenm.hitNow(damage,atkEef);
+            //particle effect for hitting player
             Destroy(gameObject);
         }
         else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
@@ -83,6 +88,7 @@ public class EnmAtKArea : MonoBehaviour
         if(other.name=="strike point")
         {
             blocking = true;
+            posBlock = other.transform.position;
         }
     }
 

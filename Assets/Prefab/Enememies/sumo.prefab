@@ -136,6 +136,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2445335703602919442, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2572378017422108656}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6560603116962280932 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8699017054670066196, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2572378017422108656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &8149392656905938144 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -253,6 +258,7 @@ MonoBehaviour:
   regenMaxTimer: 8
   healThreashold: 30
   aboveHealThreashold: 0
+  hurtPoint: {fileID: 6560603116962280932}
   PoisonText: {fileID: 8349600621484805486}
   isPoisoned: 0
   hasPickedAction: 0

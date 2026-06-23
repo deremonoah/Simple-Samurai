@@ -8,9 +8,9 @@ public class ArkingAtk : EnmAtKArea
     [SerializeField] float PathTimer;
     private PathCreator currentPath;
     private float distanceTravelled;
-    
-    
-    
+
+    private Vector2 posBlock;
+
     private void Start()
     {
         //this is where it should get or set it's path
@@ -27,6 +27,7 @@ public class ArkingAtk : EnmAtKArea
             if (multiPerry > 0)
             {
                 multiPerry -= 1;
+                ParticleManager.instance.BlockedHere(posBlock,damage);
                 GetComponent<SpriteRenderer>().color = Color.red;
 
                 var pos = this.gameObject.transform.position;
@@ -40,6 +41,7 @@ public class ArkingAtk : EnmAtKArea
             else
             {
                 myenm.Blocked(atkEef);
+                ParticleManager.instance.BlockedHere(posBlock,damage);
                 FindObjectOfType<SoundManager>().PlaySound("block");
                 Destroy(gameObject);
             }
@@ -76,6 +78,7 @@ public class ArkingAtk : EnmAtKArea
         if (other.name == "strike point")
         {
             blocking = true;
+            posBlock = other.transform.position;
         }
     }
 

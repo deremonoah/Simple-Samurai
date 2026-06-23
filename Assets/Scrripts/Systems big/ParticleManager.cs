@@ -6,12 +6,30 @@ public class ParticleManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem angrySymbol;
     [SerializeField] ParticleSystem buffUp;
-    [SerializeField] GameObject smolBlood;
-    [SerializeField] GameObject bigBlood;
+    [SerializeField] GameObject smolBlood;//.1
+    [SerializeField] GameObject bigBlood;//1
+    [SerializeField] GameObject blockSparks;
+    [SerializeField] Transform PlayerImageForBlood;
+    Quaternion playerRotation = Quaternion.Euler(new Vector3(-56.23f, -270.179f, 90));
     //blood flying
     //coins?
     private float raging = 0f;
     private float lowerEmmisionTimer = 0;
+
+    public static ParticleManager instance;
+
+    private void Awake()
+    {
+        if(instance !=null & instance != this)
+        {
+            Debug.LogError("we have 2 particle managers");
+        }
+        else
+        {
+            instance = this;
+            //no don't destroy on load as reloading the scene is how we restart the game, then there would be 2 in the scene
+        }
+    }
 
     private void Update()
     {
@@ -59,13 +77,33 @@ public class ParticleManager : MonoBehaviour
         var par=gameObject;
         if(dmg<=26)
         {
-            par=Instantiate(smolBlood, pos, pos);
-            par.transform.parent = pos;
+            par=Instantiate(smolBlood, pos.position, smolBlood.transform.rotation);
             return;
         }
         //instatiate blood spray or burst
-        par=Instantiate(bigBlood, pos, pos);
+        par=Instantiate(bigBlood, pos.position, bigBlood.transform.rotation);
         //parent it to follow for the animation
-        par.transform.parent = pos;
+    }
+
+    public void ShowPayerDamage(float dmg)
+    {
+        var par = gameObject;
+        
+        if (dmg <= 26)
+        {
+            par = Instantiate(smolBlood, PlayerImageForBlood.position, playerRotation);
+            return;
+        }
+        //instatiate blood spray or burst
+        par = Instantiate(bigBlood, PlayerImageForBlood.position, playerRotation);
+    }
+
+    public void BlockedHere(Vector2 pos,float enmDmg)//maybe get player damage potential too
+    {
+        //Transform pos = FindObjectOfType<StrikePoint>().gameObject.transform;//works for now
+
+        var par = Instantiate(blockSparks, pos, transform.rotation);
+        
+        //set particles to emit in refrence to the damage
     }
 }

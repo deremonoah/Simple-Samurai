@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: myscript
       value: 
       objectReference: {fileID: -6386235926874281460}
+    - target: {fileID: 8699017054670066196, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.93
+      objectReference: {fileID: 0}
     - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -313,6 +317,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2838367399995021007}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6907103421148169435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8699017054670066196, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 2838367399995021007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &-6386235926874281460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +384,7 @@ MonoBehaviour:
   regenMaxTimer: 0
   healThreashold: 0
   aboveHealThreashold: 0
+  hurtPoint: {fileID: 6907103421148169435}
   PoisonText: {fileID: 8578998539530337361}
   isPoisoned: 0
   hasPickedAction: 0
