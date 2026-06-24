@@ -62,3 +62,12 @@ TagManager:
   - name: Smoke bomb
     uniqueID: 967084145
     locked: 0
+  - name: MiniGameBackGrond
+    uniqueID: 181699555
+    locked: 0
+  - name: MiniGameMidGround
+    uniqueID: 1666402273
+    locked: 0
+  - name: MiniGameForGround
+    uniqueID: 1995998649
+    locked: 0
