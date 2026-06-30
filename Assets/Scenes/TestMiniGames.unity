@@ -170,14 +170,19 @@ MonoBehaviour:
   PlayerHammer: {fileID: 965473427}
   phRotationBottom: {x: 0, y: 0, z: -10.899}
   phRotationTop: {x: 0, y: 0, z: 111.204}
-  SwingSpeed: 500
+  SwingSpeed: 600
   SmithHammer: {fileID: 1703529865}
   shRotationBottom: {x: 0, y: 0, z: 9.238}
   shRotationTop: {x: 0, y: 0, z: -91.804}
   WorkingMetal: {fileID: 35610364}
   metalForColor: {fileID: 1268740904}
+  StartYellow: {r: 0.9811321, g: 0.97638905, b: 0.21751513, a: 1}
+  EndRed: {r: 0.6415094, g: 0.0514418, b: 0.0514418, a: 1}
+  DurationToCool: 10
   specificationToChange: {fileID: 2069481427}
   MoveSpeedForNewPiece: 20
+  colorScores: []
+  sizeScores: []
 --- !u!1 &269420811
 GameObject:
   m_ObjectHideFlags: 0

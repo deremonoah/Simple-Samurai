@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TurnsHammerGame : MonoBehaviour
 {
@@ -26,14 +27,26 @@ public class TurnsHammerGame : MonoBehaviour
     [Header("Working Metal")]
     [SerializeField] Transform WorkingMetal;
     [SerializeField] SpriteRenderer metalForColor;
+    [SerializeField] Color StartYellow;
+    [SerializeField] Color EndRed;
+    [SerializeField] float DurationToCool;
+    private Coroutine colorRoutine;
+    //then maybe grey?
 
     [Header("Specifications")]
     [SerializeField] Transform specificationToChange;//controles the max size the player needs
     [SerializeField] float MoveSpeedForNewPiece=5;
     //sprite needs to be the same as the metal, or the same size in order to scale and compare transforms correctly
+    
+    [Header("numbers for scoring")]
+    [SerializeField] List<float> colorScores;
+    [SerializeField] List<float> sizeScores;
+    private float  colorProgress;
+
 
     private Coroutine PlayerInactiveRoutine;
     private Coroutine otherRoutine;//for don't mess it up RN routine
+    private bool firstRun=true;//so it doesn't score size bandaid solutions work man
 
     private void OnEnable()
     {
@@ -51,7 +64,6 @@ public class TurnsHammerGame : MonoBehaviour
             Vector3 startVec3 = PlayerHammer.rotation.eulerAngles;
             lerpTimer = 0;
             power = Mathf.Abs(phRotationBottom.z - startVec3.z);
-            Debug.Log(power);
             durationOfSwing = power / SwingSpeed;
             endRotation= Quaternion.Euler(phRotationBottom);
             justHit = false;
@@ -124,6 +136,8 @@ public class TurnsHammerGame : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         PlayerInactiveRoutine = StartCoroutine(GetNewMetalPieceRoutine());
+        float colorScore = (float)Math.Round((colorProgress/ .75f) * 100,2);
+        colorScores.Add(colorScore);
 
         otherRoutine = null;
     }
@@ -132,7 +146,6 @@ public class TurnsHammerGame : MonoBehaviour
 
     private IEnumerator GetNewMetalPieceRoutine()
     {
-        Debug.Log("in routine");
         float timeElapsed = 0f;
         Vector2 startPos = WorkingMetal.position;
         Vector2 targetPos = new Vector2(14, startPos.y);
@@ -148,14 +161,18 @@ public class TurnsHammerGame : MonoBehaviour
 
             yield return null;
         }
-        Debug.Log("past moving out");
-        //put scoring here
-        //add number, based on how close player was to the specifications
+        if(!firstRun)//this is to get around the initial start scoring for size
+        {
+            float newScore = 100 - ((float)Math.Round(specificationToChange.localScale.y - WorkingMetal.localScale.y, 2) * 100);
+            sizeScores.Add(newScore);
+        }
+        else { firstRun = false; }
+        
 
         //can change specifications
         RandomSpecifictation();
         WorkingMetal.localScale = new Vector3(1, 1, 1);
-        Debug.Log("scaled ");
+        colorRoutine = StartCoroutine(ColorChangeRoutine());
 
         //move working metal back out
         timeElapsed = 0f;
@@ -176,13 +193,32 @@ public class TurnsHammerGame : MonoBehaviour
 
         PlayerInactiveRoutine = null;//set to null so that the player can hit it with the hammer
         //and pretty sure its good practice from Eli
+        colorRoutine = StartCoroutine(ColorChangeRoutine());
     }
 
     private void RandomSpecifictation()
     {
-        float newSpec = Random.Range(0.15f, 0.51f);
+        float newSpec = UnityEngine.Random.Range(0.15f, 0.51f);
         //could be like 3 set sizes if this seems weird
         specificationToChange.localScale = new Vector3(specificationToChange.localScale.x, newSpec, 1);
         //maybe lerp it? eh for now its fine
+    }
+
+    private IEnumerator ColorChangeRoutine()//based on metal cooling
+    {
+        float elapsedTime=0f;
+        
+        while(elapsedTime<DurationToCool)
+        {
+            colorProgress = elapsedTime / DurationToCool;
+
+            metalForColor.color = Color.Lerp(StartYellow, EndRed, colorProgress);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        colorRoutine = null;
     }
 }
