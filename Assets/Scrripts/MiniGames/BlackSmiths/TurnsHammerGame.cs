@@ -136,7 +136,7 @@ public class TurnsHammerGame : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         PlayerInactiveRoutine = StartCoroutine(GetNewMetalPieceRoutine());
-        float colorScore = (float)Math.Round((colorProgress/ .75f) * 100,2);
+        float colorScore = (float)Math.Round((.75f -colorProgress) * 100,2);
         colorScores.Add(colorScore);
 
         otherRoutine = null;
