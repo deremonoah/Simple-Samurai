@@ -9,10 +9,17 @@ public class MiniGameManager : MonoBehaviour
     //which mini game is loaded (enabled to only take in that input)
     [SerializeField] List<GameObject> MiniGames;//have an enum refrencing correct order of games
     //needs to deal with flow manager
+    [Header("Day's Work Timer")]
+    [SerializeField] float WorkDayDuration;
+    [SerializeField] Transform sun;
+    [SerializeField] Transform SunStartPos;
+    [SerializeField] Transform SunEndPos;
+    private Coroutine dayRoutine;
 
     void Start()
     {
         //starts out of mini game normally, but I might start in it just to test
+        OpenMiniGames();//here for now to test sun
     }
 
     // Update is called once per frame
@@ -20,5 +27,32 @@ public class MiniGameManager : MonoBehaviour
     {
         //enables the corect minigame, probably needs to be from a panel
         //but for now will just enable blacksmith game
+        if(dayRoutine==null)
+        {
+            dayRoutine = StartCoroutine(DaysWorkRoutine());
+        }
+        else { Debug.Log("DayRoutine is NOT null, so we didn't set it"); }
+        
+    }
+
+    public IEnumerator DaysWorkRoutine()
+    {
+        //lerp sun from left to right, and tell curent miniGame to be done, at the end
+        float timeElapsed = 0f;
+        while(sun.position!=SunEndPos.position)
+        {
+            //oh I need it to move in an arch
+            //can I use rotation of another Transform
+            float t = timeElapsed / WorkDayDuration;
+            sun.position = Vector2.Lerp(SunStartPos.position, SunEndPos.position, t);
+
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        //end the work day, so get score,
+        //then drop down the scene, back to can spend money probably
+        dayRoutine = null;
     }
 }
