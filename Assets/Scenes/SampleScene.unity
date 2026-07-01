@@ -2334,8 +2334,13 @@ MonoBehaviour:
   shRotationTop: {x: 0, y: 0, z: -91.804}
   WorkingMetal: {fileID: 166842951}
   metalForColor: {fileID: 1631268323}
+  StartYellow: {r: 0, g: 0, b: 0, a: 0}
+  EndRed: {r: 0, g: 0, b: 0, a: 0}
+  DurationToCool: 0
   specificationToChange: {fileID: 967307167}
   MoveSpeedForNewPiece: 20
+  colorScores: []
+  sizeScores: []
 --- !u!224 &173163770 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1981594130485249205, guid: 6434d79d4cb030246b1c18c024083f4e, type: 3}
@@ -5335,7 +5340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &345345810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5351,6 +5356,7 @@ MonoBehaviour:
   UiElementsToDisable: []
   MiniGames:
   - {fileID: 785301850}
+  WorkDayDuration: 0
   sun: {fileID: 1710343887}
   SunStartPos: {fileID: 1571043181}
   SunEndPos: {fileID: 1262052330}
@@ -19810,7 +19816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -158}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &911855077
@@ -23485,7 +23491,7 @@ Transform:
   m_GameObject: {fileID: 1101002600}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.92, y: -2.35, z: 0}
+  m_LocalPosition: {x: -7.8, y: -2.35, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33221,6 +33227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UiElementsToDisable: []
   MiniGames: []
+  WorkDayDuration: 0
   sun: {fileID: 0}
   SunStartPos: {fileID: 0}
   SunEndPos: {fileID: 0}
