@@ -9,14 +9,15 @@ public class TurnsHammerGame : MonoBehaviour
     [SerializeField] Transform PlayerHammer;
     [SerializeField] Vector3 phRotationBottom;
     [SerializeField] Vector3 phRotationTop;
-    [SerializeField] float SwingSpeed=5f;
+    [SerializeField] float SwingSpeed;
+    [SerializeField] float MaxLiftUpDuration;
     private float durationOfSwing;
     private Quaternion endRotation;
     private Quaternion StartRotation;
     private float lerpTimer;
     private float percentSwung;
     private float power;
-    private bool backSwing;
+    private bool autoSwing;
     private bool justHit;
 
     [Header("Smith Hammer stuff")]
@@ -61,65 +62,68 @@ public class TurnsHammerGame : MonoBehaviour
         {
             //get current rotation of z, and get the difference from the bottom.z
             StartRotation = PlayerHammer.rotation;
-            Vector3 startVec3 = PlayerHammer.rotation.eulerAngles;
             lerpTimer = 0;
-            power = Mathf.Abs(phRotationBottom.z - startVec3.z);
-            durationOfSwing = power / SwingSpeed;
-            endRotation= Quaternion.Euler(phRotationBottom);
-            justHit = false;
-            backSwing = false;
+            
+            durationOfSwing = MaxLiftUpDuration;
+            endRotation= Quaternion.Euler(phRotationTop);
+            autoSwing = false;
         }
-        if(Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.Mouse0))
+        else if(Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.Mouse0))
         {
             //holding input
             lerpTimer += Time.deltaTime;
             percentSwung = lerpTimer / durationOfSwing;
             PlayerHammer.rotation = Quaternion.Slerp(StartRotation, endRotation,percentSwung);
+            
+        }
+        else if(Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            //released input
+            autoSwing = true;
+            justHit = false;
+            lerpTimer = 0;
+            Vector3 curHam = PlayerHammer.rotation.eulerAngles;
+
+            power = Mathf.Abs(phRotationBottom.z - curHam.z);
+
+            StartRotation = Quaternion.Euler(curHam);
+            endRotation = Quaternion.Euler(phRotationBottom);
+            durationOfSwing = Mathf.Abs( phRotationBottom.z- curHam.z) / SwingSpeed;
+        }
+
+        //auto moving back up ifs
+        if(autoSwing)
+        {
+            lerpTimer += Time.deltaTime;
+            percentSwung = lerpTimer / durationOfSwing;
+            PlayerHammer.rotation = Quaternion.Slerp(StartRotation, endRotation, percentSwung);
 
             //check if hit the end yet
-            if (Quaternion.Angle(PlayerHammer.rotation,Quaternion.Euler(phRotationBottom))<0.5 &&!justHit && PlayerInactiveRoutine==null)//euler angles gives not the same as the vector 3 in inspector
+            if (Quaternion.Angle(PlayerHammer.rotation, Quaternion.Euler(phRotationBottom)) < 0.5 && !justHit && PlayerInactiveRoutine == null)//euler angles gives not the same as the vector 3 in inspector
             {
                 justHit = true;
                 shrinkage(power);
             }
         }
-        else if(Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            //released input
-            backSwing = true;
-            lerpTimer = 0;
-            Vector3 curHam = PlayerHammer.rotation.eulerAngles;
-            StartRotation = Quaternion.Euler(curHam);
-            endRotation = Quaternion.Euler(phRotationTop);
-            durationOfSwing = Mathf.Abs( phRotationTop.z- curHam.z) / SwingSpeed;
-        }
-
-        //auto moving back up ifs
-        if(backSwing)
-        {
-            lerpTimer += Time.deltaTime;
-            percentSwung = lerpTimer / durationOfSwing;
-            PlayerHammer.rotation = Quaternion.Slerp(StartRotation, endRotation, percentSwung);
-        }
         if(transform.rotation.z>=phRotationTop.z)
         {
-            backSwing = false;
+            autoSwing = false;
         }
         //timer or maybe coroutine instead for the blacksmiths hammer, he should probably call out his swings
-
+        
     }
 
     private void shrinkage(float amount)
     {
         Vector3 size = WorkingMetal.localScale;
-        if(amount<40)
+        /*if(amount<40)
         {
             amount = amount / 2;
-        }
+        }*/
 
         if(amount>100)
         {
-            amount = amount * 2;
+            amount = amount * 2.5f;
         }
 
         float ychange = Mathf.Clamp(size.y - .001f * amount, 0.02f, 1.1f);//1.1 cause exclcusive but should never actually matter
