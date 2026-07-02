@@ -22,7 +22,7 @@ namespace PathCreation {
  #region Fields
 
  [SerializeField, HideInInspector]
- List<Vector3> points;
+ List<Vector3> points= new();
  [SerializeField, HideInInspector]
  bool isClosed;
  [SerializeField, HideInInspector]
