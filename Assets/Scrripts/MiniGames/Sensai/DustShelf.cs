@@ -76,8 +76,19 @@ public class DustShelf : MonoBehaviour
     private float CalculateScore()
     {
         //add all the enabled ones up, then subtract from the count of total enabled ones
-        //then divide by count of enabled ones
-        return 100;
+        float totalDust = 0;
+        int totalEnabled = 0;
+        foreach(Image im in stuffToClean)
+        {
+            if(im.gameObject.activeInHierarchy)
+            {
+                totalDust += im.fillAmount;
+                totalEnabled++;
+            }
+        }
+        float score = (totalEnabled - totalDust) / totalEnabled;
+
+        return score;
     }
 
     public void SetDustingItem(int slot)
