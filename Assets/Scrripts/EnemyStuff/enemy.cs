@@ -44,7 +44,7 @@ public class enemy : MonoBehaviour
     [SerializeField] GameObject atkEnd;
     public List<Vector2> atkDirs, SpecialDirs;
 
-    public List<Ability> myAbilities;
+    public List<Ability> myAbilities=new List<Ability> { Ability.none};//default it to none as that cuases error
     private int amountRobbed = 0;
 
     public List<GameObject> currentAttacks = new List<GameObject>();

@@ -2329,6 +2329,7 @@ MonoBehaviour:
   phRotationBottom: {x: 0, y: 0, z: -10.899}
   phRotationTop: {x: 0, y: 0, z: 111.204}
   SwingSpeed: 500
+  MaxLiftUpDuration: 0
   SmithHammer: {fileID: 971011182}
   shRotationBottom: {x: 0, y: 0, z: 9.238}
   shRotationTop: {x: 0, y: 0, z: -91.804}
@@ -5333,7 +5334,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345345811}
-  - component: {fileID: 345345810}
   m_Layer: 0
   m_Name: MiniGameModual
   m_TagString: Untagged
@@ -5341,25 +5341,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &345345810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345345809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcfd7105ac0a85d498952512a145cad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UiElementsToDisable: []
-  MiniGames:
-  - {fileID: 785301850}
-  WorkDayDuration: 0
-  sun: {fileID: 1710343887}
-  SunStartPos: {fileID: 1571043181}
-  SunEndPos: {fileID: 1262052330}
 --- !u!4 &345345811
 Transform:
   m_ObjectHideFlags: 0
@@ -33440,7 +33421,7 @@ MonoBehaviour:
   bigBlood: {fileID: 1549782926007599258, guid: 00403d2ff61b14fbea69ed4ca81c8fbc, type: 3}
   blockSparks: {fileID: 5131791444289747913, guid: 43b09438c6913074a834308ddbfc0672, type: 3}
   PlayerImageForBlood: {fileID: 1101002602}
---- !u!114 &1720040874
+--- !u!114 &1720040883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33449,15 +33430,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1720040864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcfd7105ac0a85d498952512a145cad7, type: 3}
+  m_Script: {fileID: 11500000, guid: 329a8f96c589428498050f2f67f10ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiElementsToDisable: []
-  MiniGames: []
-  WorkDayDuration: 0
-  sun: {fileID: 0}
-  SunStartPos: {fileID: 0}
-  SunEndPos: {fileID: 0}
+  weakPointPrefab: {fileID: 2100946696667703758, guid: a6f82c1c6ac228f44b5a2919606fb45b, type: 3}
+  SpawnTimerMin: 30
+  SpawnTimerMax: 80
+  SpawnPosMin: 0
+  SpawnPosMax: 10
+  SpawnPosOffset: 15
 --- !u!1 &1721232925
 GameObject:
   m_ObjectHideFlags: 0
@@ -40000,7 +39981,7 @@ Transform:
   m_GameObject: {fileID: 2115695931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.251, y: 1.169, z: 0}
+  m_LocalPosition: {x: -0.251, y: 1.69, z: 0}
   m_LocalScale: {x: 0.40000004, y: 0.40000004, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40666,7 +40647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 179180670101386335, guid: e5a66f68a61e7a249be0778433630b78, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 179180670101386335, guid: e5a66f68a61e7a249be0778433630b78, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[8].x
@@ -41651,7 +41632,7 @@ PrefabInstance:
       addedObject: {fileID: 1720040865}
     - targetCorrespondingSourceObject: {fileID: 1092464847776271022, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1720040874}
+      addedObject: {fileID: 1720040883}
   m_SourcePrefab: {fileID: 100100000, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
 --- !u!1001 &1981594130697783970
 PrefabInstance:
@@ -41815,6 +41796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rushing Boar
       objectReference: {fileID: 0}
+    - target: {fileID: 2182368788513098033, guid: ac11f089db0d8424da5a7238920e5ef0, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41875,6 +41860,10 @@ PrefabInstance:
     - target: {fileID: 2439051307774234372, guid: 305a35b37cd1fea49885ecf2c13fa9bf, type: 3}
       propertyPath: m_Name
       value: Serpent Strike
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439051307774234373, guid: 305a35b37cd1fea49885ecf2c13fa9bf, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -42077,7 +42066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9063910323119528895, guid: 34b8c5ebb16fef04e99e852755f28f6f, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9063910323119528895, guid: 34b8c5ebb16fef04e99e852755f28f6f, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[1].x

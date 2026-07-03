@@ -73,14 +73,21 @@ public class DustShelf : MonoBehaviour
         }
     }
 
+    public void SetDustingItem(int slot)
+    {
+        ItemToDust = slot;//it is set to -1 when it goes off the item
+        Debug.Log("called set dusting item");
+    }
+
+    //for calculating score its just if you got all of the fill images to 0, so maybe there is an acceptable amount left?
     private float CalculateScore()
     {
         //add all the enabled ones up, then subtract from the count of total enabled ones
         float totalDust = 0;
         int totalEnabled = 0;
-        foreach(Image im in stuffToClean)
+        foreach (Image im in stuffToClean)
         {
-            if(im.gameObject.activeInHierarchy)
+            if (im.gameObject.activeInHierarchy)
             {
                 totalDust += im.fillAmount;
                 totalEnabled++;
@@ -90,12 +97,4 @@ public class DustShelf : MonoBehaviour
 
         return score;
     }
-
-    public void SetDustingItem(int slot)
-    {
-        ItemToDust = slot;//it is set to -1 when it goes off the item
-        Debug.Log("called set dusting item");
-    }
-
-    //for calculating score its just if you got all of the fill images to 0, so maybe there is an acceptable amount left?
 }

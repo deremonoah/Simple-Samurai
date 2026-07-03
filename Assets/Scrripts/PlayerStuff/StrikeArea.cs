@@ -10,7 +10,7 @@ public class StrikeArea : MonoBehaviour
     private GameManager GM;
     private PlayerEquipedItemsManager _myItemsManager;
     public static bool PlayerOn = true;
-    [SerializeField] bool inStrikeArea;
+    public bool inStrikeArea;
     //buff area refers to what buff it gives that it got from what ever buff area
     [SerializeField] int inBuffArea;
     [SerializeField] int currentBuff;
@@ -104,12 +104,17 @@ public class StrikeArea : MonoBehaviour
                     currentBuff = inBuffArea;
                     inBuffArea = -1;
                 }
+                if(inBuffArea == 4)
+                {
+                    //weak point hit
+                    currentBuff = 3;//the position of this will be over the strike area so you buff & hit sin the same
+                }
                 //this needs to be at the end to reset the buff
                 
             }
 
             //for attacking in strike area
-               else if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
                 float Damger = Mathf.Clamp((_mystrikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
 
@@ -351,4 +356,8 @@ public class StrikeArea : MonoBehaviour
         revengeTimer = 2f;
     }
     
+    public int GetBuff()
+    {
+        return inBuffArea;
+    }
 }

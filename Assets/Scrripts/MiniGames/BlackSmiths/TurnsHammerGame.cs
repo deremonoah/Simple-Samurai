@@ -140,7 +140,11 @@ public class TurnsHammerGame : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         PlayerInactiveRoutine = StartCoroutine(GetNewMetalPieceRoutine());
-        float colorScore = (float)Math.Round((.75f -colorProgress) * 100,2);
+        
+        //max size for y is .51f rn
+        float gradedOnCurve=(int)((.51f-specificationToChange.localScale.y)*25);
+        Debug.Log("colorProgress" + colorProgress+" grade on curve for size "+gradedOnCurve);
+        float colorScore = ((float)Math.Round(1-(colorProgress-.3),2)*100)+gradedOnCurve;//.4 is the assumed fastest you can complete it, so that should be a 100
         colorScores.Add(colorScore);
 
         otherRoutine = null;
@@ -167,7 +171,7 @@ public class TurnsHammerGame : MonoBehaviour
         }
         if(!firstRun)//this is to get around the initial start scoring for size
         {
-            float newScore = 100 - ((float)Math.Round(specificationToChange.localScale.y - WorkingMetal.localScale.y, 2) * 100);
+            float newScore = (float)Math.Round(WorkingMetal.localScale.y / specificationToChange.localScale.y , 2) * 100;
             sizeScores.Add(newScore);
         }
         else { firstRun = false; }
@@ -224,5 +228,44 @@ public class TurnsHammerGame : MonoBehaviour
         }
 
         colorRoutine = null;
+    }
+
+    private float CalculateScore()
+    {
+        //I want to factor in
+        //how many they made, lets say 9 is a good work day. one try I got 9
+        //how quickly they were made (color score)
+        //how close to specifications they were made (size score)
+        
+        //calc color average
+        float overAllScore = 0;
+        float currentCalc = 0;
+        foreach(float score in colorScores)
+        {
+            currentCalc += score;
+        }
+        currentCalc = currentCalc / colorScores.Count;
+        overAllScore += currentCalc;
+
+        //calc sizes average
+        currentCalc = 0;
+        foreach (float score in sizeScores)
+        {
+            currentCalc += score;
+        }
+        currentCalc = currentCalc / sizeScores.Count;
+        overAllScore += currentCalc;
+
+        //factor in total made
+        currentCalc = 0;
+        currentCalc = colorScores.Count / 8;
+        overAllScore += currentCalc;
+
+        //average the 3 scores
+        overAllScore = overAllScore/3;
+
+        return overAllScore;
+            //might be good feedback to see they did well on making them to specification vs speed, vs how many made
+            //which speed & how many made seem to measure the same thing right?
     }
 }

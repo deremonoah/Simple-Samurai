@@ -68,7 +68,7 @@ public class Armory : MonoBehaviour
             var drager = dragerobj.GetComponent<Dragable>();
             drager.ParentToReturnTo = InventorySlotsActive[lcv].transform;
             drager.AssignItem(stockPile[lcv]);
-            dragerobj.transform.parent = InventorySlotsActive[lcv].transform;
+            dragerobj.transform.SetParent(InventorySlotsActive[lcv].transform);
         }
     }
 
@@ -79,7 +79,7 @@ public class Armory : MonoBehaviour
         Dragable drager = dragerobj.GetComponent<Dragable>();
         drager.ParentToReturnTo = dzobj.transform;
         drager.AssignItem(item);
-        dragerobj.transform.parent = dzobj.transform;
+        dragerobj.transform.SetParent(dzobj.transform);
         dz.heldDragable = drager;
     }
 

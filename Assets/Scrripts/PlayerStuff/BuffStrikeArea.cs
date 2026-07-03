@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuffStrikeArea : MonoBehaviour
 {
-    public enum Buff { swapEnemy, swapWeapon, speedUp, damageUp,}
+    public enum Buff { swapEnemy, swapWeapon, speedUp, damageUp,weakSpot}
     [SerializeField] Buff mybuff;
     private StrikeArea mainStrikeArea;
     private PlayerEquipedItemsManager playerEquips;
@@ -13,22 +13,23 @@ public class BuffStrikeArea : MonoBehaviour
         mainStrikeArea = FindObjectOfType<StrikeArea>();
         playerEquips = FindObjectOfType<PlayerEquipedItemsManager>();
     }
-
-    
-    void Update()
+    private void Update()
     {
-        
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))&&mainStrikeArea.GetBuff()==4)
+        {
+            StartCoroutine(DestroyRoutine());
+        }
     }
-
     private void OnTriggerStay2D(Collider2D other)
     {
-        //set an in buff area variable to true (maybe returns effect)
         if(other.name == "strike point")
         {
-           
-                mainStrikeArea.RecieveBuff((int)mybuff);
-            Debug.Log(mybuff);
-                //im realizing that I should be able to have get rid of the ifs
+            mainStrikeArea.RecieveBuff((int)mybuff);
+            if(mybuff==Buff.weakSpot)
+            {
+                mainStrikeArea.inStrikeArea = true;
+                
+            }
         }
     }
 
@@ -37,6 +38,21 @@ public class BuffStrikeArea : MonoBehaviour
         if (other.name == "strike point")
         {
              mainStrikeArea.RecieveBuff(-1);
+            if (mybuff == Buff.weakSpot)
+            {
+                mainStrikeArea.inStrikeArea = false;
+            }
         }
     }
+
+    private IEnumerator DestroyRoutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(this.gameObject);
+    }
+
+    //so when should this appear?
+    //and who should handle it? enemy spawner?
+    //new manager? I already have the buff manager and will prob use some of the buffs
+    //a new seperate thing, that has an instance to call from enemies after they flurry of attacks?
 }

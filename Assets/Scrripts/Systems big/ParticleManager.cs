@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+#pragma warning disable 618
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem angrySymbol;

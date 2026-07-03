@@ -9,7 +9,7 @@ public class ArkingAtk : EnmAtKArea
     private PathCreator currentPath;
     private float distanceTravelled;
 
-    private Vector2 posBlock;
+    //posblock is protected from parent class
 
     private void Start()
     {

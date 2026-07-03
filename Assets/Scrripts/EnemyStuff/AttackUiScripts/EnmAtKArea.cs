@@ -12,11 +12,11 @@ public class EnmAtKArea : MonoBehaviour
     public float movespeed;
     public float multiPerry;
     public float damage;
-    private bool parried= false;
-    private float parriedTimer;
+    //private bool parried= false;
+    //private float parriedTimer;
     public AttackEffect atkEef;
 
-    private Vector2 posBlock;
+    protected Vector2 posBlock;
 
     void Start()
     {

@@ -40,6 +40,7 @@ public class GameFlowManager : MonoBehaviour
         //looting stuff
         _PickPanelManager.OpenPickPan(0);
         StrikeArea.SwitchPlayerOn(false);
+        WeaknessSpawnManager.instance.InCombat(false);
         _PickPanManager.RandomItemPull();
 
         while (_PickPanelManager.isPanelOpen())
@@ -86,5 +87,6 @@ public class GameFlowManager : MonoBehaviour
         }
         StrikeArea.SwitchPlayerOn(true);
         _php.HPIsInCombat(true);
+        WeaknessSpawnManager.instance.InCombat(true);
     }
 }

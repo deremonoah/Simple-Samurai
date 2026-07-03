@@ -20,10 +20,10 @@ public class BuffAreaManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        /*if(Input.GetKeyDown(KeyCode.Tab))
         {
             PlaceBuff(0);
-        }
+        }*/
     }
 
     public void PlaceBuff(int bufftype)

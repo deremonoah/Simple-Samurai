@@ -15,7 +15,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     [Header("Numbers")]
     public float health, maxHealth = 100;
-    private float bonusHealth = 0;
+    //private float bonusHealth = 0;
     private bool hadBonusHP;
     float lerpSpeed;
     [SerializeField] float armorValue;
