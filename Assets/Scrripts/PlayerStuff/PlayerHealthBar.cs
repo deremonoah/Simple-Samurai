@@ -64,8 +64,12 @@ public class PlayerHealthBar : MonoBehaviour
         PoisonText.text = "";
         isPoisoned = false;
 
-        inCombat = true;
-        HPIsInCombat(inCombat);
+    }
+
+    private void OnEnable()
+    {
+        bool inc=StrikeArea.PlayerOn;
+        HPIsInCombat(inc);
     }
 
 

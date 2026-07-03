@@ -14,6 +14,7 @@ public class GameFlowManager : MonoBehaviour
     private FarmShop _farm;
     private bool _isEvent;
     private PlayerHealthBar _php;
+    private bool playerIsReadyToFight;
 
     [ContextMenu("initialize")]
 
@@ -80,7 +81,8 @@ public class GameFlowManager : MonoBehaviour
 
         //village stuff
         _villagePanel.SetBool("Open", true);
-        while (_villagePanel.GetBool("Open"))
+        playerIsReadyToFight = false;
+        while (!playerIsReadyToFight)
         {
             yield return null;
             continue;
@@ -88,5 +90,15 @@ public class GameFlowManager : MonoBehaviour
         StrikeArea.SwitchPlayerOn(true);
         _php.HPIsInCombat(true);
         WeaknessSpawnManager.instance.InCombat(true);
+    }
+
+    public void villageStillOpen()
+    {
+        _villagePanel.SetBool("Open", true);
+    }
+
+    public void PlayerisReadyToFight()
+    {
+        playerIsReadyToFight = true;
     }
 }

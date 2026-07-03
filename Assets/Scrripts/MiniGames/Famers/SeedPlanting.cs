@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeedPlanting : MonoBehaviour
+public class SeedPlanting : MiniGame
 {
     [SerializeField] Transform player;
     [SerializeField] float durationInEachRow;
@@ -18,6 +18,7 @@ public class SeedPlanting : MonoBehaviour
     //like tapping along on the down beat? gets you close
     //so working songs often sung so, not sure about a down beat or how to get it to sound like singing with instruments or keep it 
     //indistinct and have a down beat?
+    List<GameObject> seedsPlanted = new();
 
     void OnEnable()
     {
@@ -28,7 +29,8 @@ public class SeedPlanting : MonoBehaviour
     {
         if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))&&seedsToUse>0)//should really have set input button or buttons & handle based on platform
         {
-            Instantiate(seed, player.position, player.rotation);//could make rotation random
+            GameObject se=Instantiate(seed, player.position, player.rotation);//could make rotation random
+            seedsPlanted.Add(se);
             seedsToUse--;//player pos right now = new plant pose
             if(lastSeedPlanted!=Vector3.zero)
             {
@@ -44,6 +46,7 @@ public class SeedPlanting : MonoBehaviour
         int rowOn = 0;
         Vector3 targetPos = new Vector3(xPosesToSwap.y, yPosToPlantRows[rowOn]);
         Vector3 startPos = new Vector3(xPosesToSwap.x, yPosToPlantRows[rowOn]);
+        player.position = startPos;
         float timeElapsed = 0;
         while (seedsToUse>0 && player.position!=targetPos)//moves left across the first row
         {
@@ -119,5 +122,19 @@ public class SeedPlanting : MonoBehaviour
         }
 
         //just realized I could have used moveTowards, and just had points, that would be better
+    }
+
+    public override float CalculateScore()
+    {
+        float score = 0;
+        foreach(GameObject se in seedsPlanted)
+        {
+            Destroy(se);
+        }//object pooling probably better
+        PlantScores.Clear();
+
+        //this is where you calc score
+
+        return score;
     }
 }

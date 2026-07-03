@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class TurnsHammerGame : MonoBehaviour
+public class TurnsHammerGame : MiniGame
 {
     [Header("Player Hammer Stuff")]
     [SerializeField] Transform PlayerHammer;
@@ -105,7 +105,7 @@ public class TurnsHammerGame : MonoBehaviour
                 shrinkage(power);
             }
         }
-        if(transform.rotation.z>=phRotationTop.z)
+        if(PlayerHammer.rotation.z>=phRotationTop.z)
         {
             autoSwing = false;
         }
@@ -230,39 +230,28 @@ public class TurnsHammerGame : MonoBehaviour
         colorRoutine = null;
     }
 
-    private float CalculateScore()
+    public override float CalculateScore()
     {
         //I want to factor in
         //how many they made, lets say 9 is a good work day. one try I got 9
         //how quickly they were made (color score)
         //how close to specifications they were made (size score)
-        
-        //calc color average
-        float overAllScore = 0;
-        float currentCalc = 0;
-        foreach(float score in colorScores)
-        {
-            currentCalc += score;
-        }
-        currentCalc = currentCalc / colorScores.Count;
-        overAllScore += currentCalc;
 
-        //calc sizes average
-        currentCalc = 0;
-        foreach (float score in sizeScores)
+        float currentCalc = 0;
+        for (int lcv=0;lcv<sizeScores.Count;lcv++)//using sizeScores as it is added second & if stopped mid metal work, misses the last color score, is okay
         {
-            currentCalc += score;
+            currentCalc += sizeScores[lcv] + colorScores[lcv];
         }
-        currentCalc = currentCalc / sizeScores.Count;
-        overAllScore += currentCalc;
+        float overAllScore = currentCalc / (2 * sizeScores.Count);//times 2 becuase we added both values added together (so we want total of number of both lists)
 
         //factor in total made
-        currentCalc = 0;
         currentCalc = colorScores.Count / 8;
         overAllScore += currentCalc;
 
         //average the 3 scores
+        Debug.Log("before divided by 3 " + overAllScore);
         overAllScore = overAllScore/3;
+        Debug.Log("after divided by 3 " + overAllScore);
 
         return overAllScore;
             //might be good feedback to see they did well on making them to specification vs speed, vs how many made

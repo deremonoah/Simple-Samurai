@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DustShelf : MonoBehaviour
+public class DustShelf : MiniGame
 {
     [SerializeField] List<Image> stuffToClean;
     [SerializeField] List<Transform> MoveToPoints;
@@ -80,7 +80,7 @@ public class DustShelf : MonoBehaviour
     }
 
     //for calculating score its just if you got all of the fill images to 0, so maybe there is an acceptable amount left?
-    private float CalculateScore()
+    public override float CalculateScore()
     {
         //add all the enabled ones up, then subtract from the count of total enabled ones
         float totalDust = 0;
