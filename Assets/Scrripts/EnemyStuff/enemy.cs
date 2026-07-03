@@ -441,7 +441,7 @@ public class enemy : MonoBehaviour
         curState = attackState.waiting;
         
         yield return new WaitForSeconds(strikeTimer);
-        Debug.Log("got to the end of action routine: "+gameObject.name);
+        //Debug.Log("got to the end of action routine: "+gameObject.name);
         hasPickedAction = false;
         DecideNStartAction();
     }

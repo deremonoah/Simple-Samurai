@@ -121,7 +121,7 @@ public class StrikeArea : MonoBehaviour
                 if(currentBuff == 3)
                 {
                     //testing double damage
-                    Debug.Log("in if");
+                    //Debug.Log("in if");
                     Damger += Damger;
                     currentBuff = -1;
                 }

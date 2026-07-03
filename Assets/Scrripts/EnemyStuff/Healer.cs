@@ -30,7 +30,7 @@ public class Healer : enemy
                 break;
             }
         }
-        Debug.Log("hit if is:" + hitIf);
+        //Debug.Log("hit if is:" + hitIf);
         int rand = Random.Range(0, 10);
         //trying at 70 percent
         if (hitIf && rand<7)

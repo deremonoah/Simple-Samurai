@@ -34,7 +34,7 @@ public class EnemyTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("in trigger");
+        //Debug.Log("in trigger");
         if (other.name == "strike point" && damageFromTrap>0)
         {
                PointerOnTrap = true;
@@ -58,7 +58,6 @@ public class EnemyTrap : MonoBehaviour
     {
         //if its a block then it won't, I am realizing that these should probably be 2 scripts and inheerit from 1
         //and the blocking thing should only happen if its a thing to do the blocking, yes
-        Debug.Log("exited");
         FindObjectOfType<StrikeArea>().BeingBlocked(false);
         PointerOnTrap = false;
     }
