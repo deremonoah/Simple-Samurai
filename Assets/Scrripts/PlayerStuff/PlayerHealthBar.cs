@@ -102,12 +102,6 @@ public class PlayerHealthBar : MonoBehaviour
             }
         }
 
-        //testing
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartCoroutine(RevengeRoutine());
-        }
-
         lerpSpeed = 2f * Time.deltaTime;
 
         if (myArmor.armrEef == ArmorEffect.turtle)
@@ -202,7 +196,7 @@ public class PlayerHealthBar : MonoBehaviour
             }
             //this is also where I could add throns type armor well I still would need to check if enemy is null again
             _soundManager.PlaySound("hit");
-            StartCoroutine(RevengeRoutine());
+            //StartCoroutine(RevengeRoutine());mihgt add back as an ability
         }
     }
 
