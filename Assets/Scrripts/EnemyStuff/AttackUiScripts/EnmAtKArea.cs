@@ -17,6 +17,7 @@ public class EnmAtKArea : MonoBehaviour
     public AttackEffect atkEef;
 
     protected Vector2 posBlock;
+    [SerializeField] Transform sizeDamageShower;
 
     void Start()
     {
@@ -132,6 +133,8 @@ public class EnmAtKArea : MonoBehaviour
         }
         
         damage = dmg;
+
+        
     }
 }
 public enum AttackEffect

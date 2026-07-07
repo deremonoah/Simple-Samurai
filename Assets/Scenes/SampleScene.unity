@@ -18707,7 +18707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1327.4507, y: 853}
+  m_AnchoredPosition: {x: 0, y: -494}
   m_SizeDelta: {x: 883.749, y: 296.777}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813601852
@@ -36680,8 +36680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weakPointPrefab: {fileID: 2100946696667703758, guid: a6f82c1c6ac228f44b5a2919606fb45b, type: 3}
-  SpawnTimerMin: 30
-  SpawnTimerMax: 80
+  SpawnTimerMin: 20
+  SpawnTimerMax: 60
   SpawnPosMin: 0
   SpawnPosMax: 10
   SpawnPosOffset: 15

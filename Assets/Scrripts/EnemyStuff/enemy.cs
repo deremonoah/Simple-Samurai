@@ -96,6 +96,11 @@ public class enemy : MonoBehaviour
     private List<Transform> BlockSpots;
     private List<GameObject> BlockSets;
 
+    [Header("Rage mechanic variables")]
+    public float temper = 10;//this is the denominator, below is the numberator used for the odds calculation
+    private float currentRageCount;
+    public Vector2 minMaxRageAttacks=new Vector2(2,3);//the range of attacks they rage with
+
     //adding deligates to actually implement the stategy pattern
     public System.Action _DelegateAction;
     public System.Action delegateAction
@@ -283,6 +288,7 @@ public class enemy : MonoBehaviour
         {
             if(myActionRoutine != null)
             {
+                currentRageCount++;
                 StopCoroutine(myActionRoutine);
                 DecideNStartAction();
             }
@@ -398,7 +404,13 @@ public class enemy : MonoBehaviour
                 //removed blocking for the time being
             }
         }
-
+        int randRage=(int)Random.Range(0, minMaxRageAttacks.y);
+        if(randRage<currentRageCount)
+        {
+            delegateAction = RageUI;
+            hasPickedAction = true;
+            currentRageCount = 0;
+        }
         
             //we are chaning the attack routine back into the action routine
             //and making the deligate decide what they are doing,
@@ -571,6 +583,25 @@ public class enemy : MonoBehaviour
         newList.Add(atk);
         currentAttacks = newList;
 
+    }
+
+    public void RageUI()
+    {
+        StartCoroutine(RageRoutine());
+    }
+
+    public IEnumerator RageRoutine()
+    {
+        int Rager = 0;
+        int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);
+        while(Rager<randomRageAttack)
+        {
+            AttackUI();
+            yield return new WaitForSeconds(1f);
+            Rager++;
+        }
+        currentRageCount = 0;
+        WeaknessSpawnManager.instance.SpawnWeakPoint();
     }
 
     public void SpecialUI()
