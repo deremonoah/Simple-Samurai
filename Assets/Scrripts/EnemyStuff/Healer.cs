@@ -119,8 +119,11 @@ public class Healer : enemy
 
     public void healAllyNow()
     {
-        targetally.healEnm(Random.Range(healMin, healMax));
-        //soundMRef.PlaySound("heal"); make a heal sound
+        if(targetally!=null)
+        {
+            targetally.healEnm(Random.Range(healMin, healMax));
+            //soundMRef.PlaySound("heal"); make a heal sound
+        }
     }
 
 }

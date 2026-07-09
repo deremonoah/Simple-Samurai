@@ -94,13 +94,13 @@ public class EnemysManager : MonoBehaviour
         spawned = true;
         recPos = pos;
     }
-    public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
+    /*public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
     {
         if (aliveEnemys.Count > target)
         {
             aliveEnemys[target].damageEnemy(damg, effects);
         }
-    }
+    }*/
     public int GetPos()
     {
         return recPos;

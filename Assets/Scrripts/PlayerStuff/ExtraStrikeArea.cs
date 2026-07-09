@@ -71,7 +71,7 @@ public class ExtraStrikeArea : MonoBehaviour
 
                 for (int lcv = 0; lcv < target.Count; lcv++)
                 {
-                    enmySys.DamageEnemy(Damger, target[lcv], MyWeapon.effs);
+                    EnemyHPBarPlacerManager.instance.DamageEnemy(Damger, target[lcv], MyWeapon.effs);
                     
                 }
                 justStruck = true;
@@ -110,10 +110,6 @@ public class ExtraStrikeArea : MonoBehaviour
                 {
                     target.Add(2);
                 }
-                else
-                {
-                    target.Add(1);
-                }
             }
             else if (we == WeaponEffect.FourTarget)
             {
@@ -124,18 +120,24 @@ public class ExtraStrikeArea : MonoBehaviour
                 }
                 else if (enmySys.aliveEnemys.Count == 2)
                 {
-                    if (WhichAreaMe == 2)
-                    {
-                        target.Clear();
-                        target.Add(0);
-                    }
-                    else
+                    if (WhichAreaMe == 1)
                     {
                         target.Clear();
                         target.Add(1);
                     }
+                    else
+                    {
+                        target.Clear();
+                        target.Add(0);
+                    }
                 }
-                else if (enmySys.aliveEnemys.Count == 3)
+                else if (enmySys.aliveEnemys.Count ==3)
+                {
+                    target.Clear();
+                    target.Add(WhichAreaMe-1);
+                    //for now might change later, so the top 2 are the front most enemy, though maybe the middle 2 should be
+                }
+                else if (enmySys.aliveEnemys.Count == 4)
                 {
                     target.Clear();
                     target.Add(WhichAreaMe);

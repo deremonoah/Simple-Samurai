@@ -35,7 +35,11 @@ public class enemy : MonoBehaviour
     //below the state is what handles animation timing
     protected attackState curState;
 
+    [Header("HP Bar stuff")]
     public Image myHPBar;
+    public Transform HPBarToMove;
+    public Transform backUpHPBarSpot;
+    //private Vector3 HPBarPosToReturnTo;
     public EnemysManager enmsSys;
 
     //attack projectile stuff **also fully utelizing the multiple attack and special prefabs has not been used yet
@@ -149,6 +153,10 @@ public class enemy : MonoBehaviour
         var temp = enmsSys.GetTrapSpawnSpots();
         BlockSpots = temp[0];
 
+        //for moving hp bar over ui elements
+        //HPBarPosToReturnTo = HPBarToMove.localPosition;
+        HandleHPBarPlacement();
+
         DecideNStartAction();  
     }
 
@@ -162,25 +170,7 @@ public class enemy : MonoBehaviour
         //Hp ifs
         if (HP<=0)
         {
-            foreach (var atk in currentAttacks)
-                Destroy(atk);
-
-            _GM.PayOut(minCoin + amountRobbed, maxCoin);
-            if(myAbilities[0]==Ability.poison)
-            {
-                FindObjectOfType<PlayerHealthBar>().CuredofPoison();
-                //currently this wouldn't check if there are other enemies with the ability to poison, but worry about it later
-            }
-            if(BlockSets.Count>0)
-            {
-                foreach (GameObject trap in BlockSets)
-                {
-                    Destroy(trap);
-                }
-            }
-            enmsSys.OnDied(this);
-            
-            
+            EnemyDied();
         }
         if (HP > maxHP)
         {
@@ -357,7 +347,7 @@ public class enemy : MonoBehaviour
     {
 
         //maybe move up should be a coroutine, so I can have it only happen at the end of frames
-        MoveUP();
+        //MoveUP();disabled for now with hpBarManager adjustments and taking out hp bar
 
         /*if(myActionRoutine != null)
         {
@@ -735,6 +725,7 @@ public class enemy : MonoBehaviour
                 enmsSys.IncreaseAgressionRange(Aggression);
                 //all of a sudden idk if i spelled agression right ah yes 2 gs
                 targetToSwap.GetComponent<enemy>().DisablePointer();
+                HandleHPBarPlacement();
             }
         }
     }
@@ -753,6 +744,7 @@ public class enemy : MonoBehaviour
             enmsSys.aliveEnemys.Remove(this);
             enmsSys.OpenTimer = 1.5f;
             enmsSys.UpdateEnmsPosRefrence();
+            EnemyHPBarPlacerManager.instance.RemoveMeFromList(this);
         }
         Destroy(this.gameObject);
     }
@@ -762,9 +754,6 @@ public class enemy : MonoBehaviour
         if (randWaitmax < randWaitmin)
             randWaitmax = randWaitmin;
     }
-
-
-    
 
     IEnumerator OnFire()
     {
@@ -833,6 +822,14 @@ public class enemy : MonoBehaviour
         return HP;
     }
 
+    private void HandleHPBarPlacement()
+    {
+        if(!HasAbility(Ability.boss))
+        {
+            EnemyHPBarPlacerManager.instance.PlaceMyHPBar(this, posInList);
+        }
+    }
+
     private void GotPoisoned(float Damage)
     {
         //this is to centralize where all the poison stuff except variables are
@@ -874,5 +871,27 @@ public class enemy : MonoBehaviour
         HP = 0;
         PoisonText.text = "";
         myHPBar.color = Color.red;
+    }
+
+    public void EnemyDied()
+    {
+        foreach (var atk in currentAttacks)
+            Destroy(atk);
+
+        _GM.PayOut(minCoin + amountRobbed, maxCoin);
+        if (myAbilities[0] == Ability.poison)
+        {
+            FindObjectOfType<PlayerHealthBar>().CuredofPoison();
+            //currently this wouldn't check if there are other enemies with the ability to poison, but worry about it later
+        }
+        if (BlockSets.Count > 0)
+        {
+            foreach (GameObject trap in BlockSets)
+            {
+                Destroy(trap);
+            }
+        }
+        EnemyHPBarPlacerManager.instance.RemoveMeFromList(this);
+        enmsSys.OnDied(this);
     }
 }

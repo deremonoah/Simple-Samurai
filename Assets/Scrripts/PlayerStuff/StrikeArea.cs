@@ -126,13 +126,13 @@ public class StrikeArea : MonoBehaviour
                     currentBuff = -1;
                 }
 
-
+                //targetEnemy gets changed by EnemyHPBarPlacerManager
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
                     //revenge calculation below
                     Damger +=revengeTimer*30;
                     //Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
-                    _enemySystem.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
+                    EnemyHPBarPlacerManager.instance.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     
                     justStruck = true;
                     PlayerOn = false;
@@ -229,10 +229,13 @@ public class StrikeArea : MonoBehaviour
         {
             return;
         }
-        
+
         #endregion
 
         #region turnONStrikeAreaIfs
+        targetEnemy.Clear();
+        targetEnemy.Add(0);
+        
         for (int lcv = 0; lcv < wee.effs.Count; lcv++)
         {
 
@@ -251,6 +254,7 @@ public class StrikeArea : MonoBehaviour
             //bow ON
             if (wee.effs[lcv] == WeaponEffect.bow)
             {
+                
                 for (int bowlcv = 0; bowlcv < BowAreas.Count; bowlcv++)
                 {
                     BowAreas[bowlcv].SetActive(iss);
@@ -359,5 +363,12 @@ public class StrikeArea : MonoBehaviour
     public int GetBuff()
     {
         return inBuffArea;
+    }
+
+    public void SetTarget(int target)//used by enemyHP bar placer manager
+    {
+        targetEnemy.Clear();
+        targetEnemy.Add(target);
+        Debug.Log("set target to " + target);
     }
 }

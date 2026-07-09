@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -69,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: maxHP
-      value: 160
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myType
@@ -94,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myHPBar
       value: 
-      objectReference: {fileID: 5454511550207670757}
+      objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: Agression
       value: 4
@@ -276,15 +277,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
---- !u!114 &5454511550207670757 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2460627139670560194, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 7608750222517957671}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
