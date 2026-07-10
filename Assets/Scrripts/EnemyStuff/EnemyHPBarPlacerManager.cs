@@ -46,10 +46,11 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             aliveEnemies[posInList].myHPBar = barToUse;
             //set refrences for hpbar
             aliveEnemies[posInList].HPBarToMove = UIPool[0];
-            //enm.PoisonText=barb.
+        //enm.PoisonText=barb.
         //remove hpbar from pool
-        UIPool[0].localScale = new Vector3(1, 1, 1);
-        UIPool[0].localScale = new Vector3(enm.maxHP/150, 1, 1);
+        barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
+        barb.getTransformToScale().localScale = new Vector3(enm.maxHP/150, 1, 1);
+        barb.setSprite(enm.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
         UIPool.RemoveAt(0);
         //set that one's image, the one on the child to be InUseBars
 

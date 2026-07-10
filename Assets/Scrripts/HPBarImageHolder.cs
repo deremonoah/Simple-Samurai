@@ -8,6 +8,8 @@ public class HPBarImageHolder : MonoBehaviour
 {
     [SerializeField] Image hpBar;
     [SerializeField] TextMeshProUGUI poisonText;
+    [SerializeField] Transform TransformToChange;
+    [SerializeField] Image sprite;
 
     public Image getHPBar()
     {
@@ -16,5 +18,13 @@ public class HPBarImageHolder : MonoBehaviour
     public TextMeshProUGUI getTextField()
     {
         return poisonText;
+    }
+    public Transform getTransformToScale()
+    {
+        return TransformToChange;
+    }
+    public void setSprite(Sprite img)
+    {
+        sprite.sprite = img;
     }
 }
