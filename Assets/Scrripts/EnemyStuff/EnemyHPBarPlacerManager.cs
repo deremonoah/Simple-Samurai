@@ -60,7 +60,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
 
     public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
     {
-        if(aliveEnemies[target] != null)
+        if(target<aliveEnemies.Count)
         {
             enemy enm = aliveEnemies[target];
             enm.damageEnemy(damg, effects);
