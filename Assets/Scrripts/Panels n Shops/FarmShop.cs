@@ -8,7 +8,7 @@ public class FarmShop : MonoBehaviour
     private GameManager _gm;
     private PlayerHealthBar _playerHP;
 
-    private float FarmHeal = 30;
+    private float FarmHeal = 40;
     private float FarmIncHP = 25;
     private int FarmLvl = 1;
 
@@ -72,17 +72,17 @@ public class FarmShop : MonoBehaviour
             switch (FarmLvl)
             {
                 case 2:
-                    FarmHeal = 40;
-                    FarmIncHP = 30;
+                    FarmHeal = 60;
+                    FarmIncHP = 40;
                     farmLvlImages[0].SetActive(true);
                     break;
                 case 3:
-                    FarmHeal = 60;
+                    FarmHeal = 80;
                     FarmIncHP = 60;
                     farmLvlImages[1].SetActive(true);
                     break;
                 case 4:
-                    FarmHeal = 80;
+                    FarmHeal = 100;
                     FarmIncHP = 100;
                     farmLvlImages[2].SetActive(true);
                     break;
@@ -94,10 +94,10 @@ public class FarmShop : MonoBehaviour
     public void SetButtonCostsText()
     {
         int cost = (healCost * healPurchasesThisTurn) - reduceCost;
-        healText.text = "Heal "+ cost +"g";
+        healText.text = "Heal "+FarmHeal+"HP for "+ cost +"g";
 
         cost = (improveHPCost * IncreasedMaxHPtimes) - reduceCost;
-        improveHealthText.text = "More Max HP " + cost +"g";
+        improveHealthText.text = FarmIncHP+" More Max HP " + cost +"g";
 
         cost = improveFarmCost - reduceCost;
         improveFarmText.text = "Improve Farm " + cost + "g";
