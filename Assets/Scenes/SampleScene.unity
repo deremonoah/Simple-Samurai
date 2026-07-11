@@ -17917,9 +17917,9 @@ MonoBehaviour:
     _bezierPath:
       points:
       - {x: 2.7660937, y: -1.5433626, z: 0}
-      - {x: 2.2606738, y: 1.101203, z: 0}
-      - {x: -1.7355647, y: 2.1825378, z: 0}
-      - {x: -3.486844, y: 0.37248087, z: 0}
+      - {x: 2.5823493, y: 1.1499249, z: 0}
+      - {x: -0.39846754, y: 1.7357483, z: 0}
+      - {x: -4.0340314, y: 0.16780686, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -19114,7 +19114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &831375357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27037,8 +27037,8 @@ MonoBehaviour:
       points:
       - {x: 2.7073119, y: -0.7836127, z: 0}
       - {x: 2.4369783, y: -0.43100357, z: 0}
-      - {x: -1.6062751, y: 1.3555502, z: 0}
-      - {x: -3.4163356, y: 0.1096642, z: 0}
+      - {x: -2.1214867, y: 2.4665177, z: 0}
+      - {x: -4.0168037, y: -0.066315174, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -27052,7 +27052,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -30739,8 +30739,8 @@ MonoBehaviour:
       points:
       - {x: 2.8718765, y: -0.81870836, z: 0}
       - {x: 2.4487453, y: 0.88556945, z: 0}
-      - {x: -0.9363036, y: 1.6965706, z: 0}
-      - {x: -3.7571783, y: 0.6387431, z: 0}
+      - {x: -1.6825452, y: 1.8384099, z: 0}
+      - {x: -4.202507, y: 0.523113, z: 0}
       isClosed: 0
       space: 1
       controlMode: 0
@@ -39457,7 +39457,7 @@ GameObject:
   m_Layer: 0
   m_Name: atkEnd
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -39470,7 +39470,7 @@ Transform:
   m_GameObject: {fileID: 1895677734}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.67, y: -3.71, z: 0}
+  m_LocalPosition: {x: -4.41, y: -3.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
