@@ -33,9 +33,12 @@ MonoBehaviour:
   - 96
   effs: 0a0000000c0000000b000000
   damageMults:
-  - 2
+  - 5
   - 10
   - 16
-  - 2
+  - 5
   - 10
   - 16
+  readyingSounds: []
+  launchingSounds: []
+  HitingSounds: []

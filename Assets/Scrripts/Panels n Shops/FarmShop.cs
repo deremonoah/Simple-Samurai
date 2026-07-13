@@ -88,7 +88,9 @@ public class FarmShop : MonoBehaviour
                     break;
 
             }
+            improveHPCost = 10;//reset so if they spent time increasing max hp they can reset the price
         }
+        SetButtonCostsText();
     }
 
     public void SetButtonCostsText()
