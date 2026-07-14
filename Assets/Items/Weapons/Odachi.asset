@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2315b6966c7617949aede1ab5494d845, type: 3}
   - {fileID: 21300000, guid: 95e278e90aae3ff4e94773f50be89815, type: 3}
   - {fileID: 21300000, guid: 390422390671c78418b83753eca0f1a5, type: 3}
+  DisplayStrikeAreaIcon: {fileID: 21300000, guid: 6365d9ab2798cbf4dabddfbae3684cf3, type: 3}
   baseDamageLevel:
   - 4
   - 6

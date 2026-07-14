@@ -7,6 +7,7 @@ public class Weapon : Item
 {
     public Sprite myStrikeArea,StrikePoint;
     public List<Sprite> PointersList;
+    public Sprite DisplayStrikeAreaIcon;
     public List<float> baseDamageLevel, maxDamageLevel;
     public List<WeaponEffect> effs;
     public float[] damageMults= new float[6];

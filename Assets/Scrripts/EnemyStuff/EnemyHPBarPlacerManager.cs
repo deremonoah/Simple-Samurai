@@ -159,7 +159,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
                 { areaToChangeTarget.SetTarget(0); }//might change this to more kinds of strike areas not always showing 4 same size
             }
         }
-        else if (weapon.hasEffect(WeaponEffect.shuriken))
+        else if (weapon.hasEffect(WeaponEffect.shuriken) && posInList<ShurikenSpots.Count)
         {
             aliveEnemies[posInList].HPBarToMove.position = ShurikenSpots[posInList].position;
         }else if(weapon.hasEffect(WeaponEffect.odachi) &&posInList<3)

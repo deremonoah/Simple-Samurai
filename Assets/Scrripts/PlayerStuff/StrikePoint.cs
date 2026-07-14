@@ -66,9 +66,6 @@ public class StrikePoint : MonoBehaviour
 
     void Update()
     {
-        
-
-
         checkWhereToFace();
 
         //inbetween is to check if the player should be in between swings because of the cool down timer
