@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
   m_Name: Sasumata
   m_EditorClassIdentifier: 
+  itemName: Sasumata
   itemPanelIcon: {fileID: 21300000, guid: 1747006efadba93459ac0f1bb1a09769, type: 3}
-  itemDescription: 'Sasumata: this weapon allows the player to trap enemy weapons(stun
-    effect)'
+  itemDescription: this weapon allows the player to trap enemy weapons(stun effect)
   itemLevel: 0
   myStrikeArea: {fileID: 21300000, guid: eee0ee468c630fc448970a08e1c121e4, type: 3}
   StrikePoint: {fileID: 21300000, guid: 30b1a2bf2b620a8498166822d211dadb, type: 3}

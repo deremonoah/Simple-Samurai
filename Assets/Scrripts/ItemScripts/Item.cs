@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Item : ScriptableObject
 {
+    public string itemName;
     public Sprite itemPanelIcon;
     public string itemDescription;
     public int itemLevel;

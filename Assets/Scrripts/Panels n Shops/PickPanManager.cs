@@ -85,7 +85,6 @@ public class PickPanManager : MonoBehaviour
         if (looting)
         {
 
-
             if (randLootPicks[buttonID].GetType() == typeof(Curio))
             {
                 ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
@@ -103,6 +102,12 @@ public class PickPanManager : MonoBehaviour
         }
         
 
+    }
+
+    public void inspectItem(int itemToPick)
+    {
+        var dis=FindObjectOfType<ItemDisplayPanel>();
+        dis.OpenItemDescriptionPanel(randLootPicks[itemToPick], itemToPick);
     }
 
     public void RandomItemPull()
@@ -124,7 +129,7 @@ public class PickPanManager : MonoBehaviour
         for (int lcv = 0; lcv < 3; lcv++)//setting the color is now like inabling the image
         {
             buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
-            HoverHelpers[lcv].tipToShow = randLootPicks[lcv].itemDescription;
+            //HoverHelpers[lcv].tipToShow = randLootPicks[lcv].itemDescription;
             if(randLootPicks[lcv].GetType()==typeof(Weapon))
             {
                 BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().weaponColor;

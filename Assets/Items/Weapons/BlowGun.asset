@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
   m_Name: BlowGun
   m_EditorClassIdentifier: 
+  itemName: Pison Blow Gun
   itemPanelIcon: {fileID: 21300000, guid: efd21efd17c86ed488f036615e78effb, type: 3}
   itemDescription: A simple tube that shoots a deadly dart with a poison that will
     kill your enemy in due time

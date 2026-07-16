@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582431f5892f74c498e3445ec03e44bc, type: 3}
   m_Name: Onigiri
   m_EditorClassIdentifier: 
+  itemName: Onigiri
   itemPanelIcon: {fileID: 21300000, guid: e1dc73a4a2b7cc143a9a008007535828, type: 3}
-  itemDescription: 'Onigiri: this consumable will heal you when your HP is below
-    half'
+  itemDescription: this consumable will heal you when your HP is below half
   itemLevel: 0
   curiEef: 3
   CurioNum: 40
   CurioValueLevel: 
+  IsConsumable: 0

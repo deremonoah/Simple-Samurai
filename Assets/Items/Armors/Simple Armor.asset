@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bbf7fd91def1d43b08ce6d198aef5d, type: 3}
   m_Name: Simple Armor
   m_EditorClassIdentifier: 
+  itemName: Simple Armor
   itemPanelIcon: {fileID: 21300000, guid: 010f1301cfaa2ad4895aa58cb60f93fb, type: 3}
-  itemDescription: 'Simple Armor: the same kind you started with'
+  itemDescription: the same kind you started with
   itemLevel: 0
   armorLevel:
   - 5

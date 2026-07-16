@@ -345,8 +345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175, y: 43.71}
-  m_SizeDelta: {x: 1238.74, y: 1273.439}
+  m_AnchoredPosition: {x: 175, y: 129.4241}
+  m_SizeDelta: {x: 1238.74, y: 1102.011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &12940653
 MonoBehaviour:
@@ -932,7 +932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &70163653
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2730,7 +2730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hover over the images for an item description
+  m_Text: Click the images for a description of the items
 --- !u!222 &173109584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7864,7 +7864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &428360339
 Transform:
   m_ObjectHideFlags: 0
@@ -14837,7 +14837,6 @@ GameObject:
   - component: {fileID: 541349524}
   - component: {fileID: 541349527}
   - component: {fileID: 541349526}
-  - component: {fileID: 541349525}
   - component: {fileID: 541349528}
   m_Layer: 5
   m_Name: itemImage2 HoverSelect
@@ -14866,19 +14865,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 243}
   m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &541349525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541349523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipToShow: 
 --- !u!114 &541349526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14962,8 +14948,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1153951127}
-        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
-        m_MethodName: PickButton
+        m_TargetAssemblyTypeName: PickPanManager, Assembly-CSharp
+        m_MethodName: inspectItem
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18198,7 +18184,7 @@ SpriteRenderer:
   m_SortingLayerID: 432511749
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 850a07953ea41f04382d94c64e7bcdbc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 506c6b5f3d8a58c428eecf50e5781bbc, type: 3}
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
@@ -19960,8 +19946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1320, y: -389}
-  m_SizeDelta: {x: 699.97, y: 480.517}
+  m_AnchoredPosition: {x: 1320, y: -281.533}
+  m_SizeDelta: {x: 699.97, y: 265.584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &820584695
 MonoBehaviour:
@@ -20243,7 +20229,6 @@ GameObject:
   - component: {fileID: 826116291}
   - component: {fileID: 826116294}
   - component: {fileID: 826116293}
-  - component: {fileID: 826116292}
   - component: {fileID: 826116295}
   m_Layer: 5
   m_Name: itemImage1 HoverSelect
@@ -20272,19 +20257,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1245, y: 243}
   m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &826116292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 826116290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipToShow: 
 --- !u!114 &826116293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20368,8 +20340,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1153951127}
-        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
-        m_MethodName: PickButton
+        m_TargetAssemblyTypeName: PickPanManager, Assembly-CSharp
+        m_MethodName: inspectItem
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26250,9 +26222,9 @@ RectTransform:
   - {fileID: 523843349}
   m_Father: {fileID: 1769993459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1000, y: -110}
   m_SizeDelta: {x: 2000, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059648918
@@ -27602,9 +27574,9 @@ RectTransform:
   - {fileID: 1489496304}
   m_Father: {fileID: 1769993459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1000, y: -470}
   m_SizeDelta: {x: 2000, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110184615
@@ -29291,7 +29263,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1257682802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1720040902}
+        m_TargetAssemblyTypeName: ItemDisplayPanel, Assembly-CSharp
+        m_MethodName: CloseItemDisplayPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1257682802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33787,9 +33771,9 @@ RectTransform:
   - {fileID: 76602880}
   m_Father: {fileID: 1769993459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1000, y: -590}
   m_SizeDelta: {x: 2000, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513793908
@@ -36763,7 +36747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1642345896
 Transform:
   m_ObjectHideFlags: 0
@@ -37690,7 +37674,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -1.649353, z: 0, w: -0.00012207031}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -37720,8 +37704,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.171, y: 0.528}
-  m_SizeDelta: {x: 592.25, y: 407.02}
+  m_AnchoredPosition: {x: -3.821, y: -1.947}
+  m_SizeDelta: {x: 635.135, y: 217.336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1681164302
 GameObject:
@@ -39248,13 +39232,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0952d42d31752941afe37d4f926ff44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 70163652}
   strikeAreaImage: {fileID: 616875321}
   formPatternImage: {fileID: 617517527}
-  boxesForStyles: []
+  boxesForStyles:
+  - {fileID: 1059648916}
+  - {fileID: 1956822552}
+  - {fileID: 1852665679}
+  - {fileID: 1110184613}
+  - {fileID: 1513793906}
+  WeaponSection: {fileID: 1555562606}
+  ItemAmorValue: {fileID: 1679745797}
+  ArmorSection: {fileID: 820584693}
   anvilLevelIcons: []
   ItemName: {fileID: 442947551}
   ItemDescription: {fileID: 1925908060}
-  ItemAmorValue: {fileID: 1679745797}
+  ItemIconSprite: {fileID: 2091277037}
 --- !u!1 &1721232925
 GameObject:
   m_ObjectHideFlags: 0
@@ -39357,7 +39350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1727242481
 Transform:
   m_ObjectHideFlags: 0
@@ -40034,7 +40027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1108, y: -252}
+  m_AnchoredPosition: {x: -1285, y: -252}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769993460
@@ -40985,7 +40978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1838378323
 Transform:
   m_ObjectHideFlags: 0
@@ -41267,9 +41260,9 @@ RectTransform:
   - {fileID: 634063520}
   m_Father: {fileID: 1769993459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1000, y: -350}
   m_SizeDelta: {x: 2000, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852665681
@@ -42354,7 +42347,6 @@ GameObject:
   - component: {fileID: 1910599305}
   - component: {fileID: 1910599309}
   - component: {fileID: 1910599308}
-  - component: {fileID: 1910599307}
   - component: {fileID: 1910599306}
   m_Layer: 5
   m_Name: itemImage3 HoverSelect
@@ -42428,8 +42420,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1153951127}
-        m_TargetAssemblyTypeName: LootingManager, Assembly-CSharp
-        m_MethodName: PickButton
+        m_TargetAssemblyTypeName: PickPanManager, Assembly-CSharp
+        m_MethodName: inspectItem
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42439,19 +42431,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1910599307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910599304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d770695733386459d943b586d8bf19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipToShow: 
 --- !u!114 &1910599308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43217,9 +43196,9 @@ RectTransform:
   - {fileID: 328142832}
   m_Father: {fileID: 1769993459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1000, y: -230}
   m_SizeDelta: {x: 2000, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1956822554
@@ -47323,7 +47302,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2090130958}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1720040902}
+        m_TargetAssemblyTypeName: ItemDisplayPanel, Assembly-CSharp
+        m_MethodName: PlayerSelectedItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2090130958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49036,7 +49027,7 @@ PrefabInstance:
       objectReference: {fileID: 1594289841}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
@@ -49273,15 +49264,15 @@ PrefabInstance:
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[0]
       value: 
-      objectReference: {fileID: 826116292}
+      objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[1]
       value: 
-      objectReference: {fileID: 541349525}
+      objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[2]
       value: 
-      objectReference: {fileID: 1910599307}
+      objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: buttonImages.Array.data[0]
       value: 
