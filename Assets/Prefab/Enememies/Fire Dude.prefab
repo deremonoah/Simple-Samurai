@@ -5,8 +5,29 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1177356827071998213, guid: 58e21751e7ffb4be5b07132dbda47474, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7828648086093999774, guid: 8fffed98890baf14a8c11be63aa37697, type: 3}
+    - target: {fileID: 3868635541775811570, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868635541775811570, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.21
+      objectReference: {fileID: 0}
     - target: {fileID: 6355339789538058810, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.29
@@ -37,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmax
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: Defensiveness
@@ -164,4 +185,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b3df1bc4b72ffe74684a1ccc31a6a479, type: 3}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}

@@ -6,8 +6,8 @@ public class AnimationCaller : MonoBehaviour
 {
     public enemy myscript;
 
-    public void SendAttack()
+    /*public void SendAttack()
     {
         myscript.SendActionUI();
-    }
+    }*/
 }

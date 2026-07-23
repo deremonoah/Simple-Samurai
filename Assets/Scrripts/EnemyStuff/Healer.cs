@@ -15,7 +15,7 @@ public class Healer : enemy
         //DecideNStartAction(); base class already calls it
     } 
 
-    protected override void DecideNStartAction()
+    /*protected override void DecideNStartAction()
     {
         //myActionRoutine = StartCoroutine(healEnmRoutine());
         
@@ -48,13 +48,13 @@ public class Healer : enemy
         }
         //this call after the action is set
         myActionRoutine = StartCoroutine(TheActionRoutine());
-    }
+    }*/
 
     public void HealingUI()
     {
         
         GameObject heal = Instantiate(specialPrefabs[0], base.atkStarts[3].transform.position, base.atkStarts[3].transform.rotation);
-        heal.GetComponent<EnmAtKArea>().Setstuff(this, base.atkStarts[0].transform, SpecialDirs[0]);
+        //heal.GetComponent<EnmAtKArea>().Setstuff(this, base.atkStarts[0].transform, SpecialDirs[0]);
         var newList = new List<GameObject>();
         if (_mycurrentAttacks.Count > 0)
             foreach (var swing in _mycurrentAttacks)

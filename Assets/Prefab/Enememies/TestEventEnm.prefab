@@ -132,7 +132,7 @@ MonoBehaviour:
   defendValue: 20
   defendingMin: 2
   defendingMax: 3
-  randWaitmin: 2.2
+  randWaitmin: 3
   randWaitmax: 3
   readyingTimer: 2.5
   strikeTimer: 0.4

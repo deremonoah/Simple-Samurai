@@ -157,7 +157,7 @@ public class enemy : MonoBehaviour
         //HPBarPosToReturnTo = HPBarToMove.localPosition;
         HandleHPBarPlacement();
 
-        DecideNStartAction();  
+        //DecideNStartAction();  
     }
 
     void Awake()
@@ -188,14 +188,13 @@ public class enemy : MonoBehaviour
         //below is the effect of range or mob honour
 
         anim.SetFloat("State", (int)curState);
-        fillMyHP();
-        
-
     }
-    protected virtual void fillMyHP()
+    /*protected virtual void fillMyHP()//called in
     {
-        myHPBar.fillAmount = HP / maxHP;
-    }
+        if (myHPBar != null)
+        { myHPBar.fillAmount = HP / maxHP; }
+        else { Debug.Log("hp bar is null??"); }
+    }*/
 
     public void healEnm(float heal)
     {
@@ -268,7 +267,7 @@ public class enemy : MonoBehaviour
             _regening = false;
             //should have a custome noise maybe bowl breaks and sprite the sumo the bowl should go flying
             StopCoroutine(myActionRoutine);
-            DecideNStartAction();
+            //DecideNStartAction();
         }
     }
 
@@ -280,7 +279,7 @@ public class enemy : MonoBehaviour
             {
                 currentRageCount++;
                 StopCoroutine(myActionRoutine);
-                DecideNStartAction();
+                //DecideNStartAction();
             }
         }
         
@@ -305,10 +304,10 @@ public class enemy : MonoBehaviour
         { StunnedSprite.SetActive(true); }
     }
 
-    public void SetThings( List<GameObject> str, GameObject end, int point)
+    public void SetThings(int point)
     {
-        atkStarts = str;
-        atkEnd = end;
+        //atkStarts = str;
+        //atkEnd = end;
         posInList = point;
     }
 
@@ -328,38 +327,30 @@ public class enemy : MonoBehaviour
     {
         if (!longRanged)
         {
-            if (posInList > 0)
-            {
-                waitTimerOffset = 1.5f;
-                if (posInList == 3)
-                {
-                    waitTimerOffset = 2.5f;
-                }
-            }
-            else
-            {
-                waitTimerOffset = 0;
-            }
+            waitTimerOffset = posInList * 1.5f;
         }
     }
 
-    protected virtual void DecideNStartAction()
+    /*protected virtual void DecideNStartAction()
     {
-
+        Debug.Log(gameObject.name+" in deciding");
         //maybe move up should be a coroutine, so I can have it only happen at the end of frames
         //MoveUP();disabled for now with hpBarManager adjustments and taking out hp bar
-
-        /*if(myActionRoutine != null)
+        hasPickedAction = false;
+        if (myActionRoutine != null)
+        { StopCoroutine(myActionRoutine); }//to be sure its done and we don't double up on the action routines
+        myActionRoutine = null;
+        if(myActionRoutine != null)
         {
             hasStarted = true;
-        }*/
+        }
 
-        if(stunTimer>0)
+        if (stunTimer>0)
         {
             myActionRoutine = StartCoroutine(StunnedRoutine());
             hasPickedAction = true;
         }
-        if(!hasPickedAction)
+        if(!hasPickedAction && myActionRoutine==null)
         {
                 //speccial abiliy routines
                 if (HasAbility(Ability.steal) && amountRobbed > 5)
@@ -367,16 +358,6 @@ public class enemy : MonoBehaviour
                 //myActionRoutine = StartCoroutine(RunRoutine());
                     delegateAction = BeginRunUI;
                     hasPickedAction = true;
-                }
-                else if (HasAbility(Ability.sasumata))
-                {
-                    //like 50% of the time sasumata special other half regular attack
-                    int rand = Random.Range(0, 2);
-                    if (rand == 1)
-                    {
-                        myActionRoutine = StartCoroutine(SasumataRoutine());
-                        hasPickedAction = true;
-                    }
                 }
                 else if(HasAbility(Ability.fire))
             {
@@ -413,10 +394,10 @@ public class enemy : MonoBehaviour
             }
         myActionRoutine = StartCoroutine(TheActionRoutine());
             
-            /*else
-            { myActionRoutine = StartCoroutine(TheDefendingRoutine()); }*/
+            else
+            { myActionRoutine = StartCoroutine(TheDefendingRoutine()); }
         
-    }
+    }*/
 
     #region Attack Stuff
     protected virtual IEnumerator TheActionRoutine()
@@ -444,8 +425,7 @@ public class enemy : MonoBehaviour
         
         yield return new WaitForSeconds(strikeTimer);
         //Debug.Log("got to the end of action routine: "+gameObject.name);
-        hasPickedAction = false;
-        DecideNStartAction();
+        //DecideNStartAction();
     }
 
     public IEnumerator moveToShowAttack()
@@ -467,7 +447,7 @@ public class enemy : MonoBehaviour
         curState = attackState.ThrowingAttack;
         //wait for the right amount time for the animation to finish hopefully
         yield return new WaitForSeconds(0.5f);
-
+        SendActionUI();
         //moving back to their spot
         t = 0;
 
@@ -481,7 +461,7 @@ public class enemy : MonoBehaviour
         spriteChild.transform.position = spotToReturnTo.position;
     }
 
-    private bool HasAbility(Ability abl)
+    public bool HasAbility(Ability abl)//mostly called in here called in EnemyHPBarPlacerManager to check if boss
     {
         for (int lcv = 0; lcv < myAbilities.Count; lcv++)
         {
@@ -493,13 +473,13 @@ public class enemy : MonoBehaviour
         return false;
     }
 
-    public IEnumerator SasumataRoutine()
+    /*public IEnumerator SasumataRoutine()
     {
         curState = attackState.waiting;
         yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
 
         curState = attackState.ThrowingAttack;
-        SpecialUI();
+        //SpecialUI();
         
         yield return new WaitForSeconds(readyingTimer);
         curState = attackState.waiting;
@@ -507,7 +487,7 @@ public class enemy : MonoBehaviour
         yield return new WaitForSeconds(strikeTimer);
 
         DecideNStartAction();
-    }
+    }*/
 
     public IEnumerator StunnedRoutine()
     { 
@@ -519,7 +499,7 @@ public class enemy : MonoBehaviour
         stunTimer = 0f;
         StunnedSprite.SetActive(false);
 
-        DecideNStartAction();
+        //DecideNStartAction();
     }
 
     public void AttackUI()
@@ -531,7 +511,9 @@ public class enemy : MonoBehaviour
 
         GameObject atk = Instantiate(atkPrefabs[randAttack], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
 
-        atk.GetComponent<EnmAtKArea>().SetDamage(dmg, damgMax);
+        EnmAtKArea enmAtk = atk.GetComponent<EnmAtKArea>();
+        if(enmAtk!=null)
+            enmAtk.SetDamage(dmg, damgMax);
 
         if (atkDirs[dir].y == 0)
         {
@@ -563,7 +545,7 @@ public class enemy : MonoBehaviour
         }
 
 
-        atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]);
+        //atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]); writing a new behavior stuff anyway
         var newList = new List<GameObject>();
         if (currentAttacks.Count > 0)
             foreach (var swing in currentAttacks)
@@ -697,7 +679,7 @@ public class enemy : MonoBehaviour
         //because we need their current deffense to be 0 while attacking
         currentDefense = 0;
         spriteChild.GetComponent<SpriteRenderer>().color = Color.white;
-        DecideNStartAction();
+        //DecideNStartAction();
     }
         private void MoveUP()
     {
@@ -733,7 +715,7 @@ public class enemy : MonoBehaviour
     public void BeginRunUI()
     {
         GameObject run = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
-        run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]);
+        //run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]); writting a new enemyBehavior
         currentAttacks.Add(run);
     }
 
@@ -783,7 +765,7 @@ public class enemy : MonoBehaviour
         }
         else
         {
-            DecideNStartAction();
+            //DecideNStartAction();
         }
     }
 
@@ -822,12 +804,9 @@ public class enemy : MonoBehaviour
         return HP;
     }
 
-    private void HandleHPBarPlacement()
+    protected void HandleHPBarPlacement()
     {
-        if(!HasAbility(Ability.boss))
-        {
-            EnemyHPBarPlacerManager.instance.PlaceMyHPBar(this, posInList);
-        }
+        EnemyHPBarPlacerManager.instance.PlaceMyHPBar(this, posInList);
     }
 
     private void GotPoisoned(float Damage)
@@ -875,8 +854,7 @@ public class enemy : MonoBehaviour
 
     public void EnemyDied()
     {
-        foreach (var atk in currentAttacks)
-            Destroy(atk);
+        GetComponent<EnemyBehavior>().ClearAttacks();
 
         _GM.PayOut(minCoin + amountRobbed, maxCoin);
         if (myAbilities[0] == Ability.poison)
@@ -893,5 +871,22 @@ public class enemy : MonoBehaviour
         }
         EnemyHPBarPlacerManager.instance.RemoveMeFromList(this);
         enmsSys.OnDied(this);
+    }
+
+    public Vector2 getRandomAttackDirection()
+    {
+        int rand = Random.Range(0, atkDirs.Count);
+        return atkDirs[rand];
+    }
+
+    public List<float> getRandomAttackDamage()
+    {
+        float rand = Random.Range(damgMin, damgMax);
+        return new List<float>() { rand, damgMax};
+    }
+
+    public float getRandomWaitTime()
+    {
+        return Random.Range(randWaitmin, randWaitmax)+waitTimerOffset;
     }
 }

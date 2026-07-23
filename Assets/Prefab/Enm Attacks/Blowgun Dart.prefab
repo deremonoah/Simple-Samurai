@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.77779
       objectReference: {fileID: 0}
+    - target: {fileID: 7174432933752386730, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
+      propertyPath: movespeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8945028480078649456, guid: b8b8df724a5ad0d458129438b5f0f0ca, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 8

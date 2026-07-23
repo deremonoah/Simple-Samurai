@@ -21,7 +21,7 @@ public class EnmAtKArea : MonoBehaviour
 
     void Start()
     {
-        
+        endPos = EnemysManager.instance.getEndAttackPos();
     }
 
     
@@ -98,11 +98,10 @@ public class EnmAtKArea : MonoBehaviour
         blocking = false;
     }
 
-    public void Setstuff(enemy em, Transform end, Vector2 direct)
+    public void Setstuff(enemy em, Vector2 direct)
     {
         myenm = em;
         dir = direct;
-        endPos = end;
 
         /*if (myenm.myAbility == enmy.Ability.antiarmor)
         {

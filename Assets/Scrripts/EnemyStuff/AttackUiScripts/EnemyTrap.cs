@@ -12,6 +12,14 @@ public class EnemyTrap : MonoBehaviour
     {
         playerHP = FindObjectOfType<PlayerHealthBar>();
         PointerOnTrap = false;
+        List<List<Transform>> temp=EnemysManager.instance.GetTrapSpawnSpots();
+        //decide between spawn spots
+        int rand = Random.Range(0, temp[0].Count);
+        //lerp out to it with a corotuine?
+        List<Transform> trapSpots=temp[0];
+        List<Transform> smokeSpots = temp[1];
+
+        this.transform.position = trapSpots[rand].position;//should we instead use a random distance on the path the cursor will for sure travel on?
     }
 
     private void Update()

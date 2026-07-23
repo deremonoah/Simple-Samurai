@@ -18,7 +18,7 @@ public class EnemysManager : MonoBehaviour
 
     [SerializeField] int recPos;
 
-    [SerializeField] List<GameObject> attackStartPoints;
+    [SerializeField] List<Transform> attackStartPoints;
     [SerializeField] GameObject attackEndPointStandard;
 
     public List<EnmWave> enemyWaves;
@@ -31,11 +31,11 @@ public class EnemysManager : MonoBehaviour
 
     [SerializeField] List<Sprite> OdachiSprites;
 
-    public Image bossHPBar;
-    [SerializeField] GameObject bossHPContainter;
-    public GameObject BossHPPointer;
-    public List<GameObject> BossBowPointers;
-    public TMP_Text bossPoisonText;
+    //public Image bossHPBar;
+    //[SerializeField] GameObject bossHPContainter;
+    //public GameObject BossHPPointer;
+    //public List<GameObject> BossBowPointers;
+    //public TMP_Text bossPoisonText;
 
     [SerializeField] List<Transform> caltropSpots;
     [SerializeField] List<Transform> smokeSpots;
@@ -52,6 +52,21 @@ public class EnemysManager : MonoBehaviour
 
     //this is the number that is the top end of the random number for if enemies move up
     private int maxAgression;
+
+
+    public static EnemysManager instance;
+    private void Awake()
+    {
+        if(instance==null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError("instance of EnemysManager is not null, prob 2 in scene");
+        }
+    }
+
     void Start()
     {
         GM = FindObjectOfType<GameManager>();
@@ -87,10 +102,9 @@ public class EnemysManager : MonoBehaviour
     {
         enemy enm = Instantiate(enmPrefab, enemySpawnsPoints[pos].transform.position, enemySpawnsPoints[pos].transform.rotation).GetComponent<enemy>();
         aliveEnemys.Add(enm);
-        enm.GetComponent<enemy>().SetThings(attackStartPoints, attackEndPointStandard, pos);
-        enm.GetComponent<enemy>().SetPositionRefrences(enemySpawnsPoints[pos].transform, attackThrowMarker);
-        if(enm.myAbilities[0] == enemy.Ability.boss)
-        { bossHPContainter.SetActive(true); }
+        enm.GetComponent<enemy>().SetPosInList(pos);
+        //enm.GetComponent<enemy>().SetPositionRefrences(enemySpawnsPoints[pos].transform, attackThrowMarker);
+        
         spawned = true;
         recPos = pos;
     }
@@ -116,9 +130,6 @@ public class EnemysManager : MonoBehaviour
         UpdateEnmsPosRefrence();
 
         PM.UpdateAliveEnmsPointers(aliveEnemys);
-
-        if (me.myAbilities[0] == enemy.Ability.boss)
-        { bossHPContainter.SetActive(false); }
 
         Destroy(me.gameObject);
     }
@@ -372,5 +383,20 @@ public class EnemysManager : MonoBehaviour
     {
         //this is called by individual enemies when needed
         PM.UpdateAliveEnmsPointers(aliveEnemys);
+    }
+
+    public Transform getEndAttackPos()
+    {
+        return attackEndPointStandard.transform;
+    }
+
+    public Vector3 getRandomAttackPoint()
+    {
+        int rand = Random.Range(0, attackStartPoints.Count);
+        return attackStartPoints[rand].position;
+    }
+    public Vector3 getDemoAttackPoint()
+    {
+        return attackStartPoints[0].position;
     }
 }

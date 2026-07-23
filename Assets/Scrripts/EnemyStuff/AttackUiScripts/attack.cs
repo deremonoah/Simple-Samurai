@@ -1,33 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PathCreation;
 
-public class ArkingAtk : EnmAtKArea
+public class attack : MonoBehaviour
 {
-    [SerializeField] float PathTimer;
-    private PathCreator currentPath;
-    private float distanceTravelled;
+    private Transform endPos;
+    private enemy myenm;
+    bool blocking;
 
-    //posblock is protected from parent class
+    public Vector2 dir;//could make this multiple and have the guy who spawned it look at which direction it should start from
+    public float movespeed;
+    public float multiPerry;
+    public float damage;
+    public AttackEffect atkEef;
+    protected Vector2 posBlock;
 
-    private void Start()
+    //put here how we will indicate damage, with the mask in future
+
+    void Start()
     {
-        //this is where it should get or set it's path
-        endPos=EnemysManager.instance.getEndAttackPos();
-        currentPath = FindObjectOfType<EnemysManager>().GetRandomThrowPath();
+        endPos = EnemysManager.instance.getEndAttackPos();
     }
 
-
-    protected override void Update()
+    protected virtual void Update()
     {
-        //for blocking
         if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && blocking)
         {
             if (multiPerry > 0)
             {
                 multiPerry -= 1;
-                ParticleManager.instance.BlockedHere(posBlock,damage);
+                ParticleManager.instance.BlockedHere(posBlock, damage);
                 GetComponent<SpriteRenderer>().color = Color.red;
 
                 var pos = this.gameObject.transform.position;
@@ -40,21 +42,20 @@ public class ArkingAtk : EnmAtKArea
             }
             else
             {
-                myenm.Blocked(atkEef);
-                ParticleManager.instance.BlockedHere(posBlock,damage);
+                myenm.GetComponent<EnemyBehavior>().Blocked();
                 FindObjectOfType<SoundManager>().PlaySound("block");
+                ParticleManager.instance.BlockedHere(posBlock, damage);
                 Destroy(gameObject);
             }
         }
 
-        //moves
-        distanceTravelled += base.movespeed * Time.deltaTime;
-        transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
+        //movement
+        transform.Translate(dir * movespeed * Time.deltaTime);
 
-        //once the attack is past designated area it is destoryed
         if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
             myenm.hitNow(damage, atkEef);
+            //particle effect for hitting player
             Destroy(gameObject);
         }
         else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
@@ -85,5 +86,40 @@ public class ArkingAtk : EnmAtKArea
     private void OnTriggerExit2D(Collider2D other)
     {
         blocking = false;
+    }
+
+    public void Setstuff(enemy em, Vector2 direct)
+    {
+        myenm = em;
+        dir = new Vector2(-1,0);//for now we just need them to be flat
+        GenerateDamage();
+    }
+
+    private void GenerateDamage()
+    {
+        var renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        var color = renderer.color;
+        var Damgs = myenm.getRandomAttackDamage();
+        float alph = Damgs[0] / Damgs[1];
+        /*if (alph < .4f)
+        {
+            alph = 0.25f;
+            renderer.color = new Color(color.r, color.g + .4f, color.b + .4f, alph);
+        }
+        else if (alph < .65f && alph >= .4f)
+        {
+            alph = .6f;
+            renderer.color = new Color(color.r, color.g + .2f, color.b + .2f, alph);
+        }
+        else
+        {
+            alph = .8f;
+            renderer.color = new Color(color.r, color.g, color.b, alph);
+        }*/
+        renderer.color = new Color(color.r, color.g, color.b, alph);
+
+        damage = Damgs[0];
+
+
     }
 }

@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6287631552131144938, guid: 4d4816a944950e7459bb56bd27fea6ce, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5143868262715306960, guid: d08f3b4c633372647abbe0f19cc3f678, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2241141551349325259, guid: 90d86f7fae5bdf245a175399cf6cd090, type: 3}
     - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -183,8 +199,8 @@ MonoBehaviour:
   defendValue: 20
   defendingMin: 0.5
   defendingMax: 1
-  randWaitmin: 2
-  randWaitmax: 3
+  randWaitmin: 3
+  randWaitmax: 5
   readyingTimer: 2
   strikeTimer: 0.4
   waitTimerOffset: 0

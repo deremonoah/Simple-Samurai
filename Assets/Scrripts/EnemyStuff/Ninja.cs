@@ -27,9 +27,14 @@ public class Ninja : enemy
         base.Update();
     }
 
-    protected override void DecideNStartAction()
+    /*protected override void DecideNStartAction()
     {
-        
+        hasPickedAction = false;
+        if (myActionRoutine != null)
+        { StopCoroutine(myActionRoutine); }//to be sure its done and we don't double up on the action routines
+        myActionRoutine = null;
+        delegateAction = null;
+
         for (int lcv = 0; lcv < myAbilities.Count; lcv++)
         {
             if (myAbilities[lcv] == Ability.ninja)
@@ -51,7 +56,7 @@ public class Ninja : enemy
 
         base.DecideNStartAction();
         
-    }
+    }*/
 
     
 

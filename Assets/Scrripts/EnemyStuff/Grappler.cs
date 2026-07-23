@@ -10,15 +10,15 @@ public class Grappler : enemy
     [SerializeField] GameObject blockprefab;
     [SerializeField] List<GameObject> blocksSet;
     [SerializeField] List<Transform> _blockSpots;
-    private int actionCount;
-    private int lastAction; //0 is attack, 1 is block, 2 is heal
+    //private int actionCount;
+    //private int lastAction; //0 is attack, 1 is block, 2 is heal
     protected override void Start()
     {
         base.Start();
         List<List<Transform>> temp = new List<List<Transform>>();
         temp = enmsSys.GetTrapSpawnSpots();
         _blockSpots = temp[0];
-        actionCount = 0;
+        //actionCount = 0;
     }
 
     protected override void Update()
@@ -31,7 +31,7 @@ public class Grappler : enemy
         base.Update();
     }
 
-    protected override void DecideNStartAction()
+    /*protected override void DecideNStartAction()
     {
         bool hasStarted = false;
         int rand = Random.Range(0, 10);
@@ -68,7 +68,7 @@ public class Grappler : enemy
             base.DecideNStartAction();
             lastAction = 0;
         }
-    }
+    }*/
 
     IEnumerator SpawnBlock()
     {
@@ -76,6 +76,6 @@ public class Grappler : enemy
         blocksSet.Add(Instantiate(blockprefab, _blockSpots[rand].position, transform.rotation));
 
         yield return new WaitForSeconds(1f);
-        DecideNStartAction();
+        //DecideNStartAction();
     }
 }

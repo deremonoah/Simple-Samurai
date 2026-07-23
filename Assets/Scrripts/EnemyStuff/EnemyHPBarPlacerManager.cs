@@ -22,6 +22,9 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     [SerializeField] List<Transform> UIPool = new List<Transform>();
     [SerializeField] Vector3 HideHere;
 
+    [Header("Boss HP Bar stuff")]
+    [SerializeField] HPBarImageHolder bossHPUI;
+
     private StrikeArea areaToChangeTarget;
 
     private void Awake()
@@ -38,18 +41,31 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     }
 
     public void PlaceMyHPBar(enemy enm,int posInList)
-    { 
+    {
         aliveEnemies.Add(enm);//should work with the timing of spawns
                               //might need to set uipool newest item to enabled
-        HPBarImageHolder barb = UIPool[0].gameObject.GetComponent<HPBarImageHolder>();
-            Image barToUse = barb.getHPBar();
+        HPBarImageHolder barb;
+        Image barToUse = null;
+        if (enm.HasAbility(enemy.Ability.boss))
+        {
+            barb = bossHPUI;
+            barToUse = barb.getHPBar();
+            aliveEnemies[posInList].HPBarToMove = bossHPUI.gameObject.transform;
+            bossHPUI.gameObject.SetActive(true);
+        }
+        else//non boss
+        {
+            barb = UIPool[0].gameObject.GetComponent<HPBarImageHolder>();
+            barToUse = barb.getHPBar();
+            aliveEnemies[posInList].HPBarToMove = UIPool[0];
+            barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
+            barb.getTransformToScale().localScale = new Vector3(enm.maxHP / 150, 1, 1);
+        }
             aliveEnemies[posInList].myHPBar = barToUse;
             //set refrences for hpbar
-            aliveEnemies[posInList].HPBarToMove = UIPool[0];
+            
         //enm.PoisonText=barb.
         //remove hpbar from pool
-        barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
-        barb.getTransformToScale().localScale = new Vector3(enm.maxHP/150, 1, 1);
         barb.setSprite(enm.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
         UIPool.RemoveAt(0);
         //set that one's image, the one on the child to be InUseBars
@@ -78,7 +94,11 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         Debug.Log("onDied called");
         aliveEnemies.Remove(enm);//take enemy off list
         var bar = enm.HPBarToMove;
-         bar.position = HideHere;//move it off screen
+        bar.position = HideHere;//move it off screen
+        if(enm.HasAbility(enemy.Ability.boss))
+        {
+            bossHPUI.gameObject.SetActive(false);
+        }
         UIPool.Add(bar);//add it back to the pool of ui
         bar.GetComponent<HPBarImageHolder>().getHPBar().fillAmount = 1;//and put its filll back to 100%
         HandleListChanged();
@@ -93,7 +113,8 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         Weapon weapon = FindObjectOfType<PlayerEquipedItemsManager>().equipedWeapon;
         for (int lcv=0;lcv<aliveEnemies.Count;lcv++)
         {
-            PlaceBar(weapon, lcv);
+            if (!aliveEnemies[lcv].HasAbility(enemy.Ability.boss))
+            { PlaceBar(weapon, lcv); }
         }
     }
 

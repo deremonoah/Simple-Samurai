@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: actionPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
     - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -27,6 +39,14 @@ PrefabInstance:
     - target: {fileID: 3562744342560505691, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868635541775811570, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.133
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868635541775811570, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.738
       objectReference: {fileID: 0}
     - target: {fileID: 4951107425511147435, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -74,11 +94,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmax
-      value: 3
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmin
-      value: 2.2
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: Defensiveness

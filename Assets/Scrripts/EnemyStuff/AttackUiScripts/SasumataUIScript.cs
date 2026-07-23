@@ -15,6 +15,7 @@ public class SasumataUIScript : MonoBehaviour
     {
         hasPointer = false;
         StartTimer = 0.5f;
+        endPos = EnemysManager.instance.getEndAttackPos();
     }
 
     

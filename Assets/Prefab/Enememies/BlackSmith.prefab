@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 44421948293784112, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
@@ -81,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: randWaitmax
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: randWaitmin
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 871295418511070470, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: defendingMax
@@ -135,6 +136,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.26
       objectReference: {fileID: 0}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: actionPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: actionPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5895805057444381608, guid: 1788c02a726fa5a4bbc951595d6187f2, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: actionPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3579327996252194840, guid: 9ceacb0122ce25249859297516036cfe, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: actionPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4522770860429595620, guid: 23715886ab0019f488d88095ca7eeb84, type: 3}
     - target: {fileID: 5551898289450451620, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.25
@@ -144,4 +161,7 @@ PrefabInstance:
       value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}

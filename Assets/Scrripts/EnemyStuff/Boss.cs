@@ -28,14 +28,14 @@ public class Boss : Ninja
     protected override void Start()
     {
         base.Start();
-        base.myHPBar = enmsSys.bossHPBar;
-        base.PoisonText = enmsSys.bossPoisonText;
+        //base.myHPBar = enmsSys.bossHPBar;
+        //base.PoisonText = enmsSys.bossPoisonText;
     }
 
-    protected override void DecideNStartAction()
+    /*protected override void DecideNStartAction()
     {
         base.DecideNStartAction();
-    }
+    }*/
 
     private void SwapSpots()
     {

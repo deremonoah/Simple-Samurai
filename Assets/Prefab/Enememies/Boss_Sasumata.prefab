@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
@@ -32,8 +33,12 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: randWaitmax
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: randWaitmin
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: Defensiveness
@@ -51,6 +56,10 @@ PrefabInstance:
       propertyPath: atkPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 5338052958082804479, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
+    - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: atkPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7046325851854752150, guid: 165389059ecb56d448629a00148cf606, type: 3}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: myAbilities.Array.data[1]
       value: 7
@@ -86,6 +95,14 @@ PrefabInstance:
     - target: {fileID: 135602043026154991, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428058699037430116, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428058699037430116, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2864164581738822656, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: m_IsActive
@@ -179,5 +196,20 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2.77
       objectReference: {fileID: 0}
+    - target: {fileID: 7798925297179536206, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: actionPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798925297179536206, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: actionPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5338052958082804479, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
+    - target: {fileID: 7798925297179536206, guid: 312a944bc74725b43861ac10146ef041, type: 3}
+      propertyPath: actionPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7046325851854752150, guid: 165389059ecb56d448629a00148cf606, type: 3}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 312a944bc74725b43861ac10146ef041, type: 3}
