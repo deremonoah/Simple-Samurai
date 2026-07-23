@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1077666371556975018, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+      propertyPath: attackPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077666371556975018, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+      propertyPath: currentAttacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077666371556975018, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+      propertyPath: attackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+    - target: {fileID: 1077666371556975018, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+      propertyPath: attackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
+    - target: {fileID: 1077666371556975018, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+      propertyPath: currentAttacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+    - target: {fileID: 1077666371556975018, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
+      propertyPath: currentAttacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
     - target: {fileID: 2390960747628968264, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
       propertyPath: m_Name
       value: TestEventEnm

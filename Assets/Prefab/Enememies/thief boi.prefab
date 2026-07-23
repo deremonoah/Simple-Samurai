@@ -13,6 +13,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: attackPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: currentAttacks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: actionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
@@ -20,6 +28,22 @@ PrefabInstance:
       propertyPath: actionPrefabs.Array.data[1]
       value: 
       objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: attackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: attackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: currentAttacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: currentAttacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
     - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0

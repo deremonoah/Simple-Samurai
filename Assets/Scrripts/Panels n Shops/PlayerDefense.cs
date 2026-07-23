@@ -54,7 +54,7 @@ public class PlayerDefense : MonoBehaviour
         
     }
 
-    public void DefendPlayer(enemy enmy,float Damg)
+    public void DefendPlayer(enemyStats enmy,float Damg)
     {
         //depending on which of the defenses is selected it will do a different thing the to enemy
 

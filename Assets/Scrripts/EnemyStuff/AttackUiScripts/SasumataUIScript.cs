@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SasumataUIScript : MonoBehaviour
 {
-    private enemy myenm;
+    private enemyStats myenm;
     private Transform endPos;
     [SerializeField] Vector2 dir;
     [SerializeField] float movspd;
@@ -41,7 +41,7 @@ public class SasumataUIScript : MonoBehaviour
         else { StartTimer -= Time.deltaTime; }
     }
 
-    public void Setstuff(enemy em, Transform end, Vector2 direct)
+    public void Setstuff(enemyStats em, Transform end, Vector2 direct)
     {
         myenm = em;
         dir = direct;

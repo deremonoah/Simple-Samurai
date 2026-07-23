@@ -6,21 +6,61 @@ public class EnemyBehavior : MonoBehaviour
 {
     //should have enemy stats as seperate
     Coroutine myActionRoutine;
-    [SerializeField] List<GameObject> actionPrefabs;
+    IEnumerator DelegateAction;
+    enemyStats stats;
+
+    [Header("attack info")]
+    [SerializeField] List<GameObject> attackPrefabs;
     [SerializeField] Transform enemyAttackPoint;
-    enemy stats;
-    public List<GameObject> currentAttacks = new List<GameObject>();
+    private List<GameObject> currentAttacks = new List<GameObject>();
     [SerializeField] float MoveToShowSpeed;
+
+    [Header("trap prefabs")]
+    [SerializeField] List<GameObject> trapPrefabs;
+    private List<GameObject> currentTraps = new List<GameObject>();
+    [SerializeField] int maxTraps;
+    [Range(1,100)]
+    [SerializeField] int TrapPercentage;
+
+    [Header("Rage (Inclusive,Exclusive)")]
+    [SerializeField] Vector2 minMaxRageAttacks;
+    [SerializeField] float TimeBetweenRageAttacks;
+    [SerializeField] int RageThreashold;
+    private int currentRageCount;
 
     public void Start()
     {
-        stats = GetComponent<enemy>();
-        myActionRoutine = StartCoroutine(actionRoutine());
+        stats = GetComponent<enemyStats>();
+        DecideNextAction();
     }
 
     private void DecideNextAction()
     {
         myActionRoutine = null;
+        DelegateAction = null;
+
+        //rage highest priority
+        if(DelegateAction==null &&currentRageCount>=RageThreashold)
+        {
+            int rand = Random.Range(0, 2);
+            if(rand>0)
+            {
+                DelegateAction = RageRoutine();
+            }
+        }
+        if(DelegateAction==null && trapPrefabs.Count>0)
+        {
+            int rand = Random.Range(1, 101);
+            if(rand<=TrapPercentage)
+            {
+                DelegateAction = TrapUIRoutine();
+            }    
+        }
+        if(DelegateAction==null)
+        {
+            DelegateAction = AttackUIRoutine();
+        }
+
         myActionRoutine = StartCoroutine(actionRoutine());
     }
 
@@ -69,7 +109,7 @@ public class EnemyBehavior : MonoBehaviour
         //now throw attack
         //curState = attackState.ThrowingAttack; TO DO:I have to redo animation fuck
         yield return new WaitForSeconds(0.5f);
-        BasicAction();//TO DO: delate action?
+        yield return DelegateAction;//should work as long as they have traps
         Debug.Log("should have attacked");
         
         //return to original position
@@ -94,30 +134,58 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (myActionRoutine != null)
         {
-            //currentRageCount++;
+            currentRageCount++;
             StopCoroutine(myActionRoutine);
             myActionRoutine = StartCoroutine(actionRoutine());
-            //DecideNStartAction();can I just have multiple scripts that are actions the enemy can preform? like attackUI, or heal, or other stuff?
+            DecideNextAction();
         }
     }
 
-    public void ClearAttacks()//called by enemyStats when enemy dies
+    public void ClearAttacksNTraps()//called by enemyStats when enemy dies
     {
         foreach (var atk in currentAttacks)
             Destroy(atk);
+        foreach (var trap in currentTraps)
+            Destroy(trap);
     }
 
-    public void BasicAction()//sends out on of its attacks or specials
+    IEnumerator AttackUIRoutine()//sends out on of its attacks
     {
         Debug.Log("in basic action");
-        int rand = Random.Range(0, actionPrefabs.Count);
-        GameObject attack = Instantiate(actionPrefabs[rand], enemyAttackPoint.position, actionPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
+        int rand = Random.Range(0, attackPrefabs.Count);
+        Debug.Log("this is out of range? "+rand);
+        GameObject attack = Instantiate(attackPrefabs[rand], enemyAttackPoint.position, attackPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
         currentAttacks.Add(attack);
         var atk = attack.GetComponent<attack>();
         if (atk != null)
         {
             atk.Setstuff(stats, stats.getRandomAttackDirection());//how to make it so certain attacks only move certain ways? just on attack?
         }
+        yield return null;
     }//I plan to add non basic actions as heal self like sumo or... I feel like there was another specific one in mind
     //ah right swapping spots, though I don't think anyone payed attention to that one
+
+    IEnumerator TrapUIRoutine()//should probably just be a method but idk if i can store and call it the same either way?
+    {
+        Debug.Log("in basic action");
+        int rand = Random.Range(0, trapPrefabs.Count);
+        GameObject trap = Instantiate(trapPrefabs[rand], enemyAttackPoint.position, trapPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
+        currentTraps.Add(trap);
+        var atk = trap.GetComponent<attack>();
+        yield return null;
+    }
+
+    public IEnumerator RageRoutine()
+    {
+        int Rager = 0;
+        int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);
+        while (Rager < randomRageAttack)
+        {
+            yield return AttackUIRoutine();
+            yield return new WaitForSeconds(TimeBetweenRageAttacks); //would be nice if this number changed imo, like over time many at first but then slower
+            Rager++;
+        }
+        currentRageCount = 0;
+        WeaknessSpawnManager.instance.SpawnWeakPoint();
+    }
 }

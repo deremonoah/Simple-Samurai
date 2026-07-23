@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ninja : enemy
+public class Ninja : enemyStats
 {
     private List<Transform> _caltropSpots;
     private List<Transform> _smokeSpots;

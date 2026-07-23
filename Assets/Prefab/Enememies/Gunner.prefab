@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: actionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 2240746861720578230, guid: 00dfc9748f4b3234d94712753f60b369, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: attackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2240746861720578230, guid: 00dfc9748f4b3234d94712753f60b369, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: currentAttacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 7967648078374350149}
     - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -197,3 +205,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+--- !u!1 &7967648078374350149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 797705739695017087}
+  m_PrefabAsset: {fileID: 0}

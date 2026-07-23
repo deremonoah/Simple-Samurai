@@ -85,7 +85,7 @@ public class PointerManager : MonoBehaviour
      * 
      */
 
-    public void UpdateAliveEnmsPointers(List<enemy> aliveEnms)
+    public void UpdateAliveEnmsPointers(List<enemyStats> aliveEnms)
     {
         //check if list has at least 1 dude!
         if (aliveEnms.Count < 1) { return; }

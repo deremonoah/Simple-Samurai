@@ -5,7 +5,7 @@ using UnityEngine;
 public class attack : MonoBehaviour
 {
     private Transform endPos;
-    private enemy myenm;
+    private enemyStats myenm;
     bool blocking;
 
     public Vector2 dir;//could make this multiple and have the guy who spawned it look at which direction it should start from
@@ -61,11 +61,11 @@ public class attack : MonoBehaviour
         else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
 
-            if (myenm.myAbilities[0] == enemy.Ability.steal)
+            if (myenm.myAbilities[0] == enemyStats.Ability.steal)
             {
                 myenm.IRan();
             }
-            else if (myenm.myAbilities[0] == enemy.Ability.heal)
+            else if (myenm.myAbilities[0] == enemyStats.Ability.heal)
             {
                 myenm.GetComponent<Healer>().healAllyNow();
                 //this is spiecial reverse moves
@@ -88,7 +88,7 @@ public class attack : MonoBehaviour
         blocking = false;
     }
 
-    public void Setstuff(enemy em, Vector2 direct)
+    public void Setstuff(enemyStats em, Vector2 direct)
     {
         myenm = em;
         dir = new Vector2(-1,0);//for now we just need them to be flat

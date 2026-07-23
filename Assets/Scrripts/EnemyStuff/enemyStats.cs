@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class enemy : MonoBehaviour
+public class enemyStats : MonoBehaviour
 {
 
     [Header("Stats")]
@@ -26,7 +26,7 @@ public class enemy : MonoBehaviour
     [Header("Position in List")]
     public int posInList;
     private Transform spotToReturnTo;
-    private Transform attackThrowMarker;
+    //private Transform attackThrowMarker;
     //this is for handling the enemy moving from thier spot up to attack area for better animation
 
     [Header("AnimatorGORefrence")]
@@ -314,7 +314,7 @@ public class enemy : MonoBehaviour
     public void SetPositionRefrences(Transform mypos, Transform attackMark)
     {
         spotToReturnTo = mypos;
-        attackThrowMarker = attackMark;
+        //attackThrowMarker = attackMark;
 
     }
 
@@ -400,7 +400,7 @@ public class enemy : MonoBehaviour
     }*/
 
     #region Attack Stuff
-    protected virtual IEnumerator TheActionRoutine()
+    /*protected virtual IEnumerator TheActionRoutine()
     {
         curState = attackState.waiting;
         
@@ -459,7 +459,7 @@ public class enemy : MonoBehaviour
             yield return null;
         }
         spriteChild.transform.position = spotToReturnTo.position;
-    }
+    }*/
 
     public bool HasAbility(Ability abl)//mostly called in here called in EnemyHPBarPlacerManager to check if boss
     {
@@ -502,7 +502,7 @@ public class enemy : MonoBehaviour
         //DecideNStartAction();
     }
 
-    public void AttackUI()
+    /*public void AttackUI()
     {
         var dir = Random.Range(0, atkDirs.Count);
         int randAttack = Random.Range(0, atkPrefabs.Count);
@@ -538,7 +538,7 @@ public class enemy : MonoBehaviour
             atk.transform.position = atkStarts[1].transform.position;
             atk.transform.Rotate(0f, 0f, 90f, Space.Self);
         //this was an attempt to make it go down but its too off center for it to work
-        }*/
+        }*//*
         else
         {
             atk.transform.position = atkStarts[3].transform.position;
@@ -555,14 +555,14 @@ public class enemy : MonoBehaviour
         newList.Add(atk);
         currentAttacks = newList;
 
-    }
+    }*/
 
-    public void RageUI()
+    /*public void RageUI()
     {
         StartCoroutine(RageRoutine());
-    }
+    }*/
 
-    public IEnumerator RageRoutine()
+    /*public IEnumerator RageRoutine()
     {
         int Rager = 0;
         int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);
@@ -574,7 +574,7 @@ public class enemy : MonoBehaviour
         }
         currentRageCount = 0;
         WeaknessSpawnManager.instance.SpawnWeakPoint();
-    }
+    }*/
 
     public void SpecialUI()
     {
@@ -698,7 +698,7 @@ public class enemy : MonoBehaviour
                 this.transform.position = targetPos;
                 targetToSwap.transform.position = myOldPos;
                 enmsSys.aliveEnemys[posInList -1] = this;
-                enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
+                enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemyStats>();
 
                 enmsSys.UpdateEnmsPosRefrence();
 
@@ -706,7 +706,7 @@ public class enemy : MonoBehaviour
 
                 enmsSys.IncreaseAgressionRange(Aggression);
                 //all of a sudden idk if i spelled agression right ah yes 2 gs
-                targetToSwap.GetComponent<enemy>().DisablePointer();
+                targetToSwap.GetComponent<enemyStats>().DisablePointer();
                 HandleHPBarPlacement();
             }
         }
@@ -854,7 +854,7 @@ public class enemy : MonoBehaviour
 
     public void EnemyDied()
     {
-        GetComponent<EnemyBehavior>().ClearAttacks();
+        GetComponent<EnemyBehavior>().ClearAttacksNTraps();
 
         _GM.PayOut(minCoin + amountRobbed, maxCoin);
         if (myAbilities[0] == Ability.poison)

@@ -50,8 +50,8 @@ public class Boss : Ninja
             targetToSwap.transform.position = myOldPos;
 
             enmsSys.aliveEnemys[posInList + 1] = this;
-            enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemy>();
-            Debug.Log(targetToSwap.GetComponent<enemy>().myAbilities[0]);
+            enmsSys.aliveEnemys[posInList] = targetToSwap.GetComponent<enemyStats>();
+            Debug.Log(targetToSwap.GetComponent<enemyStats>().myAbilities[0]);
 
             enmsSys.UpdateEnmsPosRefrence();
             //this is pretty jank but i think it will work, it did repeat this but thats cause update obviously

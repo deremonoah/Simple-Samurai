@@ -141,6 +141,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: attackPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: currentAttacks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: actionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 5895805057444381608, guid: 1788c02a726fa5a4bbc951595d6187f2, type: 3}
@@ -150,6 +158,30 @@ PrefabInstance:
       objectReference: {fileID: 3579327996252194840, guid: 9ceacb0122ce25249859297516036cfe, type: 3}
     - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
       propertyPath: actionPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4522770860429595620, guid: 23715886ab0019f488d88095ca7eeb84, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: attackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4522770860429595620, guid: 23715886ab0019f488d88095ca7eeb84, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: attackPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3579327996252194840, guid: 9ceacb0122ce25249859297516036cfe, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: attackPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5895805057444381608, guid: 1788c02a726fa5a4bbc951595d6187f2, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: currentAttacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 3579327996252194840, guid: 9ceacb0122ce25249859297516036cfe, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: currentAttacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 5895805057444381608, guid: 1788c02a726fa5a4bbc951595d6187f2, type: 3}
+    - target: {fileID: 2579915430065671679, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}
+      propertyPath: currentAttacks.Array.data[2]
       value: 
       objectReference: {fileID: 4522770860429595620, guid: 23715886ab0019f488d88095ca7eeb84, type: 3}
     - target: {fileID: 5551898289450451620, guid: 4970882cd96dafb49a4f4d7c5b09c4c1, type: 3}

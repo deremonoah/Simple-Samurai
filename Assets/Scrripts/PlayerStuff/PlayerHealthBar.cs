@@ -154,7 +154,7 @@ public class PlayerHealthBar : MonoBehaviour
         }
     }
 
-    public void DamagePlayer(enemy enmy,float damagePoints, int ability)
+    public void DamagePlayer(enemyStats enmy,float damagePoints, int ability)
     {
         //add enum stuff for effects damage could have
         if (_playerDefense.isDefended() && enmy != null)

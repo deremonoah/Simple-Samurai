@@ -6,7 +6,7 @@ public class EnmAtKArea : MonoBehaviour
 {
 
     public bool blocking;
-    [HideInInspector] public enemy myenm;
+    [HideInInspector] public enemyStats myenm;
     [HideInInspector] public Transform endPos;
     public Vector2 dir;
     public float movespeed;
@@ -72,10 +72,10 @@ public class EnmAtKArea : MonoBehaviour
         else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
 
-            if (myenm.myAbilities[0] == enemy.Ability.steal)
+            if (myenm.myAbilities[0] == enemyStats.Ability.steal)
             {
                 myenm.IRan();
-            }else if (myenm.myAbilities[0] == enemy.Ability.heal)
+            }else if (myenm.myAbilities[0] == enemyStats.Ability.heal)
             {
                 myenm.GetComponent<Healer>().healAllyNow();
                 //this is spiecial reverse moves
@@ -98,7 +98,7 @@ public class EnmAtKArea : MonoBehaviour
         blocking = false;
     }
 
-    public void Setstuff(enemy em, Vector2 direct)
+    public void Setstuff(enemyStats em, Vector2 direct)
     {
         myenm = em;
         dir = direct;

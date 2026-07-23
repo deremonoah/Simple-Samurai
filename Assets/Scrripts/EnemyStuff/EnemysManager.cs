@@ -11,7 +11,7 @@ public class EnemysManager : MonoBehaviour
     public GameObject[] enemySpawnsPoints;
     public Transform attackThrowMarker;
 
-    public List<enemy> aliveEnemys;
+    public List<enemyStats> aliveEnemys;
     public float OpenTimer = 0.5f;
 
     private bool spawned = false;
@@ -100,9 +100,9 @@ public class EnemysManager : MonoBehaviour
 
     public void SpawnEnemy(int pos, GameObject enmPrefab)
     {
-        enemy enm = Instantiate(enmPrefab, enemySpawnsPoints[pos].transform.position, enemySpawnsPoints[pos].transform.rotation).GetComponent<enemy>();
+        enemyStats enm = Instantiate(enmPrefab, enemySpawnsPoints[pos].transform.position, enemySpawnsPoints[pos].transform.rotation).GetComponent<enemyStats>();
         aliveEnemys.Add(enm);
-        enm.GetComponent<enemy>().SetPosInList(pos);
+        enm.GetComponent<enemyStats>().SetPosInList(pos);
         //enm.GetComponent<enemy>().SetPositionRefrences(enemySpawnsPoints[pos].transform, attackThrowMarker);
         
         spawned = true;
@@ -120,7 +120,7 @@ public class EnemysManager : MonoBehaviour
         return recPos;
     }
 
-    public void OnDied(enemy me)
+    public void OnDied(enemyStats me)
     {
         if (aliveEnemys.Contains(me))
         {
@@ -250,7 +250,7 @@ public class EnemysManager : MonoBehaviour
         while(roundDifficulty>0 && tempEnemylist.Count>0 && currentWave.Count < 5)
         {
             int rand = Random.Range(0, tempEnemylist.Count);
-            int individualDificulty = tempEnemylist[rand].GetComponent<enemy>().difficulty[currentWave.Count];
+            int individualDificulty = tempEnemylist[rand].GetComponent<enemyStats>().difficulty[currentWave.Count];
 
             //Debug.Log("individual dif "+individualDificulty+"     ||  round dif "+roundDifficulty);
             if (individualDificulty<=roundDifficulty && rand<tempEnemylist.Count)

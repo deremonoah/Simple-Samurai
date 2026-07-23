@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventEnemy : enemy
+public class EventEnemy : enemyStats
 {
     private EventManager EM;
     [SerializeField] Event myEvent;

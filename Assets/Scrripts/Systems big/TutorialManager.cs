@@ -16,7 +16,7 @@ public class TutorialManager : MonoBehaviour
 
     private bool _tutorialing;
     private TutorialState _tutorialState = TutorialState.tohold;
-    private enemy TrainingDummy;
+    private enemyStats TrainingDummy;
     private EnemysManager _enemyManager;
     private SoundManager _soundManager;
 
@@ -91,7 +91,7 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        TrainingDummy.AttackUI();
+        //TrainingDummy.AttackUI();
         yield return new WaitForSeconds(4f);
 
         

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healer : enemy
+public class Healer : enemyStats
 {
     [SerializeField] float healMin, healMax;
     private List<GameObject> _mycurrentAttacks = new List<GameObject>();
-    private enemy targetally;
+    private enemyStats targetally;
 
     protected override void Start()
     {

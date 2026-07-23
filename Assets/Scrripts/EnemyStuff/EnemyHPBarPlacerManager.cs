@@ -15,7 +15,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     [SerializeField] List<Transform> OdachiSpots;
 
     [Header("Enemy stuff")]
-    [SerializeField] List<enemy> aliveEnemies= new();
+    [SerializeField] List<enemyStats> aliveEnemies= new();
 
     //private Image[] InUseBars = new Image[] { null, null, null, null };
     [Header("HP Bar stuff")]
@@ -40,13 +40,13 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         }
     }
 
-    public void PlaceMyHPBar(enemy enm,int posInList)
+    public void PlaceMyHPBar(enemyStats enm,int posInList)
     {
         aliveEnemies.Add(enm);//should work with the timing of spawns
                               //might need to set uipool newest item to enabled
         HPBarImageHolder barb;
         Image barToUse = null;
-        if (enm.HasAbility(enemy.Ability.boss))
+        if (enm.HasAbility(enemyStats.Ability.boss))
         {
             barb = bossHPUI;
             barToUse = barb.getHPBar();
@@ -78,7 +78,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     {
         if(target<aliveEnemies.Count)
         {
-            enemy enm = aliveEnemies[target];
+            enemyStats enm = aliveEnemies[target];
             enm.damageEnemy(damg, effects);
             enm.myHPBar.fillAmount = enm.getCurrentHP() / enm.maxHP;
         }
@@ -89,13 +89,13 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
 
     }
 
-    public void RemoveMeFromList(enemy enm)
+    public void RemoveMeFromList(enemyStats enm)
     {
         Debug.Log("onDied called");
         aliveEnemies.Remove(enm);//take enemy off list
         var bar = enm.HPBarToMove;
         bar.position = HideHere;//move it off screen
-        if(enm.HasAbility(enemy.Ability.boss))
+        if(enm.HasAbility(enemyStats.Ability.boss))
         {
             bossHPUI.gameObject.SetActive(false);
         }
@@ -113,7 +113,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         Weapon weapon = FindObjectOfType<PlayerEquipedItemsManager>().equipedWeapon;
         for (int lcv=0;lcv<aliveEnemies.Count;lcv++)
         {
-            if (!aliveEnemies[lcv].HasAbility(enemy.Ability.boss))
+            if (!aliveEnemies[lcv].HasAbility(enemyStats.Ability.boss))
             { PlaceBar(weapon, lcv); }
         }
     }

@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: actionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 5658274097405780971, guid: 12c3be7084667a64eb543599e3c2efcd, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: attackPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5658274097405780971, guid: 12c3be7084667a64eb543599e3c2efcd, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: currentAttacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 5658274097405780971, guid: 12c3be7084667a64eb543599e3c2efcd, type: 3}
     - target: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0

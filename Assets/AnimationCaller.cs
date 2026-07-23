@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationCaller : MonoBehaviour
 {
-    public enemy myscript;
+    public enemyStats myscript;
 
     /*public void SendAttack()
     {

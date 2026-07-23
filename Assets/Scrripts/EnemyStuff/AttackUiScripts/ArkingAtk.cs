@@ -60,11 +60,11 @@ public class ArkingAtk : EnmAtKArea
         else if ((this.transform.position.x > endPos.transform.position.x && dir.x == 1) || (this.transform.position.y < endPos.transform.position.y && dir.x == 1))
         {
 
-            if (myenm.myAbilities[0] == enemy.Ability.steal)
+            if (myenm.myAbilities[0] == enemyStats.Ability.steal)
             {
                 myenm.IRan();
             }
-            else if (myenm.myAbilities[0] == enemy.Ability.heal)
+            else if (myenm.myAbilities[0] == enemyStats.Ability.heal)
             {
                 myenm.GetComponent<Healer>().healAllyNow();
                 //this is spiecial reverse moves

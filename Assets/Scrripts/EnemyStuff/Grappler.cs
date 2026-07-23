@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grappler : enemy
+public class Grappler : enemyStats
 {
     /*i need access to trap spawns
      * 

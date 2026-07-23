@@ -830,11 +830,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2400bc132004c1f4aa6af77078a80278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionPrefabs:
+  attackPrefabs:
   - {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
   enemyAttackPoint: {fileID: 3868635541775811570}
-  currentAttacks: []
   MoveToShowSpeed: 5
+  trapPrefabs: []
+  maxTraps: 0
+  TrapPercentage: 1
+  minMaxRageAttacks: {x: 2, y: 3}
+  TimeBetweenRageAttacks: 1
+  RageThreashold: 4
 --- !u!1 &8628111613924925506
 GameObject:
   m_ObjectHideFlags: 0
