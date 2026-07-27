@@ -14,6 +14,9 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] Transform enemyAttackPoint;
     private List<GameObject> currentAttacks = new List<GameObject>();
     [SerializeField] float MoveToShowSpeed;
+    [Header("attack anim durations")]
+    [SerializeField] float DrawBackDuration;
+    [SerializeField] float ThrustForwardDuration;
 
     [Header("trap prefabs")]
     [SerializeField] List<GameObject> trapPrefabs;
@@ -27,10 +30,13 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float TimeBetweenRageAttacks;
     [SerializeField] int RageThreashold;
     private int currentRageCount;
+    private float YAttackOffset;
+    private Vector3 posToReturnTo;
 
     public void Start()
     {
         stats = GetComponent<enemyStats>();
+        posToReturnTo = EnemysManager.instance.getPosToReturnTo(stats.posInList);
         DecideNextAction();
     }
 
@@ -67,20 +73,100 @@ public class EnemyBehavior : MonoBehaviour
     IEnumerator actionRoutine()
     {
         //randomly generate wait time
+        yield return ReturnRoutine();//to make sure they are in the right spot
+
         yield return new WaitForSeconds(stats.getRandomWaitTime());//or should it que up attacks, so we make sure that they are better timed
 
         yield return moveToShowAttack();//show attack also throws attack, this also starts the routine
 
-        //DecideNextAction();
+        DecideNextAction();
     }
 
     IEnumerator moveToShowAttack()
     {
         //move to Demo point
-        Vector3 PosToReturnTo = transform.position;
+        Debug.Log("in move to show");
+        yield return JumpToShow();
 
+        //move to the point the throw attack
+        //calculate duration,so if we are already at the top its fine
+        yield return SlamBeforeAttackRoutine();
+
+        //curState = attackState.ThrowingAttack; TO DO:I have to redo animation fuck
+        yield return DrawBackToAttackRoutine();
+        yield return DelegateAction;//should work as long as they have traps
+
+        yield return ReturnRoutine();
+        
+    }
+    IEnumerator JumpToShow()
+    {
         Vector3 startPos = transform.position;
-        Vector3 endPos = new Vector3(transform.position.x, EnemysManager.instance.getDemoAttackPoint().y,0);
+        Vector3 endPos = new Vector3(transform.position.x, EnemysManager.instance.getDemoAttackPoint().y, 0);
+        float timer = 0;
+        float duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
+        while (Vector3.Distance(transform.position,endPos)>0.1f)
+        {
+            float t = timer / duration;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("jump has been shown");
+    }
+
+    IEnumerator SlamBeforeAttackRoutine()
+    {
+        Debug.Log("got in slam");
+        Vector3 startPos = transform.position;
+        YAttackOffset = enemyAttackPoint.position.y- transform.position.y;
+        Vector3 endPos = new Vector3(transform.position.x, EnemysManager.instance.getRandomAttackPoint().y - YAttackOffset, 0);
+        float timer = 0;
+        float duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
+        Debug.Log("got in slam duration= "+duration);
+        while (transform.position != endPos)
+        {
+            float t = timer / duration;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            timer += Time.deltaTime;
+            Debug.Log("in slam");
+            yield return null;
+
+        }
+        Debug.Log("slam shown");
+    }
+
+    IEnumerator DrawBackToAttackRoutine()
+    {
+        //we are at the right height so we just move back being positive in x value then forward faster
+        //back
+        Vector3 startPos = transform.position;
+        Vector3 endPos = new Vector3(transform.position.x+2,transform.position.y, 0);
+        float timer = 0;
+        while (transform.position != endPos)
+        {
+            float t = timer / DrawBackDuration;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        //forward
+        startPos = transform.position;
+        endPos = new Vector3(transform.position.x - 2, transform.position.y, 0);
+        timer = 0;
+        while (transform.position.x != endPos.x)
+        {
+            float t = timer / ThrustForwardDuration;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    IEnumerator ReturnRoutine()
+    {
+        Vector3 startPos = transform.position;
+        Vector3 endPos = posToReturnTo;
         float timer = 0;
         float duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
         while (transform.position != endPos)
@@ -90,43 +176,6 @@ public class EnemyBehavior : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-
-        //move to the point the throw attack
-        //calculate duration,so if we are already at the top its fine
-        
-        startPos = transform.position;
-        endPos = new Vector3(transform.position.x, EnemysManager.instance.getRandomAttackPoint().y,0);
-        timer = 0;
-        duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
-        while (transform.position!=endPos)
-        {
-            float t = timer / duration;
-            transform.position = Vector3.Lerp(startPos, endPos, t);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        Debug.Log("past moved to attack pos");
-        //now throw attack
-        //curState = attackState.ThrowingAttack; TO DO:I have to redo animation fuck
-        yield return new WaitForSeconds(0.5f);
-        yield return DelegateAction;//should work as long as they have traps
-        Debug.Log("should have attacked");
-        
-        //return to original position
-        //calculate duration,so if we are already at the top its fine
-        startPos = transform.position;
-        endPos = PosToReturnTo;
-        timer = 0;
-        duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
-        while (transform.position != endPos)
-        {
-            float t = timer / duration;
-            transform.position = Vector3.Lerp(startPos, endPos, t);
-            timer += Time.deltaTime;
-            Debug.Log("in final move back loop");
-            yield return null;
-        }
-        Debug.Log("should have moved back to starting pos");
     }
 
     //we do need to deal with getting parried
@@ -135,8 +184,9 @@ public class EnemyBehavior : MonoBehaviour
         if (myActionRoutine != null)
         {
             currentRageCount++;
-            StopCoroutine(myActionRoutine);
-            myActionRoutine = StartCoroutine(actionRoutine());
+            StopAllCoroutines();
+            DelegateAction = null;
+            //StopAllCoroutines();
             DecideNextAction();
         }
     }
@@ -151,9 +201,7 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator AttackUIRoutine()//sends out on of its attacks
     {
-        Debug.Log("in basic action");
         int rand = Random.Range(0, attackPrefabs.Count);
-        Debug.Log("this is out of range? "+rand);
         GameObject attack = Instantiate(attackPrefabs[rand], enemyAttackPoint.position, attackPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
         currentAttacks.Add(attack);
         var atk = attack.GetComponent<attack>();

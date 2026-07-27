@@ -397,6 +397,11 @@ public class EnemysManager : MonoBehaviour
     }
     public Vector3 getDemoAttackPoint()
     {
-        return attackStartPoints[0].position;
+        return attackStartPoints[1].position;
+    }
+
+    public Vector3 getPosToReturnTo(int spotInList)
+    {
+        return enemySpawnsPoints[spotInList].transform.position;
     }
 }

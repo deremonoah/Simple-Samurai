@@ -91,7 +91,6 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
 
     public void RemoveMeFromList(enemyStats enm)
     {
-        Debug.Log("onDied called");
         aliveEnemies.Remove(enm);//take enemy off list
         var bar = enm.HPBarToMove;
         bar.position = HideHere;//move it off screen
