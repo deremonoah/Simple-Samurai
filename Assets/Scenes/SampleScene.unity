@@ -31783,6 +31783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef194956c71783499de2020ad105bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayPrefab: {fileID: 0}
+  SpawnPoint: {fileID: 0}
 --- !u!1 &1412889775
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -229,7 +230,7 @@ public class EnemyBehavior : MonoBehaviour
         int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);
         while (Rager < randomRageAttack)
         {
-            yield return AttackUIRoutine();
+            AttackUIRoutine();
             yield return new WaitForSeconds(TimeBetweenRageAttacks); //would be nice if this number changed imo, like over time many at first but then slower
             Rager++;
         }

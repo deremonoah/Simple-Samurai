@@ -5,7 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenue : MonoBehaviour
 {
-    
+    [SerializeField] GameObject PlayPrefab;
+    [SerializeField] Transform SpawnPoint;
+
+    public void SpawnPlayUI()
+    {
+        Instantiate(PlayPrefab, SpawnPoint.position, SpawnPoint.rotation);
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(1);

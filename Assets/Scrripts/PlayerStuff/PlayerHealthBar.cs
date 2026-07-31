@@ -36,6 +36,10 @@ public class PlayerHealthBar : MonoBehaviour
 
     [SerializeField] private float timeAngrySymbolIsOnScreen = 2f;
 
+    [Header("OnFire test")]
+    [SerializeField] float FireLeft;
+    [SerializeField] int RollCount;
+
     private Vector3 startingScale;
     private ColorManager colman;
 
@@ -242,20 +246,20 @@ public class PlayerHealthBar : MonoBehaviour
 
     IEnumerator OnFire(float dmg)
     {
-        int FireLasts = 14;
-        if (dmg < 20) { FireLasts += 7; }
-        if (dmg < 14) { FireLasts += 7; }
-        //dmg sets how long fire should last on average
-        yield return new WaitForSeconds(0.5f);
+        FireLeft += Mathf.Clamp(34f - dmg,6,1000);//right now fire guy does 10-30 damage, I want the less damage the longer lasting fire, cause otherwise just seems like hit big do the most
+        //+= so if hit again it can stack
         PlayerOnFireSprite.SetActive(true);
         //we might need to add an if checking a immunity to fire
-        health -= 1.5f;
-        int randFire = Random.Range(0, 8);
-        while (randFire<FireLasts)
+        while (RollCount< FireLeft)
         {
-            yield return new WaitForSeconds(0.5f);
-            health -= 1;
-            randFire++;
+            
+            health -= Time.deltaTime*3;//idk man if I want it to burn them 1 damage a second doesn't seem noticable rn
+            FireLeft -= Time.deltaTime;
+            if(Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                RollCount++;
+            }
+            yield return null;
         }
        
         PlayerOnFireSprite.SetActive(false);
