@@ -43,10 +43,6 @@ public class enemyStats : MonoBehaviour
     public EnemysManager enmsSys;
 
     //attack projectile stuff **also fully utelizing the multiple attack and special prefabs has not been used yet
-    public List<GameObject> atkPrefabs, specialPrefabs;
-    public List<GameObject> atkStarts;
-    [SerializeField] GameObject atkEnd;
-    public List<Vector2> atkDirs, SpecialDirs;
 
     public List<Ability> myAbilities=new List<Ability> { Ability.none};//default it to none as that cuases error
     private int amountRobbed = 0;
