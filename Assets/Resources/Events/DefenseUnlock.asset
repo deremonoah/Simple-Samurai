@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DefenseUnlock
   m_EditorClassIdentifier: 
   textStatements:
-  - I was able to set gather resources for a better Defenses but it will cost some
+  - I was able to set gather resources for better Defenses but it will cost some
     coin
   buttonOptions:
   - interesting

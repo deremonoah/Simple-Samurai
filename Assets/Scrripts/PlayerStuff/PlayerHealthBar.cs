@@ -300,6 +300,7 @@ public class PlayerHealthBar : MonoBehaviour
     public void IncreaseMaxHPBy(float Xhealth)
     {
         maxHealth += Xhealth;
+        health += Xhealth;
         //I need to increase the size of hp bar and background then I also need to move the defenses over
         //the increase should also be proportional. there are 4 levels so probably 4 ifs or a switch statement so maybe take in level
         

@@ -19,3 +19,4 @@ MonoBehaviour:
   - you may stay
   - no! we will not help outsiders
   myeventEffect: 1
+  eventImage: {fileID: 21300000, guid: 8c11cca80c62a5643855fc434bd86091, type: 3}
