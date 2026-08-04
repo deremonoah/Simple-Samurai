@@ -88,7 +88,7 @@ public class attack : MonoBehaviour
         blocking = false;
     }
 
-    public void Setstuff(enemyStats em, Vector2 direct)
+    public void Setstuff(enemyStats em)
     {
         myenm = em;
         dir = new Vector2(-1,0);//for now we just need them to be flat

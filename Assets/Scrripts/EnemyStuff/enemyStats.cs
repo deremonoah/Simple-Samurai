@@ -572,7 +572,7 @@ public class enemyStats : MonoBehaviour
         WeaknessSpawnManager.instance.SpawnWeakPoint();
     }*/
 
-    public void SpecialUI()
+    /*public void SpecialUI()
     {
         var dir = Random.Range(0, SpecialDirs.Count);
         int randSpecial = Random.Range(0, specialPrefabs.Count);
@@ -611,7 +611,7 @@ public class enemyStats : MonoBehaviour
 
         newList.Add(special);
         currentAttacks = newList;
-    }
+    }*/
 
     public void hitNow(float dmg,AttackEffect atkeef)
     {
@@ -640,7 +640,7 @@ public class enemyStats : MonoBehaviour
 
     #endregion
     
-    private void PlaceTrap()
+    /*private void PlaceTrap()
     {
         //currently places sumo blocks and fire dude trap
         int rand = Random.Range(0, BlockSpots.Count + 2);
@@ -648,7 +648,7 @@ public class enemyStats : MonoBehaviour
         //look up better way of weighting outcomes of randomness
         var trap=Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation);
         BlockSets.Add(trap);
-    }
+    }*/
 
 
     protected virtual IEnumerator TheDefendingRoutine()
@@ -708,12 +708,12 @@ public class enemyStats : MonoBehaviour
         }
     }
 
-    public void BeginRunUI()
+    /*public void BeginRunUI()
     {
         GameObject run = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
         //run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]); writting a new enemyBehavior
         currentAttacks.Add(run);
-    }
+    }*/
 
     public void IRan()
     {
@@ -867,12 +867,6 @@ public class enemyStats : MonoBehaviour
         }
         EnemyHPBarPlacerManager.instance.RemoveMeFromList(this);
         enmsSys.OnDied(this);
-    }
-
-    public Vector2 getRandomAttackDirection()
-    {
-        int rand = Random.Range(0, atkDirs.Count);
-        return atkDirs[rand];
     }
 
     public List<float> getRandomAttackDamage()

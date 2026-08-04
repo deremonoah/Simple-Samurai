@@ -26,53 +26,5 @@ public class Ninja : enemyStats
         }
         base.Update();
     }
-
-    /*protected override void DecideNStartAction()
-    {
-        hasPickedAction = false;
-        if (myActionRoutine != null)
-        { StopCoroutine(myActionRoutine); }//to be sure its done and we don't double up on the action routines
-        myActionRoutine = null;
-        delegateAction = null;
-
-        for (int lcv = 0; lcv < myAbilities.Count; lcv++)
-        {
-            if (myAbilities[lcv] == Ability.ninja)
-            {
-                int rand = Random.Range(0, 5);
-                if (rand == 0)
-                {
-                    delegateAction = SpawnCaltrop;
-                    hasPickedAction = true;
-                }
-                else if (rand == 1)
-                {
-                    delegateAction = SpawnSmoke;
-                    hasPickedAction = true;
-                }
-                
-            }
-        }
-
-        base.DecideNStartAction();
-        
-    }*/
-
-    
-
-    public void SpawnCaltrop()
-    {
-        int rand = Random.Range(0, _caltropSpots.Count+2);
-        rand = Mathf.Clamp(rand - 2, 0, _caltropSpots.Count);
-        //look up better way of weighting outcomes of randomness
-        //Debug.Log(_caltropSpots.Count);
-        trapsSet.Add(Instantiate(specialPrefabs[0], _caltropSpots[rand].position, transform.rotation));
-    }
-
-    public void SpawnSmoke()
-    {
-        int rand = Random.Range(0,_smokeSpots.Count);
-        trapsSet.Add(Instantiate(specialPrefabs[1], _smokeSpots[rand].position, transform.rotation));
-    }
     
 }

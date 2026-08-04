@@ -208,7 +208,7 @@ public class EnemyBehavior : MonoBehaviour
         var atk = attack.GetComponent<attack>();
         if (atk != null)
         {
-            atk.Setstuff(stats, stats.getRandomAttackDirection());//how to make it so certain attacks only move certain ways? just on attack?
+            atk.Setstuff(stats);//TODO: in enemy attack have the attack decide which direction to go
         }
         yield return null;
     }//I plan to add non basic actions as heal self like sumo or... I feel like there was another specific one in mind
