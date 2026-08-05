@@ -19,4 +19,4 @@ MonoBehaviour:
   curiEef: 2
   CurioNum: 100
   CurioValueLevel: 6400000096000000c800000090010000
-  IsConsumable: 0
+  IsConsumable: 1

@@ -97,10 +97,10 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
             {
                 GetComponent<Armory>().AddItemToArmory(equipedCurio);
             }
-            equipedCurio = (Curio)item;
-            curioIcon.sprite = item.itemPanelIcon;
+            //equipedCurio = (Curio)item;
+            //curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
-            _playerHP.SetCurio(equipedCurio);
+            _playerHP.SetCurio(item as Curio);
         }
 
         UpdateItemUpgrades();
@@ -131,15 +131,19 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
                 //this gets called twice and Im not sure why
                 _strikePointer.bonusSpeed = 1;
                 Debug.Log("Pointer speed: "+_strikePointer.baseSpeed);
-                curioIcon.sprite = cur.itemPanelIcon;
                 break;
             case CurioEffect.greed:
-                _gm.ReducePrice(equipedCurio.CurioNum);
+                _gm.ReducePrice(cur.CurioNum);
                 break;
         }
-        if (equipedCurio.curiEef != CurioEffect.greed) { _gm.ReducePrice(0); }
-        if (equipedCurio.curiEef != CurioEffect.quick) { _strikePointer.bonusSpeed = 0; }
+        if (cur.curiEef != CurioEffect.greed) { _gm.ReducePrice(0); }
+        if (cur.curiEef != CurioEffect.quick) { _strikePointer.bonusSpeed = 0; }
 
+        if(!cur.IsConsumable)
+        {
+            equipedCurio = cur;
+            curioIcon.sprite = cur.itemPanelIcon;
+        }
     }
     private void UpdateItemUpgrades()
     {

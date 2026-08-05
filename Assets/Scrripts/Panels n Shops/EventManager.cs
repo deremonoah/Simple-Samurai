@@ -84,21 +84,6 @@ public class EventManager : MonoBehaviour
             _nextEvents.Add(Resources.Load<Event>("Events/Refugees"));
         }
 
-        //make it a list of events not just one but the 2nd damage one can over write the first
-        //if (_villageDefense.DamageTaken >= 1 && !_villageHasBeenDamaged)
-        //{
-        //    _nextEvents.Add(Resources.Load<Event>("Events/smolDamagedCity"));
-        //    _villageDefense.DisplayPopulation(true);
-        //    _villageHasBeenDamaged = true;
-        //}
-        //if (_villageDefense.DamageTaken >= 10 )
-        //{
-        //    _villageDefense.DamageTaken = 0;
-        //    _nextEvents = Resources.Load<Event>("Events/DamagedCity");
-        //    _villageDefense.DisplayPopulation(true);
-        //    _lostMany = true;
-        //}
-
         if (_villageDefense.DamageTaken >= 1)
         {
             _villageDefense.DisplayPopulation(true);

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 400780107223493100}
   - component: {fileID: 4939495402277457501}
   - component: {fileID: 2955390218105893832}
+  - component: {fileID: 6202861614905511849}
   m_Layer: 0
   m_Name: BigSingleHeal
   m_TagString: Untagged
@@ -171,6 +172,27 @@ MonoBehaviour:
   shrinkDuration: 6
   SpawnPosMinMax: {x: 0, y: 10}
   SpawnPosOffset: 14
+--- !u!114 &6202861614905511849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742731354701058540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc8773ac9b36d44694a5551ce3186d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocking: 0
+  myenm: {fileID: 0}
+  endPos: {fileID: 0}
+  dir: {x: 0, y: 0}
+  movespeed: 0
+  multiPerry: 0
+  damage: 0
+  atkEef: 0
+  sizeDamageShower: {fileID: 0}
 --- !u!1 &8408421873517688361
 GameObject:
   m_ObjectHideFlags: 0

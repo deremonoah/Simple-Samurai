@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class ArmorySlot : MonoBehaviour
 {
+    public int slotNum;
     public Image imageToSet;
 
-    public void EquipItemAtSlot(int slotCount)
+    public void ItemAtSlot()//used for equiping, and discarding, in future maybe selling
     {
         var armory = FindObjectOfType<Armory>();
-        if(slotCount < armory.stockPile.Count)
+        if(slotNum < armory.stockPile.Count)
         {
-            armory.EquipThisSlot(slotCount);
+            armory.ThisSlot(slotNum);
         }
+        else { Debug.LogError("slot number pressed is great than stockpile count"); }
         
     }
 

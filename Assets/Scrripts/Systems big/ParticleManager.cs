@@ -94,14 +94,13 @@ public class ParticleManager : MonoBehaviour
     }
     public void ShowHeal(Transform pos, float heal)
     {
-        var par = gameObject;
         if (heal < 40)
         {
-            par = Instantiate(smolBlood, pos.position, smolBlood.transform.rotation);
+            Instantiate(bigHeal, pos.position, bigHeal.transform.rotation);
             return;
         }
         //instatiate blood spray or burst
-        par = Instantiate(bigBlood, pos.position, bigBlood.transform.rotation);
+        Instantiate(bigHeal, pos.position, bigHeal.transform.rotation);
     }
 
     public void ShowPayerDamage(float dmg)

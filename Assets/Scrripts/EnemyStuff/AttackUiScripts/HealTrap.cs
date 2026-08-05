@@ -10,6 +10,8 @@ public class HealTrap : MonoBehaviour
     [Header("Positional info")]
     [SerializeField] Vector2 SpawnPosMinMax;
     [SerializeField] float SpawnPosOffset;
+    private bool blocking;
+    private Vector2 posBlock;
 
     private void OnEnable()//in case I change to object pooling, which probably should
     {
@@ -19,6 +21,16 @@ public class HealTrap : MonoBehaviour
         transform.position=point.currentPath.path.GetPointAtDistance(randpos);
         //start shrinking
         StartCoroutine(OpportunityRoutine());
+    }
+
+    private void Update()
+    {
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && blocking)
+        {
+            FindObjectOfType<SoundManager>().PlaySound("block");
+            ParticleManager.instance.BlockedHere(posBlock, 40f);//at time of implementing the blocked here doesn't care about damage
+            Destroy(gameObject);
+        }
     }
 
     private void HealAnEnemy()
@@ -60,5 +72,19 @@ public class HealTrap : MonoBehaviour
         HealAnEnemy();
 
         Destroy(this.gameObject);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.name == "strike point")
+        {
+            blocking = true;
+            posBlock = other.transform.position;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        blocking = false;
     }
 }
