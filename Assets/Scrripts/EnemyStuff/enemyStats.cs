@@ -195,6 +195,7 @@ public class enemyStats : MonoBehaviour
     public void healEnm(float heal)
     {
         HP += heal;
+        parM.ShowHeal(hurtPoint, heal);
     }
 
     

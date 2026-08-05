@@ -86,7 +86,6 @@ public class EnemyBehavior : MonoBehaviour
     IEnumerator moveToShowAttack()
     {
         //move to Demo point
-        Debug.Log("in move to show");
         yield return JumpToShow();
 
         //move to the point the throw attack
@@ -113,28 +112,23 @@ public class EnemyBehavior : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("jump has been shown");
     }
 
     IEnumerator SlamBeforeAttackRoutine()
     {
-        Debug.Log("got in slam");
         Vector3 startPos = transform.position;
         YAttackOffset = enemyAttackPoint.position.y- transform.position.y;
         Vector3 endPos = new Vector3(transform.position.x, EnemysManager.instance.getRandomAttackPoint().y - YAttackOffset, 0);
         float timer = 0;
         float duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
-        Debug.Log("got in slam duration= "+duration);
         while (transform.position != endPos)
         {
             float t = timer / duration;
             transform.position = Vector3.Lerp(startPos, endPos, t);
             timer += Time.deltaTime;
-            Debug.Log("in slam");
             yield return null;
 
         }
-        Debug.Log("slam shown");
     }
 
     IEnumerator DrawBackToAttackRoutine()
@@ -216,7 +210,6 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator TrapUIRoutine()//should probably just be a method but idk if i can store and call it the same either way?
     {
-        Debug.Log("in basic action");
         int rand = Random.Range(0, trapPrefabs.Count);
         GameObject trap = Instantiate(trapPrefabs[rand], enemyAttackPoint.position, trapPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
         currentTraps.Add(trap);

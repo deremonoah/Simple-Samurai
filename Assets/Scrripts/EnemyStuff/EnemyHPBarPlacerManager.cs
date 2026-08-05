@@ -74,6 +74,18 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         HandleListChanged();
     }
 
+    public void HealEnemy(float heal)
+    {
+        for(int lcv=0;lcv<aliveEnemies.Count;lcv++)
+        {
+            if (aliveEnemies[lcv].HP < aliveEnemies[lcv].maxHP)
+            {
+                aliveEnemies[lcv].healEnm(heal);
+                aliveEnemies[lcv].myHPBar.fillAmount = aliveEnemies[lcv].getCurrentHP() / aliveEnemies[lcv].maxHP;
+            }
+        }
+    }
+
     public void DamageEnemy(float damg, int target, List<WeaponEffect> effects)
     {
         if(target<aliveEnemies.Count)

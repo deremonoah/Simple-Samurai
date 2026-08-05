@@ -8,8 +8,14 @@ public class ParticleManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem angrySymbol;
     [SerializeField] ParticleSystem buffUp;
+
+    [Header("Particles for taking damage")]
     [SerializeField] GameObject smolBlood;//.1
     [SerializeField] GameObject bigBlood;//1
+    [Header("Particles for healing")]
+    [SerializeField] GameObject bigHeal;
+    [SerializeField] GameObject smolHeal;
+
     [SerializeField] GameObject blockSparks;
     [SerializeField] Transform PlayerImageForBlood;
     Quaternion playerRotation = Quaternion.Euler(new Vector3(-56.23f, -270.179f, 90));
@@ -85,6 +91,17 @@ public class ParticleManager : MonoBehaviour
         //instatiate blood spray or burst
         par=Instantiate(bigBlood, pos.position, bigBlood.transform.rotation);
         //parent it to follow for the animation
+    }
+    public void ShowHeal(Transform pos, float heal)
+    {
+        var par = gameObject;
+        if (heal < 40)
+        {
+            par = Instantiate(smolBlood, pos.position, smolBlood.transform.rotation);
+            return;
+        }
+        //instatiate blood spray or burst
+        par = Instantiate(bigBlood, pos.position, bigBlood.transform.rotation);
     }
 
     public void ShowPayerDamage(float dmg)

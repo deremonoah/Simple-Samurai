@@ -9,9 +9,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: maxTraps
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: TrapPercentage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: trapPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: actionPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: trapPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5742731354701058540, guid: 33eaad63da867f44fa47421ab17a1fb3, type: 3}
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: actionPrefabs.Array.data[1]
       value: 
@@ -330,16 +346,6 @@ MonoBehaviour:
   HPBarToMove: {fileID: 0}
   backUpHPBarSpot: {fileID: 1878019276095627879}
   enmsSys: {fileID: 0}
-  atkPrefabs:
-  - {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
-  specialPrefabs:
-  - {fileID: 8813521334607434375, guid: 507f2bb704beb1e44a148ef8139e5929, type: 3}
-  atkStarts: []
-  atkEnd: {fileID: 0}
-  atkDirs:
-  - {x: -1, y: 0}
-  SpecialDirs:
-  - {x: 1, y: 0}
   myAbilities: 03000000
   currentAttacks: []
   minCoin: 4

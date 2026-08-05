@@ -39847,6 +39847,8 @@ MonoBehaviour:
   buffUp: {fileID: 0}
   smolBlood: {fileID: 5989969313177543734, guid: 6caf65b08201a453694d482a42fa713e, type: 3}
   bigBlood: {fileID: 1549782926007599258, guid: 00403d2ff61b14fbea69ed4ca81c8fbc, type: 3}
+  bigHeal: {fileID: 8437519151635974064, guid: ec9ad74ca7e32f745be08539409fb75b, type: 3}
+  smolHeal: {fileID: 0}
   blockSparks: {fileID: 5131791444289747913, guid: 43b09438c6913074a834308ddbfc0672, type: 3}
   PlayerImageForBlood: {fileID: 1101002602}
 --- !u!114 &1720040883
@@ -49922,7 +49924,7 @@ PrefabInstance:
       objectReference: {fileID: 1594289841}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
