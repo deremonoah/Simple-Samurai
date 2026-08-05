@@ -15,8 +15,6 @@ public class PickPanManager : MonoBehaviour
     [SerializeField] Image[] buttonImages;
     public List<Item> lootList;
     private List<Item> randLootPicks = new List<Item>();
-    //refrences of the background boxes for tool tips
-    public List<HoverTip> HoverHelpers;
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
     public List<Image> PlayerItemBoarders;
@@ -90,7 +88,6 @@ public class PickPanManager : MonoBehaviour
                 ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
             }
             _playerEquipedItems.EquipItem(randLootPicks[buttonID], _blacksmithShop.lootingUpgradesEnabled);
-
 
             randLootPicks.Clear();
 

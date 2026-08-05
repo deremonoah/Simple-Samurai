@@ -1,45 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Armory : MonoBehaviour
 {
     public List<Item> stockPile;
-    [SerializeField] GameObject blankDragablePrefab;
-    [SerializeField] DropZone primaryWeaponHolder;
-    [SerializeField] DropZone secondryWeaponHolder;
-    [SerializeField] DropZone primaryArmorHolder;
-    [SerializeField] DropZone secondaryArmorHolder;
-    [SerializeField] DropZone primaryCurioHolder;
-    [SerializeField] DropZone secondaryCurioHolder;
-    [SerializeField] List<GameObject> InventorySlotsActive;
-    [SerializeField] List<DropZone> InventorySlotsInActive;
+    [SerializeField] List<ArmorySlot> InventorySlotsActive=new();
+    [SerializeField] List<ArmorySlot> InventorySlotsInActive=new();
+    [SerializeField] GameObject ArmoryPanel;
     private PlayerEquipedItemsManager equipManager;
+    [Header("upgrade slots info")]
+    [SerializeField] TextMeshProUGUI upgradeText;
+    private int currentUpgradeCost;
+    [SerializeField] int IncrementToIncreaseCostBy;
 
-
-    //ill need an event to pop up when players have 1 too many items
-    //having more upgrades providing some buff? (a buff for item combos/ sets of armors)
-    /*does the player just get this?
-     * there will be upgrades and probably another panel
-     * maybe an option to sell items?
-     * also when does this unlock right when a player picks up a new item? then there is also when weapon swap will come in
-     * I REALLY NEED A MANAGER FOR BUFF AREAS to decide where they need to go for each. set spots is easy to do quick but a more robust system would be a good idea
-     * or even having them appear at certain times and go toward the player which could be an upgrade itself maybe a bar to tell when it will appear and come at player
-     */
-
-    //for the panel art having it start as just a dusty collset type dealio but as it upgrades it looks more like an armory
-
+    private GameManager gm;
     void Start()
     {
         //this is to make sure any scriptable objects in the list are clones not the original
         equipManager = FindObjectOfType<PlayerEquipedItemsManager>();
-        LoadArmoryPanel();
+        gm = GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenArmorPanel()
     {
-        
+        ArmoryPanel.SetActive(true);
+        LoadArmoryPanel();
     }
 
     public void AddItemToArmory(Item item)
@@ -50,62 +38,40 @@ public class Armory : MonoBehaviour
 
     public void LoadArmoryPanel()
     {
-        //load primary and secondary items
-        //do this by instantiating a dragable prefab and call assign item on it then move it to be the child of a dropzone
-        LoadSlot(equipManager.PrimaryWeapon,primaryWeaponHolder);
-        LoadSlot(equipManager.equipedArmor, primaryArmorHolder);
-        if (equipManager.equipedCurio != null)
+        for (int lcv = 0; lcv < InventorySlotsActive.Count; lcv++)
         {
-            LoadSlot(equipManager.equipedCurio, primaryCurioHolder);
-        }
-
-        //maybe a get playerEquipedItems that returns a list of the items
-        //load list of items to inventroy slots
-
-        for (int lcv = 0; lcv < stockPile.Count; lcv++)
-        {
-            var dragerobj = Instantiate(blankDragablePrefab, InventorySlotsActive[lcv].transform.position, InventorySlotsActive[lcv].transform.rotation);
-            var drager = dragerobj.GetComponent<Dragable>();
-            drager.ParentToReturnTo = InventorySlotsActive[lcv].transform;
-            drager.AssignItem(stockPile[lcv]);
-            dragerobj.transform.SetParent(InventorySlotsActive[lcv].transform);
+            if (lcv < stockPile.Count)
+            { 
+                InventorySlotsActive[lcv].imageToSet.sprite = stockPile[lcv].itemPanelIcon;
+                InventorySlotsActive[lcv].imageToSet.color = new Color(1, 1, 1, 1);//make sure alpha is 100%
+            }
+            else
+            {
+                InventorySlotsActive[lcv].imageToSet.color = new Color(1, 1, 1, 0);//make sure alpha is 0% to not display white square
+            }
         }
     }
 
-    private void LoadSlot(Item item, DropZone dz)
+    public void IncreaseItemSlot()
     {
-        var dzobj = dz.gameObject;
-        var dragerobj = Instantiate(blankDragablePrefab, dzobj.transform.position, dzobj.transform.rotation);
-        Dragable drager = dragerobj.GetComponent<Dragable>();
-        drager.ParentToReturnTo = dzobj.transform;
-        drager.AssignItem(item);
-        dragerobj.transform.SetParent(dzobj.transform);
-        dz.heldDragable = drager;
-    }
-
-    public void CloseArmoryPanel()
-    {
-        //give playerEquipedItems the loadout from slots
-        //update list of items
-        foreach(GameObject dz in InventorySlotsActive)
+        if(gm.playerCoins>=currentUpgradeCost &&InventorySlotsInActive.Count>0)
         {
-            dz.GetComponent<DropZone>().clearZone();
+            gm.playerCoins -= currentUpgradeCost;
+            currentUpgradeCost += IncrementToIncreaseCostBy;//currently thinking increase by the same cost each time, rn am thinking 1
+
+            InventorySlotsActive.Add(InventorySlotsInActive[0]);
+            InventorySlotsInActive[0].gameObject.SetActive(true);
+            InventorySlotsInActive.RemoveAt(0);
         }
     }
 
-    public void IncreaseArmorySlots(int type)
+    public void EquipThisSlot(int slot)
     {
-        if(type == 0)
+        if (slot < stockPile.Count)
         {
-            //this is for inventroy
-
+            FindObjectOfType<PlayerEquipedItemsManager>().EquipItem(stockPile[slot], false);
+            stockPile.RemoveAt(slot);
+            LoadArmoryPanel();//to update the images to the correct items
         }
-        if(type == 1)
-        {
-            //this is for secondaryies maybe then also take in an item
-        }
-        
-        //if there is room add a slot from the disabled slots to the enabled
-        //and enable the drop zone
     }
 }

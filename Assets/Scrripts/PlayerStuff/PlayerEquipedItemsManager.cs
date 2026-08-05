@@ -69,6 +69,7 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
                     ex.SetExtrasWeapon(_mainStrikeArea.equipedWeapon);
                 }
             }
+            GetComponent<Armory>().AddItemToArmory(equipedWeapon);
             equipedWeapon = (Weapon)item;
             _mainStrikeArea.SetWeapon(item as Weapon);
             PrimaryweaponIcon.sprite = item.itemPanelIcon;
@@ -82,6 +83,7 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
             {
                 _playerHP.myArmor.itemLevel = Mathf.Clamp(_playerHP.myArmor.itemLevel + 1, 0, 3);
             }
+            GetComponent<Armory>().AddItemToArmory(equipedArmor);
             equipedArmor = (Armor)item; 
             _playerHP.SetArmor(item as Armor);
             armorIcon.sprite = item.itemPanelIcon;
@@ -91,6 +93,10 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
         {
             //equip Curio to HP and strike Point and Strike area
             //get it to not equip consumables replacing an item
+            if(equipedCurio!=null)
+            {
+                GetComponent<Armory>().AddItemToArmory(equipedCurio);
+            }
             equipedCurio = (Curio)item;
             curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
