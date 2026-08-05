@@ -26,11 +26,21 @@ public class ItemDisplayPanel : MonoBehaviour
     [SerializeField] Image ItemIconSprite;
 
     private int itemSlotLookingAt=-1;
+    private itemDisplayOpenedFrom from;
+    private PickPanManager ppm;
+    private Armory arm;
 
-    public void OpenItemDescriptionPanel(Item item,int itemSlot)
+    private void Start()
+    {
+        ppm = FindObjectOfType<PickPanManager>();
+        arm = FindObjectOfType<Armory>();
+    }
+
+    public void OpenItemDescriptionPanel(Item item,int itemSlot, itemDisplayOpenedFrom opener)
     {
         panel.SetActive(true);
         itemSlotLookingAt = itemSlot;
+        from = opener;
         
         if(item is Weapon)
         {
@@ -108,4 +118,33 @@ public class ItemDisplayPanel : MonoBehaviour
         FindObjectOfType<PickPanManager>().PickButton(itemSlotLookingAt);
         CloseItemDisplayPanel();
     }
+
+    public void RightArrow()
+    {
+        int nextSlot = itemSlotLookingAt+1;
+        Debug.Log("right arrow says " + nextSlot);
+        if (from == itemDisplayOpenedFrom.PickPan)
+        {
+            ppm.inspectItem(nextSlot);//handles overflow
+        }
+        else if(from == itemDisplayOpenedFrom.Armory)
+        {
+            arm.InspectAtSlot(nextSlot);//handles overflow
+        }
+    }
+
+    public void LeftArrow()
+    {
+        int nextSlot = itemSlotLookingAt-1;
+        Debug.Log("left arrow says " + nextSlot);
+        if (from==itemDisplayOpenedFrom.PickPan)
+        {
+            ppm.inspectItem(nextSlot);//handles overflow or underflow?
+        }
+        else if (from == itemDisplayOpenedFrom.Armory)
+        {
+            arm.InspectAtSlot(nextSlot);//handles wrap
+        }
+    }
 }
+public enum itemDisplayOpenedFrom { PickPan,Armory }

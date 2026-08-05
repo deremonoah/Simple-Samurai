@@ -19,4 +19,10 @@ public class ArmorySlot : MonoBehaviour
         
     }
 
+    public void InspectSlotItem()
+    {
+        var armory = FindObjectOfType<Armory>();
+        armory.InspectAtSlot(slotNum);
+    }
+
 }

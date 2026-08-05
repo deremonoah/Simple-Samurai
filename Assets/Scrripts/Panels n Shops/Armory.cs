@@ -164,4 +164,13 @@ public class Armory : MonoBehaviour
             back.GetComponent<Image>().color = col;
         }
     }
+
+    public void InspectAtSlot(int slot)
+    {
+        if (slot >= stockPile.Count) { slot = 0; }
+        else if(slot < 0){ slot = stockPile.Count - 1; }
+        
+        ItemDisplayPanel dis=FindObjectOfType<ItemDisplayPanel>();
+        dis.OpenItemDescriptionPanel(stockPile[slot], slot, itemDisplayOpenedFrom.Armory);
+    }
 }

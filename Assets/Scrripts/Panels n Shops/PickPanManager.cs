@@ -17,7 +17,7 @@ public class PickPanManager : MonoBehaviour
     private List<Item> randLootPicks = new List<Item>();
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
-    public List<Image> PlayerItemBoarders;
+    //public List<Image> PlayerItemBoarders;
 
     private bool learning, looting;
 
@@ -36,7 +36,7 @@ public class PickPanManager : MonoBehaviour
         }
 
         //below is for the boarders around players equiped items
-        PlayerItemBoarders[0].color = FindObjectOfType<ColorManager>().weaponColor;
+        /*PlayerItemBoarders[0].color = FindObjectOfType<ColorManager>().weaponColor;
         PlayerItemBoarders[3].color = FindObjectOfType<ColorManager>().weaponColor;
         PlayerItemBoarders[1].color = FindObjectOfType<ColorManager>().armorColor;
         PlayerItemBoarders[2].color = FindObjectOfType<ColorManager>().curioColor;
@@ -46,7 +46,7 @@ public class PickPanManager : MonoBehaviour
         for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
         {
             PlayerItemBoarders[lcv].color = new Color(0,0,0,0);//disabling image component didn't work (as its the raycast target for tool tips), so changing alpha leaves it at 0 & invisible while in combat or town
-        }
+        }*/
     }
 
     public void OpenPickPan(int kind)
@@ -70,12 +70,12 @@ public class PickPanManager : MonoBehaviour
             LootingPanel.GetComponent<Animator>().SetBool("Open", false);
         }
 
-        for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
+        /*for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
         {
             PlayerItemBoarders[lcv].color = new Color(0, 0, 0, 0);//we only disable the square to help with selecting of the object, so it can still be hovered
-        }
+        }*/
 
-        updatePlayerEquipedHoverTips();//so if they want to look at it in town they can
+        //updatePlayerEquipedHoverTips();//so if they want to look at it in town they can
     }
 
     public void PickButton(int buttonID)
@@ -103,8 +103,14 @@ public class PickPanManager : MonoBehaviour
 
     public void inspectItem(int itemToPick)
     {
+        //wraping when we go past the pick items
+        Debug.Log("inspect before wrap " + itemToPick);
+        if (itemToPick >= randLootPicks.Count) { itemToPick = 0; }
+        else if (itemToPick < 0) { itemToPick = randLootPicks.Count - 1; }
+        Debug.Log("inspect " + itemToPick);
+
         var dis=FindObjectOfType<ItemDisplayPanel>();
-        dis.OpenItemDescriptionPanel(randLootPicks[itemToPick], itemToPick);
+        dis.OpenItemDescriptionPanel(randLootPicks[itemToPick], itemToPick,itemDisplayOpenedFrom.PickPan);
     }
 
     public void RandomItemPull()
@@ -142,17 +148,17 @@ public class PickPanManager : MonoBehaviour
         }
 
         //updating hovertips
-        updatePlayerEquipedHoverTips();
+        //updatePlayerEquipedHoverTips();
     }
 
 
-    public void updatePlayerEquipedHoverTips()
+    /*public void updatePlayerEquipedHoverTips()
     {
         PlayerItemBoarders[0].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedWeapon.itemDescription;
         PlayerItemBoarders[1].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedArmor.itemDescription;
         if (_playerEquipedItems.equipedCurio != null)
         { PlayerItemBoarders[2].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedCurio.itemDescription; }
-    }
+    }*/
 
     public void Learning()
     {

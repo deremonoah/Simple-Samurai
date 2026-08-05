@@ -41,7 +41,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
 
         equipedWeapon = Instantiate(equipedWeapon);
         PrimaryWeapon = equipedWeapon;
-        SecondaryWeapon = Instantiate(SecondaryWeapon);
+        if (SecondaryWeapon != null)
+        { SecondaryWeapon = Instantiate(SecondaryWeapon); }
         equipedArmor = Instantiate(equipedArmor);
     }
 
