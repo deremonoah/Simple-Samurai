@@ -10,10 +10,8 @@ public class ItemDisplayPanel : MonoBehaviour
     [SerializeField] GameObject panel;
 
     [Header("weapon display info")]
-    [SerializeField] Image strikeAreaImage;
-    [SerializeField] Image formPatternImage;
-    [SerializeField] List<GameObject> boxesForStyles;
     [SerializeField] GameObject WeaponSection;
+    [SerializeField] StyleDisplay syd;
 
     [Header("Armor display info")]
     [SerializeField] TextMeshProUGUI ItemAmorValue;
@@ -29,22 +27,27 @@ public class ItemDisplayPanel : MonoBehaviour
     private itemDisplayOpenedFrom from;
     private PickPanManager ppm;
     private Armory arm;
+    
+
+    private Weapon weRefrence;
 
     private void Start()
     {
         ppm = FindObjectOfType<PickPanManager>();
         arm = FindObjectOfType<Armory>();
+        WeaponSection.SetActive(false);
     }
 
     public void OpenItemDescriptionPanel(Item item,int itemSlot, itemDisplayOpenedFrom opener)
     {
-        panel.SetActive(true);
+        
         itemSlotLookingAt = itemSlot;
         from = opener;
         
         if(item is Weapon)
         {
-            SetForWeapon((Weapon)item);
+            weRefrence = (Weapon)item;
+            SetForWeapon();
         }    
         if(item is Armor)
         {
@@ -54,7 +57,7 @@ public class ItemDisplayPanel : MonoBehaviour
         {
             SetForCurio((Curio)item);
         }
-
+        panel.SetActive(true);//moved to not get null on style display when it enables and looks for weapon
 
         //just keep the styles in the same order
         //I also thought getting styles from beating certain enemies or by making certain decisions is way cooler than just getitng them randomly
@@ -64,26 +67,11 @@ public class ItemDisplayPanel : MonoBehaviour
         ItemIconSprite.sprite = item.itemPanelIcon;
     }
 
-    public void SetForWeapon(Weapon we)
+    public void SetForWeapon()
     {
         WeaponSection.SetActive(true);
         ArmorSection.SetActive(false);
-
-        int stylesToShow = FindObjectOfType<SenseiPanel>().getNumberOfKnownStyles();
-        Debug.Log("known styles they say is " + stylesToShow);
-        for (int lcv = 0; lcv < boxesForStyles.Count; lcv++)
-        {
-            boxesForStyles[lcv].SetActive(false);
-        }
-
-
-        for (int lcv = 0; lcv < stylesToShow; lcv++)
-        {
-            boxesForStyles[lcv].SetActive(true);
-        }
-
-        strikeAreaImage.sprite = we.DisplayStrikeAreaIcon;
-        ItemDescription.text = we.itemDescription;
+        //will handle the info and ask for it just needs to be enabled
     }
 
     public void SetForArmor(Armor ar)
@@ -102,11 +90,6 @@ public class ItemDisplayPanel : MonoBehaviour
         //anything specific for curios? maybe in future?
     }
 
-    public void DisplayStyle(Sprite stylePic)//I use this on the check boxes, ideally default to the right one in future
-    {
-        formPatternImage.sprite = stylePic;
-    }
-
     public void CloseItemDisplayPanel()
     {
         panel.SetActive(false);
@@ -121,8 +104,8 @@ public class ItemDisplayPanel : MonoBehaviour
 
     public void RightArrow()
     {
+        WeaponSection.SetActive(false);
         int nextSlot = itemSlotLookingAt+1;
-        Debug.Log("right arrow says " + nextSlot);
         if (from == itemDisplayOpenedFrom.PickPan)
         {
             ppm.inspectItem(nextSlot);//handles overflow
@@ -131,12 +114,13 @@ public class ItemDisplayPanel : MonoBehaviour
         {
             arm.InspectAtSlot(nextSlot);//handles overflow
         }
+        
     }
 
     public void LeftArrow()
     {
+        WeaponSection.SetActive(false);
         int nextSlot = itemSlotLookingAt-1;
-        Debug.Log("left arrow says " + nextSlot);
         if (from==itemDisplayOpenedFrom.PickPan)
         {
             ppm.inspectItem(nextSlot);//handles overflow or underflow?
@@ -145,6 +129,13 @@ public class ItemDisplayPanel : MonoBehaviour
         {
             arm.InspectAtSlot(nextSlot);//handles wrap
         }
+        
+    }
+
+    public Weapon getWeapon()//called by Style Display for having multiple in different places
+    {
+        Debug.Log("null?" + weRefrence == null);
+        return weRefrence;
     }
 }
 public enum itemDisplayOpenedFrom { PickPan,Armory }

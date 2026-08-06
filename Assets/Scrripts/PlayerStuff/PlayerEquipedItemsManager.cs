@@ -72,6 +72,7 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
             }
             GetComponent<Armory>().AddItemToArmory(equipedWeapon);
             equipedWeapon = (Weapon)item;
+            PrimaryWeapon = equipedWeapon;
             _mainStrikeArea.SetWeapon(item as Weapon);
             PrimaryweaponIcon.sprite = item.itemPanelIcon;
             //we will  have to update this to if unlocked and no secondary add it there or stock pile
@@ -196,5 +197,10 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
     public void UnlockTwoWeapons()
     {
         twoWeapons = true;
+    }
+
+    public Weapon getPrimaryWeapon()// for Style Display
+    {
+        return PrimaryWeapon;
     }
 }

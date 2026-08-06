@@ -142,7 +142,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         else if (weapon.hasEffect(WeaponEffect.FourTarget))
         {
             
-            if (weapon.name == "Blow Gun(Clone)")
+            if (weapon.name == "BlowGun(Clone)")//TODO:change this to be based off an enum or weapon id or something
             {
                 ListToUse = BlowGunSpots;
             }

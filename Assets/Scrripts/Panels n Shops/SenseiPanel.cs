@@ -22,10 +22,7 @@ public class SenseiPanel : MonoBehaviour
     public void newStyles(int num)
     {
         stylesKnown = num;
-        for(int lcv=0;lcv<num;lcv++)
-        {
-            styleUIs[lcv].SetActive(true);
-        }
+        
         FindObjectOfType<SoundManager>().PlaySound("sensei");
     }
     public void EnableButton()

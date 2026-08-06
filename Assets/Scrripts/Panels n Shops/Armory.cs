@@ -37,6 +37,7 @@ public class Armory : MonoBehaviour
         equipManager = FindObjectOfType<PlayerEquipedItemsManager>();
         gm = GetComponent<GameManager>();
         currentUpgradeCost = StartingCost;
+        ArmoryButton.SetActive(false);
     }
 
     public void OpenArmorPanel()
@@ -131,8 +132,9 @@ public class Armory : MonoBehaviour
         {
             if (slot < stockPile.Count)
             {
-                equipManager.EquipItem(stockPile[slot], false);
+                Item moveThis = stockPile[slot];
                 stockPile.RemoveAt(slot);
+                equipManager.EquipItem(moveThis, false);//has to be called after becuase the item will be in stock pile twice long enough for issues
                 LoadArmoryPanel();//to update the images to the correct items
             }
         }
