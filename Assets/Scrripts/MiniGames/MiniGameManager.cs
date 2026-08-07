@@ -73,11 +73,15 @@ public class MiniGameManager : MonoBehaviour
         //grab which mini game it is, index and do something?
         //check who its from, (sensai, blacksmith, etc) and give them a matching score
 
-        //so an if statement
         EnableHiddenUI(true);
         var gfm=FindObjectOfType<GameFlowManager>();
         gfm.villageStillOpen();
         currentGame.gameObject.SetActive(false);
+
+        //TODO:this is where I will add giving of some kind of reward
+        //blacksmith options: free upgrade to weapon or armor, maybe player picks? Reduce cost use?
+        //what else? gold? a random armor or weapon? sharpens your weapon? temp buff, shore up your armor, temp buff?
+        //make your weapon pointer bigger? strike area bigger?
     }
 
     private void EnableHiddenUI(bool yee)
@@ -86,6 +90,16 @@ public class MiniGameManager : MonoBehaviour
         {
             ui.SetActive(yee);
         }
+    }
+
+    public void OpenHelpPanel(GameObject panel)
+    {
+        panel.SetActive(true);
+    }
+
+    public void CloseHelpPanel(GameObject panel)
+    {
+        panel.SetActive(false);
     }
 }
 public enum miniGame { blackSmithHammer,plantSeeds,dustShelf}
