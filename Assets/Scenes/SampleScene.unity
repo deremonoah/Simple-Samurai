@@ -251,7 +251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4604671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10102,6 +10102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b6e55716f8efb40984c25b8e08d9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RewardFrom: 0
   player: {fileID: 1265967465}
   durationInEachRow: 14
   seed: {fileID: 1567161102242273272, guid: ae4b3222fd17aba4485ba11201cd75c2, type: 3}
@@ -10352,6 +10353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c946fef96a641404b99e2859ad4e2d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RewardFrom: 2
   stuffToClean:
   - {fileID: 1141776350}
   - {fileID: 1528585015}
@@ -10427,7 +10429,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 181699555
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &508842646
@@ -17241,7 +17243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bc7764972dabce04599b9a4d95d4f80c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58f4a83631f3c2242aae0b4617b89b1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -26874,6 +26876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54888722056a5db46ab127f8e9b66005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RewardFrom: 1
   PlayerHammer: {fileID: 1286803231}
   phRotationBottom: {x: 0, y: 0, z: 0}
   phRotationTop: {x: 0, y: 0, z: 111.204}
@@ -26886,7 +26889,7 @@ MonoBehaviour:
   metalForColor: {fileID: 204789025}
   StartYellow: {r: 0.9811321, g: 0.97638905, b: 0.21751513, a: 1}
   EndRed: {r: 0.6415094, g: 0.0514418, b: 0.0514418, a: 1}
-  DurationToCool: 10
+  DurationToCool: 11
   specificationToChange: {fileID: 1542892556}
   MoveSpeedForNewPiece: 20
   colorScores: []
@@ -33670,12 +33673,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcb5b82937d640ce96d60855aff9503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recentScore: 0
   styleUIs:
   - {fileID: 1872324163}
   - {fileID: 1503813846}
   - {fileID: 1075598214}
   - {fileID: 261264323}
   panelButton: {fileID: 659864832}
+  aproval: 0
+  itemRewards:
+  - {fileID: 11400000, guid: 938616cdfce35ac46a3e87b23eba7793, type: 2}
+  - {fileID: 11400000, guid: fa3a90828e8304518bf48a0891c7b826, type: 2}
 --- !u!114 &1410867516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43400,7 +43408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bc7764972dabce04599b9a4d95d4f80c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e58c255ffeea364da761bed1cba0fb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -50595,6 +50603,26 @@ PrefabInstance:
       propertyPath: lootingUpgradeText
       value: 
       objectReference: {fileID: 1016055166}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 05c1cf5f54c6e8d4488fe2009407334a, type: 2}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e92af5917f19b847abebe98ed0412de, type: 2}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ecb8155a09592374e97d5da5a3186bfd, type: 2}
+    - target: {fileID: 1923051231482176407, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: ecb8155a09592374e97d5da5a3186bfd, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: LootingPanel
       value: 
@@ -50915,6 +50943,18 @@ PrefabInstance:
       propertyPath: improveHealthText
       value: 
       objectReference: {fileID: 1449706497}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3ec131037544864d81f8b7d2e972416, type: 2}
+    - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: itemRewards.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 295de3da39fa10b4c80782ca51e221ff, type: 2}
     - target: {fileID: 8673687103061439174, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: farmLvlImages.Array.data[0]
       value: 

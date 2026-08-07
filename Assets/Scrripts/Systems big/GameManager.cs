@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
 
     public void ReducePrice(int gold)
     {
-        _blacksmithShop.reduceCost = gold;
+        _blacksmithShop.curioReduceCost = gold;
         _farmShop.reduceCost = gold;
     }
 

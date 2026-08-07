@@ -70,7 +70,10 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
                     ex.SetExtrasWeapon(_mainStrikeArea.equipedWeapon);
                 }
             }
-            GetComponent<Armory>().AddItemToArmory(equipedWeapon);
+            if(item!=equipedWeapon)//if its not a new weapon we don't want to add a copy into armory
+            {
+                GetComponent<Armory>().AddItemToArmory(equipedWeapon);
+            }
             equipedWeapon = (Weapon)item;
             PrimaryWeapon = equipedWeapon;
             _mainStrikeArea.SetWeapon(item as Weapon);
@@ -85,7 +88,10 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
             {
                 _playerHP.myArmor.itemLevel = Mathf.Clamp(_playerHP.myArmor.itemLevel + 1, 0, 3);
             }
-            GetComponent<Armory>().AddItemToArmory(equipedArmor);
+            if(item!=equipedArmor)
+            {
+                GetComponent<Armory>().AddItemToArmory(equipedArmor);
+            }
             equipedArmor = (Armor)item; 
             _playerHP.SetArmor(item as Armor);
             armorIcon.sprite = item.itemPanelIcon;

@@ -8,14 +8,21 @@ public class DustShelf : MiniGame
     [SerializeField] List<Image> stuffToClean;
     [SerializeField] List<Transform> MoveToPoints;
     [SerializeField] Transform duster;
+    private Vector3 posToReturn;
     [SerializeField] float dusterSpeed;
     private float DelayTimer=0;
     [SerializeField] private int ItemToDust;
 
+    private void Awake()
+    {
+        posToReturn = duster.position;
+    }
+
     private void OnEnable()
     {
+        ResetMiniGame();
         StartCoroutine(DustRoutine());
-        ItemToDust = -1;
+        ItemToDust = -1;//why?
     }
 
     // Update is called once per frame
@@ -58,7 +65,7 @@ public class DustShelf : MiniGame
             //Vector3 startPos = duster.position;
             Vector3 endPos = MoveToPoints[nextPoint].position;
             //float timeElapsed = 0;
-            Debug.Log(nextPoint);
+            //Debug.Log(nextPoint);
             while (duster.position!=endPos)
             {
                 //move towards I rememember doesn't always end with it getting there
@@ -76,7 +83,7 @@ public class DustShelf : MiniGame
     public void SetDustingItem(int slot)
     {
         ItemToDust = slot;//it is set to -1 when it goes off the item
-        Debug.Log("called set dusting item");
+        //Debug.Log("called set dusting item");
     }
 
     //for calculating score its just if you got all of the fill images to 0, so maybe there is an acceptable amount left?
@@ -94,7 +101,22 @@ public class DustShelf : MiniGame
             }
         }
         float score = (totalEnabled - totalDust) / totalEnabled;
+        //lets say (5 enabled-.5fill amount left on all)/5=.9
+        score = score * 100;
+
 
         return score;
+    }
+
+    private void ResetMiniGame()
+    {
+        //put duster back to start
+        //refill the things to clean
+        duster.position = posToReturn;
+
+        foreach (Image dusty in stuffToClean)
+        {
+            dusty.fillAmount = 1;
+        }
     }
 }

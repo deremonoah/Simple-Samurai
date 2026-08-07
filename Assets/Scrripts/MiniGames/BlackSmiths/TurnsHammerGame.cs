@@ -27,6 +27,7 @@ public class TurnsHammerGame : MiniGame
 
     [Header("Working Metal")]
     [SerializeField] Transform WorkingMetal;
+    private Vector3 posToReturn;
     [SerializeField] SpriteRenderer metalForColor;
     [SerializeField] Color StartYellow;
     [SerializeField] Color EndRed;
@@ -49,9 +50,16 @@ public class TurnsHammerGame : MiniGame
     private Coroutine otherRoutine;//for don't mess it up RN routine
     private bool firstRun=true;//so it doesn't score size bandaid solutions work man
 
+    private void Awake()
+    {
+        posToReturn = WorkingMetal.position;
+    }
+
     private void OnEnable()
     {
-        PlayerInactiveRoutine=StartCoroutine(GetNewMetalPieceRoutine());//so new metal comes in
+        
+        ResetMiniGame();
+        PlayerInactiveRoutine =StartCoroutine(GetNewMetalPieceRoutine());//so new metal comes in
     }
 
     // Update is called once per frame
@@ -143,7 +151,7 @@ public class TurnsHammerGame : MiniGame
         
         //max size for y is .51f rn
         float gradedOnCurve=(int)((.51f-specificationToChange.localScale.y)*25);
-        Debug.Log("colorProgress" + colorProgress+" grade on curve for size "+gradedOnCurve);
+        //Debug.Log("colorProgress" + colorProgress+" grade on curve for size "+gradedOnCurve);
         float colorScore = ((float)Math.Round(1-(colorProgress-.3),2)*100)+gradedOnCurve;//.4 is the assumed fastest you can complete it, so that should be a 100
         colorScores.Add(colorScore);
 
@@ -238,23 +246,34 @@ public class TurnsHammerGame : MiniGame
         //how close to specifications they were made (size score)
 
         float currentCalc = 0;
-        for (int lcv=0;lcv<sizeScores.Count;lcv++)//using sizeScores as it is added second & if stopped mid metal work, misses the last color score, is okay
+        for (int lcv=0;lcv<sizeScores.Count && lcv<colorScores.Count;lcv++)//using sizeScores as it is added second & if stopped mid metal work, misses the last color score, is okay
         {
             currentCalc += sizeScores[lcv] + colorScores[lcv];
+            
         }
         float overAllScore = currentCalc / (2 * sizeScores.Count);//times 2 becuase we added both values added together (so we want total of number of both lists)
-
+        Debug.Log("should be size & color average " + overAllScore);
         //factor in total made
         currentCalc = colorScores.Count / 8;
+        Debug.Log("score for how many " + currentCalc);
         overAllScore += currentCalc;
 
         //average the 3 scores
-        Debug.Log("before divided by 3 " + overAllScore);
-        overAllScore = overAllScore/3;
-        Debug.Log("after divided by 3 " + overAllScore);
+        //Debug.Log("before divided by 3 " + overAllScore);
+        //overAllScore = overAllScore;//its divide by 2 because I already divided for the other 2
+        //Debug.Log("after divided by 3 " + overAllScore);
+
+        
 
         return overAllScore;
             //might be good feedback to see they did well on making them to specification vs speed, vs how many made
             //which speed & how many made seem to measure the same thing right?
+    }
+
+    private void ResetMiniGame()
+    {
+        //WorkingMetal.position = posToReturn;
+        sizeScores.Clear();
+        colorScores.Clear();
     }
 }

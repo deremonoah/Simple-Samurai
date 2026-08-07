@@ -17,26 +17,36 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] Transform SunEndPos;
     private Coroutine dayRoutine;
 
+    private SenseiPanel sensei;
+    private BlackSmithShop smith;
+    private FarmShop farmers;
+    
+
     void Start()
     {
         //starts out of mini game normally, but I might start in it just to test
         //OpenMiniGames();//here for now to test sun
+        sensei = FindObjectOfType<SenseiPanel>();
+        smith = FindObjectOfType<BlackSmithShop>();
+        farmers = FindObjectOfType<FarmShop>();
+        
     }
 
     // Update is called once per frame
     public void OpenMiniGames(int mg)
     {
-        Debug.Log("MiniGameButton presesed " + mg);
+        //Debug.Log("MiniGameButton presesed " + mg);
         //enables the corect minigame, probably needs to be from a panel
         //but for now will just enable blacksmith game
         EnableHiddenUI(false);
         MiniGames[mg].SetActive(true);
         currentGame = MiniGames[mg].GetComponent<MiniGame>();
-        Debug.Log("should have set mini game"); 
+        Debug.Log("game number " + mg + "name is "+currentGame.name);
+        //Debug.Log("should have set mini game"); 
 
         if (dayRoutine==null)
         {
-            Debug.Log("in day routine");
+            //Debug.Log("in day routine");
             dayRoutine = StartCoroutine(DaysWorkRoutine());
         }
         else { Debug.Log("DayRoutine is NOT null, so we didn't set it"); }
@@ -62,7 +72,8 @@ public class MiniGameManager : MonoBehaviour
 
         //end the work day, so get score,
         //then drop down the scene, back to can spend money probably
-        Debug.Log("past sun position");
+        //Debug.Log("past sun position");
+        Debug.Log("currentGame before calculating " + currentGame.name);
         float scoreToReward = currentGame.CalculateScore();
         ResolveReward(scoreToReward);
         dayRoutine = null;
@@ -76,12 +87,30 @@ public class MiniGameManager : MonoBehaviour
         EnableHiddenUI(true);
         var gfm=FindObjectOfType<GameFlowManager>();
         gfm.villageStillOpen();
+        helpedWho rewarder = currentGame.RewardFrom;
         currentGame.gameObject.SetActive(false);
 
         //TODO:this is where I will add giving of some kind of reward
-        //blacksmith options: free upgrade to weapon or armor, maybe player picks? Reduce cost use?
-        //what else? gold? a random armor or weapon? sharpens your weapon? temp buff, shore up your armor, temp buff?
-        //make your weapon pointer bigger? strike area bigger?
+        
+        //we need a list of rewards for each mini game, should it be on the mini game?
+
+        //also should have the npc thank the player for the help, even if they aren't given anything right away
+        //if they have a text box over their head they could always be saying something
+
+        switch(rewarder)
+        {
+            case helpedWho.Farmer:
+                farmers.RewardFromFarmer(score);
+                break;
+            case helpedWho.Blacksmith:
+                smith.RewardFromBlacksmith(score);
+                break;
+            case helpedWho.Sensei:
+                sensei.RewardFromSensei(score);
+                break;
+        }
+
+        //TODO: have refrence to the help buttons & disable the others, so you can only help someone once between games as often as it happens
     }
 
     private void EnableHiddenUI(bool yee)
