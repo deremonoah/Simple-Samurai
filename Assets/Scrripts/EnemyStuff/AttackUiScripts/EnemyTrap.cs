@@ -59,6 +59,7 @@ public class EnemyTrap : MonoBehaviour
         if (other.name == "strike point" && damageFromTrap == 0)
         {
             FindObjectOfType<StrikeArea>().BeingBlocked(true);
+            PointerOnTrap = true;
         }
     }
 

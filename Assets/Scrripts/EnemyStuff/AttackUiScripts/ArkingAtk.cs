@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public class ArkingAtk : EnmAtKArea
+public class ArkingAtk : attack
 {
     [SerializeField] float PathTimer;
     private PathCreator currentPath;
@@ -11,10 +11,10 @@ public class ArkingAtk : EnmAtKArea
 
     //posblock is protected from parent class
 
-    private void Start()
+    void Start()
     {
         //this is where it should get or set it's path
-        endPos=EnemysManager.instance.getEndAttackPos();
+        GetEndPos();
         currentPath = FindObjectOfType<EnemysManager>().GetRandomThrowPath();
     }
 
@@ -40,9 +40,9 @@ public class ArkingAtk : EnmAtKArea
             }
             else
             {
-                myenm.Blocked(atkEef);
-                ParticleManager.instance.BlockedHere(posBlock,damage);
+                myenm.GetComponent<EnemyBehavior>().Blocked();
                 FindObjectOfType<SoundManager>().PlaySound("block");
+                ParticleManager.instance.BlockedHere(posBlock, damage);
                 Destroy(gameObject);
             }
         }
@@ -85,5 +85,10 @@ public class ArkingAtk : EnmAtKArea
     private void OnTriggerExit2D(Collider2D other)
     {
         blocking = false;
+    }
+
+    protected void FindMyPath()
+    {
+
     }
 }

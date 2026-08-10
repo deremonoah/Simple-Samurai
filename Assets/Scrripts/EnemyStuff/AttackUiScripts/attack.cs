@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class attack : MonoBehaviour
 {
-    private Transform endPos;
-    private enemyStats myenm;
-    bool blocking;
+    protected Transform endPos;
+    protected enemyStats myenm;
+    protected bool blocking;
 
     public Vector2 dir;//could make this multiple and have the guy who spawned it look at which direction it should start from
     public float movespeed;
@@ -19,7 +19,7 @@ public class attack : MonoBehaviour
 
     void Start()
     {
-        endPos = EnemysManager.instance.getEndAttackPos();
+        GetEndPos();
     }
 
     protected virtual void Update()
@@ -121,5 +121,10 @@ public class attack : MonoBehaviour
         damage = Damgs[0];
 
 
+    }
+
+    protected void GetEndPos()
+    {
+        endPos = EnemysManager.instance.getEndAttackPos();
     }
 }
