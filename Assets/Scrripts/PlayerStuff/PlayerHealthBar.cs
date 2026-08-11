@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class PlayerHealthBar : MonoBehaviour
 {
     [Header("Ui refrences")]
-    public Image healthBarInCombat;
-    public Image InPanelHPBar;
+    public Image healthBarFill;
+    [SerializeField] Transform HPScaling;
+    [SerializeField] Transform HPForMoving;
     public Text HpNumbers;
-    [SerializeField] GameObject hpInCombat;
-    [SerializeField] GameObject hpInPanels;
     public bool inCombat;
+
+    [Header("Refrences for position")]
+    [SerializeField] Transform inCombatSpot;
+    [SerializeField] Transform inShopSpot;
 
     [Header("Numbers")]
     public float health, maxHealth = 100;
@@ -27,8 +30,6 @@ public class PlayerHealthBar : MonoBehaviour
     private PlayerDefense _playerDefense;
     [SerializeField] Curio _myCurio;
 
-    [SerializeField] GameObject HpBarUI;
-    [SerializeField] GameObject HpBarBackground;
     [SerializeField] GameObject DefensesUIParent;
 
     [SerializeField] GameObject PlayerOnFireSprite;
@@ -132,15 +133,18 @@ public class PlayerHealthBar : MonoBehaviour
 
     void HealthBarFiller()
     {
+        
         //healthBar.fillAmount = health / Mathf.Lerp(healthBar.fillAmount, health / maxHealth,lerpSpeed);
-        if (inCombat)
-        { healthBarInCombat.fillAmount = health / maxHealth; }
-        else
-        //will it work while disabled
-        {
-            InPanelHPBar.fillAmount = health / maxHealth;
+        healthBarFill.fillAmount = health / maxHealth;
+        if (!inCombat)
+        { 
             HpNumbers.text = (int)health + "/" + maxHealth;
+            PoisonText.text = "";
         }
+        else { HpNumbers.text = ""; }
+
+        HPScaling.localScale = new Vector3(1, 1, 1);
+        HPScaling.localScale = new Vector3(maxHealth / 150, 1, 1);
     }
 
     public void HPIsInCombat(bool oo)
@@ -148,13 +152,16 @@ public class PlayerHealthBar : MonoBehaviour
         inCombat = oo;
         if(inCombat)
         {
-            hpInCombat.SetActive(true);
-            hpInPanels.SetActive(false);
+            //move to combat spot and rotate
+            HPForMoving.position = inCombatSpot.position;
+            HPForMoving.rotation = Quaternion.Euler(0, 0, 90);
+            HpNumbers.text = "";
         }
         else
         {
-            hpInPanels.SetActive(true);
-            hpInCombat.SetActive(false);
+            //set rotation & move to non combat spot
+            HPForMoving.position = inShopSpot.position;
+            HPForMoving.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
@@ -314,7 +321,7 @@ public class PlayerHealthBar : MonoBehaviour
     {
         //stop poison routine
         //might need to call color manager to have color consistancy
-        healthBarInCombat.color = Color.red;
+        healthBarFill.color = Color.red;
         PoisonText.text = "";
         if (WasPoisonedRoutine != null)
         { StopCoroutine(WasPoisonedRoutine); }
@@ -328,7 +335,7 @@ public class PlayerHealthBar : MonoBehaviour
         isPoisoned = true;
         yield return new WaitForSeconds(.3f);
         PoisonTimer = 20;
-        healthBarInCombat.color = colman.PoisonedColor;
+        healthBarFill.color = colman.PoisonedColor;
         //healthBar.color =  Color.black;
         //would like to change that to purple
         //PoisonText.gameObject.SetActive(true); can just have no text
@@ -348,5 +355,10 @@ public class PlayerHealthBar : MonoBehaviour
         StopAllCoroutines();
         PlayerOnFireSprite.SetActive(false);
         //both fire and poison are coroutines
+    }
+
+    private void setHPBarSize()
+    {
+
     }
 }

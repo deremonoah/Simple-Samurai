@@ -51,6 +51,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             barb = bossHPUI;
             barToUse = barb.getHPBar();
             aliveEnemies[posInList].HPBarToMove = bossHPUI.gameObject.transform;
+            enm.myHPBar.fillAmount = enm.getCurrentHP() / enm.maxHP;
             bossHPUI.gameObject.SetActive(true);
         }
         else//non boss
@@ -104,12 +105,14 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     public void RemoveMeFromList(enemyStats enm)
     {
         aliveEnemies.Remove(enm);//take enemy off list
-        var bar = enm.HPBarToMove;
-        bar.position = HideHere;//move it off screen
+        //move it off screen
         if(enm.HasAbility(enemyStats.Ability.boss))
         {
             bossHPUI.gameObject.SetActive(false);
+            return;
         }
+        var bar = enm.HPBarToMove;
+        bar.position = HideHere;
         UIPool.Add(bar);//add it back to the pool of ui
         bar.GetComponent<HPBarImageHolder>().getHPBar().fillAmount = 1;//and put its filll back to 100%
         HandleListChanged();
