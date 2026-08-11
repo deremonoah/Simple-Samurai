@@ -28,4 +28,4 @@ public class Weapon : Item
         return false;
     }
 }
-public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata, shuriken,multiTarget, ThreeTarget, FourTarget }
+public enum WeaponEffect { none, flame, greed, antiarmor, odachi, bow, lifeSteal, poison, frost, sasumata, shuriken,multiTarget, ThreeTarget, FourTarget, armoryBlade }

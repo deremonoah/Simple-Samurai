@@ -175,4 +175,18 @@ public class Armory : MonoBehaviour
         ItemDisplayPanel dis=FindObjectOfType<ItemDisplayPanel>();
         dis.OpenItemDescriptionPanel(stockPile[slot], slot, itemDisplayOpenedFrom.Armory);
     }
+
+    public int currentWeaponCount()
+    {
+        int weaponCount = 0;
+        foreach(Item it in stockPile)
+        {
+            if(it is Weapon)
+            {
+                weaponCount++;
+            }
+        }
+
+        return weaponCount;
+    }
 }

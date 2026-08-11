@@ -43,6 +43,8 @@ public class StrikeArea : MonoBehaviour
     private float revengeTimer;
 
     public Weapon TestWeapon;
+    private Armory _armory;
+
     void Start()
     {
         GM = mc.GetComponent<GameManager>();
@@ -51,6 +53,7 @@ public class StrikeArea : MonoBehaviour
         myStrikeAreaSprite = GetComponent<SpriteRenderer>();
         SoundMng = FindObjectOfType<SoundManager>();
         _mystrikePoint = strikePointObj.GetComponent<StrikePoint>();
+        _armory = FindObjectOfType<Armory>();
         justStruck = false;
         SetWeapon(_myItemsManager.PrimaryWeapon);
         TestWeapon = Instantiate(TestWeapon);
@@ -116,6 +119,7 @@ public class StrikeArea : MonoBehaviour
             //for attacking in strike area
             if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
             {
+                DamageCalcEffects();
                 float Damger = Mathf.Clamp((_mystrikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
 
                 if(currentBuff == 3)
@@ -129,8 +133,7 @@ public class StrikeArea : MonoBehaviour
                 //targetEnemy gets changed by EnemyHPBarPlacerManager
                 for (int lcv = 0; lcv < targetEnemy.Count; lcv++)
                 {
-                    //revenge calculation below
-                    Damger +=revengeTimer*30;
+                    Damger += revengeTimer * 30;//for revenge ability
                     //Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
                     EnemyHPBarPlacerManager.instance.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     
@@ -162,6 +165,8 @@ public class StrikeArea : MonoBehaviour
 
         }
 
+        
+
         if (_JustStruckTimer<0 && justStruck)
         {
             justStruck = false;
@@ -173,6 +178,22 @@ public class StrikeArea : MonoBehaviour
         
         
 #endif
+
+    }
+
+    private void DamageCalcEffects()
+    {
+        
+
+        if(equipedWeapon.hasEffect(WeaponEffect.armoryBlade))
+        {
+            int weaponCount=_armory.currentWeaponCount();
+            //things i can set are, base damage, damage multipliers, max damage
+            //basic katan level 1 max dmg 60 base dmg 3
+            //basic katana level 4 xdmg 100 bdmg 10
+            baseDamage = weaponCount;
+            maxDamage = weaponCount *30;
+        }//realizing the design of this system and its scaleability is kinda rough. with multipliers and the way I calculate it
 
     }
 
