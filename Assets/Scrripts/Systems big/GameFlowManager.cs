@@ -15,6 +15,7 @@ public class GameFlowManager : MonoBehaviour
     private bool _isEvent;
     private PlayerHealthBar _php;
     private bool playerIsReadyToFight;
+    private PlayerDefense _pd;
 
     [ContextMenu("initialize")]
 
@@ -25,11 +26,14 @@ public class GameFlowManager : MonoBehaviour
         _eventManager = GetComponent<EventManager>();
         _farm = GetComponent<FarmShop>();
         _php = GetComponent<PlayerHealthBar>();
+        _pd = FindObjectOfType<PlayerDefense>();
     }
 
     public void StartMenues()
     {
         _php.HPIsInCombat(false);
+        _pd.inCombatHudUpdate(false);
+        _pd.RearmTraps();
         StopAllCoroutines();
         StartCoroutine(FlowRoutine());
         _farm.ResetHealPurchases();
@@ -88,7 +92,8 @@ public class GameFlowManager : MonoBehaviour
             continue;
         }
         StrikeArea.SwitchPlayerOn(true);
-        _php.HPIsInCombat(true);
+        _php.HPIsInCombat(true);//TODO: make these 1 simple inCombatCall for this class
+        _pd.inCombatHudUpdate(true);
         WeaknessSpawnManager.instance.InCombat(true);
     }
 

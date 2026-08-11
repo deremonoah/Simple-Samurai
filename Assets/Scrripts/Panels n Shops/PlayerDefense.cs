@@ -1,204 +1,175 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerDefense : MonoBehaviour
 {
     //0= none 1=pit 2= palasade 3= spikes
-    public int[] EquipedDefense;
-    [SerializeField] int defenseSlotsLevel;
-    [SerializeField] float _palisadeHPMax=40,_palisadeHP =40;
-    [SerializeField] List<GameObject> DefensesUIList;
-    [SerializeField] Image fillPalisade;
-    [SerializeField] List<Dragable> DefenseDragables;
-    [SerializeField] DropZone EquipedDefenseSlot;
+    [Header("ui positions")]
+    [SerializeField] List<Transform> inCombatPos= new();
+    [SerializeField] List<Transform> inShopsPos = new();
+
+    [Header("slot & equips")]
+    public List<PlayerTrap> EquipedDefense;
+    [SerializeField] int numberOfPlots;
+    [SerializeField] List<GameObject> plotsForTraps;
+
+    [Header("UI prefabs")]
+    [SerializeField] Transform ParentToUI;
+    [SerializeField] GameObject palisade;//need to be able to grab the image for fill amount. getcomponent in children?
+    [SerializeField] GameObject pit;
+    [SerializeField] GameObject spikes;
+
+    [Header("prices & stuff")]
+    [SerializeField] int pitCost;
+    [SerializeField] int palisadeCost;
+    [SerializeField] int spikesCost;
+    [SerializeField] int IncreasePlotCost;
+    //[SerializeField] List<Dragable> DefenseDragables;
+    //[SerializeField] DropZone EquipedDefenseSlot;
     public GameObject DefenseButton;
     private GameManager gm;
+
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        EquipedDefense = new int[3];
-        for (int lcv = 0; lcv < DefensesUIList.Count; lcv++)
+        EquipedDefense = new();
+        foreach(GameObject plot in plotsForTraps)
         {
-            DefensesUIList[lcv].SetActive(false);
+            plot.SetActive(false);
+            Image img = plot.transform.GetChild(0).GetComponent<Image>();
+            img.color = new Color(1, 1, 1, 0);
         }
+        
         DefenseButton.SetActive(false);
+        UpdatePlotsEquipUI();
     }
-
-    private void Update()
-    {
-        if (DefensesUIList[1].activeSelf)
-        {
-            fillPalisadeBar();
-        }
-    }
-    private void fillPalisadeBar()
-    {
-        fillPalisade.fillAmount = _palisadeHP / _palisadeHPMax;
-    }
-    //below is a proto type to test stuff
-    
 
     public bool isDefended()
     {
-        for (int lcv = 0; lcv < EquipedDefense.Length; lcv++)
+        for (int lcv = 0; lcv < numberOfPlots; lcv++)
         {
-            if (EquipedDefense[lcv] > 0)
+            if(EquipedDefense.Count==numberOfPlots)
             {
-                return true;
+                if (EquipedDefense[lcv].isArmed())
+                {
+                    return true;
+                }
             }
         }
-        
-        
             return false;
-        
     }
 
     public void DefendPlayer(enemyStats enmy,float Damg)
     {
-        //depending on which of the defenses is selected it will do a different thing the to enemy
-
-        //spikes(3) deals damage to the enemy(does it stop their attack? and is it for a whole round or does it go away after 
-        //an amount of damge?)
-
-        //pit(1) stops the attack and stuns the enemy for a time (one time use or upgrade for multiple?)
-
-        //palacade(2) extra hp bar will appear and tank some early damage(I would think it can stop multiple attacks)
-
-        //this for loop will resolve the first defense that isn't 0 and then remove itself and exit the loop so it doesn't resolve multiple against one enemy
-        for(int lcv =0; lcv<EquipedDefense.Length;lcv++)
+        
+        for(int lcv =0; lcv<EquipedDefense.Count;lcv++)
         {
-            //palacade
-            if(EquipedDefense[lcv]==2)
+            if(EquipedDefense[lcv].isArmed())
             {
-                _palisadeHP -= Damg;
-                if (_palisadeHP <= 0)
-                { 
-                    EquipedDefense[lcv] = 0; 
-                    DefensesUIList[1].SetActive(false);
-                    EquipedDefenseSlot.clearZone();
-                }
-                break;
+                Debug.Log(EquipedDefense[lcv].name + " defended player");
+                EquipedDefense[lcv].DefendPlayer(Damg, enmy);
+                break;//because they hit the first defense
             }
-            else if (EquipedDefense[lcv] == 1)
-            {
-                //enemy is basically stunned currently trying block but should add a stunned function
-                EquipedDefense[lcv] = 0;
-                enmy.Stunned(75);
-                enmy.Blocked(0);
-                DefensesUIList[0].SetActive(false);
-                EquipedDefenseSlot.clearZone();
-                break;
-            }
-            else if(EquipedDefense[lcv]==3)
-            {
-                //deal damage to enemy then destroyed
-                EquipedDefense[lcv] = 0;
-                List<WeaponEffect> temp= new List<WeaponEffect>();
-                temp.Add(WeaponEffect.none);
-                enmy.damageEnemy(40, temp);
-                DefensesUIList[2].SetActive(false);
-                EquipedDefenseSlot.clearZone();
-                break;
-            }
-
         }
-
-
     }
 
-    private void ChangeDefenseSlots(int amount)
+    public void RearmTraps()
     {
-        //amount will either be positive or negative(if we unequip the curio)
-        //would need to take gold unless its a curio effect(which would also need to be able to be undone)
-        var temp = EquipedDefense;
-        EquipedDefense = new int[amount];
-
-        for (int lcv = 0; lcv < temp.Length; lcv++)
+        for(int lcv=0;lcv<EquipedDefense.Count;lcv++)
         {
-            EquipedDefense[lcv] = temp[lcv];
+            EquipedDefense[lcv].ReArmTrap();
+        }
+    }
+
+    public void inCombatHudUpdate(bool inC)//will be called by the gameflowManager
+    {
+        List<Transform> refrence = new();
+        /*if (inC)
+        {
+            refrence = inCombatPos;
+        }
+        else
+        {
+            refrence = inShopsPos;
+        }*/
+
+        refrence = inShopsPos;//feel like this just reads better if you look down there
+
+        for (int lcv = 0; lcv < EquipedDefense.Count && lcv < numberOfPlots; lcv++)
+        {
+            //set images on the plots based on what we have equiped
+            EquipedDefense[lcv].gameObject.transform.position = refrence[lcv].position;
         }
     }
 
     //this is the same as the above that I made later
     public void IncreaseSlotsButton()
     {
-        int[] temp = new int[EquipedDefense.Length+1];
-        for(int lcv = 0; lcv<EquipedDefense.Length; lcv++)
-        {
-            temp[lcv] = EquipedDefense[lcv];
-        }
-        EquipedDefense = temp;
+        numberOfPlots++;
+        //enable slot uis
+        UpdatePlotsEquipUI();
     }
 
-    public void ReadyDefense(int def, int index)
+    public void TrapPressed(GameObject prefab)
     {
-        //I am changing to a ui click and drag slot based system will just be more readable
-        if(def == 2)/*Palisade*/
-        {
-            EquipedDefense[index] = 2;
-            _palisadeHP = _palisadeHPMax;
-            SetDefenseUI(1);
-        }
-        else if(def == 1)/*Pit*/
-        {
-            EquipedDefense[index] = 1;
-            //enable ui for pit and diable others
-            SetDefenseUI(0);
-            //I will need to figure out how the defense works adding if there is only 1 slot stuff like that 
-        }
-        else if(def == 3)/*Spikes*/
-        {
-            EquipedDefense[index] = 3;
-            SetDefenseUI(2);
-            //enable ui which I will change to be setting the image not activating and deactivating one
-        }
+        var ui = Instantiate(prefab);
+        ui.transform.SetParent(ParentToUI);
+        PlayerTrap trap = ui.GetComponent<PlayerTrap>();
+        EquipedDefense.Insert(0, trap);
+
+        UpdatePlotsEquipUI();
     }
 
-    public void equipPit()
+    public void TrapPurchase(int trapNum)
     {
-        if (gm.playerCoins >= 5)
+        PlayerTrapType trap = (PlayerTrapType)trapNum;
+        int cost = 0;
+        GameObject prefab=null;
+        if(trap==PlayerTrapType.pit)
+        { cost = pitCost; prefab = pit; }
+
+        else if(trap== PlayerTrapType.palisade)
+        { cost = palisadeCost; prefab = palisade; }
+
+        else if (trap == PlayerTrapType.spikes)
+        { cost = spikesCost; prefab = spikes; }
+
+        if (gm.canBuy(cost))//take away money & if you don't own it unlock it
         {
-            ReadyDefense(1, 0);
-            gm.playerCoins -= 5;
+            gm.playerCoins -= cost;
+            TrapPressed(prefab);
         }
     }
 
-    public void equipPalasade()
+    private void UpdatePlotsEquipUI()//only called outside of combat
     {
-        if (gm.playerCoins >= 10)
+        TrimIfListTooLong();
+        //this is for the panel displaying how many plots (brown squares a player has)
+        //what you have equiped in them
+        for (int lcv=0;lcv<plotsForTraps.Count && lcv<numberOfPlots;lcv++)
         {
-            ReadyDefense(2, 0);
-            gm.playerCoins -= 10;
+            plotsForTraps[lcv].SetActive(true);
         }
+        
+        for(int lcv=0;lcv<EquipedDefense.Count && lcv < numberOfPlots; lcv++)
+        {
+            //set images on the plots based on what we have equiped
+            Image img =plotsForTraps[lcv].transform.GetChild(0).GetComponent<Image>();//have to write it this way cause getComponentInChildren will grab the component from parent if it has one
+            img.sprite= EquipedDefense[lcv].displaySprite; ;
+            img.color = new Color(1, 1, 1, 1);
+        }
+        inCombatHudUpdate(false);
     }
 
-    public void equipSpikes()
+    private void TrimIfListTooLong()//we should never get more than 1 extra in the list
     {
-        if (gm.playerCoins >= 8)
+        if(EquipedDefense.Count>numberOfPlots)//3>2
         {
-            ReadyDefense(3, 0);
-            gm.playerCoins -= 8;
+            Destroy(EquipedDefense[EquipedDefense.Count - 1].gameObject);//destroy object
+            EquipedDefense.RemoveAt(EquipedDefense.Count - 1);//clear empty spot
         }
-    }
-
-    public void SetDefenseUI(int index)
-    {
-        for (int lcv = 0; lcv < DefensesUIList.Count; lcv++)
-        {
-            DefensesUIList[lcv].SetActive(false);
-        }
-        DefensesUIList[index].SetActive(true);
-    }
-
-    public int DefenseCosts()
-    {
-        int overallCost= 0;
-        for(int lcv = 0; lcv<EquipedDefense.Length;lcv++)
-        {
-            overallCost += 5;
-        }
-        return overallCost;
     }
 
     public void EnableDefenseButton()
@@ -207,3 +178,4 @@ public class PlayerDefense : MonoBehaviour
     }
 
 }
+public enum PlayerTrapType { pit,palisade,spikes}

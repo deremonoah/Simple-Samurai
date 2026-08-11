@@ -199,4 +199,9 @@ public class GameManager : MonoBehaviour
             //in future make this scalable with population
         }
     }
+
+    public bool canBuy(int price)
+    {
+        return price <= playerCoins;
+    }
 }

@@ -51,7 +51,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             if(d.mytype == DragableType.defense)
             { 
                 DefenseNum = (int)d.defense;
-                FindObjectOfType<PlayerDefense>().ReadyDefense(DefenseNum, SpotInDefenseList);
+                //FindObjectOfType<PlayerDefense>().ReadyDefense(DefenseNum, SpotInDefenseList);
             }
             else if(d.mytype == DragableType.item)
             {

@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinMaxHeal: {x: 40, y: 80}
   growDuration: 0.4
-  shrinkDuration: 6
+  shrinkDuration: 4
   SpawnPosMinMax: {x: 0, y: 10}
   SpawnPosOffset: 14
 --- !u!114 &6202861614905511849
