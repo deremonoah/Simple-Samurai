@@ -209,4 +209,9 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
     {
         return PrimaryWeapon;
     }
+
+    public Weapon getEquipedWeapon()// for Style Display
+    {
+        return equipedWeapon;
+    }
 }

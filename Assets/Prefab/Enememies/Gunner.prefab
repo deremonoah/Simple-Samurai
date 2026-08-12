@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: TimeBetweenRageAttacks
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: actionPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 2240746861720578230, guid: 00dfc9748f4b3234d94712753f60b369, type: 3}
@@ -16,6 +20,10 @@ PrefabInstance:
       propertyPath: attackPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 2240746861720578230, guid: 00dfc9748f4b3234d94712753f60b369, type: 3}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: canAttackDifferentLineInRage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: currentAttacks.Array.data[0]
       value: 

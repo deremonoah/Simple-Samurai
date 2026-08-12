@@ -40,8 +40,8 @@ public class ArkingAtk : attack
             }
             else
             {
-                myenm.GetComponent<EnemyBehavior>().Blocked();
-                FindObjectOfType<SoundManager>().PlaySound("block");
+                Weapon thatBlocked = FindObjectOfType<PlayerEquipedItemsManager>().getEquipedWeapon();
+                myenm.GetComponent<EnemyBehavior>().Blocked(atkEef, thatBlocked);
                 ParticleManager.instance.BlockedHere(posBlock, damage);
                 Destroy(gameObject);
             }

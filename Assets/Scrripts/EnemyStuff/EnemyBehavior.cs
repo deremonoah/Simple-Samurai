@@ -30,6 +30,9 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] Vector2 minMaxRageAttacks;
     [SerializeField] float TimeBetweenRageAttacks;
     [SerializeField] int RageThreashold;
+    [SerializeField] bool canAttackDifferentLineInRage;//for if they might move up or what not to attack a different line
+
+
     private int currentRageCount;
     private float YAttackOffset;
     private Vector3 posToReturnTo;
@@ -67,6 +70,8 @@ public class EnemyBehavior : MonoBehaviour
         {
             DelegateAction = AttackUIRoutine();
         }
+
+        DelegateAction = RageRoutine();
 
         myActionRoutine = StartCoroutine(actionRoutine());
     }
@@ -174,15 +179,37 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     //we do need to deal with getting parried
-    public void Blocked()
+    public void Blocked(AttackEffect atkeef, Weapon playerWeapon)
     {
-        if (myActionRoutine != null)
+        currentRageCount++;
+        /*if (myActionRoutine != null)
         {
             currentRageCount++;
+            if(DelegateAction!=RageRoutine())
+            {
+                StopAllCoroutines();
+                DelegateAction = null;
+                //StopAllCoroutines();
+                DecideNextAction();
+            }
+            //should blocking them really reset their times? this just has been the case for so long idk
+        }*/
+        if(playerWeapon.hasEffect(WeaponEffect.sasumata))//might rename to stun for weapon effect
+        {
             StopAllCoroutines();
             DelegateAction = null;
-            //StopAllCoroutines();
-            DecideNextAction();
+            DecideNextAction();//so it will stop rages or can, and then apply the stun right away
+        }
+        //add resolving if 
+        if(atkeef==AttackEffect.DamageWeapon)
+        {
+            FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(1);
+            SoundManager.instance.PlaySound("breakItem");
+        }
+        else if(atkeef == AttackEffect.DamageArmor)
+        {
+            FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(2);
+            SoundManager.instance.PlaySound("breakItem");
         }
     }
 
@@ -228,9 +255,19 @@ public class EnemyBehavior : MonoBehaviour
             yield return new WaitForSeconds(TimeBetweenRageAttacks); //would be nice if this number changed imo, like over time many at first but then slower
             Rager++;
             if (Rager < randomRageAttack)//only draw back if there will be another attack
-            { yield return DrawBackToAttackRoutine(); }
+            {
+                if(canAttackDifferentLineInRage)
+                { yield return SlamBeforeAttackRoutine(); }
+                
+                yield return DrawBackToAttackRoutine(); 
+            }
         }
         currentRageCount = 0;
         WeaknessSpawnManager.instance.SpawnWeakPoint();
+    }
+
+    public void IncreaseRageCount(int mad)
+    {
+        currentRageCount += mad;
     }
 }

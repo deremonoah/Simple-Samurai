@@ -14,6 +14,21 @@ public class SoundManager : MonoBehaviour
     [SerializeField] float Volume;
     [SerializeField] AudioMixer mixer;
     [SerializeField] Slider _slider;
+
+    public static SoundManager instance;
+
+    private void Awake()
+    {
+        if(instance==null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError("instance of Sound Manager not null do you have 2 in the scene?");
+        }
+    }
+
     void Start()
     {
         myaudioSrc = GetComponent<AudioSource>();

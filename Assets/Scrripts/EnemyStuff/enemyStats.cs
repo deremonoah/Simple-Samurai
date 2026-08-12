@@ -96,10 +96,7 @@ public class enemyStats : MonoBehaviour
     private List<Transform> BlockSpots;
     private List<GameObject> BlockSets;
 
-    [Header("Rage mechanic variables")]
-    public float temper = 10;//this is the denominator, below is the numberator used for the odds calculation
-    private float currentRageCount;
-    public Vector2 minMaxRageAttacks=new Vector2(2,3);//the range of attacks they rage with
+    private EnemyBehavior eb;
 
     //adding deligates to actually implement the stategy pattern
     public System.Action _DelegateAction;
@@ -140,7 +137,7 @@ public class enemyStats : MonoBehaviour
         anim = spriteChild.GetComponent<Animator>();
         HP = maxHP;
         BlockSets = new List<GameObject>();
-
+        eb = GetComponent<EnemyBehavior>();
         parM = FindObjectOfType<ParticleManager>();
 
         _soundManager = FindObjectOfType<SoundManager>();
@@ -268,25 +265,6 @@ public class enemyStats : MonoBehaviour
         }
     }
 
-    public void Blocked(AttackEffect atkeef)
-    {
-        if(stunTimer <= 0)
-        {
-            if(myActionRoutine != null)
-            {
-                currentRageCount++;
-                StopCoroutine(myActionRoutine);
-                //DecideNStartAction();
-            }
-        }
-        
-        if (HasAbility(Ability.blacksmith) && atkeef == AttackEffect.DamageWeapon)
-        {
-                FindObjectOfType<PlayerEquipedItemsManager>().DamageItem(1);
-                _soundManager.PlaySound("breakItem");
-        }
-    }
-
     public void Stunned(float num)
     {
         if(num >= 60){ stunTimer += 2; }
@@ -328,135 +306,10 @@ public class enemyStats : MonoBehaviour
         }
     }
 
-    /*protected virtual void DecideNStartAction()
-    {
-        Debug.Log(gameObject.name+" in deciding");
-        //maybe move up should be a coroutine, so I can have it only happen at the end of frames
-        //MoveUP();disabled for now with hpBarManager adjustments and taking out hp bar
-        hasPickedAction = false;
-        if (myActionRoutine != null)
-        { StopCoroutine(myActionRoutine); }//to be sure its done and we don't double up on the action routines
-        myActionRoutine = null;
-        if(myActionRoutine != null)
-        {
-            hasStarted = true;
-        }
-
-        if (stunTimer>0)
-        {
-            myActionRoutine = StartCoroutine(StunnedRoutine());
-            hasPickedAction = true;
-        }
-        if(!hasPickedAction && myActionRoutine==null)
-        {
-                //speccial abiliy routines
-                if (HasAbility(Ability.steal) && amountRobbed > 5)
-                {
-                //myActionRoutine = StartCoroutine(RunRoutine());
-                    delegateAction = BeginRunUI;
-                    hasPickedAction = true;
-                }
-                else if(HasAbility(Ability.fire))
-            {
-                //testing basically a new trap or maybe chaning it to a block, maybe the traps should only go 
-                //off if you stop there? so players have more agency and they would need a lot of stuff covered
-                int rand = Random.Range(0, 10);
-                //50% for test
-                if(rand<3)
-                {
-                    _DelegateAction = PlaceTrap;
-                    //make fire trap
-                    //need info from enemy trap
-                    hasPickedAction = true;
-                }
-                //removed blocking for the time being
-            }
-        }
-        int randRage=(int)Random.Range(0, minMaxRageAttacks.y);
-        if(randRage<currentRageCount)
-        {
-            delegateAction = RageUI;
-            hasPickedAction = true;
-            currentRageCount = 0;
-        }
-        
-            //we are chaning the attack routine back into the action routine
-            //and making the deligate decide what they are doing,
-            //so for children of this we just need to overwrite this
-            //int rand = Random.Range(1, 11);
-            if (!hasPickedAction)
-            {
-                delegateAction = AttackUI;
-                hasPickedAction = true;
-            }
-        myActionRoutine = StartCoroutine(TheActionRoutine());
-            
-            else
-            { myActionRoutine = StartCoroutine(TheDefendingRoutine()); }
-        
-    }*/
+   
 
     #region Attack Stuff
-    /*protected virtual IEnumerator TheActionRoutine()
-    {
-        curState = attackState.waiting;
-        
-
-
-        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax+ waitTimerOffset));
-
-        //for event panel enemies being pacifist
-        while (EventManager.PanelUP == true)
-        {
-            yield return null;
-        }
-        //the showing also turns on the animation to throw the attack
-        StartCoroutine(moveToShowAttack());
-
-        //can we wait for another coroutine to be done? google says yes, below line seems simple enough
-        yield return moveToShowAttack();
-        //yield return new WaitForSeconds(readyingTimer);
-        //the readying timer seems a bit useless now could remove more than likley as it is the same
-        
-        curState = attackState.waiting;
-        
-        yield return new WaitForSeconds(strikeTimer);
-        //Debug.Log("got to the end of action routine: "+gameObject.name);
-        //DecideNStartAction();
-    }
-
-    public IEnumerator moveToShowAttack()
-    {
-        //this function has the enemy move up to the front of the strike area then attack
-        var sPos=spriteChild.transform.position;
-        float t = 0;
-        
-        while (t<1)
-        {
-            sPos = spriteChild.transform.position;
-            t = t + Time.deltaTime* 4f;
-            spriteChild.transform.position = Vector3.Lerp(sPos, attackThrowMarker.position, t);
-            yield return null;
-        }
-        
-        spriteChild.transform.position = attackThrowMarker.position;
-        //play animation
-        curState = attackState.ThrowingAttack;
-        //wait for the right amount time for the animation to finish hopefully
-        yield return new WaitForSeconds(0.5f);
-        SendActionUI();
-        //moving back to their spot
-        t = 0;
-
-        while (t < 1)
-        {
-            sPos = spriteChild.transform.position;
-            t = t + Time.deltaTime;
-            spriteChild.transform.position = Vector3.Lerp(sPos, spotToReturnTo.position, t);
-            yield return null;
-        }
-        spriteChild.transform.position = spotToReturnTo.position;
-    }*/
+    
 
     public bool HasAbility(Ability abl)//mostly called in here called in EnemyHPBarPlacerManager to check if boss
     {
@@ -469,22 +322,6 @@ public class enemyStats : MonoBehaviour
         }
         return false;
     }
-
-    /*public IEnumerator SasumataRoutine()
-    {
-        curState = attackState.waiting;
-        yield return new WaitForSeconds(Random.Range(randWaitmin + waitTimerOffset, randWaitmax + waitTimerOffset));
-
-        curState = attackState.ThrowingAttack;
-        //SpecialUI();
-        
-        yield return new WaitForSeconds(readyingTimer);
-        curState = attackState.waiting;
-
-        yield return new WaitForSeconds(strikeTimer);
-
-        DecideNStartAction();
-    }*/
 
     public IEnumerator StunnedRoutine()
     { 
@@ -499,120 +336,7 @@ public class enemyStats : MonoBehaviour
         //DecideNStartAction();
     }
 
-    /*public void AttackUI()
-    {
-        var dir = Random.Range(0, atkDirs.Count);
-        int randAttack = Random.Range(0, atkPrefabs.Count);
-        float dmg = Random.Range(damgMin, damgMax);
-        //atkDirs[0]= standard, [1] = top atk spawn, [2] bottom, [3]Reverse start
-
-        GameObject atk = Instantiate(atkPrefabs[randAttack], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
-
-        EnmAtKArea enmAtk = atk.GetComponent<EnmAtKArea>();
-        if(enmAtk!=null)
-            enmAtk.SetDamage(dmg, damgMax);
-
-        if (atkDirs[dir].y == 0)
-        {
-            if (basicAttackDiversity)
-            {
-                int rand = Random.Range(0, 3);
-                atk.transform.position = atkStarts[rand].transform.position;
-            }
-            else
-            { atk.transform.position = atkStarts[0].transform.position; }
-        }
-        else if (atkDirs[dir].y == -0.5)
-        {
-            atk.transform.position = atkStarts[1].transform.position;
-        }
-        else if (atkDirs[dir].y == 0.5)
-        {
-            atk.transform.position = atkStarts[2].transform.position;
-        }
-        /*else if (atkDirs[dir].x == 0)
-        {
-            atk.transform.position = atkStarts[1].transform.position;
-            atk.transform.Rotate(0f, 0f, 90f, Space.Self);
-        //this was an attempt to make it go down but its too off center for it to work
-        }*//*
-        else
-        {
-            atk.transform.position = atkStarts[3].transform.position;
-        }
-
-
-        //atk.GetComponent<EnmAtKArea>().Setstuff(this, atkEnd.transform, atkDirs[dir]); writing a new behavior stuff anyway
-        var newList = new List<GameObject>();
-        if (currentAttacks.Count > 0)
-            foreach (var swing in currentAttacks)
-                if (swing != null)
-                    newList.Add(swing);
-
-        newList.Add(atk);
-        currentAttacks = newList;
-
-    }*/
-
-    /*public void RageUI()
-    {
-        StartCoroutine(RageRoutine());
-    }*/
-
-    /*public IEnumerator RageRoutine()
-    {
-        int Rager = 0;
-        int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);
-        while(Rager<randomRageAttack)
-        {
-            AttackUI();
-            yield return new WaitForSeconds(1f);
-            Rager++;
-        }
-        currentRageCount = 0;
-        WeaknessSpawnManager.instance.SpawnWeakPoint();
-    }*/
-
-    /*public void SpecialUI()
-    {
-        var dir = Random.Range(0, SpecialDirs.Count);
-        int randSpecial = Random.Range(0, specialPrefabs.Count);
-        float dmg = Random.Range(damgMin, damgMax);
-
-        GameObject special = Instantiate(specialPrefabs[randSpecial], atkStarts[0].transform.position, atkStarts[0].transform.rotation);
-        
-
-        // set damage if any    special.GetComponent<EnmAtKArea>().SetDamage(dmg, damgMax);
-
-        if (SpecialDirs[dir].y == 0)
-        {
-            if (basicAttackDiversity)
-            {
-                int rand = Random.Range(0, 3);
-                special.transform.position = atkStarts[rand].transform.position;
-            }
-            else
-            { special.transform.position = atkStarts[0].transform.position; }
-        }
-        else if (SpecialDirs[dir].y == -0.5)
-        {
-            special.transform.position = atkStarts[1].transform.position;
-        }
-        else if (SpecialDirs[dir].y == 0.5)
-        {
-            special.transform.position = atkStarts[2].transform.position;
-        }
-
-        special.GetComponent<SasumataUIScript>().Setstuff(this, atkEnd.transform, SpecialDirs[dir]);
-        var newList = new List<GameObject>();
-        if (currentAttacks.Count > 0)
-            foreach (var swing in currentAttacks)
-                if (swing != null)
-                    newList.Add(swing);
-
-        newList.Add(special);
-        currentAttacks = newList;
-    }*/
+    
 
     public void hitNow(float dmg,AttackEffect atkeef)
     {
@@ -640,16 +364,6 @@ public class enemyStats : MonoBehaviour
     }
 
     #endregion
-    
-    /*private void PlaceTrap()
-    {
-        //currently places sumo blocks and fire dude trap
-        int rand = Random.Range(0, BlockSpots.Count + 2);
-        rand = Mathf.Clamp(rand - 2, 0, BlockSpots.Count);
-        //look up better way of weighting outcomes of randomness
-        var trap=Instantiate(specialPrefabs[0], BlockSpots[rand].position, transform.rotation);
-        BlockSets.Add(trap);
-    }*/
 
 
     protected virtual IEnumerator TheDefendingRoutine()
@@ -708,13 +422,6 @@ public class enemyStats : MonoBehaviour
             }
         }
     }
-
-    /*public void BeginRunUI()
-    {
-        GameObject run = Instantiate(specialPrefabs[0], atkStarts[3].transform.position, atkStarts[3].transform.rotation);
-        //run.GetComponent<EnmAtKArea>().Setstuff(this, atkStarts[0].transform, SpecialDirs[0]); writting a new enemyBehavior
-        currentAttacks.Add(run);
-    }*/
 
     public void IRan()
     {

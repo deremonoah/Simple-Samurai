@@ -42,7 +42,8 @@ public class attack : MonoBehaviour
             }
             else
             {
-                myenm.GetComponent<EnemyBehavior>().Blocked();
+                Weapon thatBlocked=FindObjectOfType<PlayerEquipedItemsManager>().getEquipedWeapon();
+                myenm.GetComponent<EnemyBehavior>().Blocked(atkEef, thatBlocked);
                 FindObjectOfType<SoundManager>().PlaySound("block");
                 ParticleManager.instance.BlockedHere(posBlock, damage);
                 Destroy(gameObject);
@@ -127,4 +128,8 @@ public class attack : MonoBehaviour
     {
         endPos = EnemysManager.instance.getEndAttackPos();
     }
+}
+public enum AttackEffect
+{
+    none, DamageWeapon, DamageArmor, confuseStyle
 }
