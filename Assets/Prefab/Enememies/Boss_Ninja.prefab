@@ -17,6 +17,10 @@ PrefabInstance:
       value: 36
       objectReference: {fileID: 0}
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: minMaxRageAttacks.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: trapPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}

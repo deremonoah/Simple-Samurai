@@ -220,12 +220,15 @@ public class EnemyBehavior : MonoBehaviour
     public IEnumerator RageRoutine()
     {
         int Rager = 0;
-        int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);
+        int randomRageAttack = (int)Random.Range(minMaxRageAttacks.x, minMaxRageAttacks.y);//I realize if its 2,3 it can't get 3 attacks
+        //DelegateAction= AttackUIRoutine();
         while (Rager < randomRageAttack)
         {
-            AttackUIRoutine();
+            yield return AttackUIRoutine();
             yield return new WaitForSeconds(TimeBetweenRageAttacks); //would be nice if this number changed imo, like over time many at first but then slower
             Rager++;
+            if (Rager < randomRageAttack)//only draw back if there will be another attack
+            { yield return DrawBackToAttackRoutine(); }
         }
         currentRageCount = 0;
         WeaknessSpawnManager.instance.SpawnWeakPoint();

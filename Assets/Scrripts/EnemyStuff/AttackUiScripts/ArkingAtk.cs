@@ -54,6 +54,7 @@ public class ArkingAtk : attack
         //once the attack is past designated area it is destoryed
         if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {
+            Debug.Log("enemy null?" + (myenm == null));
             myenm.hitNow(damage, atkEef);
             Destroy(gameObject);
         }
