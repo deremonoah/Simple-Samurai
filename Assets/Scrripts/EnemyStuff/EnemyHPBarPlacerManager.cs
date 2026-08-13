@@ -53,6 +53,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             barb = bossHPUI;
             barToUse = barb.getHPBar();
             aliveEnemies[posInList].HPBarToMove = bossHPUI.gameObject.transform;
+            enm.myHPBar = bossHPUI.getHPBar();
             enm.myHPBar.fillAmount = enm.getCurrentHP() / enm.maxHP;
             bossHPUI.gameObject.SetActive(true);
             enm.PoisonText = bossPoisonText;

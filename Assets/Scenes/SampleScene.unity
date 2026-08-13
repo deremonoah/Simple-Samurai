@@ -22958,7 +22958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 875.07983, y: 929.75}
+  m_AnchoredPosition: {x: -69, y: 173}
   m_SizeDelta: {x: 460.16, y: 146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &852838149
@@ -42601,7 +42601,7 @@ MonoBehaviour:
   - {fileID: 575487402}
   HideHere: {x: 0, y: -9.34, z: 0}
   bossHPUI: {fileID: 1743501301}
-  bossPoisonText: {fileID: 0}
+  bossPoisonText: {fileID: 852838150}
 --- !u!114 &1720040902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52942,7 +52942,7 @@ PrefabInstance:
       objectReference: {fileID: 1594289841}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
@@ -53383,11 +53383,11 @@ PrefabInstance:
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: PrimaryWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 8182fcc23c639af458b506c751b69bcb, type: 2}
+      objectReference: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: equipedWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 8182fcc23c639af458b506c751b69bcb, type: 2}
+      objectReference: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: SecondaryWeapon
       value: 
