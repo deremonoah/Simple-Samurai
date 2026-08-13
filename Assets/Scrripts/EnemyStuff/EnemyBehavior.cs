@@ -71,8 +71,6 @@ public class EnemyBehavior : MonoBehaviour
             DelegateAction = AttackUIRoutine();
         }
 
-        DelegateAction = RageRoutine();
-
         myActionRoutine = StartCoroutine(actionRoutine());
     }
 

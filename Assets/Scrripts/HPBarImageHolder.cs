@@ -15,7 +15,7 @@ public class HPBarImageHolder : MonoBehaviour
     {
         return hpBar;
     }
-    public TextMeshProUGUI getTextField()
+    public TextMeshProUGUI getPoisonTextField()
     {
         return poisonText;
     }

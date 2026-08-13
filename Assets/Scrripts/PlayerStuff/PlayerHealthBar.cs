@@ -253,14 +253,14 @@ public class PlayerHealthBar : MonoBehaviour
 
     IEnumerator OnFire(float dmg)
     {
-        FireLeft += Mathf.Clamp(34f - dmg,6,1000);//right now fire guy does 10-30 damage, I want the less damage the longer lasting fire, cause otherwise just seems like hit big do the most
+        FireLeft += Mathf.Clamp(4f + dmg,6,1000);//right now fire guy does 10-30 damage, I want the less damage the longer lasting fire, cause otherwise just seems like hit big do the most
         //+= so if hit again it can stack
         PlayerOnFireSprite.SetActive(true);
         //we might need to add an if checking a immunity to fire
         while (RollCount< FireLeft)
         {
             
-            health -= Time.deltaTime*3;//idk man if I want it to burn them 1 damage a second doesn't seem noticable rn
+            health -= Time.deltaTime*2;//idk man if I want it to burn them 1 damage a second doesn't seem noticable rn
             FireLeft -= Time.deltaTime;
             if(Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))
             {

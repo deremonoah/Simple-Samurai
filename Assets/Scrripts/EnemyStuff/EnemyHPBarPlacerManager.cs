@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyHPBarPlacerManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
 
     [Header("Boss HP Bar stuff")]
     [SerializeField] HPBarImageHolder bossHPUI;
+    [SerializeField] TextMeshProUGUI bossPoisonText;
 
     private StrikeArea areaToChangeTarget;
 
@@ -53,6 +55,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             aliveEnemies[posInList].HPBarToMove = bossHPUI.gameObject.transform;
             enm.myHPBar.fillAmount = enm.getCurrentHP() / enm.maxHP;
             bossHPUI.gameObject.SetActive(true);
+            enm.PoisonText = bossPoisonText;
         }
         else//non boss
         {
@@ -61,6 +64,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             aliveEnemies[posInList].HPBarToMove = UIPool[0];
             barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
             barb.getTransformToScale().localScale = new Vector3(enm.maxHP / 150, 1, 1);
+            enm.PoisonText = barb.getPoisonTextField();
         }
             aliveEnemies[posInList].myHPBar = barToUse;
             //set refrences for hpbar
@@ -163,7 +167,8 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             {
                 if(aliveEnemies.Count==2)
                 {
-                    Vector3 PosToGo = Vector3.Lerp(ListToUse[1].position, ListToUse[3].position, 0.5f);
+                    Debug.Log("this should assign the position twice");
+                    Vector3 PosToGo = Vector3.Lerp(ListToUse[0].position, ListToUse[1].position, 0.5f);
                     barpos.position = PosToGo;
                 }
                 else if(aliveEnemies.Count==3)
@@ -180,12 +185,12 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
                 }
                 else if(aliveEnemies.Count ==2)
                 {
-                    Vector3 PosToGo = Vector3.Lerp(ListToUse[0].position, ListToUse[2].position, 0.5f);
+                    Vector3 PosToGo = Vector3.Lerp(ListToUse[2].position, ListToUse[3].position, 0.5f);
                     barpos.position = PosToGo;
                     
                 }
                 //setting strike area to have right target number based on new positional system
-                Debug.Log(aliveEnemies.Count);
+                //Debug.Log(aliveEnemies.Count);
                 if(aliveEnemies.Count>1)
                 {
                     areaToChangeTarget.SetTarget(1);

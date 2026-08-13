@@ -209,7 +209,7 @@ public class enemyStats : MonoBehaviour
                 case WeaponEffect.none:
                     break;
                 case WeaponEffect.flame:
-                    StartCoroutine(OnFire());
+                    StartCoroutine(OnFire(deal/2));//so with base version 50 full damage will be 32 fire damage over time, likley
                     OnFireSprite.SetActive(true);
                     //add sound effect here
                     break;
@@ -441,15 +441,18 @@ public class enemyStats : MonoBehaviour
             randWaitmax = randWaitmin;
     }
 
-    IEnumerator OnFire()
+    IEnumerator OnFire(float dmg)
     {
+        Debug.Log("dmg sent in" + dmg);
         yield return new WaitForSeconds(0.5f);
-        HP -= 1;
-        int randNum = Random.Range(0, 10);
-        if (randNum < 8)
+        HP -= 2;
+        dmg -= 1;
+        myHPBar.fillAmount = HP / maxHP;
+        int randNum = Random.Range(0, 6);
+        if (dmg > randNum)//to simulate them maybe putting it out, maybe i could get behavior to pay attention to this sort of show putting themselves out if they choose
         {
             OnFireSprite.SetActive(true);
-            StartCoroutine(OnFire());
+            StartCoroutine(OnFire(dmg));
         }else
         {
             OnFireSprite.SetActive(false);
@@ -540,8 +543,7 @@ public class enemyStats : MonoBehaviour
         yield return new WaitForSeconds(.3f);
         //set poisonTimer off initial attack
         myHPBar.color = FindObjectOfType<ColorManager>().PoisonedColor;
-        //healthBar.color =  Color.black;
-        //would like to change that to purple
+
         //PoisonText.gameObject.SetActive(true); can just have no text
 
         while (PoisonTimer > 0)

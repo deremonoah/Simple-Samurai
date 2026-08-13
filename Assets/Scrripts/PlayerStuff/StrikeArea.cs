@@ -390,6 +390,6 @@ public class StrikeArea : MonoBehaviour
     {
         targetEnemy.Clear();
         targetEnemy.Add(target);
-        Debug.Log("set target to " + target);
+        //Debug.Log("set target to " + target);
     }
 }

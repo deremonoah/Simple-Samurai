@@ -27,9 +27,9 @@ MonoBehaviour:
   - 8
   - 11
   maxDamageLevel:
-  - 65
-  - 70
-  - 80
+  - 50
+  - 60
+  - 75
   - 95
   effs: 01000000
   damageMults:
