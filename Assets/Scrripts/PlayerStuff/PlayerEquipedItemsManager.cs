@@ -31,6 +31,11 @@ public class PlayerEquipedItemsManager : MonoBehaviour
     [SerializeField] List<ExtraStrikeArea> extraStrikeAreas;
     public bool twoWeapons;
 
+    [Header("Item recieved variables")]
+    [SerializeField] GameObject itemAnimPrefab;//this is the item that is spawned and moved or the icon
+    [SerializeField] Transform parentForUIAnim;
+    [SerializeField] float showSpeed;
+
     private void Start()
     {
         _mainStrikeArea = FindObjectOfType<StrikeArea>();
@@ -51,25 +56,27 @@ public class PlayerEquipedItemsManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            EquipItem(_mainStrikeArea.TestWeapon,false);
+            EquipItem(_mainStrikeArea.TestWeapon,null);
         }
 
     }
        
 #endif
 
-public void EquipItem(Item item, bool lootingUpgradesEnabled)
+public void EquipItem(Item item, Transform fromHere)
     {
+        Transform goingHere = null;
+        
         if (item.GetType() == typeof(Weapon))
         {
-            if (lootingUpgradesEnabled && item.name == _mainStrikeArea.equipedWeapon.name)
+            /*if (lootingUpgradesEnabled && item.name == _mainStrikeArea.equipedWeapon.name)
             {
                 _mainStrikeArea.equipedWeapon.itemLevel = Mathf.Clamp(_mainStrikeArea.equipedWeapon.itemLevel + 1, 0, 3);
                 foreach (ExtraStrikeArea ex in extraStrikeAreas)
                 {
                     ex.SetExtrasWeapon(_mainStrikeArea.equipedWeapon);
                 }
-            }
+            }*/
             if(item!=equipedWeapon)//if its not a new weapon we don't want to add a copy into armory
             {
                 GetComponent<Armory>().AddItemToArmory(equipedWeapon);
@@ -78,24 +85,25 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
             PrimaryWeapon = equipedWeapon;
             _mainStrikeArea.SetWeapon(item as Weapon);
             PrimaryweaponIcon.sprite = item.itemPanelIcon;
+            goingHere = PrimaryweaponIcon.gameObject.transform;
             //we will  have to update this to if unlocked and no secondary add it there or stock pile
            
 
         }
         if (item.GetType() == typeof(Armor))
         {
-            if (lootingUpgradesEnabled && item.name == _playerHP.myArmor.name)
+            /*if (lootingUpgradesEnabled && item.name == _playerHP.myArmor.name)
             {
                 _playerHP.myArmor.itemLevel = Mathf.Clamp(_playerHP.myArmor.itemLevel + 1, 0, 3);
-            }
-            if(item!=equipedArmor)
+            }*/
+            if (item!=equipedArmor)
             {
                 GetComponent<Armory>().AddItemToArmory(equipedArmor);
             }
             equipedArmor = (Armor)item; 
             _playerHP.SetArmor(item as Armor);
             armorIcon.sprite = item.itemPanelIcon;
-
+            goingHere = armorIcon.gameObject.transform;
         }
         if (item.GetType() == typeof(Curio))
         {
@@ -109,9 +117,15 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
             //curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
             _playerHP.SetCurio(item as Curio);
+            goingHere = curioIcon.gameObject.transform;
         }
 
         UpdateItemUpgrades();
+        if(goingHere!=null && fromHere!=null)
+        {
+            StartCoroutine(ItemRecievedRoutine(fromHere,goingHere,item));
+        }
+        
     }
 
     //I need a way to handle getting the secondary stuff equiped
@@ -190,13 +204,13 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
         if(kind == 1)
         {
             equipedWeapon.itemLevel = Mathf.Clamp(equipedWeapon.itemLevel - 1, 0, 3);
-            EquipItem(equipedWeapon, false);
+            EquipItem(equipedWeapon, null);
         }
         //armor
         else if(kind == 2)
         {
             equipedArmor.itemLevel = Mathf.Clamp(equipedArmor.itemLevel - 1, 0, 3);
-            EquipItem(equipedArmor, false);
+            EquipItem(equipedArmor, null);
         }
     }
 
@@ -213,5 +227,31 @@ public void EquipItem(Item item, bool lootingUpgradesEnabled)
     public Weapon getEquipedWeapon()// for Style Display
     {
         return equipedWeapon;
+    }
+
+    IEnumerator ItemRecievedRoutine(Transform fromHere, Transform goingHere,Item item)
+    {
+        goingHere.gameObject.SetActive(false);
+        
+        Vector3 endPos = goingHere.position;
+        Vector3 startPos = fromHere.position;
+        Transform moveObj = Instantiate(itemAnimPrefab).GetComponent<Transform>();
+        moveObj.SetParent(parentForUIAnim);
+        moveObj.GetComponent<Image>().sprite = item.itemPanelIcon;
+        float timeEslapsed=0;
+        float duration = Vector3.Distance(startPos,endPos) / showSpeed;
+
+        while (moveObj.position!=endPos)
+        {
+            float t = timeEslapsed/ duration;
+            moveObj.position = Vector3.Lerp(startPos, endPos,t);
+
+            timeEslapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        goingHere.gameObject.SetActive(true);
+        Destroy(moveObj.gameObject);
     }
 }

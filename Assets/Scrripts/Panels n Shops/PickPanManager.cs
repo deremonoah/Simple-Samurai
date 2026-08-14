@@ -87,7 +87,7 @@ public class PickPanManager : MonoBehaviour
             {
                 ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
             }
-            _playerEquipedItems.EquipItem(randLootPicks[buttonID], _blacksmithShop.lootingUpgradesEnabled);
+            _playerEquipedItems.EquipItem(randLootPicks[buttonID], buttonImages[buttonID].transform);
 
             randLootPicks.Clear();
 
@@ -177,7 +177,7 @@ public class PickPanManager : MonoBehaviour
                 _playerHP.HealPlayer(cur.CurioNum);
                 break;
             case CurioEffect.quick:
-                _playerEquipedItems.EquipItem(cur, _blacksmithShop.lootingUpgradesEnabled);
+                _playerEquipedItems.EquipItem(cur, null);
                 break;
         }
     }

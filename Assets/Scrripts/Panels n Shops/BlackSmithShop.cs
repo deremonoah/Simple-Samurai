@@ -25,6 +25,7 @@ public class BlackSmithShop : MonoBehaviour
     [SerializeField] int perminentCostReduction;
     [SerializeField] int tempWeaponCostReduction;
     [SerializeField] int tempArmorCostRecution;
+    [SerializeField] Transform rewardFromHere;
     //maybe add a 3rd for blanket?
 
     void Start()
@@ -42,7 +43,7 @@ public class BlackSmithShop : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R))
         { 
             pEquip.equipedWeapon.itemLevel = 0;
-            pEquip.EquipItem(pEquip.equipedWeapon, lootingUpgradesEnabled);
+            pEquip.EquipItem(pEquip.equipedWeapon, rewardFromHere);
         }
 #endif
     }
@@ -57,7 +58,7 @@ public class BlackSmithShop : MonoBehaviour
         if (itemLvl <= 3 && _gm.playerCoins >= cost)
         {
             pEquip.equipedWeapon.itemLevel = Mathf.Clamp(itemLvl, 0, 3);
-            pEquip.EquipItem(pEquip.equipedWeapon, lootingUpgradesEnabled);
+            pEquip.EquipItem(pEquip.equipedWeapon, rewardFromHere);
 
             _gm.playerCoins -= cost;
             tempWeaponCostReduction = 0;
@@ -75,7 +76,7 @@ public class BlackSmithShop : MonoBehaviour
         if (itemLvl <= 3 && _gm.playerCoins >= cost)
         {
             pEquip.equipedArmor.itemLevel = Mathf.Clamp(itemLvl, 0, 3);
-            pEquip.EquipItem(pEquip.equipedArmor, lootingUpgradesEnabled);
+            pEquip.EquipItem(pEquip.equipedArmor, rewardFromHere);
 
             _soundM.PlaySound("upgrade");
             tempArmorCostRecution = 0;
@@ -143,7 +144,7 @@ public class BlackSmithShop : MonoBehaviour
             //the premo stuff here
             //free weapon or armor, maybe perminent reduce cost
             rand = Random.Range(0, itemRewards.Count);
-            pEquip.EquipItem(itemRewards[rand], false);
+            pEquip.EquipItem(itemRewards[rand], rewardFromHere);
         }
 
         SetUpgradeCostsButtonsText();

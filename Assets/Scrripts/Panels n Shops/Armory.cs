@@ -134,7 +134,7 @@ public class Armory : MonoBehaviour
             {
                 Item moveThis = stockPile[slot];
                 stockPile.RemoveAt(slot);
-                equipManager.EquipItem(moveThis, false);//has to be called after becuase the item will be in stock pile twice long enough for issues
+                equipManager.EquipItem(moveThis, InventorySlotsActive[slot].transform);//has to be called after becuase the item will be in stock pile twice long enough for issues
                 LoadArmoryPanel();//to update the images to the correct items
             }
         }

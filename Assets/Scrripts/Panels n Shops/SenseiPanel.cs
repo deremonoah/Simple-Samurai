@@ -16,6 +16,7 @@ public class SenseiPanel : MonoBehaviour
     [Header("Helping rewards")]
     [SerializeField] int aproval;//for how much they like you
     [SerializeField] List<Item> itemRewards;
+    [SerializeField] Transform rewardFromHere;
     //rewards for something else?
 
     private PlayerEquipedItemsManager pEquip;
@@ -69,7 +70,7 @@ public class SenseiPanel : MonoBehaviour
         {
             //give player a hat of the quick if he doesn't have one
             rand = Random.Range(0, itemRewards.Count);
-            pEquip.EquipItem(itemRewards[rand], false);
+            pEquip.EquipItem(itemRewards[rand], rewardFromHere);
             //the premo stuff here
             //like increase pointer or get special curio or weapon
             //maybe style unlock here too?

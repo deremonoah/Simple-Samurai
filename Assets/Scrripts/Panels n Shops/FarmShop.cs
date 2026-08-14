@@ -35,6 +35,7 @@ public class FarmShop : MonoBehaviour
     [SerializeField] int aproval;//for how much they like you
     [SerializeField] List<Item> itemRewards;
     [SerializeField] int FavoredCostReduction;//perminent
+    [SerializeField] Transform rewardFromHere;
 
     [Header("Temporary helping buffs")]//do I need to see this in inspector?
     [SerializeField] int healCostReduction;
@@ -172,7 +173,7 @@ public class FarmShop : MonoBehaviour
         else if(rand>100)
         {
             rand = Random.Range(0, itemRewards.Count);
-            pEquip.EquipItem(itemRewards[rand], false);
+            pEquip.EquipItem(itemRewards[rand], rewardFromHere);
         }
         improveFarmProgress += 1;
 
