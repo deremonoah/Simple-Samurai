@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SenseiPanel : MonoBehaviour
+public class SenseiPanel : ShopReward
 {
     [Header("most recent score")]
     [SerializeField] float recentScore;//I plan to remove this
 
-    [SerializeField] List<GameObject> styleUIs;
     [SerializeField] GameObject panelButton;
     int stylesKnown=1;
+    private StyleDisplay stylesOnPanel;
     //A list of the styles excluding simple so it isn't disable on start
 
     [Header("Helping rewards")]
@@ -23,11 +23,8 @@ public class SenseiPanel : MonoBehaviour
     void Start()
     {
         panelButton.SetActive(false);
-        foreach (GameObject style in styleUIs)
-        {
-            style.SetActive(false);
-        }
         pEquip = FindObjectOfType<PlayerEquipedItemsManager>();//for giving player items
+        stylesOnPanel = parentObj.GetComponentInChildren<StyleDisplay>();
     }
 
     public void newStyles(int num)//should this not add them?
@@ -59,18 +56,22 @@ public class SenseiPanel : MonoBehaviour
             //nothing given
             //increase liked more
             aproval += 5;
+            ShowAppreciation(heartOverHead, null);
             return;
         }
 
         else if (rand >= 21 && rand <= 89)//with difficulty of the dusting maybe this is passed too often idk how to get better at it? other than faster clicking?
         {
             stylesKnown += 1;
-        }
+            stylesOnPanel.DisplayStyles();
+            ShowAppreciation(heartOverHead, stylesOnPanel.getPosFromStylesKnown(stylesKnown));
+        }//TODO: need more rewards from the sensei
         else if (rand > 90)
         {
             //give player a hat of the quick if he doesn't have one
             rand = Random.Range(0, itemRewards.Count);
             pEquip.EquipItem(itemRewards[rand], rewardFromHere);
+            ShowAppreciation(heartOverHead, null);
             //the premo stuff here
             //like increase pointer or get special curio or weapon
             //maybe style unlock here too?

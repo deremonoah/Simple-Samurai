@@ -30,7 +30,7 @@ public class StyleDisplay : MonoBehaviour
         StartCoroutine(displayStyles());
     }
 
-    public void DisplayStylesForIP()
+    public void DisplayStyles()
     {
         StartCoroutine(displayStyles());
     }
@@ -80,5 +80,10 @@ public class StyleDisplay : MonoBehaviour
     {
         StylePatternImage.sprite = stylePic;
         //equiping style happens 
+    }
+
+    public Transform getPosFromStylesKnown(int num)//for SenseiPanel
+    {
+        return boxesForStyles[num-1].transform;//styles known starts at 1 so it is off by 1
     }
 }

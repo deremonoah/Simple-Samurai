@@ -11,7 +11,7 @@ public class StrikeButton : MonoBehaviour
 
     private void Update()
     {
-        if((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Space))&&inStrikeArea)
+        if((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))&&inStrikeArea)
         {
             StartCoroutine(StartRoutine());
         }

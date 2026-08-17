@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BlackSmithShop : MonoBehaviour
+public class BlackSmithShop : ShopReward
 {
     [Header("most recent score")]
     [SerializeField] float recentScore;//I plan to remove this
@@ -121,23 +121,28 @@ public class BlackSmithShop : MonoBehaviour
         {
             //nothing given
             //increase liked more
+            ShowAppreciation(heartOverHead, null);
             return;
         }
-        else if (rand >= 20 && rand <= 49)
+        else if (rand >= 20 && rand <= 29)
         {
             //reduced cost upgrade or gives you 3-7 gold?
             int coins = Random.Range(3, 7);
             _gm.playerCoins += coins;
+            ShowAppreciation(heartOverHead,null);
+            return;
         }
-        else if (rand >= 50 && rand <= 69)
+        else if (rand >= 30 && rand <= 59)
         {
             //temporary buff to weapon max damage or base damage
             tempWeaponCostReduction = 40;
+            ShowAppreciation(heartOverHead, improveWeaponText.transform);
         }
-        else if (rand >= 70 && rand <= 89)
+        else if (rand >= 60 && rand <= 89)
         {
             //free upgrade for either?
             tempArmorCostRecution = 40;
+            ShowAppreciation(heartOverHead, improveArmorText.transform);
         }
         else if (rand > 90)
         {
@@ -145,6 +150,7 @@ public class BlackSmithShop : MonoBehaviour
             //free weapon or armor, maybe perminent reduce cost
             rand = Random.Range(0, itemRewards.Count);
             pEquip.EquipItem(itemRewards[rand], rewardFromHere);
+            ShowAppreciation(heartOverHead, null);
         }
 
         SetUpgradeCostsButtonsText();

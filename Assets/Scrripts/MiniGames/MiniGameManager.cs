@@ -41,7 +41,6 @@ public class MiniGameManager : MonoBehaviour
         EnableHiddenUI(false);
         MiniGames[mg].SetActive(true);
         currentGame = MiniGames[mg].GetComponent<MiniGame>();
-        Debug.Log("game number " + mg + "name is "+currentGame.name);
         //Debug.Log("should have set mini game"); 
 
         if (dayRoutine==null)
