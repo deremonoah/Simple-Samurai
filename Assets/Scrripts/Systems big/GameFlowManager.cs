@@ -41,7 +41,7 @@ public class GameFlowManager : MonoBehaviour
 
     IEnumerator FlowRoutine()
     {
-        
+        FindObjectOfType<MiniGameManager>().RollToSeeIfTheyNeedHelp();
         //looting stuff
         _PickPanelManager.OpenPickPan(0);
         StrikeArea.SwitchPlayerOn(false);

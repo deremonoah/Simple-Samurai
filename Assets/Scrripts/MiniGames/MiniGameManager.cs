@@ -8,6 +8,7 @@ public class MiniGameManager : MonoBehaviour
     //states: outOfMiniGames, start of minigames, scoring/endSlide
     //which mini game is loaded (enabled to only take in that input)
     [SerializeField] List<GameObject> MiniGames;//have an enum refrencing correct order of games
+    [SerializeField] List<GameObject> miniGameButtonsInShops;
     private MiniGame currentGame;
     //needs to deal with flow manager
     [Header("Day's Work Timer")]
@@ -32,12 +33,32 @@ public class MiniGameManager : MonoBehaviour
         
     }
 
+    public void RollToSeeIfTheyNeedHelp()
+    {
+        int rand = Random.Range(0, 10);//to give 3/10 none need help. and can go up so even more can miss
+        int randAm = Random.Range(0, 3);//for getting less than all 3 turned on at once
+        rand -= 3;//idk man
+        if(rand>0 && rand<miniGameButtonsInShops.Count)
+        {
+            for(int lcv = rand;lcv < miniGameButtonsInShops.Count && rand<rand+randAm;lcv++)
+            {
+                miniGameButtonsInShops[lcv].SetActive(true);
+            }
+        }
+    }
+
     // Update is called once per frame
     public void OpenMiniGames(int mg)
     {
         //Debug.Log("MiniGameButton presesed " + mg);
         //enables the corect minigame, probably needs to be from a panel
         //but for now will just enable blacksmith game
+
+        foreach(GameObject button in miniGameButtonsInShops)
+        {
+            button.SetActive(false);
+        }
+
         EnableHiddenUI(false);
         MiniGames[mg].SetActive(true);
         currentGame = MiniGames[mg].GetComponent<MiniGame>();
