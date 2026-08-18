@@ -191,8 +191,8 @@ public class StrikeArea : MonoBehaviour
             //things i can set are, base damage, damage multipliers, max damage
             //basic katan level 1 max dmg 60 base dmg 3
             //basic katana level 4 xdmg 100 bdmg 10
-            baseDamage = weaponCount;
-            maxDamage = weaponCount *30;
+            baseDamage = Mathf.Clamp(weaponCount,1,1000);//added clamp so that it can't do zero damage or 1 at lowest
+            maxDamage = Mathf.Clamp(weaponCount, 1, 1000) * 20;
         }//realizing the design of this system and its scaleability is kinda rough. with multipliers and the way I calculate it
 
     }

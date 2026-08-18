@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: ArmoryBlade
   m_EditorClassIdentifier: 
   itemName: Armory Blade
-  itemPanelIcon: {fileID: 21300000, guid: a5dc216704d43c14a9f2c68bd5dcccf1, type: 3}
+  itemPanelIcon: {fileID: 21300000, guid: 49be9c6b442668b478d4ba40a80ec654, type: 3}
   itemDescription: this weapon power scales with the number of weapons in your armory
   itemLevel: 0
-  myStrikeArea: {fileID: 21300000, guid: 506c6b5f3d8a58c428eecf50e5781bbc, type: 3}
-  StrikePoint: {fileID: 21300000, guid: 5ba21a44297900547a951e8ac54e52db, type: 3}
+  myStrikeArea: {fileID: 21300000, guid: e8208689b0d78b64aac250d2594b74eb, type: 3}
+  StrikePoint: {fileID: 21300000, guid: ed7fb4563bd99eb4a82f8afe8fed9263, type: 3}
   PointersList: []
-  DisplayStrikeAreaIcon: {fileID: 21300000, guid: c35ec0794fe4381419c330223a8fd5cc, type: 3}
+  DisplayStrikeAreaIcon: {fileID: 21300000, guid: e8208689b0d78b64aac250d2594b74eb, type: 3}
   baseDamageLevel:
   - 1
   - 1
@@ -33,9 +33,9 @@ MonoBehaviour:
   effs: 0e000000
   damageMults:
   - 1
-  - 6
+  - 5
   - 8
-  - 10
+  - 8
   - 12
   - 20
   readyingSounds: []

@@ -53627,11 +53627,11 @@ PrefabInstance:
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: PrimaryWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+      objectReference: {fileID: 11400000, guid: c0ba7970af489b74ba0e91149345d014, type: 2}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: equipedWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 0fa669657a5584d49b0ee9faa437192f, type: 2}
+      objectReference: {fileID: 11400000, guid: c0ba7970af489b74ba0e91149345d014, type: 2}
     - target: {fileID: 7633312787459196708, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: itemAnimPrefab
       value: 
