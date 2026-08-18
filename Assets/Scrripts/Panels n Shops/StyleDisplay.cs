@@ -62,7 +62,6 @@ public class StyleDisplay : MonoBehaviour
         if(where==whereStyle.itemDisplayPanel)
         {
             //get it from Item display Panel
-            Debug.Log("is ip null?" + ip == null);
             return ip.getWeapon();//null exception here might mean you left display weapon enabled on the item display panel
             //as it gets enabled then disabled, there is a frame or less its enabled and will try to get a refrence that isn't there yet
         }

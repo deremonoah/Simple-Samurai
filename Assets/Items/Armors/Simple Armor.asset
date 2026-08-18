@@ -17,10 +17,15 @@ MonoBehaviour:
   itemDescription: the same kind you started with
   itemLevel: 0
   armorLevel:
-  - 5
-  - 8
-  - 10
-  - 14
+  - 20
+  - 25
+  - 30
+  - 45
+  armorRegenPerSecond:
+  - 1
+  - 1
+  - 1
+  - 2
   effectNumberOneLevel: 
   effectNumberTwoLevel: 
   armrEef: 0

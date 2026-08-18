@@ -107,7 +107,6 @@ public class PickPanManager : MonoBehaviour
         Debug.Log("inspect before wrap " + itemToPick);
         if (itemToPick >= randLootPicks.Count) { itemToPick = 0; }
         else if (itemToPick < 0) { itemToPick = randLootPicks.Count - 1; }
-        Debug.Log("inspect " + itemToPick);
 
         var dis=FindObjectOfType<ItemDisplayPanel>();
         dis.OpenItemDescriptionPanel(randLootPicks[itemToPick], itemToPick,itemDisplayOpenedFrom.PickPan);

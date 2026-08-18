@@ -106,8 +106,12 @@ public class ParticleManager : MonoBehaviour
     public void ShowPayerDamage(float dmg)
     {
         var par = gameObject;
-        
-        if (dmg <= 26)
+        if(dmg<=5)//counts as blocked by armor
+        {
+            par = Instantiate(blockSparks, PlayerImageForBlood.position, playerRotation);
+            return;
+        }
+        if (dmg <= 30)
         {
             par = Instantiate(smolBlood, PlayerImageForBlood.position, playerRotation);
             return;

@@ -105,7 +105,7 @@ public class EventManager : MonoBehaviour
             _nextEvents.Add(Resources.Load<Event>("Events/Investments"));
         }
 
-        if (FindObjectOfType<PlayerHealthBar>().health < 100 && _toldAboutHeal == false)
+        if (FindObjectOfType<PlayerHealthBar>().getHealth() < 100 && _toldAboutHeal == false)
         {
             _toldAboutHeal = true;
             _nextEvents.Add(Resources.Load<Event>("Events/UrHurt"));

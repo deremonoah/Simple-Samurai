@@ -116,7 +116,7 @@ public void EquipItem(Item item, Transform fromHere)
             //equipedCurio = (Curio)item;
             //curioIcon.sprite = item.itemPanelIcon;
             ResolveCurioEffect(item as Curio);
-            _playerHP.SetCurio(item as Curio);
+            _playerHP.SetCurio(item as Curio);//handles any hp changing
             goingHere = curioIcon.gameObject.transform;
         }
 
