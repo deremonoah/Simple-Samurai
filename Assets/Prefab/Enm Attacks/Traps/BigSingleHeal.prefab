@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037ae9d71a42993469d73f7f3e333380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinMaxHeal: {x: 40, y: 80}
+  MinMaxHeal: {x: 80, y: 160}
   growDuration: 0.2
-  shrinkDuration: 3
+  shrinkDuration: 2.9
   SpawnPosMinMax: {x: 0, y: 10}
   SpawnPosOffset: 14
 --- !u!1 &8408421873517688361
