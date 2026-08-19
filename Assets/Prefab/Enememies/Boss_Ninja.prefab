@@ -279,15 +279,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 300
+  maxHP: 600
   armor: 7
   damgMin: 20
   damgMax: 60
   defendValue: 30
   defendingMin: 1
   defendingMax: 1.6
-  randWaitmin: 2.5
-  randWaitmax: 5
+  randWaitmin: 0.5
+  randWaitmax: 2.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -323,8 +323,6 @@ MonoBehaviour:
   hurtPoint: {fileID: 6834284721734369410}
   PoisonText: {fileID: 0}
   isPoisoned: 0
-  temper: 10
-  minMaxRageAttacks: {x: 2, y: 3}
   hasPickedAction: 0
   trapsSet: []
 --- !u!1 &6427641400014695199 stripped

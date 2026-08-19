@@ -405,7 +405,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     public void ResetArmorAfterCombat()
     {
-
+        currentArmor = maxArmor;
     }
 
     private void CheckForChangingEffects()

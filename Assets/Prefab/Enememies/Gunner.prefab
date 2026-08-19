@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: maxHP
-      value: 90
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: damgMax
@@ -102,11 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmax
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: randWaitmin
-      value: 6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: Defensiveness

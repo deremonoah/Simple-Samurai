@@ -110,17 +110,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8781278456182435034, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
   m_PrefabInstance: {fileID: 9069255849415297112}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1970106923830762984 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7389072094525396400, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
-  m_PrefabInstance: {fileID: 9069255849415297112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4083652439029087932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5003627164087891684, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
@@ -149,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 110
+  maxHP: 220
   armor: 0
   damgMin: 15
   damgMax: 30
@@ -163,19 +152,10 @@ MonoBehaviour:
   waitTimerOffset: 0
   posInList: 0
   spriteChild: {fileID: 0}
-  myHPBar: {fileID: 1970106923830762984}
+  myHPBar: {fileID: 0}
   HPBarToMove: {fileID: 0}
   backUpHPBarSpot: {fileID: 288553769724224642}
   enmsSys: {fileID: 0}
-  atkPrefabs:
-  - {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
-  specialPrefabs: []
-  atkStarts: []
-  atkEnd: {fileID: 0}
-  atkDirs:
-  - {x: -1, y: 0}
-  - {x: -1, y: 0.5}
-  SpecialDirs: []
   myAbilities: 00000000
   currentAttacks: []
   minCoin: 3
@@ -197,23 +177,10 @@ MonoBehaviour:
   healThreashold: 0
   aboveHealThreashold: 0
   hurtPoint: {fileID: 0}
-  PoisonText: {fileID: 7574930590068898484}
+  PoisonText: {fileID: 0}
   isPoisoned: 0
-  temper: 10
-  minMaxRageAttacks: {x: 2, y: 3}
   hasPickedAction: 0
   myEvent: {fileID: 11400000, guid: 6f3ab4bf92aed49f3a1a63fa988d0137, type: 2}
---- !u!114 &7574930590068898484 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1496311183849009900, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}
-  m_PrefabInstance: {fileID: 9069255849415297112}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!223 &7771040097096323898 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1586463265732828002, guid: 9229bccd7c8be814480b8bb2b6999705, type: 3}

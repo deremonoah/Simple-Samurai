@@ -208,23 +208,23 @@ public class StrikePoint : MonoBehaviour
         //equipedPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
-            baseSpeed = 7.5f;//old was 7.5 for 
+            baseSpeed = 10f;//old was 7.5 for 
         }
         else if (tempPath.name == "Mountain Path")
         {
-            baseSpeed = 6f;
+            baseSpeed = 8f;
         }
         else if (tempPath.name == "Rushing Boar")
         {
-            baseSpeed = 4.5f;
+            baseSpeed = 6f;
         }
         else if(tempPath.name == "Serpent Strike")
         {
-            baseSpeed = 4.5f;
+            baseSpeed = 7f;
         }
         else//so basically only cresent moon rn
         {
-            baseSpeed =6f;
+            baseSpeed = 7f;
         }
 
     }

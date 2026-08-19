@@ -10182,9 +10182,9 @@ MonoBehaviour:
   startpoint: {fileID: 1439485291}
   currentPath: {fileID: 531414201}
   endPath: {fileID: 1392706998}
-  baseSpeed: 7.5
+  baseSpeed: 10
   bonusSpeed: 0
-  endSpeed: 6
+  endSpeed: 10
   distanceTravelled: 0
   frequency: 4
   magnitude: 2

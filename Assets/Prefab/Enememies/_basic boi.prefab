@@ -476,15 +476,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 140
+  maxHP: 280
   armor: 6
   damgMin: 10
   damgMax: 35
   defendValue: 18
   defendingMin: 2
   defendingMax: 3.5
-  randWaitmin: 3.5
-  randWaitmax: 6.5
+  randWaitmin: 0.5
+  randWaitmax: 3.5
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -536,14 +536,14 @@ MonoBehaviour:
   attackPrefabs:
   - {fileID: 1323148977417408579, guid: 6acb7745697056b48ad06b95c511b245, type: 3}
   enemyAttackPoint: {fileID: 3868635541775811570}
-  MoveToShowSpeed: 5
-  DrawBackDuration: 1
-  ThrustForwardDuration: 0.3
+  MoveToShowSpeed: 7
+  DrawBackDuration: 0.5
+  ThrustForwardDuration: 0.1
   trapPrefabs: []
   maxTraps: 0
   TrapPercentage: 1
   minMaxRageAttacks: {x: 2, y: 3}
-  TimeBetweenRageAttacks: 1
+  TimeBetweenRageAttacks: 0.1
   RageThreashold: 4
   canAttackDifferentLineInRage: 0
 --- !u!1 &8628111613924925506

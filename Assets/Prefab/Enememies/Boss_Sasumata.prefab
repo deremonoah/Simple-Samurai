@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: maxHP
-      value: 400
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: maxCoin
@@ -34,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: randWaitmax
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: randWaitmin
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2833710505979115777, guid: 312a944bc74725b43861ac10146ef041, type: 3}
       propertyPath: Defensiveness
