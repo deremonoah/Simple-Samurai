@@ -17,10 +17,15 @@ MonoBehaviour:
   itemDescription: better than simple armor but nothing amazing
   itemLevel: 0
   armorLevel:
-  - 10
-  - 12
-  - 16
-  - 20
+  - 30
+  - 40
+  - 50
+  - 60
+  armorRegenPerSecond:
+  - 1
+  - 1
+  - 1
+  - 2
   effectNumberOneLevel: 
   effectNumberTwoLevel: 
   armrEef: 0

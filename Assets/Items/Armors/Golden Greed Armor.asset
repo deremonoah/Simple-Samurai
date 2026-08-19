@@ -17,10 +17,15 @@ MonoBehaviour:
   itemDescription: enemies drop more gold while you wear this armor
   itemLevel: 0
   armorLevel:
-  - 3
-  - 4
   - 5
-  - 7
+  - 10
+  - 15
+  - 20
+  armorRegenPerSecond:
+  - 1
+  - 1
+  - 1
+  - 1
   effectNumberOneLevel: 00000000000000000100000002000000
   effectNumberTwoLevel: 02000000030000000400000007000000
   armrEef: 2

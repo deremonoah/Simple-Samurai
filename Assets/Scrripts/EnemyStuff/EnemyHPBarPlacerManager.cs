@@ -64,7 +64,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             barToUse = barb.getHPBar();
             aliveEnemies[posInList].HPBarToMove = UIPool[0];
             barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
-            barb.getTransformToScale().localScale = new Vector3(enm.maxHP / 150, 1, 1);
+            barb.getTransformToScale().localScale = new Vector3(enm.maxHP / 300, 1, 1);
             enm.PoisonText = barb.getPoisonTextField();
         }
             aliveEnemies[posInList].myHPBar = barToUse;

@@ -82,6 +82,7 @@ public class GameFlowManager : MonoBehaviour
 
         _gm.InvestmentsPayOut();
         _eventManager.ClearEventList();
+        _php.ResetArmorAfterCombat();
 
         //village stuff
         _villagePanel.SetBool("Open", true);

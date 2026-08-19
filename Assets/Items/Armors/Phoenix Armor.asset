@@ -18,10 +18,15 @@ MonoBehaviour:
     run out of health(less than 10)
   itemLevel: 0
   armorLevel:
-  - 5
-  - 7
-  - 10
-  - 12
+  - 20
+  - 25
+  - 30
+  - 35
+  armorRegenPerSecond:
+  - 1
+  - 1
+  - 1
+  - 1
   effectNumberOneLevel: 
   effectNumberTwoLevel: 
   armrEef: 3

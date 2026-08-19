@@ -328,15 +328,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 120
+  maxHP: 240
   armor: 4
   damgMin: 15
   damgMax: 40
   defendValue: 35
   defendingMin: 2.8
   defendingMax: 3.8
-  randWaitmin: 4
-  randWaitmax: 6
+  randWaitmin: 1
+  randWaitmax: 3
   readyingTimer: 2.5
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -370,10 +370,8 @@ MonoBehaviour:
   healThreashold: 0
   aboveHealThreashold: 0
   hurtPoint: {fileID: 6907103421148169435}
-  PoisonText: {fileID: 8578998539530337361}
+  PoisonText: {fileID: 0}
   isPoisoned: 0
-  temper: 10
-  minMaxRageAttacks: {x: 2, y: 3}
   hasPickedAction: 0
   healMin: 40
   healMax: 60
@@ -402,14 +400,3 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2838367399995021007}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8578998539530337361 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5795378092382644894, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

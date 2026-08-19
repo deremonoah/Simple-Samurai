@@ -54143,7 +54143,7 @@ PrefabInstance:
       objectReference: {fileID: 1407817041}
     - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: VillageDefenseTimerMax
-      value: 40
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4886708299457330426, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: FireSprites.Array.data[0]

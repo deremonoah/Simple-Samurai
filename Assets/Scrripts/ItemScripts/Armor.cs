@@ -6,6 +6,7 @@ using UnityEngine;
 public class Armor : Item
 {
     public List<float> armorLevel;
+    public List<float> armorRegenPerSecond;
     public List<int> effectNumberOneLevel, effectNumberTwoLevel;
     public ArmorEffect armrEef;
 }

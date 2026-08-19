@@ -62,12 +62,13 @@ public class StrikePoint : MonoBehaviour
 
         StyleconfusedTimer = 0f;
         Styleconfused = false;
+        equipedPath = currentPath;//current path is what is set in inspector
+        ChangeStyle(equipedPath);
     }
 
     void Update()
     {
         checkWhereToFace();
-
         //inbetween is to check if the player should be in between swings because of the cool down timer
         //this makes me think maybe a fun alternative mode is Hyper Samurai where all the attacks are faster maybe bigger and you pointer moves insanley fast
 
@@ -177,7 +178,7 @@ public class StrikePoint : MonoBehaviour
         transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
     }
 
-    void moveUPandDown()
+    void moveUPandDown()//for end path?
     {
         distanceTravelled += currentSpeed * Time.deltaTime;
         var direction = currentPath.name == "Cresent Moon" ? distanceTravelled * -1 : distanceTravelled;
@@ -207,24 +208,23 @@ public class StrikePoint : MonoBehaviour
         //equipedPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
-            baseSpeed = 7.5f;
-            //was 5 am testing other numbers
+            baseSpeed = 10f;//old was 7.5 for 
         }
         else if (tempPath.name == "Mountain Path")
         {
-            baseSpeed = 6f;
+            baseSpeed = 8f;
         }
         else if (tempPath.name == "Rushing Boar")
         {
-            baseSpeed = 4f;
+            baseSpeed = 6f;
         }
         else if(tempPath.name == "Serpent Strike")
         {
-            baseSpeed = 4.8f;
+            baseSpeed = 7f;
         }
-        else
+        else//so basically only cresent moon rn
         {
-            baseSpeed = 4.5f;
+            baseSpeed = 7f;
         }
 
     }
@@ -234,5 +234,10 @@ public class StrikePoint : MonoBehaviour
     {
         oldspeed = baseSpeed;
         StyleconfusedTimer = timer;
+    }
+
+    public bool AreAttacking()
+    {
+        return PathTimer > 0;//if you are holding a key down this should be greater than 0
     }
 }

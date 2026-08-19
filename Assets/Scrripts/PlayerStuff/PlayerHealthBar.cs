@@ -12,17 +12,24 @@ public class PlayerHealthBar : MonoBehaviour
     public Text HpNumbers;
     public bool inCombat;
 
+    [Header("UI refrences for armor gauge")]
+    [SerializeField] Image armorBarFill;
+    [SerializeField] Transform ArmorScaling;
+    private float maxArmor;
+    private float currentArmor;
+    private float currentRegen;
+
     [Header("Refrences for position")]
     [SerializeField] Transform inCombatSpot;
     [SerializeField] Transform inShopSpot;
 
     [Header("Numbers")]
-    public float health, maxHealth = 100;
+    [SerializeField] float health, maxHealth = 100;
     //private float bonusHealth = 0;
     private bool hadBonusHP;
     float lerpSpeed;
     [SerializeField] float armorValue;
-    public Armor myArmor;
+    public Armor equipedArmor;
     private GameManager _gm;
 
     [SerializeField] Armor testArmor;
@@ -50,14 +57,13 @@ public class PlayerHealthBar : MonoBehaviour
     private bool isPoisoned;
     private int PoisonTimer = 20;
 
-    //stuff for multiple hp bars
-
+    private StrikePoint _strikePoint;
 
     void Start()
     {
         health = maxHealth;
         _gm = FindObjectOfType<GameManager>();
-        myArmor = Instantiate(myArmor);
+        equipedArmor = Instantiate(equipedArmor);
         testArmor = Instantiate(testArmor);
         _soundManager = FindObjectOfType<SoundManager>();
         _playerDefense = FindObjectOfType<PlayerDefense>();
@@ -69,6 +75,11 @@ public class PlayerHealthBar : MonoBehaviour
         PoisonText.text = "";
         isPoisoned = false;
 
+        _strikePoint = FindObjectOfType<StrikePoint>();
+
+        //seting armor
+        SetArmor(equipedArmor);
+        setHPBarSize();
     }
 
     private void OnEnable()
@@ -87,7 +98,7 @@ public class PlayerHealthBar : MonoBehaviour
 
         if (health <= 0f)
         {
-            if (myArmor.armrEef == ArmorEffect.phoenix)
+            if (equipedArmor.armrEef == ArmorEffect.phoenix)
             {
                 maxHealth = maxHealth / 2;
                 health = maxHealth;
@@ -109,14 +120,16 @@ public class PlayerHealthBar : MonoBehaviour
 
         lerpSpeed = 2f * Time.deltaTime;
 
-        if (myArmor.armrEef == ArmorEffect.turtle)
+        if (equipedArmor.armrEef == ArmorEffect.turtle)
         {
             if (!Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.Mouse0))
             {
-                armorValue = myArmor.effectNumberOneLevel[myArmor.itemLevel];
+                armorValue = equipedArmor.effectNumberOneLevel[equipedArmor.itemLevel];
             }
-            else { armorValue = myArmor.armorLevel[myArmor.itemLevel]; }
+            else { armorValue = equipedArmor.armorLevel[equipedArmor.itemLevel]; }
         }
+
+        
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -124,9 +137,9 @@ public class PlayerHealthBar : MonoBehaviour
             SetArmor(testArmor);
         }
 #endif
-
+        CheckForChangingEffects();
         HealthBarFiller();
-
+        ArmorBarFiller();
 
     }
 
@@ -143,8 +156,16 @@ public class PlayerHealthBar : MonoBehaviour
         }
         else { HpNumbers.text = ""; }
 
-        HPScaling.localScale = new Vector3(1, 1, 1);
-        HPScaling.localScale = new Vector3(maxHealth / 150, 1, 1);
+    }
+
+    void ArmorBarFiller()
+    {
+        armorBarFill.fillAmount = currentArmor / maxArmor;
+        currentArmor += Time.deltaTime * currentRegen; //normal regen
+        if(currentArmor>maxArmor)
+        {
+            currentArmor = maxArmor;
+        }
     }
 
     public void HPIsInCombat(bool oo)
@@ -181,6 +202,8 @@ public class PlayerHealthBar : MonoBehaviour
                 float resolveDmg = Mathf.Max(1, damagePoints);
                 health -= resolveDmg;
                 ParticleManager.instance.ShowPayerDamage(resolveDmg);
+                currentArmor = 0;
+
             } else if(ability ==8)
             {
                 //fire ability
@@ -191,7 +214,7 @@ public class PlayerHealthBar : MonoBehaviour
                 //poison
                 if (isPoisoned)
                     {
-                    PoisonTimer -= 3;
+                    PoisonTimer -= 3;//TODO: make poison reduced amount varable based on damage
                     }
                 else
                 { WasPoisonedRoutine = StartCoroutine(PoisonedRoutine()); }
@@ -200,7 +223,8 @@ public class PlayerHealthBar : MonoBehaviour
             else
             {
                 //regular attack
-                float resolveDmg = Mathf.Max(1, damagePoints - armorValue);
+                float resolveDmg = Mathf.Max(0, damagePoints - currentArmor);
+                currentArmor =Mathf.Clamp(currentArmor-damagePoints,0,100000);
                 health -= resolveDmg;
                 ParticleManager.instance.ShowPayerDamage(resolveDmg);
                 //Debug.Log("max: " + Mathf.Max(1, damagePoints - armorValue));
@@ -283,9 +307,12 @@ public class PlayerHealthBar : MonoBehaviour
 
     public void SetArmor(Armor am)
     {
-        armorValue = am.armorLevel[am.itemLevel];
-        myArmor = am;
+        currentArmor = am.armorLevel[am.itemLevel];
+        maxArmor = currentArmor;
+        equipedArmor = am;
+        currentRegen = equipedArmor.armorRegenPerSecond[equipedArmor.itemLevel];
 
+        SetArmorBarSize();
     }
     public void SetCurio(Curio cur)
     {
@@ -302,6 +329,7 @@ public class PlayerHealthBar : MonoBehaviour
             //currently the extra health will be 50 but in future i will have to make it dynamic
             ReduceMaxHP(50);
         }
+        setHPBarSize();
     }
 
     public void IncreaseMaxHPBy(float Xhealth)
@@ -310,11 +338,12 @@ public class PlayerHealthBar : MonoBehaviour
         health += Xhealth;
         //I need to increase the size of hp bar and background then I also need to move the defenses over
         //the increase should also be proportional. there are 4 levels so probably 4 ifs or a switch statement so maybe take in level
-        
+        setHPBarSize();
     }
     public void ReduceMaxHP(float lessHP)
     {
         maxHealth -= lessHP;
+        setHPBarSize();
     }
 
     public void CuredofPoison()
@@ -359,6 +388,44 @@ public class PlayerHealthBar : MonoBehaviour
 
     private void setHPBarSize()
     {
+        HPScaling.localScale = new Vector3(1, 1, 1);
+        HPScaling.localScale = new Vector3(maxHealth / 150, 1, 1);
+    }
 
+    private void SetArmorBarSize()
+    {
+        ArmorScaling.localScale = new Vector3(1, 1, 1);
+        ArmorScaling.localScale = new Vector3(maxArmor / 150, 1, 1);
+    }
+
+    public float getHealth()
+    {
+        return health;
+    }
+
+    public void ResetArmorAfterCombat()
+    {
+
+    }
+
+    private void CheckForChangingEffects()
+    {
+        if(equipedArmor.armrEef==ArmorEffect.turtle)
+        {
+            //check pointer if it is out or back
+            if(equipedArmor.armrEef == ArmorEffect.turtle)
+            {
+                if (_strikePoint.AreAttacking())
+                {
+                    currentRegen = equipedArmor.armorRegenPerSecond[equipedArmor.itemLevel]/4;
+                }
+                else
+                {
+                    currentRegen = equipedArmor.armorRegenPerSecond[equipedArmor.itemLevel];
+                }
+            }
+            
+            
+        }
     }
 }
