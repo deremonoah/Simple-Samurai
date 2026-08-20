@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
+  m_Name: Shuriken
+  m_EditorClassIdentifier: 
+  Name: Shuriken
+  PanelIcon: {fileID: 21300000, guid: 89310b98910506543b847054154fff73, type: 3}
+  Description: throw blades at your enemies, you might even be able to throw more
+    than one at once
+  itemLevel: 0
+  myStrikeArea: {fileID: 21300000, guid: 79466f053ac4fff408d2634c09300de0, type: 3}
+  StrikePoint: {fileID: 21300000, guid: 8258fd9a5629ce84fa12107a9884e618, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: e3050f76fb32ffc43860f8ae791a1265, type: 3}
+  - {fileID: 21300000, guid: cdf027deaf809cd45bbba65fc0a73409, type: 3}
+  - {fileID: 21300000, guid: 3b071374468918b4196230677b3b4b65, type: 3}
+  DisplayStrikeAreaIcon: {fileID: 21300000, guid: 9e8c55216c1e0564796545a46110a9f1, type: 3}
+  baseDamageLevel:
+  - 4
+  - 7
+  - 10
+  - 14
+  maxDamageLevel:
+  - 60
+  - 68
+  - 80
+  - 96
+  effs: 0a0000000c0000000b000000
+  damageMults:
+  - 5
+  - 10
+  - 16
+  - 5
+  - 10
+  - 16
+  readyingSounds: []
+  launchingSounds: []
+  HitingSounds: []

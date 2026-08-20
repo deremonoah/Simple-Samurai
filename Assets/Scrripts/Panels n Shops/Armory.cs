@@ -80,7 +80,7 @@ public class Armory : MonoBehaviour
         {
             if (lcv < stockPile.Count)
             { 
-                InventorySlotsActive[lcv].imageToSet.sprite = stockPile[lcv].itemPanelIcon;
+                InventorySlotsActive[lcv].imageToSet.sprite = stockPile[lcv].PanelIcon;
                 InventorySlotsActive[lcv].imageToSet.color = new Color(1, 1, 1, 1);//make sure alpha is 100%
             }
             else
@@ -92,7 +92,7 @@ public class Armory : MonoBehaviour
         {
             OverFlowSlot.gameObject.SetActive(true);
             OverFlowSlot.GetComponent<Image>().color = discardingColor;
-            OverFlowSlot.imageToSet.sprite = stockPile[stockPile.Count - 1].itemPanelIcon;
+            OverFlowSlot.imageToSet.sprite = stockPile[stockPile.Count - 1].PanelIcon;
             OverFlowSlot.slotNum = stockPile.Count - 1;//it will always be the last one as it unEquips
         }
         else

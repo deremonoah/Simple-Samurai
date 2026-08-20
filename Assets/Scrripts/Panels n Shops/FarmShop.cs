@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FarmShop : ShopReward
+public class FarmShop : ShopGiveReward
 {
     [Header("most recent score")]
     [SerializeField] float recentScore;//I plan to remove this
@@ -11,6 +11,7 @@ public class FarmShop : ShopReward
     private GameManager _gm;
     private PlayerHealthBar _playerHP;
     private PlayerEquipedItemsManager pEquip;
+    private PickPanManager _picPanMan;
 
     private float FarmHeal = 40;
     private float FarmIncHP = 25;
@@ -33,14 +34,21 @@ public class FarmShop : ShopReward
 
     [Header("Helping rewards")]
     [SerializeField] int aproval;//for how much they like you
-    [SerializeField] List<Item> itemRewards;
     [SerializeField] int FavoredCostReduction;//perminent
     [SerializeField] Transform rewardFromHere;
+    [SerializeField] int ScoreAboveForThreeRewards;
+
+    [Header("common rewards")]
+    [SerializeField] List<Reward> RewardsCommon;
+
+    [Header("Rare rewards")]
+    [SerializeField] List<Reward> RewardsRare;
+    [SerializeField] float rareScoreAboveToGet;
 
     [Header("Temporary helping buffs")]//do I need to see this in inspector?
     [SerializeField] int healCostReduction;
     [SerializeField] int maxHPCostReduction;
-    private int improveFarmProgress=0;
+    //private int improveFarmProgress=0; //would be cool to add progress bar for any time you help
     
 
     void Start()
@@ -48,6 +56,7 @@ public class FarmShop : ShopReward
         _gm = GetComponent<GameManager>();
         _playerHP = GetComponent<PlayerHealthBar>();
         pEquip = FindObjectOfType<PlayerEquipedItemsManager>();
+        _picPanMan = FindObjectOfType<PickPanManager>();
     }
 
     public void FarmHealButton()
@@ -70,8 +79,9 @@ public class FarmShop : ShopReward
         {
             _gm.playerCoins -= cost;
             _playerHP.IncreaseMaxHPBy(FarmIncHP);
-            IncreasedMaxHPtimes += 1;
-            maxHPCostReduction = 0;//temporary
+            if (cost != 0)//if you get for free shouldn't increase in price like you bought one
+            { IncreasedMaxHPtimes += 1; }
+            maxHPCostReduction = 0;//temporary cost reset
         }
         SetButtonCostsText();
     }
@@ -147,54 +157,70 @@ public class FarmShop : ShopReward
         recentScore = score;
         aproval +=5;//might change amount to be vairable based ons score
         int rand = Random.Range(0, (int)score) + aproval;
+        ShowAppreciation(heartOverHead, null);
 
-        if (rand < 10)
+        //figuring out rewards
+        List<Reward> rewardsToSend=new();
+        int itemLength = 0;
+        Debug.Log("Rand for loot length " + rand);
+        if(rand>=ScoreAboveForThreeRewards)
         {
-            //nothing given
-            //count up towards improve farm?
-            //increase liked more
-            aproval += 5;
-            ShowAppreciation(heartOverHead, null);
+            itemLength = 3;
         }
-        else if (rand >= 11 && rand <= 49)
+        else { itemLength = 2; }
+        while(rewardsToSend.Count<itemLength)
         {
-            healCostReduction = 10;//probably free, even on refugee rounds
-            ShowAppreciation(heartOverHead, healText.transform);
-        }
-        else if (rand >= 50 && rand <= 80)
-        {
-            maxHPCostReduction = improveHPCost;//so its free no matter the current price
-            ShowAppreciation(heartOverHead, improveHealthText.transform);
-        }
-        else if (rand > 81)
-        {
-            rand = Random.Range(0, 2);
-            if(rand==0)
+            rand = Random.Range(0, (int)score) + aproval;
+            if(rand>rareScoreAboveToGet)
             {
-                FavoredCostReduction += 1;
-                ShowAppreciation(heartOverHead, healText.transform);
-                ShowAppreciation(heartOverHead, improveHealthText.transform);
-                ShowAppreciation(heartOverHead, improveFarmText.transform);
+                int randRare = Random.Range(0, RewardsRare.Count);
+                if(!rewardsToSend.Contains(RewardsRare[randRare]))
+                {
+                    rewardsToSend.Add(RewardsRare[randRare]);
+                }
             }
-            else if (rand == 1)
+            else
             {
-                rand = Random.Range(0, itemRewards.Count);
-                pEquip.EquipItem(itemRewards[rand], rewardFromHere);
-                ShowAppreciation(heartOverHead, null);
+                int randCom = Random.Range(0, RewardsRare.Count);
+                if (!rewardsToSend.Contains(RewardsCommon[randCom]))
+                {
+                    rewardsToSend.Add(RewardsCommon[randCom]);
+                }
             }
         }
-        
-        improveFarmProgress += 1;
 
-        if(improveFarmProgress>=3)
-        {
-            resolveImproveFarm();
-            improveFarmProgress = 0;
-            ShowAppreciation(heartOverHead, improveFarmText.transform);
-        }
+        //sending to pickPan
+        _picPanMan.OpenPickPanForRewarding(rewardsToSend);
+
+        //seing a progress bar for improving the farm could be cool, motivating for players and they see with their help farm is getting better
+    }
+
+    public void DiscountHeal()
+    {
+        healCostReduction = healCost;//free, even on refugee rounds
+        ShowAppreciation(heartOverHead, healText.transform);
         SetButtonCostsText();
-        //free heal, maybe with still having to click the button and saves for next round
-        //improve farm if you help a few times of not getting anything
-        //increase max hp free? onigiri curio
+    }
+
+    public void DiscountMaxHP()
+    {
+        maxHPCostReduction = improveHPCost;//so its free no matter the current price
+        ShowAppreciation(heartOverHead, improveHealthText.transform);
+        SetButtonCostsText();
+    }
+
+    public void DiscountAll()
+    {
+        FavoredCostReduction += 1;
+        ShowAppreciation(heartOverHead, healText.transform);
+        ShowAppreciation(heartOverHead, improveHealthText.transform);
+        ShowAppreciation(heartOverHead, improveFarmText.transform);
+        SetButtonCostsText();
+    }
+
+    public void ImproveFarmReward()
+    {
+        resolveImproveFarm();
+        ShowAppreciation(heartOverHead, farmLvlImages[FarmLvl-2].transform);//farm level starts at 1 when improved will be 2, but list is 0,1,2
     }
 }

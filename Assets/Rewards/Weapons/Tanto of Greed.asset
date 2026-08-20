@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
+  m_Name: Tanto of Greed
+  m_EditorClassIdentifier: 
+  Name: Thiefs Tanto
+  PanelIcon: {fileID: 21300000, guid: ed8b186cac3d3b746bbbde30ab5ef562, type: 3}
+  Description: the further right the pointer goes when striking an enemy steals gold
+    from them
+  itemLevel: 0
+  myStrikeArea: {fileID: 21300000, guid: b5ebd51a665826f4c95f1440808dc0ce, type: 3}
+  StrikePoint: {fileID: 21300000, guid: 535f2acb9f6d1d74595ab0f5daa7a66a, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: 535f2acb9f6d1d74595ab0f5daa7a66a, type: 3}
+  DisplayStrikeAreaIcon: {fileID: 21300000, guid: b5ebd51a665826f4c95f1440808dc0ce, type: 3}
+  baseDamageLevel:
+  - 4
+  - 5
+  - 7
+  - 9
+  maxDamageLevel:
+  - 55
+  - 60
+  - 70
+  - 100
+  effs: 02000000
+  damageMults:
+  - 1
+  - 5
+  - 6
+  - 10
+  - 15
+  - 21
+  readyingSounds: []
+  launchingSounds: []
+  HitingSounds: []

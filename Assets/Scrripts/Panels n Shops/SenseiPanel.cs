@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class SenseiPanel : ShopReward
+public class SenseiPanel : ShopGiveReward
 {
     [Header("most recent score")]
     [SerializeField] float recentScore;//I plan to remove this

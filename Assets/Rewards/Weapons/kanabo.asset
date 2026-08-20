@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
+  m_Name: kanabo
+  m_EditorClassIdentifier: 
+  Name: Kanabo
+  PanelIcon: {fileID: 21300000, guid: 31cdbf4a99193d54587d3a1c43433840, type: 3}
+  Description: strikes from this weapon weaken the armor on enemies
+  itemLevel: 0
+  myStrikeArea: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
+  StrikePoint: {fileID: 21300000, guid: 4e2aff0e874491b42a96d30faeafc6f6, type: 3}
+  PointersList:
+  - {fileID: 21300000, guid: 4e2aff0e874491b42a96d30faeafc6f6, type: 3}
+  DisplayStrikeAreaIcon: {fileID: 21300000, guid: 54d9aee2920632f4c9902394b1650bce, type: 3}
+  baseDamageLevel:
+  - 5
+  - 7
+  - 10
+  - 14
+  maxDamageLevel:
+  - 50
+  - 68
+  - 80
+  - 120
+  effs: 03000000
+  damageMults:
+  - 2
+  - 7
+  - 7
+  - 11
+  - 14
+  - 18
+  readyingSounds: []
+  launchingSounds: []
+  HitingSounds: []

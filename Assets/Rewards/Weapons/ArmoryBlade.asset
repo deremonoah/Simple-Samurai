@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c9a89645f066140a65ba14e5b4190e, type: 3}
+  m_Name: ArmoryBlade
+  m_EditorClassIdentifier: 
+  Name: Armory Blade
+  PanelIcon: {fileID: 21300000, guid: 49be9c6b442668b478d4ba40a80ec654, type: 3}
+  Description: This weapons power is dependant on how many weapons you have in your
+    armory
+  itemLevel: 0
+  myStrikeArea: {fileID: 21300000, guid: e8208689b0d78b64aac250d2594b74eb, type: 3}
+  StrikePoint: {fileID: 21300000, guid: ed7fb4563bd99eb4a82f8afe8fed9263, type: 3}
+  PointersList: []
+  DisplayStrikeAreaIcon: {fileID: 21300000, guid: e8208689b0d78b64aac250d2594b74eb, type: 3}
+  baseDamageLevel:
+  - 1
+  - 1
+  - 1
+  - 1
+  maxDamageLevel:
+  - 1
+  - 1
+  - 1
+  - 1
+  effs: 0e000000
+  damageMults:
+  - 1
+  - 5
+  - 8
+  - 8
+  - 12
+  - 20
+  readyingSounds: []
+  launchingSounds: []
+  HitingSounds: []

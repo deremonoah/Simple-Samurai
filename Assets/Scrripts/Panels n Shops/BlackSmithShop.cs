@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BlackSmithShop : ShopReward
+public class BlackSmithShop : ShopGiveReward
 {
     [Header("most recent score")]
     [SerializeField] float recentScore;//I plan to remove this
@@ -21,11 +21,21 @@ public class BlackSmithShop : ShopReward
 
     [Header("Helping rewards")]
     [SerializeField] int aproval;//for how much they like you
-    [SerializeField] List<Item> itemRewards;
+    [SerializeField] int ScoreAboveForThreeRewards;
+    [SerializeField] Transform rewardFromHere;
+
+    [Header("common rewards")]
+    [SerializeField] List<Reward> RewardsCommon;
+
+    [Header("Rare rewards")]
+    [SerializeField] List<Reward> RewardsRare;
+    [SerializeField] float rareScoreAboveToGet;
+
+    [Header("Cost reductions")]
     [SerializeField] int perminentCostReduction;
     [SerializeField] int tempWeaponCostReduction;
     [SerializeField] int tempArmorCostRecution;
-    [SerializeField] Transform rewardFromHere;
+    
     //maybe add a 3rd for blanket?
 
     void Start()
@@ -116,46 +126,40 @@ public class BlackSmithShop : ShopReward
         recentScore = score;
         aproval += 5;//might change amount to be vairable based ons score
         int rand = Random.Range(0, (int)score) + aproval;
-
-        if (rand < 20)
-        {
-            //nothing given
-            //increase liked more
-            ShowAppreciation(heartOverHead, null);
-            return;
-        }
-        else if (rand >= 20 && rand <= 29)
-        {
-            //reduced cost upgrade or gives you 3-7 gold?
-            int coins = Random.Range(3, 7);
-            _gm.playerCoins += coins;
-            ShowAppreciation(heartOverHead,null);
-            return;
-        }
-        else if (rand >= 30 && rand <= 59)
-        {
-            //temporary buff to weapon max damage or base damage
-            tempWeaponCostReduction = 40;
-            ShowAppreciation(heartOverHead, improveWeaponText.transform);
-        }
-        else if (rand >= 60 && rand <= 89)
-        {
-            //free upgrade for either?
-            tempArmorCostRecution = 40;
-            ShowAppreciation(heartOverHead, improveArmorText.transform);
-        }
-        else if (rand > 90)
-        {
-            //the premo stuff here
-            //free weapon or armor, maybe perminent reduce cost
-            rand = Random.Range(0, itemRewards.Count);
-            pEquip.EquipItem(itemRewards[rand], rewardFromHere);
-            ShowAppreciation(heartOverHead, null);
-        }
+        ShowAppreciation(heartOverHead, null);
+        
+        
 
         SetUpgradeCostsButtonsText();
         //blacksmith options: free upgrade to weapon or armor, maybe player picks? Reduce cost use?
         //what else? gold? a random armor or weapon? sharpens your weapon? temp buff, shore up your armor, temp buff?
         //make your weapon pointer bigger? strike area bigger?
     }
+
+    public void DiscountWeapon(int amount)
+    {
+        tempWeaponCostReduction = amount;
+        ShowAppreciation(heartOverHead, improveWeaponText.transform);
+        SetUpgradeCostsButtonsText();
+    }
+    public void DiscountArmor(int amount)
+    {
+        tempArmorCostRecution = amount;
+        ShowAppreciation(heartOverHead, improveArmorText.transform);
+        SetUpgradeCostsButtonsText();
+    }
+    public void allDiscount()
+    {
+        
+        ShowAppreciation(heartOverHead, null);
+        perminentCostReduction+=2;
+        SetUpgradeCostsButtonsText();
+    }
+
+    public void LearnedTwoArmor()
+    {
+        ShowAppreciation(heartOverHead, null);//change to armor icon
+        //remove this technique from list to be gotten
+    }
+    
 }

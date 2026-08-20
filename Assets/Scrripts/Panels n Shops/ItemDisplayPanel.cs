@@ -38,43 +38,47 @@ public class ItemDisplayPanel : MonoBehaviour
         WeaponSection.SetActive(false);
     }
 
-    public void OpenItemDescriptionPanel(Item item,int itemSlot, itemDisplayOpenedFrom opener)
+    public void OpenItemDescriptionPanel(Reward reward,int itemSlot, itemDisplayOpenedFrom opener)
     {
         
         itemSlotLookingAt = itemSlot;
         from = opener;
         
-        if(item is Weapon)
+        if(reward is Weapon)
         {
-            weRefrence = (Weapon)item;
+            weRefrence = (Weapon)reward;
             SetForWeapon();
         }    
-        if(item is Armor)
+        else if(reward is Armor)
         {
-            SetForArmor((Armor)item);
+            SetForArmor((Armor)reward);
         }
-        if(item is Curio)
+        else if(reward is Curio)
         {
-            SetForCurio((Curio)item);
+            SetForCurio((Curio)reward);//keeping because might be different with item level?
+        }
+        else if(reward is ShopReward)
+        {
+            SetForSimple();
         }
         panel.SetActive(true);//moved to not get null on style display when it enables and looks for weapon
 
         //just keep the styles in the same order
         //I also thought getting styles from beating certain enemies or by making certain decisions is way cooler than just getitng them randomly
         //problem is you can't exactly explore in the same way, or even choose which enemies to fight
-        ItemDescription.text = item.itemDescription;
-        ItemName.text = item.itemName;
-        ItemIconSprite.sprite = item.itemPanelIcon;
+        ItemDescription.text = reward.Description;
+        ItemName.text = reward.Name;
+        ItemIconSprite.sprite = reward.PanelIcon;
     }
 
-    public void SetForWeapon()
+    private void SetForWeapon()
     {
         WeaponSection.SetActive(true);
         ArmorSection.SetActive(false);
         //will handle the info and ask for it just needs to be enabled
     }
 
-    public void SetForArmor(Armor ar)
+    private void SetForArmor(Armor ar)
     {
         WeaponSection.SetActive(false);
         ArmorSection.SetActive(true);
@@ -82,12 +86,18 @@ public class ItemDisplayPanel : MonoBehaviour
         ItemAmorValue.text = ar.armorLevel[ar.itemLevel]+"";
     }
 
-    public void SetForCurio(Curio cu)
+    private void SetForCurio(Curio cu)
     {
         WeaponSection.SetActive(false);
         ArmorSection.SetActive(false);
 
         //anything specific for curios? maybe in future?
+    }
+
+    private void SetForSimple()
+    {
+        WeaponSection.SetActive(false);
+        ArmorSection.SetActive(false);
     }
 
     public void CloseItemDisplayPanel()

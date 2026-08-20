@@ -84,7 +84,7 @@ public void EquipItem(Item item, Transform fromHere)
             equipedWeapon = (Weapon)item;
             PrimaryWeapon = equipedWeapon;
             _mainStrikeArea.SetWeapon(item as Weapon);
-            PrimaryweaponIcon.sprite = item.itemPanelIcon;
+            PrimaryweaponIcon.sprite = item.PanelIcon;
             goingHere = PrimaryweaponIcon.gameObject.transform;
             //we will  have to update this to if unlocked and no secondary add it there or stock pile
            
@@ -102,7 +102,7 @@ public void EquipItem(Item item, Transform fromHere)
             }
             equipedArmor = (Armor)item; 
             _playerHP.SetArmor(item as Armor);
-            armorIcon.sprite = item.itemPanelIcon;
+            armorIcon.sprite = item.PanelIcon;
             goingHere = armorIcon.gameObject.transform;
         }
         if (item.GetType() == typeof(Curio))
@@ -164,7 +164,7 @@ public void EquipItem(Item item, Transform fromHere)
         if(!cur.IsConsumable)
         {
             equipedCurio = cur;
-            curioIcon.sprite = cur.itemPanelIcon;
+            curioIcon.sprite = cur.PanelIcon;
         }
     }
     private void UpdateItemUpgrades()
@@ -237,7 +237,7 @@ public void EquipItem(Item item, Transform fromHere)
         Vector3 startPos = fromHere.position;
         Transform moveObj = Instantiate(itemAnimPrefab).GetComponent<Transform>();
         moveObj.SetParent(parentForUIAnim);
-        moveObj.GetComponent<Image>().sprite = item.itemPanelIcon;
+        moveObj.GetComponent<Image>().sprite = item.PanelIcon;
         float timeEslapsed=0;
         float duration = Vector3.Distance(startPos,endPos) / showSpeed;
 

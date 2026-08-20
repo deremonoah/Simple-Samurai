@@ -1,12 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-
-public class Item : ScriptableObject
+public class Item : Reward
 {
-    public string itemName;
-    public Sprite itemPanelIcon;
-    public string itemDescription;
     public int itemLevel;
 }

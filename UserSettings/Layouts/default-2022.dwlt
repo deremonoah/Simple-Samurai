@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 353
     height: 609
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -274,8 +274,8 @@ MonoBehaviour:
     y: 0
     width: 1083
     height: 609
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 157716
+  m_LastSelectedObjectID: 25422
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1071,7 +1071,7 @@ MonoBehaviour:
     m_SaveData: []
     m_OverlaysVisible: 1
   m_SearchFilter:
-    m_NameFilter: player health
+    m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -1081,24 +1081,24 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scrripts/Panels n Shops
+    - Assets/Rewards/Weapons
     m_Globs: []
-    m_OriginalText: player health
+    m_OriginalText: 
     m_ImportLogFlags: 0
     m_FilterByTypeIntersection: 0
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scrripts/Panels n Shops
+  - Assets/Rewards/Weapons
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\unity docs\Simple Samurai
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 231}
-    m_SelectedIDs: bc720000
-    m_LastClickedID: 29372
-    m_ExpandedIDs: 000000006e7200007072000074720000b072000000ca9a3b
+    scrollPos: {x: 0, y: 307}
+    m_SelectedIDs: be720000
+    m_LastClickedID: 29374
+    m_ExpandedIDs: 00000000a6720000a8720000aa720000b8720000ca720000a084000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1126,7 +1126,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000006e720000707200007272000074720000
+    m_ExpandedIDs: 00000000a6720000a8720000aa720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1266,9 +1266,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1c5f0200
-      m_LastClickedID: 155420
-      m_ExpandedIDs: 2cbbfeff44ecfeff16fbfffffa560000c0570000a45a0000285d0000b8600000cc600000f460000098640000060b02002e1802003a610200e6620200
+      m_SelectedIDs: 4e630000
+      m_LastClickedID: 25422
+      m_ExpandedIDs: 16fbffffde580000505c0000445d0000325e0000e0600000a2620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1843,9 +1843,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1005.3375, y: 524.7018, z: 4.9244876}
+    m_Target: {x: 1001.52893, y: 236.66853, z: 1.0844338}
     speed: 2
-    m_Value: {x: 1007.8107, y: 517.79553, z: 5.186738}
+    m_Value: {x: 1001.52893, y: 236.66853, z: 1.0844338}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1895,9 +1895,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 609.00385
+    m_Target: 993.00824
     speed: 2
-    m_Value: 582.7788
+    m_Value: 993.00824
   m_Ortho:
     m_Target: 1
     speed: 2

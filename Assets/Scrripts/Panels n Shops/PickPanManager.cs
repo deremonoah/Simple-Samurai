@@ -9,24 +9,21 @@ public class PickPanManager : MonoBehaviour
     private GameManager _gm;
     private EventManager _eventManager;
     private PlayerEquipedItemsManager _playerEquipedItems;
-    private BlackSmithShop _blacksmithShop;
     private PlayerHealthBar _playerHP;
 
     [SerializeField] Image[] buttonImages;
-    public List<Item> lootList;
-    private List<Item> randLootPicks = new List<Item>();
+    [SerializeField] List<GameObject> buttonContainers=new();
+    public List<Item> lootList;//specifically items for post combat looting
+    private List<Reward> randLootPicks = new List<Reward>();
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
     //public List<Image> PlayerItemBoarders;
-
-    private bool learning, looting;
 
     void Start()
     {
         _gm = GetComponent<GameManager>();
         _playerEquipedItems = FindObjectOfType<PlayerEquipedItemsManager>();
         _eventManager = GetComponent<EventManager>();
-        _blacksmithShop = GetComponent<BlackSmithShop>();
         _playerHP = GetComponent<PlayerHealthBar>();
 
 
@@ -34,35 +31,42 @@ public class PickPanManager : MonoBehaviour
         {
             lootList[lcv] = Instantiate(lootList[lcv]);
         }
-
-        //below is for the boarders around players equiped items
-        /*PlayerItemBoarders[0].color = FindObjectOfType<ColorManager>().weaponColor;
-        PlayerItemBoarders[3].color = FindObjectOfType<ColorManager>().weaponColor;
-        PlayerItemBoarders[1].color = FindObjectOfType<ColorManager>().armorColor;
-        PlayerItemBoarders[2].color = FindObjectOfType<ColorManager>().curioColor;
-
-
-
-        for (int lcv = 0; lcv < PlayerItemBoarders.Count; lcv++)
-        {
-            PlayerItemBoarders[lcv].color = new Color(0,0,0,0);//disabling image component didn't work (as its the raycast target for tool tips), so changing alpha leaves it at 0 & invisible while in combat or town
-        }*/
     }
 
-    public void OpenPickPan(int kind)
+    public void OpenPickPanForLooting()
     {
+        foreach(GameObject go in buttonContainers)
+        {
+            go.SetActive(true);
+        }
+        //enable all for 3 picks
+
         LootingPanel.GetComponent<Animator>().SetBool("Open", true);
         _eventManager.CheckNextEvent();
-        if(kind == 0)
-        {
-            looting = true;
-            return;
-        }
-        if(kind ==1)
-        {
-            learning = true;
-        }
+        
+        RandomItemPull();
+        return;
     }
+
+    public void OpenPickPanForRewarding(List<Reward> rewards)//from mini games how player learns new skills
+    {
+        foreach (GameObject go in buttonContainers)
+        {
+            go.SetActive(false);
+        }//disable all for 2-3 picks
+        for (int lcv=0;lcv<rewards.Count;lcv++)
+        {
+            buttonContainers[lcv].SetActive(true);
+        }
+
+        LootingPanel.GetComponent<Animator>().SetBool("Open", true);
+        randLootPicks = rewards;
+        LoadLootPicks();
+        //has to know what pool  to pull from, sesei, farmer, or blacksmith
+        //could get sent list as an alternative call for OpenPickPan(List<rewards>)
+        //the reward options have already been decided when sent. 
+    }
+
     public void ClosePickPan()
     {
         if (LootingPanel.GetComponent<Animator>().GetBool("Open"))
@@ -80,36 +84,34 @@ public class PickPanManager : MonoBehaviour
 
     public void PickButton(int buttonID)
     {
-        if (looting)
+        Debug.Log("type of loot is "+randLootPicks[buttonID].GetType());
+        if(randLootPicks[buttonID] is ShopReward)// to check if is of this linage (or derives from that class)
         {
-
-            if (randLootPicks[buttonID].GetType() == typeof(Curio))
-            {
-                ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
-            }
-            _playerEquipedItems.EquipItem(randLootPicks[buttonID], buttonImages[buttonID].transform);
-
+            Debug.Log("shop reward is the type");
+            ShopReward re = (ShopReward)randLootPicks[buttonID];
+            re.ResolveReward();
             randLootPicks.Clear();
-
             ClosePickPan();
+            return;//so it doesn't equip a non item item()
         }
-        if(learning)
+        else if (randLootPicks[buttonID].GetType() == typeof(Curio))
         {
-            //LearnPicks[buttonID] resolve its effect for now instantiating a buff area
+                ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
         }
-        
+        _playerEquipedItems.EquipItem((Item)randLootPicks[buttonID], buttonImages[buttonID].transform);
 
+        randLootPicks.Clear();
+        ClosePickPan();
     }
 
     public void inspectItem(int itemToPick)
     {
         //wraping when we go past the pick items
-        Debug.Log("inspect before wrap " + itemToPick);
         if (itemToPick >= randLootPicks.Count) { itemToPick = 0; }
         else if (itemToPick < 0) { itemToPick = randLootPicks.Count - 1; }
 
         var dis=FindObjectOfType<ItemDisplayPanel>();
-        dis.OpenItemDescriptionPanel(randLootPicks[itemToPick], itemToPick,itemDisplayOpenedFrom.PickPan);
+        dis.OpenItemDescriptionPanel((Reward)randLootPicks[itemToPick], itemToPick,itemDisplayOpenedFrom.PickPan);
     }
 
     public void RandomItemPull()
@@ -128,15 +130,20 @@ public class PickPanManager : MonoBehaviour
         randLootPicks.Add(tempList[temp3]);
         tempList.RemoveAt(temp3);
 
-        for (int lcv = 0; lcv < 3; lcv++)//setting the color is now like inabling the image
+        LoadLootPicks();
+    }
+    
+    private void LoadLootPicks()
+    {
+        for (int lcv = 0; lcv < randLootPicks.Count; lcv++)//setting the color is now like enabling the image
         {
-            buttonImages[lcv].sprite = randLootPicks[lcv].itemPanelIcon;
+            buttonImages[lcv].sprite = randLootPicks[lcv].PanelIcon;
             //HoverHelpers[lcv].tipToShow = randLootPicks[lcv].itemDescription;
-            if(randLootPicks[lcv].GetType()==typeof(Weapon))
+            if (randLootPicks[lcv].GetType() == typeof(Weapon))
             {
                 BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().weaponColor;
             }
-            else if(randLootPicks[lcv].GetType()==typeof(Armor))
+            else if (randLootPicks[lcv].GetType() == typeof(Armor))
             {
                 BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().armorColor;
             }
@@ -145,24 +152,6 @@ public class PickPanManager : MonoBehaviour
                 BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().curioColor;
             }
         }
-
-        //updating hovertips
-        //updatePlayerEquipedHoverTips();
-    }
-
-
-    /*public void updatePlayerEquipedHoverTips()
-    {
-        PlayerItemBoarders[0].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedWeapon.itemDescription;
-        PlayerItemBoarders[1].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedArmor.itemDescription;
-        if (_playerEquipedItems.equipedCurio != null)
-        { PlayerItemBoarders[2].GetComponent<HoverTip>().tipToShow = _playerEquipedItems.equipedCurio.itemDescription; }
-    }*/
-
-    public void Learning()
-    {
-        //this either needs to take in an event with specific choices or have random bonus effects and multiple lists for different things
-
     }
 
     private void ResolveManagerCurioEffect(Curio cur)

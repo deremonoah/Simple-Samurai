@@ -43,10 +43,9 @@ public class GameFlowManager : MonoBehaviour
     {
         FindObjectOfType<MiniGameManager>().RollToSeeIfTheyNeedHelp();
         //looting stuff
-        _PickPanelManager.OpenPickPan(0);
+        _PickPanelManager.OpenPickPanForLooting();
         StrikeArea.SwitchPlayerOn(false);
         WeaknessSpawnManager.instance.InCombat(false);
-        _PickPanManager.RandomItemPull();
 
         while (_PickPanelManager.isPanelOpen())
         {
