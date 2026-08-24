@@ -193,3 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrapEffect: 0
   damageFromTrap: 10
+  BlocksStrikes: 0
+  DestroyOnBlock: 1
+  SpawnPosMinMax: {x: 0, y: 0}
+  SpawnPosOffset: 0

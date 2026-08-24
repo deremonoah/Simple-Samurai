@@ -2,41 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealTrap : MonoBehaviour
+public class HealTrap : EnemyTrap
 {
     [SerializeField] Vector2 MinMaxHeal;
     [SerializeField] float growDuration;
     [SerializeField] float shrinkDuration;
-    [Header("Positional info")]
-    [SerializeField] Vector2 SpawnPosMinMax;
-    [SerializeField] float SpawnPosOffset;
-    private bool blocking;
-    private Vector2 posBlock;
-
-    private void OnEnable()//in case I change to object pooling, which probably should
-    {
-        //move to right pos
-        StrikePoint point = FindObjectOfType<StrikePoint>();
-        float randpos = SpawnPosOffset + Random.Range(SpawnPosMinMax.x, SpawnPosMinMax.y);//idk man, just based off what I have in buff areas so just some nummbers
-        transform.position=point.currentPath.path.GetPointAtDistance(randpos);
-        //start shrinking
-        StartCoroutine(OpportunityRoutine());
-    }
-
-    private void Update()
-    {
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && blocking)
-        {
-            FindObjectOfType<SoundManager>().PlaySound("block");
-            ParticleManager.instance.BlockedHere(posBlock, 40f);//at time of implementing the blocked here doesn't care about damage
-            Destroy(gameObject);
-        }
-    }
 
     private void HealAnEnemy()
     {
         float healAmount = Random.Range(MinMaxHeal.x, MinMaxHeal.y);
         FindObjectOfType<EnemyHPBarPlacerManager>().HealEnemy(healAmount);
+    }
+
+    protected override void EffectOnStart()
+    {
+        StartCoroutine(OpportunityRoutine());
     }
 
     private IEnumerator OpportunityRoutine()
@@ -74,17 +54,4 @@ public class HealTrap : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.name == "strike point")
-        {
-            blocking = true;
-            posBlock = other.transform.position;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        blocking = false;
-    }
 }

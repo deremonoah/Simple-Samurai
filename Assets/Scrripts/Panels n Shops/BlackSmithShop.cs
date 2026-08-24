@@ -138,13 +138,13 @@ public class BlackSmithShop : ShopGiveReward
 
     public void DiscountWeapon(int amount)
     {
-        tempWeaponCostReduction = amount;
+        tempWeaponCostReduction += amount;
         ShowAppreciation(heartOverHead, improveWeaponText.transform);
         SetUpgradeCostsButtonsText();
     }
     public void DiscountArmor(int amount)
     {
-        tempArmorCostRecution = amount;
+        tempArmorCostRecution += amount;
         ShowAppreciation(heartOverHead, improveArmorText.transform);
         SetUpgradeCostsButtonsText();
     }
