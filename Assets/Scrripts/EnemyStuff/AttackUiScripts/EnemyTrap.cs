@@ -85,15 +85,15 @@ public class EnemyTrap : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.name == "strike point" && damageFromTrap == 0)
-        {
-            FindObjectOfType<StrikeArea>().BeingBlocked(true);
-            PointerOnTrap = true;
-        }
         if (other.name == "strike point")
         {
+
             PointerOnTrap = true;
             posBlock = other.transform.position;
+            if (BlocksStrikes)
+            {
+                FindObjectOfType<StrikeArea>().BeingBlocked(true);
+            }
         }
     }
 

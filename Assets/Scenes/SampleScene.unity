@@ -10800,6 +10800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardFrom: 0
+  shop: {fileID: 0}
   player: {fileID: 1265967465}
   durationInEachRow: 14
   seed: {fileID: 1567161102242273272, guid: ae4b3222fd17aba4485ba11201cd75c2, type: 3}
@@ -11120,6 +11121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardFrom: 2
+  shop: {fileID: 0}
   stuffToClean:
   - {fileID: 1141776350}
   - {fileID: 1528585015}
@@ -11185,7 +11187,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -28003,6 +28005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardFrom: 1
+  shop: {fileID: 0}
   PlayerHammer: {fileID: 1286803231}
   phRotationBottom: {x: 0, y: 0, z: 0}
   phRotationTop: {x: 0, y: 0, z: 111.204}
@@ -35645,12 +35648,18 @@ MonoBehaviour:
   heartOverHead: {fileID: 505911327}
   parentObj: {fileID: 893364462}
   recentScore: 0
-  panelButton: {fileID: 659864832}
   aproval: 0
-  itemRewards:
-  - {fileID: 11400000, guid: 938616cdfce35ac46a3e87b23eba7793, type: 2}
-  - {fileID: 11400000, guid: fa3a90828e8304518bf48a0891c7b826, type: 2}
   rewardFromHere: {fileID: 1647254365}
+  ScoreAboveForThreeRewards: 0
+  aprovalAfterHelp: 0
+  RewardsCommon:
+  - {fileID: 11400000, guid: fd2a70aef4b69d347960ea5c16310ad7, type: 2}
+  - {fileID: 11400000, guid: c3f1c6389b0337e4fb96944eb1ac94c9, type: 2}
+  RewardsRare:
+  - {fileID: 11400000, guid: 938616cdfce35ac46a3e87b23eba7793, type: 2}
+  rareScoreAboveToGet: 100
+  perminentCostReduction: 0
+  panelButton: {fileID: 659864832}
 --- !u!114 &1410867516
 MonoBehaviour:
   m_ObjectHideFlags: 0

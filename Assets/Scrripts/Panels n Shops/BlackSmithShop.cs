@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class BlackSmithShop : ShopGiveReward
 {
-    [Header("most recent score")]
-    [SerializeField] float recentScore;//I plan to remove this
-
     private PlayerEquipedItemsManager pEquip;
     private GameManager _gm;
     public GameObject panelBSButton;
@@ -19,23 +16,10 @@ public class BlackSmithShop : ShopGiveReward
     public bool lootingUpgradesEnabled = false;
     public int curioReduceCost;
 
-    [Header("Helping rewards")]
-    [SerializeField] int aproval;//for how much they like you
-    [SerializeField] int ScoreAboveForThreeRewards;
-    [SerializeField] Transform rewardFromHere;
-
-    [Header("common rewards")]
-    [SerializeField] List<Reward> RewardsCommon;
-
-    [Header("Rare rewards")]
-    [SerializeField] List<Reward> RewardsRare;
-    [SerializeField] float rareScoreAboveToGet;
-
     [Header("Cost reductions")]
-    [SerializeField] int perminentCostReduction;
     [SerializeField] int tempWeaponCostReduction;
     [SerializeField] int tempArmorCostRecution;
-    
+
     //maybe add a 3rd for blanket?
 
     void Start()
@@ -121,20 +105,7 @@ public class BlackSmithShop : ShopGiveReward
         //TurnedOnShopButtons.Add(BlackSmithButton);
     }
 
-    public void RewardFromBlacksmith(float score)
-    {
-        recentScore = score;
-        aproval += 5;//might change amount to be vairable based ons score
-        int rand = Random.Range(0, (int)score) + aproval;
-        ShowAppreciation(heartOverHead, null);
-        
-        
-
-        SetUpgradeCostsButtonsText();
-        //blacksmith options: free upgrade to weapon or armor, maybe player picks? Reduce cost use?
-        //what else? gold? a random armor or weapon? sharpens your weapon? temp buff, shore up your armor, temp buff?
-        //make your weapon pointer bigger? strike area bigger?
-    }
+    
 
     public void DiscountWeapon(int amount)
     {

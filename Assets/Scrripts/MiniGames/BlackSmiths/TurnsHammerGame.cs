@@ -50,7 +50,7 @@ public class TurnsHammerGame : MiniGame
     private Coroutine otherRoutine;//for don't mess it up RN routine
     private bool firstRun=true;//so it doesn't score size bandaid solutions work man
 
-    private void Awake()
+    void Awake()
     {
         posToReturn = WorkingMetal.position;
     }

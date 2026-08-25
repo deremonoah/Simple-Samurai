@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -16,21 +17,18 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] Transform sun;
     [SerializeField] Transform SunStartPos;
     [SerializeField] Transform SunEndPos;
-    private Coroutine dayRoutine;
-
-    private SenseiPanel sensei;
-    private BlackSmithShop smith;
-    private FarmShop farmers;
-    
+    private Coroutine dayRoutine;  
 
     void Start()
     {
         //starts out of mini game normally, but I might start in it just to test
         //OpenMiniGames();//here for now to test sun
-        sensei = FindObjectOfType<SenseiPanel>();
-        smith = FindObjectOfType<BlackSmithShop>();
-        farmers = FindObjectOfType<FarmShop>();
-        
+        List<MiniGame> minigs = GetComponentsInChildren<MiniGame>(true).ToList();
+
+        foreach (MiniGame mi in minigs)
+        {
+            mi.setShop();
+        }
     }
 
     public void RollToSeeIfTheyNeedHelp()
@@ -89,11 +87,9 @@ public class MiniGameManager : MonoBehaviour
 
             yield return null;
         }
-
         //end the work day, so get score,
         //then drop down the scene, back to can spend money probably
         //Debug.Log("past sun position");
-        Debug.Log("currentGame before calculating " + currentGame.name);
         float scoreToReward = currentGame.CalculateScore();
         ResolveReward(scoreToReward);
         dayRoutine = null;
@@ -107,7 +103,7 @@ public class MiniGameManager : MonoBehaviour
         EnableHiddenUI(true);
         var gfm=FindObjectOfType<GameFlowManager>();
         gfm.villageStillOpen();
-        helpedWho rewarder = currentGame.RewardFrom;
+        currentGame.shop.GenerateRewardsToSend(score);
         currentGame.gameObject.SetActive(false);
 
         //TODO:this is where I will add giving of some kind of reward
@@ -116,21 +112,6 @@ public class MiniGameManager : MonoBehaviour
 
         //also should have the npc thank the player for the help, even if they aren't given anything right away
         //if they have a text box over their head they could always be saying something
-
-        switch(rewarder)
-        {
-            case helpedWho.Farmer:
-                farmers.RewardFromFarmer(score);
-                break;
-            case helpedWho.Blacksmith:
-                smith.RewardFromBlacksmith(score);
-                break;
-            case helpedWho.Sensei:
-                sensei.RewardFromSensei(score);
-                break;
-        }
-
-        //TODO: have refrence to the help buttons & disable the others, so you can only help someone once between games as often as it happens
     }
 
     private void EnableHiddenUI(bool yee)

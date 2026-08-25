@@ -22,7 +22,7 @@ public class SeedPlanting : MiniGame
     //so working songs often sung so, not sure about a down beat or how to get it to sound like singing with instruments or keep it 
     //indistinct and have a down beat?
 
-    private void Awake()
+    void Awake()
     {
         posToReturn = player.position;
         maxRefSeeds = seedsToUse;

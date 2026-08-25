@@ -5,13 +5,10 @@ using UnityEngine.UI;
 
 public class FarmShop : ShopGiveReward
 {
-    [Header("most recent score")]
-    [SerializeField] float recentScore;//I plan to remove this
-
     private GameManager _gm;
     private PlayerHealthBar _playerHP;
     private PlayerEquipedItemsManager pEquip;
-    private PickPanManager _picPanMan;
+    
 
     private float FarmHeal = 40;
     private float FarmIncHP = 25;
@@ -32,19 +29,6 @@ public class FarmShop : ShopGiveReward
 
     public int reduceCost;
 
-    [Header("Helping rewards")]
-    [SerializeField] int aproval;//for how much they like you
-    [SerializeField] int FavoredCostReduction;//perminent
-    [SerializeField] Transform rewardFromHere;
-    [SerializeField] int ScoreAboveForThreeRewards;
-
-    [Header("common rewards")]
-    [SerializeField] List<Reward> RewardsCommon;
-
-    [Header("Rare rewards")]
-    [SerializeField] List<Reward> RewardsRare;
-    [SerializeField] float rareScoreAboveToGet;
-
     [Header("Temporary helping buffs")]//do I need to see this in inspector?
     [SerializeField] int healCostReduction;
     [SerializeField] int maxHPCostReduction;
@@ -56,12 +40,11 @@ public class FarmShop : ShopGiveReward
         _gm = GetComponent<GameManager>();
         _playerHP = GetComponent<PlayerHealthBar>();
         pEquip = FindObjectOfType<PlayerEquipedItemsManager>();
-        _picPanMan = FindObjectOfType<PickPanManager>();
     }
 
     public void FarmHealButton()
     {
-        int cost = Mathf.Clamp((healCost * healPurchasesThisTurn) - (reduceCost+healCostReduction+FavoredCostReduction),0,10000);
+        int cost = Mathf.Clamp((healCost * healPurchasesThisTurn) - (reduceCost+healCostReduction+ perminentCostReduction),0,10000);
         if (_gm.playerCoins >= cost)
         {
             _gm.playerCoins -= cost;
@@ -74,7 +57,7 @@ public class FarmShop : ShopGiveReward
 
     public void IncreaseMaxHPButton()
     {
-        int cost = Mathf.Clamp((improveHPCost * IncreasedMaxHPtimes) - (reduceCost + maxHPCostReduction + FavoredCostReduction),0,10000);
+        int cost = Mathf.Clamp((improveHPCost * IncreasedMaxHPtimes) - (reduceCost + maxHPCostReduction + perminentCostReduction),0,10000);
         if (_gm.playerCoins >= cost)
         {
             _gm.playerCoins -= cost;
@@ -131,14 +114,14 @@ public class FarmShop : ShopGiveReward
     public void SetButtonCostsText()
     {
         //heal text
-        int cost = Mathf.Clamp((healCost * healPurchasesThisTurn) - (reduceCost + healCostReduction + FavoredCostReduction), 0, 10000);
+        int cost = Mathf.Clamp((healCost * healPurchasesThisTurn) - (reduceCost + healCostReduction + perminentCostReduction), 0, 10000);
         healText.text = "Heal "+FarmHeal+"HP for "+ cost +"g";
 
         //max hp up text
-        cost = Mathf.Clamp((improveHPCost * IncreasedMaxHPtimes) - (reduceCost + maxHPCostReduction + FavoredCostReduction), 0, 10000);
+        cost = Mathf.Clamp((improveHPCost * IncreasedMaxHPtimes) - (reduceCost + maxHPCostReduction + perminentCostReduction), 0, 10000);
         improveHealthText.text = FarmIncHP+" More Max HP " + cost +"g";
 
-        cost = Mathf.Clamp(improveFarmCost - (reduceCost+FavoredCostReduction),0,10000);
+        cost = Mathf.Clamp(improveFarmCost - (reduceCost+ perminentCostReduction),0,10000);
         improveFarmText.text = "Improve Farm " + cost + "g";
     }
 
@@ -150,49 +133,6 @@ public class FarmShop : ShopGiveReward
     public void GotMoreVillagers()
     {
         healPurchasesThisTurn += 1;
-    }
-
-    public void RewardFromFarmer(float score)
-    {
-        recentScore = score;
-        aproval +=5;//might change amount to be vairable based ons score
-        int rand = Random.Range(0, (int)score) + aproval;
-        ShowAppreciation(heartOverHead, null);
-
-        //figuring out rewards
-        List<Reward> rewardsToSend=new();
-        int itemLength = 0;
-        Debug.Log("Rand for loot length " + rand);
-        if(rand>=ScoreAboveForThreeRewards)
-        {
-            itemLength = 3;
-        }
-        else { itemLength = 2; }
-        while(rewardsToSend.Count<itemLength)
-        {
-            rand = Random.Range(0, (int)score) + aproval;
-            if(rand>rareScoreAboveToGet)
-            {
-                int randRare = Random.Range(0, RewardsRare.Count);
-                if(!rewardsToSend.Contains(RewardsRare[randRare]))
-                {
-                    rewardsToSend.Add(RewardsRare[randRare]);
-                }
-            }
-            else
-            {
-                int randCom = Random.Range(0, RewardsRare.Count);
-                if (!rewardsToSend.Contains(RewardsCommon[randCom]))
-                {
-                    rewardsToSend.Add(RewardsCommon[randCom]);
-                }
-            }
-        }
-
-        //sending to pickPan
-        _picPanMan.OpenPickPanForRewarding(rewardsToSend);
-
-        //seing a progress bar for improving the farm could be cool, motivating for players and they see with their help farm is getting better
     }
 
     public void DiscountHeal()
@@ -211,7 +151,7 @@ public class FarmShop : ShopGiveReward
 
     public void DiscountAll()
     {
-        FavoredCostReduction += 1;
+        perminentCostReduction += 1;
         ShowAppreciation(heartOverHead, healText.transform);
         ShowAppreciation(heartOverHead, improveHealthText.transform);
         ShowAppreciation(heartOverHead, improveFarmText.transform);

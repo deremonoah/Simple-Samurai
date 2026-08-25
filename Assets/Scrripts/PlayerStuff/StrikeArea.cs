@@ -110,7 +110,7 @@ public class StrikeArea : MonoBehaviour
                 if(inBuffArea == 4)
                 {
                     //weak point hit
-                    currentBuff = 3;//the position of this will be over the strike area so you buff & hit sin the same
+                    currentBuff = 3;//the position of this will be over the strike area so you buff & hit in the same frame
                 }
                 //this needs to be at the end to reset the buff
                 

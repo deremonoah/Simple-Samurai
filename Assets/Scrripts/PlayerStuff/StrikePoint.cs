@@ -11,7 +11,9 @@ public class StrikePoint : MonoBehaviour
     public GameObject startpoint;
 
     public PathCreator currentPath;
-    private PathCreator equipedPath;
+    private PathCreator primaryPath;
+    private PathCreator secondaryPath;
+    private bool twoStyleEnabled;
     public PathCreator endPath;
     
     public float baseSpeed;
@@ -62,8 +64,8 @@ public class StrikePoint : MonoBehaviour
 
         StyleconfusedTimer = 0f;
         Styleconfused = false;
-        equipedPath = currentPath;//current path is what is set in inspector
-        ChangeStyle(equipedPath);
+        primaryPath = currentPath;//current path is what is set in inspector
+        ChangeStyle(primaryPath);
     }
 
     void Update()
@@ -151,6 +153,17 @@ public class StrikePoint : MonoBehaviour
         PathTimer = 0;
         //reset bonus speed
         bonusSpeed = 0;
+        if(twoStyleEnabled)
+        {
+            if(currentPath==primaryPath)
+            {
+                currentPath = secondaryPath;
+            }
+            if(currentPath==secondaryPath)
+            {
+                currentPath = primaryPath;
+            }
+        }
     }
 
     void checkWhereToFace()
@@ -239,5 +252,10 @@ public class StrikePoint : MonoBehaviour
     public bool AreAttacking()
     {
         return PathTimer > 0;//if you are holding a key down this should be greater than 0
+    }
+
+    public void UnlockedTwoStyleAbility()
+    {
+        twoStyleEnabled = true;
     }
 }

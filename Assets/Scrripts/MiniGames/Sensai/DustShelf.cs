@@ -13,7 +13,7 @@ public class DustShelf : MiniGame
     private float DelayTimer=0;
     [SerializeField] private int ItemToDust;
 
-    private void Awake()
+    void Awake()
     {
         posToReturn = duster.position;
     }
@@ -50,7 +50,6 @@ public class DustShelf : MiniGame
 
     public void CleanThis(int slot)//can be called by this or by
     {
-        Debug.Log("clean this is called");
         float randClean = Random.Range(0.01f, 0.17f);
         stuffToClean[slot].fillAmount -= randClean;//do we need clamp?
     }
@@ -78,6 +77,7 @@ public class DustShelf : MiniGame
             nextPoint++;
             
         }
+        Debug.Log("did we get to the end of the loop?");
     }
 
     public void SetDustingItem(int slot)
