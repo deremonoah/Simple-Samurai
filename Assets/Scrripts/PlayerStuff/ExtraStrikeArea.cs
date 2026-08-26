@@ -5,10 +5,7 @@ using UnityEngine;
 public class ExtraStrikeArea : MonoBehaviour
 {
     private Camera mc;
-    private GameManager GM;
     private EnemysManager enmySys;
-    private SoundManager SoundMng;
-    private StrikeArea mainArea;
     private bool inStrikeArea = false;
     private float timer,damgMult = 1, defaultDamgMult=1, baseDamage,maxDamage;
     [SerializeField] List<int> target;
@@ -17,14 +14,11 @@ public class ExtraStrikeArea : MonoBehaviour
     private StrikePoint strikePoint;
     private bool justStruck = false;
 
-    void Awake()
+    void Start()
     {
-        mainArea = FindObjectOfType<StrikeArea>();
         mc = Camera.main;
-        GM = mc.GetComponent<GameManager>();
         enmySys = mc.GetComponent<EnemysManager>();
         strikePoint = FindObjectOfType<StrikePoint>();
-        SoundMng = FindObjectOfType<SoundManager>();
         MyWeapon = Instantiate(MyWeapon);
         SetExtrasWeapon(MyWeapon);
         CheckTarget();

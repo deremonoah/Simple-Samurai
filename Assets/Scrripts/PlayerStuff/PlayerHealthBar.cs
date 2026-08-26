@@ -58,6 +58,7 @@ public class PlayerHealthBar : MonoBehaviour
     private int PoisonTimer = 20;
 
     private StrikePoint _strikePoint;
+    private bool PlayerDead;
 
     void Start()
     {
@@ -96,7 +97,7 @@ public class PlayerHealthBar : MonoBehaviour
             health = maxHealth;
         }
 
-        if (health <= 0f)
+        if (health <= 0f && !PlayerDead)
         {
             if (equipedArmor.armrEef == ArmorEffect.phoenix)
             {
@@ -104,9 +105,9 @@ public class PlayerHealthBar : MonoBehaviour
                 health = maxHealth;
                 //make it so player can't increase max hp probably
                 if (maxHealth <= 10)
-                { _gm.OpenLossPan(); }
+                { PlayerDied(); }
             }
-            else { _gm.OpenLossPan(); }
+            else { PlayerDied(); }
         }
 
         if (_myCurio != null)
@@ -143,6 +144,11 @@ public class PlayerHealthBar : MonoBehaviour
 
     }
 
+    private void PlayerDied()
+    {
+        PlayerDead = true;
+        _gm.OpenLossPan();
+    }
 
     void HealthBarFiller()
     {

@@ -97,6 +97,7 @@ public class enemyStats : MonoBehaviour
     private List<GameObject> BlockSets;
 
     private EnemyBehavior eb;
+    private float AttackSpeedScaler;
 
     //adding deligates to actually implement the stategy pattern
     public System.Action _DelegateAction;
@@ -151,6 +152,7 @@ public class enemyStats : MonoBehaviour
         HandleHPBarPlacement();
 
         //DecideNStartAction();  
+        AttackSpeedScaler = SaveData.instance.getTimeScaledEnemyWaitTimeValue();
     }
 
     void Awake()
@@ -587,6 +589,11 @@ public class enemyStats : MonoBehaviour
 
     public float getRandomWaitTime()
     {
-        return Random.Range(randWaitmin, randWaitmax)+waitTimerOffset;
+        //maybe get from save data each time if I want it to live update AttackSpeedScaler = SaveData.instance.getTimeScaledEnemyWaitTimeValue();
+        float rand = Random.Range(randWaitmin, randWaitmax) + waitTimerOffset;
+
+        Debug.Log("Time wait scaller " + AttackSpeedScaler);
+
+        return rand*AttackSpeedScaler;
     }
 }

@@ -16,10 +16,12 @@ public class attack : MonoBehaviour
     protected Vector2 posBlock;
 
     //put here how we will indicate damage, with the mask in future
+    private float timeScaleRefrence;
 
     void Start()
     {
         GetEndPos();
+        timeScaleRefrence=SaveData.instance.getTimeScaleValue();
     }
 
     protected virtual void Update()
@@ -51,7 +53,7 @@ public class attack : MonoBehaviour
         }
 
         //movement
-        transform.Translate(dir * movespeed * Time.deltaTime);
+        transform.Translate(dir * movespeed * Time.deltaTime* timeScaleRefrence);
 
         if ((this.transform.position.x < endPos.transform.position.x && dir.x < 1) || (transform.position.y < endPos.transform.position.y && dir.x < 1))
         {

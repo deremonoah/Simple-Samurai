@@ -8,7 +8,7 @@ public class ArkingAtk : attack
     [SerializeField] float PathTimer;
     private PathCreator currentPath;
     private float distanceTravelled;
-
+    private float TimeScaleRefrence;
     //posblock is protected from parent class
 
     void Start()
@@ -16,6 +16,7 @@ public class ArkingAtk : attack
         //this is where it should get or set it's path
         GetEndPos();
         currentPath = FindObjectOfType<EnemysManager>().GetRandomThrowPath();
+        TimeScaleRefrence=SaveData.instance.getTimeScaleValue();
     }
 
 
@@ -48,7 +49,7 @@ public class ArkingAtk : attack
         }
 
         //moves
-        distanceTravelled += base.movespeed * Time.deltaTime;
+        distanceTravelled += base.movespeed * Time.deltaTime* TimeScaleRefrence;
         transform.position = currentPath.path.GetPointAtDistance(distanceTravelled);
 
         //once the attack is past designated area it is destoryed

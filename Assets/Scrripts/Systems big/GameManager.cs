@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject shopPan;
     public GameObject winPan;
     public GameObject pausePan;
+    //for time scale testing
+    [SerializeField] TextMeshProUGUI pauseTimeScaleDisplay;
+    [SerializeField] TextMeshProUGUI lossTimeScaleDisplay;
+    [SerializeField] TextMeshProUGUI WinTimeScaleDisplay;
+
     private EnemysManager _enemyManager;
     private EventManager _eventManager;
     public Text TextCoins;
@@ -30,6 +36,23 @@ public class GameManager : MonoBehaviour
     private bool _blacksmithInvested;
     private bool _farmInvested;
 
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if(instance==null)
+        {
+            instance = this;
+        }
+        else
+        {
+            if(instance!=this)
+            {
+                Destroy(this);//shouldn't need but hey why not
+            }
+        }
+    }
+
     void Start()
     {
         _eventManager = GetComponent<EventManager>();
@@ -43,6 +66,7 @@ public class GameManager : MonoBehaviour
         _farmShop = GetComponent<FarmShop>();
         _PickPanManager = GetComponent<PickPanManager>();
         
+
     }
 
     private void FixedUpdate()
@@ -86,9 +110,12 @@ public class GameManager : MonoBehaviour
 
     public void OpenLossPan()
     {
+        Debug.Log("OpenLossPanCalled");
         lossPan.SetActive(true);
+        SaveData.instance.PlayerDied(_enemyManager.WaveControlVariable);
         Time.timeScale = 0f;
     }
+
     public void CloseLossPan()
     {
         lossPan.SetActive(false);
