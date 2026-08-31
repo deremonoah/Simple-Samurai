@@ -96,9 +96,12 @@ public class PickPanManager : MonoBehaviour
         }
         else if (randLootPicks[buttonID].GetType() == typeof(Curio))
         {
-                ResolveManagerCurioEffect((Curio)randLootPicks[buttonID]);
+                bool isConsumable=IsResolveConsumable((Curio)randLootPicks[buttonID]);
+            if(!isConsumable)
+            {
+                _playerEquipedItems.EquipItem((Item)randLootPicks[buttonID], buttonImages[buttonID].transform);
+            }
         }
-        _playerEquipedItems.EquipItem((Item)randLootPicks[buttonID], buttonImages[buttonID].transform);
 
         randLootPicks.Clear();
         ClosePickPan();
@@ -154,17 +157,20 @@ public class PickPanManager : MonoBehaviour
         }
     }
 
-    private void ResolveManagerCurioEffect(Curio cur)
+    private bool IsResolveConsumable(Curio cur)
     {
         switch (cur.curiEef)
         {
             case CurioEffect.Koban:
                 _gm.playerCoins += cur.CurioNum;
+                return true;
                 break;
             case CurioEffect.heal:
                 _playerHP.HealPlayer(cur.CurioNum);
+                return true;
                 break;
         }
+        return false;
     }
 
     public bool isPanelOpen()

@@ -116,6 +116,7 @@ public class PlayerHealthBar : MonoBehaviour
             {
                 health += _myCurio.CurioNum;
                 FindObjectOfType<PlayerEquipedItemsManager>().ClearConsumable();
+                _myCurio = null;
             }
         }
 
