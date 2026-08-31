@@ -164,9 +164,6 @@ public class PickPanManager : MonoBehaviour
             case CurioEffect.heal:
                 _playerHP.HealPlayer(cur.CurioNum);
                 break;
-            case CurioEffect.quick:
-                _playerEquipedItems.EquipItem(cur, null);
-                break;
         }
     }
 
