@@ -248,13 +248,13 @@ public class PlayerHealthBar : MonoBehaviour
 
     public void DamagePlayerNoRevenge(float damagePoints, int ability)
     {
-        if (ability == 2)
+        if (ability == 2)//anti armor
         {
             health -= (Mathf.Max(1, damagePoints));
         }
-        else if (ability == 8)
+        else if (ability == 8)//on fire
         {
-            health -= (Mathf.Max(1, damagePoints));
+            health -= (Mathf.Max(1, damagePoints - armorValue));
             StartCoroutine(OnFire(damagePoints));
         }
         else
@@ -331,7 +331,6 @@ public class PlayerHealthBar : MonoBehaviour
         if(_myCurio.curiEef == CurioEffect.XtHealth && !hadBonusHP)
         {
             IncreaseMaxHPBy(_myCurio.CurioNum);
-            health += _myCurio.CurioNum;
             hadBonusHP = true;
         }
         else if(_myCurio.curiEef != CurioEffect.XtHealth && hadBonusHP)
@@ -346,7 +345,7 @@ public class PlayerHealthBar : MonoBehaviour
     public void IncreaseMaxHPBy(float Xhealth)
     {
         maxHealth += Xhealth;
-        health += Xhealth;
+        health = Mathf.Clamp(health + Xhealth, 1, maxHealth);
         //I need to increase the size of hp bar and background then I also need to move the defenses over
         //the increase should also be proportional. there are 4 levels so probably 4 ifs or a switch statement so maybe take in level
         setHPBarSize();
@@ -354,6 +353,7 @@ public class PlayerHealthBar : MonoBehaviour
     public void ReduceMaxHP(float lessHP)
     {
         maxHealth -= lessHP;
+        health = Mathf.Clamp(health - lessHP, 1, maxHealth);
         setHPBarSize();
     }
 
