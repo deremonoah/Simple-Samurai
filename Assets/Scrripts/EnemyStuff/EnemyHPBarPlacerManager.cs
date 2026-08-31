@@ -215,4 +215,9 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
             barpos.position = aliveEnemies[posInList].backUpHPBarSpot.position;
         }
     }
+
+    public bool AnyAliveEnemies()
+    {
+        return aliveEnemies.Count > 0;
+    }
 }

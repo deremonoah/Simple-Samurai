@@ -60,13 +60,14 @@ public class GameManager : MonoBehaviour
         _enemyManager = GetComponent<EnemysManager>();
         playerCoins = 0;
         playerHP = GetComponent<PlayerHealthBar>();
-        StrikeArea.SwitchPlayerOn(true);
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _blacksmithShop = GetComponent<BlackSmithShop>();
         _farmShop = GetComponent<FarmShop>();
         _PickPanManager = GetComponent<PickPanManager>();
-        
 
+        lossTimeScaleDisplay.text ="";
+        pauseTimeScaleDisplay.text = "";
+        WinTimeScaleDisplay.text = "";
     }
 
     private void FixedUpdate()
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
 
     public void OpenShopPan()
     {
+        pauseTimeScaleDisplay.text = SaveData.instance.getTimeScaleValue() + "";
         shopPan.GetComponent<Animator>().SetBool("Open", true);
     }
 
@@ -104,12 +106,13 @@ public class GameManager : MonoBehaviour
         {
             shopPan.GetComponent<Animator>().SetBool("Open", false);
             _enemyManager.StartNextWave();
-            StrikeArea.SwitchPlayerOn(true);
         }
     }
 
     public void OpenLossPan()
     {
+        lossTimeScaleDisplay.text= SaveData.instance.getTimeScaleValue()+"";
+
         Debug.Log("OpenLossPanCalled");
         lossPan.SetActive(true);
         SaveData.instance.PlayerDied(_enemyManager.WaveControlVariable);
@@ -184,6 +187,7 @@ public class GameManager : MonoBehaviour
     public void PlayerWins()
     {
         winPan.SetActive(true);
+        WinTimeScaleDisplay.text = SaveData.instance.getTimeScaleValue() + "";
         FindObjectOfType<VillageDefense>().PlayerWon();
     }
 

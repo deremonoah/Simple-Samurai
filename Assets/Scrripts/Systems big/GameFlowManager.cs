@@ -16,6 +16,7 @@ public class GameFlowManager : MonoBehaviour
     private PlayerHealthBar _php;
     private bool playerIsReadyToFight;
     private PlayerDefense _pd;
+    private EnemyHPBarPlacerManager _eHPm;
 
     [ContextMenu("initialize")]
 
@@ -27,25 +28,33 @@ public class GameFlowManager : MonoBehaviour
         _farm = GetComponent<FarmShop>();
         _php = GetComponent<PlayerHealthBar>();
         _pd = FindObjectOfType<PlayerDefense>();
+        _eHPm = EnemyHPBarPlacerManager.instance;
+
+        StartCoroutine(FlowRoutine());
     }
 
     public void StartMenues()
     {
-        _php.HPIsInCombat(false);
-        _pd.inCombatHudUpdate(false);
         _pd.RearmTraps();
-        StopAllCoroutines();
-        StartCoroutine(FlowRoutine());
         _farm.ResetHealPurchases();
+        FindObjectOfType<MiniGameManager>().RollToSeeIfTheyNeedHelp();
     }
 
     IEnumerator FlowRoutine()
     {
-        FindObjectOfType<MiniGameManager>().RollToSeeIfTheyNeedHelp();
+        InCombat(true);
+
+        yield return new WaitForSeconds(2f);//wait for them to spawn in?
+        while (_eHPm.AnyAliveEnemies())
+        {
+            yield return null;
+
+        }
+
+        StartMenues();
         //looting stuff
         _PickPanelManager.OpenPickPanForLooting();
-        StrikeArea.SwitchPlayerOn(false);
-        WeaknessSpawnManager.instance.InCombat(false);
+        InCombat(false);
 
         while (_PickPanelManager.isPanelOpen())
         {
@@ -91,10 +100,16 @@ public class GameFlowManager : MonoBehaviour
             yield return null;
             continue;
         }
-        StrikeArea.SwitchPlayerOn(true);
-        _php.HPIsInCombat(true);//TODO: make these 1 simple inCombatCall for this class
-        _pd.inCombatHudUpdate(true);
-        WeaknessSpawnManager.instance.InCombat(true);
+
+        StartCoroutine(FlowRoutine());
+    }
+
+    private void InCombat(bool isInCombat)
+    {
+        StrikeArea.SwitchPlayerOn(isInCombat);
+        _php.HPIsInCombat(isInCombat);//TODO: make these 1 simple inCombatCall for this class
+        _pd.inCombatHudUpdate(isInCombat);
+        WeaknessSpawnManager.instance.InCombat(isInCombat);
     }
 
     public void villageStillOpen()

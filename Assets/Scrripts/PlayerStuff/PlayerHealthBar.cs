@@ -195,49 +195,54 @@ public class PlayerHealthBar : MonoBehaviour
     public void DamagePlayer(enemyStats enmy,float damagePoints, int ability)
     {
         //add enum stuff for effects damage could have
-        if (_playerDefense.isDefended() && enmy != null)
+        if(inCombat)
         {
-            //this is where I would check which player defense they have so ima make that script
-            _playerDefense.DefendPlayer(enmy,damagePoints);
-        }
-        else
-        {
-            if (ability == 2)
+            if (_playerDefense.isDefended() && enmy != null)
             {
-                //anti armor
-                float resolveDmg = Mathf.Max(1, damagePoints);
-                health -= resolveDmg;
-                ParticleManager.instance.ShowPayerDamage(resolveDmg);
-                currentArmor = 0;
-
-            } else if(ability ==8)
-            {
-                //fire ability
-                health -= (Mathf.Max(1, damagePoints));
-                StartCoroutine(OnFire(damagePoints));
-            } else if(ability == 12)
-            {
-                //poison
-                if (isPoisoned)
-                    {
-                    PoisonTimer -= 3;//TODO: make poison reduced amount varable based on damage
-                    }
-                else
-                { WasPoisonedRoutine = StartCoroutine(PoisonedRoutine()); }
-                
+                //this is where I would check which player defense they have so ima make that script
+                _playerDefense.DefendPlayer(enmy, damagePoints);
             }
             else
             {
-                //regular attack
-                float resolveDmg = Mathf.Max(0, damagePoints - currentArmor);
-                currentArmor =Mathf.Clamp(currentArmor-damagePoints,0,100000);
-                health -= resolveDmg;
-                ParticleManager.instance.ShowPayerDamage(resolveDmg);
-                //Debug.Log("max: " + Mathf.Max(1, damagePoints - armorValue));
+                if (ability == 2)
+                {
+                    //anti armor
+                    float resolveDmg = Mathf.Max(1, damagePoints);
+                    health -= resolveDmg;
+                    ParticleManager.instance.ShowPayerDamage(resolveDmg);
+                    currentArmor = 0;
+
+                }
+                else if (ability == 8)
+                {
+                    //fire ability
+                    health -= (Mathf.Max(1, damagePoints));
+                    StartCoroutine(OnFire(damagePoints));
+                }
+                else if (ability == 12)
+                {
+                    //poison
+                    if (isPoisoned)
+                    {
+                        PoisonTimer -= 3;//TODO: make poison reduced amount varable based on damage
+                    }
+                    else
+                    { WasPoisonedRoutine = StartCoroutine(PoisonedRoutine()); }
+
+                }
+                else
+                {
+                    //regular attack
+                    float resolveDmg = Mathf.Max(0, damagePoints - currentArmor);
+                    currentArmor = Mathf.Clamp(currentArmor - damagePoints, 0, 100000);
+                    health -= resolveDmg;
+                    ParticleManager.instance.ShowPayerDamage(resolveDmg);
+                    //Debug.Log("max: " + Mathf.Max(1, damagePoints - armorValue));
+                }
+                //this is also where I could add throns type armor well I still would need to check if enemy is null again
+                _soundManager.PlaySound("hit");
+                //StartCoroutine(RevengeRoutine());mihgt add back as an ability
             }
-            //this is also where I could add throns type armor well I still would need to check if enemy is null again
-            _soundManager.PlaySound("hit");
-            //StartCoroutine(RevengeRoutine());mihgt add back as an ability
         }
     }
 

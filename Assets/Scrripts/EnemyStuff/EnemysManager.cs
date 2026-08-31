@@ -89,7 +89,7 @@ public class EnemysManager : MonoBehaviour
                 spawned = false;
                 OpenTimer = 0.5f;
                 FindObjectOfType<PlayerHealthBar>().CurePlayerStatusEffects();
-                _flowManager.StartMenues();
+                //_flowManager.StartMenues();
                 _villageDefense.ResetVillage();
             }
             else

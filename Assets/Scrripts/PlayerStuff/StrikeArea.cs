@@ -138,7 +138,7 @@ public class StrikeArea : MonoBehaviour
                     EnemyHPBarPlacerManager.instance.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     
                     justStruck = true;
-                    PlayerOn = false;
+                    //PlayerOn = false;
                     _JustStruckTimer = 0.1f;
                     //Debug.Log("Enemy: "+targetEnemy[lcv] + "   damage: " + Damger);
 
@@ -170,7 +170,7 @@ public class StrikeArea : MonoBehaviour
         if (_JustStruckTimer<0 && justStruck)
         {
             justStruck = false;
-            PlayerOn = true;
+            //PlayerOn = true;
         }
         else { _JustStruckTimer -= Time.deltaTime; }
 
