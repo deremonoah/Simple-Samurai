@@ -25,7 +25,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         //if (StrikeArea.PlayerOn)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.Mouse0))
             {
                 readyingTimer = readyingTimerMax;
                 ready = true;
@@ -43,7 +43,7 @@ public class PlayerAnimation : MonoBehaviour
                 ready = false;
             }
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Space)|| Input.GetKeyUp(KeyCode.Mouse0))
             {
                 atkTimer = atkTimerMax;
                 postatk = true;

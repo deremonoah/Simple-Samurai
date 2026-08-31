@@ -965,7 +965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111, y: 0.9210205}
+  m_AnchoredPosition: {x: -176, y: 48}
   m_SizeDelta: {x: 460, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65922825
@@ -3833,8 +3833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 111.043}
+  m_AnchoredPosition: {x: -38, y: 47}
+  m_SizeDelta: {x: 127.91, y: 111.043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &219249671
 GameObject:
@@ -5187,8 +5187,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -117}
-  m_SizeDelta: {x: 1000, y: 111.043}
+  m_AnchoredPosition: {x: -38.00003, y: -70}
+  m_SizeDelta: {x: 127.904, y: 111.043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &281415966
 GameObject:
@@ -17573,8 +17573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -388, y: 0}
-  m_SizeDelta: {x: 1000, y: 111.043}
+  m_AnchoredPosition: {x: -397, y: 0}
+  m_SizeDelta: {x: 112, y: 111.043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &574514631
 GameObject:
@@ -25257,8 +25257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1360, y: -929}
-  m_SizeDelta: {x: 1000, y: 111.04297}
+  m_AnchoredPosition: {x: -1288.835, y: -975.5808}
+  m_SizeDelta: {x: 1142.331, y: 204.205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &910566252
 GameObject:
@@ -51691,7 +51691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 383, y: -1.737}
+  m_AnchoredPosition: {x: 383, y: 42}
   m_SizeDelta: {x: 73.836, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2087818926
