@@ -6,7 +6,7 @@ using PathCreation;
 public class BuffAreaManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> BuffPrefabs;
-    private List<GameObject> placedBuffs;
+    [SerializeField] private List<GameObject> placedBuffs;
     private StrikePoint point;
     [SerializeField] GameObject buffParent;
     //order of prefabs: SwapWeapon, SwapEnemy, DamageUp, SpeedUp

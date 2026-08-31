@@ -217,6 +217,7 @@ public void EquipItem(Item item, Transform fromHere)
     public void UnlockTwoWeapons()
     {
         twoWeapons = true;
+        SecondaryWeaponUI.SetActive(true);
     }
 
     public Weapon getPrimaryWeapon()// for Style Display
@@ -254,4 +255,5 @@ public void EquipItem(Item item, Transform fromHere)
         goingHere.gameObject.SetActive(true);
         Destroy(moveObj.gameObject);
     }
+
 }

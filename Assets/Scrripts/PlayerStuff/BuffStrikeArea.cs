@@ -5,9 +5,12 @@ using UnityEngine;
 public class BuffStrikeArea : MonoBehaviour
 {
     public enum Buff { swapEnemy, swapWeapon, speedUp, damageUp,weakSpot}
+    public bool DestroyOnHit;
     [SerializeField] Buff mybuff;
     private StrikeArea mainStrikeArea;
     private PlayerEquipedItemsManager playerEquips;
+    private bool OnThisStrikeArea;
+
     void Start()
     {
         mainStrikeArea = FindObjectOfType<StrikeArea>();
@@ -15,7 +18,7 @@ public class BuffStrikeArea : MonoBehaviour
     }
     private void Update()
     {
-        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))&&mainStrikeArea.GetBuff()==4)
+        if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0))&& OnThisStrikeArea && DestroyOnHit)
         {
             StartCoroutine(DestroyRoutine());
         }
@@ -28,7 +31,7 @@ public class BuffStrikeArea : MonoBehaviour
             if(mybuff==Buff.weakSpot)
             {
                 mainStrikeArea.inStrikeArea = true;
-                
+                OnThisStrikeArea = true;
             }
         }
     }
@@ -41,6 +44,7 @@ public class BuffStrikeArea : MonoBehaviour
             if (mybuff == Buff.weakSpot)
             {
                 mainStrikeArea.inStrikeArea = false;
+                OnThisStrikeArea = false;
             }
         }
     }
