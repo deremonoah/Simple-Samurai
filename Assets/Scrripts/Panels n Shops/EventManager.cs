@@ -249,7 +249,7 @@ public class EventManager : MonoBehaviour
         if (_currentEvent.myeventEffect == EventEffect.moreVillagers)
         {
             _villageDefense.villagers += Random.Range(5, 16);
-            _gm._farmShop.GotMoreVillagers();
+            FindObjectOfType<FarmShop>().GotMoreVillagers();
         }
 
         if(_currentEvent.myeventEffect == EventEffect.joinBandits)

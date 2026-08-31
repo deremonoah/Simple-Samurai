@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     private EventManager _eventManager;
     public Text TextCoins;
     public int playerCoins;
-    [SerializeField] PlayerHealthBar playerHP;
 
     public SoundManager SoundMng;
 
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour
     private PlayerEquipedItemsManager _playerEquipedItems;
     private PickPanManager _PickPanManager;
     private BlackSmithShop _blacksmithShop;
-    public FarmShop _farmShop;
+    private FarmShop _farmShop;
 
     private bool _blacksmithInvested;
     private bool _farmInvested;
@@ -59,7 +58,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         _enemyManager = GetComponent<EnemysManager>();
         playerCoins = 0;
-        playerHP = GetComponent<PlayerHealthBar>();
         _playerEquipedItems = GetComponent<PlayerEquipedItemsManager>();
         _blacksmithShop = GetComponent<BlackSmithShop>();
         _farmShop = GetComponent<FarmShop>();

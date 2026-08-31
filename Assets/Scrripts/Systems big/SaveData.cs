@@ -39,8 +39,8 @@ public class SaveData : MonoBehaviour
 
     public void PlayerDied(int wave)
     {
-        Debug.Log("called player died");
-        if(wave<1)
+        Debug.Log("called player died on wave "+wave);
+        if(wave<3)
         {
             TimeScaleValue = Mathf.Clamp(TimeScaleValue - IncrementOnBigDeath, .5f, 1);
         }
