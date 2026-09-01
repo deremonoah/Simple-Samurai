@@ -29,7 +29,7 @@ public class PlayerEquipedItemsManager : MonoBehaviour
     private GameManager _gm;
 
     [SerializeField] List<ExtraStrikeArea> extraStrikeAreas;
-    public bool twoWeapons;
+    private bool twoWeapons=false;
 
     [Header("Item recieved variables")]
     [SerializeField] GameObject itemAnimPrefab;//this is the item that is spawned and moved or the icon
@@ -77,10 +77,19 @@ public void EquipItem(Item item, Transform fromHere)
                     ex.SetExtrasWeapon(_mainStrikeArea.equipedWeapon);
                 }
             }*/
-            if(item!=equipedWeapon)//if its not a new weapon we don't want to add a copy into armory
+            if (twoWeapons)
+            {
+                if (SecondaryWeapon != null)
+                { GetComponent<Armory>().AddItemToArmory(SecondaryWeapon); }
+                SecondaryWeapon = PrimaryWeapon;
+                SecondaryWeaponIcon.sprite = SecondaryWeapon.PanelIcon;
+            }
+            else if(item!=equipedWeapon)//if its not a new weapon we don't want to add a copy into armory
             {
                 GetComponent<Armory>().AddItemToArmory(equipedWeapon);
             }
+            
+
             equipedWeapon = (Weapon)item;
             PrimaryWeapon = equipedWeapon;
             _mainStrikeArea.SetWeapon(item as Weapon);
@@ -218,6 +227,11 @@ public void EquipItem(Item item, Transform fromHere)
     {
         twoWeapons = true;
         SecondaryWeaponUI.SetActive(true);
+    }
+
+    public bool HasTwoWeapons()
+    {
+        return twoWeapons;
     }
 
     public Weapon getPrimaryWeapon()// for Style Display

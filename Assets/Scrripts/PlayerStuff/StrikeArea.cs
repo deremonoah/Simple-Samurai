@@ -84,7 +84,7 @@ public class StrikeArea : MonoBehaviour
             if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inBuffArea>=0)
             {
                 //resolve buff effect because this is when player releases over the area
-                if(inBuffArea == 1 && _myItemsManager.twoWeapons)
+                if(inBuffArea == 1 && _myItemsManager.HasTwoWeapons())
                 {
                     SwapWeapon();
                     inBuffArea = -1;
@@ -343,6 +343,10 @@ public class StrikeArea : MonoBehaviour
 
     public void SwapWeapon()
     {
+        if(_myItemsManager.SecondaryWeapon == null)
+        {
+            return;//becuase you don't have a second weapon
+        }
         if (equipedWeapon == _myItemsManager.SecondaryWeapon)
         {
             

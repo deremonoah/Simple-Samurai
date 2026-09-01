@@ -97,12 +97,14 @@ public class PickPanManager : MonoBehaviour
         else if (randLootPicks[buttonID].GetType() == typeof(Curio))
         {
                 bool isConsumable=IsResolveConsumable((Curio)randLootPicks[buttonID]);
-            if(!isConsumable)
+            if(isConsumable)
             {
-                _playerEquipedItems.EquipItem((Item)randLootPicks[buttonID], buttonImages[buttonID].transform);
+                randLootPicks.Clear();
+                ClosePickPan();
+                return;//so it doesn't waste time trying to equip a non item
             }
         }
-
+        _playerEquipedItems.EquipItem((Item)randLootPicks[buttonID], buttonImages[buttonID].transform);
         randLootPicks.Clear();
         ClosePickPan();
     }

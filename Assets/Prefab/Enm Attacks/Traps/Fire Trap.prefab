@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8088358899506784870, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: TrapEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088358899506784870, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
       propertyPath: DestroyOnBlock
       value: 1
       objectReference: {fileID: 0}

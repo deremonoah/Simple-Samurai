@@ -300,7 +300,7 @@ public class PlayerHealthBar : MonoBehaviour
             FireLeft -= Time.deltaTime;
             if(Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))
             {
-                RollCount++;
+                RollCount+=3;
             }
             yield return null;
         }
