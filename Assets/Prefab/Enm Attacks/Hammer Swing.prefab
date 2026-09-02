@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1878947063964747001, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
@@ -21,19 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5338052958082804478, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6
+      value: 2.1462061
       objectReference: {fileID: 0}
     - target: {fileID: 5338052958082804478, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.44801056
       objectReference: {fileID: 0}
     - target: {fileID: 5338052958082804478, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.273
       objectReference: {fileID: 0}
     - target: {fileID: 5338052958082804478, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1561
       objectReference: {fileID: 0}
     - target: {fileID: 5338052958082804478, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -71,5 +72,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer Swing
       objectReference: {fileID: 0}
+    - target: {fileID: 7440088551899307492, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}
+      propertyPath: movespeed
+      value: 4.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88b1268e868b2dd41b86c13cafdaed4e, type: 3}

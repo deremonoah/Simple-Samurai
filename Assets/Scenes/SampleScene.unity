@@ -17665,6 +17665,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HP Bar Prefab (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1203125137
+      objectReference: {fileID: 0}
     - target: {fileID: 4361720668455936057, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -21208,6 +21220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mc: {fileID: 519420031}
   inStrikeArea: 0
+  blocked: 0
   inBuffArea: 0
   currentBuff: 0
   maxDamage: 60
@@ -25467,6 +25480,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HP Bar Prefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1203125137
+      objectReference: {fileID: 0}
     - target: {fileID: 4361720668455936057, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -26943,7 +26968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +1 slot 4g
+  m_text: +1 Armory slot 4g
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52391,6 +52416,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HP Bar Prefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1203125137
+      objectReference: {fileID: 0}
     - target: {fileID: 4361720668455936057, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -55186,6 +55223,18 @@ PrefabInstance:
     - target: {fileID: 599088087864685539, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
       propertyPath: m_Name
       value: HP Bar Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813365733229359763, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1203125137
       objectReference: {fileID: 0}
     - target: {fileID: 4361720668455936057, guid: 2ad14a17e8470b144bf904b08520f0d9, type: 3}
       propertyPath: m_Pivot.x

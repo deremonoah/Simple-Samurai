@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: BlocksStrikes
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8088358899506784870, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: DestroyOnBlock
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8088358899506784870, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: damageFromTrap
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8162332374352837662, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -304,6 +312,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d8034c68db995b849a1900a07649685a, type: 3}
+    - target: {fileID: 8162332374352837664, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
       propertyPath: m_RootOrder
       value: 0

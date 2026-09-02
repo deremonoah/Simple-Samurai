@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: maxTraps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: TrapPercentage
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: trapPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: attackPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -16,6 +28,10 @@ PrefabInstance:
       propertyPath: currentAttacks.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: trapPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6338016640822896288, guid: cc45bfc426420434b951446c5b5966e9, type: 3}
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: actionPrefabs.Array.data[0]
       value: 
@@ -62,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: armor
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: maxHP

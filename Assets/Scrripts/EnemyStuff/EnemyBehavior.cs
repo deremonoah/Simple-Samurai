@@ -13,7 +13,6 @@ public class EnemyBehavior : MonoBehaviour
     [Header("attack info")]
     [SerializeField] List<GameObject> attackPrefabs;
     [SerializeField] Transform enemyAttackPoint;
-    private List<GameObject> currentAttacks = new List<GameObject>();
     [SerializeField] float MoveToShowSpeed;
     [Header("attack anim durations")]
     [SerializeField] float DrawBackDuration;
@@ -21,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [Header("trap prefabs")]
     [SerializeField] List<GameObject> trapPrefabs;
-    private List<GameObject> currentTraps = new List<GameObject>();
+
     [SerializeField] int maxTraps;
     [Range(1,100)]
     [SerializeField] int TrapPercentage;
@@ -32,6 +31,9 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] int RageThreashold;
     [SerializeField] bool canAttackDifferentLineInRage;//for if they might move up or what not to attack a different line
 
+    [Header("attacks and traps spawned and tracked")]
+    [SerializeField] List<GameObject> SpawnedAttacks = new List<GameObject>();
+    [SerializeField] List<GameObject> spawnedTraps = new List<GameObject>();
 
     private int currentRageCount;
     private float YAttackOffset;
@@ -49,8 +51,10 @@ public class EnemyBehavior : MonoBehaviour
         myActionRoutine = null;
         DelegateAction = null;
 
+        
+
         //rage highest priority
-        if(DelegateAction==null &&currentRageCount>=RageThreashold)
+        if (DelegateAction==null &&currentRageCount>=RageThreashold)
         {
             int rand = Random.Range(0, 2);
             if(rand>0)
@@ -58,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour
                 DelegateAction = RageRoutine();
             }
         }
-        if(DelegateAction==null && trapPrefabs.Count>0)
+        if(DelegateAction==null && trapPrefabs.Count>0 && spawnedTraps.Count<=maxTraps)
         {
             int rand = Random.Range(1, 101);
             if(rand<=TrapPercentage)
@@ -79,9 +83,15 @@ public class EnemyBehavior : MonoBehaviour
         //randomly generate wait time
         yield return ReturnRoutine();//to make sure they are in the right spot
 
+        SpawnedAttacks.RemoveAll(attack => attack == null);
+        spawnedTraps.RemoveAll(trap => trap == null);
+
         yield return new WaitForSeconds(stats.getRandomWaitTime());//or should it que up attacks, so we make sure that they are better timed
 
         yield return moveToShowAttack();//show attack also throws attack, this also starts the routine
+
+        SpawnedAttacks.RemoveAll(attack => attack == null);
+        spawnedTraps.RemoveAll(trap => trap == null);
 
         DecideNextAction();
     }
@@ -213,9 +223,9 @@ public class EnemyBehavior : MonoBehaviour
 
     public void ClearAttacksNTraps()//called by enemyStats when enemy dies
     {
-        foreach (var atk in currentAttacks)
+        foreach (var atk in SpawnedAttacks)
             Destroy(atk);
-        foreach (var trap in currentTraps)
+        foreach (var trap in spawnedTraps)
             Destroy(trap);
     }
 
@@ -223,7 +233,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         int rand = Random.Range(0, attackPrefabs.Count);
         GameObject attack = Instantiate(attackPrefabs[rand], enemyAttackPoint.position, attackPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
-        currentAttacks.Add(attack);
+        SpawnedAttacks.Add(attack);
         var atk = attack.GetComponent<attack>();
         if (atk != null)
         {
@@ -237,7 +247,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         int rand = Random.Range(0, trapPrefabs.Count);
         GameObject trap = Instantiate(trapPrefabs[rand], enemyAttackPoint.position, trapPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
-        currentTraps.Add(trap);
+        spawnedTraps.Add(trap);
         var atk = trap.GetComponent<attack>();
         yield return null;
     }

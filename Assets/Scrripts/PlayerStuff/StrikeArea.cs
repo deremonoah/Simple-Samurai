@@ -11,6 +11,7 @@ public class StrikeArea : MonoBehaviour
     private PlayerEquipedItemsManager _myItemsManager;
     public static bool PlayerOn = true;
     public bool inStrikeArea;
+    public bool blocked;
     //buff area refers to what buff it gives that it got from what ever buff area
     [SerializeField] int inBuffArea;
     [SerializeField] int currentBuff;
@@ -117,7 +118,7 @@ public class StrikeArea : MonoBehaviour
             }
 
             //for attacking in strike area
-            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck)
+            if ((Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Mouse0)) && inStrikeArea && !justStruck && !blocked)
             {
                 DamageCalcEffects();
                 float Damger = Mathf.Clamp((_mystrikePoint.mostRecentX * damgMult) + baseDamage, 0, maxDamage);
@@ -369,7 +370,7 @@ public class StrikeArea : MonoBehaviour
 
     public void BeingBlocked(bool isblocked)
     {
-        inStrikeArea = !isblocked;
+        blocked=isblocked;
     }
 
     public void RecieveBuff(int buff)
