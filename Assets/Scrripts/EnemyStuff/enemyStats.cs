@@ -16,7 +16,8 @@ public class enemyStats : MonoBehaviour
 
     //mostly timers n stuff
     [Header("timers")]
-    public float randWaitmin, randWaitmax, readyingTimer, strikeTimer, waitTimerOffset;
+    public float randWaitmin;
+    public float randWaitmax, readyingTimer, strikeTimer, waitTimerOffset;
 
     private Camera _mainCam;
     private GameManager _GM;
@@ -40,23 +41,22 @@ public class enemyStats : MonoBehaviour
     public Transform HPBarToMove;
     public Transform backUpHPBarSpot;
     //private Vector3 HPBarPosToReturnTo;
-    public EnemysManager enmsSys;
+    protected EnemysManager enmsSys;
 
     //attack projectile stuff **also fully utelizing the multiple attack and special prefabs has not been used yet
 
     public List<Ability> myAbilities=new List<Ability> { Ability.none};//default it to none as that cuases error
     private int amountRobbed = 0;
 
-    public List<GameObject> currentAttacks = new List<GameObject>();
+    //public List<GameObject> currentAttacks = new List<GameObject>();
 
     //public Material matWhite;
 
 
     [SerializeField] int minCoin, maxCoin;
 
-    public GameObject HPPointer;
-    public List<GameObject> BowPointers;
-    public Canvas myCanvas;
+    //public GameObject HPPointer;
+    //public Canvas myCanvas;
 
     public Coroutine myActionRoutine;
 
@@ -73,11 +73,7 @@ public class enemyStats : MonoBehaviour
     public float stunTimer = 0;
 
     //selfheal stuff
-    [SerializeField] float _healAmount;
-    private bool _regening = false;
-    [SerializeField] float regenTimer, regenMaxTimer;
-    [SerializeField] float healThreashold;
-    [SerializeField] bool aboveHealThreashold;
+
 
     [SerializeField] Transform hurtPoint;//for the particle system to hopefully work better, more hard coding lol
 
@@ -157,7 +153,7 @@ public class enemyStats : MonoBehaviour
 
     void Awake()
     {
-        HPPointer.SetActive(false);
+        //HPPointer.SetActive(false);
     }
 
     protected virtual void Update()
@@ -235,7 +231,6 @@ public class enemyStats : MonoBehaviour
                     break;
             }
         }
-        OnHitEffect(deal);
         if (antArm)
         {
             HP -= Mathf.Clamp((deal - currentDefense), 1, deal);
@@ -253,19 +248,7 @@ public class enemyStats : MonoBehaviour
         parM.ShowDamage(hurtPoint, deal);
     }
 
-    protected virtual void OnHitEffect(float deal)
-    {
-        //this is overwritten by other scripts
-        //maybe in future we will give enemies a rage on a certain number of hits, but that is for future Noah ha ha
-        if (_regening && deal > healThreashold)
-        {
-            Debug.Log("regen stoped");
-            _regening = false;
-            //should have a custome noise maybe bowl breaks and sprite the sumo the bowl should go flying
-            StopCoroutine(myActionRoutine);
-            //DecideNStartAction();
-        }
-    }
+
 
     public void Stunned(float num)
     {
@@ -415,7 +398,7 @@ public class enemyStats : MonoBehaviour
 
                 enmsSys.UpdateEnmsPosRefrence();
 
-                enmsSys.UpdateOurPointers();
+                //enmsSys.UpdateOurPointers();
 
                 enmsSys.IncreaseAgressionRange(Aggression);
                 //all of a sudden idk if i spelled agression right ah yes 2 gs
@@ -461,32 +444,7 @@ public class enemyStats : MonoBehaviour
         }
     }
 
-    IEnumerator RegenRoutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-        HP += _healAmount;
-        if (HP != maxHP && regenTracker <12)
-        {
-            //keep sprite as healing
-            Debug.Log("Regen" + HP);
-            regenTracker++;
-            myActionRoutine =StartCoroutine(RegenRoutine());
-        }
-        else
-        {
-            //DecideNStartAction();
-        }
-    }
-
-    public void StartRegen(float healAmount)
-    {
-        _healAmount = healAmount;
-        _regening = true;
-        regenTimer = regenMaxTimer;
-        myActionRoutine = StartCoroutine(RegenRoutine());
-    }
-
-    public void SetTargetPointers(List<Sprite> myPointers)
+    /*public void SetTargetPointers(List<Sprite> myPointers)
     {
         //this is called from pointer manager on individual enemies
         HPPointer.SetActive(true);
@@ -501,11 +459,11 @@ public class enemyStats : MonoBehaviour
             }
             //if multiple we set 1st one then remove from list and enable a number of 2ndary pointers which are then set
         }
-    }
+    }*/
     
     public void DisablePointer()
     {
-        HPPointer.SetActive(false);
+        //HPPointer.SetActive(false);
     }
 
     public float getCurrentHP()

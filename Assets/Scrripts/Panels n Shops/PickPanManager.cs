@@ -166,11 +166,11 @@ public class PickPanManager : MonoBehaviour
             case CurioEffect.Koban:
                 _gm.playerCoins += cur.CurioNum;
                 return true;
-                break;
+                //break; unreachable whines at me
             case CurioEffect.heal:
                 _playerHP.HealPlayer(cur.CurioNum);
                 return true;
-                break;
+                //break; unreachable whines at me
         }
         return false;
     }

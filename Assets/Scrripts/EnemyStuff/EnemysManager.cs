@@ -47,7 +47,7 @@ public class EnemysManager : MonoBehaviour
 
     [SerializeField] List<PathCreator> thrownPaths;
 
-    private PointerManager PM;
+    //private PointerManager PM;
     //above refering to enemies not yet used
 
     //this is the number that is the top end of the random number for if enemies move up
@@ -71,7 +71,7 @@ public class EnemysManager : MonoBehaviour
     {
         GM = FindObjectOfType<GameManager>();
         StartCoroutine(SpawnWave());
-        PM = FindObjectOfType<PointerManager>();
+        //PM = FindObjectOfType<PointerManager>();
         PlayerStrikeArea = FindObjectOfType<StrikeArea>();
         _villageDefense = FindObjectOfType<VillageDefense>();
         _flowManager = GetComponent<GameFlowManager>();
@@ -129,7 +129,7 @@ public class EnemysManager : MonoBehaviour
 
         UpdateEnmsPosRefrence();
 
-        PM.UpdateAliveEnmsPointers(aliveEnemys);
+        //PM.UpdateAliveEnmsPointers(aliveEnemys);
 
         Destroy(me.gameObject);
     }
@@ -199,7 +199,7 @@ public class EnemysManager : MonoBehaviour
         }
 
 
-        PM.UpdateAliveEnmsPointers(aliveEnemys);
+        //PM.UpdateAliveEnmsPointers(aliveEnemys);
 
         //because this is the start of a new combat this is a good time to
         ResetAgressionMax();
@@ -348,7 +348,7 @@ public class EnemysManager : MonoBehaviour
             //have to removepointer from enemy in back
             aliveEnemys[aliveEnemys.Count - 1].DisablePointer();
 
-            PM.UpdateAliveEnmsPointers(aliveEnemys);
+            //PM.UpdateAliveEnmsPointers(aliveEnemys);
             //would call pointer manager here once working
         }
     }
@@ -379,11 +379,11 @@ public class EnemysManager : MonoBehaviour
         DifficultyWaves[WaveControlVariable] += much;
     }
 
-    public void UpdateOurPointers()
+    /*public void UpdateOurPointers()
     {
         //this is called by individual enemies when needed
-        PM.UpdateAliveEnmsPointers(aliveEnemys);
-    }
+        //PM.UpdateAliveEnmsPointers(aliveEnemys);
+    }*/
 
     public Transform getEndAttackPos()
     {

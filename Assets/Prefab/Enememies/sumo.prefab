@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: attackPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 5058154531069331146}
+      objectReference: {fileID: 5143868262715306960, guid: d08f3b4c633372647abbe0f19cc3f678, type: 3}
     - target: {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: currentAttacks.Array.data[0]
       value: 
@@ -183,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 8186756724622919039, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: myscript
       value: 
-      objectReference: {fileID: -7175765941779956355}
+      objectReference: {fileID: 0}
     - target: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -195,16 +195,11 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -7175765941779956355}
+      addedObject: {fileID: 1890482755192700124}
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
 --- !u!1 &170433031115579362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2445335703602919442, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2572378017422108656}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &313645342021069705 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2875731891815238777, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2572378017422108656}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2216075194700878680 stripped
@@ -217,17 +212,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2572378017422108656}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3959450749157606496 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1531267132036637584, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2572378017422108656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5058154531069331146 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2572378017422108656}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-7175765941779956355
+--- !u!114 &1890482755192700124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,19 +226,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5058154531069331146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24143f0dca42f2b42bf3d44f5775e244, type: 3}
+  m_Script: {fileID: 11500000, guid: 1232e913f8189a14289c30abf8d2c3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
-  maxHP: 190
+  maxHP: 500
   armor: 0
-  damgMin: 15
-  damgMax: 35
+  damgMin: 25
+  damgMax: 45
   defendValue: 20
   defendingMin: 0.5
   defendingMax: 1
-  randWaitmin: 3
-  randWaitmax: 5
+  randWaitmin: 2
+  randWaitmax: 3.5
   readyingTimer: 2
   strikeTimer: 0.4
   waitTimerOffset: 0
@@ -257,47 +247,21 @@ MonoBehaviour:
   myHPBar: {fileID: 0}
   HPBarToMove: {fileID: 0}
   backUpHPBarSpot: {fileID: 2216075194700878680}
-  enmsSys: {fileID: 0}
-  atkPrefabs:
-  - {fileID: 5143868262715306960, guid: d08f3b4c633372647abbe0f19cc3f678, type: 3}
-  specialPrefabs: []
-  atkStarts: []
-  atkEnd: {fileID: 0}
-  atkDirs:
-  - {x: -1, y: 0}
-  SpecialDirs: []
   myAbilities: 00000000
-  currentAttacks: []
-  minCoin: 7
-  maxCoin: 12
-  HPPointer: {fileID: 8590808088516782736}
-  BowPointers:
-  - {fileID: 7771468878524053790}
-  - {fileID: 313645342021069705}
-  - {fileID: 3959450749157606496}
-  myCanvas: {fileID: 8149392656905938144}
+  minCoin: 5
+  maxCoin: 9
   OnFireSprite: {fileID: 2480426746001492326}
   StunnedSprite: {fileID: 6692386105422536313}
-  basicAttackDiversity: 1
+  basicAttackDiversity: 0
   longRanged: 0
-  Aggression: 6
-  Defensiveness: 1
+  Aggression: 0
+  Defensiveness: 0
   difficulty: 03000000040000000600000007000000
   stunTimer: 0
-  _healAmount: 0
-  regenTimer: 0
-  regenMaxTimer: 8
-  healThreashold: 30
-  aboveHealThreashold: 0
   hurtPoint: {fileID: 6560603116962280932}
-  PoisonText: {fileID: 8349600621484805486}
+  PoisonText: {fileID: 0}
   isPoisoned: 0
-  temper: 10
-  minMaxRageAttacks: {x: 2, y: 3}
   hasPickedAction: 0
-  blockprefab: {fileID: 2241141551349325259, guid: 90d86f7fae5bdf245a175399cf6cd090, type: 3}
-  blocksSet: []
-  _blockSpots: []
 --- !u!4 &6560603116962280932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8699017054670066196, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -306,31 +270,5 @@ Transform:
 --- !u!1 &6692386105422536313 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9174621448005728649, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2572378017422108656}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7771468878524053790 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5218301876157161198, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2572378017422108656}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &8149392656905938144 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2572378017422108656}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8349600621484805486 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5795378092382644894, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2572378017422108656}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &8590808088516782736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6091754414344736096, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2572378017422108656}
   m_PrefabAsset: {fileID: 0}

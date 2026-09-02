@@ -321,6 +321,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162332374352837665, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -368,8 +376,36 @@ PrefabInstance:
       propertyPath: damageFromTrap
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8088358899506784870, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8387032638209841173}
   m_SourcePrefab: {fileID: 100100000, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+--- !u!1 &2241141551349325259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8162332374352837666, guid: b2cdd78e804849e45976a3c604a09731, type: 3}
+  m_PrefabInstance: {fileID: 7952314955027702249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8387032638209841173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241141551349325259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0911f79a23536bd4ab49324e3440981e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrapEffect: 0
+  damageFromTrap: 0
+  BlocksStrikes: 1
+  DestroyOnBlock: 0
+  SpawnPosMinMax: {x: 0, y: 0}
+  SpawnPosOffset: 0
+  TrapLifeTimeMinMax: {x: 3.5, y: 4.5}

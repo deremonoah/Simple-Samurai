@@ -104,7 +104,7 @@ MonoBehaviour:
   DestroyOnBlock: 0
   SpawnPosMinMax: {x: 0, y: 0}
   SpawnPosOffset: 0
-  TrapLifeTimeMinMax: {x: 3, y: 6}
+  TrapLifeTimeMinMax: {x: 3, y: 7}
 --- !u!61 &147791963560631856
 BoxCollider2D:
   m_ObjectHideFlags: 0
