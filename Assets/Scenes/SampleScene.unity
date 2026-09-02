@@ -53672,7 +53672,7 @@ PrefabInstance:
       objectReference: {fileID: 1895677734}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyPrefabs.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.data[0]
@@ -53750,6 +53750,10 @@ PrefabInstance:
       propertyPath: enemyPrefabs.Array.data[11]
       value: 
       objectReference: {fileID: 7532196821639596229, guid: 9bd461596cf6d2647bc2f29b4c0c3bc6, type: 3}
+    - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: enemyPrefabs.Array.data[12]
+      value: 
+      objectReference: {fileID: 5058154531069331146, guid: 87fdd2591e5d16442aa6ac2fba52a42b, type: 3}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackStartPoints.Array.size
       value: 3
