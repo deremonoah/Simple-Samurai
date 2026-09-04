@@ -40,17 +40,17 @@ public class StyleDisplay : MonoBehaviour
         yield return new WaitForSeconds(0.001f);
         Weapon we = getweapon();
 
-        int stylesToShow = sp.getNumberOfKnownStyles();
-        Debug.Log("known styles they say is " + stylesToShow);
+        List<StyleID> knownStyles = sp.getNumberOfKnownStyles();
+
         for (int lcv = 0; lcv < boxesForStyles.Count; lcv++)
         {
             boxesForStyles[lcv].SetActive(false);
         }
 
 
-        for (int lcv = 0; lcv < stylesToShow; lcv++)
+        for (int lcv = 0; lcv < knownStyles.Count; lcv++)
         {
-            boxesForStyles[lcv].SetActive(true);
+            boxesForStyles[(int)knownStyles[lcv]].SetActive(true);
         }
 
         strikeAreaImage.sprite = we.DisplayStrikeAreaIcon;

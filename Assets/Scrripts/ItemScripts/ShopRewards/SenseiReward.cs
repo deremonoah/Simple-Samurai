@@ -6,16 +6,12 @@ public class SenseiReward : ShopReward
     public SenseiRewardType reward;
     public override void ResolveReward()
     {
-        if (reward == SenseiRewardType.newForm)
-        {
-            FindObjectOfType<SenseiPanel>().LearnedNewStyle();
-        }
-        else if (reward == SenseiRewardType.twoWeaponWeilding)
+        /*else if (reward == SenseiRewardType.twoWeaponWeilding)
         {
             FindObjectOfType<PlayerEquipedItemsManager>().UnlockTwoWeapons();
             FindObjectOfType<BuffAreaManager>().PlaceBuff(0);//places swap weapon
-        }
-        else if (reward == SenseiRewardType.enemySwap)
+        } else*/
+        if (reward == SenseiRewardType.enemySwap)
         {
             FindObjectOfType<BuffAreaManager>().PlaceBuff(1);//swap enemy
         }

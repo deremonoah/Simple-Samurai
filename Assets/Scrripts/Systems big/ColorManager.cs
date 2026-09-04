@@ -7,6 +7,7 @@ public class ColorManager : MonoBehaviour
     public Color weaponColor;
     public Color armorColor;
     public Color curioColor;
+    public Color styleColor;
     public Color defendingColor;
     public Color AboutToHealColor;
     public Color PoisonedColor;

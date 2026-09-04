@@ -112,7 +112,7 @@ public class EventManager : MonoBehaviour
         }
 
         //sensei style related ifs
-        if(wave==2)
+        /*if(wave==2)
         {
             //tell player about next 2 styles and enable the ui and the sensei panel itself
             _nextEvents.Add(Resources.Load<Event>("Events/SensieUnlock"));
@@ -126,7 +126,7 @@ public class EventManager : MonoBehaviour
             _nextEvents.Add(Resources.Load<Event>("Events/SensieUnlock"));
             FindObjectOfType<SenseiPanel>().newStyles(4);
             //this will enable mountains and boar
-        }
+        }*/
 
         if(wave==5)
         {

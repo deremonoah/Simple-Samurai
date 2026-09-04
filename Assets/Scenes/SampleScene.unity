@@ -24920,7 +24920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &896562509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25679,7 +25679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &922644955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27594,7 +27594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &995562426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36105,6 +36105,7 @@ MonoBehaviour:
   weaponColor: {r: 0.9150943, g: 0.5222944, b: 0.5222944, a: 0.78431374}
   armorColor: {r: 0.51690996, g: 0.61814696, b: 0.9056604, a: 0.78431374}
   curioColor: {r: 0.9433962, g: 0.93906873, b: 0.7075472, a: 0.78431374}
+  styleColor: {r: 0.29411766, g: 0.854902, b: 0.17254902, a: 0.78039217}
   defendingColor: {r: 0.21791562, g: 0.30738047, b: 0.5566038, a: 1}
   AboutToHealColor: {r: 0.30753848, g: 0.8679245, b: 0.25792095, a: 1}
   PoisonedColor: {r: 0.3019608, g: 0.078431375, b: 0.40784317, a: 1}
@@ -36135,6 +36136,7 @@ MonoBehaviour:
   rareScoreAboveToGet: 100
   perminentCostReduction: 0
   panelButton: {fileID: 659864832}
+  stylesKnown: 00000000
 --- !u!114 &1410867516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51474,7 +51476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2082019336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53664,7 +53666,7 @@ PrefabInstance:
       objectReference: {fileID: 1594289841}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1092464847776270935, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: attackEndPointStandard
@@ -53992,7 +53994,7 @@ PrefabInstance:
       objectReference: {fileID: 337474711}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 19
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.size
@@ -54033,7 +54035,19 @@ PrefabInstance:
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.data[19]
       value: 
-      objectReference: {fileID: 11400000, guid: d4d7766a130f7fc488bacb0679a80558, type: 2}
+      objectReference: {fileID: 11400000, guid: c6c08b9467032d74da2480faf69c0f8c, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[20]
+      value: 
+      objectReference: {fileID: 11400000, guid: 090948116f097af40bd23676b0114c19, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[21]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4564e500eb18887418258a3a1f3bee4a, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[22]
+      value: 
+      objectReference: {fileID: 11400000, guid: a6ef6346f838a444fb69f258dd296158, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[0]
       value: 

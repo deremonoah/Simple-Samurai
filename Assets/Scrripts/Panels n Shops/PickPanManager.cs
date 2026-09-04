@@ -13,7 +13,7 @@ public class PickPanManager : MonoBehaviour
 
     [SerializeField] Image[] buttonImages;
     [SerializeField] List<GameObject> buttonContainers=new();
-    public List<Item> lootList;//specifically items for post combat looting
+    public List<Reward> lootList;//specifically items for post combat looting
     private List<Reward> randLootPicks = new List<Reward>();
     //this is for changing their colors
     public List<Image> BackGroundHoverBoxes;
@@ -122,7 +122,7 @@ public class PickPanManager : MonoBehaviour
     public void RandomItemPull()
     {
         randLootPicks.Clear();
-        var tempList = new List<Item>(lootList);
+        var tempList = new List<Reward>(lootList);
         var temp1 = Random.Range(0, tempList.Count);
         randLootPicks.Add(tempList[temp1]);
         tempList.RemoveAt(temp1);
@@ -152,9 +152,13 @@ public class PickPanManager : MonoBehaviour
             {
                 BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().armorColor;
             }
-            else
+            else if(randLootPicks[lcv].GetType() == typeof(Curio))
             {
                 BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().curioColor;
+            }
+            else
+            {
+                BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().styleColor;
             }
         }
     }

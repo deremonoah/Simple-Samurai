@@ -8,7 +8,7 @@ public class SenseiPanel : ShopGiveReward
     [Header("most recent score")]
 
     [SerializeField] GameObject panelButton;
-    int stylesKnown=1;
+    [SerializeField] List<StyleID> stylesKnown;//starts with simple
     private StyleDisplay stylesOnPanel;
     //A list of the styles excluding simple so it isn't disable on start
 
@@ -22,30 +22,32 @@ public class SenseiPanel : ShopGiveReward
         stylesOnPanel = parentObj.GetComponentInChildren<StyleDisplay>();
     }
 
-    public void newStyles(int num)//should this not add them?
+    public void newStyles(StyleID newStyle)//should this not add them?
     {
-        stylesKnown = num;
+        stylesKnown.Add(newStyle);
         
-        FindObjectOfType<SoundManager>().PlaySound("sensei");
+        //FindObjectOfType<SoundManager>().PlaySound("sensei");
+        EnableButton();
     }
-    public void EnableButton()
+    private void EnableButton()
     {
         panelButton.SetActive(true);
     }
     //so at certain points there should be new styles made available at current set up these being revealed in pairs or groups after like 3-5 waves
     //I likley want events to tell the player to visit the sensie panel which I should also disable the button while that isn't an option
     
-    public int getNumberOfKnownStyles()
+    public List<StyleID> getNumberOfKnownStyles()
     {
         return stylesKnown;
     }
 
     //rewards are calculated from shopGiveReward, using the lists of scriptable objects
 
-    public void LearnedNewStyle()
+    /*public void LearnedNewStyle()
     {
-        stylesKnown += 1;
+        //stylesKnown += 1;
         stylesOnPanel.DisplayStyles();
-        ShowAppreciation(heartOverHead, stylesOnPanel.getPosFromStylesKnown(stylesKnown));
-    }
+        ShowAppreciation(heartOverHead, heartOverHead);
+    }*/
 }
+public enum StyleID { simple,Serpent,Creset,Mountain,Boar}
