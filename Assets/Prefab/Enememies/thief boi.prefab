@@ -240,8 +240,53 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3865771379160352296, guid: 64fbb761fd488f14c84761da04193544, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8300130872131054049}
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+--- !u!1 &2390960747628968264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7314057531085316410, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 4949076330358495346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8300130872131054049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390960747628968264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee687afdf21ef24eb808223c316023e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPrefabs:
+  - {fileID: 4466311980891262329, guid: 8655021620cdda24fbab3c432bd9aa51, type: 3}
+  - {fileID: 4466311980891262329, guid: c680496eb8a29fe43b89177e60fba976, type: 3}
+  enemyAttackPoint: {fileID: 8151094436960426880}
+  MoveToShowSpeed: 7
+  DrawBackDuration: 0.5
+  ThrustForwardDuration: 0.1
+  trapPrefabs: []
+  maxTraps: 1
+  TrapPercentage: 1
+  SpecialPrefab: {fileID: 3509652709057987960, guid: 7ab98004fe2ad9a4e9fc5087a5844f14, type: 3}
+  TimeToWaitAfterSpecial: 2
+  minMaxRageAttacks: {x: 2, y: 3}
+  TimeBetweenRageAttacks: 0.1
+  RageThreashold: 4
+  canAttackDifferentLineInRage: 0
+  SpawnedAttacks: []
+  spawnedTraps: []
+  BountyToCauseRun: 5
+--- !u!4 &8151094436960426880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3868635541775811570, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+  m_PrefabInstance: {fileID: 4949076330358495346}
+  m_PrefabAsset: {fileID: 0}

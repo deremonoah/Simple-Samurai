@@ -6,9 +6,9 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     //should have enemy stats as seperate
-    Coroutine myActionRoutine;
-    IEnumerator DelegateAction;
-    enemyStats stats;
+    protected Coroutine myActionRoutine;
+    protected IEnumerator DelegateAction;
+    protected enemyStats stats;
 
     [Header("attack info")]
     [SerializeField] List<GameObject> attackPrefabs;
@@ -19,23 +19,27 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float ThrustForwardDuration;
 
     [Header("trap prefabs")]
-    [SerializeField] List<GameObject> trapPrefabs;
+    [SerializeField] protected List<GameObject> trapPrefabs;
 
     [SerializeField] int maxTraps;
     [Range(1,100)]
     [SerializeField] int TrapPercentage;
 
+    [Header("special prefabs for custom abilities")]
+    [SerializeField] protected GameObject SpecialPrefab;//for things like theifbehavior which enherits from this
+    [SerializeField] float TimeToWaitAfterSpecial;
+
     [Header("Rage (Inclusive,Exclusive)")]
     [SerializeField] Vector2 minMaxRageAttacks;
     [SerializeField] float TimeBetweenRageAttacks;
-    [SerializeField] int RageThreashold;
+    [SerializeField] protected int RageThreashold;
     [SerializeField] bool canAttackDifferentLineInRage;//for if they might move up or what not to attack a different line
 
     [Header("attacks and traps spawned and tracked")]
-    [SerializeField] List<GameObject> SpawnedAttacks = new List<GameObject>();
-    [SerializeField] List<GameObject> spawnedTraps = new List<GameObject>();
+    [SerializeField] protected List<GameObject> SpawnedAttacks = new List<GameObject>();
+    [SerializeField] protected List<GameObject> spawnedTraps = new List<GameObject>();
 
-    private int currentRageCount;
+    protected int currentRageCount;
     private float YAttackOffset;
     private Vector3 posToReturnTo;
 
@@ -46,7 +50,7 @@ public class EnemyBehavior : MonoBehaviour
         DecideNextAction();
     }
 
-    private void DecideNextAction()
+    protected virtual void DecideNextAction()
     {
         myActionRoutine = null;
         DelegateAction = null;
@@ -78,7 +82,7 @@ public class EnemyBehavior : MonoBehaviour
         myActionRoutine = StartCoroutine(actionRoutine());
     }
 
-    IEnumerator actionRoutine()
+    protected IEnumerator actionRoutine()
     {
         //randomly generate wait time
         yield return ReturnRoutine();//to make sure they are in the right spot
@@ -229,27 +233,42 @@ public class EnemyBehavior : MonoBehaviour
             Destroy(trap);
     }
 
-    IEnumerator AttackUIRoutine()//sends out on of its attacks
+    protected IEnumerator AttackUIRoutine()//sends out on of its attacks
     {
         int rand = Random.Range(0, attackPrefabs.Count);
         GameObject attack = Instantiate(attackPrefabs[rand], enemyAttackPoint.position, attackPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
         SpawnedAttacks.Add(attack);
         var atk = attack.GetComponent<attack>();
         if (atk != null)
-        {
-            atk.Setstuff(stats);//TODO: in enemy attack have the attack decide which direction to go
-        }
+        { atk.Setstuff(stats); }//TODO: in enemy attack have the attack decide which direction to go}
+        else { Debug.LogError("prefab instantiated in attack ui rotuine (in enemy behavior) didn't have enemyTrap on it"); }
         yield return null;
     }//I plan to add non basic actions as heal self like sumo or... I feel like there was another specific one in mind
     //ah right swapping spots, though I don't think anyone payed attention to that one
 
-    IEnumerator TrapUIRoutine()//should probably just be a method but idk if i can store and call it the same either way?
+    protected IEnumerator TrapUIRoutine()//should probably just be a method but idk if i can store and call it the same either way?
     {
         int rand = Random.Range(0, trapPrefabs.Count);
         GameObject trap = Instantiate(trapPrefabs[rand], enemyAttackPoint.position, trapPrefabs[rand].transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
         spawnedTraps.Add(trap);
-        var atk = trap.GetComponent<attack>();
+        EnemyTrap t = trap.GetComponent<EnemyTrap>();
+        if (t != null)
+        { t.SetEnemy(stats); }//for at least running away & maybe something else in future?
+        else { Debug.LogError("prefab instantiated in trap ui rotuine (in enemy behavior) didn't have enemyTrap on it"); }
+
         yield return null;
+    }
+
+    protected IEnumerator SpeccialUIRoutine()//should probably just be a method but idk if i can store and call it the same either way?
+    {
+        GameObject special = Instantiate(SpecialPrefab, enemyAttackPoint.position, SpecialPrefab.transform.rotation);//not sure if the rotation is right, but why can't i get transform of prefab?
+        spawnedTraps.Add(special);
+        EnemyTrap t = special.GetComponent<EnemyTrap>();//this is for theif run away & probably spawning enemies
+        if (t != null)
+        { t.SetEnemy(stats); }//for at least running away & maybe something else in future?
+        else { Debug.LogError("prefab instantiated in trap ui rotuine (in enemy behavior) didn't have enemyTrap on it"); }
+
+        yield return new WaitForSeconds(TimeToWaitAfterSpecial);//don't want them deciding another routine until they have for sure ran away
     }
 
     public IEnumerator RageRoutine()
@@ -272,6 +291,32 @@ public class EnemyBehavior : MonoBehaviour
         }
         currentRageCount = 0;
         WeaknessSpawnManager.instance.SpawnWeakPoint();
+    }
+
+    private IEnumerator RanAwayAnimationRoutine()
+    {
+        EnemyHPBarPlacerManager.instance.RemoveMeFromList(stats);
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        Vector3 startPos = transform.position;
+        Vector3 endPos = new Vector3(startPos.x + 10, startPos.y, startPos.z);
+        float timeElapsed = 0;
+
+        while(transform.position!=endPos)
+        {
+            float t = timeElapsed/1f;//2 f is the duration of run away
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        
+        Destroy(this.gameObject);
+    }
+
+    public void RunAwayAnimStart()
+    {
+        StopAllCoroutines();//so they don;t attack, they shouldn't attack or ready an attack while running away, how to do?
+        StartCoroutine(RanAwayAnimationRoutine());
     }
 
     public void IncreaseRageCount(int mad)

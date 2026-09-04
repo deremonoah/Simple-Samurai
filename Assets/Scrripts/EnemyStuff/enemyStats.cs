@@ -330,9 +330,8 @@ public class enemyStats : MonoBehaviour
         if (HasAbility(Ability.steal))
         {
             int randRob = Random.Range(2, 4);
-            _GM.robPlayer(randRob);
+            amountRobbed += _GM.robPlayer(randRob);
             _soundManager.PlaySound("yoink");
-            amountRobbed += randRob;
         }
         else if (HasAbility(Ability.blacksmith) && atkeef == AttackEffect.DamageArmor)
         {
@@ -553,5 +552,10 @@ public class enemyStats : MonoBehaviour
         Debug.Log("Time wait scaller " + AttackSpeedScaler);
 
         return rand*AttackSpeedScaler;
+    }
+
+    public int HowMuchHaveYouStolen()
+    {
+        return amountRobbed;
     }
 }

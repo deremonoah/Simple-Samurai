@@ -175,11 +175,15 @@ public class GameManager : MonoBehaviour
         PayOut(2, 5);
     }
 
-    public void robPlayer(int coin)
+    public int robPlayer(int coin)
     {
+        int startCoins = playerCoins;
         playerCoins -= coin;
-        if(playerCoins <= 0) { playerCoins = 0; }
+        if(playerCoins <= 0) 
+        { playerCoins = 0; }
         TextCoins.text = playerCoins.ToString();
+
+        return startCoins - playerCoins;//so if start is 0 & ended at 0 then they didn't rob them really at all
     }
 
     public void PlayerWins()

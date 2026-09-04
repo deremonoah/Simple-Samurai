@@ -11,6 +11,7 @@ public class EnemyTrap : MonoBehaviour
     [SerializeField] protected bool DestroyOnBlock=true;//true by default some things won't
     protected bool PointerOnTrap;
     protected Vector2 posBlock;
+    protected enemyStats myEnemy;
 
     [Header("Positional fot non set spawns")]
     [SerializeField] protected Vector2 SpawnPosMinMax;
@@ -53,6 +54,8 @@ public class EnemyTrap : MonoBehaviour
                 if(DestroyOnBlock)//for things like shield & sumo hand
                 {
                     ParticleManager.instance.BlockedHere(posBlock, 40f);
+                    Weapon thatBlocked = FindObjectOfType<PlayerEquipedItemsManager>().getEquipedWeapon();
+                    myEnemy.GetComponent<EnemyBehavior>().Blocked(AttackEffect.none, thatBlocked);
                     Destroy(this.gameObject);
                 }
             }
@@ -103,6 +106,11 @@ public class EnemyTrap : MonoBehaviour
         //and the blocking thing should only happen if its a thing to do the blocking, yes
         FindObjectOfType<StrikeArea>().BeingBlocked(false);
         PointerOnTrap = false;
+    }
+
+    public void SetEnemy(enemyStats enm)
+    {
+        myEnemy = enm;
     }
 }
 public enum TrapEffectOnStrike { none, flame, bombDisarm}

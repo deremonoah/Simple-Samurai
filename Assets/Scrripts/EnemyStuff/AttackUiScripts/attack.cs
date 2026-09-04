@@ -103,7 +103,7 @@ public class attack : MonoBehaviour
         var renderer = this.gameObject.GetComponent<SpriteRenderer>();
         var color = renderer.color;
         var Damgs = myenm.getRandomAttackDamage();
-        float alph = Damgs[0] / Damgs[1];
+        float alph = Damgs[0] / Damgs[1];//current/max
         /*if (alph < .4f)
         {
             alph = 0.25f;
