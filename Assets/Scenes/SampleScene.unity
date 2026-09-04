@@ -53994,7 +53994,7 @@ PrefabInstance:
       objectReference: {fileID: 337474711}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: lootList.Array.size
-      value: 23
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.size
@@ -54048,6 +54048,18 @@ PrefabInstance:
       propertyPath: lootList.Array.data[22]
       value: 
       objectReference: {fileID: 11400000, guid: a6ef6346f838a444fb69f258dd296158, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[23]
+      value: 
+      objectReference: {fileID: 11400000, guid: a6ef6346f838a444fb69f258dd296158, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[24]
+      value: 
+      objectReference: {fileID: 11400000, guid: c3f1c6389b0337e4fb96944eb1ac94c9, type: 2}
+    - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
+      propertyPath: lootList.Array.data[25]
+      value: 
+      objectReference: {fileID: 11400000, guid: c75611ceee951254ca8cd76706095d80, type: 2}
     - target: {fileID: 3637811481354933246, guid: a60cf62ce39555348951ee79c6d3132e, type: 3}
       propertyPath: HoverHelpers.Array.data[0]
       value: 

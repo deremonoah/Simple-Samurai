@@ -28,8 +28,9 @@ public class ItemDisplayPanel : MonoBehaviour
     private PickPanManager ppm;
     private Armory arm;
     
-
-    private Weapon weRefrence;
+    private Reward rewardToInspect;
+    //private Weapon weRefrence;
+    //private int lookingAtStyleID;
 
     private void Start()
     {
@@ -43,10 +44,12 @@ public class ItemDisplayPanel : MonoBehaviour
         
         itemSlotLookingAt = itemSlot;
         from = opener;
-        
-        if(reward is Weapon)
+        rewardToInspect = reward;
+
+
+        if (reward is Weapon)
         {
-            weRefrence = (Weapon)reward;
+            //weRefrence = (Weapon)reward;
             SetForWeapon();
         }    
         else if(reward is Armor)
@@ -57,7 +60,13 @@ public class ItemDisplayPanel : MonoBehaviour
         {
             SetForCurio((Curio)reward);//keeping because might be different with item level?
         }
-        else if(reward is ShopReward)
+        else if(reward is StyleReward)
+        {
+            
+            StyleReward sty = (StyleReward)reward;
+            SetForStyle((int)sty.styleToLearn);
+        }
+        else if(reward is ShopReward)//now more learning rewards as they are in the loot list, but idk if I want to rename yet
         {
             SetForSimple();
         }
@@ -75,6 +84,7 @@ public class ItemDisplayPanel : MonoBehaviour
     {
         WeaponSection.SetActive(true);
         ArmorSection.SetActive(false);
+        //lookingAtStyleID = -1;
         //will handle the info and ask for it just needs to be enabled
     }
 
@@ -82,6 +92,7 @@ public class ItemDisplayPanel : MonoBehaviour
     {
         WeaponSection.SetActive(false);
         ArmorSection.SetActive(true);
+        //lookingAtStyleID = -1;
 
         ItemAmorValue.text = ar.armorLevel[ar.itemLevel]+"";
     }
@@ -90,7 +101,7 @@ public class ItemDisplayPanel : MonoBehaviour
     {
         WeaponSection.SetActive(false);
         ArmorSection.SetActive(false);
-
+        //lookingAtStyleID = -1;
         //anything specific for curios? maybe in future?
     }
 
@@ -98,6 +109,16 @@ public class ItemDisplayPanel : MonoBehaviour
     {
         WeaponSection.SetActive(false);
         ArmorSection.SetActive(false);
+        //lookingAtStyleID = -1;
+    }
+
+    private void SetForStyle(int style)
+    {
+        WeaponSection.SetActive(true);
+        ArmorSection.SetActive(false);
+
+        //tell display for weapon, an extra style
+        //lookingAtStyleID = style;
     }
 
     public void CloseItemDisplayPanel()
@@ -142,10 +163,20 @@ public class ItemDisplayPanel : MonoBehaviour
         
     }
 
-    public Weapon getWeapon()//called by Style Display for having multiple in different places
+    /*public Weapon getWeapon()//called by Style Display for having multiple in different places
     {
         Debug.Log("null?" + weRefrence == null);
         return weRefrence;
+    }
+
+    public int getStyle()//this and above variables are set when the item is selected
+    {
+        return lookingAtStyleID;
+    }*/
+
+    public Reward getRewardInspecting()
+    {
+        return rewardToInspect;
     }
 }
 public enum itemDisplayOpenedFrom { PickPan,Armory }

@@ -37,7 +37,7 @@ public class GameFlowManager : MonoBehaviour
     {
         _pd.RearmTraps();
         _farm.ResetHealPurchases();
-        FindObjectOfType<MiniGameManager>().RollToSeeIfTheyNeedHelp();
+        //FindObjectOfType<MiniGameManager>().RollToSeeIfTheyNeedHelp();
     }
 
     IEnumerator FlowRoutine()

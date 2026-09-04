@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class StyleDisplay : MonoBehaviour
 {
     private SenseiPanel sp;
     private PlayerEquipedItemsManager pe;
     private ItemDisplayPanel ip;
+    private int EquipedstyleRefrence;
 
     [Header("where are we")]
     [SerializeField] whereStyle where;
@@ -40,7 +42,9 @@ public class StyleDisplay : MonoBehaviour
         yield return new WaitForSeconds(0.001f);
         Weapon we = getweapon();
 
-        List<StyleID> knownStyles = sp.getNumberOfKnownStyles();
+        List<int> StylesToDisplay = SetDisplayStylesFromContext();
+        
+
 
         for (int lcv = 0; lcv < boxesForStyles.Count; lcv++)
         {
@@ -48,37 +52,56 @@ public class StyleDisplay : MonoBehaviour
         }
 
 
-        for (int lcv = 0; lcv < knownStyles.Count; lcv++)
+        for (int lcv = 0; lcv < StylesToDisplay.Count; lcv++)
         {
-            boxesForStyles[(int)knownStyles[lcv]].SetActive(true);
+            boxesForStyles[StylesToDisplay[lcv]].SetActive(true);
         }
 
         strikeAreaImage.sprite = we.DisplayStrikeAreaIcon;
 
     }
 
+    private List<int> SetDisplayStylesFromContext()
+    {
+        List<int> listToReturn = new();
+        List<StyleID> enumList = FindObjectOfType<SenseiPanel>().getListOfKnownStyles();
+        List<int> intList = enumList.Select(e => (int)e).ToList();
+        listToReturn.AddRange(intList);
+
+        //figure out equiped from somewhere
+
+        if (ip.getRewardInspecting()is StyleReward)
+        {
+            StyleReward sty = (StyleReward)ip.getRewardInspecting();
+            listToReturn.Add((int)sty.styleToLearn);//get the style id which is the int refrence for position of gameobject style in list
+            boxesForStyles[(int)sty.styleToLearn].GetComponent<Toggle>().isOn = true;
+        }
+        
+        //set equiped style
+
+        return listToReturn;
+    }
+
     private Weapon getweapon()
     {
-        if(where==whereStyle.itemDisplayPanel)
+        if(where==whereStyle.itemDisplayPanel &&ip.getRewardInspecting()is Weapon)//if we are looking at a weapon only time to care
         {
             //get it from Item display Panel
-            return ip.getWeapon();//null exception here might mean you left display weapon enabled on the item display panel
+            return (Weapon)ip.getRewardInspecting();//null exception here might mean you left display weapon enabled on the item display panel
             //as it gets enabled then disabled, there is a frame or less its enabled and will try to get a refrence that isn't there yet
         }
-        else if(where==whereStyle.sensaiPanel)
+        else
         {
             //get it from primary equip
             return pe.getPrimaryWeapon();
         }
 
-        Debug.LogError("somehow its neither enum in styleDisplay");
-        return null;
     }
 
     public void DisplayStyle(Sprite stylePic)//I use this on the check boxes, ideally default to the right one in future
     {
         StylePatternImage.sprite = stylePic;
-        //equiping style happens 
+        //equiping style happens in strike point
     }
 
     public Transform getPosFromStylesKnown(int num)//for SenseiPanel

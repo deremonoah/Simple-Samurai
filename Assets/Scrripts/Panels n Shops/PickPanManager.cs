@@ -105,6 +105,7 @@ public class PickPanManager : MonoBehaviour
             }
         }
         _playerEquipedItems.EquipItem((Item)randLootPicks[buttonID], buttonImages[buttonID].transform);
+        lootList.Remove(randLootPicks[buttonID]);
         randLootPicks.Clear();
         ClosePickPan();
     }
@@ -158,7 +159,7 @@ public class PickPanManager : MonoBehaviour
             }
             else
             {
-                BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().styleColor;
+                BackGroundHoverBoxes[lcv].color = FindObjectOfType<ColorManager>().styleColor;//will also be for learning
             }
         }
     }

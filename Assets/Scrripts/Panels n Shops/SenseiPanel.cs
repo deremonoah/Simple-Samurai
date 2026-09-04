@@ -27,7 +27,7 @@ public class SenseiPanel : ShopGiveReward
         stylesKnown.Add(newStyle);
         
         //FindObjectOfType<SoundManager>().PlaySound("sensei");
-        EnableButton();
+        EnableButton();//for when you get a style from loot this will open,not from events
     }
     private void EnableButton()
     {
@@ -36,7 +36,7 @@ public class SenseiPanel : ShopGiveReward
     //so at certain points there should be new styles made available at current set up these being revealed in pairs or groups after like 3-5 waves
     //I likley want events to tell the player to visit the sensie panel which I should also disable the button while that isn't an option
     
-    public List<StyleID> getNumberOfKnownStyles()
+    public List<StyleID> getListOfKnownStyles()
     {
         return stylesKnown;
     }
