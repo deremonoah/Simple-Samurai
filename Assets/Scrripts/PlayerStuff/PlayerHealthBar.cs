@@ -38,15 +38,16 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] Curio _myCurio;
 
     [SerializeField] GameObject DefensesUIParent;
-
+    [Header("fire stuff")]
     [SerializeField] GameObject PlayerOnFireSprite;
+    [SerializeField] float FireLeft;
+    [SerializeField] float fireMaxSizeCalc;//currentFire#/firemax to make the display a proportional size
+    private Coroutine BurningRn;
+
     [SerializeField] GameObject angrySymbol;
 
     [SerializeField] private float timeAngrySymbolIsOnScreen = 2f;
 
-    [Header("OnFire test")]
-    [SerializeField] float FireLeft;
-    [SerializeField] int RollCount;
 
     private Vector3 startingScale;
     private ColorManager colman;
@@ -55,7 +56,7 @@ public class PlayerHealthBar : MonoBehaviour
     public Text PoisonText;
     private Coroutine WasPoisonedRoutine;
     private bool isPoisoned;
-    private int PoisonTimer = 20;
+    private float PoisonTimer = 20;
 
     private StrikePoint _strikePoint;
     private bool PlayerDead;
@@ -101,11 +102,10 @@ public class PlayerHealthBar : MonoBehaviour
         {
             if (equipedArmor.armrEef == ArmorEffect.phoenix)
             {
-                maxHealth = maxHealth / 2;
                 health = maxHealth;
-                //make it so player can't increase max hp probably
-                if (maxHealth <= 10)
-                { PlayerDied(); }
+                FindObjectOfType<PlayerEquipedItemsManager>().DestroyArmor();
+
+
             }
             else { PlayerDied(); }
         }
@@ -217,8 +217,11 @@ public class PlayerHealthBar : MonoBehaviour
                 else if (ability == 8)
                 {
                     //fire ability
-                    health -= (Mathf.Max(1, damagePoints));
-                    StartCoroutine(OnFire(damagePoints));
+                    damagePoints = damagePoints / 2;//I want less initial damag especially if the build up of fire is how it works
+                    float resolveDmg = Mathf.Max(0, damagePoints - currentArmor);
+                    currentArmor = Mathf.Clamp(currentArmor - damagePoints, 0, 100000);
+                    health -= resolveDmg;
+                    ResolveFireStatus(damagePoints);
                 }
                 else if (ability == 12)
                 {
@@ -256,7 +259,7 @@ public class PlayerHealthBar : MonoBehaviour
         else if (ability == 8)//on fire
         {
             health -= (Mathf.Max(1, damagePoints - armorValue));
-            StartCoroutine(OnFire(damagePoints));
+            ResolveFireStatus(damagePoints);
         }
         else
         {
@@ -287,25 +290,35 @@ public class PlayerHealthBar : MonoBehaviour
         angrySymbol.transform.localScale = startingScale;
     }
 
+    private void ResolveFireStatus(float dmg)
+    {
+        FireLeft += Mathf.Clamp(dmg + 16, 1, 1000);//right now fire guy does 10-30 damage, I want the less damage the longer lasting fire, cause otherwise just seems like hit big do the most
+        if(BurningRn==null)
+        {
+            BurningRn = StartCoroutine(OnFire(dmg));
+        }
+    }
+
     IEnumerator OnFire(float dmg)
     {
-        FireLeft += Mathf.Clamp(4f + dmg,6,1000);//right now fire guy does 10-30 damage, I want the less damage the longer lasting fire, cause otherwise just seems like hit big do the most
         //+= so if hit again it can stack
         PlayerOnFireSprite.SetActive(true);
         //we might need to add an if checking a immunity to fire
-        while (RollCount< FireLeft)
+        while (FireLeft>0)
         {
             
-            health -= Time.deltaTime*2;//idk man if I want it to burn them 1 damage a second doesn't seem noticable rn
+            health -= Time.deltaTime*(FireLeft/6);//idk man if I want it to burn them 1 damage a second doesn't seem noticable rn
             FireLeft -= Time.deltaTime;
-            if(Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))
+            PlayerOnFireSprite.gameObject.transform.localScale = new Vector3(FireLeft / fireMaxSizeCalc, FireLeft / fireMaxSizeCalc, 1);
+            if (Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.Mouse0))
             {
-                RollCount+=3;
+                FireLeft -= 4;
             }
             yield return null;
         }
        
         PlayerOnFireSprite.SetActive(false);
+        BurningRn = null;
         
     }
 
@@ -375,7 +388,7 @@ public class PlayerHealthBar : MonoBehaviour
     {
         isPoisoned = true;
         yield return new WaitForSeconds(.3f);
-        PoisonTimer = 20;
+        PoisonTimer = maxHealth / (4f/SaveData.instance.getTimeScaleValue());//so if the scale is .7 it will divide by 2.8
         healthBarFill.color = colman.PoisonedColor;
         //healthBar.color =  Color.black;
         //would like to change that to purple
@@ -385,7 +398,7 @@ public class PlayerHealthBar : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             PoisonTimer--;
-            PoisonText.text = ""+PoisonTimer;
+            PoisonText.text = ""+ PoisonTimer.ToString("F0");
         }
         //if secCount<=0
         health = 0;

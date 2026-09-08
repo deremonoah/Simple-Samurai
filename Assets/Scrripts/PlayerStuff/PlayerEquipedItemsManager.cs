@@ -109,6 +109,7 @@ public void EquipItem(Item item, Transform fromHere)
             {
                 GetComponent<Armory>().AddItemToArmory(equipedArmor);
             }
+            armorIcon.gameObject.SetActive(true);
             equipedArmor = (Armor)item; 
             _playerHP.SetArmor(item as Armor);
             armorIcon.sprite = item.PanelIcon;
@@ -270,4 +271,9 @@ public void EquipItem(Item item, Transform fromHere)
         Destroy(moveObj.gameObject);
     }
 
+    public void DestroyArmor()
+    {
+        equipedArmor = null;
+        armorIcon.gameObject.SetActive(false);
+    }
 }

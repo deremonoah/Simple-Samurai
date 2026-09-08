@@ -61,6 +61,8 @@ public class enemyStats : MonoBehaviour
     public Coroutine myActionRoutine;
 
     [SerializeField] GameObject OnFireSprite;
+    private float fireLeft;
+    private Coroutine BurninRn;
     [SerializeField] GameObject StunnedSprite;
     [SerializeField] bool basicAttackDiversity;
     [SerializeField] bool longRanged;
@@ -207,9 +209,12 @@ public class enemyStats : MonoBehaviour
                 case WeaponEffect.none:
                     break;
                 case WeaponEffect.flame:
-                    StartCoroutine(OnFire(deal/2));//so with base version 50 full damage will be 32 fire damage over time, likley
-                    OnFireSprite.SetActive(true);
-                    //add sound effect here
+                    fireLeft += (deal / 2);
+                    if(BurninRn==null)
+                    {
+                        BurninRn= StartCoroutine(OnFire(deal / 2));
+                        OnFireSprite.SetActive(true);
+                    }
                     break;
                 case WeaponEffect.antiarmor:
                     antArm = true;
@@ -428,19 +433,17 @@ public class enemyStats : MonoBehaviour
     IEnumerator OnFire(float dmg)
     {
         Debug.Log("dmg sent in" + dmg);
-        yield return new WaitForSeconds(0.5f);
-        HP -= 2;
-        dmg -= 1;
-        myHPBar.fillAmount = HP / maxHP;
-        int randNum = Random.Range(0, 6);
-        if (dmg > randNum)//to simulate them maybe putting it out, maybe i could get behavior to pay attention to this sort of show putting themselves out if they choose
+
+        while(fireLeft>0)
         {
-            OnFireSprite.SetActive(true);
-            StartCoroutine(OnFire(dmg));
-        }else
-        {
-            OnFireSprite.SetActive(false);
+            HP -= Time.deltaTime * (fireLeft/3);//I want there to be a build up of fire damage
+            fireLeft -= Time.deltaTime;
+            myHPBar.fillAmount = HP / maxHP;
+
+            OnFireSprite.transform.localScale = new Vector3(fireLeft / 20, fireLeft / 20, 1);//25 because that is currently what its set on player
+            yield return null;
         }
+        BurninRn = null;
     }
 
     /*public void SetTargetPointers(List<Sprite> myPointers)

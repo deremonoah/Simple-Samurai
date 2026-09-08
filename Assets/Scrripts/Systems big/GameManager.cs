@@ -160,11 +160,14 @@ public class GameManager : MonoBehaviour
         int ExtraCoins = 0;
         int dropedCoins = Random.Range(min, maxInclusive);
         Armor equipedArmor = _playerEquipedItems.equipedArmor;
-        if (equipedArmor.armrEef == ArmorEffect.greed)
+        if(equipedArmor!=null)
         {
-            int minInclusive = equipedArmor.effectNumberOneLevel[equipedArmor.itemLevel];
-            int maxExclusive = equipedArmor.effectNumberTwoLevel[equipedArmor.itemLevel] + 1;
-            ExtraCoins = Random.Range(minInclusive, maxExclusive);
+            if (equipedArmor.armrEef == ArmorEffect.greed)
+            {
+                int minInclusive = equipedArmor.effectNumberOneLevel[equipedArmor.itemLevel];
+                int maxExclusive = equipedArmor.effectNumberTwoLevel[equipedArmor.itemLevel] + 1;
+                ExtraCoins = Random.Range(minInclusive, maxExclusive);
+            }
         }
         playerCoins += dropedCoins+ ExtraCoins;
         TextCoins.text = playerCoins.ToString();
