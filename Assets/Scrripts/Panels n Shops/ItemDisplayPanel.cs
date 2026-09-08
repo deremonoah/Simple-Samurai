@@ -8,6 +8,8 @@ public class ItemDisplayPanel : MonoBehaviour
 {
     [Header("Panel")]
     [SerializeField] GameObject panel;
+    [SerializeField] GameObject TakeButton;
+    [SerializeField] GameObject LeftArrowButton, RightArrowButton;
 
     [Header("weapon display info")]
     [SerializeField] GameObject WeaponSection;
@@ -31,6 +33,20 @@ public class ItemDisplayPanel : MonoBehaviour
     private Reward rewardToInspect;
     //private Weapon weRefrence;
     //private int lookingAtStyleID;
+    public static ItemDisplayPanel instance;
+
+    private void Awake()
+    {
+        if(instance!=null && instance!=this)
+        {
+            Debug.LogError("2 item display panels in the scene");
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -46,6 +62,8 @@ public class ItemDisplayPanel : MonoBehaviour
         from = opener;
         rewardToInspect = reward;
 
+        SetUpButtonsIncontext();
+        
 
         if (reward is Weapon)
         {
@@ -78,6 +96,23 @@ public class ItemDisplayPanel : MonoBehaviour
         ItemDescription.text = reward.Description;
         ItemName.text = reward.Name;
         ItemIconSprite.sprite = reward.PanelIcon;
+    }
+
+    private void SetUpButtonsIncontext()
+    {
+        if (from == itemDisplayOpenedFrom.PickPan)
+        { TakeButton.SetActive(true); }
+        else { TakeButton.SetActive(false); }//armory & player equip don't show take button
+        if (from == itemDisplayOpenedFrom.playerEquip)
+        {
+            LeftArrowButton.SetActive(false);
+            RightArrowButton.SetActive(false);
+        }
+        else
+        {
+            LeftArrowButton.SetActive(true);
+            RightArrowButton.SetActive(true);
+        }
     }
 
     private void SetForWeapon()
@@ -179,4 +214,4 @@ public class ItemDisplayPanel : MonoBehaviour
         return rewardToInspect;
     }
 }
-public enum itemDisplayOpenedFrom { PickPan,Armory }
+public enum itemDisplayOpenedFrom { PickPan,Armory,playerEquip }

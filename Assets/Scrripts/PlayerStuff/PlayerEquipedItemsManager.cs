@@ -15,6 +15,8 @@ public class PlayerEquipedItemsManager : MonoBehaviour
     public Image PrimaryweaponIcon;
     public Image SecondaryWeaponIcon;
     [SerializeField] GameObject SecondaryWeaponUI;
+    [Header("inspect buttons")]
+    [SerializeField] List<GameObject> InspectButtons;//for weapon & armor
 
     public Image armorIcon;
     public Image curioIcon;
@@ -77,19 +79,22 @@ public void EquipItem(Item item, Transform fromHere)
                     ex.SetExtrasWeapon(_mainStrikeArea.equipedWeapon);
                 }
             }*/
-            if (twoWeapons)
+            
+            if(item.Name!=equipedWeapon.Name)//if its not a new weapon we don't want to add a copy into armory
             {
-                if (SecondaryWeapon != null)
-                { GetComponent<Armory>().AddItemToArmory(SecondaryWeapon); }
-                SecondaryWeapon = PrimaryWeapon;
-                SecondaryWeaponIcon.sprite = SecondaryWeapon.PanelIcon;
-            }
-            else if(item!=equipedWeapon)//if its not a new weapon we don't want to add a copy into armory
-            {
-                GetComponent<Armory>().AddItemToArmory(equipedWeapon);
+                if (twoWeapons)
+                {
+                    if (SecondaryWeapon != null)
+                    { GetComponent<Armory>().AddItemToArmory(SecondaryWeapon); }
+                    SecondaryWeapon = PrimaryWeapon;
+                    SecondaryWeaponIcon.sprite = SecondaryWeapon.PanelIcon;
+                }
+                else
+                { GetComponent<Armory>().AddItemToArmory(equipedWeapon); }
+
             }
             
-
+            //this is outside for upgrading in the black smith
             equipedWeapon = (Weapon)item;
             PrimaryWeapon = equipedWeapon;
             _mainStrikeArea.SetWeapon(item as Weapon);
@@ -131,6 +136,7 @@ public void EquipItem(Item item, Transform fromHere)
         }
 
         UpdateItemUpgrades();
+        UpdateIspectButtonsContext();
         if(goingHere!=null && fromHere!=null)
         {
             StartCoroutine(ItemRecievedRoutine(fromHere,goingHere,item));
@@ -152,6 +158,23 @@ public void EquipItem(Item item, Transform fromHere)
         if (item.GetType() == typeof(Curio))
         {
             
+        }
+    }
+
+    public void SwapPrimaryWithSecondaryUI()//also affects which is first in combat
+    {
+        Debug.Log("in swap");
+        if(SecondaryWeapon!=null)
+        {
+            Debug.Log("in swap if");
+            Weapon hold = PrimaryWeapon;
+            PrimaryWeapon = SecondaryWeapon;
+            SecondaryWeapon = hold;
+
+            PrimaryweaponIcon.sprite = PrimaryWeapon.PanelIcon;
+            SecondaryWeaponIcon.sprite = SecondaryWeapon.PanelIcon;
+
+            _mainStrikeArea.SetWeapon(PrimaryWeapon);
         }
     }
 
@@ -235,14 +258,19 @@ public void EquipItem(Item item, Transform fromHere)
         return twoWeapons;
     }
 
-    public Weapon getPrimaryWeapon()// for Style Display
+    public Weapon getPrimaryWeapon()// for Style Display panel
     {
         return PrimaryWeapon;
     }
 
-    public Weapon getEquipedWeapon()// for Style Display
+    public Weapon getEquipedWeapon()// for Style Display panel
     {
         return equipedWeapon;
+    }
+
+    public void EquipSecondaryAsPrimay()//for equiping 2ndary as primary out of combat
+    {
+
     }
 
     IEnumerator ItemRecievedRoutine(Transform fromHere, Transform goingHere,Item item)
@@ -275,5 +303,54 @@ public void EquipItem(Item item, Transform fromHere)
     {
         equipedArmor = null;
         armorIcon.gameObject.SetActive(false);
+    }
+
+    //item display call for looking at equiped items
+    public void SetInspectableEquips(bool inCombat)
+    {
+        foreach(GameObject but in InspectButtons)
+        {
+            but.SetActive(inCombat);
+        }
+        UpdateIspectButtonsContext();//for disabling icon which hides the inspect button for null equiped items
+    }
+
+    private void UpdateIspectButtonsContext()//this hides the icons & by extension the inspect buttons if you don't have anything equiped
+    {
+        if(equipedArmor==null)
+        {
+            armorIcon.gameObject.SetActive(false);
+        }
+        else { armorIcon.gameObject.SetActive(true); }
+        if(SecondaryWeapon==null)
+        {
+            SecondaryWeaponIcon.gameObject.SetActive(false);
+        }
+        else { SecondaryWeaponIcon.gameObject.SetActive(true); }
+        if(equipedCurio==null)//in future will be a list 
+        {
+            curioIcon.gameObject.SetActive(false);
+        }
+        else { curioIcon.gameObject.SetActive(true); }
+    }
+
+    public void InspectPrimaryWeapon()
+    {
+        ItemDisplayPanel.instance.OpenItemDescriptionPanel(PrimaryWeapon, 0, itemDisplayOpenedFrom.playerEquip);
+    }
+
+    public void InspectSecondaryWeapon()
+    {
+        ItemDisplayPanel.instance.OpenItemDescriptionPanel(SecondaryWeapon, 1, itemDisplayOpenedFrom.playerEquip);
+    }
+
+    public void InspectPrimaryArmor()
+    {
+        ItemDisplayPanel.instance.OpenItemDescriptionPanel(equipedArmor, 0, itemDisplayOpenedFrom.playerEquip);
+    }
+
+    public void InspectCurio()//in future will need to make this handle having multiple curios
+    {
+        ItemDisplayPanel.instance.OpenItemDescriptionPanel(equipedCurio, 0, itemDisplayOpenedFrom.playerEquip);
     }
 }

@@ -42,8 +42,6 @@ public class BlackSmithShop : ShopGiveReward
 #endif
     }
 
-    
-
     public void ImproveWeaponButton()
     {
         var itemLvl = Mathf.Clamp(pEquip.equipedWeapon.itemLevel + 1, 0, 4);

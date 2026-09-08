@@ -7,6 +7,7 @@ public class GameFlowManager : MonoBehaviour
     private GameManager _gm;
     private PickPanManager _PickPanManager;
     private EventManager _eventManager;
+    private PlayerEquipedItemsManager _pE;
     
     [SerializeField] PickPanManager _PickPanelManager;
     [SerializeField] GameObject _eventPanel;
@@ -29,6 +30,7 @@ public class GameFlowManager : MonoBehaviour
         _php = GetComponent<PlayerHealthBar>();
         _pd = FindObjectOfType<PlayerDefense>();
         _eHPm = EnemyHPBarPlacerManager.instance;
+        _pE = FindObjectOfType<PlayerEquipedItemsManager>();
 
         StartCoroutine(FlowRoutine());
     }
@@ -109,6 +111,7 @@ public class GameFlowManager : MonoBehaviour
         StrikeArea.SwitchPlayerOn(isInCombat);
         _php.HPIsInCombat(isInCombat);//TODO: make these 1 simple inCombatCall for this class
         _pd.inCombatHudUpdate(isInCombat);
+        _pE.SetInspectableEquips(!isInCombat);
         WeaknessSpawnManager.instance.InCombat(isInCombat);
     }
 
