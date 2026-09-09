@@ -40,6 +40,7 @@ public class enemyStats : MonoBehaviour
     public Image myHPBar;
     public Transform HPBarToMove;
     public Transform backUpHPBarSpot;
+    public Sprite hpBarIcon;
     //private Vector3 HPBarPosToReturnTo;
     protected EnemysManager enmsSys;
 

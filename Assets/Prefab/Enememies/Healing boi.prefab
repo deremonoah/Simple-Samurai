@@ -285,11 +285,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -6386235926874281460}
   m_SourcePrefab: {fileID: 100100000, guid: 64fbb761fd488f14c84761da04193544, type: 3}
---- !u!1 &39211848589400758 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2875731891815238777, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471888131890900701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2445335703602919442, guid: 64fbb761fd488f14c84761da04193544, type: 3}
@@ -303,11 +298,6 @@ Transform:
 --- !u!1 &2791451987063568473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 134776856686358166, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3612959248713446751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1531267132036637584, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2838367399995021007}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4819740616665397237 stripped
@@ -345,17 +335,10 @@ MonoBehaviour:
   myHPBar: {fileID: 0}
   HPBarToMove: {fileID: 0}
   backUpHPBarSpot: {fileID: 1878019276095627879}
-  enmsSys: {fileID: 0}
+  hpBarIcon: {fileID: 21300000, guid: 386916583f17d3647afdd3eb55277729, type: 3}
   myAbilities: 03000000
-  currentAttacks: []
   minCoin: 4
   maxCoin: 10
-  HPPointer: {fileID: 8352394184097733551}
-  BowPointers:
-  - {fileID: 8000866788669294625}
-  - {fileID: 39211848589400758}
-  - {fileID: 3612959248713446751}
-  myCanvas: {fileID: 8487439495077647839}
   OnFireSprite: {fileID: 2791451987063568473}
   StunnedSprite: {fileID: 6354901805306949446}
   basicAttackDiversity: 0
@@ -364,11 +347,6 @@ MonoBehaviour:
   Defensiveness: 3
   difficulty: 02000000020000000300000004000000
   stunTimer: 0
-  _healAmount: 0
-  regenTimer: 0
-  regenMaxTimer: 0
-  healThreashold: 0
-  aboveHealThreashold: 0
   hurtPoint: {fileID: 6907103421148169435}
   PoisonText: {fileID: 0}
   isPoisoned: 0
@@ -383,20 +361,5 @@ GameObject:
 --- !u!4 &6907103421148169435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8699017054670066196, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8000866788669294625 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5218301876157161198, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8352394184097733551 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6091754414344736096, guid: 64fbb761fd488f14c84761da04193544, type: 3}
-  m_PrefabInstance: {fileID: 2838367399995021007}
-  m_PrefabAsset: {fileID: 0}
---- !u!223 &8487439495077647839 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5956742078480892688, guid: 64fbb761fd488f14c84761da04193544, type: 3}
   m_PrefabInstance: {fileID: 2838367399995021007}
   m_PrefabAsset: {fileID: 0}

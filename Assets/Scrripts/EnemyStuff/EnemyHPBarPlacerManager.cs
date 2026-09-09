@@ -73,6 +73,11 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         //enm.PoisonText=barb.
         //remove hpbar from pool
         barb.setSprite(enm.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
+        if(enm.hpBarIcon!=null)
+        {
+            barb.setSprite(enm.hpBarIcon);
+        }
+        
         UIPool.RemoveAt(0);
         //set that one's image, the one on the child to be InUseBars
 

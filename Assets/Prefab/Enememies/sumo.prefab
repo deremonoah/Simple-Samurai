@@ -255,6 +255,7 @@ MonoBehaviour:
   myHPBar: {fileID: 0}
   HPBarToMove: {fileID: 0}
   backUpHPBarSpot: {fileID: 2216075194700878680}
+  hpBarIcon: {fileID: 21300000, guid: 847b6c8e60f5e9142ac3c3ff6845e5af, type: 3}
   myAbilities: 00000000
   minCoin: 5
   maxCoin: 9

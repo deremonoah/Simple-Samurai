@@ -101,6 +101,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
+      propertyPath: hpBarIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 09c5a7a5c3ca0ed4db38e8989479a8d4, type: 3}
+    - target: {fileID: 7314057531085316385, guid: 64fbb761fd488f14c84761da04193544, type: 3}
       propertyPath: Aggression
       value: 4
       objectReference: {fileID: 0}
