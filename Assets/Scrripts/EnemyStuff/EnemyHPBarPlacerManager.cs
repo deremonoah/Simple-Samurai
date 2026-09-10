@@ -260,4 +260,9 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     {
         return aliveEnemies.Count > 0;
     }
+
+    public Vector3 WHEREISHE(int rightThere)//for payout of the tanto dealing damage
+    {
+        return aliveEnemies[rightThere].transform.position;
+    }
 }

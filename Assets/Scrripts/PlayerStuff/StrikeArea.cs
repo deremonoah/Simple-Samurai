@@ -136,6 +136,19 @@ public class StrikeArea : MonoBehaviour
                 {
                     Damger += revengeTimer * 30;//for revenge ability
                     //Debug.Log(Damger + "  damgMult: " + damgMult + "  most recentX: " + _mystrikePoint.mostRecentX);
+                    //tanto of greed
+                    if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
+                    {
+                        if (Damger >= 30)
+                        {
+                            Vector3 OverThere=EnemyHPBarPlacerManager.instance.WHEREISHE(targetEnemy[lcv]);
+                            GM.PayOut(2, 3, OverThere); 
+                        }
+                        else {
+                            Vector3 OverThere = EnemyHPBarPlacerManager.instance.WHEREISHE(targetEnemy[lcv]);
+                            GM.PayOut(1, 2,OverThere); 
+                        }
+                    }
                     EnemyHPBarPlacerManager.instance.DamageEnemy(Damger, targetEnemy[lcv], equipedWeapon.effs);
                     
                     justStruck = true;
@@ -143,13 +156,6 @@ public class StrikeArea : MonoBehaviour
                     _JustStruckTimer = 0.1f;
                     //Debug.Log("Enemy: "+targetEnemy[lcv] + "   damage: " + Damger);
 
-
-                    if (Damger >= 20f && equipedWeapon.effs[0] == WeaponEffect.greed)
-                    {
-                        if (Damger >= 30)
-                        { GM.PayOut(2, 3); }
-                        else { GM.PayOut(1, 2); }
-                    }
                 }
                 
             }

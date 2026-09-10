@@ -33,7 +33,7 @@ public class SaveData : MonoBehaviour
     public float getTimeScaledEnemyWaitTimeValue()//for making enemies wait longer
     {
         float value = 1 * (TimeScaleValue * TimeScaleValue) - 3.5f * TimeScaleValue + 3.5f;
-        Debug.Log(value);
+        //Debug.Log(value);
         return value;
     }
 

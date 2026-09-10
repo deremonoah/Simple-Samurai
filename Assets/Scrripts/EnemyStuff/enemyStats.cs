@@ -518,7 +518,7 @@ public class enemyStats : MonoBehaviour
     {
         GetComponent<EnemyBehavior>().ClearAttacksNTraps();
 
-        _GM.PayOut(minCoin + amountRobbed, maxCoin);
+        _GM.PayOut(minCoin + amountRobbed, maxCoin,transform.position);
         if (myAbilities[0] == Ability.poison)
         {
             FindObjectOfType<PlayerHealthBar>().CuredofPoison();
@@ -546,7 +546,7 @@ public class enemyStats : MonoBehaviour
         //maybe get from save data each time if I want it to live update AttackSpeedScaler = SaveData.instance.getTimeScaledEnemyWaitTimeValue();
         float rand = Random.Range(randWaitmin, randWaitmax) + waitTimerOffset;
 
-        Debug.Log("Time wait scaller " + AttackSpeedScaler);
+        //Debug.Log("Time wait scaller " + AttackSpeedScaler);
 
         return rand*AttackSpeedScaler;
     }

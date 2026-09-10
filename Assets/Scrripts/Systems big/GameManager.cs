@@ -35,6 +35,12 @@ public class GameManager : MonoBehaviour
     private bool _blacksmithInvested;
     private bool _farmInvested;
 
+    [Header("Payout places")]
+    [SerializeField] GameObject coinAnimPrefab;
+    [SerializeField] Transform CoinsGoHere;//2d world space spot
+    [SerializeField] Transform skipButton;//this won't be hm, can I get world space? from this things position?
+
+
     public static GameManager instance;
 
     private void Awake()
@@ -152,9 +158,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PayOut(int min, int maxInclusive)
+    public void PayOut(int min, int maxInclusive,Vector3 fromHere)
     {
-        SoundMng.PlaySound("coin");
         maxInclusive++;
         //above when it calculates to make it inclusive for the random number
         int ExtraCoins = 0;
@@ -167,15 +172,40 @@ public class GameManager : MonoBehaviour
                 int minInclusive = equipedArmor.effectNumberOneLevel[equipedArmor.itemLevel];
                 int maxExclusive = equipedArmor.effectNumberTwoLevel[equipedArmor.itemLevel] + 1;
                 ExtraCoins = Random.Range(minInclusive, maxExclusive);
+                //extra armor should show payout seperatley
             }
         }
         playerCoins += dropedCoins+ ExtraCoins;
+        StartCoroutine(PayOutAnimRoutine(dropedCoins + ExtraCoins, fromHere));//shows total coins once it gets there, even without bonus coins
+    }
+
+    IEnumerator PayOutAnimRoutine(int Amount,Vector3 startHere)
+    {
+        Debug.Log("started routine");
+        Debug.Log(startHere);
+        Debug.Log("payout " + Amount);
+        Transform coin=Instantiate(coinAnimPrefab, startHere, coinAnimPrefab.transform.rotation).transform;
+        coin.localScale = new Vector3((float)Amount / 30f, (float)Amount / 30f, 1);//idk if anyting pays out more than 20
+        Vector3 endPos = CoinsGoHere.position;
+        float duration = .6f;//TODO in future make it speed variable & stuff
+        float timeElapsed = 0;
+        while(coin.position!= endPos)
+        {
+            float t = timeElapsed / duration;
+            coin.position=Vector3.Lerp(startHere, endPos, t);
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+        //play pay out sound here
+        Destroy(coin.gameObject);
+        SoundMng.PlaySound("coin");
         TextCoins.text = playerCoins.ToString();
     }
 
     public void SkipPickPayOut()
     {
-        PayOut(2, 5);
+        PayOut(2, 5, skipButton.position);
     }
 
     public int robPlayer(int coin)
