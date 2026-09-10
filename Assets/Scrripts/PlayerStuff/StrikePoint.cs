@@ -15,7 +15,9 @@ public class StrikePoint : MonoBehaviour
     [SerializeField]private int secondaryStyle;
     [SerializeField] private bool twoStyleEnabled;
     public PathCreator endPath;
+    [Header("attack paths")]
     [SerializeField] List<PathCreator> stylePaths;
+    [SerializeField] List<Sprite> styleImagesToShow;
     
     public float baseSpeed;
     public float bonusSpeed;
@@ -45,6 +47,7 @@ public class StrikePoint : MonoBehaviour
     private bool _hasTransitionedPath;
     private Vector3 endPathPosition;
     public float mostRecentX;
+    public SpriteRenderer stylePathShower;
 
     //confused style stuff
     private float oldspeed;
@@ -219,6 +222,7 @@ public class StrikePoint : MonoBehaviour
     public void ChangeStyle(PathCreator tempPath)
     {
         currentPath = tempPath;
+        stylePathShower.sprite=styleImagesToShow[stylePaths.IndexOf(currentPath)];
         //equipedPath = tempPath;
         if (tempPath.name == "Simple Style")
         {
@@ -266,8 +270,7 @@ public class StrikePoint : MonoBehaviour
         {secondaryStyle = primaryStyle;}
 
         primaryStyle = sty;
-        ChangeStyle(stylePaths[primaryStyle]);
-        
+        ChangeStyle(stylePaths[primaryStyle]);  
     }
 
     public void EquipSecondaryStyle(int sty)
