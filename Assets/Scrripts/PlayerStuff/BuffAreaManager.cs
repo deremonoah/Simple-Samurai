@@ -54,4 +54,32 @@ public class BuffAreaManager : MonoBehaviour
         //}
         //instantiate at appropriate point then make them a child of parent
     }
+
+    public void ReplaceActiveBuffs()
+    {
+        for(int lcv=0;lcv<placedBuffs.Count;lcv++)
+        {
+            float pos = lcv;
+            switch (lcv)
+            {
+                case 0:
+                    pos = 2.4f;
+                    break;
+                case 1:
+                    pos = 6.4f;
+                    break;
+                case 2:
+                    pos = 10.6f;
+                    break;
+                case 3:
+                    pos = 15f;
+                    break;
+
+            }
+            placedBuffs[lcv].transform.position = point.currentPath.path.GetPointAtDistance(pos);
+        }
+        
+
+        
+    }
 }

@@ -223,6 +223,7 @@ public class StrikePoint : MonoBehaviour
     {
         currentPath = tempPath;
         stylePathShower.sprite=styleImagesToShow[stylePaths.IndexOf(currentPath)];
+        FindObjectOfType<BuffAreaManager>().ReplaceActiveBuffs();
         //equipedPath = tempPath;
         if (tempPath.name == "Simple Style")
         {

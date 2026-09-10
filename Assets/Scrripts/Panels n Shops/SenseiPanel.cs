@@ -11,6 +11,8 @@ public class SenseiPanel : ShopGiveReward
     [SerializeField] List<StyleID> stylesKnown;//starts with simple
     [SerializeField] bool twoStyled;
     private StyleDisplay stylesOnPanel;
+    private int previousPressed = 0;
+    private int secondPreviousPressed = 0;
     //A list of the styles excluding simple so it isn't disable on start
 
     //rewards for something else?
@@ -26,9 +28,11 @@ public class SenseiPanel : ShopGiveReward
     public void newStyles(StyleID newStyle)//should this not add them?
     {
         stylesKnown.Add(newStyle);
+        secondPreviousPressed = previousPressed;
+        previousPressed = (int)newStyle;
         
-        //FindObjectOfType<SoundManager>().PlaySound("sensei");
-        EnableButton();//for when you get a style from loot this will open,not from events
+    //FindObjectOfType<SoundManager>().PlaySound("sensei");
+    EnableButton();//for when you get a style from loot this will open,not from events
     }
     private void EnableButton()
     {
@@ -59,6 +63,22 @@ public class SenseiPanel : ShopGiveReward
     {
         twoStyled = true;
         //maybe add a ui to enable or disable it?
+    }
+
+    public int getLastPressed()
+    {
+        return previousPressed;
+    }
+
+    public int getSecondToLastPressed()
+    {
+        return secondPreviousPressed;
+    }
+
+    public void SetLastPressed(int last,int secLast)//called by style display
+    {
+        previousPressed = last;
+        secondPreviousPressed = secLast;
     }
 }
 public enum StyleID { simple,Serpent,Creset,Mountain,Boar}

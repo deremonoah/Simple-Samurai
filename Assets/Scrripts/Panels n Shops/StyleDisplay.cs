@@ -30,7 +30,7 @@ public class StyleDisplay : MonoBehaviour
     [SerializeField] Color PrimaryStyleColor;
     [SerializeField] Color SecondaryStyleColor;
 
-    private void Start()
+    private void Awake()
     {
         sp = FindObjectOfType<SenseiPanel>();
         pe = FindObjectOfType<PlayerEquipedItemsManager>();
@@ -39,6 +39,7 @@ public class StyleDisplay : MonoBehaviour
 
     private void OnEnable()
     {
+        
         StartCoroutine(displayStyles());
     }
 
@@ -50,6 +51,7 @@ public class StyleDisplay : MonoBehaviour
     IEnumerator displayStyles()
     {
         yield return new WaitForSeconds(0.001f);
+        RefreshStyles();
         Weapon we = getweapon();
 
         List<int> StylesToDisplay = SetDisplayStylesFromContext();
@@ -109,9 +111,8 @@ public class StyleDisplay : MonoBehaviour
 
     public void DisplayStyle(int sty)//I use this on the check boxes, ideally default to the right one in future
     {
-        SenseiPanel sensei = FindObjectOfType<SenseiPanel>();
-        List<StyleID> enumList = sensei.getListOfKnownStyles();
-        bool isTwoStyled = sensei.KnowsTwoStyleFighting();
+        List<StyleID> enumList = sp.getListOfKnownStyles();
+        bool isTwoStyled = sp.KnowsTwoStyleFighting();
 
         StylePatternImagePrimary.sprite = StyleImages[sty];
         checkMarks[sty].color = PrimaryStyleColor;
@@ -136,6 +137,7 @@ public class StyleDisplay : MonoBehaviour
 
         secondPreviousPressed = previousPressed;
         previousPressed = sty;
+        sp.SetLastPressed(previousPressed, secondPreviousPressed);
         ReloadAllChecksInvisible();
     }
 
@@ -152,6 +154,15 @@ public class StyleDisplay : MonoBehaviour
         { checkMarks[secondPreviousPressed].color = SecondaryStyleColor; }
         
         checkMarks[previousPressed].color= PrimaryStyleColor;
+    }
+
+    private void RefreshStyles()
+    {
+        previousPressed = sp.getLastPressed();//as it can be updated by unlocking new styles
+        secondPreviousPressed = sp.getSecondToLastPressed();
+
+        StylePatternImagePrimary.sprite = StyleImages[previousPressed];
+        StylePatternImageSecondary.sprite = StyleImages[secondPreviousPressed];
     }
 
     public Transform getPosFromStylesKnown(int num)//for SenseiPanel

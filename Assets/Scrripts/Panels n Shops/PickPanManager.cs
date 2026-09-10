@@ -90,6 +90,7 @@ public class PickPanManager : MonoBehaviour
             Debug.Log("shop reward is the type");
             ShopReward re = (ShopReward)randLootPicks[buttonID];
             re.ResolveReward();
+            lootList.Remove(randLootPicks[buttonID]);
             randLootPicks.Clear();
             ClosePickPan();
             return;//so it doesn't equip a non item item()
@@ -123,18 +124,17 @@ public class PickPanManager : MonoBehaviour
     public void RandomItemPull()
     {
         randLootPicks.Clear();
-        var tempList = new List<Reward>(lootList);
-        var temp1 = Random.Range(0, tempList.Count);
-        randLootPicks.Add(tempList[temp1]);
-        tempList.RemoveAt(temp1);
 
-        var temp2 = Random.Range(0, tempList.Count);
-        randLootPicks.Add(tempList[temp2]);
-        tempList.RemoveAt(temp2);
-
-        var temp3 = Random.Range(0, tempList.Count);
-        randLootPicks.Add(tempList[temp3]);
-        tempList.RemoveAt(temp3);
+        for(int lcv=0;lcv<3;lcv++)
+        {
+            var noDupsList = new List<Reward>(lootList);
+            var randItemIndex = Random.Range(0, noDupsList.Count);
+            if(!randLootPicks.Contains(noDupsList[randItemIndex]))//if was added becuase I accidentally added 2 of the same item, so I will try not to do that in future
+            {//but why not have my code make sure?
+                randLootPicks.Add(noDupsList[randItemIndex]);
+                noDupsList.RemoveAt(randItemIndex);
+            }
+        }
 
         LoadLootPicks();
     }
