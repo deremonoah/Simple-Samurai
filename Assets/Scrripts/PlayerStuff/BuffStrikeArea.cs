@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuffStrikeArea : MonoBehaviour
 {
-    public enum Buff { swapEnemy, swapWeapon, speedUp, damageUp,weakSpot}
+    public enum Buff { swapEnemy, swapWeapon, styleSwap, damageUp,weakSpot}
     public bool DestroyOnHit;
     [SerializeField] Buff mybuff;
     private StrikeArea mainStrikeArea;

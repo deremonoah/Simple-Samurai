@@ -9,6 +9,7 @@ public class SenseiPanel : ShopGiveReward
 
     [SerializeField] GameObject panelButton;
     [SerializeField] List<StyleID> stylesKnown;//starts with simple
+    [SerializeField] bool twoStyled;
     private StyleDisplay stylesOnPanel;
     //A list of the styles excluding simple so it isn't disable on start
 
@@ -49,5 +50,15 @@ public class SenseiPanel : ShopGiveReward
         stylesOnPanel.DisplayStyles();
         ShowAppreciation(heartOverHead, heartOverHead);
     }*/
+    public bool KnowsTwoStyleFighting()
+    {
+        return twoStyled;
+    }
+
+    public void UnlockTwoStyleSkill()//called in senseiRewards
+    {
+        twoStyled = true;
+        //maybe add a ui to enable or disable it?
+    }
 }
 public enum StyleID { simple,Serpent,Creset,Mountain,Boar}

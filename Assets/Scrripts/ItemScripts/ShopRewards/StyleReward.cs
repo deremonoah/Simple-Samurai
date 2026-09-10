@@ -7,6 +7,7 @@ public class StyleReward : ShopReward
 
     public override void ResolveReward()
     {
+        FindObjectOfType<StrikePoint>().EquipPrimaryStyle((int)styleToLearn);
         FindObjectOfType<SenseiPanel>().newStyles(styleToLearn);
     }
 }

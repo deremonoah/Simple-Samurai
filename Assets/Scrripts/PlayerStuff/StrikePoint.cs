@@ -11,10 +11,11 @@ public class StrikePoint : MonoBehaviour
     public GameObject startpoint;
 
     public PathCreator currentPath;
-    private PathCreator primaryPath;
-    private PathCreator secondaryPath;
-    private bool twoStyleEnabled;
+    [SerializeField]private int primaryStyle;
+    [SerializeField]private int secondaryStyle;
+    [SerializeField] private bool twoStyleEnabled;
     public PathCreator endPath;
+    [SerializeField] List<PathCreator> stylePaths;
     
     public float baseSpeed;
     public float bonusSpeed;
@@ -64,8 +65,8 @@ public class StrikePoint : MonoBehaviour
 
         StyleconfusedTimer = 0f;
         Styleconfused = false;
-        primaryPath = currentPath;//current path is what is set in inspector
-        ChangeStyle(primaryPath);
+        primaryStyle = 0;//current path is what is set in inspector
+        ChangeStyle(stylePaths[primaryStyle]);
     }
 
     void Update()
@@ -155,13 +156,13 @@ public class StrikePoint : MonoBehaviour
         bonusSpeed = 0;
         if(twoStyleEnabled)
         {
-            if(currentPath==primaryPath)
+            if(currentPath==stylePaths[primaryStyle])
             {
-                currentPath = secondaryPath;
+                ChangeStyle(stylePaths[secondaryStyle]);
             }
-            if(currentPath==secondaryPath)
+            else if(currentPath== stylePaths[secondaryStyle])
             {
-                currentPath = primaryPath;
+                ChangeStyle(stylePaths[primaryStyle]);
             }
         }
     }
@@ -257,5 +258,20 @@ public class StrikePoint : MonoBehaviour
     public void UnlockedTwoStyleAbility()
     {
         twoStyleEnabled = true;
+    }
+
+    public void EquipPrimaryStyle(int sty)
+    {
+        if (twoStyleEnabled)
+        {secondaryStyle = primaryStyle;}
+
+        primaryStyle = sty;
+        ChangeStyle(stylePaths[primaryStyle]);
+        
+    }
+
+    public void EquipSecondaryStyle(int sty)
+    {
+        secondaryStyle = sty;
     }
 }

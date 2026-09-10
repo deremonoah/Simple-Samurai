@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class PlayerDefense : MonoBehaviour
 {
@@ -26,6 +27,13 @@ public class PlayerDefense : MonoBehaviour
     [SerializeField] int palisadeCost;
     [SerializeField] int spikesCost;
     [SerializeField] int IncreasePlotCost;
+
+    [Header("UI Textboxes")]
+    [SerializeField] TextMeshProUGUI pitCostText;
+    [SerializeField] TextMeshProUGUI palisadeCostText;
+    [SerializeField] TextMeshProUGUI spikesCostText;
+    [SerializeField] TextMeshProUGUI increasePlotCostText;
+
     //[SerializeField] List<Dragable> DefenseDragables;
     //[SerializeField] DropZone EquipedDefenseSlot;
     public GameObject DefenseButton;
@@ -44,6 +52,11 @@ public class PlayerDefense : MonoBehaviour
         
         DefenseButton.SetActive(false);
         UpdatePlotsEquipUI();
+    }
+
+    private void OnEnable()
+    {
+        UpdateUITextPrices(); 
     }
 
     public bool isDefended()
@@ -107,9 +120,15 @@ public class PlayerDefense : MonoBehaviour
     //this is the same as the above that I made later
     public void IncreaseSlotsButton()
     {
-        numberOfPlots++;
+        if (gm.playerCoins >= IncreasePlotCost)
+        { 
+            numberOfPlots++;
+            gm.playerCoins -= IncreasePlotCost;
+            IncreasePlotCost += 20;
+        }
         //enable slot uis
         UpdatePlotsEquipUI();
+        UpdateUITextPrices();
     }
 
     public void TrapPressed(GameObject prefab)
@@ -141,6 +160,15 @@ public class PlayerDefense : MonoBehaviour
             gm.playerCoins -= cost;
             TrapPressed(prefab);
         }
+        UpdateUITextPrices();
+    }
+
+    private void UpdateUITextPrices()
+    {
+        pitCostText.text=pitCost+"g";
+        palisadeCostText.text=palisadeCost + "g";
+        spikesCostText.text = spikesCost + "g";
+        increasePlotCostText.text = IncreasePlotCost + "g";
     }
 
     private void UpdatePlotsEquipUI()//only called outside of combat

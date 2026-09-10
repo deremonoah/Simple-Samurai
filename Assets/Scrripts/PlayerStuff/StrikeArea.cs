@@ -97,8 +97,8 @@ public class StrikeArea : MonoBehaviour
                 }
                 if(inBuffArea == 2)
                 {
-                    //speed buff
-                    _mystrikePoint.bonusSpeed = 3;
+                    //style swap
+                    
                     
                     inBuffArea = -1;
                 }

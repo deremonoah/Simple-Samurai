@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TwoStyle
   m_EditorClassIdentifier: 
   Name: Fluid style
-  PanelIcon: {fileID: 0}
+  PanelIcon: {fileID: 21300000, guid: 81a2575b8e711fc45b33ef8ae46d1514, type: 3}
   Description: after each attack you alternate between 2 styles
   reward: 3

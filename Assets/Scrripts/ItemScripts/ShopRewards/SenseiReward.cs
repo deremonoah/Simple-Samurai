@@ -18,6 +18,7 @@ public class SenseiReward : ShopReward
         else if (reward == SenseiRewardType.twoStyles)
         {
             FindObjectOfType<StrikePoint>().UnlockedTwoStyleAbility();
+            FindObjectOfType<SenseiPanel>().UnlockTwoStyleSkill();
         }
     }
 }

@@ -17,8 +17,18 @@ public class StyleDisplay : MonoBehaviour
 
     [Header("Item Display objects")]
     [SerializeField] Image strikeAreaImage;
-    [SerializeField] Image StylePatternImage;
+    [SerializeField] Image StylePatternImagePrimary;
+    [SerializeField] Image StylePatternImageSecondary;
+    [Header("CheckBox info")]
     [SerializeField] List<GameObject> boxesForStyles;
+    [SerializeField] List<Sprite> StyleImages;
+    [SerializeField] List<Image> checkMarks;
+    private int previousPressed=0;
+    private int secondPreviousPressed=0;
+
+    [Header("colors")]
+    [SerializeField] Color PrimaryStyleColor;
+    [SerializeField] Color SecondaryStyleColor;
 
     private void Start()
     {
@@ -43,7 +53,7 @@ public class StyleDisplay : MonoBehaviour
         Weapon we = getweapon();
 
         List<int> StylesToDisplay = SetDisplayStylesFromContext();
-        
+        ReloadAllChecksInvisible();
 
 
         for (int lcv = 0; lcv < boxesForStyles.Count; lcv++)
@@ -74,7 +84,6 @@ public class StyleDisplay : MonoBehaviour
         {
             StyleReward sty = (StyleReward)ip.getRewardInspecting();
             listToReturn.Add((int)sty.styleToLearn);//get the style id which is the int refrence for position of gameobject style in list
-            boxesForStyles[(int)sty.styleToLearn].GetComponent<Toggle>().isOn = true;
         }
         
         //set equiped style
@@ -98,10 +107,51 @@ public class StyleDisplay : MonoBehaviour
 
     }
 
-    public void DisplayStyle(Sprite stylePic)//I use this on the check boxes, ideally default to the right one in future
+    public void DisplayStyle(int sty)//I use this on the check boxes, ideally default to the right one in future
     {
-        StylePatternImage.sprite = stylePic;
-        //equiping style happens in strike point
+        SenseiPanel sensei = FindObjectOfType<SenseiPanel>();
+        List<StyleID> enumList = sensei.getListOfKnownStyles();
+        bool isTwoStyled = sensei.KnowsTwoStyleFighting();
+
+        StylePatternImagePrimary.sprite = StyleImages[sty];
+        checkMarks[sty].color = PrimaryStyleColor;
+        Debug.Log("known styles count of " + enumList.Count);
+        Debug.Log((StyleID)sty);
+        if (enumList.Contains((StyleID)sty))
+        {
+            FindObjectOfType<StrikePoint>().EquipPrimaryStyle(sty);
+        }
+
+        //add if after we make sure it works
+        if(isTwoStyled)
+        {
+            StylePatternImageSecondary.sprite = StyleImages[previousPressed];
+            checkMarks[previousPressed].color = SecondaryStyleColor;
+            if (enumList.Contains((StyleID)previousPressed) && enumList.Contains((StyleID)sty))
+            {
+                //equipSecondaryStyle only if first picked was also a real style otherwise we are just looking at things
+                FindObjectOfType<StrikePoint>().EquipSecondaryStyle(previousPressed);
+            }
+        }
+
+        secondPreviousPressed = previousPressed;
+        previousPressed = sty;
+        ReloadAllChecksInvisible();
+    }
+
+    private void ReloadAllChecksInvisible()
+    {
+        foreach(Image im in checkMarks)
+        {
+            im.color = new Color(0, 0, 0, 0);
+        }
+        //add if we have 2 styles
+        SenseiPanel sensei = FindObjectOfType<SenseiPanel>();
+        bool isTwoStyled = sensei.KnowsTwoStyleFighting();
+        if (isTwoStyled)
+        { checkMarks[secondPreviousPressed].color = SecondaryStyleColor; }
+        
+        checkMarks[previousPressed].color= PrimaryStyleColor;
     }
 
     public Transform getPosFromStylesKnown(int num)//for SenseiPanel
