@@ -148,7 +148,6 @@ public class enemyStats : MonoBehaviour
 
         //for moving hp bar over ui elements
         //HPBarPosToReturnTo = HPBarToMove.localPosition;
-        HandleHPBarPlacement();
 
         //DecideNStartAction();  
         AttackSpeedScaler = SaveData.instance.getTimeScaledEnemyWaitTimeValue();
@@ -408,7 +407,6 @@ public class enemyStats : MonoBehaviour
                 enmsSys.IncreaseAgressionRange(Aggression);
                 //all of a sudden idk if i spelled agression right ah yes 2 gs
                 targetToSwap.GetComponent<enemyStats>().DisablePointer();
-                HandleHPBarPlacement();
             }
         }
     }
@@ -472,11 +470,6 @@ public class enemyStats : MonoBehaviour
     public float getCurrentHP()
     {
         return HP;
-    }
-
-    protected void HandleHPBarPlacement()
-    {
-        EnemyHPBarPlacerManager.instance.PlaceMyHPBar(this, posInList);
     }
 
     private void GotPoisoned(float Damage)

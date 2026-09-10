@@ -41,12 +41,12 @@ public class EnemyBehavior : MonoBehaviour
 
     protected int currentRageCount;
     private float YAttackOffset;
-    private Vector3 posToReturnTo;
+    private EnemyPosHandler posHandler;//initial pos is set in ENemysManager
 
     public void Start()
     {
         stats = GetComponent<enemyStats>();
-        posToReturnTo = EnemysManager.instance.getPosToReturnTo(stats.posInList);
+        posHandler = GetComponent<EnemyPosHandler>();
         DecideNextAction();
     }
 
@@ -178,7 +178,7 @@ public class EnemyBehavior : MonoBehaviour
     IEnumerator ReturnRoutine()
     {
         Vector3 startPos = transform.position;
-        Vector3 endPos = posToReturnTo;
+        Vector3 endPos = posHandler.getPosToReturnTo();
         float timer = 0;
         float duration = Mathf.Abs(startPos.y - endPos.y) / MoveToShowSpeed;
         while (transform.position != endPos)

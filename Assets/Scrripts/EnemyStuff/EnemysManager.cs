@@ -100,9 +100,10 @@ public class EnemysManager : MonoBehaviour
 
     public void SpawnEnemy(int pos, GameObject enmPrefab)
     {
-        enemyStats enm = Instantiate(enmPrefab, enemySpawnsPoints[pos].transform.position, enemySpawnsPoints[pos].transform.rotation).GetComponent<enemyStats>();
+        Vector3 posToReturnTo = enemySpawnsPoints[pos].transform.position;//for them knowing what spot to go back to when done with an animation
+        enemyStats enm = Instantiate(enmPrefab, posToReturnTo, enemySpawnsPoints[pos].transform.rotation).GetComponent<enemyStats>();
         aliveEnemys.Add(enm);
-        enm.GetComponent<enemyStats>().SetPosInList(pos);
+        enm.GetComponent<EnemyPosHandler>().SetPosVariables(pos, posToReturnTo);
         //enm.GetComponent<enemy>().SetPositionRefrences(enemySpawnsPoints[pos].transform, attackThrowMarker);
         
         spawned = true;
@@ -338,7 +339,8 @@ public class EnemysManager : MonoBehaviour
             for (int lcv = 0; lcv < aliveEnemys.Count; lcv++)
             {
                 //this gets the specific enemy game object and then moves them to the proper spawn spot they should now be in
-                aliveEnemys[lcv].gameObject.transform.position = enemySpawnsPoints[lcv].transform.position;
+                //aliveEnemys[lcv].gameObject.transform.position = enemySpawnsPoints[lcv].transform.position;
+                aliveEnemys[lcv].gameObject.GetComponent<EnemyPosHandler>().UpdatePosVariables(lcv,enemySpawnsPoints[lcv].transform.position);
             }
 
 

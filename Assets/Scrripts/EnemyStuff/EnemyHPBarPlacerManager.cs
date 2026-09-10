@@ -21,6 +21,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
     //private Image[] InUseBars = new Image[] { null, null, null, null };
     [Header("HP Bar stuff")]
     [SerializeField] List<Transform> UIPool = new List<Transform>();
+    private List<Transform> poolInUse = new List<Transform>();
     [SerializeField] Vector3 HideHere;
 
     [Header("Boss HP Bar stuff")]
@@ -44,42 +45,73 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
 
     public void PlaceMyHPBar(enemyStats enm,int posInList)
     {
-        aliveEnemies.Add(enm);//should work with the timing of spawns
-                              //might need to set uipool newest item to enabled
         HPBarImageHolder barb;
         Image barToUse = null;
-        if (enm.HasAbility(enemyStats.Ability.boss))
+        if (!aliveEnemies.Contains(enm))//for regular spawning
         {
-            barb = bossHPUI;
-            barToUse = barb.getHPBar();
-            aliveEnemies[posInList].HPBarToMove = bossHPUI.gameObject.transform;
-            enm.myHPBar = bossHPUI.getHPBar();
-            enm.myHPBar.fillAmount = enm.getCurrentHP() / enm.maxHP;
-            bossHPUI.gameObject.SetActive(true);
-            enm.PoisonText = bossPoisonText;
+            aliveEnemies.Add(enm);//should work with the timing of spawns
+                                  //might need to set uipool newest item to enabled
+            
+            if (enm.HasAbility(enemyStats.Ability.boss))
+            {
+                barb = bossHPUI;
+                barToUse = barb.getHPBar();
+                aliveEnemies[posInList].HPBarToMove = bossHPUI.gameObject.transform;
+                enm.myHPBar = bossHPUI.getHPBar();
+                enm.myHPBar.fillAmount = enm.getCurrentHP() / enm.maxHP;
+                bossHPUI.gameObject.SetActive(true);
+                enm.PoisonText = bossPoisonText;
+            }
+            else//non boss
+            {
+                barb = UIPool[0].gameObject.GetComponent<HPBarImageHolder>();
+                barToUse = barb.getHPBar();
+                aliveEnemies[posInList].HPBarToMove = UIPool[0];
+                barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
+                barb.getTransformToScale().localScale = new Vector3(enm.maxHP / 300, 1, 1);
+                enm.PoisonText = barb.getPoisonTextField();
+            }
+            aliveEnemies[posInList].myHPBar = barToUse;
+            //set refrences for hpbar
+
+            //setting icon
+            barb.setSprite(enm.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
+            if (enm.hpBarIcon != null)
+            {
+                barb.setSprite(enm.hpBarIcon);
+            }
+            poolInUse.Add(UIPool[0]);
+            UIPool.RemoveAt(0);
         }
-        else//non boss
+        else//for updating the pos of one already alive
         {
-            barb = UIPool[0].gameObject.GetComponent<HPBarImageHolder>();
+            if (enm.HasAbility(enemyStats.Ability.boss))
+            {
+                return;//for now we will ignore boss hp should follow boss probably? or it just sits there
+            }
+            //non boss enemy who already is in the list
+
+            //putting their position in list to be equal to their pos they internally know
+            aliveEnemies.Remove(enm);
+            aliveEnemies.Insert(posInList, enm);
+
+            barb = poolInUse[posInList].gameObject.GetComponent<HPBarImageHolder>();
             barToUse = barb.getHPBar();
-            aliveEnemies[posInList].HPBarToMove = UIPool[0];
+
+            aliveEnemies[posInList].HPBarToMove = poolInUse[posInList];
             barb.getTransformToScale().localScale = new Vector3(1, 1, 1);
             barb.getTransformToScale().localScale = new Vector3(enm.maxHP / 300, 1, 1);
             enm.PoisonText = barb.getPoisonTextField();
-        }
             aliveEnemies[posInList].myHPBar = barToUse;
-            //set refrences for hpbar
-            
-        //enm.PoisonText=barb.
-        //remove hpbar from pool
-        barb.setSprite(enm.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
-        if(enm.hpBarIcon!=null)
-        {
-            barb.setSprite(enm.hpBarIcon);
+
+            //setting hp bar icon
+            barb.setSprite(enm.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
+            if (enm.hpBarIcon != null)
+            {
+                barb.setSprite(enm.hpBarIcon);
+            }
+            //might have an issue with status effects not showing properly on hp bar, but their actual number is right right?
         }
-        
-        UIPool.RemoveAt(0);
-        //set that one's image, the one on the child to be InUseBars
 
 
         HandleListChanged();
@@ -124,6 +156,7 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         var bar = enm.HPBarToMove;
         bar.position = HideHere;
         UIPool.Add(bar);//add it back to the pool of ui
+        poolInUse.Remove(bar);
         bar.GetComponent<HPBarImageHolder>().getHPBar().fillAmount = 1;//and put its filll back to 100%
         HandleListChanged();
     }
@@ -217,7 +250,9 @@ public class EnemyHPBarPlacerManager : MonoBehaviour
         else
         {
             //if there is no spot to put the hp bar on ui, it should go onto the character
-            barpos.position = aliveEnemies[posInList].backUpHPBarSpot.position;
+            Vector3 posOffset=aliveEnemies[posInList].backUpHPBarSpot.localPosition;
+            Vector3 posToReturnTo = aliveEnemies[posInList].gameObject.GetComponent<EnemyPosHandler>().getPosToReturnTo();
+            barpos.position = posToReturnTo+posOffset;
         }
     }
 
